@@ -1,0 +1,37 @@
+/**
+ * Inter typeface, `latin` subset.
+ *
+ * @see https://github.com/rsms/inter/
+ * @see https://github.com/philipbelesky/inter-ui
+ */
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('/assets/fonts/Inter-roman.var-subset.woff2?v=3.18')
+      format('woff2 supports variations(gvar)'),
+    url('/assets/fonts/Inter-roman.var-subset.woff2?v=3.18')
+      format('woff2-variations'),
+    url('/assets/fonts/Inter-roman.var-subset.woff2?v=3.18') format('woff2');
+}
+@font-face {
+  font-family: 'Inter var';
+  font-weight: 100 900;
+  font-style: italic;
+  font-named-instance: 'Italic';
+  src: url('/assets/fonts/Inter-italic.var-subset.woff2?v=3.18')
+      format('woff2 supports variations(gvar)'),
+    url('/assets/fonts/Inter-italic.var-subset.woff2?v=3.18')
+      format('woff2-variations'),
+    url('/assets/fonts/Inter-italic.var-subset.woff2?v=3.18') format('woff2');
+}
+body {
+  --tw-bg-opacity: 1;
+  background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+  font-family: Inter var, system-ui, sans-serif;
+  --tw-text-opacity: 1;
+  color: rgba(17, 24, 39, var(--tw-text-opacity));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

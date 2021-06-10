@@ -1,0 +1,9 @@
+/**
+ * File name for webmanifest.
+ */
+export const webManifest = 'site.webmanifest'
+
+/**
+ * Site URL.
+ */
+export const url = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'

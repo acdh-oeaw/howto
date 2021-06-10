@@ -1,0 +1,48 @@
+import type { ReactNode } from 'react'
+
+import { Svg as PencilIcon } from '@/assets/icons/pencil.svg'
+import type { collections } from '@/cms/cms.config'
+import { Icon } from '@/common/Icon'
+import { routes } from '@/navigation/routes.config'
+import { url as baseUrl } from '~/config/site.config'
+
+export interface EditLinkProps {
+  children: ReactNode
+  className?: string
+  collection: keyof typeof collections
+  id: string
+}
+
+/**
+ * Link to directly edit resource via cms.
+ *
+ * We cannot link to CMS via client-side transition, because Netlify CMS
+ * unfortunately sets global styles, which would bleed into the app when navigating
+ * back via browser back button.
+ */
+export function EditLink(props: EditLinkProps): JSX.Element {
+  const { className, collection, id, children } = props
+
+  return (
+    <a
+      href={String(
+        createUrl({
+          ...routes.cms(),
+          hash: `/edit/${collection}/${id}`,
+        }),
+      )}
+      className={className}
+    >
+      <Icon icon={PencilIcon} />
+      {children}
+    </a>
+  )
+}
+
+function createUrl({ pathname, hash }: { pathname: string; hash?: string }) {
+  const url = new URL(pathname, baseUrl)
+  if (hash !== undefined) {
+    url.hash = hash
+  }
+  return url
+}

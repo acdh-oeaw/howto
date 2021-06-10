@@ -1,0 +1,357 @@
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix nampi: <https://purl.org/nampi/owl/core#> .
+@prefix mon: <https://purl.org/nampi/owl/monastic-life#> .
+@prefix asp: <https://purl.org/nampi/data/aspect/> .
+@prefix ex: <http://www.example.com/> .
+
+nampi:aspect rdf:type skos:Concept ;
+	skos:prefLabel "Aspect"@en ;
+	skos:narrower nampi:title ;
+	skos:narrower nampi:appellation ;
+	skos:narrower nampi:occupation ;
+	skos:narrower nampi:status .
+
+nampi:title rdf:type skos:Concept ;
+	skos:prefLabel "Title"@en ;
+	skos:broader nampi:aspect ;
+	skos:narrower mon:religious_title .
+
+mon:religious_title rdf:type skos:Concept ;
+	skos:prefLabel "Religious title"@en ;
+	skos:broader nampi:title .
+
+nampi:appellation rdf:type skos:Concept ;
+	skos:prefLabel "Appellation"@en ;
+	skos:broader nampi:aspect ;
+	skos:narrower nampi:name ;
+	skos:narrower nampi:identifier .
+
+nampi:name rdf:type skos:Concept ;
+	skos:prefLabel "Name"@en ;
+	skos:broader nampi:appellation ;
+	skos:narrower mon:given_name ;
+	skos:narrower mon:religious_name ;
+	skos:narrower mon:family_name .
+
+mon:given_name rdf:type skos:Concept ;
+	skos:prefLabel "Given name"@en ;
+	skos:broader nampi:name .
+
+mon:religious_name rdf:type skos:Concept ;
+	skos:prefLabel "Religious name"@en ;
+	skos:broader nampi:name .
+
+mon:family_name rdf:type skos:Concept ;
+	skos:prefLabel "Family name"@en ;
+	skos:broader nampi:name .
+
+nampi:identifier rdf:type skos:Concept ;
+	skos:prefLabel "Identifier"@en ;
+	skos:broader nampi:appellation .
+
+nampi:occupation rdf:type skos:Concept ;
+	skos:prefLabel "Occupation"@en ;
+	skos:broader nampi:aspect ;
+	skos:narrower mon:associated_parish_clergy ;
+	skos:narrower mon:profession ;
+	skos:narrower mon:official ;
+	skos:narrower mon:rule_of_a_community ;
+	skos:narrower mon:administration_of_a_community ;
+	skos:narrower mon:clergy .
+
+mon:associated_parish_clergy rdf:type skos:Concept ;
+	skos:prefLabel "Associated parish clergy"@en ;
+	skos:broader mon:occupation .
+
+mon:profession rdf:type skos:Concept ;
+	skos:prefLabel "Profession"@en ;
+	skos:broader mon:occupation .
+
+mon:official rdf:type skos:Concept ;
+	skos:prefLabel "Official"@en ;
+	skos:broader mon:occupation .
+
+mon:rule_of_a_community rdf:type skos:Concept ;
+	skos:prefLabel "Rule of a community"@en ;
+	skos:broader mon:occupation .
+
+mon:administration_of_a_community rdf:type skos:Concept ;
+	skos:prefLabel "Administration of a community"@en ;
+	skos:broader mon:occupation .
+
+nampi:status rdf:type skos:Concept ;
+	skos:prefLabel "Status"@en ;
+	skos:broader nampi:aspect ;
+	skos:narrower mon:clergy ;
+	skos:narrower mon:academic_degree ;
+	skos:narrower mon:community_superior ;
+	skos:narrower mon:member_of_a_religious_community ;
+	skos:narrower mon:office_in_a_diocese ;
+	skos:narrower mon:religious_life_outside_a_community ;
+	skos:narrower mon:visitator ;
+	skos:narrower mon:monastic_office .
+
+mon:clergy rdf:type skos:Concept ;
+	skos:prefLabel "clergy"@en ;
+	skos:prefLabel "Klerus"@de ;
+	skos:broader nampi:status ;
+	skos:broader nampi:occupation ;
+	skos:narrower asp:1a9f6a75-1944-4a1e-8ff1-948c09868331 ;
+	skos:narrower asp:24188eda-cfd4-470f-a41c-693b3dd0045e ;
+	skos:narrower asp:619860f5-623e-4248-835d-067f784c61be ;
+	skos:narrower asp:74a11199-95d0-403f-82cf-e26773f69a2d ;
+	skos:narrower asp:7ca75e47-52eb-4118-a2f1-dcbc13eabad7 ;
+	skos:narrower asp:80e76234-c42d-4410-a85f-05665e9aa18e ;
+	skos:narrower asp:9dfa3bbb-0733-45bd-b90f-2b3339ce18bc ;
+	skos:narrower asp:ed06c257-5829-46a4-9f22-ba141d1c3e87 ;
+	skos:narrower asp:ee8326a1-2b5d-4e72-9479-902b030905d7 .
+
+asp:1a9f6a75-1944-4a1e-8ff1-948c09868331 rdf:type skos:Concept ;
+	skos:prefLabel "Dominican confessor"@en ;
+	skos:broader mon:clergy .
+
+asp:24188eda-cfd4-470f-a41c-693b3dd0045e rdf:type skos:Concept ;
+	skos:prefLabel "Minister of ceremonies"@en ;
+	skos:broader mon:clergy .
+
+asp:619860f5-623e-4248-835d-067f784c61be rdf:type skos:Concept ;
+	skos:prefLabel "Priest"@en ;
+	skos:broader mon:clergy .
+
+asp:74a11199-95d0-403f-82cf-e26773f69a2d rdf:type skos:Concept ;
+	skos:prefLabel "Archdeacon"@en ;
+	skos:broader mon:clergy .
+
+asp:7ca75e47-52eb-4118-a2f1-dcbc13eabad7 rdf:type skos:Concept ;
+	skos:prefLabel "Poenitentiarius apostolicus"@en ;
+	skos:broader mon:clergy .
+
+asp:80e76234-c42d-4410-a85f-05665e9aa18e rdf:type skos:Concept ;
+	skos:prefLabel "Canon"@en ;
+	skos:broader mon:clergy .
+
+asp:9dfa3bbb-0733-45bd-b90f-2b3339ce18bc rdf:type skos:Concept ;
+	skos:prefLabel "Deacon"@en ;
+	skos:broader mon:clergy .
+
+asp:ed06c257-5829-46a4-9f22-ba141d1c3e87 rdf:type skos:Concept ; 
+	skos:prefLabel "Praedicator generalis"@en ;
+	skos:broader mon:clergy .
+
+asp:ee8326a1-2b5d-4e72-9479-902b030905d7 rdf:type skos:Concept ;
+	skos:prefLabel "Coadiutor"@en ;
+	skos:broader mon:clergy .
+
+mon:academic_degree rdf:type skos:Concept ;
+	skos:prefLabel "Academic degree"@en ;
+	skos:broader nampi:status ;
+	skos:narrower asp:7f4f9789-f5c9-4802-9439-c77ab3f00755 .
+	
+asp:7f4f9789-f5c9-4802-9439-c77ab3f00755 rdf:type skos:Concept ;
+	skos:prefLabel "Doctor of Laws"@en ;
+	skos:broader mon:academic_degree .
+
+mon:community_superior rdf:type skos:Concept ;
+	skos:prefLabel "Community superior"@en ;
+	skos:broader nampi:status ;
+	skos:narrower mon:vice_community_superior ;
+	skos:narrower mon:procurator ;
+	skos:narrower asp:0807f3b1-677f-4803-90ef-c9af2aa62ccb ;
+	skos:narrower asp:4d738c86-f70b-427a-9601-b2d6ec51bb4b ;
+	skos:narrower asp:86cce228-cfba-4d49-a231-49dcaaf3401f ;
+	skos:narrower asp:885c176c-b919-45e8-b6b8-accc14ff20f3 ;
+	skos:narrower asp:d0bc56ff-c0fd-4701-b1b4-577a3fc8d70e .
+	
+mon:vice_community_superior rdf:type skos:Concept ;
+	skos:prefLabel "Vice community superior"@en ;
+	skos:broader mon:community_superior ;
+	skos:narrower asp:69775606-b6c5-4ca0-9a82-78d39ec6e8e5 ;
+	skos:narrower asp:8aa1541d-5f6b-42b7-92f7-0d0918f10a8a ;
+	skos:narrower asp:ddc49e35-a899-4a67-897d-8b016b167753 .
+	
+asp:69775606-b6c5-4ca0-9a82-78d39ec6e8e5 rdf:type skos:Concept ;
+	skos:prefLabel "Dominican subprioress"@en ;
+	skos:broader mon:vice_community_superior .
+
+asp:8aa1541d-5f6b-42b7-92f7-0d0918f10a8a rdf:type skos:Concept ;
+	skos:prefLabel "Carthusian procurator"@en ;
+	skos:broader mon:vice_community_superior .
+	
+asp:ddc49e35-a899-4a67-897d-8b016b167753 rdf:type skos:Concept ;
+	skos:prefLabel "Carthusian vicar"@en ;
+	skos:broader mon:vice_community_superior .
+	
+mon:procurator  rdf:type skos:Concept ;
+	skos:prefLabel "Procurator "@en ;
+	skos:broader mon:community_superior .
+	
+asp:0807f3b1-677f-4803-90ef-c9af2aa62ccb rdf:type skos:Concept ;
+	skos:prefLabel "Dominican administrator"@en ;
+	skos:broader mon:community_superior .
+
+asp:4d738c86-f70b-427a-9601-b2d6ec51bb4b rdf:type skos:Concept ;
+	skos:prefLabel "Dominican prioress"@en ;
+	skos:broader mon:community_superior .
+	
+asp:86cce228-cfba-4d49-a231-49dcaaf3401f rdf:type skos:Concept ;
+	skos:prefLabel "Dominican vicar"@en ;
+	skos:broader mon:community_superior .
+	
+asp:885c176c-b919-45e8-b6b8-accc14ff20f3 rdf:type skos:Concept ;
+	skos:prefLabel "Carthusian prior"@en ;
+	skos:broader mon:community_superior .
+	
+asp:d0bc56ff-c0fd-4701-b1b4-577a3fc8d70e rdf:type skos:Concept ;
+	skos:prefLabel "Dominican prior "@en ;
+	skos:broader mon:community_superior .
+
+mon:member_of_a_religious_community rdf:type skos:Concept ;
+	skos:prefLabel "Member of a religious community"@en ;
+	skos:broader nampi:status ;
+	skos:narrower mon:member_of_a_religious_community_visiting ;
+	skos:narrower mon:professed_member_of_a_religious_community ;
+	skos:narrower asp:31b29d82-d531-4225-a9bb-8bf349f055f3 ;
+	skos:narrower asp:e4d0b440-a5e3-4be3-9ca9-d292c9cb414a .
+
+mon:member_of_a_religious_community_visiting rdf:type skos:Concept ;
+	skos:prefLabel "Member of a religious community visiting"@en ;
+	skos:broader mon:member_of_a_religious_community ;
+	skos:narrower asp:761677db-fb34-42b4-9bf4-657da06749e4 ;
+	skos:narrower asp:8f56981f-4ddb-42fb-9e47-5b73fdcc447a .
+
+asp:761677db-fb34-42b4-9bf4-657da06749e4 rdf:type skos:Concept ;
+	skos:prefLabel "Carthusian hospes"@en ;
+	skos:broader mon:member_of_a_religious_community_visiting .
+	
+asp:8f56981f-4ddb-42fb-9e47-5b73fdcc447a rdf:type skos:Concept ;
+	skos:prefLabel "Guest"@en ;
+	skos:broader mon:member_of_a_religious_community_visiting .
+
+mon:professed_member_of_a_religious_community rdf:type skos:Concept ;
+	skos:prefLabel "Professed member of a religious community"@en ;
+	skos:broader mon:member_of_a_religious_community ;
+	skos:narrower mon:member_of_a_religious_community_with_spiritual_focus ;
+	skos:narrower mon:member_of_a_religious_community_with_manual_focus ;
+	skos:narrower asp:3daa15f3-83f8-452e-8838-0be1085d8cb8 ;
+	skos:narrower asp:ff36364f-fea9-4a58-8126-864cf277d5c5 .	
+
+mon:member_of_a_religious_community_with_spiritual_focus rdf:type skos:Concept ;
+	skos:prefLabel "Member of a religious community with spiritual focus"@en ;
+	skos:broader mon:professed_member_of_a_religious_community ;
+	skos:narrower asp:186eea3d-762a-46b5-840a-e8754e1e7d47 ;
+	skos:narrower asp:76857b44-10bd-47bd-ae97-9a4784eaddc9 ;
+	skos:narrower asp:f458f2ad-3df1-4512-a1ca-ba9333a74987 .
+	
+asp:186eea3d-762a-46b5-840a-e8754e1e7d47 rdf:type skos:Concept ;
+	skos:prefLabel "Priest monk"@en ;
+	skos:broader mon:member_of_a_religious_community_with_spiritual_focus .
+
+asp:76857b44-10bd-47bd-ae97-9a4784eaddc9 rdf:type skos:Concept ;
+	skos:prefLabel "Choir monk"@en ;
+	skos:broader mon:member_of_a_religious_community_with_spiritual_focus .
+
+asp:f458f2ad-3df1-4512-a1ca-ba9333a74987 rdf:type skos:Concept ;
+	skos:prefLabel "Choir nun"@en ;
+	skos:broader mon:member_of_a_religious_community_with_spiritual_focus .	
+	
+mon:member_of_a_religious_community_with_manual_focus rdf:type skos:Concept ;
+	skos:prefLabel "Member of a religious community with manual focus"@en ;
+	skos:broader mon:professed_member_of_a_religious_community ;
+	skos:narrower asp:41f319a9-cc03-475f-9ecd-ef048648472e ;
+	skos:narrower asp:43c2c426-97b3-43af-9065-8a5f872af30d ;
+	skos:narrower asp:53f47086-af02-4a00-ad31-d5499410bc5d ;
+	skos:narrower asp:d851a6bf-b0fd-4b5c-a2aa-aee1222fe3a4 .
+	
+asp:41f319a9-cc03-475f-9ecd-ef048648472e rdf:type skos:Concept ;
+	skos:prefLabel "Carthusian converse"@en ;
+	skos:broader mon:member_of_a_religious_community_with_manual_focus .
+
+asp:43c2c426-97b3-43af-9065-8a5f872af30d rdf:type skos:Concept ;
+	skos:prefLabel "Oblatus"@en ;
+	skos:broader mon:member_of_a_religious_community_with_manual_focus .
+	
+asp:53f47086-af02-4a00-ad31-d5499410bc5d rdf:type skos:Concept ;
+	skos:prefLabel "Donatus"@en ;
+	skos:broader mon:member_of_a_religious_community_with_manual_focus .
+	
+asp:d851a6bf-b0fd-4b5c-a2aa-aee1222fe3a4 rdf:type skos:Concept ;
+	skos:prefLabel "Lay sister"@en ;
+	skos:broader mon:member_of_a_religious_community_with_manual_focus .
+
+asp:3daa15f3-83f8-452e-8838-0be1085d8cb8 rdf:type skos:Concept ;
+	skos:prefLabel "Dominican novice mistress"@en ;
+	skos:broader mon:professed_member_of_a_religious_community .
+	
+asp:ff36364f-fea9-4a58-8126-864cf277d5c5 rdf:type skos:Concept ;
+	skos:prefLabel "Senior"@en ;
+	skos:broader mon:professed_member_of_a_religious_community .
+
+asp:31b29d82-d531-4225-a9bb-8bf349f055f3 rdf:type skos:Concept ;
+	skos:prefLabel "Member"@en ;
+	skos:broader mon:member_of_a_religious_community .
+	
+asp:e4d0b440-a5e3-4be3-9ca9-d292c9cb414a rdf:type skos:Concept ;
+	skos:prefLabel "Novice"@en ;
+	skos:broader mon:member_of_a_religious_community .
+
+mon:office_in_a_diocese rdf:type skos:Concept ;
+	skos:prefLabel "Office in a diocese"@en ;
+	skos:broader nampi:status ;
+	skos:narrower asp:24188eda-cfd4-470f-a41c-693b3dd0045e .
+	
+asp:24188eda-cfd4-470f-a41c-693b3dd0045e rdf:type skos:Concept ;
+	skos:prefLabel "Minister of ceremonies"@en ;
+	skos:broader mon:office_in_a_diocese .
+
+mon:religious_life_outside_a_community rdf:type skos:Concept ;
+	skos:prefLabel "Religious life outside a community"@en ;
+	skos:broader nampi:status ;
+	skos:narrower asp:23a8e6e5-11e9-44e7-893f-739b50d52455 ;
+	skos:narrower asp:8544d58d-1b3c-494c-81fd-e87b4cbdb5ed .
+	
+asp:23a8e6e5-11e9-44e7-893f-739b50d52455 rdf:type skos:Concept ;
+	skos:prefLabel "Pilgrim"@en ;
+	skos:broader mon:religious_life_outside_a_community .
+	
+asp:8544d58d-1b3c-494c-81fd-e87b4cbdb5ed rdf:type skos:Concept ;
+	skos:prefLabel "Hermit"@en ;
+	skos:broader mon:religious_life_outside_a_community .
+
+mon:visitator rdf:type skos:Concept ;
+	skos:prefLabel "Visitator"@en ;
+	skos:broader nampi:status ;
+	skos:narrower asp:1cbc8df6-8047-4b1d-bedc-c214998afde3 ;
+	skos:narrower asp:5fd8524a-17c3-477a-aff0-a7fced77679c .
+	
+asp:1cbc8df6-8047-4b1d-bedc-c214998afde3 rdf:type skos:Concept ;
+	skos:prefLabel "Carthusian convisitator"@en ;
+	skos:broader mon:visitator .
+	
+asp:5fd8524a-17c3-477a-aff0-a7fced77679c rdf:type skos:Concept ;
+	skos:prefLabel "Carthusian visitator"@en ;
+	skos:broader mon:visitator .
+
+mon:monastic_office rdf:type skos:Concept ;
+	skos:prefLabel "Monastic office"@en ;
+	skos:broader nampi:status ;
+	skos:narrower mon:monastic_office_with_manual_focus ;
+	skos:narrower mon:monastic_office_with_spiritual_focus .
+
+mon:monastic_office_with_manual_focus rdf:type skos:Concept ;
+	skos:prefLabel "Monastic office with manual focus"@en ;
+	skos:broader mon:monastic_office .
+
+mon:monastic_office_with_spiritual_focus rdf:type skos:Concept ;
+	skos:prefLabel "Monastic office with spiritual focus"@en ;
+	skos:broader mon:monastic_office ;
+	skos:narrower mon:community_subsacristan ;
+	skos:narrower asp:f458f2ad-3df1-4512-a1ca-ba9333a74987 .
+
+mon:community_subsacristan rdf:type skos:Concept ;
+	skos:prefLabel "Community subsacristan"@en ;
+	skos:broader mon:monastic_office_with_spiritual_focus .
+
+asp:f458f2ad-3df1-4512-a1ca-ba9333a74987 rdf:type skos:Concept ;
+	skos:prefLabel "Carthusian subsacristan"@en ;
+	skos:broader mon:monastic_office_with_spiritual_focus .

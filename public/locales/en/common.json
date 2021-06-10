@@ -1,0 +1,11 @@
+{
+  "page": {
+    "home": "Home",
+    "posts": "Posts",
+    "resources": "Resources",
+    "tags": "Tags",
+    "imprint": "Imprint",
+    "notFound": "Page not found",
+    "error": "Error"
+  }
+}
