@@ -44,6 +44,8 @@ jobs:
             NEXT_PUBLIC_BASE_URL=https://howto.acdh-dev.oeaw.ac.at
             NEXT_PUBLIC_GIT_REPO=${{ github.repository }}
             NEXT_PUBLIC_GIT_BRANCH=main
+            NEXT_PUBLIC_MATOMO_BASE_URL=https://matomo.acdh.oeaw.ac.at
+            NEXT_PUBLIC_MATOMO_ID=199
 
       - name: Deploy to Rancher
         run: |
