@@ -17,11 +17,17 @@ export default async function handler(
     provider === undefined ||
     Array.isArray(provider) ||
     provider !== 'github' ||
-    process.env.GITHUB_ID === undefined ||
     scope === undefined ||
     Array.isArray(scope)
   ) {
-    return response.status(400).end()
+    return response.status(400).json({ message: 'Invalid CMS configuration.' })
+  }
+
+  if (
+    process.env.GITHUB_ID === undefined ||
+    process.env.GITHUB_ID.length === 0
+  ) {
+    return response.status(400).json({ message: 'No GitHub ID provided.' })
   }
 
   const redirectUri = new URL('/api/auth/callback', baseUrl)
