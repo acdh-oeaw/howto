@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 // import dedent from 'strip-indent'
 
+import { url as baseUrl } from '~/config/site.config'
+
 /**
  * OAuth2 callback for GitHub auth code flow.
  */
@@ -80,7 +82,7 @@ function renderSuccessTemplate(
 ) {
   const provider = 'github'
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-  const allowedOrigin = new URL(process.env.NEXT_PUBLIC_BASE_URL!).host
+  const allowedOrigin = new URL(baseUrl).host
 
   response.setHeader('Content-Type', 'text/html; charset=UTF-8')
 

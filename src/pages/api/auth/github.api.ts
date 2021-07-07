@@ -2,6 +2,8 @@ import { randomBytes } from 'crypto'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import { url as baseUrl } from '~/config/site.config'
+
 /**
  * Initiates GitHub OAuth2 auth code flow.
  */
@@ -22,10 +24,7 @@ export default async function handler(
     return response.status(400).end()
   }
 
-  const redirectUri = new URL(
-    '/api/auth/callback',
-    process.env.NEXT_PUBLIC_BASE_URL,
-  )
+  const redirectUri = new URL('/api/auth/callback', baseUrl)
   const state = randomBytes(64).toString('hex')
 
   const url = new URL('https://github.com/login/oauth/authorize')
