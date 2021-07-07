@@ -8,7 +8,7 @@ USER node
 
 COPY --chown=node:node package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile --silent --production  && yarn cache clean
+RUN yarn install --frozen-lockfile --silent --ignore-scripts --production  && yarn cache clean
 
 # build
 FROM base AS build
@@ -22,8 +22,11 @@ COPY --chown=node:node tailwind.config.js ./
 COPY --chown=node:node public ./public
 COPY --chown=node:node src ./src
 COPY --chown=node:node content ./content
+# currently the .git folder is used to retrieve last-updated timestamps
+COPY --chown=node:node .git ./.git
 
 ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
 
 ARG NEXT_PUBLIC_BASE_URL
 ARG NEXT_PUBLIC_GIT_REPO
@@ -42,7 +45,6 @@ COPY --from=build --chown=node:node /app/.next ./.next
 RUN mkdir -p /app/.next/cache/images
 
 ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
 
 EXPOSE 3000
 
