@@ -1,9 +1,10 @@
 {
   "page": {
     "home": "Startseite",
-    "posts": "Posts",
     "resources": "Resourcen",
+    "posts": "Posts",
     "tags": "Tags",
+    "authors": "Autor*innen",
     "imprint": "Impressum",
     "notFound": "Seite nicht gefunden",
     "error": "Fehler"

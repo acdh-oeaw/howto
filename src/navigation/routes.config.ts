@@ -1,3 +1,5 @@
+import type { ResourceKind } from '@/cms/api/resources.api'
+
 /**
  * Named routes.
  */
@@ -11,11 +13,11 @@ export const routes = {
   imprint() {
     return { pathname: '/imprint' }
   },
-  resource({ type, id }: { type: string; id: string }) {
-    return { pathname: `/resource/${type}/${id}` }
+  resource({ kind, id }: { kind: ResourceKind; id: string }) {
+    return { pathname: `/resource/${kind}/${id}` }
   },
-  resources({ type, page = 1 }: { type: string; page?: number }) {
-    return { pathname: `/resources/${type}/page/${page}` }
+  resources({ kind, page = 1 }: { kind: ResourceKind; page?: number }) {
+    return { pathname: `/resources/${kind}/page/${page}` }
   },
   author({ id, resourcePage = 1 }: { id: string; resourcePage?: number }) {
     return { pathname: `/author/${id}/page/${resourcePage}` }

@@ -129,8 +129,6 @@ export const collection: CmsCollection = {
       hint: '',
       required: false,
       widget: 'image',
-      media_folder: 'images',
-      public_folder: 'images',
     },
     {
       name: 'abstract',

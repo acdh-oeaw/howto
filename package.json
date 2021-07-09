@@ -9,6 +9,7 @@
     "cms:dev": "netlify-cms-proxy-server",
     "cms:styles": "cross-env NODE_ENV='production' NODE_OPTIONS='-r tsconfig-paths/register' postcss --config src/cms/previews/postcss.config.js node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && prettier public/assets/css --write",
     "create:favicons": "yarn run script scripts/createFavicons",
+    "create:rss": "yarn run script scripts/createFeed",
     "create:sitemap": "yarn run script scripts/createSitemap",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "dev": "next dev",
@@ -18,7 +19,10 @@
     "lint:fix": "yarn run lint --fix",
     "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
     "lint:md:fix": "yarn run lint:md --output",
-    "postbuild": "yarn run create:sitemap",
+    "lint:mdx": "xdm . --quiet --frail --ignore-path .gitignore",
+    "lint:mdx:fix": "yarn run lint:mdx --output",
+    "postbuild": "yarn run create:rss && yarn run create:sitemap",
+    "postinstall": "patch-package",
     "prebuild": "yarn run create:favicons && yarn run cms:styles",
     "prepare": "simple-git-hooks || true",
     "script": "ts-node -r tsconfig-paths/register",
@@ -50,6 +54,7 @@
     "netlify-cms-app": "^2.15.19",
     "next": "^11.0.1",
     "next-transpile-modules": "^7.3.0",
+    "nprogress": "^0.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rehype-autolink-headings": "^5.1.0",
@@ -76,6 +81,7 @@
     "@stefanprobst/prettier-config": "^1.0.3",
     "@stefanprobst/remark-preset": "^1.0.1",
     "@stefanprobst/tsconfig": "^1.0.2",
+    "@stefanprobst/xdm-cli": "^1.0.2",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "@types/hast": "^2.3.1",
@@ -103,11 +109,14 @@
     "remark-cli": "^9.0.0",
     "remark-frontmatter": "^3.0.0",
     "remark-lint-no-dead-urls": "^1.1.0",
+    "remark-mdx-images": "^1.0.2",
     "simple-git-hooks": "^2.4.1",
     "tailwindcss": "^2.2.0",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.2",
+    "xast-util-feed": "^1.2.0",
+    "xast-util-to-xml": "^3.0.0"
   },
   "browserslist": [
     "defaults",
@@ -129,6 +138,10 @@
     ],
     "settings": {},
     "rules": {
+      "@next/next/no-img-element": "off",
+      "import/first": "error",
+      "import/newline-after-import": "error",
+      "import/no-duplicates": "error",
       "import/no-named-as-default": "off",
       "import/order": [
         "error",
@@ -158,8 +171,7 @@
           "ignoreNonDOM": true
         }
       ],
-      "jsx-a11y/no-onchange": "off",
-      "@next/next/no-img-element": "off"
+      "jsx-a11y/no-onchange": "off"
     },
     "overrides": [
       {
@@ -218,8 +230,12 @@
       "prettier --write"
     ],
     "*.@(css|json|yml)": "prettier --write",
-    "*.@(md|mdx)": [
+    "*.md": [
       "remark --quiet",
+      "prettier --write"
+    ],
+    "*.mdx": [
+      "xdm --quiet",
       "prettier --write"
     ]
   },

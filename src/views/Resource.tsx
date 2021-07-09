@@ -57,7 +57,7 @@ export function Resource(props: ResourceProps): JSX.Element {
           ) : null}
         </dl>
         <PageTitle>{title}</PageTitle>
-        <dl className="grid items-center grid-cols-2 py-4 text-sm border-t border-b text-neutral-500 border-neutral-100">
+        <dl className="grid items-center grid-cols-2 py-4 text-sm border-t border-b text-neutral-500 border-neutral-200">
           <div className="space-y-1">
             {authors.length > 0 ? (
               <div>

@@ -8,11 +8,14 @@ export const navigation = {
     href: routes.home(),
   },
   posts: {
-    href: routes.resources({ type: 'posts' }),
+    href: routes.resources({ kind: 'posts' }),
   },
-  // tags: {
-  //   href: routes.tags(),
-  // },
+  tags: {
+    href: routes.tags(),
+  },
+  authors: {
+    href: routes.authors(),
+  },
   imprint: {
     href: routes.imprint(),
   },

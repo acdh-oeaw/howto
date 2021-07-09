@@ -7,6 +7,8 @@ import Head from 'next/head'
 import type { ComponentType } from 'react'
 import { Fragment } from 'react'
 
+import { Matomo } from '@/analytics/Matomo'
+import { useMatomo } from '@/analytics/useMatomo'
 import { Favicons } from '@/assets/Favicons'
 import { WebManifest } from '@/assets/WebManifest'
 import { PageLayout } from '@/common/PageLayout'
@@ -23,6 +25,8 @@ export default function App(props: AppProps): JSX.Element {
     (Component as typeof Component & { Layout?: ComponentType }).Layout ??
     PageLayout
 
+  useMatomo()
+
   return (
     <Fragment>
       <Head>
@@ -30,6 +34,7 @@ export default function App(props: AppProps): JSX.Element {
       </Head>
       <Favicons />
       <WebManifest />
+      <Matomo />
       <ErrorBoundary fallback={ClientError} resetOnChange={[router.asPath]}>
         <Providers {...pageProps}>
           <Layout>

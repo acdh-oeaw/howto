@@ -93,8 +93,7 @@ export async function getPostIds(_locale: Locale): Promise<Array<string>> {
  * Returns post content, table of contents, and metadata.
  */
 export async function getPostById(id: ID, locale: Locale): Promise<Post> {
-  const file = await getPostFile(id, locale)
-  const metadata = await getPostMetadata(file, locale)
+  const [file, metadata] = await readFileAndGetPostMetadata(id, locale)
   const code = String(await compileMdx(file))
 
   const data = {
@@ -139,8 +138,7 @@ export async function getPostPreviewById(
   id: ID,
   locale: Locale,
 ): Promise<PostPreview> {
-  const file = await getPostFile(id, locale)
-  const metadata = await getPostMetadata(file, locale)
+  const [, metadata] = await readFileAndGetPostMetadata(id, locale)
 
   return { id, ...metadata }
 }
@@ -269,4 +267,34 @@ async function compileMdx(file: VFile): Promise<VFile> {
       withImageCaptions,
     ],
   })
+}
+
+/**
+ * Cache for post metadata.
+ */
+const postCache: Record<Locale, Map<string, Promise<[VFile, PostMetadata]>>> = {
+  de: new Map(),
+  en: new Map(),
+}
+
+/**
+ * Caches post metadata and vfile.
+ *
+ * VFile must be cached as well because post body is stripped of frontmatter.
+ */
+async function readFileAndGetPostMetadata(id: ID, locale: Locale) {
+  const cache = postCache[locale]
+
+  if (!cache.has(id)) {
+    cache.set(
+      id,
+      getPostFile(id, locale).then(async (file) => {
+        const metadata = await getPostMetadata(file, locale)
+        return [file, metadata]
+      }),
+    )
+  }
+
+  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+  return cache.get(id)!
 }

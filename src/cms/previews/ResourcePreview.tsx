@@ -122,8 +122,7 @@ export function ResourcePreview(
         if (!wasCanceled) {
           setPost(post)
         }
-      } catch (error) {
-        console.error(error)
+      } catch {
         setPost(null)
       }
 

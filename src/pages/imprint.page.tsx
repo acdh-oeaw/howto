@@ -1,11 +1,14 @@
 import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
+import { Fragment } from 'react'
 
 import { PageContent } from '@/common/PageContent'
 import { PageTitle } from '@/common/PageTitle'
 import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
 import { loadDictionary } from '@/i18n/loadDictionary'
+import { useI18n } from '@/i18n/useI18n'
 import { getImprint } from '@/imprint/getImprint'
+import { Metadata } from '@/metadata/Metadata'
 import type { HtmlString } from '@/utils/ts/aliases'
 
 export interface ImprintPageProps {
@@ -39,13 +42,18 @@ export async function getStaticProps(
 export default function ImprintPage(props: ImprintPageProps): JSX.Element {
   const { imprintHtml } = props
 
+  const { t } = useI18n()
+
   return (
-    <PageContent className="max-w-80ch w-full mx-auto p-8">
-      <PageTitle>Imprint</PageTitle>
-      <div
-        className="prose max-w-none"
-        dangerouslySetInnerHTML={{ __html: imprintHtml }}
-      />
-    </PageContent>
+    <Fragment>
+      <Metadata noindex nofollow title={t('common.page.imprint')} />
+      <PageContent className="w-full p-8 mx-auto max-w-80ch">
+        <PageTitle>Imprint</PageTitle>
+        <div
+          className="prose max-w-none"
+          dangerouslySetInnerHTML={{ __html: imprintHtml }}
+        />
+      </PageContent>
+    </Fragment>
   )
 }

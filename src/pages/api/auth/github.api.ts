@@ -27,7 +27,6 @@ export default async function handler(
     process.env.GITHUB_ID === undefined ||
     process.env.GITHUB_ID.length === 0
   ) {
-    console.error(JSON.stringify(process.env))
     return response.status(400).json({ message: 'No GitHub ID provided.' })
   }
 

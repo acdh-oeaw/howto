@@ -8,7 +8,7 @@ USER node
 
 COPY --chown=node:node package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile --silent --ignore-scripts --production  && yarn cache clean
+RUN yarn install --frozen-lockfile --silent --production  && yarn cache clean
 
 # build
 FROM base AS build

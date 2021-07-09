@@ -40,7 +40,7 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
   const { resource } = props
   const { id, title, authors, abstract } = resource
 
-  const href = routes.resource({ type: 'posts', id })
+  const href = routes.resource({ kind: 'posts', id })
 
   return (
     <article className="flex flex-col overflow-hidden transition border rounded shadow-sm border-neutral-150 hover:shadow-md">

@@ -43,9 +43,9 @@ export interface SiteMetadata {
 export const siteMetadata: Record<Locale, SiteMetadata> = {
   en: {
     url: String(createUrl({ path: 'en', baseUrl: url })),
-    title: 'ACDH Howto',
-    shortTitle: 'ACDH Howto',
-    description: '',
+    title: 'ACDH-CH Howto',
+    shortTitle: 'ACDH-CH Howto',
+    description: 'Digital Humanities learning resources.',
     favicon: {
       src: 'public/assets/images/logo-maskable.svg',
       maskable: true,
@@ -56,12 +56,16 @@ export const siteMetadata: Record<Locale, SiteMetadata> = {
       alt: '',
     },
     twitter: 'ACDH_OeAW',
+    creator: {
+      name: 'Austrian Centre for Digital Humanities and Cultural Heritage',
+      website: 'https://www.oeaw.ac.at/acdh/acdh-ch-home',
+    },
   },
   de: {
     url: String(createUrl({ path: 'de', baseUrl: url })),
-    title: 'ACDH Howto',
-    shortTitle: 'ACDH Howto',
-    description: '',
+    title: 'ACDH-CH Howto',
+    shortTitle: 'ACDH-CH Howto',
+    description: 'Digital Humanities Bildungsressourcen.',
     favicon: {
       src: 'public/assets/images/logo-maskable.svg',
       maskable: true,
@@ -72,5 +76,9 @@ export const siteMetadata: Record<Locale, SiteMetadata> = {
       alt: '',
     },
     twitter: 'ACDH_OeAW',
+    creator: {
+      name: 'Austrian Centre for Digital Humanities and Cultural Heritage',
+      website: 'https://www.oeaw.ac.at/de/acdh/acdh-ch-home',
+    },
   },
 } as const

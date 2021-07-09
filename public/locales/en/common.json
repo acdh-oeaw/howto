@@ -1,9 +1,10 @@
 {
   "page": {
     "home": "Home",
-    "posts": "Posts",
     "resources": "Resources",
+    "posts": "Posts",
     "tags": "Tags",
+    "authors": "Authors",
     "imprint": "Imprint",
     "notFound": "Page not found",
     "error": "Error"

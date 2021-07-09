@@ -4,7 +4,7 @@
 /** @type {NextConfig} */
 const config = {
   eslint: {
-    dirs: ['src'],
+    dirs: ['.'],
     ignoreDuringBuilds: true,
   },
   future: {
@@ -28,6 +28,16 @@ const config = {
           },
         ],
       },
+    ]
+  },
+  async rewrites() {
+    return [
+      { source: '/resources/:type', destination: '/resources/:type/page/1' },
+      { source: '/curricula', destination: '/curricula/page/1' },
+      { source: '/authors', destination: '/authors/page/1' },
+      { source: '/author/:id', destination: '/author/:id/page/1' },
+      { source: '/tags', destination: '/tags/page/1' },
+      { source: '/tag/:id', destination: '/tag/:id/page/1' },
     ]
   },
   /** @ts-expect-error Needed for `next-transpile-modules`. */

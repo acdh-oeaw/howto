@@ -10,6 +10,7 @@ import { Fragment } from 'react'
 
 import type { PostPreview } from '@/cms/api/posts.api'
 import { getPostPreviews, getPostIds } from '@/cms/api/posts.api'
+import type { ResourceKind } from '@/cms/api/resources.api'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
 import { PageContent } from '@/common/PageContent'
@@ -28,7 +29,7 @@ import { ResourcesList } from '@/views/ResourcesList'
 const pageSize = 12
 
 export interface ResourcesPageParams extends ParsedUrlQuery {
-  type: string
+  kind: ResourceKind
   page: string
 }
 
@@ -53,7 +54,7 @@ export async function getStaticPaths(
 
         return pages.map((page) => {
           return {
-            params: { type: 'posts', page: String(page) },
+            params: { kind: 'posts' as const, page: String(page) },
             locale,
           }
         })
@@ -117,7 +118,7 @@ export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
         <Pagination
           page={resources.page}
           pages={resources.pages}
-          href={(page) => routes.resources({ type: 'posts', page })}
+          href={(page) => routes.resources({ kind: 'posts', page })}
         />
       </PageContent>
     </Fragment>

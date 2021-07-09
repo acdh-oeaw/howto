@@ -6,7 +6,7 @@ import { webManifest } from '~/config/site.config'
 import { siteMetadata } from '~/config/siteMetadata.config'
 
 /**
- * Creates favicons and webmanifest for all locales.
+ * Generates favicons and webmanifest for all locales.
  */
 Promise.all(
   Object.entries(siteMetadata).map(([locale, { favicon, shortTitle, title }]) =>
