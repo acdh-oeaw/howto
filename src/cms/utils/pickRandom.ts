@@ -1,23 +1,33 @@
 /**
- * Pick n random items from array.
+ * Pick n random unique items from array.
  */
 export function pickRandom<T extends { id: string }>(
   items: Array<T>,
   n: number,
 ): Array<T> {
-  const picked = new Map<string, T>()
+  const itemsById = byId(items)
 
-  if (items.length <= n) {
-    items.forEach((item) => {
-      picked.set(item.id, item)
-    })
+  if (itemsById.size <= n) {
+    return Array.from(itemsById.values())
   } else {
+    const ids = Array.from(itemsById.keys())
+    const picked = new Map()
     while (picked.size < n) {
       /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-      const item = items[Math.floor(Math.random() * items.length)]!
-      picked.set(item.id, item)
+      const id = ids[Math.floor(Math.random() * ids.length)]!
+      picked.set(id, itemsById.get(id))
     }
+    return Array.from(picked.values())
   }
+}
 
-  return Array.from(picked.values())
+/**
+ * Maps items by id.
+ */
+function byId<T extends { id: string }>(items: Array<T>): Map<string, T> {
+  const map = new Map()
+  items.forEach((item) => {
+    map.set(item.id, item)
+  })
+  return map
 }

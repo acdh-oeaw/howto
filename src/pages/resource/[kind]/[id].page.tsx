@@ -1,6 +1,6 @@
 import type { ParsedUrlQuery } from 'querystring'
 
-import { JsonLd } from '@stefanprobst/next-page-metadata'
+import { JsonLd as SchemaOrgMetadata } from '@stefanprobst/next-page-metadata'
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -21,8 +21,8 @@ import { PageContent } from '@/common/PageContent'
 import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
 import { loadDictionary } from '@/i18n/loadDictionary'
-import { DublinCore } from '@/metadata/DublinCore'
-import { Highwire } from '@/metadata/Highwire'
+import { DublinCore as DublinCoreMetadata } from '@/metadata/DublinCore'
+import { Highwire as HighwireMetadata } from '@/metadata/Highwire'
 import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
@@ -136,7 +136,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
           type: 'article',
         }}
       />
-      <JsonLd
+      <SchemaOrgMetadata
         schema={{
           '@type': 'LearningResource',
           url: canonicalUrl,
@@ -182,7 +182,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
           },
         }}
       />
-      <Highwire
+      <HighwireMetadata
         url={canonicalUrl}
         title={metadata.title}
         date={metadata.date}
@@ -191,7 +191,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         lang={metadata.lang}
         siteTitle={siteMetadata.title}
       />
-      <DublinCore
+      <DublinCoreMetadata
         title={metadata.title}
         date={metadata.date}
         authors={metadata.authors.map((author) => getFullName(author))}
