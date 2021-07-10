@@ -65,7 +65,7 @@ export const siteMetadata: Record<Locale, SiteMetadata> = {
     url: String(createUrl({ path: 'de', baseUrl: url })),
     title: 'ACDH-CH Howto',
     shortTitle: 'ACDH-CH Howto',
-    description: 'Digital Humanities Bildungsressourcen.',
+    description: 'Digital Humanities Lernmaterialien.',
     favicon: {
       src: 'public/assets/images/logo-maskable.svg',
       maskable: true,

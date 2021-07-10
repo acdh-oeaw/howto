@@ -203,7 +203,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
       />
       <PageContent className="grid w-full max-w-screen-lg px-10 py-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
         <aside />
-        <div>
+        <div className="min-w-0">
           <Resource resource={resource} lastUpdatedAt={lastUpdatedAt} />
           <RelatedResources resources={related} />
         </div>

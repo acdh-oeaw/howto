@@ -14,6 +14,7 @@ import { WebManifest } from '@/assets/WebManifest'
 import { PageLayout } from '@/common/PageLayout'
 import { Providers } from '@/common/Providers'
 import { ClientError } from '@/error/ClientError'
+import { usePageLoadProgressIndicator } from '@/navigation/usePageLoadProgressIndicator'
 
 /**
  * Shared application shell.
@@ -26,6 +27,7 @@ export default function App(props: AppProps): JSX.Element {
     PageLayout
 
   useMatomo()
+  usePageLoadProgressIndicator()
 
   return (
     <Fragment>

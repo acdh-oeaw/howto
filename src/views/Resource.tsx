@@ -29,7 +29,7 @@ export function Resource(props: ResourceProps): JSX.Element {
   const publishDate = getDate(date)
 
   return (
-    <article className="w-full min-w-0 mx-auto space-y-16 max-w-80ch">
+    <article className="w-full mx-auto space-y-16 max-w-80ch">
       <header className="space-y-10">
         <dl>
           {tags.length > 0 ? (
