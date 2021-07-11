@@ -1,0 +1,255 @@
+---
+title: Basics of TEI
+lang: de
+date: 2021-04-15T00:00:00.000Z
+version: 1.0.0
+authors:
+  - czeitschner-ulrike
+  - schopper-daniel
+editors:
+  - königshofer-elisabeth
+  - wiencek-florian
+tags:
+  - xml
+  - tei
+abstract: No abstract provided.
+licence: ccby-4.0
+toc: true
+uuid: GIPcpc7RD4NUxmkSAtxpD
+---
+
+## Globale Attribute
+
+### Grundlegendes zu Globalen Attributen
+
+Globale Attribute sind jene Attribute, die einem jedem TEI-Element zugeordnet werden können, um es genauer zu beschreiben. Meistens findet man ein globales Attribut als `name="value"` nach der entsprechenden TEI-Element-Auszeichnung. Globale Attribute sind nicht an bestimmte TEI-Elemente gebunden, sondern können immer verwendet werden. Daher ist es sinnvoll, sich diese Attribute zu merken. Die folgenden Attribute gehören zu den globalen Attributen:
+
+- **Identität**, `@xml:id`: Mit diesem Attribut weisen Sie einem Element eine ganz eindeutige Identifikation zu. Sie muss einzigartig im Dokument sein, muss mit einem Buchstaben oder Unterstrich beginnen und darf keine Sonderzeichen wie zum Beispiel Doppelpunkte enthalten.
+- **Typisierung**, `@type`und `@subtype`
+- **Quellenangabe**, `@source`: Dieses Attribut verweist auf einen bibligraphischen Verweis innerhalb eines Elements.
+- **Name bzw. Nummerierung**, `@n`: Mit diesem Attribut werden häufig Aufzählungen gekennzeichnet. Dieses Element kann mehrfach mit der selben Bezeichnung in einem Dokument vorkommen und jedes Zeichen ist zulässig.
+- **Sprache**, `@xml:lang(ISO Code)`: Mit diesem Attribut können Sie die Sprache auszeichnen. Wenn Sie ein einschließendes Element auszeichnen, gilt die Angabe auch für alle eingeschlossenen Elemente. So können Sie nur solche Element explizit auszeichnen, deren Sprache abweicht.
+- **Referenz**, `@xml:base`: Mit diesem Attribut können Sie auf URIs referenzieren. Jene sind entweder absolut gesetzt (zum Beispiel eine URL einer Website), oder relativ (zum Beispiel Bezug auf einen lokal abgelegten Ordner).
+- **Aussehen**, `@rend`, `@rendition` und `@style`: Alle drei Attribute beschreiben das Aussehen eines Elements näher. Während `@rend`innerhalb des Elements Kursiv- oder Fettschreibung kennzeichnen kann, so beschreibt `@style` eine Gestaltungssprache wie CSS. `@rendition`wird im Header verwendet. Dieses Attribut beschreibt eine bestimmte Textdarstellung, die auf alle Elemente, für die sie definiert wurde, angewendet wird.
+- **Besondere Abstände**, `xml:space`: Mit diesem eher seltenen Attribut können Sie bestimmen, wie bei der späteren Umsetzung Ihres TEI-Dokuments mit Abständen, "white spaces", umgegangen wird. Es gibt zwei Möglichkeiten, entweder `default`oder `preserve`: ersteres normalisiert Abstände, die zweite Variante behält besondere Abstände bei. Das könnte interessant sein, wenn Sie zum Beispiel mit Texten arbeiten, wo mehrfache Abstände zwischen Worten eine besondere Bedeutung haben, oder Sie explizit auf Ungewöhnlichkeiten in einem Manuskript hinweisen möchten.
+
+### Praktische Anwendung
+
+Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um _Friedrich Zelniks_ Gedicht **Der Filmstar**, aus der Filmwelt 1923. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
+
+```xml
+<div xml:id="Zelnik1" type="poem">
+ <head xml:lang="de"> Der Filmstar </head>
+  <lg n="1">
+   <l>Du ahnst bei ihm die Schwüle</l>
+   <l>Leise glimmender Gefühle</l>
+   <l>Steife Hemdbrust -</l>
+   <l>Heben - senken -</l>
+   <l>Augen, die sich stumm verrenken.</l>
+  </lg>
+  <lg n="2">
+   <l>Er ist von seltner Bescheidenheit,</l>
+   <l>Doch ihn verpflichtet sein Name,</l>
+   <l>Drum kämpft er mit Beharrlichkeit</l>
+   <l>Um jede Großaufnahme.</l>
+  </lg>
+</div>
+```
+
+Hier wurde zusätzliche Information mit den globalen Attribute `@type`, `@n`, `xml:id`und `xml:lang` ausgezeichnet.
+
+- `xml:id="Zelnik1"` beschreibt eine zusätzliche Identifikationsangabe, die diesen Text auszuzeichnet.
+- `div type="poem"` sagt aus, dass es sich bei diesem Textabschnitt `div` um ein Gedicht `type="poem"`handelt.
+- `head xml:lang="de"`gibt an, dass die Überschrift `head`in deutscher Sprache `xml:lang="de"`geschrieben wurde.
+- `lg n="1"`bezeichnet den ersten `n=1`Vers des Gedichts.
+- `lg n="2"`bezeichnet dann den zweiten `n="2"` Vers des Gedichts.
+
+Da die Auszeichnungen global sind, sind sie nicht zwingend an die oben genannten Stellen gebunden.
+
+```xml
+<lg n="1" xml:lang="de">
+  <l>Du ahnst bei ihm die Schwüle</l>
+  <l>Leise glimmender Gefühle</l>
+</lg>
+```
+
+Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre beispielsweise sinnvoll, wenn die Sprache, in der die einzelnen Verse verfasst sind, wechselt.
+
+#### Alternatives Beispiel
+
+Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um eine Ausschnitta aus _Ingeborg Bachmanns_ Gedicht **Römisches Nachtbild**. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
+
+```xml
+<div xml:id="Bachmann1" type="poem">
+  <head xml:lang="de"> Römisches Nachtbild </head>
+  <lg n="1">
+    <l> Wenn das Schaukelbrett die sieben Hügel</l>
+    <l>nach oben entführt, gleitet es auch,</l>
+    <l>von uns beschwert und umschlungen,</l>
+    <l>ins finstere Wasser,</l>
+    <l>...</l>
+  </lg>
+</div>
+```
+
+Hier wurde zusätzliche Information mit den globalen Attribute `@type`, `@n`, `xml:id`und `xml:lang` ausgezeichnet.
+
+- `xml:id="Bachmann1"` beschreibt eine zusätzliche Identifikationsangabe, die diesen Text auszuzeichnet.
+- `div type="poem"` sagt aus, dass es sich bei diesem Textabschnitt `div` um ein Gedicht `type="poem"`handelt.
+- `head xml:lang="de"`gibt an, dass die Überschrift `head`in deutscher Sprache `xml:lang="de"`geschrieben wurde.
+- `lg n="1"`bezeichnet den ersten `n=1`Vers des Gedichts.
+
+[Lyrikline](https://www.lyrikline.org/de/gedichte/roemisches-nachtbild-269)
+
+#### Übung 1a: Globale Attribute erkennen
+
+Welches der folgenden Attribute ist _kein_ globales Attribut? a) die Auszeichnung einer Sprache, zum Beispiel Französisch `@xml:lang=fr` b) die Auszeichnung eines Texttyps, zum Beispiel Glosse oder Artikel `type="gloss"`, `type="article"` c) die Auszeichnung einer Kopfzeile `head` d) die Auszeichnung einer Formattierung, zB für kleinen Schriftgröße `renditon xml:id="r-small" scheme="css"`
+
+_#==== Lösung - in finaler Version entfernen_
+
+c) die Auszeichnung einer Kopfzeile `head`
+
+_====#_
+
+#### Übung 1b: Globale Attribute auszeichnen
+
+Im Folgenden sehen Sie den Beginn von Goethes Faust. Zeichnen Sie bitte mit Hilfe der globalen Attribute aus:
+
+1. Benutzen Sie `<div type="act">` um die gesamte Passage als Teil eines Aktes zu kennzeichnen. Der Rest des Aktes liegt hier nicht vor, könnte aber auch Teil dieses Elements sein. Schließen Sie dieses Element als letztes.
+2. Innerhalb des Elements `<div type="act">` gibt es eine Szene, die wir hier sehen. Umschließen Sie den gesamten Text mit einem weiteren Abschnittselement und dem Attribut `type="scene"`, um die Szene auszuzeichnen. Vergessen Sie bitte nicht das Element vor dem Schließelement von `<div type="act"`zu schließen.
+3. Zeichnen Sie dann die Titelzeile "Nacht" mit dem Element `<head>`aus. Vergessen Sie bitte nicht, das Element am Ende der Überschrift zu schließen, bevor Sie weiter arbeiten.
+4. In der nächsten Zeile folgt eine Bühnenanweisung `<stage>`. Umschließen Sie die gesamte Bühnenanweisung mit diesem Element.
+5. Der Bereich der Rede `<sp>`(speech) ist bereits für Sie vorbereitet. Hier wurde der Sprecher, Faust, ausgezeichnet, und der erste Absatz `<p>`des Eröffnungsmonologs.
+6. Stellen Sie sicher, dass Sie die TEI-Elemente alle in der richtigen Reihenfolge geschlossen haben, vom Innersten zum Äußersten.
+
+Nacht.
+
+In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.
+
+`<sp who="#FAU">`
+
+`<speaker>`Faust.`</speaker>`
+
+`<p>`Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...`</p>`
+
+`</sp>`
+
+_#==== Lösung - in finaler Version entfernen_
+
+```xml
+<div type="act">
+ <div type="stage">
+  <head>Nacht.</head>
+  <stage
+    >In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.</stage>
+  <sp who="#FAU">
+  <speaker>Faust.</speaker>
+  <p
+      >Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...</p>
+  </sp>
+ </div>
+</div>
+```
+
+_====#_
+
+Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um eine Ausschnitta aus _Athelstans_ **Gesetzgebung**. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
+
+```xml
+<div1 type="section">
+ <head>Athelstan's Ordinance</head>
+ <list rend="numbered">
+  <item n="1">Concerning thieves. First, that no thief is to be spared who is caught with
+     the stolen goods, [if he is] over twelve years and [if the value of the goods is] over
+     eightpence.
+  <list rend="numbered">
+    <item n="1.1">And if anyone does spare one, he is to pay for the thief with his
+         wergild — and the thief is to be no nearer a settlement on that account — or to
+         clear himself by an oath of that amount.</item>
+    <item n="1.2">If, however, he [the thief] wishes to defend himself or to escape, he is
+         not to be spared [whether younger or older than twelve].</item>
+    <item n="1.3">If a thief is put into prison, he is to be in prison 40 days, and he may
+         then be redeemed with 120 shillings; and the kindred are to stand surety for him
+         that he will desist for ever.</item>
+ </list>
+```
+
+```xml
+<source> Example two derived from <ref>TEI head element examples</ref> on <date
+  >April 15</date> </source>
+```
+
+Es handelt sich hier um einen Ausschnitt aus der Gesetzgebung in Form einer nummerierten Liste. Hier wurde mit den globalen Attributen `@type`, `@rend`, `@n` und `@source` ausgezeichnet.
+
+- `div1 type="section"` bezeichnet den ersten Abschnitt und zeichnet explizit als Abschnitt `type="section"` aus.
+- `list rend="numbered"` zeichnet die nummerierte Darstellung `rend="numbered"` der Liste `list` aus.
+- `item n="1.1"` zeichnet jeden Listeneintrag `item` mit seiner Nummerierung `n=1.1` aus.
+- `source`bezeichnet die Quelle und enthält eine Referenzangabe `ref` und eine Datumsangabe `date`.
+
+#### Übung 2a: Globale Attribute auszeichnen
+
+Sehen Sie sich bitte den nächsten Abschnitt aus _Athelstans_ **Gesetzgebung** an. Bitte beachten Sie, dass diese Liste nicht nur eine Liste ist, sondern auch ein Listeneintrag im Gesetzbuch; deshalb steht hier das Element `item`außerhalb des `list`-Elements.
+
+Zeichnen Sie die Liste, die sich innerhalb des Listeneintrags Nummer 2 befindet, richtig aus, indem Sie die globalen Attribute `@rend` und `@n` benutzen.
+
+1. Zeichnen Sie die Liste als nummerierte Liste aus.
+2. Zeichnen Sie den erste Listeneintrag `item` mit dem globalen Attribut `@n` als `n="2.1"` aus. Das Element beginnt mit "And if they then will not..."
+3. Schließén Sie bitte das Listeneintragselement bevor Sie sich dem nächsten Eintrag zuwenden.
+4. Zeichnen Sie das nächste Listeneintragselement richtig als Folgeelement aus. Achten Sie auf die richtige Nummerierung. Das Element beginnt mit "And he who harbours..."
+5. Schließen Sie bitte dieses zweite Listeneintragselement.
+6. Schließen Sie die Liste.
+7. Schließen Sie den Listeneintrag `item n="2"`.
+
+`<item n="2">` Concerning lordless men. And we pronounced about these lordless men, from whom no justice can be obtained, that one should order their kindred to fetch back such a person to justice and to find him a lord in public meeting.
+
+And if they then will not, or cannot, produce him on that appointed day, he is then to be a fugitive afterwards, and he who encounters him is to strike him down as a thief.
+
+And he who harbours him after that, is to pay for him with his wergild or to clear himself by an oath of that amount.
+
+_#==== Lösung - in finaler Version entfernen_
+
+```xml
+<item
+  n="2"
+>Concerning lordless men. And we pronounced about these lordless men, from whom
+     no justice can be obtained, that one should order their kindred to fetch back such a
+     person to justice and to find him a lord in public meeting.
+  <list rend="numbered">
+    <item
+      n="2.1"
+    >And if they then will not, or cannot, produce him on that appointed day,
+         he is then to be a fugitive afterwards, and he who encounters him is to strike him
+         down as a thief.</item>
+    <item
+      n="2.2"
+    >And he who harbours him after that, is to pay for him with his wergild
+         or to clear himself by an oath of that amount.</item>
+   </list>
+</item>
+```
+
+_====#_
+
+#### Übung 2b: Globale Attribute verwenden
+
+Angenommen in unserem Fließtext finden sich zwei verschiedene Textsorten. Innerhalb einer Szene in einem Stück spricht die Figur ein Gedicht. Welches globale Attribut kann manvoranstellen um zu kennzeichnen, dass es sich um eine Szene `act`, aber auch um Verse `stanza`handeln? Wählen Sie bitte die richtige Antwort aus. a) `rend` b) `n` c) `source` d) `type`
+
+_#==== Lösung - in finaler Version entfernen_
+
+d) `type`
+
+_====#_
+
+### Glossar
+
+`<sp>` (speech) beeinhaltet einzelne Reden innerhalb eines performativen Textes oder einen Abschnittes innerhalb eines Prosa- oder Verstetes, der als Rede dargestellt wird.
+
+### Weiterführende Information
+
+Hier finden Sie genauere Erklärungen zu den globalen Attributen: [TEI by example](https://teibyexample.org/tutorials/TBED01v00.htm?target=globalattributes)
+
+Hier finden Sie weitere Beispiele für die Verwendung globaler Attribute am Beispiel des `<Head>`-Elements: [TEI head element examples](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/examples-head.html)
+
+Hier finden Sie eine Liste der ISO-Codes für Sprache: [ISO-Code Sprache](https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes)
+
+Hier finden Sie Beispiel für das Rendition-Element `rend`, das das Textaussehen beschreibt: [Rendition](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rendition.html)
