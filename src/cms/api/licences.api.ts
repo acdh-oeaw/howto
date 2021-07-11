@@ -29,7 +29,7 @@ export interface Licence extends LicenceId, LicenceData {}
  * Returns all licence ids (slugs).
  */
 export async function getLicenceIds(_locale: Locale): Promise<Array<string>> {
-  const ids = await readFolder(licencesFolder, licenceExtension)
+  const ids = await readFolder(licencesFolder)
 
   return ids
 }

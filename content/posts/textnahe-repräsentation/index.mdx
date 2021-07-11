@@ -20,7 +20,7 @@ uuid: F7XHprFeD0gtoVtUXlIbr
 
 ## Einführung: Texte und ihre Vorlagen
 
-![Balzac Corrections, Quelle: https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg](/assets/cms/images/posts/textnahe-repräsentation/BALZAC_Corrections2.jpg)
+![Balzac Corrections, Quelle: https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg](images/BALZAC_Corrections2.jpg)
 
 Beim Anblick der oben abgebildeten Seite mit einem Text von Balzac, in dem handschriftlich Korrekturen eingetragen wurden, stellt sich die Frage: wo ist hier der Text? Ist der Drucktext gemeint, der Schreibprozess oder die umgesetzten Änderungen? Abhängig von der Sichtweise auf den Text und auf die Fragestellungen, die man beantworten möchte, ist grundsätzlich alles möglich. Die **Übersetzung von Fragestellungen in Markup** kann man als **Datenmodellierung** bezeichnen. Man kann zwar einen Text nicht in all seinen Facetten in den Computer übertragen, jedoch drückt das, was man annotiert, ein Modell des Textes aus, das von den zugrundeliegenden Interessen mitbestimmt wird.
 
@@ -44,13 +44,13 @@ Diese Kette von interpretativen Vorgängen erlernen menschliche Leser durch Übu
 
 Die Unterscheidung der Begriffe "Zeichen" und "Glyphen" ist an dieser Stelle von zentraler Bedeutung. Unter Zeichen versteht man die Abstraktion von konkreter, sichtbarer Form, während man konkrete, sichtbare Zeichen, die in unterschiedlichen Schriftarten anders aussehen, als Glyphen bezeichnet.
 
-![Zeichen vs. Glyphen](/assets/cms/images/posts/textnahe-repräsentation/ZeichenVsGlyphen.png)
+![Zeichen vs. Glyphen](images/ZeichenVsGlyphen.png)
 
 [Bildquelle: Text Encoding Initiative](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CH.html#D4-42)
 
 Die obenstehende Abbildung zeigt das Zeichen a in unterschiedlichen Schriftarten. Die konkrete und sich unterscheidende Repräsentation des Zeichens ist also ein Glyphe. Eine Zusammenstellung von abstrakten Zeichen, die benötigt werden um Dokumente in einem bestimmten Schriftsystem darzustellen wird als **character set** bezeichnet. Während der Grundbegriff den Zeichensatz in einem Dokument bezeichnet, so wandelt sich der Begriff im Digitalen etwas. Hier wird ein bestimmtes abstraktes Zeichen wird hierbei intern durch einen eindeutigen Code repräsentiert. Deswegen bezeichnet man einen solchen digitalen Zeichnsatz auch als **coded character set**. Ein Beispiel hierfür ist Unicode.
 
-![Unicode](/assets/cms/images/posts/textnahe-repräsentation/Unicode.png)
+![Unicode](images/Unicode.png)
 
 Mehr Informationen zu Unicode: [Unicode Standards](https://www.unicode.org/standard/where/), [Unicode Charts](https://www.unicode.org/charts/)
 
@@ -145,7 +145,7 @@ Im oben abgebildeten Codebeispiel markiert das Element `<pb>`('page beginning') 
 
 Zur bessseren Adressierung von einzelnen Textteilen oder auch anderen Layoutelementen auf einer Seite kann eine Seite in mehrere Zonen aufgeteilt werden. Dies geschieht mit dem Element `<zone>`, das einen zweidimensionalen Bereich in Form eines geschlossenen Polygons innerhalb des `<surface>`dokuments definiert. Dies kann von einem simplen Rechteck bis hin zu einem frei geformten Polygon mit beliebig vielen Punkten gehen. Im untenstehenden Beispiel
 
-![Digitalisat einer Quelle, in das unterschiedliche Zonen eingezeichnet sind. Bildquelle: https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX](/assets/cms/images/posts/textnahe-repräsentation/SourceWithZones.png)
+![Digitalisat einer Quelle, in das unterschiedliche Zonen eingezeichnet sind. Bildquelle: https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX](images/SourceWithZones.png)
 
 ```xml
 <surface xml:id="page1" ulx="0" uly="0" lrx="200" lry="300">
@@ -264,7 +264,7 @@ Kolumnentitel, Kustoden, Seitenzahlen etc. <fw type="header">…</fw> <fw type="
 
 Zeichnen im Inhalt des folgenden Absatz aus der Filmwelt die Hervorhebungen mithilfe des 'highlighted'-Elements aus sowie die korrekten Zeilenumbrüche aus, inklusive dem Hinweis, ob es zu einer Wortabteilung kommt.
 
-![Abschnitt "Die Schönheitskonkurrenz" aus Filmwelt 1923, 31, S. 12](/assets/cms/images/posts/textnahe-repräsentation/Filmwelt_1923_31_12_Schoenheitskonkurrenz.png)
+![Abschnitt "Die Schönheitskonkurrenz" aus Filmwelt 1923, 31, S. 12](images/Filmwelt_1923_31_12_Schoenheitskonkurrenz.png)
 
 Rohtext:
 
@@ -341,7 +341,7 @@ Bei Manuskripten und Arbeitsfassungen eines Dokuments kann es vorkommen, dass Ed
 
 Bei Streichungen von längeren Passagen, ggf. auch mit strukturellen Unterteilungen kommt das Element **'Deleted Span of Text'** `<delSpan>`. Dieses Element kennzeichnet den Beginn einer Streichung. Den Endpunkt markiert ein Anker `<anchor>`mit einer bestimmten ID, die wiederum im Attribut `spanTo`des `<delSpan>`Elements referenziert wird. Selbiges funktioniert auch für andere Editierungen.
 
-![Hierarchieübergreifende Editierungen](/assets/cms/images/posts/textnahe-repräsentation/delSpan_hierarchieuebergreifend.png)
+![Hierarchieübergreifende Editierungen](images/delSpan_hierarchieuebergreifend.png)
 
 **Ergänzungen** werden mit dem \*\*'Addition'-Element umschlossen `<add place="above">…</add>`.
 
@@ -366,7 +366,7 @@ Eine **Wiederherstellung**, oder defacto die Rückgängigmachung einer zuvor get
 
 Mit dem Attribut `type` kann im restore-Element ausgezeichnet werden, auf welche Weise die Editierung rückgängig gemacht wurde - z.B. durch eine Notiz in der Marginalspalte (siehe auch TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHCD))
 
-![I am that](/assets/cms/images/posts/textnahe-repräsentation/Folie67.png)
+![I am that](images/Folie67.png)
 
 [Bildquelle: TEI](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta)
 
@@ -410,47 +410,47 @@ Das Ziel dieser Methode ist die Konstruktion des Archetyps des Textes.
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html)
 
-![Textkritisches Markup (1)](/assets/cms/images/posts/textnahe-repräsentation/Folie70.png)
+![Textkritisches Markup (1)](images/Folie70.png)
 
-![Textkritisches Markup (2)](/assets/cms/images/posts/textnahe-repräsentation/Folie71.png)
+![Textkritisches Markup (2)](images/Folie71.png)
 
-![Textkritisches Markup (3): Umstellungen](/assets/cms/images/posts/textnahe-repräsentation/Folie72.png)
+![Textkritisches Markup (3): Umstellungen](images/Folie72.png)
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#transpo)
 
-![Text-Orientiertes Markup](/assets/cms/images/posts/textnahe-repräsentation/Folie73.png)
+![Text-Orientiertes Markup](images/Folie73.png)
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
 
-![Dokument-orientiertes Markup](/assets/cms/images/posts/textnahe-repräsentation/Folie74.png)
+![Dokument-orientiertes Markup](images/Folie74.png)
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
 
-![Textgenetisches Dossier](/assets/cms/images/posts/textnahe-repräsentation/Folie75.png)
+![Textgenetisches Dossier](images/Folie75.png)
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
 
 ---
 
-![Kapitel 12: Textkritischer Apparat](/assets/cms/images/posts/textnahe-repräsentation/Folie76.png)
+![Kapitel 12: Textkritischer Apparat](images/Folie76.png)
 
-![Textzeugen](/assets/cms/images/posts/textnahe-repräsentation/Folie77.png)
+![Textzeugen](images/Folie77.png)
 
 Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&pg=PR6&focus=viewport&hl=de&output=html)
 
-![Apparat](/assets/cms/images/posts/textnahe-repräsentation/Folie78.png)
+![Apparat](images/Folie78.png)
 
 Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=onepage&q&f=false)
 
-![Verbindung von Text & Apparat (1)](/assets/cms/images/posts/textnahe-repräsentation/Folie79.png)
+![Verbindung von Text & Apparat (1)](images/Folie79.png)
 
-![Verbindung von Text & Apparat (2)](/assets/cms/images/posts/textnahe-repräsentation/Folie80.png)
+![Verbindung von Text & Apparat (2)](images/Folie80.png)
 
-![Verbindung von Text & Apparat (3)](/assets/cms/images/posts/textnahe-repräsentation/Folie81.png)
+![Verbindung von Text & Apparat (3)](images/Folie81.png)
 
-![Verbindung von Text & Apparat (4)](/assets/cms/images/posts/textnahe-repräsentation/Folie82.png)
+![Verbindung von Text & Apparat (4)](images/Folie82.png)
 
-![Verbindung von Text & Apparat (5)](/assets/cms/images/posts/textnahe-repräsentation/Folie83.png)
+![Verbindung von Text & Apparat (5)](images/Folie83.png)
 
 ### Weiterführende Informationen
 

@@ -32,13 +32,13 @@ The development of ontologies is a challenging task that requires a deep underst
 
 In the context of Digital Humanities (DH), an Ontology is mostly defined as **_"[...] a formal, explicit specification of a shared conceptualization."_** (Studer et al, 1998). An ontology is an explicit model of concepts, which are defined with clear semantics. In DH they help to bring together data from different sources in a useful way by applying these shared conceptualizations. It is important that users understand the underlying assumptions about the chosen domain. A domain is the specific field that an ontology covers. In our examples of application, this is prosopographic data that is limited by the available historical data. _"As defined above, an ontology is a formalized specification of a conceptualization. Such a specification can be expressed in many ways. It is commonly done in the form of a **set of classes and properties representing the concepts and their relationships**. The concepts are usually organized in hierarchies."_ (Eide, Ore 2018)
 
-![image](/assets/cms/images/posts/prosopographic-modelling-ontologies/classesmodel.png)
+![image](images/classesmodel.png)
 
 #### Class Hierarchy
 
 Classes are usually organized hierarchically. At the top of the hierarchy is the most general class. The further down a class is in the hierarchy, the more specialized the definition. The relationship between a super- and a subclass is called an "is a" relationship. In Western science, e.g. in biological classification and the organisation of libraries, the hierarchical organisation of knowledge has a long tradition. The property **rdfs:subClassOf** is used to state that all the instances of one class (= subclass) are instances of another (= superclass).
 
-![classhierarchy2](/assets/cms/images/posts/prosopographic-modelling-ontologies/classhierarchy.png)
+![classhierarchy2](images/classhierarchy.png)
 
 **Example:**
 
@@ -54,7 +54,7 @@ The **objects from the world that we want to represent** (= the domain) in an on
 
 When an RDF resource is described with an **rdf:type** property, the value of that property is considered to be a resource that represents a class, and the subject of that property is considered to be an instance of that category or class.
 
-![classinstance](/assets/cms/images/posts/prosopographic-modelling-ontologies/classinstance.png)
+![classinstance](images/classinstance.png)
 
 **Example:**
 

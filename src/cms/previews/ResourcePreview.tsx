@@ -11,7 +11,7 @@ import { getSyntaxHighlighter } from '@/cms/previews/getSyntaxHighlighter'
 import { Preview } from '@/cms/previews/Preview'
 import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
-import withLazyLoadingImages from '@/mdx/plugins/rehype-lazy-loading-images'
+// import withLazyLoadingImages from '@/mdx/plugins/rehype-lazy-loading-images'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
 import { useDebouncedState } from '@/utils/useDebouncedState'
 import { Resource } from '@/views/Resource'
@@ -104,7 +104,7 @@ export function ResourcePreview(
               // withExtractedTableOfContents,
               withHeadingLinks,
               withNoReferrerLinks,
-              withLazyLoadingImages,
+              // withLazyLoadingImages,
               withImageCaptions,
             ],
           }),

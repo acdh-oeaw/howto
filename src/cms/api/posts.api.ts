@@ -84,7 +84,7 @@ export interface PostPreview extends PostId, PostMetadata {}
  * Returns all post ids (slugs).
  */
 export async function getPostIds(_locale: Locale): Promise<Array<string>> {
-  const ids = await readFolder(postsFolder, postExtension)
+  const ids = await readFolder(postsFolder)
 
   return ids
 }
@@ -176,7 +176,7 @@ async function getPostFile(id: ID, locale: Locale): Promise<VFile> {
  * Returns file path for post.
  */
 export function getPostFilePath(id: ID, _locale: Locale): FilePath {
-  const filePath = join(postsFolder, id + postExtension)
+  const filePath = join(postsFolder, id, 'index' + postExtension)
 
   return filePath
 }

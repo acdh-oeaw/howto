@@ -29,7 +29,7 @@ export interface Tag extends TagId, TagData {}
  * Returns all tag ids (slugs).
  */
 export async function getTagIds(_locale: Locale): Promise<Array<string>> {
-  const ids = await readFolder(tagsFolder, tagExtension)
+  const ids = await readFolder(tagsFolder)
 
   return ids
 }

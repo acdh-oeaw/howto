@@ -9,19 +9,14 @@ export const collection: CmsCollection = {
   label_singular: 'Post',
   description: '',
   folder: 'content/posts',
-  path: '{{slug}}',
-  // TODO: move to folders (to be able to colocate images)
-  // path: '{{slug}}/index',
+  path: '{{slug}}/index',
   format: 'frontmatter',
   extension: 'mdx',
   create: true,
   delete: false,
   slug: '{{slug}}',
-  media_folder: '../../{{media_folder}}/posts/{{slug}}',
-  public_folder: '{{public_folder}}/posts/{{slug}}',
-  // TODO:
-  // media_folder: '', // set `images` folder on widget level
-  // public_folder: '', // set `images` folder on widget level
+  media_folder: 'images',
+  public_folder: 'images',
   preview_path: 'resources/posts/{{slug}}',
   editor: { preview: true },
   sortable_fields: ['commit_date', 'date', 'title', 'commit_author'],
