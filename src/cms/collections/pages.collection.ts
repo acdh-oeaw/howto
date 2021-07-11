@@ -8,6 +8,7 @@ export const collection: CmsCollection = {
   label: 'Pages',
   label_singular: 'Page',
   description: '',
+  format: 'frontmatter',
   files: [
     {
       file: 'content/pages/home.mdx',
