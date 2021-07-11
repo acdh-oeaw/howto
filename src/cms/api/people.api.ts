@@ -36,7 +36,7 @@ export interface Person extends PersonId, PersonData {}
  * Returns all person ids (slugs).
  */
 export async function getPersonIds(_locale: Locale): Promise<Array<string>> {
-  const ids = await readFolder(peopleFolder)
+  const ids = await readFolder(peopleFolder, personExtension)
 
   return ids
 }
