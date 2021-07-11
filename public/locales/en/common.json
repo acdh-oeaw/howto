@@ -8,5 +8,21 @@
     "imprint": "Imprint",
     "notFound": "Page not found",
     "error": "Error"
-  }
+  },
+  "readMore": "Read more",
+  "publishDate": "Publish date",
+  "lastUpdated": "Last updated",
+  "suggestChangesToResource": "Suggest changes to resource",
+  "resources": "Resources",
+  "posts": "Posts",
+  "tableOfContents": "Table of contents",
+  "previousPage": "Previous page",
+  "nextPage": "Next page",
+  "relatedResources": "Related resources",
+  "tags": "Tags",
+  "authors": "Authors",
+  "imprint": "Imprint",
+  "pageNotFound": "Page not found",
+  "pageNotFoundMessage": "Sorry, this page could not be found.",
+  "internalError": "Internal error"
 }

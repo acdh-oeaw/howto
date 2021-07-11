@@ -2286,23 +2286,23 @@
     sharp "^0.26.1"
     to-ico "^1.1.5"
 
-"@stefanprobst/next-error-boundary@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/@stefanprobst/next-error-boundary/-/next-error-boundary-1.0.7.tgz#e9ceb03963dee0fd787c345ed50cd1eee0560bd0"
-  integrity sha512-UAAAL+wNKWGRywmpAIYuGRaT2lh4GI1IIRFh1NG1gNAp4wALspESno9rVSU4Q8udnNvwye7MXirPL+zfrDAT1A==
+"@stefanprobst/next-error-boundary@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/@stefanprobst/next-error-boundary/-/next-error-boundary-1.0.8.tgz#93fed5da8aace64c912463e34658d77a65a09214"
+  integrity sha512-bfzw1YmGIXlLuGZh1X/EbsxRWfCFKBlURirORg0iG6pY1TZnLMgXJIQEwRBH/vyjC+h5OkTDFE4TuiMkhcfWBA==
 
-"@stefanprobst/next-page-metadata@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.npmjs.org/@stefanprobst/next-page-metadata/-/next-page-metadata-1.0.9.tgz#832801264091a1454fbb9cc0cd52b533179e79c6"
-  integrity sha512-ohOBawtQBhveTfMPuZ57Y1Q2K6sKDK2MQxuHRx8xDOzx9g50v7bDE0wE9jqCSX+FDgFBrm266kNnmyhXT5qu4Q==
+"@stefanprobst/next-page-metadata@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/@stefanprobst/next-page-metadata/-/next-page-metadata-1.0.10.tgz#c809331e213c1cc57794ec7b316b5926eb47a1e8"
+  integrity sha512-6UnvTje2ub3zGTfjeNYELcCFfoblBPC8DnFbxxdYVE8rEIVvx/EcItdUaboBhigxtGjeBGFaXNJBriwuT2gmhQ==
   dependencies:
     react-schemaorg "^1.3.1"
     schema-dts "^0.8.2"
 
-"@stefanprobst/next-sitemap@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/@stefanprobst/next-sitemap/-/next-sitemap-1.0.5.tgz#03eb473a9aacab232e8af0a2f8af1686427e5a79"
-  integrity sha512-5Y9j3PofkKNcjrQM39Gdq6Ba0etHkY3S9RlWjv2500Ux7LO/ReUTZEfuapgpLUN/7ytw7X10bY2wptxfEXMe0w==
+"@stefanprobst/next-sitemap@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/@stefanprobst/next-sitemap/-/next-sitemap-1.0.6.tgz#babaaf939cfe5d24797d8e2ecae0b531c3b4f6b7"
+  integrity sha512-4VVRdGBP0s1CI5aYzEgM4jqNPkCwn+6i3ER1f2qeGcnkufdY9HRZwowZcK0jSqVvMyqdcnHj17nrSR3treUH4w==
   dependencies:
     "@prettier/plugin-xml" "^0.12.0"
     mri "^1.1.6"
@@ -2311,10 +2311,10 @@
     xast-util-to-xml "^2.0.0"
     xastscript "^2.0.0"
 
-"@stefanprobst/next-svg@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.npmjs.org/@stefanprobst/next-svg/-/next-svg-1.1.3.tgz#105fadc6e65f3d2ed86c2deaa718c3f208e27513"
-  integrity sha512-rApSabL2J57Ksdws8mPRpIUnn99bvD5tIXfZ45wKSAeRbDvTDB079ZOjw8CVTzmMln1ljWpgPifU56rUxEDyMg==
+"@stefanprobst/next-svg@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/@stefanprobst/next-svg/-/next-svg-2.0.0.tgz#62afa06fc130c02e77ab225a18c1916d7538cebe"
+  integrity sha512-N7c944ZkdsjGlnIPxm0NAuYnrbYlp9Ie615+CX42Dim1JhKarf51pNSFg67O496FsypabsEEklklvhYgVtvm3Q==
   dependencies:
     "@stefanprobst/svgo-loader" "^1.0.2"
     "@svgr/core" "^5.5.0"
@@ -5384,7 +5384,7 @@ estree-util-build-jsx@^2.0.0:
     estree-util-is-identifier-name "^2.0.0"
     estree-walker "^3.0.0"
 
-estree-util-is-identifier-name@^1.0.0:
+estree-util-is-identifier-name@^1.0.0, estree-util-is-identifier-name@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/estree-util-is-identifier-name/-/estree-util-is-identifier-name-1.1.0.tgz#2e3488ea06d9ea2face116058864f6370b37456d"
   integrity sha512-OVJZ3fGGt9By77Ix9NhaRbzfbDV/2rx9EP7YIDJTmsZSEc5kYn2vWcNccYyahJL2uAQZK2a5Or2i0wtIKTPoRQ==
@@ -5393,6 +5393,13 @@ estree-util-is-identifier-name@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/estree-util-is-identifier-name/-/estree-util-is-identifier-name-2.0.0.tgz#e2d3d2ae3032c017b2112832bfc5d8ba938c8010"
   integrity sha512-aXXZFVMnBBDRP81vS4YtAYJ0hUkgEsXea7lNKWCOeaAquGb1Jm2rcONPB5fpzwgbNxulTvrWuKnp9UElUGAKeQ==
+
+estree-util-value-to-estree@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/estree-util-value-to-estree/-/estree-util-value-to-estree-1.2.0.tgz#5ee543913e07f3e5395a59cb42011133ef008215"
+  integrity sha512-qx6I+bwblFkY0vuQS4TDMRrKv2ArO5PwBTwXL/LswrSH12gywpCmXe6zwnCMhy43tuCr1MbHp9gbPPnVTiPEZA==
+  dependencies:
+    is-plain-obj "^3.0.0"
 
 estree-walker@^2.0.1:
   version "2.0.2"
@@ -6908,6 +6915,11 @@ is-plain-obj@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
   integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
+
+is-plain-obj@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-3.0.0.tgz#af6f2ea14ac5a646183a5bbdb5baabbc156ad9d7"
+  integrity sha512-gwsOE28k+23GP1B6vFl1oVh/WOzmawBrKwo5Ev6wMKzPkaXaCDIQKzLnvsA42DRlbVTWorkgTKIviAKCWkfUwA==
 
 is-plain-object@^2.0.4:
   version "2.0.4"
@@ -11521,12 +11533,16 @@ remark-lint@^8.0.0:
   dependencies:
     remark-message-control "^6.0.0"
 
-remark-mdx-images@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/remark-mdx-images/-/remark-mdx-images-1.0.2.tgz#a9b73a32aa208e22f2159dd770406e1b93b82111"
-  integrity sha512-cT0NNsXMzpUn/JjUG9lc6NxbHWBlIS2CpHwObICRsrNUOelok00rBx+sjRXgjBx/lDIWb/ZBXz7Ttvd3ipbj4Q==
+remark-mdx-frontmatter@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/remark-mdx-frontmatter/-/remark-mdx-frontmatter-1.0.1.tgz#413b5b6f6bed48187c9e90dd39024773b09b124c"
+  integrity sha512-ZT++VvsEsrdNdpWmaHvqb8P0U3Subr7ezB5spjMBETBrNOjfXx4LcFtbBojZEaJC1DwmoyFUpBF9Ady3qjbSEA==
   dependencies:
-    unist-util-visit "^2.0.0"
+    estree-util-is-identifier-name "^1.1.0"
+    estree-util-value-to-estree "^1.0.0"
+    js-yaml "^4.0.0"
+    toml "^3.0.0"
+    unist-util-visit "^2.0.3"
 
 remark-message-control@^6.0.0:
   version "6.0.0"
@@ -13008,6 +13024,11 @@ toidentifier@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
+
+toml@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/toml/-/toml-3.0.0.tgz#342160f1af1904ec9d204d03a5d61222d762c5ee"
+  integrity sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==
 
 tomlify-j0.4@^3.0.0-alpha.0:
   version "3.0.0"

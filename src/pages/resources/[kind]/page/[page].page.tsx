@@ -113,7 +113,7 @@ export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
         languageAlternates={languageAlternates}
       />
       <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <PageTitle>Posts</PageTitle>
+        <PageTitle>{t('common.posts')}</PageTitle>
         <ResourcesList resources={resources.items} />
         <Pagination
           page={resources.page}

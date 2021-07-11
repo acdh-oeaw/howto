@@ -1,6 +1,6 @@
 import type { ParsedUrlQuery } from 'querystring'
 
-import { JsonLd as SchemaOrgMetadata } from '@stefanprobst/next-page-metadata'
+import { SchemaOrg as SchemaOrgMetadata } from '@stefanprobst/next-page-metadata'
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -21,6 +21,7 @@ import { PageContent } from '@/common/PageContent'
 import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
 import { loadDictionary } from '@/i18n/loadDictionary'
+import { useI18n } from '@/i18n/useI18n'
 import { DublinCore as DublinCoreMetadata } from '@/metadata/DublinCore'
 import { Highwire as HighwireMetadata } from '@/metadata/Highwire'
 import { Metadata } from '@/metadata/Metadata'
@@ -28,6 +29,7 @@ import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 import { routes } from '@/navigation/routes.config'
+import { createUrl } from '@/utils/createUrl'
 import type { IsoDateString } from '@/utils/ts/aliases'
 // import { FloatingTableOfContentsButton } from '@/views/FloatingTableOfContentsButton'
 import { Resource } from '@/views/Resource'
@@ -122,6 +124,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
   const { resource, related, lastUpdatedAt } = props
   const { metadata, toc } = resource.data
 
+  const { t } = useI18n()
   const canonicalUrl = useCanonicalUrl()
   const languageAlternates = useAlternateUrls()
   const siteMetadata = useSiteMetadata()
@@ -177,7 +180,12 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
             logo: siteMetadata.image.publicPath,
             sameAs:
               siteMetadata.twitter != null
-                ? String(new URL(siteMetadata.twitter, 'https://twitter.com'))
+                ? String(
+                    createUrl({
+                      pathname: siteMetadata.twitter,
+                      baseUrl: 'https://twitter.com',
+                    }),
+                  )
                 : undefined,
           },
         }}
@@ -213,7 +221,9 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
               <TableOfContents
                 toc={toc}
                 title={
-                  <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">{`Table of contents`}</h2>
+                  <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">
+                    {t('common.tableOfContents')}
+                  </h2>
                 }
                 className="space-y-2"
               />
@@ -234,9 +244,11 @@ interface RelatedResourcesProps {
  * List of related resources.
  */
 function RelatedResources(props: RelatedResourcesProps) {
+  const { t } = useI18n()
+
   return (
     <nav className="w-full py-12 mx-auto my-12 space-y-3 border-t border-neutral-200 max-w-80ch">
-      <h2 className="text-2xl font-bold">Related resources</h2>
+      <h2 className="text-2xl font-bold">{t('common.relatedResources')}</h2>
       <ul className="space-y-1.5">
         {props.resources.map((resource) => {
           return (

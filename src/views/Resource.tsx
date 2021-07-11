@@ -24,7 +24,7 @@ export function Resource(props: ResourceProps): JSX.Element {
   const { metadata } = resource.data
   const { title, date, authors, tags = [] } = metadata
 
-  const { formatDate } = useI18n()
+  const { t, formatDate } = useI18n()
 
   const publishDate = getDate(date)
 
@@ -34,7 +34,7 @@ export function Resource(props: ResourceProps): JSX.Element {
         <dl>
           {tags.length > 0 ? (
             <div className="">
-              <dt className="inline sr-only">Tags:</dt>
+              <dt className="inline sr-only">{t('common.tags')}:</dt>
               <dd className="inline">
                 <ul className="inline text-xs font-bold tracking-wide uppercase text-primary-600">
                   {tags.map((tag, index) => {
@@ -61,7 +61,7 @@ export function Resource(props: ResourceProps): JSX.Element {
           <div className="space-y-1">
             {authors.length > 0 ? (
               <div>
-                <dt className="sr-only">Authors</dt>
+                <dt className="sr-only">{t('common.authors')}</dt>
                 <dd>
                   <ul className="space-y-2">
                     {authors.map((author) => {
@@ -94,7 +94,7 @@ export function Resource(props: ResourceProps): JSX.Element {
           <div className="space-y-1 text-right">
             {publishDate != null ? (
               <div>
-                <dt className="sr-only">Publish date</dt>
+                <dt className="sr-only">{t('publishDate')}</dt>
                 <dd>
                   <time dateTime={date}>
                     {formatDate(publishDate, undefined, {
@@ -113,7 +113,7 @@ export function Resource(props: ResourceProps): JSX.Element {
       <footer>
         {lastUpdatedAt != null ? (
           <p className="text-sm text-right text-neutral-500">
-            <span>Last updated: </span>
+            <span>{t('common.lastUpdated')}: </span>
             <time dateTime={lastUpdatedAt}>
               {formatDate(new Date(lastUpdatedAt), undefined, {
                 dateStyle: 'medium',
@@ -127,7 +127,9 @@ export function Resource(props: ResourceProps): JSX.Element {
             id={resource.id}
             className="text-sm flex justify-end items-center space-x-1.5 text-neutral-500"
           >
-            <span className="text-right">Suggest changes to resource</span>
+            <span className="text-right">
+              {t('common.suggestChangesToResource')}
+            </span>
           </EditLink>
         ) : null}
       </footer>

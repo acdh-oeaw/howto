@@ -4,6 +4,7 @@ import { Svg as PencilIcon } from '@/assets/icons/pencil.svg'
 import type { collections } from '@/cms/cms.config'
 import { Icon } from '@/common/Icon'
 import { routes } from '@/navigation/routes.config'
+import { createUrl } from '@/utils/createUrl'
 import { url as baseUrl } from '~/config/site.config'
 
 export interface EditLinkProps {
@@ -29,6 +30,7 @@ export function EditLink(props: EditLinkProps): JSX.Element {
         createUrl({
           ...routes.cms(),
           hash: `/edit/${collection}/${id}`,
+          baseUrl,
         }),
       )}
       className={className}
@@ -37,12 +39,4 @@ export function EditLink(props: EditLinkProps): JSX.Element {
       {children}
     </a>
   )
-}
-
-function createUrl({ pathname, hash }: { pathname: string; hash?: string }) {
-  const url = new URL(pathname, baseUrl)
-  if (hash !== undefined) {
-    url.hash = hash
-  }
-  return url
 }

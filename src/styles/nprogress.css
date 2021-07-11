@@ -1,13 +1,13 @@
 @import 'nprogress/nprogress.css';
 
 #nprogress {
-  --progress-color: #2563eb; /* primary-600 */
+  --color-nprogress: #2563eb; /* primary-600 */
 }
 
 #nprogress .bar {
-  background: var(--progress-color);
+  background: var(--color-nprogress);
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px var(--progress-color), 0 0 5px var(--progress-color);
+  box-shadow: 0 0 10px var(--color-nprogress), 0 0 5px var(--color-nprogress);
 }

@@ -1,16 +1,17 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
+import type { Entry, Channel } from 'xast-util-feed'
 import { rss } from 'xast-util-feed'
-import type { Channel, Entry } from 'xast-util-feed'
 import { toXml } from 'xast-util-to-xml'
 
 import { getPostPreviews } from '@/cms/api/posts.api'
 import { getFullName } from '@/cms/utils/getFullName'
 import { defaultLocale, locales } from '@/i18n/i18n.config'
 import { routes } from '@/navigation/routes.config'
+import { createUrl } from '@/utils/createUrl'
 import { log } from '@/utils/log'
-import { url as siteUrl } from '~/config/site.config'
+import { url as siteUrl, feedFileName as fileName } from '~/config/site.config'
 import { siteMetadata } from '~/config/siteMetadata.config'
 
 async function generate() {
@@ -26,7 +27,7 @@ async function generate() {
   const channel: Channel = {
     title: metadata.title,
     url: siteUrl, // metadata.url
-    feedUrl: String(new URL('feed.xml', siteUrl)),
+    feedUrl: String(createUrl({ pathname: fileName, baseUrl: siteUrl })),
     description: metadata.description,
     // lang: locale,
     author: metadata.creator?.name,
@@ -37,10 +38,10 @@ async function generate() {
     return {
       title: resource.title,
       url: String(
-        new URL(
-          routes.resource({ kind: 'posts', id: resource.id }).pathname,
-          siteUrl,
-        ),
+        createUrl({
+          ...routes.resource({ kind: 'posts', id: resource.id }),
+          baseUrl: siteUrl,
+        }),
       ),
       description: resource.abstract,
       author: resource.authors.map((author) => getFullName(author)).join(', '),
@@ -51,7 +52,7 @@ async function generate() {
 
   const feed = toXml(rss(channel, entries))
 
-  fs.writeFileSync(path.join(process.cwd(), 'public', 'feed.xml'), feed, {
+  fs.writeFileSync(path.join(process.cwd(), 'public', fileName), feed, {
     encoding: 'utf-8',
   })
 }

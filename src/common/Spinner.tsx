@@ -11,7 +11,6 @@ export interface SpinnerProps {
 export function Spinner(props: SpinnerProps): JSX.Element {
   const { progressBarProps } = useProgressBar({
     isIndeterminate: true,
-    'aria-label': 'Loading...',
   })
 
   const center = 16

@@ -82,7 +82,7 @@ function getYouTubeUrl(id: string, autoPlay = false, startTime?: number) {
   const BASE_URL = 'https://www.youtube-nocookie.com/embed/'
 
   const embedUrl = createUrl({
-    path: id,
+    pathname: id,
     baseUrl: BASE_URL,
     query: {
       autoplay: autoPlay ? '1' : undefined,
@@ -97,7 +97,7 @@ function getVimeoUrl(id: string, autoPlay = false, startTime?: number) {
   const BASE_URL = 'https://player.vimeo.com/video/'
 
   const embedUrl = createUrl({
-    path: id,
+    pathname: id,
     baseUrl: BASE_URL,
     query: {
       autoplay: autoPlay ? '1' : undefined,
@@ -112,7 +112,7 @@ function getNakalaUrl(id: string, _autoPlay = false, _startTime?: number) {
   const BASE_URL = 'https://api.nakala.fr/embed/'
 
   const embedUrl = createUrl({
-    path: id,
+    pathname: id,
     baseUrl: BASE_URL,
   })
 

@@ -5,7 +5,7 @@ export function pickRandom<T extends { id: string }>(
   items: Array<T>,
   n: number,
 ): Array<T> {
-  const itemsById = byId(items)
+  const itemsById = mapById(items)
 
   if (itemsById.size <= n) {
     return Array.from(itemsById.values())
@@ -24,7 +24,7 @@ export function pickRandom<T extends { id: string }>(
 /**
  * Maps items by id.
  */
-function byId<T extends { id: string }>(items: Array<T>): Map<string, T> {
+function mapById<T extends { id: string }>(items: Array<T>): Map<string, T> {
   const map = new Map()
   items.forEach((item) => {
     map.set(item.id, item)

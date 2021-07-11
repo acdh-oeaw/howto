@@ -41,8 +41,8 @@ export default function NotFoundPage(_props: NotFoundPageProps): JSX.Element {
       <Metadata noindex nofollow title={t('common.page.notFound')} />
       <PageContent className="grid place-items-center">
         <div className="space-y-2 text-center">
-          <PageTitle>Page not found</PageTitle>
-          <p>Sorry, this page could not be found.</p>
+          <PageTitle>{t('common.pageNotFound')}</PageTitle>
+          <p>{t('common.pageNotFoundMessage')}</p>
         </div>
       </PageContent>
     </Fragment>

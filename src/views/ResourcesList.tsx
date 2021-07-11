@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import type { PostPreview } from '@/cms/api/posts.api'
 import { getFullName } from '@/cms/utils/getFullName'
+import { useI18n } from '@/i18n/useI18n'
 import { routes } from '@/navigation/routes.config'
 
 const MAX_AUTHORS = 3
@@ -40,6 +41,8 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
   const { resource } = props
   const { id, title, authors, abstract } = resource
 
+  const { t } = useI18n()
+
   const href = routes.resource({ kind: 'posts', id })
 
   return (
@@ -56,7 +59,7 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
         <dl>
           {Array.isArray(authors) && authors.length > 0 ? (
             <div>
-              <dt className="sr-only">Authors</dt>
+              <dt className="sr-only">{t('common.authors')}</dt>
               <dd>
                 <ul className="flex items-center space-x-1">
                   {authors.slice(0, MAX_AUTHORS).map((author) => {
@@ -80,7 +83,9 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
           ) : null}
         </dl>
         <Link href={href}>
-          <a className="transition hover:text-primary-600">Read more &rarr;</a>
+          <a className="transition hover:text-primary-600">
+            {t('common.readMore')} &rarr;
+          </a>
         </Link>
       </footer>
     </article>

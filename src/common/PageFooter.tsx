@@ -1,21 +1,21 @@
-import { useLocale } from '@/i18n/useLocale'
-
-// TODO: put in /config
-const url = {
-  en: 'https://www.oeaw.ac.at/acdh',
-  de: 'https://www.oeaw.ac.at/de/acdh',
-}
+import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 
 /**
  * Page footer.
  */
 export function PageFooter(): JSX.Element {
-  const { locale } = useLocale()
+  const { creator } = useSiteMetadata()
 
   return (
-    <footer className="py-8 px-4 flex justify-end">
+    <footer className="flex justify-end px-4 py-8">
       <small>
-        &copy; <a href={url[locale]}>ACDH-CH</a> 2021
+        <span>&copy; </span>
+        {creator != null ? (
+          <a href={creator.website} target="_blank" rel="noopener noreferrer">
+            {creator.shortName ?? creator.name}
+          </a>
+        ) : null}
+        <span> {new Date().getFullYear()}</span>
       </small>
     </footer>
   )

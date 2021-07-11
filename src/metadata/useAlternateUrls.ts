@@ -22,11 +22,11 @@ export function useAlternateUrls(
 
   const urls = useMemo(() => {
     return locales.map((locale) => {
-      const { pathname } = createUrl({ path: router.asPath })
+      const { pathname } = createUrl({ pathname: router.asPath })
       const url = createUrl({
         baseUrl: siteUrl,
         locale,
-        path: pathname,
+        pathname: pathname,
         query,
       })
 

@@ -14,6 +14,7 @@ import { WebManifest } from '@/assets/WebManifest'
 import { PageLayout } from '@/common/PageLayout'
 import { Providers } from '@/common/Providers'
 import { ClientError } from '@/error/ClientError'
+import { Feed } from '@/metadata/Feed'
 import { usePageLoadProgressIndicator } from '@/navigation/usePageLoadProgressIndicator'
 
 /**
@@ -36,6 +37,7 @@ export default function App(props: AppProps): JSX.Element {
       </Head>
       <Favicons />
       <WebManifest />
+      <Feed />
       <Matomo />
       <ErrorBoundary fallback={ClientError} resetOnChange={[router.asPath]}>
         <Providers {...pageProps}>

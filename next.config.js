@@ -74,6 +74,41 @@ const plugins = [
       titleProp: true,
     },
   }),
+  function (nextConfig = {}) {
+    return {
+      ...nextConfig,
+      /** @typedef {import('webpack').Configuration} WebpackConfig} */
+      /** @type {(config: WebpackConfig, options: any) => WebpackConfig} */
+      webpack(config, options) {
+        /* @ts-expect-error */
+        config.module.rules.push({
+          test: /\.mdx?$/,
+          use: [
+            options.defaultLoaders.babel,
+            {
+              loader: require.resolve('xdm/webpack.cjs'),
+              options: {
+                remarkPlugins: [
+                  require('remark-gfm'),
+                  require('remark-frontmatter'),
+                  [
+                    require('remark-mdx-frontmatter').remarkMdxFrontmatter,
+                    { name: 'metadata' },
+                  ],
+                ],
+              },
+            },
+          ],
+        })
+
+        if (typeof nextConfig.webpack === 'function') {
+          return nextConfig.webpack(config, options)
+        }
+
+        return config
+      },
+    }
+  },
 ]
 
 module.exports = plugins.reduce((config, plugin) => {

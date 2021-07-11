@@ -9,6 +9,12 @@ import { useI18n } from '@/i18n/useI18n'
 import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
+import Mdx, { metadata } from '~/content/pages/home.mdx'
+
+export interface HomePageMetadata extends Record<string, unknown> {
+  title: string
+  subtitle: string
+}
 
 export interface HomePageProps {
   dictionary: Dictionary
@@ -35,6 +41,8 @@ export async function getStaticProps(
  * Home page.
  */
 export default function HomePage(_props: HomePageProps): JSX.Element {
+  const { title, subtitle } = metadata as HomePageMetadata
+
   const { t } = useI18n()
   const canonicalUrl = useCanonicalUrl()
   const languageAlternates = useAlternateUrls()
@@ -53,11 +61,14 @@ export default function HomePage(_props: HomePageProps): JSX.Element {
               className="font-black tracking-tighter text-7xl md:text-8xl"
               style={{ lineHeight: 0.8 }}
             >
-              Learning resources
+              {title}
             </h1>
             <h2 className="mb-4 text-lg font-semibold tracking-tight uppercase text-neutral-400">
-              Austrian Centre for Digital Humanities and Cultural Heritage
+              {subtitle}
             </h2>
+          </div>
+          <div>
+            <Mdx />
           </div>
         </div>
       </PageContent>

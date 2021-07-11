@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 import * as runtime from 'react/jsx-runtime'
 
-import type { ComponentMap } from '@/mdx/components'
+import type { MdxComponentMap } from '@/mdx/components'
 
 export interface MdxContentProps {
-  components?: ComponentMap
+  components?: MdxComponentMap
 }
 
 export interface Mdx<

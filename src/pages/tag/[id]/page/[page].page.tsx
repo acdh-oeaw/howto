@@ -18,6 +18,7 @@ import { PageContent } from '@/common/PageContent'
 import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
 import { loadDictionary } from '@/i18n/loadDictionary'
+import { useI18n } from '@/i18n/useI18n'
 import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
@@ -113,6 +114,7 @@ export async function getStaticProps(
 export default function TagPage(props: TagPageProps): JSX.Element {
   const { tag, resources: posts } = props
 
+  const { t } = useI18n()
   const canonicalUrl = useCanonicalUrl()
   const languageAlternates = useAlternateUrls()
 
@@ -129,7 +131,7 @@ export default function TagPage(props: TagPageProps): JSX.Element {
           {tag.description}
         </p>
         <section className="space-y-5">
-          <h2 className="sr-only">Posts</h2>
+          <h2 className="sr-only">{t('common.resources')}</h2>
           <PostsList resources={posts.items} />
           <Pagination
             page={posts.page}

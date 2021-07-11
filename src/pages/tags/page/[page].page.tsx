@@ -119,12 +119,7 @@ export default function TagsPage(props: TagsPageProps): JSX.Element {
         languageAlternates={languageAlternates}
       />
       <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <h1 className="text-4.5xl font-bold text-center">
-          Interested in particular topics?
-        </h1>
-        <p className="text-lg text-center text-neutral-500">
-          Browse learning resources based on their topic
-        </p>
+        <h1 className="text-4.5xl font-bold text-center">{t('common.tags')}</h1>
         <TagsList tags={tags.items} />
       </PageContent>
     </Fragment>

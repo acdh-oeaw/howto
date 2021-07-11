@@ -18,7 +18,7 @@ const config = {
      */
     'postcss-import': {
       resolve(id) {
-        return resolve(id)
+        return resolve(id) ?? require.resolve(id)
       },
     },
     ...postcss.plugins,

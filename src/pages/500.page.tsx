@@ -42,7 +42,7 @@ export default function InternalErrorPage(
     <Fragment>
       <Metadata noindex nofollow title={t('common.page.error')} />
       <PageContent className="grid place-items-center">
-        <PageTitle>Internal Error</PageTitle>
+        <PageTitle>{t('common.internalError')}</PageTitle>
       </PageContent>
     </Fragment>
   )

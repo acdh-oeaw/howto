@@ -4,6 +4,7 @@ import type { Toc } from '@stefanprobst/rehype-extract-toc'
 import cx from 'clsx'
 import Link from 'next/link'
 
+import { useI18n } from '@/i18n/useI18n'
 import { useTableOfContentsHighlight } from '@/views/useTableOfContentsHighlight'
 
 export interface TableOfContentsProps {
@@ -26,9 +27,11 @@ export interface TableOfContentsProps {
  * Table of contents.
  */
 export function TableOfContents(props: TableOfContentsProps): JSX.Element {
-  const highlightedHeadingId = useTableOfContentsHighlight()
+  const { t } = useI18n()
   const title = props.title ?? null
-  const label = props['aria-label'] ?? 'Table of contents'
+  const label = props['aria-label'] ?? t('tableOfContents')
+
+  const highlightedHeadingId = useTableOfContentsHighlight()
 
   return (
     <nav aria-label={label} className={props.className}>

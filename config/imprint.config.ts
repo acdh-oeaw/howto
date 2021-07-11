@@ -9,7 +9,7 @@ import { createUrl } from '@/utils/createUrl'
 export function createImprintUrl(locale: Locale): URL {
   return createUrl({
     baseUrl: 'https://shared.acdh.oeaw.ac.at',
-    path: '/acdh-common-assets/api/imprint.php',
+    pathname: '/acdh-common-assets/api/imprint.php',
     query: {
       serviceID: 6848,
       outputLang: locale,

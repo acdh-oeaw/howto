@@ -1,12 +1,28 @@
 {
   "page": {
     "home": "Startseite",
-    "resources": "Resourcen",
+    "resources": "Ressourcen",
     "posts": "Posts",
     "tags": "Tags",
     "authors": "Autor*innen",
     "imprint": "Impressum",
     "notFound": "Seite nicht gefunden",
     "error": "Fehler"
-  }
+  },
+  "readMore": "Mehr lesen",
+  "publishDate": "Veröffentlicht am",
+  "lastUpdated": "Zuletzt verändert am",
+  "suggestChangesToResource": "Änderungen an Ressource vorschlagen",
+  "resources": "Ressourcen",
+  "posts": "Posts",
+  "tableOfContents": "Inhaltsverzeichnis",
+  "previousPage": "Vorherige Seite",
+  "nextPage": "Nächste Seite",
+  "relatedResources": "Ähnliche Ressourcen",
+  "tags": "Tags",
+  "authors": "Autor*innen",
+  "imprint": "Impressum",
+  "pageNotFound": "Seite nicht gefunden",
+  "pageNotFoundMessage": "Oh je, diese Seite existiert nicht.",
+  "internalError": "Fataler Fehler"
 }

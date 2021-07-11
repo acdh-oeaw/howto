@@ -6,13 +6,13 @@ import { addQueryParams } from '@/utils/addQueryParams'
 export function createUrl({
   baseUrl = 'https://n',
   locale,
-  path,
+  pathname: path,
   query,
   hash,
 }: {
   baseUrl?: string
   locale?: string
-  path: string
+  pathname: string
   query?: Record<string, unknown>
   hash?: string
 }): URL {

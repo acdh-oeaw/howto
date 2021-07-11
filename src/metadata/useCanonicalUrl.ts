@@ -18,11 +18,11 @@ export function useCanonicalUrl(query?: NextRouter['query']): string {
   const { url: siteUrl } = useSiteMetadata()
 
   const canonicalUrl = useMemo(() => {
-    const { pathname } = createUrl({ path: router.asPath })
+    const { pathname } = createUrl({ pathname: router.asPath })
     const url = createUrl({
       baseUrl: siteUrl,
       locale,
-      path: pathname,
+      pathname: pathname,
       query,
     })
 
