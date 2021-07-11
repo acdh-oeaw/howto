@@ -7,7 +7,7 @@
     "analyze": "cross-env ANALYZE='true' yarn run build",
     "build": "next build",
     "cms:dev": "netlify-cms-proxy-server",
-    "cms:styles": "cross-env NODE_ENV='production' NODE_OPTIONS='-r tsconfig-paths/register --inspect-brk' postcss --config src/cms/previews/postcss.config.js node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && prettier public/assets/css --write",
+    "cms:styles": "cross-env NODE_ENV='production' NODE_OPTIONS='-r tsconfig-paths/register' postcss --config src/cms/previews/postcss.config.js node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && prettier public/assets/css --write",
     "create:favicons": "ts-node scripts/createFavicons",
     "create:feed": "ts-node scripts/createFeed",
     "create:sitemap": "ts-node scripts/createSitemap",
