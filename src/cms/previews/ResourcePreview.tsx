@@ -11,8 +11,8 @@ import { getSyntaxHighlighter } from '@/cms/previews/getSyntaxHighlighter'
 import { Preview } from '@/cms/previews/Preview'
 import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
-// import withLazyLoadingImages from '@/mdx/plugins/rehype-lazy-loading-images'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
+import withCmsPreviewAssets from '@/mdx/plugins/remark-cms-preview-assets'
 import { useDebouncedState } from '@/utils/useDebouncedState'
 import { Resource } from '@/views/Resource'
 
@@ -26,7 +26,7 @@ export function ResourcePreview(
   props: PreviewTemplateComponentProps,
 ): JSX.Element {
   const entry = useDebouncedState(props.entry, 250)
-  const fieldsMetaData = useDebouncedState(props.fieldsMetaData, 250)
+  const { fieldsMetaData, getAsset } = props
   const [post, setPost] = useState<PostData | null | undefined>(undefined)
 
   useEffect(() => {
@@ -97,14 +97,16 @@ export function ResourcePreview(
           await compile(body, {
             outputFormat: 'function-body',
             useDynamicImport: false,
-            remarkPlugins: [withGitHubMarkdown, withFootnotes],
+            remarkPlugins: [
+              withGitHubMarkdown,
+              withFootnotes,
+              [withCmsPreviewAssets, getAsset],
+            ],
             rehypePlugins: [
               [withSyntaxHighlighting, { highlighter }],
               withHeadingIds,
-              // withExtractedTableOfContents,
               withHeadingLinks,
               withNoReferrerLinks,
-              // withLazyLoadingImages,
               withImageCaptions,
             ],
           }),
@@ -122,7 +124,8 @@ export function ResourcePreview(
         if (!wasCanceled) {
           setPost(post)
         }
-      } catch {
+      } catch (error) {
+        console.error(error)
         setPost(null)
       }
 
@@ -132,7 +135,7 @@ export function ResourcePreview(
     }
 
     compileMdx()
-  }, [entry, fieldsMetaData])
+  }, [entry, fieldsMetaData, getAsset])
 
   return (
     <Preview {...props}>
