@@ -19,21 +19,18 @@ uuid: b5ZVIAok97iqiZpjpexFI
 ---
 ## Einführung: Texte und ihre Vorlagen
 
-![Balzac Corrections, Quelle: https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg](images/BALZAC_Corrections2.jpg)
+![Balzac Corrections, Quelle: https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg](images/BALZAC_Corrections2.jpg "Balzac Corrections, Bild: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg")
 
 Beim Anblick der oben abgebildeten Seite mit einem Text von Balzac, in dem handschriftlich Korrekturen eingetragen wurden, stellt sich die Frage: wo ist hier der Text? Ist der Drucktext gemeint, der Schreibprozess oder die umgesetzten Änderungen? Abhängig von der Sichtweise auf den Text und auf die Fragestellungen, die man beantworten möchte, ist grundsätzlich alles möglich. Die **Übersetzung von Fragestellungen in Markup** kann man als **Datenmodellierung** bezeichnen. Man kann zwar einen Text nicht in all seinen Facetten in den Computer übertragen, jedoch drückt das, was man annotiert, ein Modell des Textes aus, das von den zugrundeliegenden Interessen mitbestimmt wird.
 
-Wenn in der Einführung des TEI Markup davon die Rede war, dass man mit Markup das Aussehen eines Textes kodieren kann, ist das nur halb richtig: der Text selbst – zumindest aus Sicht der TEI - ist etwas Abstraktes. Vielmehr sind es die _Vorlagen_ des kodierten Textes, die ein Aussehen haben, die physischen Dokumente. Wie ein Text digital hergestellt wird und wie er in maschinenlesbarer Form abgebildet ist, wird vom Editor bestimmt – und das ist, wie jeder weiß, der z.B. mit der Transkription von Handschriften betraut war, ein Übersetzungsprozess.
+Wenn in der Einführung des TEI Markup davon die Rede war, dass man mit Markup das Aussehen eines Textes kodieren kann, ist das nur halb richtig: der Text selbst – zumindest aus Sicht der TEI - ist etwas Abstraktes. Vielmehr sind es die *Vorlagen* des kodierten Textes, die ein Aussehen haben, die physischen Dokumente. Wie ein Text digital hergestellt wird und wie er in maschinenlesbarer Form abgebildet ist, wird vom Editor bestimmt – und das ist, wie jeder weiß, der z.B. mit der Transkription von Handschriften betraut war, ein Übersetzungsprozess.
 
 Sehr vereinfacht kann man behaupten:
 
-- Ein Fleck auf einem Blatt Papier oder Pergament wird als Graph identifiziert.
-
-- Der Graph wird einem Graphem einer natürlichen Sprache zugewiesen, also einem Lautwert.
-
-- Im Zusammenspiel mit den anderen Graphemen im Kontext wird ein 'Wort' identifiziert.
-
-- Die Bedeutung dieses Wortes wird durch Einbeziehung der anderen Wörter in seiner Umgebung, im Dokument und Weltwissen des Lesers generiert, und im Wechselspiel daraus wiederum wird das Dokument an sich 'verständlich'.
+* Ein Fleck auf einem Blatt Papier oder Pergament wird als Graph identifiziert.
+* Der Graph wird einem Graphem einer natürlichen Sprache zugewiesen, also einem Lautwert.
+* Im Zusammenspiel mit den anderen Graphemen im Kontext wird ein 'Wort' identifiziert.
+* Die Bedeutung dieses Wortes wird durch Einbeziehung der anderen Wörter in seiner Umgebung, im Dokument und Weltwissen des Lesers generiert, und im Wechselspiel daraus wiederum wird das Dokument an sich 'verständlich'.
 
 Diese Kette von interpretativen Vorgängen erlernen menschliche Leser durch Übung – Maschinen hingegen fehlt diese Fähigkeit. Sie können durch statistische Algorithmen inzwischen erstaunliche Erfolge bei der Texterkennung (auch von Handschriften) erzielen, sogar Layout erkennen und daraus einfache Textstrukturen ableiten. Möchte man jedoch das Wissen über einen Text festhalten, muss das zu einem großen Teil manuell geschehen. Die Frage, welche Aspekte von diesem Übersetzungs- und Interpretationsprozess explizit gemacht werden und welche nicht, bezeichnet man als Datenmodellierung: Ist die Form von Buchstaben signifikant? Ist es wichtig für eine bestimmte Forschungsfrage, dass die Datumszeile im Brief rechtsbündig steht? Ist es für die Leserschaft wichtig, dass der Text, den man kodiert, voller Pleonasmen ist? Oder ist es das Ziel, unterschiedliche Versionen eines Textes miteinander vergleichbar zu machen?
 
@@ -43,13 +40,11 @@ Diese Kette von interpretativen Vorgängen erlernen menschliche Leser durch Übu
 
 Die Unterscheidung der Begriffe "Zeichen" und "Glyphen" ist an dieser Stelle von zentraler Bedeutung. Unter Zeichen versteht man die Abstraktion von konkreter, sichtbarer Form, während man konkrete, sichtbare Zeichen, die in unterschiedlichen Schriftarten anders aussehen, als Glyphen bezeichnet.
 
-![Zeichen vs. Glyphen](images/ZeichenVsGlyphen.png)
-
-[Bildquelle: Text Encoding Initiative](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CH.html#D4-42)
+![Zeichen vs. Glyphen](images/ZeichenVsGlyphen.png "Zeichen vs. Glyphen. Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CH.html#D4-42")
 
 Die obenstehende Abbildung zeigt das Zeichen a in unterschiedlichen Schriftarten. Die konkrete und sich unterscheidende Repräsentation des Zeichens ist also ein Glyphe. Eine Zusammenstellung von abstrakten Zeichen, die benötigt werden um Dokumente in einem bestimmten Schriftsystem darzustellen wird als **character set** bezeichnet. Während der Grundbegriff den Zeichensatz in einem Dokument bezeichnet, so wandelt sich der Begriff im Digitalen etwas. Hier wird ein bestimmtes abstraktes Zeichen wird hierbei intern durch einen eindeutigen Code repräsentiert. Deswegen bezeichnet man einen solchen digitalen Zeichnsatz auch als **coded character set**. Ein Beispiel hierfür ist Unicode.
 
-![Unicode](images/Unicode.png)
+![Unicode](images/Unicode.png "Unicode. Bild: ??")
 
 Mehr Informationen zu Unicode: [Unicode Standards](https://www.unicode.org/standard/where/), [Unicode Charts](https://www.unicode.org/charts/)
 
@@ -176,19 +171,19 @@ Die **Zone 1** (der Spielplan) hat folgende Koordinaten: die linke obere Ecke is
 
 Der transkribierte Inhalt von Zone 1 lautet wie folgt:
 
-"_Der Film »Die Wunder des Meeres« läuft ab 14. bis 17. November in: Imperial-Kino, I., Rothgasse 9; Schwarzenberg-Kino, III., Schwarzenbergplatz; Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4; 18. bis 20. November in: Elite-Kino, I., Wollzeile 34: Opern-Kino, I., Friedrichstraße 4; Zentral-Kino, II., Taborstraße 8b: Dreilaufer Kino, IX., Alser- straße; Flieger-Kino, IX., Liechtensteinstraße 36; Wiedner Grand Kino, IV., Mittersteig 15; 21. bis 24. November in: Münstedt- Kino, II., Prater; Joh. Strauß-Kino, IV., Favoritenstraße 12; Raimund-Lichtspiele. XIV., Sechshauserstraße 13; Abbazia-Kino, XV., Neubaugürtel 15; 25. bis 27. November in: Münstedt-Kino, II., Prater; Luna-Kino, XVII , Hauptstraße 117; Michelbeuern- Kino, XVIII., Kreuzgasse 27; Vindobona-Kino, XX., Wallensteinplatz 5—6. ∆_"
+"*Der Film »Die Wunder des Meeres« läuft ab 14. bis 17. November in: Imperial-Kino, I., Rothgasse 9; Schwarzenberg-Kino, III., Schwarzenbergplatz; Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4; 18. bis 20. November in: Elite-Kino, I., Wollzeile 34: Opern-Kino, I., Friedrichstraße 4; Zentral-Kino, II., Taborstraße 8b: Dreilaufer Kino, IX., Alser- straße; Flieger-Kino, IX., Liechtensteinstraße 36; Wiedner Grand Kino, IV., Mittersteig 15; 21. bis 24. November in: Münstedt- Kino, II., Prater; Joh. Strauß-Kino, IV., Favoritenstraße 12; Raimund-Lichtspiele. XIV., Sechshauserstraße 13; Abbazia-Kino, XV., Neubaugürtel 15; 25. bis 27. November in: Münstedt-Kino, II., Prater; Luna-Kino, XVII , Hauptstraße 117; Michelbeuern- Kino, XVIII., Kreuzgasse 27; Vindobona-Kino, XX., Wallensteinplatz 5—6. ∆*"
 
 Die **Zone 2** (der Spielplan) hat folgende Koordinaten: die linke obere Ecke ist 389,1028. Die rechte untere Ecke liegt bei 703,1300.
 
 Der transkribierte Inhalt von Zone 2 lautet wie folgt:
 
-_"Der Filmstar._
+*"Der Filmstar.*
 
-_Du ahnst bei ihm die Schwüle Leise glimmender Gefühle. Steife Hemdbrust — Heben — senken — Augen, die sich stumm verrenken._
+*Du ahnst bei ihm die Schwüle Leise glimmender Gefühle. Steife Hemdbrust — Heben — senken — Augen, die sich stumm verrenken.*
 
 — — — — — —
 
-_Er ist von seltner Bescheidenheit. Doch ihn verpflichtet sein Name, Drum kämpft er mit Beharrlichkeit Um jede Großaufnahme. Friedrich Zelnik."_
+*Er ist von seltner Bescheidenheit. Doch ihn verpflichtet sein Name, Drum kämpft er mit Beharrlichkeit Um jede Großaufnahme. Friedrich Zelnik."*
 
 Lösung:
 
@@ -344,7 +339,7 @@ Bei Streichungen von längeren Passagen, ggf. auch mit strukturellen Unterteilun
 
 **Ergänzungen** werden mit dem \*\*'Addition'-Element umschlossen `<add place="above">…</add>`.
 
-Die Nutzung dieser Auszeichnung setzen voraus, dass in der Edition von historischen Texten Ergänzungen oder Rekonstruktionen von Inhalten als Teil des Quelltextes betrachtet werden. Die Nutzung ist aber immer abhängig von der editorischen Philosophie hinter einem konkreten Projekt. Zudem bezieht sich diese Auszeichnung nur auf Ergänzungen, die im originalen Text vorhanden sind. Für Ergänzungen durch die kodierende Person oder die Editor\*in werden andere Auszeichnungen verwendet (siehe Textkritisches Markup).
+Die Nutzung dieser Auszeichnung setzen voraus, dass in der Edition von historischen Texten Ergänzungen oder Rekonstruktionen von Inhalten als Teil des Quelltextes betrachtet werden. Die Nutzung ist aber immer abhängig von der editorischen Philosophie hinter einem konkreten Projekt. Zudem bezieht sich diese Auszeichnung nur auf Ergänzungen, die im originalen Text vorhanden sind. Für Ergänzungen durch die kodierende Person oder die Editor*in werden andere Auszeichnungen verwendet (siehe Textkritisches Markup).
 
 **Ersetzungen** werden mittels des **'substituton'**-Elements `<subst>` vorgenommen.
 
@@ -389,9 +384,9 @@ Dokumente sind Unikate, und Texte können in vielen Dokumenten überliefert sein
 
 Textkritik ist daher eine Methode um alle Einflüsse der Entstehung und Überlieferung auf die Gestalt der uns vorliegenden, überlieferten Texte herauszuarbeitn. Dies beinhaltet unter anderem folgende Schritte:
 
-- Sammlung aller erhaltener Textzeugen (Heuristik)
-- Vergleich der Textzeugen und Herstellung von Varianten (Kollation)
-- Analyse der Varianten (Recensio) und Herstellung eines Stemmas
+* Sammlung aller erhaltener Textzeugen (Heuristik)
+* Vergleich der Textzeugen und Herstellung von Varianten (Kollation)
+* Analyse der Varianten (Recensio) und Herstellung eines Stemmas
 
 Das Ziel dieser Methode ist die Konstruktion des Archetyps des Textes.
 
@@ -429,7 +424,7 @@ Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-e
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
 
----
+- - -
 
 ![Kapitel 12: Textkritischer Apparat](images/Folie76.png)
 
