@@ -5,9 +5,9 @@ import type * as Unist from 'unist'
 import visit from 'unist-util-visit'
 
 /**
- * Remark plugin which resolves image references for the cms preview.
+ * Remark plugin which resolves asset references for the cms preview.
  *
- * When a resource is not yet saved, image data is held in memory by the cms,
+ * When a resource is not yet saved, asset data is held in memory by the cms,
  * and needs to be resolved via `getAsset`.
  */
 export default function attacher(

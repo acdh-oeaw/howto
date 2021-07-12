@@ -3,13 +3,12 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 import type * as Hast from 'hast'
-import sizeOf from 'image-size'
 import type { Transformer } from 'unified'
 import visit from 'unist-util-visit'
 import type { VFile } from 'vfile'
 
 /**
- * Rehype plugin which copies linked image assets, and adds width and height.
+ * Rehype plugin which copies linked assets.
  */
 export default function attacher(): Transformer {
   return transformer
@@ -18,24 +17,23 @@ export default function attacher(): Transformer {
     visit(tree, 'element', visitor)
 
     function visitor(node: Hast.Element) {
-      if (node.tagName !== 'img') return
+      if (node.tagName !== 'a') return
 
       node.properties = node.properties ?? {}
 
       if (
-        typeof node.properties.src === 'string' &&
-        node.properties.src.length > 0
+        typeof node.properties.href === 'string' &&
+        node.properties.href.length > 0
       ) {
-        if (node.properties.src.startsWith('http://')) return
-        if (node.properties.src.startsWith('https://')) return
-        if (node.properties.src.startsWith('/')) return
+        if (node.properties.href.startsWith('http://')) return
+        if (node.properties.href.startsWith('https://')) return
+        if (node.properties.href.startsWith('/')) return
         if (file.path == null) return
 
-        const filePath = path.join(path.dirname(file.path), node.properties.src)
-        /** When the image does not exist this will throw. */
-        const dimensions = sizeOf(filePath)
-        node.properties.width = dimensions.width
-        node.properties.height = dimensions.height
+        const filePath = path.join(
+          path.dirname(file.path),
+          node.properties.href,
+        )
 
         const buffer = fs.readFileSync(filePath, { encoding: 'binary' })
         const hash = createHash('md4')
@@ -59,16 +57,8 @@ export default function attacher(): Transformer {
           fs.copyFileSync(filePath, fullDestinationPath)
         }
 
-        node.properties.src = outputPath
-        node.properties.loading = 'lazy'
-
-        // TODO: similar to remark-mdx-images we need to construct a MdxJsxFlow node, so we can pass an object here.
-        // https://github.com/remcohaszing/remark-mdx-images/blob/main/src/index.ts
-        // node.properties.src = {
-        //   src: outputPath,
-        //   width: dimensions.width,
-        //   height: dimensions.height,
-        // }
+        node.properties.href = outputPath
+        node.properties.download = true
       }
     }
   }
