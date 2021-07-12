@@ -1,0 +1,165 @@
+---
+title: TEI Customisation
+lang: de
+date: 2021-07-12T07:09:53.800Z
+version: 1.0.0
+authors:
+  - czeitschner-ulrike
+  - schopper-daniel
+editors:
+  - königshofer-elisabeth
+  - wiencek-florian
+tags:
+  - xml
+  - tei
+abstract: No abstract provided.
+licence: ccby-4.0
+toc: true
+uuid: BRXyYRvhzMEJDguy-r58Z
+---
+## Einführung: TEI Customization
+
+In diesem Abschnitt wollen wir folgende Themen behandeln:
+
+- Datenmodellierung
+
+- TEI Schema
+
+- TEI Klassen
+
+- TEI-Customization mit Roma
+
+Selten benötigt man in einem Projekt alle von der TEI zur Verfügung gestellten Komponenten. Daher empfiehlt es sich, ein sogenanntes _Schema_ den eigenen Bedürfnissen anzupassen. Das _Schema_ bestimmt, welche verwendeten Elemente und Attribute in einem Dokument, das bearbeitet wird, als valid oder gültig gelten. Hier geht es sowohl um den Aufbau eines Textdokuments, als auch dessen inhaltliche Auszeichnung. Dies erleichtert zum einen die Annotationsarbeit, indem der Editor nur die für ein Projekt relevanten Elemente und Attribute einblendet. Zum anderen dokumentiert ein angepasstes Schema die eigene Annotationsstrategie und macht sie für Dritte nachvollziehbar. Die TEI bzw. das TEI Consortium bietet neben dem Schema _'All'_ bereits einige an unterschiedliche Bedürfnisse angepasste und reduzierte Versionen an.
+
+### Grundlagen: Module und Schemata
+
+Unter einem Schema versteht man die valide Anpassung von TEI Komponenten an den jeweiligen Text und Kontext, für den sie verwendet werden sollen. Einige dieser Schemata werden vom TEI Consortium zur Verfügung gestellt und setzen sich aus verschiedenen _Modulen_ zusammen. Diese _Module_ können genutzt werden, um bestimmte Textkomponenten auszuzeichnen. Werden sie kombiniert, so entsteht ein Schema, nach dem die Auszeichnung in TEI valid ist. Die _Module_ enthalten verschiedenste Elemente und Attribute, die für den jeweiligen Zweck sinnvoll sind. Hier finden Sie eine Liste der [Module](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STMA/), hier seien nur ein paar Beispiele genannt:
+
+- **header**: Die hier enthaltenen Elemente sind Ihnen teilweise schon bekannt, wenn Sie sich bereits mit der Komponenten "header", die Teil einer TEI Auszeichnung ist, beschäftigt haben.
+
+- **namesdates**: Dieses Modul, "Names, Dates, People, and Places" enthält, wie der Name schon sagt, Elemente und Attribute um Informationen zu Personen, Zeitpunkten und Orten auszuzeichnen. Beispielsweise gibt es das Element `<name>`, das durch die Attribute `<role="actor">`und `<type="person">` erweitert werden kann, um in einem Text einen Schauspieler auszuzeichnen.
+
+- **verse**: Dieses Modul bietet Elemente und Attribute um Texte in Versform auszuzeichnen, zum Beispiel durch Tags für Strophen `<lg type="stanza">`, Zeilen `<l>`, oder die Auszeichnung eines Reimschemas.
+
+Das Schema _'All'_ ist unmodifiziert und enthält alle zu diesem Zeitpunkt verfügbaren TEI Module. Im Gegensatz dazu bietet das Schema _'Bare'_ das absolute Minimum, das Sie für eine Annotation benötigen. Da aber selten alle verfügbaren Komponenten benötigt werden, gibt es bereits einige reduziertere Schema, wie z.B. _'TEI Lite'_, _'Corpus'_, _'Drama'_ oder _'Speech'_. Wie die Namen schon verraten, wurden diese _Schemata_ zur leichteren Annotation bestimmter Texte oder von bestimmten Textteilen zusammengestellt. Das TEI Consortium stellt bestimmte [Schemata](https://tei-c.org/guidelines/customization/) zur Verfügung, andere werden von der Community verwaltet. Hier einige Beispiele:
+
+- **TEI Lite**: Dieses Schema bietet generische Komponenten, die für "90% of the needs of 90% of the TEI user community" die meisten Zwecke erfüllen. Dieses Schema kann schnell erlernt werden, und wird sehr häufig eingesetzt.
+
+- **Corpus**: Dieses Schema eignet sich für die Auszeichnung von unterschiedlichsten Sprachcorpora. Man findet hier unter anderem Komponenten, mit denen man kontextuelle Informationen,aber auch linguistische Informationen auszeichnen kann.
+
+- **Drama**: Dieses Schema eignet sich für die Auszeichnung performativer Texte, zum Beispiel Theaterstücke oder Filmskripte. Komponenten, die man hier findet, sind zum Beispiel `<castlist>`, um die Figuren auszuzeichen, Regieanweisungen, aber auch `<epilogue>`und `<prologue>` als spezifische Teile des auszuzeichnenden Textes.
+
+- **Speech**: Dieses Schema eignet sich zur Auszeichnung transkibierter gesprochener Texte. Allerdings ist es möglich, dass für detailiertere Diskursanalysen oder phonologische Untersuchungen das Schema erweitert werden sollte, damit es sinnvoll verwendet werden kann.
+
+Darüber hinaus besteht die Möglichkeit, selbst eine Auswahl aus den zahlreichen Modulen zu treffen, Adaptierungen an bestehenden Elementen und Attributen vorzunehmen sowie eigene Komponenten hinzuzufügen und entsprechend zu dokumentieren. Mit [TEI Roma](http://www.tei-c.org/Roma/) steht ein webbasiertes Werkzeug bereit, das Sie dabei unterstützt. Sie können ein sehr schlankes Schema durch die Elemente, die Sie benötigen, erweitern, aber auch das größtmögliche Schema reduzieren und Komponenten entfernen, die Sie nicht benötigen. Genauso
+
+Sie können ein _Schema_ mit folgenden Grundaktionen anpassen, sollten aber immer darauf achten, dass Ihr _Schema_ nach TEI_all gültig bleibt:
+
+- Elemente entfernen
+- Elemente umbenennen
+- Die sogenannten "content models" von Elementen und Klassen verändern
+- Attribute und Werte für Elemente und Klassen verändern
+- Klassenzugehörigkeit modifizieren
+- neue Elemente (zu bestehenden Klassen) hinzufügen
+
+#### Praktische Anwendung
+
+Sehen Sie sich bitte das folgende Beispiel für ein Schema an, das zur Validierung der Annotation des Beispieltextes benutzt wurde:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+```
+
+Im oben gezeigten Beispiel sehen Sie die ersten Zeilen der Auszeichnung unserer Beispielzeitschrift. Neben der Angabe der Kodierung der genutzten Zeichen `UTF-8`, finden Sie hier auch die Angabe zum verwendeten Schema. Die Auszeichnung mit Referenz-URI, `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"` zeigt, dass diese Auszeichnung gegen das `relaxng`- Schema validiert wird. Das bedeutet, dass alle Elemente, Klassen und Attribute, die in diesem Schema verfügbar sind, als gültig akzeptiert werden. Entsprechende Referenzen finden Sie auf der TEI-Website, sofern Sie sich auf ein bereits vorhandenes Schema beziehen.
+
+##### Übung 1a: Schema erkennen
+
+Sie möchten eine Schema nutzen, um Ihre Auszeichnung von _Friedrich Zelniks_ Gedicht **Der Filmstar** zu validieren. Wie können Sie vorgehen?
+
+```xml
+<div xml:id="Zelnik1" type="poem">
+ <head xml:lang="de"> Der Filmstar </head>
+  <lg n="1">
+   <l>Du ahnst bei ihm die Schwüle</l>
+   <l>Leise glimmender Gefühle</l>
+   <l>Steife Hemdbrust -</l>
+   <l>Heben - senken -</l>
+   <l>Augen, die sich stumm verrenken.</l>
+  </lg>
+  <lg n="2">
+   <l>Er ist von seltner Bescheidenheit,</l>
+   <l>Doch ihn verpflichtet sein Name,</l>
+   <l>Drum kämpft er mit Beharrlichkeit</l>
+   <l>Um jede Großaufnahme.</l>
+  </lg>
+</div>
+```
+
+a) Ich nutze das Schema _'All'_, da ich noch nicht sicher bin, was ich auszeichnen möchte und mir alle Freiheiten offen halten möchte. b) Ich nutze das Schema _'Lite'_, da ich die Reimstruktur auszeichnen möchte und das Schema hierfür ausreichend ist. c) Ich stelle sicher, dass das Modul _verse_ Teil des Schemas ist, das ich verwende. d) Ich arbeite mit dem Schema, dass mir eine erfahrene Kollegin empfiehlt. Auf Ihr Wissen kann ich vertrauen.
+
+_#==== Lösung - in finaler Version entfernen_
+
+b) und c)
+
+_====#_
+
+##### Übung 1b: Schema erkennen
+
+Welche der folgenden Möglichkeiten haben Sie bei der Anpassung eines Schemas an Ihre Bedürfnisse NICHT?
+
+a) Elemente entfernen b) Elemente umbenennen c) Die sogenannten "content models" von Elementen und Klassen verändern d) Attribute und Werte für Elemente und Klassen verändern e) Elemente alphabetisch sortiert anzeigen f) Klassenzugehörigkeit modifizieren g) neue Elemente (zu bestehenden Klassen) hinzufügen
+
+_#==== Lösung - in finaler Version entfernen_
+
+e) Kommentar: Die Möglichkeit der alphabetischen Sortierung ist für die Definition dessen, worauf Elemente, Klassen, Attribute im Text verweisen, irrelevant.
+
+_====#_
+
+Die Auszeichnung des Schemas finden Sie unter: `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"`.
+
+/_ ![TEI Schema?](images/Folie89.png) _/
+
+/_ Verweis [I](https://tei-c.org/guidelines/customization/) _/
+
+/_ ![ODD?](images/Folie90.png) _/
+
+/_ ![Vereinfachung](images/Folie91.png) _/
+
+/_ ![TEI Klassen](images/Folie92.png) _/
+
+/_ ![ODD-Anpassung (1)](images/Folie93.png) _/
+
+/_ ![ODD-Anpassung (2)](images/Folie94.png) _/
+
+/_ ![ODD-Anpassung (3)](images/Folie95.png) _/
+
+/_ ![TEI Roma](images/Folie96.png) _/
+
+/_ Verweis [I](https://roma2.tei-c.org/) _/
+
+### Weiterführende Informationen
+
+Text Encoding Initiative. "P5: Guidelines for Electronic Text Encoding and Interchange," https://www.tei-c.org/release/doc/tei-p5-doc/en/html/index.html.
+
+———. "Using the TEI," https://tei-c.org/release/doc/tei-p5-doc/en/html/USE.html.
+
+———. "TEI Modules," https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STMA.
+
+———. "Roma: generating customizations for the TEI," http://www.tei-c.org/Roma/.
+
+———. "Lite," https://tei-c.org/guidelines/customization/Lite/.
+
+———. "Names, Dates, People, and Places," https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ND.html.
+
+———. "Transcription of Speech," https://www.tei-c.org/release/doc/tei-p5-doc/it/html/TS.html.
+
+———. "Performance Texts," https://www.tei-c.org/release/doc/tei-p5-doc/en/html/DR.html.
+
+———. "Verse," https://www.tei-c.org/release/doc/tei-p5-doc/en/html/VE.html.
+
+———. "The TEI Header," https://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html.
+
+Dumont, Stefan. 2017. "TEI-Customization," https://www.i-d-e.de/wp-content/uploads/2017/11/IDE_2017_TEI-Customization.pdf.
