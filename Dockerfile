@@ -15,11 +15,12 @@ FROM base AS build
 
 RUN yarn install --frozen-lockfile --silent
 
-COPY --chown=node:node tsconfig.json next-env.d.ts next.config.js ./
+COPY --chown=node:node tsconfig.json app-env.d.ts next-env.d.ts next.config.js ./
 COPY --chown=node:node scripts ./scripts
 COPY --chown=node:node config ./config
 COPY --chown=node:node tailwind.config.js ./
 COPY --chown=node:node public ./public
+COPY --chown=node:node patches ./patches
 COPY --chown=node:node src ./src
 COPY --chown=node:node content ./content
 # currently the .git folder is used to retrieve last-updated timestamps
