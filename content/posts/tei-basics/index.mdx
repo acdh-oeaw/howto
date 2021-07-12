@@ -1,0 +1,561 @@
+---
+title: TEI Basics
+lang: de
+date: 2021-07-12T07:08:23.146Z
+version: 1.0.0
+authors:
+  - czeitschner-ulrike
+  - schopper-daniel
+editors:
+  - königshofer-elisabeth
+  - wiencek-florian
+tags:
+  - xml
+  - tei
+abstract: No abstract provided.
+licence: ccby-4.0
+toc: true
+uuid: uVi2FPFCIHCIVGr8Z36nP
+---
+## TEI Makrostruktur
+
+### Grundlagen
+
+Bevor wir uns an die Arbeit mit dem spezifischen Beispiel machen, gilt es den Aufbau eines validen TEI-Dokuments zu verstehen. Der erste Schritt ist hierbei das Verständnis der TEI-Makrostruktur, die die übergeordneten Strukturen eines TEI-konformen Dokuments bzw. eines TEI-Korpus beschreibt. Diese Struktur umfasst und gliedert sowohl die Metadaten über das Dokument wie auch die annotierten Inhalte.
+
+### Praktische Anwendung
+
+Ein **TEI-konformes Dokument** wird vom TEI-Element `<TEI>` umschlossen. Dass Attribut **'XML Namespace'** `xmlns`, in dem es auf eine eindeutige Definition der Elemente in einem XML-Schema referenziert wird, die innerhalb des spezifischen Dokuments verwendet wird.
+
+Eine TEI-Datei gliedert sich grundsätzlich in den **'TEI-Header'** `<teiHeader>` **(_Sprungmarke zu TEI Header Kapitel_)**, der die Metadaten zum elektronischen Dokument enthält, sowie den annotierten **Text**, der vom Element `<text>` umschlossen wird.
+
+```xml
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader>
+		<fileDesc>
+			<titleStmt> … </titleStmt>
+			<sourceDesc> … </sourceDesc>
+			<publicationStmt> … </publicationStmt>
+		</fileDesc>
+	</teiHeader>
+	<text>
+		<body>
+			<p>Ein Absatz.</p>
+		</body>
+	</text>
+</TEI>
+```
+
+Ein Text kann entweder 'unitary' - also ein organisches Ganzes – oder 'composite' sein – also aus mehreren voneinander unabhängigen Komponenten bestehend. Ein Text kann optional einen **'front matter'** `<front>` oder auf Deutsch **Titelei** enthalten, die beispielsweise die Inhalte der **Titelseite** `<titlePage>` enthalten kann, wie auch die Position einer automatisch generierten Gliederung wie einem Index, einem Inhaltsverzeichnis o.ä.. Für Letzteres kommt das Element **'text division'** `<divGen>` mit einer der folgenden type-Attribute zum Einsatz:
+
+- `index`: hier soll ein automatisch generierter Index eingesetzt werden.
+- `toc`: Inhaltsverzeichnis
+- `figlist`: Abbildungsliste
+- `tablist`: Tabellenliste
+
+Der erforderliche **'text body'** `<body>` umschließt den Hauptext eines einzelnen 'unitary' Dokuments.
+
+Das optionale Element **'back matter'** `<back>` enthält den Anhangteil eines Dokuments, und kann z.B. **Index-Einträge** `<index>` enthalten.
+
+Im folgenden Code-Beispiel sieht man die Makrostruktur eines 'unitary'-Textes, z.B. eine Monografie oder ein Drama, das eine Titelseite und ein Inhaltsverzeichnis enthält, und zudem einen Index am Ende des Buches.
+
+```xml
+…
+<text>
+	<front>
+		<titlePage>…</titlePage>
+		<divGen type="toc"/>
+	</front>
+	<body>
+		<p>Mein erster Absatz.</p>
+	</body>
+	<back>
+		<index>…</index>
+	</back>
+</text>
+…
+```
+
+Wurde im obenstehenden Beispiel ein 'unitary'-Text beschrieben, so zeigt das untenstehende Beispiel, wie man einen 'composite'-Text annotiert, beispielsweise einen Jahrgang einer Zeitschrift mit unterschiedlichen Ausgaben, wie es bei der Zeitschrift aus unserem Beispiel der Fall sein könnte. Hierfür kommt das `<group>`-Element zum Einsatz, das eine Reihe an zusammengehörigen Texten `<text>` beinhaltet.
+
+Man sieht in diesem Beispiel das jeder Text in einer Gruppe mit dem Attribut `xml:id` eine im Gesamtdokument einzigartige Identifikation hat. Wichtig ist, dass diese ID immer mit einem Buchstaben oder einem Unterstrich beginnen muss und ansonsten nur Buchstaben, Zahlen, Bindestriche, Unterstriche, oder Punkte enthalten darf, um als valides XML zu gelten. [Mehr Informationen zu xml:id](https://teibyexample.org/tutorials/TBED01v00.htm?target=globalattributes#xmlid).
+
+```xml
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+	…
+	<text>
+		<front>
+			<!-- Titelei für den gesamten Jahrgang -->
+		</front>
+		<group>
+			<text xml:id="fw1920-01">
+				<!-- Ausgabe 1 -->
+			<text>
+			<text xml:id="fw1920-02">
+				<!-- Ausgabe 2 -->
+			<text>
+		</group>
+	</text>
+</TEI>
+```
+
+---
+
+**Merke:** Die Grenze zwischen 'unitary'- und 'composite'-Text kann fließend sein. Eine Essay-Sammlung ist ein möglicher Grenzfall, bei dem je nach Fragestellung an den Text als eine Einheit oder aber als eine Reihe von in sich geschlossenen Elementen betrachtet werden kann. Hier muss die Person, die die Texte kodiert, entscheiden, ob sie die Texte als 'unitary' oder 'composite' kodieren möchte.
+
+_Beispiel Fragestellungen für unitary oder composite ergänzen_
+
+---
+
+Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metadaten zu einem einzelnen Dokument können zun einem **Korpus** `<teiCorpus>` mit einem eigenen Header und den zugehörigen Korpus-Metadaten zusammengefügt werden. Jedes TEI-Element könnte hierbei beispielsweise eine Sammlung an kodierten Texten, eine Version eines Textes, oder Samples eines Sprachkorpus u.a. enthalten.
+
+```xml
+<teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
+	<teiHeader>
+			<!-- Metadaten für das Corpus-->
+	</teiHeader>
+	<TEI xml:id="t001">
+		<teiHeader>
+			<!-- Metadaten für Text 1 -->
+		</teiHeader>
+		<text>
+			<!-- Text 1 -->
+		</text>
+	</TEI>
+	<TEI xml:id="t002">
+		…
+	</TEI>
+	<TEI xml:id="t003">
+		…
+	</TEI>
+</teiCorpus>
+```
+
+#### Übung
+
+**Welche Elemente sind für eine valide Makrostruktur eines TEI-Dokuments mindestens notwendig?** (mehrere Antworten möglich)
+
+[x] `<TEI>`
+
+[ ] `<group>`
+
+[x] `<teiHeader>`
+
+[x] `<text>`
+
+[x] `<body>`
+
+**Feedback:** Ein valides TEI-Dokument muss vom Tag `<TEI>` umschlossen sein. Ebenso benötigt jeder TEI-konforme Text ein Set an Meta-Beschreibungen, die im `<teiHeader>` angegeben werden, sowie den annotierten Text `<text>`mit einem Text-Body `<body>`. Die Gruppierung von Texten oder aber die Eingliederung in einem Korpus sind optional.
+
+## TEI Header
+
+### Grundlagen
+
+Im TEI-Header werden die Metadaten _über_ ein TEI-Dokument erfasst. Der Header ist vom Element `<teiHeader>` umschlossen, die Metadaten über das Dokument selber werden innerhalb des Elements `<fileDesc>` angegeben, was das erste Element innerhalb des Headers darstellt. Diese **'file description'** enthält alle Informationen zum elektronischen Dokument (Name des elektronischen Dokuments, Autor etc.).
+
+Die Metadaten sollten folgende Informationen enthalten:
+
+- **Identifikation** („Was ist das?“) `<titleStmt>`
+- **Angabe der Quelle** („Woraus wurde es abgeleitet?“) `<sourceDesc>`
+- **Kodierung** („Wie wurde der Text kodiert?“) `<encodingDesc>`
+- **Veröffentlichung** („Wer gibt es unter welchen Bedingungen für wen frei?“) `<publicationStmt>`
+- **Provenienz** („Wer hat was wann damit gemacht?“) `<revisionDesc>`
+
+### Praktische Anwendung
+
+Im Folgenden ist eine einfache Grundstruktur eines TEI Dokuments abgebildet, auf die wir in unseren Übungen aufbauen werden.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Title</title>
+         </titleStmt>
+         <publicationStmt>
+            <p>Publication Information</p>
+         </publicationStmt>
+         <sourceDesc>
+            <p>Information about the source</p>
+         </sourceDesc>
+      </fileDesc>
+  </teiHeader>
+  <text>
+      <body>
+         <p>Some text here.</p>
+      </body>
+  </text>
+</TEI>
+```
+
+Der TEI-Header besteht in unserem Fall aus der **'file description'**, die alle Informationen zum elektronischen Dokument enthält (Name des elektronischen Dokuments, Autor etc.). Nachdem wir in unserem Beispiel den Text nicht selbst verfassen, sondern einen Ausschnitt aus einer historischen Zeitschrift kodieren, ist darin auch eine Quellenangabe **'source description'** `<sourceDesc>` enthalten.
+
+Im Folgenden gehen wir auf die wichtigsten Metadaten-Informationen ein, die auch für unser Beispiel der "Filmwelt" relevant sind. In einer Übung werden dann die Informationen der zwei Seiten aus der "Filmwelt" entsprechend kodiert.
+
+#### Identifikation:
+
+Das **'title statement'** `<titleStmt>` gruppiert Informationen im Hinblick auf den Titel eines elektronischen Dokuments sowie die Verantwortlichen für den Inhalt.
+
+Hier ein Beispiel:
+
+```xml
+<titleStmt>
+	<title type="main">Titel des elektronischen Dokuments</title>
+	<title type="sub">Untertitel des elektronischen Dokuments</title>
+	<respStmt>
+		<resp>TEI Kodierung</resp>
+		<persName xml:id="uc">Vorname Nachname</persName>
+	</respStmt>
+</titleStmt>
+```
+
+Das `<title>`-Element enhält den Titel des elektronischen Dokuments. Mit dem Attribut `@type` lassen sich unterschiedliche Arten von Titeln klassifizieren, beispielsweise:
+
+- **'main'**: Haupt-Titel
+- **'sub'**: Untertitel
+- **'alt'**: Alternativer Titel unter dem das Werk ebenso bekannt ist, oft in einer anderen Sprache
+- **'short'**: Kurzform des Titels
+- **'desc'**: deskriptive Paraphrasierung der Arbeit die als Titel fungiert.
+
+In der Praxis ist eine Klassifizierung der einzelnen Titelteile nicht unbedingt notwendig. Der komplette Titel mit Untertitel könnte auch in einem einzigen `<title>` Element geschrieben werden.
+
+Ergänzend zum Titel bietet das **'responsibility statement'** `<respStmt>` die Möglichkeit, die Verantwortlichkeiten für den intellektuellen Inhalt eines Textes, einer Edition oder dergleichen anzugeben. In diesem Beispiel ist es die Tätigkeit der "TEI Kodierung". Die Verantwortlichkeit wird im Element **'responsibility'** `<resp>` innerhalb des Statements benannt, die Person im Element **'personal name'** `<persName>`.
+
+##### Übung 1
+
+In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument des Ausschnitts der Zeitschrift "Filmwelt" gemacht werden. Der Startpunkt ist das TEI Grundgerüst ([uebung_1.xml](downloads/uebung_1.xml)). Vervollständigen Sie dort bitte den TEI-Header um folgende Angaben:
+
+1. Geben Sie einen vollständigen Titel für das TEI-Dokument an: ersetzen Sie das `<title>`-Element der Vorlage durch:
+
+- **Titel des elektronische Dokuments:** Die Filmwelt - ein Ausschnitt.
+- **Untertitel des elektronischen Dokuments:** Digitale Version.
+
+_#==== Lösung - in finaler Version entfernen_
+
+```xml
+<title type="main">Die Filmwelt - ein Ausschnitt</title>
+<title type="sub">Digitale Version</title>
+```
+
+_====#_
+
+2. Ergänzen Sie bitte im Element **'title statement'** das **'statement of responsibility'** mit den Elementen **'responsibility'** und **'personal name'** und geben Sie sich als Urheber der TEI-Kodierung an:
+
+_#==== Lösung - in finaler Version entfernen_
+
+```xml
+<respStmt>
+  <resp>TEI Kodierung</resp>
+  <persName>Vorname Nachname</persName>
+</respStmt>
+```
+
+_====#_
+
+#### Angabe der Quelle
+
+Die **'source description'** `<sourceDesc>` beschreibt die Quelle, aus der der elektronische Text stammt oder aus der dieser generiert wurde. In der Regel ist dies bei einem digitalisierten Text eine kann eine bibliographische Quelle, die in strukturierter Form beispielsweise mit dem Element **'structured bibliographic citation'** `<biblStruct>` angegeben werden kann, oder loser strukturiert mit dem Element **'bibliographic citation'** `<bibl>`. Für einen digital erstellten Text ohne eine Quelle kann man einen Absatz wie zum Beispiel "Digitales Originaldokument" innerhalb eines Absatzes in der 'source description' einfügen.
+
+Hier ein Beispiel für ein "born digital" Dokument:
+
+```xml
+<sourceDesc>
+ <p>Digitales Originaldokument</p>
+</sourceDesc>
+```
+
+Da wir es in unserem Fallbeispiel allerdings mit einer physischen Quelle zu tun haben, müssen wir in diesem Fall die Quelle nennen. Dies kann auf unterschiedliche Weisen geschehen.
+
+Die minimalste Form ist die Literaturangabe in einem Zitationsformat innerhalb des Elements **'bibliographic citation'**.
+
+```xml
+<bibl
+>Gold, Matthew K., ed. 2012. Debates in the Digital Humanities. Minneapolis, London: University of Minnesota Press.</bibl>
+```
+
+Man kann diese Literaturangabe aber auch weiter auszeichnen, indem man die einzelne Teile der Literaturangabe semantisch benennt. Hierbei werden die Tags beispielsweise innerhalb der Satzstruktur der Literaturangabe verwendet.
+
+```xml
+<bibl><editor>Matthew K. Gold</editor>,ed., <date>2012</date>. <title
+  >Debates in the Digital Humanities</title>. <pubPlace
+  >Minneapolis</pubPlace>, <pubPlace>London</pubPlace>: <publisher
+  >University of Minnesota Press</publisher>.</bibl>
+```
+
+Über das Element **'structured bibliographic citation'** `<biblStruct>` kann die Angabe noch weiter semantisch strukturiert werden.
+
+Das obige Beispiel könnte in einer möglichen strukturierter Form wie folgt aussehen:
+
+```xml
+<biblStruct>
+  <monogr>
+    <editor>Matthew K. Gold</editor>
+    <title>Debates in the Digital Humanities</title>
+    <imprint>
+      <publisher>University of Minnesota Press</publisher>
+      <pubPlace>Minneapolis and London</pubPlace>
+      <date>2012</date>
+    </imprint>
+  </monogr>
+</biblStruct>
+```
+
+Hierbei wird innerhalb der **'structured bibliographic citation'** ein Buch oder eine Zeitschrift mit dem Element **'monographic level'** `<monogr>` umschlossen und die Information so gruppiert. Innerhalb dessen können Autoren mit dem `<author>` sowie Editoren mit dem Element `<editor>` Editoren eines Buches oder einer Zeitschrift benannt werden.
+
+`<imprint>` gruppiert vorhandene Informationen zur Publikation und Distribution des Werks.
+
+Der **'scope of bibliographic reference'** `<biblScope>`definiert auf welchen Teil einer Arbeit sich die Referenz bezieht. Dies können z.B. bestimmte Seiten sein, die mit dem Attribut `unit="page"`angegeben werden, oder ein bestimmter Jahrgang einer Zeitschrift `unit="volume"`.
+
+##### Übung 2
+
+In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer strukturierten Bibliographie darstellen. Ersetzen Sie bitte den Inhalt der **'source description'** im Quellcode durch eine detaillierte bibliographische Angabe mit Hilfe der Elemente **'structured bibliographic citation'** `<biblStruct>` und **'monographic level'** `<monogr>`. Im Folgenden finden Sie die bibliographische Information unseres Zeitschriften-Auszugs, der in dieser Übung zum zuvor bearbeiteten TEI-Code ergänzt werden soll ([uebung_2.xml](downloads/uebung_2.xml)).
+
+**Bibliographische Informationen:** Die Filmwelt Illustrierte Kino Revue Herausgeber Felix Brasch Zeitungsverlag Universale Ges. m. b. H. Wien, VII., Hermanngasse 5 Druckerei L. Beck & Sohn Nr. 31, 1924 Seite 11-12
+
+**Verwenden Sie hierfür folgende Elemente / Attribute / Werte:**
+
+1. Geben Sie Haupt- und Untertitel der Zeitschrift an `<title>` + @type main / sub
+
+2. Benennen Sie den Herausgeber der Zeitschrift `<editor>`
+
+3. Ergänzen Sie im Impressum den Verlag inkl. seiner Adresse im Element `<imprint>`. Der **Verlag** `<publisher>`enthält hierbei den **Namen der Firma / Organisation** `<orgName>`, samt ihrer **Adresse** `<address>` bestehend aus einer oder mehrerer **Adresszeilen** `<addrLine>`.
+
+4. Weisen Sie die Fa. 'L. Beck & Sohn' in einem 'responsibility statement' als Druckerei aus unter Verwendung von `<resp>`, `<orgName>`
+
+5. Geben Sie Wien als Publikationsort und das Erscheinungsjahr an `<pubPlace>`, `<date>`
+
+6. Kodieren Sie, dass der gewählte Textausschnitt aus der Nr. 31, 1924, Seite 11-12 stammt 'scope of bibliographic reference' `<biblScope>` + @type volume / page
+
+_#==== Lösung - in finaler Version entfernen_
+
+Der vollständig annotierte TEI-Header sollte in etwa so aussehen:
+
+```xml
+<teiHeader>
+  <fileDesc>
+    <titleStmt>
+      <title type="main">Die Filmwelt - ein Ausschnitt</title>
+      <title type="sub">Digitale Version</title>
+      <respStmt>
+        <resp>TEI Kodierung</resp>
+        <persName>Vorname Nachname</persName>
+      </respStmt>
+    </titleStmt>
+    <publicationStmt>
+      <p>Hier könnte man genauere Angaben zum Herausgeber/Verlag/Institut,
+      zu Erscheinungsort und -datum des digitalen Texts ergänzen.</p>
+    </publicationStmt>
+    <sourceDesc>
+      <biblStruct>
+        <monogr>
+          <title type="main">Die Filmwelt</title>
+          <title type="sub">Illustrierte Kino Revue</title>
+          <editor>Felix Brasch</editor>
+          <imprint>
+            <publisher>
+              <orgName>Zeitungsverlag Universale Ges. m. b. H.</orgName>
+              <address>
+                <addrLine>Wien, VII., Hermanngasse 5</addrLine>
+              </address>
+            </publisher>
+            <respStmt>
+              <resp>Druckerei</resp>
+              <orgName>L. Beck & Sohn</orgName>
+            </respStmt>
+            <pubPlace>Wien</pubPlace>
+            <date>1924</date>
+          </imprint>
+          <biblScope unit="volume">31, 1924</biblScope>
+          <biblScope unit="page">11-12</biblScope>
+        </monogr>
+      </biblStruct>
+    </sourceDesc>
+  </fileDesc>
+</teiHeader>
+```
+
+_====#_
+
+#### Kodierung
+
+Der bei dieser Übung entstandene TEI-Header umfasst nur einige wesentliche Elemente, er kann im Bedarfsfall weitaus detaillierter ausfallen. Ergänzend kann dieser beispielhaft auch einige Angaben zur Annotation **'encoding description'** `<encodingDesc>` enthalten, die den Zusammenhang der physischen Ressource und des elektronischen Dokuments beschreibt:
+
+```xml
+<encodingDesc>
+  <editorialDecl>
+    <p>Die Annotation folgt den Richtlinien der TEI/P5.</p>
+    <hyphenation>
+      <p>Zeilenenden sind mit dem Element 'lb' markiert. Trennungsstriche
+        wurden entfernt und sind durch das Attribut @break mit dem Wert
+        'no' repräsentiert.</p>
+    </hyphenation>
+    <normalization>
+      <p>Typographie und Orthographie wurden weitestgehend beibehalten.</p>
+    </normalization>
+    <correction>
+      <p>Vorgenommene Korrekturen wurden als solche annotiert.</p>
+    </correction>
+    <interpretation>
+      <p>Personennamen historischer, religiöser, fiktionaler Figuren,
+        Ortsnamen, Organisationsbezeichnungen, Datumsangaben</p>
+    </interpretation>
+  </editorialDecl>
+</encodingDesc>
+```
+
+Hier einige Beispiele für mögliche Angaben, die innerhalb der 'encoding description':
+
+- **editorische Angaben:** beschreibt die angewandten Richtlinien und Prinzipien für die Annotation `<editorialDecl>`.
+
+  Wie in obenstehendem Beispiel können u.a. der Umgang mit Silbentrennung `<hyphenation>`, Normalisierung und Regulierung der originalen Quelle `<normalization>`, Korrekturen `<correction>` oder das Ausmaß an analytischer und interpretativer Information, die dem Text in der Transkription hinzugefügt wurde `<interpretation>`.
+
+- **Projektbeschreibung:** beschreibt das Ziel für das die Quelle kodiert wurde `<projectDesc>`
+- **Tagverwendung:** gibt informationen zum Tagging, das innerhalb des Dokuments angewendet wird `<tagsDecl>`
+- **Auswahlverfahren:** Fließtext, der das angewandte Samplingverfahren für einen Korpus oder eine Sammlung an Texten beschreibt `<samplingDecl>`
+
+##### Übung:
+
+Welche Aspekte eines Dokuments werden in der Encoding Description eines Dokuments erfasst? (mehrere Antworten möglich)
+
+[x] editorische Angaben
+
+[x] Informationen über Glyphen und Beschreibung von nicht-standard Zeichenformaten, die im Quelltext verwendet werden
+
+[x] Projektbeschreibung
+
+[x] Tagverwendung
+
+**Feedback:** Alle Antworten sind in diesem Falle richtig. Neben den im obenstehenden Text beschriebenen Angaben kann die Encoding-Description in der Character-Declaration `<charDecl>` auch Informationen zu nicht-standard Zeichenformaten und Glyphen enthalten.
+
+#### Veröffentlichung
+
+Das **'publication statement'** `<publicationStmt>` gruppiert Informationen zur Publikation oder Distribution des elektronischen Texts.
+
+Dies reicht vom unveröffentlichten Arbeitsdokument...
+
+```xml
+<publicationStmt>
+	<p>Unveröffentlichtes Arbeitsdokument.</p>
+ </publicationStmt>
+```
+
+... bis hin zur unter einer Creative Commons Lizenz veröffentlichten authorisierten wissenschaftlichen Quelle.
+
+```xml
+<publicationStmt>
+  <publisher>
+  	<orgName>Austrian Centre for Digital Humanities</orgName>
+  	<email>acdh@oeaw.ac.at</email>
+    <idno type="VIAF">6515148451584915970000</idno>
+  </publisher>
+  <pubPlace>Vienna</pubPlace>
+  <date>2017</date>
+  <availability>
+    <licence target="https://creativecommons.org/licenses/by-sa/4.0/">
+      <p>Veröffentlicht unter CC-BY-SA 4.0</p>
+    </licence>
+  </availability>
+</publicationStmt>
+```
+
+Wie am ersten Beispiel ersichtlich reicht ein einfacher Absatz um eine Publikation zu beschreiben, oder aber man verwendet eine deutlich komplexere semantische Schreibweise. Einige Elemente wie `<publisher>`, `<orgName>`, `<pubPlace>` oder `<date>` im obigen Beispiel sind bereits bekannt.
+
+Das Element **'electronic mail address'** enthält eine Emailadresse. das Element **'identifier'** `<idno>`enthält einen Form der standardisierten Indentifikation eines Objects - in unserem Fall eines bibliografischen Objekts. Das Attribut `type` gibt die Art der Identifikation an. Diese kann beispielsweise folgende sein:
+
+- **ISBN**: "International Standard Book Number" (ISBN-Nummer), die Bücher international eindeutig identifiziert.
+- **ISSN:** "International Standard Serial Number" (ISSN-Nummer), eine international einheitliche Indentifikationsnummer für serielle Publikationen, wie z.B. Zeitschriften.
+- **DOI:** "Digital Object Identifier", eine einmalige Zeichenfolge (aus Nummern und Buchstaben) die ein elektronisches Dokument identifiziert.
+- **URI:** Uniform Resource Identifier, eine eindeutige Identifikation einer Ressource (von physischen Objekte bis hin zu digitalen Ressourcen wie Webseiten), die gleichzeitig Hinweise auf den Zugriff der Ressource gibt.
+- **VIAF:** Eine Normdatennummer im Virtual International Authority File (VIAF), einer virtuellen internationalen Normdatei als Verknüpfung nationaler Normdateien z.B. der gemeinsamen Normdatei. Diese wird als Uniform Resource Identifier für Linked-Open-Data Anwendungen genutzt.
+
+Das Element `<availability>` gibt Informationen zur Verfügbarkeit des Textes sowie Einschränkungen zur Nutzbarkeit, der Verbreitung, dem Copyright Status, oder der Lizensierung. Die **Lizenzinformation** wird innerhalb des **availability-Elements** mittels des Elements `<licence>` angegeben. Das Attribut `target` wird hierbei zur Referenzierung des Volltextes der Lizenz verwendet.
+
+##### Übung:
+
+Was wird im Publication Statement dokumentiert?
+
+[ ] Das Publication Statement enhält die Angaben zur Publikation des originalen Textes in Print.
+
+[x] Das Publication Statement enhält alle Informationen rund um die Publikation und Distribution des elektronischen Texts.
+
+[ ] Das Publication Statement enhält das Vorwort des Herausgebers zur Publikation.
+
+**Feedback:** ...
+
+#### Provenienz
+
+Die **'revision description'** `<revisionDesc>` fasst die Revisionsgeschichte einer Datei zusammen. "Wer hat wann was geändert?" wird in `<change>` Statements wie folgt festgehalten:
+
+```xml
+<revisionDesc>
+  <change
+    when="2017-04-04"
+    who="#uc #ds"
+    status="published"
+  >Freigegeben.</change>
+  <change when="2017-04-03" who="#uc" status="revised">Korrektur.</change>
+  <change
+    when="2017-04-01"
+    who="#uc"
+    status="draft"
+  >Einleitung überarbeitet.</change>
+  <change
+    when="2017-03-28"
+    who="#ds"
+    status="draft"
+  >Erste Version fertig.</change>
+</revisionDesc>
+```
+
+Das Attribut `when` im change-Statement enhält das Datum der Änderung, der `status` den Status des Dokuments (also Entwurf, Revision, publiziert), `who`verweist auf eine Person, die an der Änderung beteiligt oder für diese verantwortlich ist, und die für gewöhnlich im 'responsibility statement' oder in einem `<person>`-Element an anderer Stelle im Dokument näher bezeichnet wird.
+
+Die neueste Veränderung am Dokument sollte hierbei zuerst aufgeführt werden.
+
+##### Übung:
+
+Fügen Sie dem bisherigen Dokument den ersten Eintrag der Revision History mit dem heutigen Datum und Ihrem Namenskürzel als Autor hinzu. Markieren Sie das Dokument als Entwurf beschreiben Sie den Status als "erster Entwurf abgeschlossen".
+
+```xml
+<revisionDesc>
+  <change
+    when="2021-04-21"
+    who="#fw"
+    status="draft"
+  >Erster Entwurf abgeschlossen.</change>
+</revisionDesc>
+```
+
+#### Inhalt & Kontext
+
+Auch Informationen zum Inhalt des elektronischen Dokuments und Kontext können bereits im Header erfasst werden. Hierfür kommt die **'text-profile description'** `<profileDesc>` zum Einsatz, die nicht-bibliographische Aspekte des Textes wie Sprachen, Produktionskontext oder die vorkommenden Personen / Stimmen erfasst.
+
+Innerhalb der 'text-profile description' können beispielsweise folgende Aspekte mit dem jeweils nachstehenden Element erfasst werden:
+
+- Sprachen im Text `<langUsage>`
+- Verschlagwortung `<textClass>`
+- Entstehung `<creation>`
+- Zusammenfassung `<abstract>`
+- Briefe `<correspDesc>`
+- Personen im Text `<particDesc>`
+
+##### Übung:
+
+Welche Aspekte eines Textes werden in der 'Text Profile Description' erfasst? (mehrere Antworten möglich)
+
+[ ] Bibliographische Angaben zu einem Text.
+
+[x] Nicht-bibliographische Aspekte des Textes.
+
+[x] Informationen zum Inhalt des elektronischen Dokuments, z.B. im Text vorkommende Personen, Sprachen, o.ä.
+
+[x] Verschlagwortung der Textsorte oder des Themas eines Textes mittels eines standardisierten Klassifikationsschemas oder Thesaurus.
+
+**Feedback:** Die 'Text Profile Description' enthält keine bibliographischen Angaben zum Text. Nicht-bibliographische Aspekte, wie auch Informationen zum Inhalt oder Verschlagwortungen zum Text können aber enthalten sein.
+
+### Weiterführende Information
+
+Eine tiefergehende Einführung zum TEI Header gibt es auf der Seite der Text Encoding Initiative unter https://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html#HD21
