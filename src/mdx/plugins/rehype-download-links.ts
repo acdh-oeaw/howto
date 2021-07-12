@@ -28,6 +28,7 @@ export default function attacher(): Transformer {
         if (node.properties.href.startsWith('http://')) return
         if (node.properties.href.startsWith('https://')) return
         if (node.properties.href.startsWith('/')) return
+        if (node.properties.href.startsWith('#')) return
         if (file.path == null) return
 
         const filePath = path.join(

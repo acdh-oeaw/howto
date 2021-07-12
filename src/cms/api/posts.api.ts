@@ -17,6 +17,7 @@ import { getTagById } from '@/cms/api/tags.api'
 import type { Tag, TagId } from '@/cms/api/tags.api'
 import type { Locale } from '@/i18n/i18n.config'
 import { extractFrontmatter } from '@/mdx/extractFrontmatter'
+import withDownloadsLinks from '@/mdx/plugins/rehype-download-links'
 import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
 import withLazyLoadingImages from '@/mdx/plugins/rehype-lazy-loading-images'
@@ -265,6 +266,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
       withNoReferrerLinks,
       withLazyLoadingImages,
       withImageCaptions,
+      withDownloadsLinks,
     ],
   })
 }
