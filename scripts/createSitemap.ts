@@ -11,7 +11,12 @@ generate({
   shouldFormat: true,
   robots: true,
   filter(route) {
-    return !route.endsWith('/404') && !route.endsWith('/500')
+    return (
+      !route.endsWith('/404') &&
+      !route.endsWith('/500') &&
+      !route.endsWith('/cms') &&
+      !route.endsWith('/imprint')
+    )
   },
 })
   .then(() => log.success('Successfully generated sitemap.'))
