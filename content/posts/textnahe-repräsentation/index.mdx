@@ -56,9 +56,9 @@ Aber es gibt in TEI auch die Möglichkeit, Glyphen und Zeichen zu annotieren, di
 
 #### Auszeichnung von Nicht-Unicode Zeichen
 
-Während sich Zeichen, die im Unicode-Zeichensatz vorhanden sind, können sie ohne weiteres auch auf dem Computer dargestellt, transkribiert und annotiert werden. Aber auch die Auszeichnung von Zeichen, die nicht in Unicode vorhanden sind, ist möglich. Hierfür kommen folgende Elemente zum Einsatz:
+Zeichen, die im Unicode-Zeichensatz vorhanden sind, können ohne weiteres auch auf dem Computer dargestellt, transkribiert und annotiert werden. Aber auch die Auszeichnung von Zeichen, die nicht in Unicode vorhanden sind, ist möglich. Hierfür kommen folgende Elemente zum Einsatz:
 
-Die **character declaration** `<charDecl>` umfasst die Information über nicht-standard Zeichen. Die Elemente `<char>`und `<glyph>`beinhalten eine kurze Beschreibung des Zeichens oder Glyphens. Auch wenn sie inhaltlich ähnlich sind, so werden diese beiden Elemente unterschiedlich verwendet. 'char' definiert ein Zeichen das im aktuellen Zeichensatz des Dokuments nicht vorhanden ist, während 'glyph' ein Zeichen annotiert, das schon einmal entweder im Zeichensatz des Dokuments oder durch ein 'char' definiert wurde. Bei beiden wird als ein Attribut eine ID definiert, mit der im Text das definierte Zeichen referenziert werden kann.
+Die **character declaration** `<charDecl>` umfasst die Information über nicht-standard Zeichen. Die Elemente `<char>`und `<glyph>`beinhalten eine kurze Beschreibung des Zeichens oder Glyphens. Auch wenn sie inhaltlich ähnlich sind, so werden diese beiden Elemente unterschiedlich verwendet. `<char>` definiert ein Zeichen das im aktuellen Zeichensatz des Dokuments nicht vorhanden ist, während `<glyph>` ein Zeichen annotiert, das schon einmal entweder im Zeichensatz des Dokuments oder durch ein `<char>` definiert wurde. Bei beiden wird als ein Attribut eine ID definiert, mit der im Text das definierte Zeichen referenziert werden kann.
 
 Hier ein Beispiel für eine 'character declaration'
 
@@ -71,7 +71,7 @@ Hier ein Beispiel für eine 'character declaration'
 </charDecl>
 ```
 
-Das Element `<g/>` (gaiji) repräsentiert ein nicht-Standard-Zeichen oder Glyphe und ist quasi ein Stellvertreter für dieses Zeichen innerhalb des Textes. Dabei verweist das Attribut `ref`auf die in der character declaration festgelegte ID.
+Das Element `<g/>` (gaiji) repräsentiert ein nicht-Standard-Zeichen oder Glyphe und ist quasi ein Stellvertreter für dieses Zeichen innerhalb des Textes. Dabei verweist das Attribut `ref `auf die in der character declaration festgelegte ID.
 
 ```xml
 <p> ... <g ref="#Filig">Fi</g>lthy riches...</p>
@@ -139,7 +139,7 @@ Im oben abgebildeten Codebeispiel markiert das Element `<pb>`('page beginning') 
 
 Zur bessseren Adressierung von einzelnen Textteilen oder auch anderen Layoutelementen auf einer Seite kann eine Seite in mehrere Zonen aufgeteilt werden. Dies geschieht mit dem Element `<zone>`, das einen zweidimensionalen Bereich in Form eines geschlossenen Polygons innerhalb des `<surface>`dokuments definiert. Dies kann von einem simplen Rechteck bis hin zu einem frei geformten Polygon mit beliebig vielen Punkten gehen. Im untenstehenden Beispiel
 
-![Digitalisat einer Quelle, in das unterschiedliche Zonen eingezeichnet sind. Bildquelle: https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX](images/SourceWithZones.png)
+![Digitalisat einer Quelle, in das unterschiedliche Zonen eingezeichnet sind. Bild: https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX](images/SourceWithZones.png "Digitalisat einer Quelle, in das unterschiedliche Zonen eingezeichnet sind. Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX")
 
 ```xml
 <surface xml:id="page1" ulx="0" uly="0" lrx="200" lry="300">
@@ -163,6 +163,8 @@ Im gezeigten Beispiel wird im Surface Element das Grundkoordinatensystem festgel
 
 Annotieren Sie bitte die im Faksimile von Seite 11 der Filmwelt eingezeichneten Zonen als eine parallele Transkription der Seite.
 
+![](images/filmwelt_1923_31_11_1080px_zonen.jpeg "Filmwelt 31, 1923, S. 11 - mit zwei eingezeichneten Zonen.")
+
 Der Dateiname der Grafik lautet "Filmwelt_1923_31_11.jpg".
 
 Die linke obere Ecke der Seite hat die Koordinaten 0,0. Die rechte untere Ecke die Koordinaten 1081,1457.
@@ -171,19 +173,34 @@ Die **Zone 1** (der Spielplan) hat folgende Koordinaten: die linke obere Ecke is
 
 Der transkribierte Inhalt von Zone 1 lautet wie folgt:
 
-"*Der Film »Die Wunder des Meeres« läuft ab 14. bis 17. November in: Imperial-Kino, I., Rothgasse 9; Schwarzenberg-Kino, III., Schwarzenbergplatz; Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4; 18. bis 20. November in: Elite-Kino, I., Wollzeile 34: Opern-Kino, I., Friedrichstraße 4; Zentral-Kino, II., Taborstraße 8b: Dreilaufer Kino, IX., Alser- straße; Flieger-Kino, IX., Liechtensteinstraße 36; Wiedner Grand Kino, IV., Mittersteig 15; 21. bis 24. November in: Münstedt- Kino, II., Prater; Joh. Strauß-Kino, IV., Favoritenstraße 12; Raimund-Lichtspiele. XIV., Sechshauserstraße 13; Abbazia-Kino, XV., Neubaugürtel 15; 25. bis 27. November in: Münstedt-Kino, II., Prater; Luna-Kino, XVII , Hauptstraße 117; Michelbeuern- Kino, XVIII., Kreuzgasse 27; Vindobona-Kino, XX., Wallensteinplatz 5—6. ∆*"
+```
+Der Film »Die Wunder des Meeres« läuft ab 14. bis 17. November in: Imperial-Kino, I., Rothgasse 9; Schwarzenberg-Kino,
+III., Schwarzenbergplatz; Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4; 18. bis 20. November
+in: Elite-Kino, I., Wollzeile 34: Opern-Kino, I., Friedrichstraße 4; Zentral-Kino, II., Taborstraße 8b: Dreilaufer Kino, IX., Alser-
+straße; Flieger-Kino, IX., Liechtensteinstraße 36; Wiedner Grand Kino, IV., Mittersteig 15; 21. bis 24. November in: Münstedt-
+Kino, II., Prater; Joh. Strauß-Kino, IV., Favoritenstraße 12; Raimund-Lichtspiele. XIV., Sechshauserstraße 13; Abbazia-Kino,
+XV., Neubaugürtel 15; 25. bis 27. November in: Münstedt-Kino, II., Prater; Luna-Kino, XVII , Hauptstraße 117; Michelbeuern-
+Kino, XVIII., Kreuzgasse 27; Vindobona-Kino, XX., Wallensteinplatz 5—6. ∆
+```
 
-Die **Zone 2** (der Spielplan) hat folgende Koordinaten: die linke obere Ecke ist 389,1028. Die rechte untere Ecke liegt bei 703,1300.
+Die **Zone 2** (Gedicht "Der Filmstar") hat folgende Koordinaten: die linke obere Ecke ist 389,1028. Die rechte untere Ecke liegt bei 703,1300.
 
 Der transkribierte Inhalt von Zone 2 lautet wie folgt:
 
-*"Der Filmstar.*
-
-*Du ahnst bei ihm die Schwüle Leise glimmender Gefühle. Steife Hemdbrust — Heben — senken — Augen, die sich stumm verrenken.*
-
+```
+Der Filmstar.
+Du ahnst bei ihm die Schwüle
+Leise glimmender Gefühle.
+Steife Hemdbrust —
+Heben — senken —
+Augen, die sich stumm verrenken.
 — — — — — —
-
-*Er ist von seltner Bescheidenheit. Doch ihn verpflichtet sein Name, Drum kämpft er mit Beharrlichkeit Um jede Großaufnahme. Friedrich Zelnik."*
+Er ist von seltner Bescheidenheit.
+Doch ihn verpflichtet sein Name,
+Drum kämpft er mit Beharrlichkeit
+Um jede Großaufnahme.
+Friedrich Zelnik.
+```
 
 Lösung:
 
@@ -258,7 +275,7 @@ Kolumnentitel, Kustoden, Seitenzahlen etc. <fw type="header">…</fw> <fw type="
 
 Zeichnen im Inhalt des folgenden Absatz aus der Filmwelt die Hervorhebungen mithilfe des 'highlighted'-Elements aus sowie die korrekten Zeilenumbrüche aus, inklusive dem Hinweis, ob es zu einer Wortabteilung kommt.
 
-![Abschnitt "Die Schönheitskonkurrenz" aus Filmwelt 1923, 31, S. 12](images/Filmwelt_1923_31_12_Schoenheitskonkurrenz.png)
+![Abschnitt "Die Schönheitskonkurrenz" aus Filmwelt 1923, 31, S. 12](images/Filmwelt_1923_31_12_Schoenheitskonkurrenz.png "Abschnitt \"Die Schönheitskonkurrenz\" aus Filmwelt 1923, 31, S. 12")
 
 Rohtext:
 
@@ -360,9 +377,7 @@ Eine **Wiederherstellung**, oder defacto die Rückgängigmachung einer zuvor get
 
 Mit dem Attribut `type` kann im restore-Element ausgezeichnet werden, auf welche Weise die Editierung rückgängig gemacht wurde - z.B. durch eine Notiz in der Marginalspalte (siehe auch TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHCD))
 
-![I am that](images/Folie67.png)
-
-[Bildquelle: TEI](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta)
+![](images/Folie67.png "Beispiel einer für eine \"Metamark\". Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta")
 
 Manchmal ist die Bedeutung eines handschriftlichen, grafischen Zeichens innerhalb eines Original-Dokuments nicht eindeutig. Um eine Beschreibung hinzuzufügen, wie dieses Zeichen gelesen werden soll, kann das TEI-Element `<metamark>` verwendet werden. Für das obige Beispiel des senkrechten Striches könnte dies wie folgt aussehen:
 
@@ -376,75 +391,7 @@ Wichtig ist, dass es sich hierbei **nicht** um Teil des eigentlichen Inhalts des
 
 // Beispiel für Übung benötigt.
 
-## Textkritischer Apparat
 
-### Grundlagen
-
-Dokumente sind Unikate, und Texte können in vielen Dokumenten überliefert sein. Obwohl (insbesondere gedruckte) Texte scheinbar „stabil“ erscheinen, so ist es ihre Überlieferung nicht.
-
-Textkritik ist daher eine Methode um alle Einflüsse der Entstehung und Überlieferung auf die Gestalt der uns vorliegenden, überlieferten Texte herauszuarbeitn. Dies beinhaltet unter anderem folgende Schritte:
-
-* Sammlung aller erhaltener Textzeugen (Heuristik)
-* Vergleich der Textzeugen und Herstellung von Varianten (Kollation)
-* Analyse der Varianten (Recensio) und Herstellung eines Stemmas
-
-Das Ziel dieser Methode ist die Konstruktion des Archetyps des Textes.
-
-### Praktische Anwendung
-
-/// Die Inhalte kommen vor allem aus der TEI Dokumentation. Wollen wir dafür direkt auf die TEI Dokumentation verweisen oder sie anhand eines eigenen Beispiels erläutern?
-
-#### Textzeugen
-
-#### Textgenetisches Dossier
-
-#### Textkritisches Markup
-
-#### Verbindung von Text und Apparat
-
-Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html)
-
-![Textkritisches Markup (1)](images/Folie70.png)
-
-![Textkritisches Markup (2)](images/Folie71.png)
-
-![Textkritisches Markup (3): Umstellungen](images/Folie72.png)
-
-Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#transpo)
-
-![Text-Orientiertes Markup](images/Folie73.png)
-
-Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
-
-![Dokument-orientiertes Markup](images/Folie74.png)
-
-Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
-
-![Textgenetisches Dossier](images/Folie75.png)
-
-Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
-
-- - -
-
-![Kapitel 12: Textkritischer Apparat](images/Folie76.png)
-
-![Textzeugen](images/Folie77.png)
-
-Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&pg=PR6&focus=viewport&hl=de&output=html)
-
-![Apparat](images/Folie78.png)
-
-Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=onepage&q&f=false)
-
-![Verbindung von Text & Apparat (1)](images/Folie79.png)
-
-![Verbindung von Text & Apparat (2)](images/Folie80.png)
-
-![Verbindung von Text & Apparat (3)](images/Folie81.png)
-
-![Verbindung von Text & Apparat (4)](images/Folie82.png)
-
-![Verbindung von Text & Apparat (5)](images/Folie83.png)
 
 ### Weiterführende Informationen
 
