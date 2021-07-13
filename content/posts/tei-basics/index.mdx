@@ -27,7 +27,7 @@ Bevor wir uns an die Arbeit mit dem spezifischen Beispiel machen, gilt es den Au
 
 Ein **TEI-konformes Dokument** wird vom TEI-Element `<TEI>` umschlossen. Dass Attribut **'XML Namespace'** `xmlns`, in dem es auf eine eindeutige Definition der Elemente in einem XML-Schema referenziert wird, die innerhalb des spezifischen Dokuments verwendet wird.
 
-Eine TEI-Datei gliedert sich grundsätzlich in den **'TEI-Header'** `<teiHeader>` **(_Sprungmarke zu TEI Header Kapitel_)**, der die Metadaten zum elektronischen Dokument enthält, sowie den annotierten **Text**, der vom Element `<text>` umschlossen wird.
+Eine TEI-Datei gliedert sich grundsätzlich in den **'TEI-Header'** `<teiHeader>` **(*Sprungmarke zu TEI Header Kapitel*)**, der die Metadaten zum elektronischen Dokument enthält, sowie den annotierten **Text**, der vom Element `<text>` umschlossen wird.
 
 ```xml
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
@@ -48,10 +48,10 @@ Eine TEI-Datei gliedert sich grundsätzlich in den **'TEI-Header'** `<teiHeader>
 
 Ein Text kann entweder 'unitary' - also ein organisches Ganzes – oder 'composite' sein – also aus mehreren voneinander unabhängigen Komponenten bestehend. Ein Text kann optional einen **'front matter'** `<front>` oder auf Deutsch **Titelei** enthalten, die beispielsweise die Inhalte der **Titelseite** `<titlePage>` enthalten kann, wie auch die Position einer automatisch generierten Gliederung wie einem Index, einem Inhaltsverzeichnis o.ä.. Für Letzteres kommt das Element **'text division'** `<divGen>` mit einer der folgenden type-Attribute zum Einsatz:
 
-- `index`: hier soll ein automatisch generierter Index eingesetzt werden.
-- `toc`: Inhaltsverzeichnis
-- `figlist`: Abbildungsliste
-- `tablist`: Tabellenliste
+* `index`: hier soll ein automatisch generierter Index eingesetzt werden.
+* `toc`: Inhaltsverzeichnis
+* `figlist`: Abbildungsliste
+* `tablist`: Tabellenliste
 
 Der erforderliche **'text body'** `<body>` umschließt den Hauptext eines einzelnen 'unitary' Dokuments.
 
@@ -99,15 +99,13 @@ Man sieht in diesem Beispiel das jeder Text in einer Gruppe mit dem Attribut `xm
 </TEI>
 ```
 
----
+<SideNote type="note" title="Merke">
+Die Grenze zwischen 'unitary'- und 'composite'-Text kann fließend sein. Eine Essay-Sammlung ist ein möglicher Grenzfall, bei dem je nach Fragestellung an den Text als eine Einheit oder aber als eine Reihe von in sich geschlossenen Elementen betrachtet werden kann. Hier muss die Person, die die Texte kodiert, entscheiden, ob sie die Texte als 'unitary' oder 'composite' kodieren möchte.
 
-**Merke:** Die Grenze zwischen 'unitary'- und 'composite'-Text kann fließend sein. Eine Essay-Sammlung ist ein möglicher Grenzfall, bei dem je nach Fragestellung an den Text als eine Einheit oder aber als eine Reihe von in sich geschlossenen Elementen betrachtet werden kann. Hier muss die Person, die die Texte kodiert, entscheiden, ob sie die Texte als 'unitary' oder 'composite' kodieren möchte.
+*Beispiel Fragestellungen für unitary oder composite ergänzen*
+</SideNote>
 
-_Beispiel Fragestellungen für unitary oder composite ergänzen_
-
----
-
-Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metadaten zu einem einzelnen Dokument können zun einem **Korpus** `<teiCorpus>` mit einem eigenen Header und den zugehörigen Korpus-Metadaten zusammengefügt werden. Jedes TEI-Element könnte hierbei beispielsweise eine Sammlung an kodierten Texten, eine Version eines Textes, oder Samples eines Sprachkorpus u.a. enthalten.
+Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metadaten zu einem einzelnen Dokument können zu einem **Korpus** `<teiCorpus>` mit einem eigenen Header und den zugehörigen Korpus-Metadaten zusammengefügt werden. Jedes TEI-Element könnte hierbei beispielsweise eine Sammlung an kodierten Texten, eine Version eines Textes, oder Samples eines Sprachkorpus u.a. enthalten.
 
 ```xml
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
@@ -133,17 +131,36 @@ Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metad
 
 #### Übung
 
-**Welche Elemente sind für eine valide Makrostruktur eines TEI-Dokuments mindestens notwendig?** (mehrere Antworten möglich)
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        **Welche Elemente sind für eine valide Makrostruktur eines TEI-Dokuments mindestens notwendig?** (mehrere Antworten möglich)
+      </Quiz.Question>
 
-[x] `<TEI>`
+      <Quiz.MultipleChoice.Option isCorrect>
+        `<TEI>`
+      </Quiz.MultipleChoice.Option>
 
-[ ] `<group>`
+      <Quiz.MultipleChoice.Option>
+        `<group>`
+      </Quiz.MultipleChoice.Option>
 
-[x] `<teiHeader>`
+      <Quiz.MultipleChoice.Option isCorrect>
+        `<teiHeader>`
+      </Quiz.MultipleChoice.Option>
 
-[x] `<text>`
+      <Quiz.MultipleChoice.Option isCorrect>
+        `<text>`
+      </Quiz.MultipleChoice.Option>
 
-[x] `<body>`
+      <Quiz.MultipleChoice.Option isCorrect>
+        `<body>`
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
 
 **Feedback:** Ein valides TEI-Dokument muss vom Tag `<TEI>` umschlossen sein. Ebenso benötigt jeder TEI-konforme Text ein Set an Meta-Beschreibungen, die im `<teiHeader>` angegeben werden, sowie den annotierten Text `<text>`mit einem Text-Body `<body>`. Die Gruppierung von Texten oder aber die Eingliederung in einem Korpus sind optional.
 
@@ -151,15 +168,15 @@ Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metad
 
 ### Grundlagen
 
-Im TEI-Header werden die Metadaten _über_ ein TEI-Dokument erfasst. Der Header ist vom Element `<teiHeader>` umschlossen, die Metadaten über das Dokument selber werden innerhalb des Elements `<fileDesc>` angegeben, was das erste Element innerhalb des Headers darstellt. Diese **'file description'** enthält alle Informationen zum elektronischen Dokument (Name des elektronischen Dokuments, Autor etc.).
+Im TEI-Header werden die Metadaten *über* ein TEI-Dokument erfasst. Der Header ist vom Element `<teiHeader>` umschlossen, die Metadaten über das Dokument selber werden innerhalb des Elements `<fileDesc>` angegeben, was das erste Element innerhalb des Headers darstellt. Diese **'file description'** enthält alle Informationen zum elektronischen Dokument (Name des elektronischen Dokuments, Autor etc.).
 
 Die Metadaten sollten folgende Informationen enthalten:
 
-- **Identifikation** („Was ist das?“) `<titleStmt>`
-- **Angabe der Quelle** („Woraus wurde es abgeleitet?“) `<sourceDesc>`
-- **Kodierung** („Wie wurde der Text kodiert?“) `<encodingDesc>`
-- **Veröffentlichung** („Wer gibt es unter welchen Bedingungen für wen frei?“) `<publicationStmt>`
-- **Provenienz** („Wer hat was wann damit gemacht?“) `<revisionDesc>`
+* **Identifikation** („Was ist das?“) `<titleStmt>`
+* **Angabe der Quelle** („Woraus wurde es abgeleitet?“) `<sourceDesc>`
+* **Kodierung** („Wie wurde der Text kodiert?“) `<encodingDesc>`
+* **Veröffentlichung** („Wer gibt es unter welchen Bedingungen für wen frei?“) `<publicationStmt>`
+* **Provenienz** („Wer hat was wann damit gemacht?“) `<revisionDesc>`
 
 ### Praktische Anwendung
 
@@ -215,11 +232,11 @@ Hier ein Beispiel:
 
 Das `<title>`-Element enhält den Titel des elektronischen Dokuments. Mit dem Attribut `@type` lassen sich unterschiedliche Arten von Titeln klassifizieren, beispielsweise:
 
-- **'main'**: Haupt-Titel
-- **'sub'**: Untertitel
-- **'alt'**: Alternativer Titel unter dem das Werk ebenso bekannt ist, oft in einer anderen Sprache
-- **'short'**: Kurzform des Titels
-- **'desc'**: deskriptive Paraphrasierung der Arbeit die als Titel fungiert.
+* **'main'**: Haupt-Titel
+* **'sub'**: Untertitel
+* **'alt'**: Alternativer Titel unter dem das Werk ebenso bekannt ist, oft in einer anderen Sprache
+* **'short'**: Kurzform des Titels
+* **'desc'**: deskriptive Paraphrasierung der Arbeit die als Titel fungiert.
 
 In der Praxis ist eine Klassifizierung der einzelnen Titelteile nicht unbedingt notwendig. Der komplette Titel mit Untertitel könnte auch in einem einzigen `<title>` Element geschrieben werden.
 
@@ -231,21 +248,21 @@ In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument 
 
 1. Geben Sie einen vollständigen Titel für das TEI-Dokument an: ersetzen Sie das `<title>`-Element der Vorlage durch:
 
-- **Titel des elektronische Dokuments:** Die Filmwelt - ein Ausschnitt.
-- **Untertitel des elektronischen Dokuments:** Digitale Version.
+* **Titel des elektronische Dokuments:** Die Filmwelt - ein Ausschnitt.
+* **Untertitel des elektronischen Dokuments:** Digitale Version.
 
-_#==== Lösung - in finaler Version entfernen_
+*\#==== Lösung - in finaler Version entfernen*
 
 ```xml
 <title type="main">Die Filmwelt - ein Ausschnitt</title>
 <title type="sub">Digitale Version</title>
 ```
 
-_====#_
+*\====#*
 
 2. Ergänzen Sie bitte im Element **'title statement'** das **'statement of responsibility'** mit den Elementen **'responsibility'** und **'personal name'** und geben Sie sich als Urheber der TEI-Kodierung an:
 
-_#==== Lösung - in finaler Version entfernen_
+*\#==== Lösung - in finaler Version entfernen*
 
 ```xml
 <respStmt>
@@ -254,7 +271,7 @@ _#==== Lösung - in finaler Version entfernen_
 </respStmt>
 ```
 
-_====#_
+*\====#*
 
 #### Angabe der Quelle
 
@@ -319,18 +336,13 @@ In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer struktur
 **Verwenden Sie hierfür folgende Elemente / Attribute / Werte:**
 
 1. Geben Sie Haupt- und Untertitel der Zeitschrift an `<title>` + @type main / sub
-
 2. Benennen Sie den Herausgeber der Zeitschrift `<editor>`
-
 3. Ergänzen Sie im Impressum den Verlag inkl. seiner Adresse im Element `<imprint>`. Der **Verlag** `<publisher>`enthält hierbei den **Namen der Firma / Organisation** `<orgName>`, samt ihrer **Adresse** `<address>` bestehend aus einer oder mehrerer **Adresszeilen** `<addrLine>`.
-
 4. Weisen Sie die Fa. 'L. Beck & Sohn' in einem 'responsibility statement' als Druckerei aus unter Verwendung von `<resp>`, `<orgName>`
-
 5. Geben Sie Wien als Publikationsort und das Erscheinungsjahr an `<pubPlace>`, `<date>`
-
 6. Kodieren Sie, dass der gewählte Textausschnitt aus der Nr. 31, 1924, Seite 11-12 stammt 'scope of bibliographic reference' `<biblScope>` + @type volume / page
 
-_#==== Lösung - in finaler Version entfernen_
+*\#==== Lösung - in finaler Version entfernen*
 
 Der vollständig annotierte TEI-Header sollte in etwa so aussehen:
 
@@ -378,7 +390,7 @@ Der vollständig annotierte TEI-Header sollte in etwa so aussehen:
 </teiHeader>
 ```
 
-_====#_
+*\====#*
 
 #### Kodierung
 
@@ -409,25 +421,24 @@ Der bei dieser Übung entstandene TEI-Header umfasst nur einige wesentliche Elem
 
 Hier einige Beispiele für mögliche Angaben, die innerhalb der 'encoding description':
 
-- **editorische Angaben:** beschreibt die angewandten Richtlinien und Prinzipien für die Annotation `<editorialDecl>`.
+* **editorische Angaben:** beschreibt die angewandten Richtlinien und Prinzipien für die Annotation `<editorialDecl>`.
 
   Wie in obenstehendem Beispiel können u.a. der Umgang mit Silbentrennung `<hyphenation>`, Normalisierung und Regulierung der originalen Quelle `<normalization>`, Korrekturen `<correction>` oder das Ausmaß an analytischer und interpretativer Information, die dem Text in der Transkription hinzugefügt wurde `<interpretation>`.
-
-- **Projektbeschreibung:** beschreibt das Ziel für das die Quelle kodiert wurde `<projectDesc>`
-- **Tagverwendung:** gibt informationen zum Tagging, das innerhalb des Dokuments angewendet wird `<tagsDecl>`
-- **Auswahlverfahren:** Fließtext, der das angewandte Samplingverfahren für einen Korpus oder eine Sammlung an Texten beschreibt `<samplingDecl>`
+* **Projektbeschreibung:** beschreibt das Ziel für das die Quelle kodiert wurde `<projectDesc>`
+* **Tagverwendung:** gibt informationen zum Tagging, das innerhalb des Dokuments angewendet wird `<tagsDecl>`
+* **Auswahlverfahren:** Fließtext, der das angewandte Samplingverfahren für einen Korpus oder eine Sammlung an Texten beschreibt `<samplingDecl>`
 
 ##### Übung:
 
 Welche Aspekte eines Dokuments werden in der Encoding Description eines Dokuments erfasst? (mehrere Antworten möglich)
 
-[x] editorische Angaben
+\[x] editorische Angaben
 
-[x] Informationen über Glyphen und Beschreibung von nicht-standard Zeichenformaten, die im Quelltext verwendet werden
+\[x] Informationen über Glyphen und Beschreibung von nicht-standard Zeichenformaten, die im Quelltext verwendet werden
 
-[x] Projektbeschreibung
+\[x] Projektbeschreibung
 
-[x] Tagverwendung
+\[x] Tagverwendung
 
 **Feedback:** Alle Antworten sind in diesem Falle richtig. Neben den im obenstehenden Text beschriebenen Angaben kann die Encoding-Description in der Character-Declaration `<charDecl>` auch Informationen zu nicht-standard Zeichenformaten und Glyphen enthalten.
 
@@ -466,11 +477,11 @@ Wie am ersten Beispiel ersichtlich reicht ein einfacher Absatz um eine Publikati
 
 Das Element **'electronic mail address'** enthält eine Emailadresse. das Element **'identifier'** `<idno>`enthält einen Form der standardisierten Indentifikation eines Objects - in unserem Fall eines bibliografischen Objekts. Das Attribut `type` gibt die Art der Identifikation an. Diese kann beispielsweise folgende sein:
 
-- **ISBN**: "International Standard Book Number" (ISBN-Nummer), die Bücher international eindeutig identifiziert.
-- **ISSN:** "International Standard Serial Number" (ISSN-Nummer), eine international einheitliche Indentifikationsnummer für serielle Publikationen, wie z.B. Zeitschriften.
-- **DOI:** "Digital Object Identifier", eine einmalige Zeichenfolge (aus Nummern und Buchstaben) die ein elektronisches Dokument identifiziert.
-- **URI:** Uniform Resource Identifier, eine eindeutige Identifikation einer Ressource (von physischen Objekte bis hin zu digitalen Ressourcen wie Webseiten), die gleichzeitig Hinweise auf den Zugriff der Ressource gibt.
-- **VIAF:** Eine Normdatennummer im Virtual International Authority File (VIAF), einer virtuellen internationalen Normdatei als Verknüpfung nationaler Normdateien z.B. der gemeinsamen Normdatei. Diese wird als Uniform Resource Identifier für Linked-Open-Data Anwendungen genutzt.
+* **ISBN**: "International Standard Book Number" (ISBN-Nummer), die Bücher international eindeutig identifiziert.
+* **ISSN:** "International Standard Serial Number" (ISSN-Nummer), eine international einheitliche Indentifikationsnummer für serielle Publikationen, wie z.B. Zeitschriften.
+* **DOI:** "Digital Object Identifier", eine einmalige Zeichenfolge (aus Nummern und Buchstaben) die ein elektronisches Dokument identifiziert.
+* **URI:** Uniform Resource Identifier, eine eindeutige Identifikation einer Ressource (von physischen Objekte bis hin zu digitalen Ressourcen wie Webseiten), die gleichzeitig Hinweise auf den Zugriff der Ressource gibt.
+* **VIAF:** Eine Normdatennummer im Virtual International Authority File (VIAF), einer virtuellen internationalen Normdatei als Verknüpfung nationaler Normdateien z.B. der gemeinsamen Normdatei. Diese wird als Uniform Resource Identifier für Linked-Open-Data Anwendungen genutzt.
 
 Das Element `<availability>` gibt Informationen zur Verfügbarkeit des Textes sowie Einschränkungen zur Nutzbarkeit, der Verbreitung, dem Copyright Status, oder der Lizensierung. Die **Lizenzinformation** wird innerhalb des **availability-Elements** mittels des Elements `<licence>` angegeben. Das Attribut `target` wird hierbei zur Referenzierung des Volltextes der Lizenz verwendet.
 
@@ -478,11 +489,11 @@ Das Element `<availability>` gibt Informationen zur Verfügbarkeit des Textes so
 
 Was wird im Publication Statement dokumentiert?
 
-[ ] Das Publication Statement enhält die Angaben zur Publikation des originalen Textes in Print.
+\[ ] Das Publication Statement enhält die Angaben zur Publikation des originalen Textes in Print.
 
-[x] Das Publication Statement enhält alle Informationen rund um die Publikation und Distribution des elektronischen Texts.
+\[x] Das Publication Statement enhält alle Informationen rund um die Publikation und Distribution des elektronischen Texts.
 
-[ ] Das Publication Statement enhält das Vorwort des Herausgebers zur Publikation.
+\[ ] Das Publication Statement enhält das Vorwort des Herausgebers zur Publikation.
 
 **Feedback:** ...
 
@@ -535,24 +546,24 @@ Auch Informationen zum Inhalt des elektronischen Dokuments und Kontext können b
 
 Innerhalb der 'text-profile description' können beispielsweise folgende Aspekte mit dem jeweils nachstehenden Element erfasst werden:
 
-- Sprachen im Text `<langUsage>`
-- Verschlagwortung `<textClass>`
-- Entstehung `<creation>`
-- Zusammenfassung `<abstract>`
-- Briefe `<correspDesc>`
-- Personen im Text `<particDesc>`
+* Sprachen im Text `<langUsage>`
+* Verschlagwortung `<textClass>`
+* Entstehung `<creation>`
+* Zusammenfassung `<abstract>`
+* Briefe `<correspDesc>`
+* Personen im Text `<particDesc>`
 
 ##### Übung:
 
 Welche Aspekte eines Textes werden in der 'Text Profile Description' erfasst? (mehrere Antworten möglich)
 
-[ ] Bibliographische Angaben zu einem Text.
+\[ ] Bibliographische Angaben zu einem Text.
 
-[x] Nicht-bibliographische Aspekte des Textes.
+\[x] Nicht-bibliographische Aspekte des Textes.
 
-[x] Informationen zum Inhalt des elektronischen Dokuments, z.B. im Text vorkommende Personen, Sprachen, o.ä.
+\[x] Informationen zum Inhalt des elektronischen Dokuments, z.B. im Text vorkommende Personen, Sprachen, o.ä.
 
-[x] Verschlagwortung der Textsorte oder des Themas eines Textes mittels eines standardisierten Klassifikationsschemas oder Thesaurus.
+\[x] Verschlagwortung der Textsorte oder des Themas eines Textes mittels eines standardisierten Klassifikationsschemas oder Thesaurus.
 
 **Feedback:** Die 'Text Profile Description' enthält keine bibliographischen Angaben zum Text. Nicht-bibliographische Aspekte, wie auch Informationen zum Inhalt oder Verschlagwortungen zum Text können aber enthalten sein.
 
