@@ -244,21 +244,72 @@ Ergänzend zum Titel bietet das **'responsibility statement'** `<respStmt>` die 
 
 ##### Übung 1
 
-In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument des Ausschnitts der Zeitschrift "Filmwelt" gemacht werden. Der Startpunkt ist das TEI Grundgerüst ([uebung_1.xml](downloads/uebung_1.xml)). Vervollständigen Sie dort bitte den TEI-Header um folgende Angaben:
+In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument des Ausschnitts der Zeitschrift "Filmwelt" gemacht werden. Der Startpunkt ist das TEI Grundgerüst. Vervollständigen Sie dort bitte den TEI-Header um folgende Angaben:
 
-1. Geben Sie einen vollständigen Titel für das TEI-Dokument an: ersetzen Sie das `<title>`-Element der Vorlage durch:
+<Quiz>
+  <Quiz.Card>
+    <Quiz.XmlCodeEditor
+      code="<?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?>
+      <?xml-model href=&#x22;http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng&#x22; type=&#x22;application/xml&#x22; schematypens=&#x22;http://relaxng.org/ns/structure/1.0&#x22;?>
+      <?xml-model href=&#x22;http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng&#x22; type=&#x22;application/xml&#x22;
+      	schematypens=&#x22;http://purl.oclc.org/dsdl/schematron&#x22;?>
+      <TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
+        <teiHeader>
+            <fileDesc>
+               <titleStmt>
+                  <title>Title</title>
+               </titleStmt>
+               <publicationStmt>
+                  <p>Publication Information</p>
+               </publicationStmt>
+               <sourceDesc>
+                  <p>Information about the source</p>
+               </sourceDesc>
+            </fileDesc>
+        </teiHeader>
+        <text>
+            <body>
+               <p>Some text here.</p>
+            </body>
+        </text>
+      </TEI>"
+      solution="<?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?>
+      <?xml-model href=&#x22;http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng&#x22; type=&#x22;application/xml&#x22; schematypens=&#x22;http://relaxng.org/ns/structure/1.0&#x22;?>
+      <?xml-model href=&#x22;http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng&#x22; type=&#x22;application/xml&#x22;
+      	schematypens=&#x22;http://purl.oclc.org/dsdl/schematron&#x22;?>
+      <TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
+        <teiHeader>
+            <fileDesc>
+               <titleStmt>
+                  <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
+                  <title type=&#x22;sub&#x22;>Digitale Version</title>
+               </titleStmt>
+               <publicationStmt>
+                  <p>Publication Information</p>
+               </publicationStmt>
+               <sourceDesc>
+                  <p>Information about the source</p>
+               </sourceDesc>
+            </fileDesc>
+        </teiHeader>
+        <text>
+            <body>
+               <p>Some text here.</p>
+            </body>
+        </text>
+      </TEI>"
+      validate="input"
+    >
+      <Quiz.Question>
+        1. Geben Sie einen vollständigen Titel für das TEI-Dokument an: ersetzen Sie das `<title>`-Element der Vorlage durch:
 
-* **Titel des elektronische Dokuments:** Die Filmwelt - ein Ausschnitt.
-* **Untertitel des elektronischen Dokuments:** Digitale Version.
+        - **Titel des elektronische Dokuments:** Die Filmwelt - ein Ausschnitt.
+        - **Untertitel des elektronischen Dokuments:** Digitale Version.
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
 
-*\#==== Lösung - in finaler Version entfernen*
-
-```xml
-<title type="main">Die Filmwelt - ein Ausschnitt</title>
-<title type="sub">Digitale Version</title>
-```
-
-*\====#*
 
 2. Ergänzen Sie bitte im Element **'title statement'** das **'statement of responsibility'** mit den Elementen **'responsibility'** und **'personal name'** und geben Sie sich als Urheber der TEI-Kodierung an:
 
