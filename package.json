@@ -79,6 +79,7 @@
     "@next/bundle-analyzer": "^11.0.1",
     "@stefanprobst/commitlint-config": "^1.0.1",
     "@stefanprobst/favicons": "^1.0.7",
+    "@stefanprobst/next-feed": "^1.0.0",
     "@stefanprobst/next-sitemap": "^1.0.6",
     "@stefanprobst/prettier-config": "^1.0.3",
     "@stefanprobst/remark-preset": "^1.0.1",

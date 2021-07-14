@@ -1,9 +1,4 @@
-import * as fs from 'fs'
-import * as path from 'path'
-
-import type { Entry, Channel } from 'xast-util-feed'
-import { rss } from 'xast-util-feed'
-import { toXml } from 'xast-util-to-xml'
+import generateFeed from '@stefanprobst/next-feed'
 
 import { getPostPreviews } from '@/cms/api/posts.api'
 import { getFullName } from '@/cms/utils/getFullName'
@@ -14,6 +9,8 @@ import { log } from '@/utils/log'
 import { url as siteUrl, feedFileName as fileName } from '~/config/site.config'
 import { siteMetadata } from '~/config/siteMetadata.config'
 
+const MAX_ENTRIES_PER_CHANNEL = 20
+
 async function generate() {
   const resourcesByLocale = await Promise.all(
     locales.map((locale) => {
@@ -21,10 +18,10 @@ async function generate() {
     }),
   )
 
-  const resources = resourcesByLocale.flat()
+  const resources = resourcesByLocale.flat().slice(0, MAX_ENTRIES_PER_CHANNEL)
   const metadata = siteMetadata[defaultLocale]
 
-  const channel: Channel = {
+  const channel = {
     title: metadata.title,
     url: siteUrl, // metadata.url
     feedUrl: String(createUrl({ pathname: fileName, baseUrl: siteUrl })),
@@ -34,7 +31,7 @@ async function generate() {
     tags: ['Digital Humanities'],
   }
 
-  const entries: Array<Entry> = resources.map((resource) => {
+  const entries = resources.map((resource) => {
     return {
       title: resource.title,
       url: String(
@@ -50,10 +47,10 @@ async function generate() {
     }
   })
 
-  const feed = toXml(rss(channel, entries))
-
-  fs.writeFileSync(path.join(process.cwd(), 'public', fileName), feed, {
-    encoding: 'utf-8',
+  return generateFeed({
+    fileName,
+    channel,
+    entries,
   })
 }
 
