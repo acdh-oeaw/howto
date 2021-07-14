@@ -66,16 +66,31 @@ export function XmlCodeEditor(props: XmlCodeEditorProps): JSX.Element {
 XmlCodeEditor.isQuizCard = true
 
 /**
- * Parses html string into document fragment.
+ * Parses xml string into document fragment (or document in case the string
+ * tarts with a xml processing instruction).
  */
-function createDocumentFragment(html: string) {
+function createDocumentFragment(xml: string) {
   if (typeof window === 'undefined') return null
+
+  /**
+   * We prefer to use document fragments, because they don't require a tree,
+   * i.e. allow to have to sibling elements without a parent as input
+   * (e.g. `<p>One</p><p>Two</p>`).
+   *
+   * However, document fragments throw when the input includes xml processing instructions.
+   * In that case we parse into a full document. We don't do this by default, because
+   * `DOMParser` requires a full valid tree with one root as input.
+   */
+  if (xml.trimStart().startsWith('<?')) {
+    const doc = new DOMParser().parseFromString(xml, 'text/xml')
+    return doc.documentElement
+  }
 
   /** Creates a XMLDocument. */
   const doc = new Document()
   const template = doc.createElement('template')
   /** Uses XML fragment parsing. */
-  template.innerHTML = html
+  template.innerHTML = xml
   /**
    * While html templates have the document fragment on `template.content`,
    * in xml mode the `template` itself poses as the content container.
