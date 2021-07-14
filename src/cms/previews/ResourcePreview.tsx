@@ -10,6 +10,7 @@ import { compile } from 'xdm'
 import type { PostFrontmatter, PostMetadata } from '@/cms/api/posts.api'
 import { getSyntaxHighlighter } from '@/cms/previews/getSyntaxHighlighter'
 import { Preview } from '@/cms/previews/Preview'
+import { Spinner } from '@/common/Spinner'
 import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
@@ -190,8 +191,8 @@ export function ResourcePreview(
           <p>This usually indicates a syntax error in the Markdown content.</p>
         </div>
       ) : (
-        <div>
-          {/* TODO: Spinner */}
+        <div className="flex items-center space-x-2">
+          <Spinner className="w-6 h-6 text-primary-600" />
           <p>Trying to render preview...</p>
         </div>
       )}
