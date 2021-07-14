@@ -1,12 +1,13 @@
 import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
 import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import withHeadingIds from 'rehype-slug'
 import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
+import type { Highlighter } from 'shiki'
 import { compile } from 'xdm'
 
-import type { Post as PostData, PostFrontmatter } from '@/cms/api/posts.api'
+import type { PostFrontmatter, PostMetadata } from '@/cms/api/posts.api'
 import { getSyntaxHighlighter } from '@/cms/previews/getSyntaxHighlighter'
 import { Preview } from '@/cms/previews/Preview'
 import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
@@ -16,18 +17,67 @@ import withCmsPreviewAssets from '@/mdx/plugins/remark-cms-preview-assets'
 import { useDebouncedState } from '@/utils/useDebouncedState'
 import { Resource } from '@/views/Resource'
 
+const initialMetadata: PostMetadata = {
+  authors: [],
+  tags: [],
+  licence: { id: '', name: '', url: '' },
+  uuid: '',
+  title: '',
+  lang: 'en',
+  date: new Date(0).toISOString(),
+  version: '',
+  abstract: '',
+}
+
 /**
  * CMS preview for resource.
- *
- * TODO: Don't recompile mdx when only metadata changes.
- * Need to entry.getIn(['data', 'body']) separately.
  */
 export function ResourcePreview(
   props: PreviewTemplateComponentProps,
 ): JSX.Element {
   const entry = useDebouncedState(props.entry, 250)
   const { fieldsMetaData, getAsset } = props
-  const [post, setPost] = useState<PostData | null | undefined>(undefined)
+
+  const data = entry.get('data')
+  const body = entry.getIn(['data', 'body'])
+
+  const [metadata, setMetadata] = useState<PostMetadata>(initialMetadata)
+  const [mdxContent, setMdxContent] = useState<string | null | Error>(null)
+  const [highlighter, setHighlighter] = useState<Highlighter | null>(null)
+
+  useEffect(() => {
+    async function initializeHighlighter() {
+      const highlighter = await getSyntaxHighlighter()
+      setHighlighter(highlighter)
+    }
+
+    initializeHighlighter()
+  }, [])
+
+  const compileMdx = useMemo(() => {
+    if (highlighter == null) return null
+
+    return async (code: string) => {
+      return String(
+        await compile(code, {
+          outputFormat: 'function-body',
+          useDynamicImport: false,
+          remarkPlugins: [
+            withGitHubMarkdown,
+            withFootnotes,
+            [withCmsPreviewAssets, getAsset],
+          ],
+          rehypePlugins: [
+            [withSyntaxHighlighting, { highlighter }],
+            withHeadingIds,
+            withHeadingLinks,
+            withNoReferrerLinks,
+            withImageCaptions,
+          ],
+        }),
+      )
+    }
+  }, [getAsset, highlighter])
 
   useEffect(() => {
     function resolveRelation(path: Array<string>, id: string) {
@@ -36,124 +86,114 @@ export function ResourcePreview(
       return { id, ...metadata.toJS() }
     }
 
+    const { body: _, ...partialFrontmatter } = data.toJS()
+    const frontmatter = partialFrontmatter as Partial<PostFrontmatter>
+
+    const authors = Array.isArray(frontmatter.authors)
+      ? frontmatter.authors
+          .map((id) => {
+            return resolveRelation(['authors', 'people'], id)
+          })
+          .filter(Boolean)
+      : []
+
+    const contributors = Array.isArray(frontmatter.contributors)
+      ? frontmatter.contributors
+          .map((id) => {
+            return resolveRelation(['contributors', 'people'], id)
+          })
+          .filter(Boolean)
+      : []
+
+    const editors = Array.isArray(frontmatter.editors)
+      ? frontmatter.editors
+          .map((id) => {
+            return resolveRelation(['editors', 'people'], id)
+          })
+          .filter(Boolean)
+      : []
+
+    const tags = Array.isArray(frontmatter.tags)
+      ? frontmatter.tags
+          .map((id) => {
+            return resolveRelation(['tags', 'tags'], id)
+          })
+          .filter(Boolean)
+      : []
+
+    const licence =
+      frontmatter.licence != null
+        ? resolveRelation(['licence', 'licences'], frontmatter.licence)
+        : null
+
+    const date =
+      frontmatter.date == null || frontmatter.date.length === 0
+        ? initialMetadata.date
+        : frontmatter.date
+
+    const metadata = {
+      ...initialMetadata,
+      ...frontmatter,
+      authors,
+      contributors,
+      date,
+      editors,
+      tags,
+      licence,
+    }
+
+    setMetadata(metadata)
+  }, [data, fieldsMetaData])
+
+  useEffect(() => {
     let wasCanceled = false
 
-    async function compileMdx() {
+    async function processMdx() {
       try {
-        const { body, ...partialFrontmatter } = entry.get('data').toJS()
-        const frontmatter = partialFrontmatter as Partial<PostFrontmatter>
-
-        const id = entry.get('slug')
-
-        const authors = Array.isArray(frontmatter.authors)
-          ? frontmatter.authors
-              .map((id) => {
-                return resolveRelation(['authors', 'people'], id)
-              })
-              .filter(Boolean)
-          : []
-
-        const contributors = Array.isArray(frontmatter.contributors)
-          ? frontmatter.contributors
-              .map((id) => {
-                return resolveRelation(['contributors', 'people'], id)
-              })
-              .filter(Boolean)
-          : []
-
-        const editors = Array.isArray(frontmatter.editors)
-          ? frontmatter.editors
-              .map((id) => {
-                return resolveRelation(['editors', 'people'], id)
-              })
-              .filter(Boolean)
-          : []
-
-        const tags = Array.isArray(frontmatter.tags)
-          ? frontmatter.tags
-              .map((id) => {
-                return resolveRelation(['tags', 'tags'], id)
-              })
-              .filter(Boolean)
-          : []
-
-        const licence =
-          frontmatter.licence != null
-            ? resolveRelation(['licence', 'licences'], frontmatter.licence)
-            : null
-
-        const metadata = {
-          ...frontmatter,
-          authors,
-          contributors,
-          editors,
-          tags,
-          licence,
-        }
-
-        const highlighter = await getSyntaxHighlighter()
-
-        const code = String(
-          await compile(body, {
-            outputFormat: 'function-body',
-            useDynamicImport: false,
-            remarkPlugins: [
-              withGitHubMarkdown,
-              withFootnotes,
-              [withCmsPreviewAssets, getAsset],
-            ],
-            rehypePlugins: [
-              [withSyntaxHighlighting, { highlighter }],
-              withHeadingIds,
-              withHeadingLinks,
-              withNoReferrerLinks,
-              withImageCaptions,
-            ],
-          }),
-        )
-
-        const post = {
-          id,
-          code,
-          data: {
-            metadata,
-            toc: [],
-          },
-        } as PostData
+        if (compileMdx == null) return Promise.resolve()
+        const code = await compileMdx(body)
 
         if (!wasCanceled) {
-          setPost(post)
+          setMdxContent(code)
         }
       } catch (error) {
         console.error(error)
-        setPost(null)
-      }
-
-      return () => {
-        wasCanceled = true
+        setMdxContent(new Error('Failed to render mdx.'))
       }
     }
 
-    compileMdx()
-  }, [entry, fieldsMetaData, getAsset])
+    processMdx()
+
+    return () => {
+      wasCanceled = true
+    }
+  }, [body, compileMdx])
 
   return (
     <Preview {...props}>
-      {post == null ? (
-        post === undefined ? (
-          <div>
-            <p>Trying to render preview...</p>
-          </div>
-        ) : (
-          <div>
-            <p>Failed to render preview.</p>
-            <p>
-              This usually indicates a syntax error in the Markdown content.
-            </p>
-          </div>
-        )
+      {typeof mdxContent === 'string' ? (
+        <Resource
+          resource={{
+            id: entry.get('slug'),
+            code: mdxContent,
+            data: {
+              metadata,
+              toc: [],
+            },
+          }}
+          lastUpdatedAt={null}
+          isPreview
+        />
+      ) : mdxContent instanceof Error ? (
+        <div>
+          <p>Failed to render preview.</p>
+          <p>This usually indicates a syntax error in the Markdown content.</p>
+        </div>
       ) : (
-        <Resource resource={post} lastUpdatedAt={null} isPreview />
+        <div>
+          {/* TODO: Spinner */}
+          <p>Trying to render preview...</p>
+        </div>
       )}
     </Preview>
   )

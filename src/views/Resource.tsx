@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
@@ -9,7 +10,6 @@ import { PageTitle } from '@/common/PageTitle'
 import { useI18n } from '@/i18n/useI18n'
 import { Mdx } from '@/mdx/Mdx'
 import { routes } from '@/navigation/routes.config'
-import { getDate } from '@/utils/getDate'
 import type { IsoDateString } from '@/utils/ts/aliases'
 import { EditLink } from '@/views/EditLink'
 
@@ -22,11 +22,9 @@ export interface ResourceProps {
 export function Resource(props: ResourceProps): JSX.Element {
   const { resource, lastUpdatedAt, isPreview } = props
   const { metadata } = resource.data
-  const { title, date, authors, tags = [] } = metadata
+  const { title, date: publishDate, authors, tags } = metadata
 
   const { t, formatDate } = useI18n()
-
-  const publishDate = getDate(date)
 
   return (
     <article className="w-full mx-auto space-y-16 max-w-80ch">
@@ -92,23 +90,24 @@ export function Resource(props: ResourceProps): JSX.Element {
             ) : null}
           </div>
           <div className="space-y-1 text-right">
-            {publishDate != null ? (
-              <div>
-                <dt className="sr-only">{t('publishDate')}</dt>
-                <dd>
-                  <time dateTime={date}>
-                    {formatDate(publishDate, undefined, {
-                      dateStyle: 'long',
-                    })}
-                  </time>
-                </dd>
-              </div>
-            ) : null}
+            <div>
+              <dt className="sr-only">{t('publishDate')}</dt>
+              <dd>
+                <time dateTime={publishDate}>
+                  {formatDate(new Date(publishDate), undefined, {
+                    dateStyle: 'long',
+                  })}
+                </time>
+              </dd>
+            </div>
           </div>
         </dl>
       </header>
       <div className="prose max-w-none">
-        <Mdx code={resource.code} components={{ Quiz }} />
+        <Mdx
+          code={resource.code}
+          components={{ Image: ResponsiveImage, Quiz }}
+        />
       </div>
       <footer>
         {lastUpdatedAt != null ? (
@@ -135,4 +134,10 @@ export function Resource(props: ResourceProps): JSX.Element {
       </footer>
     </article>
   )
+}
+
+// TODO: import type { ImageProps } from 'next/image'
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+function ResponsiveImage(props: any) {
+  return <Image layout="responsive" sizes="800px" {...props} alt={props.alt} />
 }
