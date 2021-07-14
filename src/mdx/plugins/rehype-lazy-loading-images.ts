@@ -1,12 +1,13 @@
-import { createHash } from 'crypto'
-import * as fs from 'fs'
-import * as path from 'path'
-
 import type * as Hast from 'hast'
+import type { MDXJsxTextElement } from 'hast-util-to-estree'
 import sizeOf from 'image-size'
+import lqip from 'lqip'
 import type { Transformer } from 'unified'
+import type * as Unist from 'unist'
 import visit from 'unist-util-visit'
 import type { VFile } from 'vfile'
+
+import { copyAsset } from '@/mdx/utils/copyAsset'
 
 /**
  * Rehype plugin which copies linked image assets, and adds width and height.
@@ -15,61 +16,152 @@ export default function attacher(): Transformer {
   return transformer
 
   async function transformer(tree: Hast.Node, file: VFile) {
+    const imageBlurPromises: Array<Promise<void>> = []
+
     visit(tree, 'element', visitor)
 
-    function visitor(node: Hast.Element) {
+    await Promise.all(imageBlurPromises)
+
+    function visitor(
+      node: Hast.Element,
+      index: number,
+      parent: Unist.Parent | undefined,
+    ) {
       if (node.tagName !== 'img') return
 
+      const paths = copyAsset(node.properties?.src, file.path)
+      if (paths == null) return
+      const { publicPath, srcFilePath } = paths
+
       node.properties = node.properties ?? {}
+      node.properties.src = publicPath
+      node.properties.loading = 'lazy'
 
-      if (
-        typeof node.properties.src === 'string' &&
-        node.properties.src.length > 0
-      ) {
-        if (node.properties.src.startsWith('http://')) return
-        if (node.properties.src.startsWith('https://')) return
-        if (node.properties.src.startsWith('/')) return
-        if (file.path == null) return
+      /** When the image does not exist this will throw. */
+      const dimensions = sizeOf(srcFilePath)
+      node.properties.width = dimensions.width
+      node.properties.height = dimensions.height
 
-        const filePath = path.join(path.dirname(file.path), node.properties.src)
-        /** When the image does not exist this will throw. */
-        const dimensions = sizeOf(filePath)
-        node.properties.width = dimensions.width
-        node.properties.height = dimensions.height
-
-        const buffer = fs.readFileSync(filePath, { encoding: 'binary' })
-        const hash = createHash('md4')
-        hash.update(buffer)
-
-        const newFileName = path.join(
-          path.dirname(filePath),
-          hash.digest('hex').substr(0, 9999) + path.extname(filePath),
-        )
-        const newPath = path.join(
-          'static',
-          'image',
-          path.relative(process.cwd(), newFileName),
-        )
-
-        const outputPath = path.join('/_next', newPath)
-        const fullDestinationPath = path.join(process.cwd(), '.next', newPath)
-
-        if (!fs.existsSync(fullDestinationPath)) {
-          fs.mkdirSync(path.dirname(fullDestinationPath), { recursive: true })
-          fs.copyFileSync(filePath, fullDestinationPath)
-        }
-
-        node.properties.src = outputPath
-        node.properties.loading = 'lazy'
-
-        // TODO: similar to remark-mdx-images we need to construct a MdxJsxFlow node, so we can pass an object here.
-        // https://github.com/remcohaszing/remark-mdx-images/blob/main/src/index.ts
-        // node.properties.src = {
-        //   src: outputPath,
-        //   width: dimensions.width,
-        //   height: dimensions.height,
-        // }
+      /**
+       * TODO: we could also simply use component mapping img=>Image,
+       * just check that we have width/height props, otherwise, render regular img
+       */
+      const imageComponent: MDXJsxTextElement = {
+        type: 'mdxJsxTextElement',
+        name: 'Image',
+        children: [],
+        attributes: [],
       }
+
+      const imageSrcProps = {
+        type: 'ObjectExpression',
+        properties: [
+          {
+            type: 'Property',
+            key: {
+              type: 'Identifier',
+              name: 'src',
+            },
+            value: {
+              type: 'Literal',
+              value: publicPath,
+            },
+            kind: 'init',
+          },
+          {
+            type: 'Property',
+            key: {
+              type: 'Identifier',
+              name: 'width',
+            },
+            value: {
+              type: 'Literal',
+              value: dimensions.width,
+            },
+            kind: 'init',
+          },
+          {
+            type: 'Property',
+            key: {
+              type: 'Identifier',
+              name: 'height',
+            },
+            value: {
+              type: 'Literal',
+              value: dimensions.height,
+            },
+            kind: 'init',
+          },
+        ],
+      }
+
+      imageComponent.attributes.push({
+        type: 'mdxJsxAttribute',
+        name: 'src',
+        value: {
+          type: 'mdxJsxAttributeValueExpression',
+          value: `{ src: "${publicPath}", width: {${dimensions.width}}, height: {${dimensions.height}} }`,
+          data: {
+            estree: {
+              type: 'Program',
+              sourceType: 'module',
+              comments: [],
+              body: [
+                {
+                  type: 'ExpressionStatement',
+                  expression: imageSrcProps,
+                },
+              ],
+            },
+          },
+        },
+      })
+
+      if (typeof node.properties.alt === 'string') {
+        imageComponent.attributes.push({
+          type: 'mdxJsxAttribute',
+          name: 'alt',
+          value: node.properties.alt,
+        })
+      }
+
+      if (typeof node.properties.title === 'string') {
+        imageComponent.attributes.push({
+          type: 'mdxJsxAttribute',
+          name: 'title',
+          value: node.properties.title,
+        })
+      }
+
+      imageBlurPromises.push(
+        lqip.base64(srcFilePath).then((dataUrl) => {
+          // imageSrcProps.properties.push({
+          //   type: 'Property',
+          //   key: {
+          //     type: 'Identifier',
+          //     name: 'blurDataURL',
+          //   },
+          //   value: {
+          //     type: 'Literal',
+          //     value: dataUrl,
+          //   },
+          //   kind: 'init',
+          // })
+          imageComponent.attributes.push({
+            type: 'mdxJsxAttribute',
+            name: 'blurDataURL',
+            value: dataUrl,
+          })
+          imageComponent.attributes.push({
+            type: 'mdxJsxAttribute',
+            name: 'placeholder',
+            value: 'blur',
+          })
+        }),
+      )
+
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      parent!.children.splice(index, 1, imageComponent)
     }
   }
 }

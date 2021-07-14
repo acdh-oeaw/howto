@@ -9,3 +9,7 @@ declare module '*.mdx' {
   export { metadata }
   export default Component
 }
+
+declare module 'lqip' {
+  export function base64(filePath: string): Promise<string>
+}
