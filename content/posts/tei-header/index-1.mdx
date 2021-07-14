@@ -265,68 +265,101 @@ Der **'scope of bibliographic reference'** `<biblScope>`definiert auf welchen Te
 
 #### Übung
 
-In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer strukturierten Bibliographie darstellen. Ersetzen Sie bitte den Inhalt der **'source description'** im Quellcode durch eine detaillierte bibliographische Angabe mit Hilfe der Elemente **'structured bibliographic citation'** `<biblStruct>` und **'monographic level'** `<monogr>`. Im Folgenden finden Sie die bibliographische Information unseres Zeitschriften-Auszugs, der in dieser Übung zum zuvor bearbeiteten TEI-Code ergänzt werden soll. ([uebung_2.xml](downloads/uebung_2.xml)).
+In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer strukturierten Bibliographie darstellen. Ersetzen Sie bitte den Inhalt der **'source description'** im Quellcode durch eine detaillierte bibliographische Angabe mit Hilfe der Elemente **'structured bibliographic citation'** `<biblStruct>` und **'monographic level'** `<monogr>`. Im Folgenden finden Sie die bibliographische Information unseres Zeitschriften-Auszugs, der in dieser Übung zum zuvor bearbeiteten TEI-Code ergänzt werden soll.
 
-**Bibliographische Informationen:** Die Filmwelt Illustrierte Kino Revue Herausgeber Felix Brasch Zeitungsverlag Universale Ges. m. b. H. Wien, VII., Hermanngasse 5 Druckerei L. Beck & Sohn Nr. 31, 1924 Seite 11-12
+<Quiz>
+  <Quiz.Card>
+    <Quiz.XmlCodeEditor
+      code="<TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
+              <teiHeader>
+                  <fileDesc>
+                     <titleStmt>
+                        <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
+                        <title type=&#x22;sub&#x22;>Digitale Version</title>
+                        <respStmt>
+                          <resp>TEI Kodierung</resp>
+                          <persName>Maxi Musterfrau</persName>
+                        </respStmt>
+                     </titleStmt>
+                     <publicationStmt>
+                        <p>Publication Information</p>
+                     </publicationStmt>
+                     <sourceDesc>
+                        <p>Information about the source</p>
+                     </sourceDesc>
+                  </fileDesc>
+              </teiHeader>
+              <text>
+                  <body>
+                     <p>Some text here.</p>
+                  </body>
+              </text>
+            </TEI>"
+      solution="<TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
+              <teiHeader>
+                  <fileDesc>
+                     <titleStmt>
+                        <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
+                        <title type=&#x22;sub&#x22;>Digitale Version</title>
+                        <respStmt>
+                          <resp>TEI Kodierung</resp>
+                          <persName>Maxi Musterfrau</persName>
+                        </respStmt>
+                     </titleStmt>
+                     <publicationStmt>
+                        <p>Publication Information</p>
+                     </publicationStmt>
+                      <sourceDesc>
+            <biblStruct>
+              <monogr>
+                <title type=&#x22;main&#x22;>Die Filmwelt</title>
+                <title type=&#x22;sub&#x22;>Illustrierte Kino Revue</title>
+                <editor>Felix Brasch</editor>
+                <imprint>
+                  <publisher>
+                    <orgName>Zeitungsverlag Universale Ges. m. b. H.</orgName>
+                    <address>
+                      <addrLine>Wien, VII., Hermanngasse 5</addrLine>
+                    </address>
+                  </publisher>
+                  <respStmt>
+                    <resp>Druckerei</resp>
+                    <orgName>L. Beck und Sohn</orgName>
+                  </respStmt>
+                  <pubPlace>Wien</pubPlace>
+                  <date>1924</date>
+                </imprint>
+                <biblScope unit=&#x22;volume&#x22;>31, 1924</biblScope>
+                <biblScope unit=&#x22;page&#x22;>11-12</biblScope>
+              </monogr>
+            </biblStruct>
+          </sourceDesc>
+                  </fileDesc>
+              </teiHeader>
+              <text>
+                  <body>
+                     <p>Some text here.</p>
+                  </body>
+              </text>
+            </TEI>"
+      validate="input"
+    >
+      <Quiz.Question>
+        **Bibliographische Informationen:** Die Filmwelt Illustrierte Kino Revue Herausgeber Felix Brasch Zeitungsverlag Universale Ges. m. b. H. Wien, VII., Hermanngasse 5 Druckerei L. Beck und Sohn Nr. 31, 1924 Seite 11-12
 
-**Verwenden Sie hierfür folgende Elemente / Attribute / Werte:**
+        **Verwenden Sie hierfür folgende Elemente / Attribute / Werte:**
 
-1. Geben Sie Haupt- und Untertitel der Zeitschrift an `<title>` + @type main / sub
-2. Benennen Sie den Herausgeber der Zeitschrift `<editor>`
-3. Ergänzen Sie im Impressum den Verlag inkl. seiner Adresse im Element `<imprint>`. Der **Verlag** `<publisher>`enthält hierbei den **Namen der Firma / Organisation** `<orgName>`, samt ihrer **Adresse** `<address>` bestehend aus einer oder mehrerer **Adresszeilen** `<addrLine>`.
-4. Weisen Sie die Fa. 'L. Beck & Sohn' in einem 'responsibility statement' als Druckerei aus unter Verwendung von `<resp>`, `<orgName>`
-5. Geben Sie Wien als Publikationsort und das Erscheinungsjahr an `<pubPlace>`, `<date>`
-6. Kodieren Sie, dass der gewählte Textausschnitt aus der Nr. 31, 1924, Seite 11-12 stammt 'scope of bibliographic reference' `<biblScope>` + @type volume / page
+        1. Geben Sie Haupt- und Untertitel der Zeitschrift an `<title>` + @type main / sub
+        2. Benennen Sie den Herausgeber der Zeitschrift `<editor>`
+        3. Ergänzen Sie im Impressum den Verlag inkl. seiner Adresse im Element `<imprint>`. Der **Verlag** `<publisher>`enthält hierbei den **Namen der Firma / Organisation** `<orgName>`, samt ihrer **Adresse** `<address>` bestehend aus einer oder mehrerer **Adresszeilen** `<addrLine>`.
+        4. Weisen Sie die Fa. 'L. Beck & Sohn' in einem 'responsibility statement' als Druckerei aus unter Verwendung von `<resp>`, `<orgName>`
+        5. Geben Sie Wien als Publikationsort und das Erscheinungsjahr an `<pubPlace>`, `<date>`
+        6. Kodieren Sie, dass der gewählte Textausschnitt aus der Nr. 31, 1924, Seite 11-12 stammt 'scope of bibliographic reference' `<biblScope>` + @type volume / page
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
 
-*\#==== Lösung - in finaler Version entfernen*
-
-Der vollständig annotierte TEI-Header sollte in etwa so aussehen:
-
-```xml
-<teiHeader>
-  <fileDesc>
-    <titleStmt>
-      <title type="main">Die Filmwelt - ein Ausschnitt</title>
-      <title type="sub">Digitale Version</title>
-      <respStmt>
-        <resp>TEI Kodierung</resp>
-        <persName>Vorname Nachname</persName>
-      </respStmt>
-    </titleStmt>
-    <publicationStmt>
-      <p>Hier könnte man genauere Angaben zum Herausgeber/Verlag/Institut,
-      zu Erscheinungsort und -datum des digitalen Texts ergänzen.</p>
-    </publicationStmt>
-    <sourceDesc>
-      <biblStruct>
-        <monogr>
-          <title type="main">Die Filmwelt</title>
-          <title type="sub">Illustrierte Kino Revue</title>
-          <editor>Felix Brasch</editor>
-          <imprint>
-            <publisher>
-              <orgName>Zeitungsverlag Universale Ges. m. b. H.</orgName>
-              <address>
-                <addrLine>Wien, VII., Hermanngasse 5</addrLine>
-              </address>
-            </publisher>
-            <respStmt>
-              <resp>Druckerei</resp>
-              <orgName>L. Beck & Sohn</orgName>
-            </respStmt>
-            <pubPlace>Wien</pubPlace>
-            <date>1924</date>
-          </imprint>
-          <biblScope unit="volume">31, 1924</biblScope>
-          <biblScope unit="page">11-12</biblScope>
-        </monogr>
-      </biblStruct>
-    </sourceDesc>
-  </fileDesc>
-</teiHeader>
-```
-
-*\====#*
 
 ### Kodierung
 
