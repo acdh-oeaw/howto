@@ -134,7 +134,9 @@ export default function attacher(): Transformer {
       }
 
       imageBlurPromises.push(
+        // TODO: instead of lqip, use either sharp, or just Buffer
         lqip.base64(srcFilePath).then((dataUrl) => {
+          // if added to expression, need to update expression `value`
           // imageSrcProps.properties.push({
           //   type: 'Property',
           //   key: {
