@@ -19,6 +19,11 @@ export interface QuizService {
   nextStatus: QuizCardStatus | undefined
   previousStatus: QuizCardStatus | undefined
   isHidden: boolean
+  labels: {
+    validate: string
+    next: string
+    previous: string
+  }
 }
 
 const QuizContext = createContext<QuizService | null>(null)
@@ -90,6 +95,12 @@ export function Quiz(props: QuizProps): JSX.Element | null {
         /** Hidden quiz cards are rendered but hidden, in order to preserve component state. */
         const isHidden = index !== currentIndex
 
+        const labels = {
+          validate: card.props.validateButtonLabel ?? 'Validate',
+          next: 'Next',
+          previous: 'Previous',
+        }
+
         const service = {
           hasNext,
           hasPrevious,
@@ -100,6 +111,7 @@ export function Quiz(props: QuizProps): JSX.Element | null {
           nextStatus,
           previousStatus,
           isHidden,
+          labels,
         }
 
         return (

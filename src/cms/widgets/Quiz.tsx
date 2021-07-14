@@ -25,7 +25,16 @@ function withQuizCards() {
     function onMdx(node: Node) {
       switch (node.name) {
         case 'Quiz.Card': {
-          cards.push({})
+          const card = {} as { controls?: { validate?: string } }
+          // @ts-expect-error Attributes exist
+          const validateButtonLabel = node.attributes?.find(
+            (attribute: any) => attribute.name === 'validateButtonLabel',
+          )?.value
+          if (validateButtonLabel != null && validateButtonLabel.length > 0) {
+            card.controls = card.controls ?? {}
+            card.controls.validate = validateButtonLabel
+          }
+          cards.push(card)
           break
         }
         case 'Quiz.Question': {
@@ -126,6 +135,7 @@ const quizQuestion = {
   editor_components: ['image', 'code-block'],
   modes: ['raw'],
 }
+
 const quizMessages = {
   name: 'messages',
   label: 'Messages',
@@ -145,6 +155,19 @@ const quizMessages = {
       widget: 'markdown',
       editor_components: ['image', 'code-block'],
       modes: ['raw'],
+    },
+  ],
+}
+
+const quizControls = {
+  name: 'controls',
+  label: 'Controls',
+  widget: 'object',
+  collapsed: true,
+  fields: [
+    {
+      name: 'validate',
+      label: 'Label for Validate button',
     },
   ],
 }
@@ -192,6 +215,7 @@ export const quizEditorWidget: EditorComponentOptions = {
               ],
             },
             quizMessages,
+            quizControls,
           ],
         },
         {
@@ -230,6 +254,7 @@ export const quizEditorWidget: EditorComponentOptions = {
               default: 'input',
             },
             quizMessages,
+            quizControls,
           ],
         },
       ],
@@ -265,6 +290,17 @@ export const quizEditorWidget: EditorComponentOptions = {
               type: 'mdxJsxFlowElement',
               name: 'Quiz.Question',
               children: [processor.parse(card.question)],
+              attributes: [] as Array<any>,
+            }
+            if (
+              card.controls?.validate != null &&
+              card.controls.validate.length > 0
+            ) {
+              quizQuestion.attributes.push({
+                type: 'mdxJsxAttribute',
+                name: 'validateButtonLabel',
+                value: card.controls.validate,
+              })
             }
 
             const messages: {

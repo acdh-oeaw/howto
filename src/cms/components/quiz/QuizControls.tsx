@@ -39,7 +39,7 @@ export function QuizControls(props: QuizControlsProps): JSX.Element {
           onClick={quiz.previous}
           variant={getButtonVariant(quiz.previousStatus)}
         >
-          Previous
+          {quiz.labels.previous}
         </ActionButton>
       ) : null}
       <div>
@@ -47,7 +47,7 @@ export function QuizControls(props: QuizControlsProps): JSX.Element {
           onClick={props.onValidate}
           variant={getButtonVariant(quiz.status)}
         >
-          Validate
+          {quiz.labels.validate}
         </ActionButton>
       </div>
       {!isSingleQuestionQuiz ? (
@@ -56,7 +56,7 @@ export function QuizControls(props: QuizControlsProps): JSX.Element {
           onClick={quiz.next}
           variant={getButtonVariant(quiz.nextStatus)}
         >
-          Next
+          {quiz.labels.next}
         </ActionButton>
       ) : null}
     </div>

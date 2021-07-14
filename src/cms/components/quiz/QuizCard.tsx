@@ -4,6 +4,7 @@ import { useQuiz } from '@/cms/components/quiz/Quiz'
 
 export interface QuizCardProps {
   children?: ReactNode
+  validateButtonLabel?: string
 }
 
 /**
