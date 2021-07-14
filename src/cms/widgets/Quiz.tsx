@@ -57,6 +57,9 @@ function withQuizCards() {
         }
         case 'Quiz.XmlCodeEditor': {
           const last = cards[cards.length - 1]
+          last.name = 'XmlCodeEditor'
+          last.type = 'XmlCodeEditor'
+          last.question = ''
 
           const code =
             // @ts-expect-error Attributes exist.
