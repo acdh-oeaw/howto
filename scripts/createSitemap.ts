@@ -12,6 +12,7 @@ generate({
   robots: true,
   filter(route) {
     return (
+      route !== '/' &&
       !route.endsWith('/404') &&
       !route.endsWith('/500') &&
       !route.endsWith('/cms') &&
