@@ -192,7 +192,10 @@ export function ResourcePreview(
         </div>
       ) : (
         <div className="flex items-center space-x-2">
-          <Spinner className="w-6 h-6 text-primary-600" />
+          <Spinner
+            className="w-6 h-6 text-primary-600"
+            aria-label="Loading..."
+          />
           <p>Trying to render preview...</p>
         </div>
       )}

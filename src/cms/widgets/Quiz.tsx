@@ -285,22 +285,23 @@ export const quizEditorWidget: EditorComponentOptions = {
           name: 'Quiz',
           children: cards.map((card: any) => {
             const children: Array<any> = []
+            const attributes: Array<any> = []
+
+            if (
+              card.controls?.validate != null &&
+              card.controls.validate.length > 0
+            ) {
+              attributes.push({
+                type: 'mdxJsxAttribute',
+                name: 'validateButtonLabel',
+                value: card.controls.validate,
+              })
+            }
 
             const quizQuestion = {
               type: 'mdxJsxFlowElement',
               name: 'Quiz.Question',
               children: [processor.parse(card.question)],
-              attributes: [] as Array<any>,
-            }
-            if (
-              card.controls?.validate != null &&
-              card.controls.validate.length > 0
-            ) {
-              quizQuestion.attributes.push({
-                type: 'mdxJsxAttribute',
-                name: 'validateButtonLabel',
-                value: card.controls.validate,
-              })
             }
 
             const messages: {
@@ -393,6 +394,7 @@ export const quizEditorWidget: EditorComponentOptions = {
               type: 'mdxJsxFlowElement',
               name: 'Quiz.Card',
               children,
+              attributes,
             }
           }),
         },
