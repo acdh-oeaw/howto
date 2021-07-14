@@ -136,7 +136,14 @@ export const collection: CmsCollection = {
       label: 'Content',
       hint: '',
       widget: 'markdown',
-      editor_components: ['image', 'code-block', 'Video', 'SideNote', 'Quiz'],
+      editor_components: [
+        'image',
+        'code-block',
+        'Download',
+        'Video',
+        'SideNote',
+        'Quiz',
+      ],
     },
     {
       name: 'licence',

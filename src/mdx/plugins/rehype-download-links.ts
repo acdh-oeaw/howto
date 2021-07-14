@@ -1,11 +1,10 @@
-import { createHash } from 'crypto'
-import * as fs from 'fs'
-import * as path from 'path'
-
 import type * as Hast from 'hast'
+import type { MDXJsxTextElement } from 'hast-util-to-estree'
 import type { Transformer } from 'unified'
 import visit from 'unist-util-visit'
 import type { VFile } from 'vfile'
+
+import { copyAsset } from '@/mdx/utils/copyAsset'
 
 /**
  * Rehype plugin which copies linked assets.
@@ -14,53 +13,35 @@ export default function attacher(): Transformer {
   return transformer
 
   async function transformer(tree: Hast.Node, file: VFile) {
-    visit(tree, 'element', visitor)
+    visit(tree, 'element', onElement)
 
-    function visitor(node: Hast.Element) {
+    function onElement(node: Hast.Element) {
       if (node.tagName !== 'a') return
 
+      const paths = copyAsset(node.properties?.href, file.path)
+      if (paths == null) return
+      const { publicPath } = paths
+
       node.properties = node.properties ?? {}
+      node.properties.href = publicPath
+      node.properties.download = true
+    }
 
-      if (
-        typeof node.properties.href === 'string' &&
-        node.properties.href.length > 0
-      ) {
-        if (node.properties.href.startsWith('http://')) return
-        if (node.properties.href.startsWith('https://')) return
-        if (node.properties.href.startsWith('/')) return
-        if (node.properties.href.startsWith('#')) return
-        if (file.path == null) return
+    visit(tree, 'mdxJsxTextElement', onMdxJsxTextElement)
 
-        const filePath = path.join(
-          path.dirname(file.path),
-          node.properties.href,
-        )
+    function onMdxJsxTextElement(node: MDXJsxTextElement) {
+      if (node.name !== 'Download') return
 
-        const buffer = fs.readFileSync(filePath, { encoding: 'binary' })
-        const hash = createHash('md4')
-        hash.update(buffer)
+      const urlAttribute = node.attributes.find(
+        (attribute) => attribute.name === 'url',
+      )
 
-        const newFileName = path.join(
-          path.dirname(filePath),
-          hash.digest('hex').substr(0, 9999) + path.extname(filePath),
-        )
-        const newPath = path.join(
-          'static',
-          'image',
-          path.relative(process.cwd(), newFileName),
-        )
+      const paths = copyAsset(urlAttribute?.value, file.path)
+      if (paths == null) return
+      const { publicPath } = paths
 
-        const outputPath = path.join('/_next', newPath)
-        const fullDestinationPath = path.join(process.cwd(), '.next', newPath)
-
-        if (!fs.existsSync(fullDestinationPath)) {
-          fs.mkdirSync(path.dirname(fullDestinationPath), { recursive: true })
-          fs.copyFileSync(filePath, fullDestinationPath)
-        }
-
-        node.properties.href = outputPath
-        node.properties.download = true
-      }
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      urlAttribute!.value = publicPath
     }
   }
 }
