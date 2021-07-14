@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { useI18n } from '@/i18n/useI18n'
+import { useLocale } from '@/i18n/useLocale'
 import { navigation } from '@/navigation/navigation.config'
 
 /**
@@ -34,7 +35,7 @@ function PageNavigation() {
   const { t } = useI18n()
 
   return (
-    <nav>
+    <nav className="flex items-center space-x-8">
       <ul className="flex items-center space-x-8 text-sm font-medium">
         {Object.entries(navigation).map(([route, { href }]) => {
           return (
@@ -46,6 +47,35 @@ function PageNavigation() {
           )
         })}
       </ul>
+      <LanguageSwitcher />
     </nav>
+  )
+}
+
+/**
+ * Toggles UI language.
+ */
+function LanguageSwitcher() {
+  const { locale, setLocale } = useLocale()
+  const { t } = useI18n()
+
+  const languageAlternate = locale === 'de' ? 'en' : 'de'
+
+  function toggleLocale() {
+    setLocale(languageAlternate)
+  }
+
+  return (
+    <button
+      onClick={toggleLocale}
+      className="p-1.5 text-neutral-100 rounded focus:outline-none bg-neutral-800 text-xs font-medium hover:bg-neutral-700 transition"
+    >
+      <span className="sr-only">
+        {t('common.switchLanguage', {
+          language: t(`common.language.${languageAlternate}`),
+        })}
+      </span>
+      <span className="uppercase">{languageAlternate}</span>
+    </button>
   )
 }

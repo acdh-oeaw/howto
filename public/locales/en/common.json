@@ -24,5 +24,10 @@
   "imprint": "Imprint",
   "pageNotFound": "Page not found",
   "pageNotFoundMessage": "Sorry, this page could not be found.",
-  "internalError": "Internal error"
+  "internalError": "Internal error",
+  "switchLanguage": "Switch language to {{language}}",
+  "language": {
+    "de": "German",
+    "en": "English"
+  }
 }

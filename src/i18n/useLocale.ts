@@ -8,7 +8,9 @@ import type { Locale } from '@/i18n/i18n.config'
 /**
  * Returns current i18n config.
  */
-export function useLocale(): LocaleConfig {
+export function useLocale(): LocaleConfig & {
+  setLocale: (locale: Locale) => void
+} {
   const router = useRouter()
 
   return useMemo(() => {

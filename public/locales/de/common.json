@@ -24,5 +24,10 @@
   "imprint": "Impressum",
   "pageNotFound": "Seite nicht gefunden",
   "pageNotFoundMessage": "Oh je, diese Seite existiert nicht.",
-  "internalError": "Fataler Fehler"
+  "internalError": "Fataler Fehler",
+  "switchLanguage": "Sprache wechseln zu {{language}}",
+  "language": {
+    "de": "Deutsch",
+    "en": "Englisch"
+  }
 }
