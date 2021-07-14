@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import { getChildElements } from '@/cms/components/quiz/getChildElements'
 import { MultipleChoice } from '@/cms/components/quiz/MultipleChoice'
 import { isQuizCard, QuizCard } from '@/cms/components/quiz/QuizCard'
+import { QuizMessage } from '@/cms/components/quiz/QuizMessage'
 import { QuizQuestion } from '@/cms/components/quiz/QuizQuestion'
 import { XmlCodeEditor } from '@/cms/components/quiz/XmlCodeEditor'
 import type { Values } from '@/utils/ts/enum'
@@ -33,9 +34,9 @@ export function useQuiz(): QuizService {
 }
 
 export const QuizCardStatus = {
-  UNANSWERED: 0,
-  INCORRECT: 1,
-  CORRECT: 2,
+  UNANSWERED: 'unanswered',
+  INCORRECT: 'incorrect',
+  CORRECT: 'correct',
 } as const
 export type QuizCardStatus = Values<typeof QuizCardStatus>
 
@@ -113,5 +114,6 @@ export function Quiz(props: QuizProps): JSX.Element | null {
 
 Quiz.Card = QuizCard
 Quiz.Question = QuizQuestion
+Quiz.Message = QuizMessage
 Quiz.MultipleChoice = MultipleChoice
 Quiz.XmlCodeEditor = XmlCodeEditor

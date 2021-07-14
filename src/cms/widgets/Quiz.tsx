@@ -8,6 +8,10 @@ import type { VFile } from 'vfile'
 import { remarkMarkAndUnravel as withUnraveledJsxChildren } from 'xdm/lib/plugin/remark-mark-and-unravel.js'
 import { remarkMdx as withMdx } from 'xdm/lib/plugin/remark-mdx.js'
 
+import { QuizCardStatus } from '@/cms/components/quiz/Quiz'
+
+const allowedQuizMessageTypes = Object.values(QuizCardStatus)
+
 function withQuizCards() {
   return transformer
 
@@ -30,6 +34,21 @@ function withQuizCards() {
             type: 'root',
             children: node.children,
           })
+          break
+        }
+        case 'Quiz.Message': {
+          const last = cards[cards.length - 1]
+          last.messages = last.messages ?? {}
+          // @ts-expect-error Attributes exist.
+          const type = node.attributes?.find(
+            (attribute: any) => attribute.name === 'type',
+          )?.value
+          if (type != null && allowedQuizMessageTypes.includes(type)) {
+            last.messages[type] = processor.stringify({
+              type: 'root',
+              children: node.children,
+            })
+          }
           break
         }
         case 'Quiz.MultipleChoice': {
@@ -63,14 +82,13 @@ function withQuizCards() {
 
           const code =
             // @ts-expect-error Attributes exist.
-            node.attributes.find(
-              (attribute: any) => attribute.name === 'code',
-            ) ?? ''
+            node.attributes?.find((attribute: any) => attribute.name === 'code')
+              ?.value ?? ''
           const solution =
             // @ts-expect-error Attributes exist.
-            node.attributes.find(
+            node.attributes?.find(
               (attribute: any) => attribute.name === 'solution',
-            ) ?? ''
+            )?.value ?? ''
 
           last.code = code
           last.solution = solution
@@ -101,6 +119,36 @@ const processor = remark()
   .use(withFootnotes)
   .use(withQuizCards)
 
+const quizQuestion = {
+  name: 'question',
+  label: 'Question',
+  widget: 'markdown',
+  editor_components: ['image', 'code-block'],
+  modes: ['raw'],
+}
+const quizMessages = {
+  name: 'messages',
+  label: 'Messages',
+  widget: 'object',
+  collapsed: true,
+  fields: [
+    {
+      name: 'correct',
+      label: 'Success',
+      widget: 'markdown',
+      editor_components: ['image', 'code-block'],
+      modes: ['raw'],
+    },
+    {
+      name: 'incorrect',
+      label: 'Failure',
+      widget: 'markdown',
+      editor_components: ['image', 'code-block'],
+      modes: ['raw'],
+    },
+  ],
+}
+
 /**
  * Netlify CMS richtext editor widget for Quiz component.
  */
@@ -121,13 +169,7 @@ export const quizEditorWidget: EditorComponentOptions = {
           label: 'Multiple Choice',
           widget: 'object',
           fields: [
-            {
-              name: 'question',
-              label: 'Question',
-              widget: 'markdown',
-              editor_components: ['image', 'code-block'],
-              modes: ['raw'],
-            },
+            quizQuestion,
             {
               name: 'options',
               label: 'Options',
@@ -149,6 +191,7 @@ export const quizEditorWidget: EditorComponentOptions = {
                 },
               ],
             },
+            quizMessages,
           ],
         },
         {
@@ -157,13 +200,7 @@ export const quizEditorWidget: EditorComponentOptions = {
           label: 'XML Code Editor',
           widget: 'object',
           fields: [
-            {
-              name: 'question',
-              label: 'Question',
-              widget: 'markdown',
-              editor_components: ['image', 'code-block'],
-              modes: ['raw'],
-            },
+            quizQuestion,
             {
               name: 'code',
               label: 'Code',
@@ -190,7 +227,9 @@ export const quizEditorWidget: EditorComponentOptions = {
                 { value: 'input', label: 'Input' },
                 { value: 'selection', label: 'Selection' },
               ],
+              default: 'input',
             },
+            quizMessages,
           ],
         },
       ],
@@ -200,7 +239,6 @@ export const quizEditorWidget: EditorComponentOptions = {
   fromBlock(match) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const children = match[1]!
-
     const ast = processor.parse(children)
     const file = { data: {} }
     processor.runSync(ast, file)
@@ -223,17 +261,39 @@ export const quizEditorWidget: EditorComponentOptions = {
           children: cards.map((card: any) => {
             const children: Array<any> = []
 
+            const quizQuestion = {
+              type: 'mdxJsxFlowElement',
+              name: 'Quiz.Question',
+              children: [processor.parse(card.question)],
+            }
+
+            const messages: {
+              [type in typeof allowedQuizMessageTypes[number]]?: string
+            } = card.messages ?? {}
+            const quizMessages = Object.entries(messages).map(
+              ([type, content]) => {
+                return {
+                  type: 'mdxJsxFlowElement',
+                  name: `Quiz.Message`,
+                  children: [processor.parse(content)],
+                  attributes: [
+                    {
+                      type: 'mdxJsxAttribute',
+                      name: 'type',
+                      value: type,
+                    },
+                  ],
+                }
+              },
+            )
+
             switch (card.type) {
               case 'MultipleChoice': {
                 children.push({
                   type: 'mdxJsxFlowElement',
                   name: `Quiz.${card.type}`,
                   children: [
-                    {
-                      type: 'mdxJsxFlowElement',
-                      name: 'Quiz.Question',
-                      children: [processor.parse(card.question)],
-                    },
+                    quizQuestion,
                     ...(card.options?.map((option: any) => {
                       return {
                         type: 'mdxJsxFlowElement',
@@ -251,6 +311,7 @@ export const quizEditorWidget: EditorComponentOptions = {
                             : [],
                       }
                     }) ?? []),
+                    ...quizMessages,
                   ],
                 })
 
@@ -285,13 +346,7 @@ export const quizEditorWidget: EditorComponentOptions = {
                   type: 'mdxJsxFlowElement',
                   name: `Quiz.${card.type}`,
                   attributes,
-                  children: [
-                    {
-                      type: 'mdxJsxFlowElement',
-                      name: 'Quiz.Question',
-                      children: [processor.parse(card.question)],
-                    },
-                  ],
+                  children: [quizQuestion, ...quizMessages],
                 })
 
                 break
