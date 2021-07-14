@@ -83,6 +83,12 @@ function createDocumentFragment(xml: string) {
    */
   if (xml.trimStart().startsWith('<?')) {
     const doc = new DOMParser().parseFromString(xml, 'text/xml')
+    /** `DOMParser` does not throw on errors, but puts a `parsererror` as root element. */
+    if (doc.documentElement.tagName === 'parsererror') {
+      throw new Error(
+        doc.documentElement.textContent ?? 'Error parsing XML document.',
+      )
+    }
     return doc.documentElement
   }
 
