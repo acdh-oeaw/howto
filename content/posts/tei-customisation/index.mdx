@@ -21,46 +21,38 @@ uuid: BRXyYRvhzMEJDguy-r58Z
 
 In diesem Abschnitt wollen wir folgende Themen behandeln:
 
-- Datenmodellierung
+* Datenmodellierung
+* TEI Schema
+* TEI Klassen
+* TEI-Customization mit Roma
 
-- TEI Schema
-
-- TEI Klassen
-
-- TEI-Customization mit Roma
-
-Selten benötigt man in einem Projekt alle von der TEI zur Verfügung gestellten Komponenten. Daher empfiehlt es sich, ein sogenanntes _Schema_ den eigenen Bedürfnissen anzupassen. Das _Schema_ bestimmt, welche verwendeten Elemente und Attribute in einem Dokument, das bearbeitet wird, als valid oder gültig gelten. Hier geht es sowohl um den Aufbau eines Textdokuments, als auch dessen inhaltliche Auszeichnung. Dies erleichtert zum einen die Annotationsarbeit, indem der Editor nur die für ein Projekt relevanten Elemente und Attribute einblendet. Zum anderen dokumentiert ein angepasstes Schema die eigene Annotationsstrategie und macht sie für Dritte nachvollziehbar. Die TEI bzw. das TEI Consortium bietet neben dem Schema _'All'_ bereits einige an unterschiedliche Bedürfnisse angepasste und reduzierte Versionen an.
+Selten benötigt man in einem Projekt alle von der TEI zur Verfügung gestellten Komponenten. Daher empfiehlt es sich, ein sogenanntes *Schema* den eigenen Bedürfnissen anzupassen. Das *Schema* bestimmt, welche verwendeten Elemente und Attribute in einem Dokument, das bearbeitet wird, als valid oder gültig gelten. Hier geht es sowohl um den Aufbau eines Textdokuments, als auch dessen inhaltliche Auszeichnung. Dies erleichtert zum einen die Annotationsarbeit, indem der Editor nur die für ein Projekt relevanten Elemente und Attribute einblendet. Zum anderen dokumentiert ein angepasstes Schema die eigene Annotationsstrategie und macht sie für Dritte nachvollziehbar. Die TEI bzw. das TEI Consortium bietet neben dem Schema *'All'* bereits einige an unterschiedliche Bedürfnisse angepasste und reduzierte Versionen an.
 
 ### Grundlagen: Module und Schemata
 
-Unter einem Schema versteht man die valide Anpassung von TEI Komponenten an den jeweiligen Text und Kontext, für den sie verwendet werden sollen. Einige dieser Schemata werden vom TEI Consortium zur Verfügung gestellt und setzen sich aus verschiedenen _Modulen_ zusammen. Diese _Module_ können genutzt werden, um bestimmte Textkomponenten auszuzeichnen. Werden sie kombiniert, so entsteht ein Schema, nach dem die Auszeichnung in TEI valid ist. Die _Module_ enthalten verschiedenste Elemente und Attribute, die für den jeweiligen Zweck sinnvoll sind. Hier finden Sie eine Liste der [Module](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STMA/), hier seien nur ein paar Beispiele genannt:
+Unter einem Schema versteht man die valide Anpassung von TEI Komponenten an den jeweiligen Text und Kontext, für den sie verwendet werden sollen. Einige dieser Schemata werden vom TEI Consortium zur Verfügung gestellt und setzen sich aus verschiedenen *Modulen* zusammen. Diese *Module* können genutzt werden, um bestimmte Textkomponenten auszuzeichnen. Werden sie kombiniert, so entsteht ein Schema, nach dem die Auszeichnung in TEI valid ist. Die *Module* enthalten verschiedenste Elemente und Attribute, die für den jeweiligen Zweck sinnvoll sind. Hier finden Sie eine Liste der [Module](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STMA/), hier seien nur ein paar Beispiele genannt:
 
-- **header**: Die hier enthaltenen Elemente sind Ihnen teilweise schon bekannt, wenn Sie sich bereits mit der Komponenten "header", die Teil einer TEI Auszeichnung ist, beschäftigt haben.
+* **header**: Die hier enthaltenen Elemente sind Ihnen teilweise schon bekannt, wenn Sie sich bereits mit der Komponenten "header", die Teil einer TEI Auszeichnung ist, beschäftigt haben.
+* **namesdates**: Dieses Modul, "Names, Dates, People, and Places" enthält, wie der Name schon sagt, Elemente und Attribute um Informationen zu Personen, Zeitpunkten und Orten auszuzeichnen. Beispielsweise gibt es das Element `<name>`, das durch die Attribute `<role="actor">`und `<type="person">` erweitert werden kann, um in einem Text einen Schauspieler auszuzeichnen.
+* **verse**: Dieses Modul bietet Elemente und Attribute um Texte in Versform auszuzeichnen, zum Beispiel durch Tags für Strophen `<lg type="stanza">`, Zeilen `<l>`, oder die Auszeichnung eines Reimschemas.
 
-- **namesdates**: Dieses Modul, "Names, Dates, People, and Places" enthält, wie der Name schon sagt, Elemente und Attribute um Informationen zu Personen, Zeitpunkten und Orten auszuzeichnen. Beispielsweise gibt es das Element `<name>`, das durch die Attribute `<role="actor">`und `<type="person">` erweitert werden kann, um in einem Text einen Schauspieler auszuzeichnen.
+Das Schema *'All'* ist unmodifiziert und enthält alle zu diesem Zeitpunkt verfügbaren TEI Module. Im Gegensatz dazu bietet das Schema *'Bare'* das absolute Minimum, das Sie für eine Annotation benötigen. Da aber selten alle verfügbaren Komponenten benötigt werden, gibt es bereits einige reduziertere Schema, wie z.B. *'TEI Lite'*, *'Corpus'*, *'Drama'* oder *'Speech'*. Wie die Namen schon verraten, wurden diese *Schemata* zur leichteren Annotation bestimmter Texte oder von bestimmten Textteilen zusammengestellt. Das TEI Consortium stellt bestimmte [Schemata](https://tei-c.org/guidelines/customization/) zur Verfügung, andere werden von der Community verwaltet. Hier einige Beispiele:
 
-- **verse**: Dieses Modul bietet Elemente und Attribute um Texte in Versform auszuzeichnen, zum Beispiel durch Tags für Strophen `<lg type="stanza">`, Zeilen `<l>`, oder die Auszeichnung eines Reimschemas.
-
-Das Schema _'All'_ ist unmodifiziert und enthält alle zu diesem Zeitpunkt verfügbaren TEI Module. Im Gegensatz dazu bietet das Schema _'Bare'_ das absolute Minimum, das Sie für eine Annotation benötigen. Da aber selten alle verfügbaren Komponenten benötigt werden, gibt es bereits einige reduziertere Schema, wie z.B. _'TEI Lite'_, _'Corpus'_, _'Drama'_ oder _'Speech'_. Wie die Namen schon verraten, wurden diese _Schemata_ zur leichteren Annotation bestimmter Texte oder von bestimmten Textteilen zusammengestellt. Das TEI Consortium stellt bestimmte [Schemata](https://tei-c.org/guidelines/customization/) zur Verfügung, andere werden von der Community verwaltet. Hier einige Beispiele:
-
-- **TEI Lite**: Dieses Schema bietet generische Komponenten, die für "90% of the needs of 90% of the TEI user community" die meisten Zwecke erfüllen. Dieses Schema kann schnell erlernt werden, und wird sehr häufig eingesetzt.
-
-- **Corpus**: Dieses Schema eignet sich für die Auszeichnung von unterschiedlichsten Sprachcorpora. Man findet hier unter anderem Komponenten, mit denen man kontextuelle Informationen,aber auch linguistische Informationen auszeichnen kann.
-
-- **Drama**: Dieses Schema eignet sich für die Auszeichnung performativer Texte, zum Beispiel Theaterstücke oder Filmskripte. Komponenten, die man hier findet, sind zum Beispiel `<castlist>`, um die Figuren auszuzeichen, Regieanweisungen, aber auch `<epilogue>`und `<prologue>` als spezifische Teile des auszuzeichnenden Textes.
-
-- **Speech**: Dieses Schema eignet sich zur Auszeichnung transkibierter gesprochener Texte. Allerdings ist es möglich, dass für detailiertere Diskursanalysen oder phonologische Untersuchungen das Schema erweitert werden sollte, damit es sinnvoll verwendet werden kann.
+* **TEI Lite**: Dieses Schema bietet generische Komponenten, die für "90% of the needs of 90% of the TEI user community" die meisten Zwecke erfüllen. Dieses Schema kann schnell erlernt werden, und wird sehr häufig eingesetzt.
+* **Corpus**: Dieses Schema eignet sich für die Auszeichnung von unterschiedlichsten Sprachcorpora. Man findet hier unter anderem Komponenten, mit denen man kontextuelle Informationen,aber auch linguistische Informationen auszeichnen kann.
+* **Drama**: Dieses Schema eignet sich für die Auszeichnung performativer Texte, zum Beispiel Theaterstücke oder Filmskripte. Komponenten, die man hier findet, sind zum Beispiel `<castlist>`, um die Figuren auszuzeichen, Regieanweisungen, aber auch `<epilogue>`und `<prologue>` als spezifische Teile des auszuzeichnenden Textes.
+* **Speech**: Dieses Schema eignet sich zur Auszeichnung transkibierter gesprochener Texte. Allerdings ist es möglich, dass für detailiertere Diskursanalysen oder phonologische Untersuchungen das Schema erweitert werden sollte, damit es sinnvoll verwendet werden kann.
 
 Darüber hinaus besteht die Möglichkeit, selbst eine Auswahl aus den zahlreichen Modulen zu treffen, Adaptierungen an bestehenden Elementen und Attributen vorzunehmen sowie eigene Komponenten hinzuzufügen und entsprechend zu dokumentieren. Mit [TEI Roma](http://www.tei-c.org/Roma/) steht ein webbasiertes Werkzeug bereit, das Sie dabei unterstützt. Sie können ein sehr schlankes Schema durch die Elemente, die Sie benötigen, erweitern, aber auch das größtmögliche Schema reduzieren und Komponenten entfernen, die Sie nicht benötigen. Genauso
 
-Sie können ein _Schema_ mit folgenden Grundaktionen anpassen, sollten aber immer darauf achten, dass Ihr _Schema_ nach TEI_all gültig bleibt:
+Sie können ein *Schema* mit folgenden Grundaktionen anpassen, sollten aber immer darauf achten, dass Ihr *Schema* nach TEI_all gültig bleibt:
 
-- Elemente entfernen
-- Elemente umbenennen
-- Die sogenannten "content models" von Elementen und Klassen verändern
-- Attribute und Werte für Elemente und Klassen verändern
-- Klassenzugehörigkeit modifizieren
-- neue Elemente (zu bestehenden Klassen) hinzufügen
+* Elemente entfernen
+* Elemente umbenennen
+* Die sogenannten "content models" von Elementen und Klassen verändern
+* Attribute und Werte für Elemente und Klassen verändern
+* Klassenzugehörigkeit modifizieren
+* neue Elemente (zu bestehenden Klassen) hinzufügen
 
 #### Praktische Anwendung
 
@@ -77,7 +69,9 @@ Im oben gezeigten Beispiel sehen Sie die ersten Zeilen der Auszeichnung unserer 
 
 ##### Übung 1a: Schema erkennen
 
-Sie möchten eine Schema nutzen, um Ihre Auszeichnung von _Friedrich Zelniks_ Gedicht **Der Filmstar** zu validieren. Wie können Sie vorgehen?
+Sie möchten eine Schema nutzen, um Ihre Auszeichnung von *Friedrich Zelniks* Gedicht **Der Filmstar** zu validieren.
+
+![Friedrich Zelniks Gedicht Der Filmstar](images/filmwelt_1923_31_11_gedicht_filmstar.png "Friedrich Zelniks Gedicht Der Filmstar")
 
 ```xml
 <div xml:id="Zelnik1" type="poem">
@@ -98,47 +92,105 @@ Sie möchten eine Schema nutzen, um Ihre Auszeichnung von _Friedrich Zelniks_ Ge
 </div>
 ```
 
-a) Ich nutze das Schema _'All'_, da ich noch nicht sicher bin, was ich auszeichnen möchte und mir alle Freiheiten offen halten möchte. b) Ich nutze das Schema _'Lite'_, da ich die Reimstruktur auszeichnen möchte und das Schema hierfür ausreichend ist. c) Ich stelle sicher, dass das Modul _verse_ Teil des Schemas ist, das ich verwende. d) Ich arbeite mit dem Schema, dass mir eine erfahrene Kollegin empfiehlt. Auf Ihr Wissen kann ich vertrauen.
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Wie können Sie vorgehen?
+      </Quiz.Question>
 
-_#==== Lösung - in finaler Version entfernen_
+      <Quiz.MultipleChoice.Option>
+        a) Ich nutze das Schema _'All'_, da ich noch nicht sicher bin, was ich auszeichnen möchte und mir alle Freiheiten offen halten möchte.
+      </Quiz.MultipleChoice.Option>
 
-b) und c)
+      <Quiz.MultipleChoice.Option isCorrect>
+        b) Ich nutze das Schema _'Lite'_, da ich die Reimstruktur auszeichnen möchte und das Schema hierfür ausreichend ist.
+      </Quiz.MultipleChoice.Option>
 
-_====#_
+      <Quiz.MultipleChoice.Option isCorrect>
+        c) Ich stelle sicher, dass das Modul _verse_ Teil des Schemas ist, das ich verwende.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        d) Ich arbeite mit dem Schema, dass mir eine erfahrene Kollegin empfiehlt. Auf Ihr Wissen kann ich vertrauen.
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
 
 ##### Übung 1b: Schema erkennen
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Welche der folgenden Möglichkeiten haben Sie bei der Anpassung eines Schemas an Ihre Bedürfnisse NICHT?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        a) Elemente entfernen
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        b) Elemente umbenennen
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        c) Die sogenannten "content models" von Elementen und Klassen verändern
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        d) Attribute und Werte für Elemente und Klassen verändern
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        e) Elemente alphabetisch sortiert anzeige
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        f) Klassenzugehörigkeit modifizieren
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        g) neue Elemente (zu bestehenden Klassen) hinzufügen
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
 
 Welche der folgenden Möglichkeiten haben Sie bei der Anpassung eines Schemas an Ihre Bedürfnisse NICHT?
 
 a) Elemente entfernen b) Elemente umbenennen c) Die sogenannten "content models" von Elementen und Klassen verändern d) Attribute und Werte für Elemente und Klassen verändern e) Elemente alphabetisch sortiert anzeigen f) Klassenzugehörigkeit modifizieren g) neue Elemente (zu bestehenden Klassen) hinzufügen
 
-_#==== Lösung - in finaler Version entfernen_
+*\#==== Lösung - in finaler Version entfernen*
 
 e) Kommentar: Die Möglichkeit der alphabetischen Sortierung ist für die Definition dessen, worauf Elemente, Klassen, Attribute im Text verweisen, irrelevant.
 
-_====#_
+*\====#*
 
 Die Auszeichnung des Schemas finden Sie unter: `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"`.
 
-/_ ![TEI Schema?](images/Folie89.png) _/
+/* ![TEI Schema?](images/Folie89.png)* /
 
-/_ Verweis [I](https://tei-c.org/guidelines/customization/) _/
+/ *Verweis [I](https://tei-c.org/guidelines/customization/)* /
 
-/_ ![ODD?](images/Folie90.png) _/
+/* ![ODD?](images/Folie90.png)* /
 
-/_ ![Vereinfachung](images/Folie91.png) _/
+/* ![Vereinfachung](images/Folie91.png)* /
 
-/_ ![TEI Klassen](images/Folie92.png) _/
+/* ![TEI Klassen](images/Folie92.png)* /
 
-/_ ![ODD-Anpassung (1)](images/Folie93.png) _/
+/* ![ODD-Anpassung (1)](images/Folie93.png)* /
 
-/_ ![ODD-Anpassung (2)](images/Folie94.png) _/
+/* ![ODD-Anpassung (2)](images/Folie94.png)* /
 
-/_ ![ODD-Anpassung (3)](images/Folie95.png) _/
+/* ![ODD-Anpassung (3)](images/Folie95.png)* /
 
-/_ ![TEI Roma](images/Folie96.png) _/
+/* ![TEI Roma](images/Folie96.png)* /
 
-/_ Verweis [I](https://roma2.tei-c.org/) _/
+/ *Verweis [I](https://roma2.tei-c.org/)* /
 
 ### Weiterführende Informationen
 
