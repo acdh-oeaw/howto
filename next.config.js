@@ -28,6 +28,15 @@ const config = {
           },
         ],
       },
+      {
+        source: '/assets/fonts/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, immutable, max-age=31536000',
+          },
+        ],
+      },
     ]
   },
   async rewrites() {
