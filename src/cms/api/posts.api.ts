@@ -288,6 +288,10 @@ const postCache: Record<Locale, Map<string, Promise<[VFile, PostMetadata]>>> = {
  * Caches post metadata and vfile.
  *
  * VFile must be cached as well because post body is stripped of frontmatter.
+ *
+ * TODO: we should just use `remark-mdx-frontmatter` for getPostbyId, and for the post
+ * previews just cache metadata, not the stripped vfile as well. so we don't have to
+ * keep it in memory.
  */
 async function readFileAndGetPostMetadata(id: ID, locale: Locale) {
   const cache = postCache[locale]

@@ -12,10 +12,6 @@ declare module '*.mdx' {
   export default Component
 }
 
-declare module 'lqip' {
-  export function base64(filePath: string): Promise<string>
-}
-
 declare module 'retext' {
   import type { Processor } from 'unified'
 
