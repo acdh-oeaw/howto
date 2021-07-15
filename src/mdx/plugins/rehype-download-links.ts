@@ -36,7 +36,7 @@ export default function attacher(): Transformer {
         (attribute) => attribute.name === 'url',
       )
 
-      const paths = copyAsset(urlAttribute?.value, file.path)
+      const paths = copyAsset(urlAttribute?.value, file.path, 'asset')
       if (paths == null) return
       const { publicPath } = paths
 

@@ -5,6 +5,11 @@ import * as path from 'path'
 export function copyAsset(
   href: unknown,
   vfilePath: string | undefined,
+  /**
+   * Next.js image optimizer only treats images in `_next/static/image` as static.
+   * @see https://github.com/vercel/next.js/blob/222830ad479e70009286f101f25d8322b811b17f/packages/next/server/image-optimizer.ts#L116
+   */
+  folderName = 'image',
 ):
   | {
       srcFilePath: string
@@ -34,13 +39,14 @@ export function copyAsset(
   )
   const newPath = path.join(
     'static',
-    'image',
+    folderName,
     path.relative(process.cwd(), newFileName),
   )
 
   const publicPath = path.join('/_next', newPath)
   const destinationFilePath = path.join(process.cwd(), '.next', newPath)
 
+  // TODO: make async
   if (!fs.existsSync(destinationFilePath)) {
     fs.mkdirSync(path.dirname(destinationFilePath), { recursive: true })
     fs.copyFileSync(srcFilePath, destinationFilePath)
