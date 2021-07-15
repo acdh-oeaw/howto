@@ -15,7 +15,9 @@ import { getPostPreviewsByAuthorId } from '@/cms/queries/posts.queries'
 import { getFullName } from '@/cms/utils/getFullName'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
+import { LeadIn } from '@/common/LeadIn'
 import { PageContent } from '@/common/PageContent'
+import { PageTitle } from '@/common/PageTitle'
 import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
 import { loadDictionary } from '@/i18n/loadDictionary'
@@ -129,10 +131,8 @@ export default function AuthorPage(props: AuthorPageProps): JSX.Element {
         languageAlternates={languageAlternates}
       />
       <PageContent className="w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <h1 className="text-4.5xl font-bold text-center">{fullName}</h1>
-        <p className="text-lg text-center text-neutral-500">
-          {author.description}
-        </p>
+        <PageTitle>{fullName}</PageTitle>
+        <LeadIn>{author.description}</LeadIn>
         <section className="space-y-5">
           <h2 className="sr-only">{t('common.resources')}</h2>
           <PostsList resources={posts.items} />

@@ -16,6 +16,7 @@ import { getFullName } from '@/cms/utils/getFullName'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
 import { PageContent } from '@/common/PageContent'
+import { PageTitle } from '@/common/PageTitle'
 import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
 import { loadDictionary } from '@/i18n/loadDictionary'
@@ -123,9 +124,7 @@ export default function AuthorsPage(props: AuthorsPageProps): JSX.Element {
         languageAlternates={languageAlternates}
       />
       <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <h1 className="text-4.5xl font-bold text-center">
-          {t('common.authors')}
-        </h1>
+        <PageTitle>{t('common.authors')}</PageTitle>
         <AuthorsList authors={authors.items} />
       </PageContent>
     </Fragment>
