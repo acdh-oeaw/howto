@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import type { ImageProps } from 'next/image'
 import Link from 'next/link'
 
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
@@ -67,11 +68,13 @@ export function Resource(props: ResourceProps): JSX.Element {
                         <li key={author.id}>
                           <div className="flex items-center space-x-2">
                             {author.avatar != null ? (
-                              <img
+                              <Image
                                 src={author.avatar}
                                 alt=""
-                                loading="lazy"
                                 className="object-cover w-8 h-8 rounded-full"
+                                layout="fixed"
+                                width={32}
+                                height={32}
                               />
                             ) : (
                               <Icon
@@ -136,8 +139,6 @@ export function Resource(props: ResourceProps): JSX.Element {
   )
 }
 
-// TODO: import type { ImageProps } from 'next/image'
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-function ResponsiveImage(props: any) {
+function ResponsiveImage(props: ImageProps) {
   return <Image layout="responsive" sizes="800px" {...props} alt={props.alt} />
 }

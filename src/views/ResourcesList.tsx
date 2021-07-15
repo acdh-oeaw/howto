@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import type { PostPreview } from '@/cms/api/posts.api'
@@ -67,11 +68,13 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
                       <li key={author.id}>
                         <span className="sr-only">{getFullName(author)}</span>
                         {author.avatar !== undefined ? (
-                          <img
+                          <Image
                             src={author.avatar}
                             alt=""
-                            loading="lazy"
                             className="object-cover w-8 h-8 rounded-full"
+                            layout="fixed"
+                            width={32}
+                            height={32}
                           />
                         ) : null}
                       </li>
