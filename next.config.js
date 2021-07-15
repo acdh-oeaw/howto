@@ -1,11 +1,14 @@
 /** @typedef {import('@/i18n/i18n.config').Locale} Locale */
-/** @typedef {Partial<import('next/dist/next-server/server/config-shared').NextConfig> & {i18n?: {locales: Array<Locale>; defaultLocale: Locale}}} NextConfig */
+/** @typedef {Partial<import('next').NextConfig> & {i18n?: {locales: Array<Locale>; defaultLocale: Locale}}} NextConfig */
 
 /** @type {NextConfig} */
 const config = {
   eslint: {
     dirs: ['.'],
     ignoreDuringBuilds: true,
+  },
+  experimental: {
+    esmExternals: true,
   },
   future: {
     strictPostcssConfiguration: true,
@@ -49,27 +52,10 @@ const config = {
       { source: '/tag/:id', destination: '/tag/:id/page/1' },
     ]
   },
-  /** @ts-expect-error Needed for `next-transpile-modules`. */
-  webpack5: true,
 }
 
 /** @type {Array<(config: NextConfig) => NextConfig>} */
 const plugins = [
-  require('next-transpile-modules')([
-    'xdm',
-    'unist-util-position-from-estree',
-    'estree-util-build-jsx',
-    'estree-util-is-identifier-name',
-    'periscopic',
-    'hast-util-to-estree',
-    'comma-separated-tokens',
-    'estree-util-attach-comments',
-    'hast-util-whitespace',
-    'property-information',
-    'space-separated-tokens',
-    'unist-util-position',
-    'zwitch',
-  ]),
   /** @ts-expect-error Missing module declaration. */
   require('@stefanprobst/next-svg')({
     svgo: {

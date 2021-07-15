@@ -2007,32 +2007,32 @@
   resolved "https://registry.npmjs.org/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
-"@next/bundle-analyzer@^11.0.1":
-  version "11.0.1"
-  resolved "https://registry.npmjs.org/@next/bundle-analyzer/-/bundle-analyzer-11.0.1.tgz#6f5d617ae861346ac9bf6a1e7bd05444a7fedcc1"
-  integrity sha512-/+VqZsEu1Q19PlJyNrXJ0qNuYVH1ZiA9fz3G1tiTLdJmHHt4SeAqiBejHvuy8nkttGnHg7uUTdycvVujK0IcQQ==
+"@next/bundle-analyzer@^11.0.2-canary.15":
+  version "11.0.2-canary.15"
+  resolved "https://registry.npmjs.org/@next/bundle-analyzer/-/bundle-analyzer-11.0.2-canary.15.tgz#7707cff1a225f8366e9aa99dcfb7188dccf4caf3"
+  integrity sha512-P8fF5xFedI958iBmgr//u9E1jMhqya9jFYzKHZ+Q10Mfbw8FMxk9bHGJ0nV7Wjs4pr0oaR1hYIiT66b01/NYig==
   dependencies:
     webpack-bundle-analyzer "4.3.0"
 
-"@next/env@11.0.1":
-  version "11.0.1"
-  resolved "https://registry.npmjs.org/@next/env/-/env-11.0.1.tgz#6dc96ac76f1663ab747340e907e8933f190cc8fd"
-  integrity sha512-yZfKh2U6R9tEYyNUrs2V3SBvCMufkJ07xMH5uWy8wqcl5gAXoEw6A/1LDqwX3j7pUutF9d1ZxpdGDA3Uag+aQQ==
+"@next/env@11.0.2-canary.15":
+  version "11.0.2-canary.15"
+  resolved "https://registry.npmjs.org/@next/env/-/env-11.0.2-canary.15.tgz#03099d9cd72a2e4298f2c9e06db743b9240b2e6c"
+  integrity sha512-GHblJ7oFxUpjtD39GEaZyi0yaqkzcYb1/N61ufrYFJuXWHWtEQPfaTNpEnjJUDnHccJl0usTZNu5CsxIj99aCA==
 
 "@next/eslint-plugin-next@11.0.0":
   version "11.0.0"
   resolved "https://registry.npmjs.org/@next/eslint-plugin-next/-/eslint-plugin-next-11.0.0.tgz#e6fb93a00bdaba371904f2b2698b184e6278d369"
   integrity sha512-fPZ0904yY1box6bRpR9rJqIkNxJdvzzxH7doXS+cdjyBAdptMR7wj3mcx1hEikBHzWduU8BOXBvRg2hWc09YDQ==
 
-"@next/polyfill-module@11.0.1":
-  version "11.0.1"
-  resolved "https://registry.npmjs.org/@next/polyfill-module/-/polyfill-module-11.0.1.tgz#ca2a110c1c44672cbcff6c2b983f0c0549d87291"
-  integrity sha512-Cjs7rrKCg4CF4Jhri8PCKlBXhszTfOQNl9AjzdNy4K5jXFyxyoSzuX2rK4IuoyE+yGp5A3XJCBEmOQ4xbUp9Mg==
+"@next/polyfill-module@11.0.2-canary.15":
+  version "11.0.2-canary.15"
+  resolved "https://registry.npmjs.org/@next/polyfill-module/-/polyfill-module-11.0.2-canary.15.tgz#e4da1656d1cfab0a34f6ad0b035264f993367d85"
+  integrity sha512-mlC66vXZAAQQS0ZkRZNJEd4Xxvs/1sKMfzwuqpj5/2nZ8mNV2XjKkj9tHVenckT1+0bK+U1pi7/t7zd2kDQKUQ==
 
-"@next/react-dev-overlay@11.0.1":
-  version "11.0.1"
-  resolved "https://registry.npmjs.org/@next/react-dev-overlay/-/react-dev-overlay-11.0.1.tgz#3c481e83347255abd466dcf7e59ac8a79a0d7fd6"
-  integrity sha512-lvUjMVpLsgzADs9Q8wtC5LNqvfdN+M0BDMSrqr04EDWAyyX0vURHC9hkvLbyEYWyh+WW32pwjKBXdkMnJhoqMg==
+"@next/react-dev-overlay@11.0.2-canary.15":
+  version "11.0.2-canary.15"
+  resolved "https://registry.npmjs.org/@next/react-dev-overlay/-/react-dev-overlay-11.0.2-canary.15.tgz#1a94e311b5a0c99863dde9fca4bf19a09393378c"
+  integrity sha512-IylNYk7A00n98Gh7zkpolMqqHpM2uWmUgefoPBot8pgy6TAcsMHjnOkuuaY5E3Mw6Yat/ndI45rQ/mXNPIQG7g==
   dependencies:
     "@babel/code-frame" "7.12.11"
     anser "1.4.9"
@@ -2046,10 +2046,10 @@
     stacktrace-parser "0.1.10"
     strip-ansi "6.0.0"
 
-"@next/react-refresh-utils@11.0.1":
-  version "11.0.1"
-  resolved "https://registry.npmjs.org/@next/react-refresh-utils/-/react-refresh-utils-11.0.1.tgz#a7509f22b6f70c13101a26573afd295295f1c020"
-  integrity sha512-K347DM6Z7gBSE+TfUaTTceWvbj0B6iNAsFZXbFZOlfg3uyz2sbKpzPYYFocCc27yjLaS8OfR8DEdS2mZXi8Saw==
+"@next/react-refresh-utils@11.0.2-canary.15":
+  version "11.0.2-canary.15"
+  resolved "https://registry.npmjs.org/@next/react-refresh-utils/-/react-refresh-utils-11.0.2-canary.15.tgz#d8409e573292a8846091d5a1e45b6bc3fdbc4263"
+  integrity sha512-sAlqdGeqgcnZZaJ91CXnOXWNiLigyuG9ZWYJ3jMknzE8xFPBC1+R2PB0iRQg+7XFdPLoRaFE59k6sz7E9KBYPA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -4555,10 +4555,10 @@ cssnano-preset-simple@^2.0.0:
   dependencies:
     caniuse-lite "^1.0.30001202"
 
-cssnano-simple@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/cssnano-simple/-/cssnano-simple-2.0.0.tgz#930d9dcd8ba105c5a62ce719cb00854da58b5c05"
-  integrity sha512-0G3TXaFxlh/szPEG/o3VcmCwl0N3E60XNb9YZZijew5eIs6fLjJuOPxQd9yEBaX2p/YfJtt49i4vYi38iH6/6w==
+cssnano-simple@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/cssnano-simple/-/cssnano-simple-2.1.0.tgz#747a110ceff616ba2e883e2cb64666f0a87acd8b"
+  integrity sha512-iFisFT39FT1YCw7ydvvRH4Yq0ftVBQGfGXuKv8TJ9WOzmPXaw7MZbxBzFQoeJUVCp+fGf6tvwaQqSigw4tvn7w==
   dependencies:
     cssnano-preset-simple "^2.0.0"
 
@@ -5053,14 +5053,6 @@ end-of-stream@^1.1.0, end-of-stream@^1.4.1:
   integrity sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
   dependencies:
     once "^1.4.0"
-
-enhanced-resolve@^5.7.0:
-  version "5.8.2"
-  resolved "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.8.2.tgz#15ddc779345cbb73e97c611cd00c01c1e7bf4d8b"
-  integrity sha512-F27oB3WuHDzvR2DOGNTaYy0D5o0cnrv8TeI482VM4kYgQd/FT9lUQwuNsJ0oOHtBUq7eiW5ytqzp7nBFknL+GA==
-  dependencies:
-    graceful-fs "^4.2.4"
-    tapable "^2.2.0"
 
 enquirer@^2.3.5, enquirer@^2.3.6:
   version "2.3.6"
@@ -9142,25 +9134,17 @@ netlify-cms-widget-text@^2.4.1:
   dependencies:
     react-textarea-autosize "^8.0.0"
 
-next-transpile-modules@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.npmjs.org/next-transpile-modules/-/next-transpile-modules-7.3.0.tgz#088bfc2baeff7624991d4b510558c7a9d4a82d73"
-  integrity sha512-1iIiXEL/tyqd9LS3ge8nhPLgYByaFxLSBqbaQZZBedTgFVVnULrcdGDBVqWzivkcxDIqBpdeou+FKqo87IUyVw==
-  dependencies:
-    enhanced-resolve "^5.7.0"
-    escalade "^3.1.1"
-
-next@^11.0.1:
-  version "11.0.1"
-  resolved "https://registry.npmjs.org/next/-/next-11.0.1.tgz#b8e3914d153aaf7143cb98c09bcd3c8230eeb17a"
-  integrity sha512-yR7be7asNbvpVNpi6xxEg28wZ7Gqmj1nOt0sABH9qORmF3+pms2KZ7Cng33oK5nqPIzEEFJD0pp2PCe3/ueMIg==
+next@^11.0.2-canary.15:
+  version "11.0.2-canary.15"
+  resolved "https://registry.npmjs.org/next/-/next-11.0.2-canary.15.tgz#1a133c40293cbd077d85dcaef44eb0015d9c3a46"
+  integrity sha512-leS3jwRefatIwyycBC9vpis4gbXUSiqTXaUC3ngMsPvylIiqMN4niaKgUMIpV6zTvQdgSXY4z6MgE4Klun9TtQ==
   dependencies:
     "@babel/runtime" "7.12.5"
     "@hapi/accept" "5.0.2"
-    "@next/env" "11.0.1"
-    "@next/polyfill-module" "11.0.1"
-    "@next/react-dev-overlay" "11.0.1"
-    "@next/react-refresh-utils" "11.0.1"
+    "@next/env" "11.0.2-canary.15"
+    "@next/polyfill-module" "11.0.2-canary.15"
+    "@next/react-dev-overlay" "11.0.2-canary.15"
+    "@next/react-refresh-utils" "11.0.2-canary.15"
     assert "2.0.0"
     ast-types "0.13.2"
     browserify-zlib "0.2.0"
@@ -9171,7 +9155,7 @@ next@^11.0.1:
     chokidar "3.5.1"
     constants-browserify "1.0.0"
     crypto-browserify "3.12.0"
-    cssnano-simple "2.0.0"
+    cssnano-simple "2.1.0"
     domain-browser "4.19.0"
     encoding "0.1.13"
     etag "1.8.1"
@@ -12918,11 +12902,6 @@ tailwindcss@^2.2.0:
     reduce-css-calc "^2.1.8"
     resolve "^1.20.0"
     tmp "^0.2.1"
-
-tapable@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/tapable/-/tapable-2.2.0.tgz#5c373d281d9c672848213d0e037d1c4165ab426b"
-  integrity sha512-FBk4IesMV1rBxX2tfiK8RAmogtWn53puLOQlvO8XuwlgxcYbP4mVPS9Ph4aeamSyyVjOl24aYWAuc8U5kCVwMw==
 
 tar-fs@^2.0.0, tar-fs@^2.1.1:
   version "2.1.1"

@@ -8,6 +8,7 @@ import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import { getHighlighter } from 'shiki'
 import type { VFile } from 'vfile'
+import { compile } from 'xdm'
 
 import type { Licence, LicenceId } from '@/cms/api/licences.api'
 import { getLicenceById } from '@/cms/api/licences.api'
@@ -251,8 +252,6 @@ async function getPostFrontmatter(
  * Supports CommonMark, GitHub Markdown, and Pandoc Footnotes.
  */
 async function compileMdx(file: VFile): Promise<VFile> {
-  const { compile } = await import('xdm')
-
   const highlighter = await getHighlighter({ theme: 'material-palenight' })
 
   return compile(file, {
