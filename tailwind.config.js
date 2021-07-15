@@ -16,7 +16,7 @@ const config = {
       },
       gridTemplateColumns: {
         'content-columns': '1fr 80ch 1fr',
-        cards: 'repeat(auto-fit, minmax(320px, 1fr))',
+        cards: 'repeat(auto-fill, minmax(320px, 1fr))',
       },
       gridTemplateRows: {
         'page-layout': 'auto 1fr auto',
