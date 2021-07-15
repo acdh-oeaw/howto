@@ -47,7 +47,7 @@ export default function ImprintPage(props: ImprintPageProps): JSX.Element {
   return (
     <Fragment>
       <Metadata noindex nofollow title={t('common.page.imprint')} />
-      <PageContent className="w-full p-8 mx-auto max-w-80ch">
+      <PageContent className="flex flex-col w-full px-10 py-16 mx-auto space-y-10 max-w-80ch">
         <PageTitle>{t('common.imprint')}</PageTitle>
         <div
           className="prose max-w-none"
