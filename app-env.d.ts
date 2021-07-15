@@ -1,3 +1,5 @@
+/* eslint-disable import/no-duplicates, import/order */
+
 /// <reference types="@stefanprobst/next-svg" />
 
 declare module '*.mdx' {
@@ -12,4 +14,17 @@ declare module '*.mdx' {
 
 declare module 'lqip' {
   export function base64(filePath: string): Promise<string>
+}
+
+declare module 'retext' {
+  import type { Processor } from 'unified'
+
+  const retext: Processor
+  export = retext
+}
+declare module 'retext-smartypants' {
+  import type { Plugin } from 'unified'
+
+  const smartypants: Plugin
+  export = smartypants
 }

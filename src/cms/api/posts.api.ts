@@ -22,6 +22,7 @@ import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
 import withLazyLoadingImages from '@/mdx/plugins/rehype-lazy-loading-images'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
+import withTypographicQuotesAndDashes from '@/mdx/plugins/remark-smartypants'
 import { readFile } from '@/mdx/readFile'
 import { readFolder } from '@/mdx/readFolder'
 import type { FilePath, IsoDateString } from '@/utils/ts/aliases'
@@ -257,7 +258,11 @@ async function compileMdx(file: VFile): Promise<VFile> {
   return compile(file, {
     outputFormat: 'function-body',
     useDynamicImport: false,
-    remarkPlugins: [withGitHubMarkdown, withFootnotes],
+    remarkPlugins: [
+      withGitHubMarkdown,
+      withFootnotes,
+      withTypographicQuotesAndDashes,
+    ],
     rehypePlugins: [
       [withSyntaxHighlighting, { highlighter }],
       withHeadingIds,

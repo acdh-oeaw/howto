@@ -63,6 +63,8 @@
     "remark-frontmatter": "^3.0.0",
     "remark-gfm": "^1.0.0",
     "remark-mdx-frontmatter": "^1.0.1",
+    "retext": "^7.0.1",
+    "retext-smartypants": "^4.0.0",
     "rosetta": "^1.1.0",
     "shiki": "^0.9.4",
     "strip-indent": "^4.0.0",
