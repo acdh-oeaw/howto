@@ -17,7 +17,7 @@ export default function attacher(): Transformer {
   return transformer
 
   function transformer(tree: Unist.Node) {
-    visit(tree, ['text'], onNode)
+    visit(tree, 'text', onNode)
 
     function onNode(node: Mdast.Text) {
       node.value = String(processor.processSync(node.value))
