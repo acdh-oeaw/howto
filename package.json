@@ -257,7 +257,12 @@
       "remark-gfm",
       "remark-footnotes",
       "@stefanprobst/remark-preset",
-      "remark-lint-no-dead-urls"
+      [
+        "remark-lint-no-dead-urls",
+        {
+          "skipLocalhost": true
+        }
+      ]
     ],
     "ignorePatterns": [
       "README.md"
