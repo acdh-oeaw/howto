@@ -10,14 +10,7 @@ export default class Document extends NextDocument {
         <Head>
           <link
             rel="preload"
-            href="/assets/fonts/Inter-roman.var-subset.woff2?v=3.18"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/assets/fonts/Inter-italic.var-subset.woff2?v=3.18"
+            href="/assets/fonts/inter-var-latin.woff2?v=3.19"
             as="font"
             type="font/woff2"
             crossOrigin="anonymous"
