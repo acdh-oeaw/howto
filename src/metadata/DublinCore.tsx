@@ -37,28 +37,40 @@ export function DublinCore(props: DublinCoreProps): JSX.Element {
       <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
       <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
 
-      <meta name="DC.title" content={title} />
+      <meta key="DC.title" name="DC.title" content={title} />
       {authors.map((author, index) => {
-        return <meta key={index} name="DC.creator" content={author} />
+        return (
+          <meta
+            key={`DC.creator-${index}`}
+            name="DC.creator"
+            content={author}
+          />
+        )
       })}
       {contributors != null
         ? contributors.map((contributor, index) => {
             return (
-              <meta key={index} name="DC.contributor" content={contributor} />
+              <meta
+                key={`DC.contributor-${index}`}
+                name="DC.contributor"
+                content={contributor}
+              />
             )
           })
         : null}
       {tags.map((tag, index) => {
-        return <meta key={index} name="DC.subject" content={tag} />
+        return (
+          <meta key={`DC.subject-${index}`} name="DC.subject" content={tag} />
+        )
       })}
       {/* DC.rights */}
-      <meta name="DCTERMS.license" content={licence} />
-      <meta name="DC.language" content={lang} />
-      <meta name="DCTERMS.issued" content={date} />
+      <meta key="DCTERMS.license" name="DCTERMS.license" content={licence} />
+      <meta key="DC.language" name="DC.language" content={lang} />
+      <meta key="DCTERMS.issued" name="DCTERMS.issued" content={date} />
       {/* DC.description */}
-      <meta name="DCTERMS.abstract" content={abstract} />
-      <meta name="DC.publisher" content={siteTitle} />
-      {/* <meta name="DC.type" content="Text" /> */}
+      <meta key="DCTERMS.abstract" name="DCTERMS.abstract" content={abstract} />
+      <meta key="DC.publisher" name="DC.publisher" content={siteTitle} />
+      {/* <meta key="DC.type" name="DC.type" content="Text" /> */}
     </Head>
   )
 }

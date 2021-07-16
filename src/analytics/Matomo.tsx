@@ -13,6 +13,7 @@ export function Matomo(): JSX.Element | null {
 
   return (
     <Script
+      id="matomo-analytics"
       dangerouslySetInnerHTML={{
         __html: `
         var _paq = window._paq = window._paq || [];
