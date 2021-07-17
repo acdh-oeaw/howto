@@ -1,5 +1,21 @@
+import { useButton } from '@react-aria/button'
+import { useDialog } from '@react-aria/dialog'
+import { FocusScope } from '@react-aria/focus'
+import type { OverlayProps } from '@react-aria/overlays'
+import {
+  OverlayContainer,
+  useModal,
+  useOverlay,
+  usePreventScroll,
+} from '@react-aria/overlays'
+import { useOverlayTriggerState } from '@react-stately/overlays'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import type { ReactNode } from 'react'
+import { useEffect, useRef } from 'react'
 
+import { Svg as MenuIcon } from '@/assets/icons/menu.svg'
+import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { useLocale } from '@/i18n/useLocale'
 import { navigation } from '@/navigation/navigation.config'
@@ -24,6 +40,7 @@ export function PageHeader(): JSX.Element {
         </a>
       </Link>
       <PageNavigation />
+      <MobilePageNavigation />
     </header>
   )
 }
@@ -33,15 +50,20 @@ export function PageHeader(): JSX.Element {
  */
 function PageNavigation() {
   const { t } = useI18n()
+  const router = useRouter()
 
   return (
-    <nav className="flex items-center space-x-8">
+    <nav className="hidden sm:items-center sm:space-x-8 sm:flex">
       <ul className="flex items-center space-x-8 text-sm font-medium">
         {Object.entries(navigation).map(([route, { href }]) => {
+          const isCurrent = href.pathname === router.pathname
+
           return (
             <li key={route}>
               <Link href={href}>
-                <a>{t(`common.page.${route}`)}</a>
+                <a aria-current={isCurrent ? 'page' : undefined}>
+                  {t(`common.page.${route}`)}
+                </a>
               </Link>
             </li>
           )
@@ -49,6 +71,127 @@ function PageNavigation() {
       </ul>
       <LanguageSwitcher />
     </nav>
+  )
+}
+
+/**
+ * Mobile main page navigation.
+ */
+function MobilePageNavigation() {
+  const { t } = useI18n()
+  const router = useRouter()
+
+  const dialogState = useOverlayTriggerState({})
+
+  const openButtonRef = useRef<HTMLButtonElement>(null)
+  const { buttonProps: openButtonProps } = useButton(
+    {
+      onPress() {
+        dialogState.open()
+      },
+    },
+    openButtonRef,
+  )
+
+  // const closeButtonRef = useRef<HTMLButtonElement>(null)
+  // const { buttonProps: closeButtonProps } = useButton(
+  //   {
+  //     onPress() {
+  //       dialogState.close()
+  //     },
+  //   },
+  //   closeButtonRef,
+  // )
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', dialogState.close)
+
+    return () => {
+      router.events.off('routeChangeStart', dialogState.close)
+    }
+  }, [router.events, dialogState.close])
+
+  return (
+    <nav className="flex items-center space-x-8 sm:hidden">
+      <LanguageSwitcher />
+      <button
+        aria-label={t('common.openMainNavigationMenu')}
+        {...openButtonProps}
+        ref={openButtonRef}
+      >
+        <Icon icon={MenuIcon} className="w-6 h-6" />
+      </button>
+      {dialogState.isOpen ? (
+        <OverlayContainer>
+          <ModalDialog
+            title={t('common.mainNavigationMenu')}
+            isOpen
+            onClose={dialogState.close}
+            isDismissable
+          >
+            <div>
+              <ul className="flex flex-col items-center space-y-8 font-medium">
+                {Object.entries(navigation).map(([route, { href }]) => {
+                  const isCurrent = href.pathname === router.pathname
+
+                  return (
+                    <li key={route}>
+                      <Link href={href}>
+                        <a aria-current={isCurrent ? 'page' : undefined}>
+                          {t(`common.page.${route}`)}
+                        </a>
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          </ModalDialog>
+        </OverlayContainer>
+      ) : null}
+    </nav>
+  )
+}
+
+interface ModalDialogProps extends OverlayProps {
+  title: string
+  children: ReactNode
+}
+
+/**
+ * Modal dialog.
+ */
+function ModalDialog(props: ModalDialogProps) {
+  const { title, children } = props
+
+  const overlayRef = useRef(null)
+  const { overlayProps, underlayProps } = useOverlay(props, overlayRef)
+
+  usePreventScroll()
+  const { modalProps } = useModal()
+
+  const { dialogProps, titleProps } = useDialog({}, overlayRef)
+
+  return (
+    <div
+      {...underlayProps}
+      className="fixed inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50"
+    >
+      <FocusScope contain restoreFocus autoFocus>
+        <div
+          className="p-8 bg-white rounded"
+          {...overlayProps}
+          {...dialogProps}
+          {...modalProps}
+          ref={overlayRef}
+        >
+          <h2 {...titleProps} className="sr-only">
+            {title}
+          </h2>
+          {children}
+        </div>
+      </FocusScope>
+    </div>
   )
 }
 

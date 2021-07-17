@@ -9,12 +9,14 @@ import type {
 import Link from 'next/link'
 import { Fragment } from 'react'
 
+import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
 import type { Person } from '@/cms/api/people.api'
 import { getPersonIds, getPersons } from '@/cms/api/people.api'
 import { getPostPreviewsByAuthorId } from '@/cms/queries/posts.queries'
 import { getFullName } from '@/cms/utils/getFullName'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
+import { Icon } from '@/common/Icon'
 import { PageContent } from '@/common/PageContent'
 import { PageTitle } from '@/common/PageTitle'
 import { getLocale } from '@/i18n/getLocale'
@@ -146,13 +148,16 @@ function AuthorsList(props: AuthorsListProps): JSX.Element | null {
   }
 
   return (
-    <ul>
+    <ul className="flex flex-col space-y-4">
       {authors.map((author) => {
         return (
           <li key={author.id}>
             <Link href={routes.author({ id: author.id })}>
-              <a>
-                {getFullName(author)} ({author.posts})
+              <a className="flex items-center space-x-1.5">
+                <Icon icon={AvatarIcon} className="flex-shrink-0 w-6 h-6" />
+                <span>
+                  {getFullName(author)} ({author.posts})
+                </span>
               </a>
             </Link>
           </li>

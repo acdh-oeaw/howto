@@ -9,6 +9,10 @@ import { Metadata } from '@/metadata/Metadata'
 const Cms = dynamic(
   async () => {
     const { nanoid } = await import('nanoid')
+    /**
+     * We cannot use the ESM build because `netlify-cms-app` imports global css,
+     * which is disallowed by Next.js.
+     */
     const { default: Cms } = await import('netlify-cms-app')
     const { config } = await import('@/cms/cms.config')
     const { collection: posts } = await import(

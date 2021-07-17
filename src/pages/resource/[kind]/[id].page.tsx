@@ -10,6 +10,7 @@ import type {
 import Link from 'next/link'
 import { Fragment } from 'react'
 
+import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
 import { getPostById, getPostFilePath, getPostIds } from '@/cms/api/posts.api'
 import type { Post as PostData, PostPreview } from '@/cms/api/posts.api'
 import type { ResourceKind } from '@/cms/api/resources.api'
@@ -17,6 +18,7 @@ import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
 import { getFullName } from '@/cms/utils/getFullName'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
 import { pickRandom } from '@/cms/utils/pickRandom'
+import { Icon } from '@/common/Icon'
 import { PageContent } from '@/common/PageContent'
 import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
@@ -249,12 +251,15 @@ function RelatedResources(props: RelatedResourcesProps) {
   return (
     <nav className="w-full py-12 mx-auto my-12 space-y-3 border-t border-neutral-200 max-w-80ch">
       <h2 className="text-2xl font-bold">{t('common.relatedResources')}</h2>
-      <ul className="space-y-1.5">
+      <ul className="flex flex-col space-y-4">
         {props.resources.map((resource) => {
           return (
             <li key={resource.id}>
               <Link href={routes.resource({ kind: 'posts', id: resource.id })}>
-                <a className="underline">{resource.title}</a>
+                <a className="underline flex items-center space-x-1.5">
+                  <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
+                  <span>{resource.title}</span>
+                </a>
               </Link>
             </li>
           )

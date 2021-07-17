@@ -9,11 +9,13 @@ import type {
 import Link from 'next/link'
 import { Fragment } from 'react'
 
+import { Svg as TagIcon } from '@/assets/icons/tag.svg'
 import { getTagIds, getTags } from '@/cms/api/tags.api'
 import type { Tag } from '@/cms/api/tags.api'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
+import { Icon } from '@/common/Icon'
 import { PageContent } from '@/common/PageContent'
 import { PageTitle } from '@/common/PageTitle'
 import { getLocale } from '@/i18n/getLocale'
@@ -142,13 +144,16 @@ function TagsList(props: TagsListProps): JSX.Element | null {
   }
 
   return (
-    <ul>
+    <ul className="flex flex-col space-y-4">
       {tags.map((tag) => {
         return (
           <li key={tag.id}>
             <Link href={routes.tag({ id: tag.id })}>
-              <a>
-                {tag.name} ({tag.posts})
+              <a className="flex items-center space-x-1.5">
+                <Icon icon={TagIcon} className="flex-shrink-0 w-6 h-6" />
+                <span>
+                  {tag.name} ({tag.posts})
+                </span>
               </a>
             </Link>
           </li>
