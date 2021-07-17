@@ -35,8 +35,8 @@ export function PageHeader(): JSX.Element {
             src="/assets/images/logo.svg"
             alt=""
             className="inline-block h-10"
-            height="100"
-            width="91"
+            height="40"
+            width="36"
             layout="fixed"
             priority
           />
