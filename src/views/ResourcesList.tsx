@@ -19,7 +19,7 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
   const { resources } = props
 
   return (
-    <ul className="grid gap-6 xs:grid-cols-cards">
+    <ul className="flex flex-col w-full max-w-screen-md mx-auto divide-y">
       {resources.map((resource) => {
         return (
           <li key={resource.id}>
@@ -47,8 +47,8 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
   const href = routes.resource({ kind: 'posts', id })
 
   return (
-    <article className="flex flex-col overflow-hidden transition border rounded shadow-sm border-neutral-150 hover:shadow-md">
-      <div className="flex flex-col px-10 py-10 space-y-5">
+    <article className="flex flex-col py-12 space-y-6">
+      <div className="flex flex-col space-y-5">
         <h2 className="text-2xl font-semibold">
           <Link href={href}>
             <a className="transition hover:text-primary-600">{title}</a>
@@ -56,7 +56,7 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
         </h2>
         <div className="leading-7 text-neutral-500">{abstract}</div>
       </div>
-      <footer className="flex items-center justify-between px-10 py-5 bg-neutral-100">
+      <footer className="flex items-center justify-between">
         <dl>
           {Array.isArray(authors) && authors.length > 0 ? (
             <div>
