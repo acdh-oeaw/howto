@@ -26,6 +26,8 @@
   "pageNotFoundMessage": "Oh je, diese Seite existiert nicht.",
   "internalError": "Fataler Fehler",
   "switchLanguage": "Sprache wechseln zu {{language}}",
+  "openMainNavigationMenu": "Navigationsmenü öffnen",
+  "mainNavigationMenu": "Navigationsmenü",
   "language": {
     "de": "Deutsch",
     "en": "Englisch"

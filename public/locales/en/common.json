@@ -26,6 +26,8 @@
   "pageNotFoundMessage": "Sorry, this page could not be found.",
   "internalError": "Internal error",
   "switchLanguage": "Switch language to {{language}}",
+  "openMainNavigationMenu": "Open navigation menu",
+  "mainNavigationMenu": "Main navigation menu",
   "language": {
     "de": "German",
     "en": "English"
