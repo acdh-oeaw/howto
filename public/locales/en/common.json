@@ -29,5 +29,12 @@
   "language": {
     "de": "German",
     "en": "English"
+  },
+  "quiz": {
+    "correct": "Correct",
+    "incorrect": "Incorrect",
+    "validate": "Validate",
+    "next": "Next question",
+    "previous": "Previous question"
   }
 }

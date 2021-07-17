@@ -7,6 +7,7 @@ import { isQuizCard, QuizCard } from '@/cms/components/quiz/QuizCard'
 import { QuizMessage } from '@/cms/components/quiz/QuizMessage'
 import { QuizQuestion } from '@/cms/components/quiz/QuizQuestion'
 import { XmlCodeEditor } from '@/cms/components/quiz/XmlCodeEditor'
+import { useI18n } from '@/i18n/useI18n'
 import type { Values } from '@/utils/ts/enum'
 
 export interface QuizService {
@@ -53,6 +54,8 @@ export interface QuizProps {
  * Quiz.
  */
 export function Quiz(props: QuizProps): JSX.Element | null {
+  const { t } = useI18n()
+
   const childElements = getChildElements(props.children)
   const cards = childElements.filter(isQuizCard)
 
@@ -96,9 +99,9 @@ export function Quiz(props: QuizProps): JSX.Element | null {
         const isHidden = index !== currentIndex
 
         const labels = {
-          validate: card.props.validateButtonLabel ?? 'Validate',
-          next: 'Next',
-          previous: 'Previous',
+          validate: card.props.validateButtonLabel ?? t('common.quiz.validate'),
+          next: t('common.quiz.next'),
+          previous: t('common.quiz.previous'),
         }
 
         const service = {

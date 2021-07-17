@@ -11,7 +11,7 @@
   },
   "readMore": "Mehr lesen",
   "publishDate": "Veröffentlicht am",
-  "lastUpdated": "Zuletzt verändert am",
+  "lastUpdated": "Zuletzt geändert am",
   "suggestChangesToResource": "Änderungen an Ressource vorschlagen",
   "resources": "Ressourcen",
   "posts": "Posts",
@@ -29,5 +29,12 @@
   "language": {
     "de": "Deutsch",
     "en": "Englisch"
+  },
+  "quiz": {
+    "correct": "Richtig",
+    "incorrect": "Falsch",
+    "validate": "Überprüfen",
+    "next": "Nächste Frage",
+    "previous": "Vorherige Frage"
   }
 }

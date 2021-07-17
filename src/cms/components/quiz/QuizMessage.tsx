@@ -1,7 +1,15 @@
-import type { ReactElement, ReactNode } from 'react'
+import type { ReactElement, ReactNode, FC } from 'react'
 
+import { Svg as LightBulbIcon } from '@/assets/icons/light-bulb.svg'
+import { Svg as LightningBoltIcon } from '@/assets/icons/lightning-bolt.svg'
 import type { QuizCardStatus } from '@/cms/components/quiz/Quiz'
-import { useQuiz } from '@/cms/components/quiz/Quiz'
+import { Icon } from '@/common/Icon'
+
+const icons: Record<QuizCardStatus, FC | null> = {
+  correct: LightBulbIcon,
+  incorrect: LightningBoltIcon,
+  unanswered: null,
+}
 
 export interface QuizMessageProps {
   children?: ReactNode
@@ -12,11 +20,14 @@ export interface QuizMessageProps {
  * Quiz message.
  */
 export function QuizMessage(props: QuizMessageProps): JSX.Element | null {
-  const quiz = useQuiz()
+  const icon = icons[props.type]
 
-  if (props.type !== quiz.status) return null
-
-  return <div className="flex flex-col space-y-2 text-sm">{props.children}</div>
+  return (
+    <div className="flex items-center space-x-1.5 text-neutral-500">
+      {icon != null ? <Icon icon={icon} className="w-6 h-6" /> : null}
+      <div className="flex flex-col space-y-2 text-sm">{props.children}</div>
+    </div>
+  )
 }
 
 /**
