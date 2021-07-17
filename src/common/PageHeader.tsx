@@ -9,6 +9,7 @@ import {
   usePreventScroll,
 } from '@react-aria/overlays'
 import { useOverlayTriggerState } from '@react-stately/overlays'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { ReactNode } from 'react'
@@ -30,12 +31,14 @@ export function PageHeader(): JSX.Element {
     <header className="flex items-center justify-between px-8 py-4">
       <Link href={navigation.home.href}>
         <a aria-label={t('common.page.home')}>
-          <img
+          <Image
             src="/assets/images/logo.svg"
             alt=""
             className="inline-block h-10"
-            height="40"
-            width="36"
+            height="100"
+            width="91"
+            layout="fixed"
+            priority
           />
         </a>
       </Link>
@@ -130,7 +133,10 @@ function MobilePageNavigation() {
             isDismissable
           >
             <div>
-              <ul className="flex flex-col items-center space-y-8 font-medium">
+              <ul
+                className="flex flex-col items-center space-y-8 font-medium"
+                style={{ minWidth: '60vw' }}
+              >
                 {Object.entries(navigation).map(([route, { href }]) => {
                   const isCurrent = href.pathname === router.pathname
 
