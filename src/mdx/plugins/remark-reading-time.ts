@@ -15,7 +15,7 @@ export default function attacher(): Transformer {
   return transformer
 
   function transformer(tree: Unist.Node, file: VFile) {
-    const plainText = processor.stringify(processor.runSync(tree))
+    const plainText = processor.stringify(processor.runSync({ ...tree }))
 
     const words = plainText.trim().split(/\s+/)
     const minutes = Math.ceil(words.length / WORDS_PER_MINUTE)
@@ -51,6 +51,11 @@ export default function attacher(): Transformer {
   //       visit(tree, 'WordNode', () => {
   //         wordCount++
   //       })
+  //       // Or, to count all node types (paragraphs, sentences)
+  //       // visit(tree, visitor)
+  //       // function visitor(node) {
+  //       //   counts[node.type] = (counts[node.type] || 0) + 1
+  //       // }
   //     }
   //   }
   // }
