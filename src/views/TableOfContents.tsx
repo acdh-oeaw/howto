@@ -86,7 +86,7 @@ function TableOfContentsLevel(
                   {isHighlighted
                     ? // <Icon
                       //   icon={ChevronIcon}
-                      //   className="absolute w-3.5 transform -rotate-90 right-full h-full mr-1"
+                      //   className="flex-shrink-0 absolute w-3.5 transform -rotate-90 right-full h-full mr-1"
                       // />
                       null
                     : null}

@@ -80,7 +80,7 @@ export function Resource(props: ResourceProps): JSX.Element {
                             ) : (
                               <Icon
                                 icon={AvatarIcon}
-                                className="object-cover w-8 h-8 rounded-full"
+                                className="flex-shrink-0 object-cover w-8 h-8 rounded-full"
                               />
                             )}
                             <Link href={routes.author({ id: author.id })}>
@@ -110,7 +110,7 @@ export function Resource(props: ResourceProps): JSX.Element {
               <dt className="sr-only">{t('common.timeToRead')}</dt>
               <dd>
                 <div className="flex items-center justify-end space-x-1.5">
-                  <Icon icon={ClockIcon} className="w-4 h-4" />
+                  <Icon icon={ClockIcon} className="flex-shrink-0 w-4 h-4" />
                   {/*
                    * TODO: Change to `Intl.DurationFormat` when it lands.
                    *

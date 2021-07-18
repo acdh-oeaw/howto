@@ -1,26 +1,33 @@
 import { useButton } from '@react-aria/button'
 import { useDialog } from '@react-aria/dialog'
 import { FocusScope } from '@react-aria/focus'
-import type { OverlayProps } from '@react-aria/overlays'
+import type { OverlayProps as AriaOverlayProps } from '@react-aria/overlays'
 import {
   OverlayContainer,
   useModal,
   useOverlay,
   usePreventScroll,
 } from '@react-aria/overlays'
+import { useSearchField } from '@react-aria/searchfield'
 import { useOverlayTriggerState } from '@react-stately/overlays'
+import { useSearchFieldState } from '@react-stately/searchfield'
+import type { SearchFieldProps as AriaSearchFieldProps } from '@react-types/searchfield'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { ReactNode } from 'react'
-import { useEffect, useRef } from 'react'
+import { useState, Fragment, useEffect, useRef } from 'react'
 
 import { Svg as MenuIcon } from '@/assets/icons/menu.svg'
+import { Svg as SearchIcon } from '@/assets/icons/search.svg'
+import { Svg as ClearIcon } from '@/assets/icons/x.svg'
 import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { useLocale } from '@/i18n/useLocale'
 import { navigation } from '@/navigation/navigation.config'
 import { NavLink } from '@/navigation/NavLink'
+import { routes } from '@/navigation/routes.config'
+import { getAlgoliaSearchIndex } from '@/search/getAlgoliaSearchIndex'
 
 /**
  * Page header.
@@ -68,6 +75,7 @@ function PageNavigation() {
           )
         })}
       </ul>
+      <Search />
       <LanguageSwitcher />
     </nav>
   )
@@ -85,6 +93,7 @@ function MobilePageNavigation() {
   const openButtonRef = useRef<HTMLButtonElement>(null)
   const { buttonProps: openButtonProps } = useButton(
     {
+      'aria-label': t('common.openMainNavigationMenu'),
       onPress() {
         dialogState.open()
       },
@@ -112,17 +121,16 @@ function MobilePageNavigation() {
 
   return (
     <nav className="flex items-center space-x-8 sm:hidden">
+      <Search />
       <LanguageSwitcher />
-      <button
-        aria-label={t('common.openMainNavigationMenu')}
-        {...openButtonProps}
-        ref={openButtonRef}
-      >
-        <Icon icon={MenuIcon} className="w-6 h-6" />
+      <button {...openButtonProps} ref={openButtonRef}>
+        <Icon icon={MenuIcon} className="flex-shrink-0 w-6 h-6" />
       </button>
       {dialogState.isOpen ? (
         <OverlayContainer>
           <ModalDialog
+            // TODO: use aria-label instead of title
+            // If a dialog does not have a visible title element, an aria-label or aria-labelledby prop must be passed instead to identify the element to assistive technology.
             title={t('common.mainNavigationMenu')}
             isOpen
             onClose={dialogState.close}
@@ -131,6 +139,7 @@ function MobilePageNavigation() {
             <div>
               <ul
                 className="flex flex-col items-center space-y-8 font-medium"
+                // FIXME:
                 style={{ minWidth: '60vw' }}
               >
                 {Object.entries(navigation).map(([route, { href }]) => {
@@ -151,7 +160,7 @@ function MobilePageNavigation() {
   )
 }
 
-interface ModalDialogProps extends OverlayProps {
+interface ModalDialogProps extends AriaOverlayProps {
   title: string
   children: ReactNode
 }
@@ -162,7 +171,7 @@ interface ModalDialogProps extends OverlayProps {
 function ModalDialog(props: ModalDialogProps) {
   const { title, children } = props
 
-  const overlayRef = useRef(null)
+  const overlayRef = useRef<HTMLDivElement>(null)
   const { overlayProps, underlayProps } = useOverlay(props, overlayRef)
 
   usePreventScroll()
@@ -218,5 +227,178 @@ function LanguageSwitcher() {
       </span>
       <span className="uppercase">{languageAlternate}</span>
     </button>
+  )
+}
+
+/**
+ * Search button and dialog.
+ */
+function Search() {
+  const { t } = useI18n()
+  const router = useRouter()
+
+  const dialogState = useOverlayTriggerState({})
+  const [searchIndex] = useState(() => getAlgoliaSearchIndex())
+  // TODO:
+  interface ResourcePreview {
+    id: string
+    kind: 'posts'
+    title: string
+    tags: Array<{ id: string; name: string }>
+  }
+  const [searchResults, setSearchResults] = useState<Array<ResourcePreview>>([])
+
+  const openButtonRef = useRef<HTMLButtonElement>(null)
+  const { buttonProps: openButtonProps } = useButton(
+    {
+      'aria-label': t('common.search'),
+      onPress() {
+        dialogState.open()
+      },
+    },
+    openButtonRef,
+  )
+
+  // const closeButtonRef = useRef<HTMLButtonElement>(null)
+  // const { buttonProps: closeButtonProps } = useButton(
+  //   {
+  //     onPress() {
+  //       dialogState.close()
+  //     },
+  //   },
+  //   closeButtonRef,
+  // )
+
+  function onSubmit(searchTerm: string) {
+    let wasCanceled = false
+
+    async function search() {
+      if (searchIndex == null) return
+      const results = await searchIndex.search<ResourcePreview>(searchTerm)
+
+      if (!wasCanceled) {
+        setSearchResults(results.hits)
+      }
+    }
+
+    search()
+
+    return () => {
+      wasCanceled = true
+    }
+  }
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', dialogState.close)
+
+    return () => {
+      router.events.off('routeChangeStart', dialogState.close)
+    }
+  }, [router.events, dialogState.close])
+
+  return (
+    <Fragment>
+      <button {...openButtonProps} ref={openButtonRef}>
+        <Icon icon={SearchIcon} className="flex-shrink-0 w-6 h-6" />
+      </button>
+      {dialogState.isOpen ? (
+        <OverlayContainer>
+          <ModalDialog
+            // TODO: use aria-label instead of title
+            // If a dialog does not have a visible title element, an aria-label or aria-labelledby prop must be passed instead to identify the element to assistive technology.
+            title={t('common.search')}
+            isOpen
+            onClose={dialogState.close}
+            isDismissable
+          >
+            <div className="space-y-4">
+              <SearchField
+                label={t('common.search')}
+                placeholder={t('common.search')}
+                onSubmit={onSubmit}
+                isDisabled={searchIndex == null}
+              />
+              {searchResults.length > 0 ? (
+                <ul>
+                  {searchResults.map((result) => {
+                    return (
+                      <li key={result.id}>
+                        <Link
+                          href={routes.resource({
+                            kind: result.kind,
+                            id: result.id,
+                          })}
+                        >
+                          <a className="flex flex-col px-2 py-2 space-y-1">
+                            <span>{result.title}</span>
+                            <dl>
+                              <dt className="sr-only">{t('common.tags')}</dt>
+                              <dd>
+                                <ul className="flex flex-wrap">
+                                  {result.tags.map((tag) => {
+                                    return (
+                                      <li
+                                        key={tag.id}
+                                        className="mb-1 mr-4 text-xs font-bold tracking-wide uppercase text-primary-600"
+                                      >
+                                        {tag.name}
+                                      </li>
+                                    )
+                                  })}
+                                </ul>
+                              </dd>
+                            </dl>
+                          </a>
+                        </Link>
+                      </li>
+                    )
+                  })}
+                </ul>
+              ) : (
+                <p>{t('common.noResultsFound')}</p>
+              )}
+            </div>
+          </ModalDialog>
+        </OverlayContainer>
+      ) : null}
+    </Fragment>
+  )
+}
+
+type SearchFieldProps = AriaSearchFieldProps
+
+/**
+ * Search input field.
+ */
+function SearchField(props: SearchFieldProps) {
+  const { label } = props
+
+  const state = useSearchFieldState(props)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const { labelProps, inputProps, clearButtonProps } = useSearchField(
+    props,
+    state,
+    inputRef,
+  )
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const { buttonProps } = useButton(clearButtonProps, buttonRef)
+
+  return (
+    <label
+      {...labelProps}
+      className="flex flex-col space-y-1.5"
+      // FIXME:
+      style={{ minWidth: '40vw' }}
+    >
+      <span className="text-sm font-medium">{label}</span>
+      <div className="flex px-4 py-2 border rounded border-neutral-200">
+        <input {...inputProps} ref={inputRef} className="flex-1" />
+        {state.value !== '' ? (
+          <button {...buttonProps} ref={buttonRef}>
+            <Icon icon={ClearIcon} className="flex-shrink-0 w-5 h-5" />
+          </button>
+        ) : null}
+      </div>
+    </label>
   )
 }

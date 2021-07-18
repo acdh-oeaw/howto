@@ -22,7 +22,7 @@ export function PageFooter(): JSX.Element {
       </small>
       <small>
         <a href={'/' + feedFileName} className="flex items-center space-x-1">
-          <Icon icon={RssIcon} className="w-5 h-5" />
+          <Icon icon={RssIcon} className="flex-shrink-0 w-5 h-5" />
           <span>RSS Feed</span>
         </a>
       </small>
