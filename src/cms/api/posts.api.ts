@@ -22,6 +22,7 @@ import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
 import withLazyLoadingImages from '@/mdx/plugins/rehype-lazy-loading-images'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
+import withReadingTime from '@/mdx/plugins/remark-reading-time'
 import withTypographicQuotesAndDashes from '@/mdx/plugins/remark-smartypants'
 import { readFile } from '@/mdx/readFile'
 import { readFolder } from '@/mdx/readFolder'
@@ -71,6 +72,8 @@ export interface PostData {
   metadata: PostMetadata
   /** Table of contents. */
   toc: Toc
+  /** Time to read, in minutes. */
+  timeToRead: number
 }
 
 export interface Post extends PostId {
@@ -97,10 +100,12 @@ export async function getPostIds(_locale: Locale): Promise<Array<string>> {
 export async function getPostById(id: ID, locale: Locale): Promise<Post> {
   const [file, metadata] = await readFileAndGetPostMetadata(id, locale)
   const code = String(await compileMdx(file))
+  const vfileData = file.data as { toc: Toc; timeToRead: number }
 
   const data = {
     metadata,
-    toc: (file.data as { toc: Toc }).toc,
+    toc: vfileData.toc,
+    timeToRead: vfileData.timeToRead,
   }
 
   return {
@@ -266,6 +271,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
       withGitHubMarkdown,
       withFootnotes,
       withTypographicQuotesAndDashes,
+      withReadingTime,
     ],
     rehypePlugins: [
       [withSyntaxHighlighting, { highlighter }],

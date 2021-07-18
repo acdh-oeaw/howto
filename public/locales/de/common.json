@@ -12,6 +12,11 @@
   "readMore": "Mehr lesen",
   "publishDate": "Veröffentlicht am",
   "lastUpdated": "Zuletzt geändert am",
+  "timeToRead": "Lesedauer",
+  "minutes": {
+    "one": "Minute",
+    "other": "Minuten"
+  },
   "suggestChangesToResource": "Änderungen an Ressource vorschlagen",
   "resources": "Ressourcen",
   "posts": "Posts",
