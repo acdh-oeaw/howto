@@ -60,7 +60,7 @@ export function SideNote(props: SideNoteProps): JSX.Element {
       )}
     >
       <strong className="flex items-center space-x-2 font-bold">
-        <Icon icon={icons[type]} />
+        <Icon icon={icons[type]} className="flex-shrink-0" />
         <span>{title}</span>
       </strong>
       <div>{props.children}</div>
