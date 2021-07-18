@@ -11,7 +11,7 @@ export interface Logger {
  * Logs messages to the console.
  */
 export const log: Logger =
-  process.env.NODE_ENV === 'production'
+  process.env.NODE_ENV !== 'production'
     ? {
         success(message) {
           console.info('✅', message)
