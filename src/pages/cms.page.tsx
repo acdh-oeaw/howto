@@ -36,7 +36,7 @@ const Cms = dynamic(
     Cms.registerEventListener({
       name: 'preSave',
       handler({ entry }) {
-        const collections = [posts.name]
+        const collections = [posts.name, courses.name]
 
         const data = entry.get('data')
 
