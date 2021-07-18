@@ -61,8 +61,9 @@ const config = {
   },
   variants: {
     extend: {
-      ringWidth: ['focus-visible'],
+      backgroundColor: ['focus-visible'],
       ringColor: ['focus-visible'],
+      ringWidth: ['focus-visible'],
     },
   },
   plugins: [

@@ -1,3 +1,4 @@
+import type { Hit } from '@algolia/client-search'
 import { useButton } from '@react-aria/button'
 import { useDialog } from '@react-aria/dialog'
 import { FocusScope } from '@react-aria/focus'
@@ -240,7 +241,9 @@ function Search() {
 
   const dialogState = useOverlayTriggerState({})
   const [searchIndex] = useState(() => getAlgoliaSearchIndex())
-  const [searchResults, setSearchResults] = useState<Array<IndexedResource>>([])
+  const [searchResults, setSearchResults] = useState<
+    Array<Hit<IndexedResource>>
+  >([])
 
   const openButtonRef = useRef<HTMLButtonElement>(null)
   const { buttonProps: openButtonProps } = useButton(
@@ -267,8 +270,18 @@ function Search() {
     let wasCanceled = false
 
     async function search() {
+      if (searchTerm.trim().length === 0) return
+
       if (searchIndex == null) return
-      const results = await searchIndex.search<IndexedResource>(searchTerm)
+      const results = await searchIndex.search<IndexedResource>(searchTerm, {
+        hitsPerPage: 10,
+        attributesToRetrieve: ['title', 'tags', 'abstract'],
+        attributesToHighlight: ['title'],
+        attributesToSnippet: ['abstract'],
+        highlightPreTag: '<mark>',
+        highlightPostTag: '</mark>',
+        snippetEllipsisText: '&hellip;',
+      })
 
       if (!wasCanceled) {
         setSearchResults(results.hits)
@@ -317,39 +330,49 @@ function Search() {
                   {searchResults.map((result) => {
                     return (
                       <li key={result.id}>
-                        <Link
-                          href={routes.resource({
-                            kind: result.kind,
-                            id: result.id,
-                          })}
-                        >
-                          <a className="flex flex-col px-2 py-2 space-y-1">
-                            <span>{result.title}</span>
-                            <dl>
-                              <dt className="sr-only">{t('common.tags')}</dt>
-                              <dd>
-                                <ul className="flex flex-wrap">
-                                  {result.tags.map((tag) => {
-                                    return (
-                                      <li
-                                        key={tag.id}
-                                        className="mb-1 mr-4 text-xs font-bold tracking-wide uppercase text-primary-600"
-                                      >
-                                        {tag.name}
-                                      </li>
-                                    )
-                                  })}
-                                </ul>
-                              </dd>
-                            </dl>
-                          </a>
-                        </Link>
+                        <article>
+                          <Link
+                            href={routes.resource({
+                              kind: result.kind,
+                              id: result.id,
+                            })}
+                          >
+                            <a className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100">
+                              <h3 className="font-medium">{result.title}</h3>
+                              <p
+                                dangerouslySetInnerHTML={{
+                                  __html:
+                                    result._snippetResult?.abstract.value ?? '',
+                                }}
+                              />
+                              <dl>
+                                <dt className="sr-only">{t('common.tags')}</dt>
+                                <dd className="my-px">
+                                  <ul className="flex flex-wrap">
+                                    {result.tags.map((tag) => {
+                                      return (
+                                        <li
+                                          key={tag.id}
+                                          className="mb-1 mr-4 text-xs font-bold tracking-wide uppercase text-primary-600"
+                                        >
+                                          {tag.name}
+                                        </li>
+                                      )
+                                    })}
+                                  </ul>
+                                </dd>
+                              </dl>
+                            </a>
+                          </Link>
+                        </article>
                       </li>
                     )
                   })}
                 </ul>
               ) : (
-                <p>{t('common.noResultsFound')}</p>
+                <div className="py-4 text-center text-neutral-500">
+                  {t('common.noResultsFound')}
+                </div>
               )}
             </div>
           </ModalDialog>

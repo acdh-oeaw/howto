@@ -1,3 +1,10 @@
+:focus:not(:focus-visible) {
+  outline: none;
+}
+:focus:not(:focus-visible):-moz-focusring {
+  outline: none;
+}
+
 body {
   @apply antialiased font-sans text-neutral-900 bg-neutral-50;
 }

@@ -65,7 +65,7 @@ async function generate() {
     },
   )
 
-  searchIndex.saveObjects(resourcesWithAlgoliaId)
+  return searchIndex.saveObjects(resourcesWithAlgoliaId)
 }
 
 generate()
