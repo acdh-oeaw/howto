@@ -15,7 +15,6 @@ export default function attacher(): Transformer {
   return transformer
 
   function transformer(tree: Unist.Node, file: VFile) {
-    // TODO: reevaluate perf now that w have to deepclone
     const clonedTree = JSON.parse(JSON.stringify(tree))
     const plainText = processor.stringify(processor.runSync(clonedTree))
 
