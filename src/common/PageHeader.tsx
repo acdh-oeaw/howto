@@ -21,6 +21,7 @@ import { useState, Fragment, useEffect, useRef } from 'react'
 import { Svg as MenuIcon } from '@/assets/icons/menu.svg'
 import { Svg as SearchIcon } from '@/assets/icons/search.svg'
 import { Svg as ClearIcon } from '@/assets/icons/x.svg'
+import type { IndexedResource } from '@/cms/api/resources.api'
 import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { useLocale } from '@/i18n/useLocale'
@@ -239,14 +240,7 @@ function Search() {
 
   const dialogState = useOverlayTriggerState({})
   const [searchIndex] = useState(() => getAlgoliaSearchIndex())
-  // TODO:
-  interface ResourcePreview {
-    id: string
-    kind: 'posts'
-    title: string
-    tags: Array<{ id: string; name: string }>
-  }
-  const [searchResults, setSearchResults] = useState<Array<ResourcePreview>>([])
+  const [searchResults, setSearchResults] = useState<Array<IndexedResource>>([])
 
   const openButtonRef = useRef<HTMLButtonElement>(null)
   const { buttonProps: openButtonProps } = useButton(
@@ -274,7 +268,7 @@ function Search() {
 
     async function search() {
       if (searchIndex == null) return
-      const results = await searchIndex.search<ResourcePreview>(searchTerm)
+      const results = await searchIndex.search<IndexedResource>(searchTerm)
 
       if (!wasCanceled) {
         setSearchResults(results.hits)

@@ -9,6 +9,8 @@
     "notFound": "Page not found",
     "error": "Error"
   },
+  "search": "Search",
+  "noResultsFound": "Nothing found",
   "readMore": "Read more",
   "publishDate": "Publish date",
   "lastUpdated": "Last updated",

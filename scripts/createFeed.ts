@@ -11,6 +11,9 @@ import { siteMetadata } from '~/config/siteMetadata.config'
 
 const MAX_ENTRIES_PER_CHANNEL = 20
 
+/**
+ * Generates RSS `feed.xml`.
+ */
 async function generate() {
   const resourcesByLocale = await Promise.all(
     locales.map((locale) => {
@@ -54,9 +57,6 @@ async function generate() {
   })
 }
 
-/**
- * Generates RSS `feed.xml`.
- */
 generate()
   .then(() => log.success('Successfully generated RSS feed.'))
   .catch(log.error)

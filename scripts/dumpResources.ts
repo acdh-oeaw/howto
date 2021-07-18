@@ -4,6 +4,9 @@ import * as path from 'path'
 import { getPostPreviews } from '@/cms/api/posts.api'
 import { log } from '@/utils/log'
 
+/**
+ * Dumps resource metadata to public folder as json.
+ */
 async function main() {
   const locale = 'en'
   const resources = await getPostPreviews(locale)
@@ -17,9 +20,6 @@ async function main() {
   })
 }
 
-/**
- * Dumps resource metadata to public folder as json.
- */
 main()
   .then(() =>
     log.success('Successfully dumped resource metadata to public folder.'),
