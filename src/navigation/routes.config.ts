@@ -1,7 +1,7 @@
 import type { ResourceKind } from '@/cms/api/resources.api'
 
 /**
- * Named routes.
+ * Named routes. Defaults params are handled via `rewrites` in `next.config.js`.
  */
 export const routes = {
   home() {
@@ -18,6 +18,12 @@ export const routes = {
   },
   resources({ kind, page = 1 }: { kind: ResourceKind; page?: number }) {
     return { pathname: `/resources/${kind}/page/${page}` }
+  },
+  course({ id }: { id: string }) {
+    return { pathname: `/curriculum/${id}` }
+  },
+  courses({ page = 1 }: { page?: number } = {}) {
+    return { pathname: `/curricula/page/${page}` }
   },
   author({ id, resourcePage = 1 }: { id: string; resourcePage?: number }) {
     return { pathname: `/author/${id}/page/${resourcePage}` }

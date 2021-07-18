@@ -1,5 +1,6 @@
 import type { CmsConfig, CmsCollection } from 'netlify-cms-core'
 
+import { collection as courses } from '@/cms/collections/courses.collection'
 import { collection as licences } from '@/cms/collections/licences.collection'
 import { collection as pages } from '@/cms/collections/pages.collection'
 import { collection as people } from '@/cms/collections/people.collection'
@@ -14,6 +15,7 @@ export const collections: Record<string, CmsCollection> = {
   posts,
   people,
   tags,
+  courses,
   licences,
   pages,
 }
