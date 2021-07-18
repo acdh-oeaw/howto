@@ -20,6 +20,7 @@ import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { useLocale } from '@/i18n/useLocale'
 import { navigation } from '@/navigation/navigation.config'
+import { NavLink } from '@/navigation/NavLink'
 
 /**
  * Page header.
@@ -53,21 +54,16 @@ export function PageHeader(): JSX.Element {
  */
 function PageNavigation() {
   const { t } = useI18n()
-  const router = useRouter()
 
   return (
     <nav className="hidden sm:items-center sm:space-x-8 sm:flex">
       <ul className="flex items-center space-x-8 text-sm font-medium">
         {Object.entries(navigation).map(([route, { href }]) => {
-          const isCurrent = href.pathname === router.pathname
-
           return (
             <li key={route}>
-              <Link href={href}>
-                <a aria-current={isCurrent ? 'page' : undefined}>
-                  {t(`common.page.${route}`)}
-                </a>
-              </Link>
+              <NavLink href={href}>
+                <a>{t(`common.page.${route}`)}</a>
+              </NavLink>
             </li>
           )
         })}
@@ -138,15 +134,11 @@ function MobilePageNavigation() {
                 style={{ minWidth: '60vw' }}
               >
                 {Object.entries(navigation).map(([route, { href }]) => {
-                  const isCurrent = href.pathname === router.pathname
-
                   return (
                     <li key={route}>
-                      <Link href={href}>
-                        <a aria-current={isCurrent ? 'page' : undefined}>
-                          {t(`common.page.${route}`)}
-                        </a>
-                      </Link>
+                      <NavLink href={href}>
+                        <a>{t(`common.page.${route}`)}</a>
+                      </NavLink>
                     </li>
                   )
                 })}
