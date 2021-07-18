@@ -93,8 +93,8 @@ export async function getStaticProps(
   const tag = await getTagById(id, locale)
 
   const page = Number(context.params?.page)
-  const posts = await getPostPreviewsByTagId(id, locale)
-  const sortedResources: Array<PostPreview> = posts.sort((a, b) =>
+  const postPreviews = await getPostPreviewsByTagId(id, locale)
+  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) =>
     a.date > b.date ? -1 : 1,
   )
 

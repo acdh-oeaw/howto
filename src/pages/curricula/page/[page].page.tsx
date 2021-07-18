@@ -8,9 +8,8 @@ import type {
 } from 'next'
 import { Fragment } from 'react'
 
-import type { PostPreview } from '@/cms/api/posts.api'
-import { getPostPreviews, getPostIds } from '@/cms/api/posts.api'
-import type { ResourceKind } from '@/cms/api/resources.api'
+import type { CoursePreview } from '@/cms/api/courses.api'
+import { getCoursePreviews, getCourseIds } from '@/cms/api/courses.api'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
 import { PageContent } from '@/common/PageContent'
@@ -23,38 +22,37 @@ import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
+import { CoursesList } from '@/views/CoursesList'
 import { Pagination } from '@/views/Pagination'
-import { ResourcesList } from '@/views/ResourcesList'
 
 const pageSize = 12
 
-export interface ResourcesPageParams extends ParsedUrlQuery {
-  kind: ResourceKind
+export interface CoursesPageParams extends ParsedUrlQuery {
   page: string
 }
 
-export interface ResourcesPageProps {
+export interface CoursesPageProps {
   dictionary: Dictionary
-  resources: Page<PostPreview>
+  courses: Page<CoursePreview>
 }
 
 /**
- * Creates resources pages.
+ * Creates courses pages.
  */
 export async function getStaticPaths(
   context: GetStaticPathsContext,
-): Promise<GetStaticPathsResult<ResourcesPageParams>> {
+): Promise<GetStaticPathsResult<CoursesPageParams>> {
   const { locales } = getLocale(context)
 
   const paths = (
     await Promise.all(
       locales.map(async (locale) => {
-        const ids = await getPostIds(locale)
+        const ids = await getCourseIds(locale)
         const pages = getPageRange(ids, pageSize)
 
         return pages.map((page) => {
           return {
-            params: { kind: 'posts' as const, page: String(page) },
+            params: { page: String(page) },
             locale,
           }
         })
@@ -69,37 +67,37 @@ export async function getStaticPaths(
 }
 
 /**
- * Provides translations and metadata for resources page.
+ * Provides translations and metadata for courses page.
  */
 export async function getStaticProps(
-  context: GetStaticPropsContext<ResourcesPageParams>,
-): Promise<GetStaticPropsResult<ResourcesPageProps>> {
+  context: GetStaticPropsContext<CoursesPageParams>,
+): Promise<GetStaticPropsResult<CoursesPageProps>> {
   const { locale } = getLocale(context)
 
   const dictionary = await loadDictionary(locale, ['common'])
 
   const page = Number(context.params?.page)
-  const postPreviews = await getPostPreviews(locale)
-  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) =>
+  const coursePreviews = await getCoursePreviews(locale)
+  const sortedCourses: Array<CoursePreview> = coursePreviews.sort((a, b) =>
     a.date > b.date ? -1 : 1,
   )
 
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-  const resources = paginate(sortedResources, pageSize)[page - 1]!
+  const courses = paginate(sortedCourses, pageSize)[page - 1]!
 
   return {
     props: {
       dictionary,
-      resources,
+      courses,
     },
   }
 }
 
 /**
- * Resources page.
+ * Courses page.
  */
-export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
-  const { resources } = props
+export default function CoursesPage(props: CoursesPageProps): JSX.Element {
+  const { courses } = props
 
   const { t } = useI18n()
   const canonicalUrl = useCanonicalUrl()
@@ -108,17 +106,17 @@ export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
   return (
     <Fragment>
       <Metadata
-        title={t('common.page.resources')}
+        title={t('common.page.courses')}
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
       <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <PageTitle>{t('common.posts')}</PageTitle>
-        <ResourcesList resources={resources.items} />
+        <PageTitle>{t('common.courses')}</PageTitle>
+        <CoursesList courses={courses.items} />
         <Pagination
-          page={resources.page}
-          pages={resources.pages}
-          href={(page) => routes.resources({ kind: 'posts', page })}
+          page={courses.page}
+          pages={courses.pages}
+          href={(page) => routes.courses({ page })}
         />
       </PageContent>
     </Fragment>
