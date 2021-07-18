@@ -11,8 +11,11 @@ import type { VFile } from 'vfile'
 
 // import type { Licence, LicenceId } from '@/cms/api/licences.api'
 // import { getLicenceById } from '@/cms/api/licences.api'
+
 import { getPersonById } from '@/cms/api/people.api'
 import type { Person, PersonId } from '@/cms/api/people.api'
+import type { PostId, PostPreview } from '@/cms/api/posts.api'
+import { getPostPreviewById } from '@/cms/api/posts.api'
 import { getTagById } from '@/cms/api/tags.api'
 import type { Tag, TagId } from '@/cms/api/tags.api'
 import type { Locale } from '@/i18n/i18n.config'
@@ -49,6 +52,7 @@ export interface CourseFrontmatter {
   // contributors?: Array<PersonId['id']>
   editors?: Array<PersonId['id']>
   tags: Array<TagId['id']>
+  resources: Array<PostId['id']>
   featuredImage?: FilePath
   abstract: string
   // licence: LicenceId['id']
@@ -58,12 +62,13 @@ export interface CourseFrontmatter {
 export interface CourseMetadata
   extends Omit<
     CourseFrontmatter,
-    'authors' | 'editors' | 'contributors' | 'tags' | 'licence' // FIXME:
+    'authors' | 'editors' | 'contributors' | 'tags' | 'resources' | 'licence' // FIXME:
   > {
   // authors: Array<Person>
   // contributors?: Array<Person>
   editors?: Array<Person>
   tags: Array<Tag>
+  resources: Array<PostPreview>
   // licence: Licence
 }
 
@@ -225,6 +230,13 @@ async function getCourseMetadata(
       ? await Promise.all(
           matter.tags.map((id) => {
             return getTagById(id, locale)
+          }),
+        )
+      : [],
+    resources: Array.isArray(matter.resources)
+      ? await Promise.all(
+          matter.resources.map((id) => {
+            return getPostPreviewById(id.replace(/\/index$/, ''), locale)
           }),
         )
       : [],

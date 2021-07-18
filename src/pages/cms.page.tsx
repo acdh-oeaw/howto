@@ -18,7 +18,11 @@ const Cms = dynamic(
     const { collection: posts } = await import(
       '@/cms/collections/posts.collection'
     )
+    const { collection: courses } = await import(
+      '@/cms/collections/courses.collection'
+    )
     const { ResourcePreview } = await import('@/cms/previews/ResourcePreview')
+    const { CoursePreview } = await import('@/cms/previews/CoursePreview')
     const { downloadWidget } = await import('@/cms/widgets/Download')
     const { sideNoteEditorWidget } = await import('@/cms/widgets/SideNote')
     const { videoEditorWidget } = await import('@/cms/widgets/Video')
@@ -60,6 +64,7 @@ const Cms = dynamic(
      * Register preview templates for collections.
      */
     Cms.registerPreviewTemplate(posts.name, memo(ResourcePreview))
+    Cms.registerPreviewTemplate(courses.name, memo(CoursePreview))
 
     /**
      * Register richtext editor widgets.

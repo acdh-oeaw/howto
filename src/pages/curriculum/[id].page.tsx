@@ -1,6 +1,6 @@
 import type { ParsedUrlQuery } from 'querystring'
 
-import { SchemaOrg as SchemaOrgMetadata } from '@stefanprobst/next-page-metadata'
+// import { SchemaOrg as SchemaOrgMetadata } from '@stefanprobst/next-page-metadata'
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -11,11 +11,14 @@ import Link from 'next/link'
 import { Fragment } from 'react'
 
 import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
-import { getPostById, getPostFilePath, getPostIds } from '@/cms/api/posts.api'
-import type { Post as PostData, PostPreview } from '@/cms/api/posts.api'
-import type { ResourceKind } from '@/cms/api/resources.api'
-import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
-import { getFullName } from '@/cms/utils/getFullName'
+import {
+  getCourseById,
+  getCourseFilePath,
+  getCourseIds,
+} from '@/cms/api/courses.api'
+import type { Course as CourseData, CoursePreview } from '@/cms/api/courses.api'
+import { getCoursePreviewsByTagId } from '@/cms/queries/courses.queries'
+// import { getFullName } from '@/cms/utils/getFullName'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
 import { pickRandom } from '@/cms/utils/pickRandom'
 import { Icon } from '@/common/Icon'
@@ -24,49 +27,46 @@ import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
 import { loadDictionary } from '@/i18n/loadDictionary'
 import { useI18n } from '@/i18n/useI18n'
-import { DublinCore as DublinCoreMetadata } from '@/metadata/DublinCore'
-import { Highwire as HighwireMetadata } from '@/metadata/Highwire'
+// import { DublinCore as DublinCoreMetadata } from '@/metadata/DublinCore'
+// import { Highwire as HighwireMetadata } from '@/metadata/Highwire'
 import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
-import { useSiteMetadata } from '@/metadata/useSiteMetadata'
+// import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 import { routes } from '@/navigation/routes.config'
-import { createUrl } from '@/utils/createUrl'
+// import { createUrl } from '@/utils/createUrl'
 import type { IsoDateString } from '@/utils/ts/aliases'
-// import { FloatingTableOfContentsButton } from '@/views/FloatingTableOfContentsButton'
-import { Resource } from '@/views/Resource'
-import { TableOfContents } from '@/views/TableOfContents'
+import { Course } from '@/views/Course'
 
-const RELATED_RESOURCES_COUNT = 4
+const RELATED_COURSES_COUNT = 4
 
-export interface ResourcePageParams extends ParsedUrlQuery {
-  kind: ResourceKind
+export interface CoursePageParams extends ParsedUrlQuery {
   id: string
 }
 
-export interface ResourcePageProps {
+export interface CoursePageProps {
   dictionary: Dictionary
-  resource: PostData
-  related: Array<PostPreview>
+  course: CourseData
+  related: Array<CoursePreview>
   lastUpdatedAt: IsoDateString | null
 }
 
 /**
- * Creates page for every resource.
+ * Creates page for every course.
  */
 export async function getStaticPaths(
   context: GetStaticPathsContext,
-): Promise<GetStaticPathsResult<ResourcePageParams>> {
+): Promise<GetStaticPathsResult<CoursePageParams>> {
   const { locales } = getLocale(context)
 
   const paths = (
     await Promise.all(
       locales.map(async (locale) => {
-        const ids = await getPostIds(locale)
+        const ids = await getCourseIds(locale)
 
         return ids.map((id) => {
           return {
-            params: { kind: 'posts' as const, id },
+            params: { id },
             locale,
           }
         })
@@ -81,38 +81,38 @@ export async function getStaticPaths(
 }
 
 /**
- * Provides resource content and metadata, and translations for resource page.
+ * Provides course content and metadata, and translations for course page.
  */
 export async function getStaticProps(
-  context: GetStaticPropsContext<ResourcePageParams>,
-): Promise<GetStaticPropsResult<ResourcePageProps>> {
+  context: GetStaticPropsContext<CoursePageParams>,
+): Promise<GetStaticPropsResult<CoursePageProps>> {
   const { locale } = getLocale(context)
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const { id } = context.params as ResourcePageParams
+  const { id } = context.params as CoursePageParams
 
-  const resource = await getPostById(id, locale)
+  const course = await getCourseById(id, locale)
 
-  const resourcesWithSharedTags = (
+  const coursesWithSharedTags = (
     await Promise.all(
-      resource.data.metadata.tags.map((tag) => {
-        return getPostPreviewsByTagId(tag.id, locale)
+      course.data.metadata.tags.map((tag) => {
+        return getCoursePreviewsByTagId(tag.id, locale)
       }),
     )
   )
     .flat()
-    .filter((resource) => resource.id !== id)
-  const related = pickRandom(resourcesWithSharedTags, RELATED_RESOURCES_COUNT)
+    .filter((course) => course.id !== id)
+  const related = pickRandom(coursesWithSharedTags, RELATED_COURSES_COUNT)
 
   const lastUpdatedAt = await getLastUpdatedTimestamp(
-    getPostFilePath(id, locale),
+    getCourseFilePath(id, locale),
   )
 
   return {
     props: {
       dictionary,
-      resource,
+      course,
       related,
       lastUpdatedAt,
     },
@@ -120,17 +120,17 @@ export async function getStaticProps(
 }
 
 /**
- * Resource page.
+ * Course page.
  */
-export default function ResourcePage(props: ResourcePageProps): JSX.Element {
-  const { resource, related, lastUpdatedAt } = props
-  const { metadata, toc } = resource.data
+export default function CoursePage(props: CoursePageProps): JSX.Element {
+  const { course, related, lastUpdatedAt } = props
+  const { metadata } = course.data
 
-  const { t } = useI18n()
   const canonicalUrl = useCanonicalUrl()
   const languageAlternates = useAlternateUrls()
-  const siteMetadata = useSiteMetadata()
+  // const siteMetadata = useSiteMetadata()
 
+  // FIXME: metadata
   return (
     <Fragment>
       <Metadata
@@ -141,9 +141,9 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
           type: 'article',
         }}
       />
-      <SchemaOrgMetadata
+      {/* <SchemaOrgMetadata
         schema={{
-          '@type': 'LearningResource',
+          '@type': 'LearningCourse',
           url: canonicalUrl,
           headline: metadata.title,
           datePublished: metadata.date,
@@ -210,59 +210,43 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         licence={metadata.licence.name}
         tags={metadata.tags.map((tag) => tag.name)}
         siteTitle={siteMetadata.title}
-      />
+      /> */}
       <PageContent className="grid w-full max-w-screen-lg px-10 py-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
         <aside />
         <div className="min-w-0">
-          <Resource resource={resource} lastUpdatedAt={lastUpdatedAt} />
-          <RelatedResources resources={related} />
+          <Course course={course} lastUpdatedAt={lastUpdatedAt} />
+          <RelatedCourses courses={related} />
         </div>
-        {metadata.toc === true && toc.length > 0 ? (
-          <Fragment>
-            <aside className="sticky top-0 hidden max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm 2xl:block text-neutral-500">
-              <TableOfContents
-                toc={toc}
-                title={
-                  <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">
-                    {t('common.tableOfContents')}
-                  </h2>
-                }
-                className="space-y-2"
-              />
-            </aside>
-            {/* <FloatingTableOfContentsButton toc={toc} /> */}
-          </Fragment>
-        ) : null}
       </PageContent>
     </Fragment>
   )
 }
 
-interface RelatedResourcesProps {
-  resources: Array<PostPreview>
+interface RelatedCoursesProps {
+  courses: Array<CoursePreview>
 }
 
 /**
- * List of related resources.
+ * List of related courses.
  */
-function RelatedResources(props: RelatedResourcesProps) {
-  const { resources } = props
+function RelatedCourses(props: RelatedCoursesProps) {
+  const { courses } = props
 
   const { t } = useI18n()
 
-  if (resources.length === 0) return null
+  if (courses.length === 0) return null
 
   return (
     <nav className="w-full py-12 mx-auto my-12 space-y-3 border-t border-neutral-200 max-w-80ch">
-      <h2 className="text-2xl font-bold">{t('common.relatedResources')}</h2>
+      <h2 className="text-2xl font-bold">{t('common.relatedCourses')}</h2>
       <ul className="flex flex-col space-y-4">
-        {props.resources.map((resource) => {
+        {props.courses.map((course) => {
           return (
-            <li key={resource.id}>
-              <Link href={routes.resource({ kind: 'posts', id: resource.id })}>
+            <li key={course.id}>
+              <Link href={routes.course({ id: course.id })}>
                 <a className="underline flex items-center space-x-1.5">
                   <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
-                  <span>{resource.title}</span>
+                  <span>{course.title}</span>
                 </a>
               </Link>
             </li>

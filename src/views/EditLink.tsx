@@ -29,7 +29,7 @@ export function EditLink(props: EditLinkProps): JSX.Element {
       href={String(
         createUrl({
           ...routes.cms(),
-          hash: `/edit/${collection}/${id}`,
+          hash: `/collections/${collection}/entries/${id}/index`,
           baseUrl,
         }),
       )}

@@ -7,7 +7,7 @@ import withGitHubMarkdown from 'remark-gfm'
 import type { Highlighter } from 'shiki'
 import { compile } from 'xdm'
 
-import type { PostFrontmatter, PostMetadata } from '@/cms/api/posts.api'
+import type { CourseFrontmatter, CourseMetadata } from '@/cms/api/courses.api'
 import { getSyntaxHighlighter } from '@/cms/previews/getSyntaxHighlighter'
 import { Preview } from '@/cms/previews/Preview'
 import { Spinner } from '@/common/Spinner'
@@ -16,24 +16,25 @@ import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
 import withCmsPreviewAssets from '@/mdx/plugins/remark-cms-preview-assets'
 import { useDebouncedState } from '@/utils/useDebouncedState'
-import { Resource } from '@/views/Resource'
+import { Course } from '@/views/Course'
 
-const initialMetadata: PostMetadata = {
-  authors: [],
+const initialMetadata: CourseMetadata = {
+  // authors: [],
   tags: [],
-  licence: { id: '', name: '', url: '' },
+  // licence: { id: '', name: '', url: '' },
   uuid: '',
   title: '',
   lang: 'en',
   date: new Date(0).toISOString(),
   version: '',
   abstract: '',
+  resources: [],
 }
 
 /**
- * CMS preview for resource.
+ * CMS preview for course.
  */
-export function ResourcePreview(
+export function CoursePreview(
   props: PreviewTemplateComponentProps,
 ): JSX.Element {
   const entry = useDebouncedState(props.entry, 250)
@@ -42,7 +43,7 @@ export function ResourcePreview(
   const data = entry.get('data')
   const body = entry.getIn(['data', 'body'])
 
-  const [metadata, setMetadata] = useState<PostMetadata>(initialMetadata)
+  const [metadata, setMetadata] = useState<CourseMetadata>(initialMetadata)
   const [mdxContent, setMdxContent] = useState<string | null | Error>(null)
   const [highlighter, setHighlighter] = useState<Highlighter | null>(null)
 
@@ -88,23 +89,23 @@ export function ResourcePreview(
     }
 
     const { body: _, ...partialFrontmatter } = data.toJS()
-    const frontmatter = partialFrontmatter as Partial<PostFrontmatter>
+    const frontmatter = partialFrontmatter as Partial<CourseFrontmatter>
 
-    const authors = Array.isArray(frontmatter.authors)
-      ? frontmatter.authors
-          .map((id) => {
-            return resolveRelation(['authors', 'people'], id)
-          })
-          .filter(Boolean)
-      : []
+    // const authors = Array.isArray(frontmatter.authors)
+    //   ? frontmatter.authors
+    //       .map((id) => {
+    //         return resolveRelation(['authors', 'people'], id)
+    //       })
+    //       .filter(Boolean)
+    //   : []
 
-    const contributors = Array.isArray(frontmatter.contributors)
-      ? frontmatter.contributors
-          .map((id) => {
-            return resolveRelation(['contributors', 'people'], id)
-          })
-          .filter(Boolean)
-      : []
+    // const contributors = Array.isArray(frontmatter.contributors)
+    //   ? frontmatter.contributors
+    //       .map((id) => {
+    //         return resolveRelation(['contributors', 'people'], id)
+    //       })
+    //       .filter(Boolean)
+    //   : []
 
     const editors = Array.isArray(frontmatter.editors)
       ? frontmatter.editors
@@ -122,10 +123,18 @@ export function ResourcePreview(
           .filter(Boolean)
       : []
 
-    const licence =
-      frontmatter.licence != null
-        ? resolveRelation(['licence', 'licences'], frontmatter.licence)
-        : null
+    const resources = Array.isArray(frontmatter.resources)
+      ? frontmatter.resources
+          .map((id) => {
+            return resolveRelation(['resources', 'posts'], id)
+          })
+          .filter(Boolean)
+      : []
+
+    // const licence =
+    //   frontmatter.licence != null
+    //     ? resolveRelation(['licence', 'licences'], frontmatter.licence)
+    //     : null
 
     const date =
       frontmatter.date == null || frontmatter.date.length === 0
@@ -135,12 +144,13 @@ export function ResourcePreview(
     const metadata = {
       ...initialMetadata,
       ...frontmatter,
-      authors,
-      contributors,
+      // authors,
+      // contributors,
       date,
       editors,
       tags,
-      licence,
+      resources,
+      // licence,
     }
 
     setMetadata(metadata)
@@ -173,15 +183,13 @@ export function ResourcePreview(
   return (
     <Preview {...props}>
       {typeof mdxContent === 'string' ? (
-        <Resource
-          resource={{
+        <Course
+          course={{
             id: entry.get('slug'),
             code: mdxContent,
             data: {
               metadata,
-              toc: [],
-              /** We don't include `remark-reading-time` in the mdx compiler for previews. */
-              timeToRead: 1,
+              // toc: [],
             },
           }}
           lastUpdatedAt={null}
