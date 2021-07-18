@@ -75,7 +75,7 @@
     "retext-smartypants": "^4.0.0",
     "rosetta": "^1.1.0",
     "sharp": "^0.28.3",
-    "shiki": "^0.9.4",
+    "shiki": "^0.9.5",
     "strip-indent": "^4.0.0",
     "strip-markdown": "^4.0.0",
     "terser": "^5.7.0",

@@ -12433,10 +12433,10 @@ shell-quote@1.7.2:
   resolved "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
 
-shiki@^0.9.4:
-  version "0.9.4"
-  resolved "https://registry.npmjs.org/shiki/-/shiki-0.9.4.tgz#b9d59ad11770347216d356e402bfd48572c7ed40"
-  integrity sha512-6ldV9wgwRyx1yIDC20SBNq9Kza1aPaERDGd+R3oJxsv7KLkAq+ltGrxWVg4faGCg7V23/q9fzKeeSwAALQhIrA==
+shiki@^0.9.5:
+  version "0.9.5"
+  resolved "https://registry.npmjs.org/shiki/-/shiki-0.9.5.tgz#c8da81a05fbfd1810729c6873901a729a72ec541"
+  integrity sha512-XFn+rl3wIowDjzdr5DlHoHgQphXefgUTs2bNp/bZu4WF9gTrTLnKwio3f28VjiFG6Jpip7yQn/p4mMj6OrjrtQ==
   dependencies:
     json5 "^2.2.0"
     onigasm "^2.2.5"

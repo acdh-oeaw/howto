@@ -6,7 +6,6 @@ import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
 import withHeadingIds from 'rehype-slug'
 import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
-import { getHighlighter } from 'shiki'
 import type { VFile } from 'vfile'
 
 // import type { Licence, LicenceId } from '@/cms/api/licences.api'
@@ -18,6 +17,7 @@ import type { PostId, PostPreview } from '@/cms/api/posts.api'
 import { getPostPreviewById } from '@/cms/api/posts.api'
 import { getTagById } from '@/cms/api/tags.api'
 import type { Tag, TagId } from '@/cms/api/tags.api'
+import { getSyntaxHighlighter } from '@/cms/utils/getSyntaxHighlighter'
 import type { Locale } from '@/i18n/i18n.config'
 import { extractFrontmatter } from '@/mdx/extractFrontmatter'
 import withDownloadsLinks from '@/mdx/plugins/rehype-download-links'
@@ -275,7 +275,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
    */
   const { compile } = await import('xdm')
 
-  const highlighter = await getHighlighter({ theme: 'material-palenight' })
+  const highlighter = await getSyntaxHighlighter()
 
   return compile(file, {
     outputFormat: 'function-body',

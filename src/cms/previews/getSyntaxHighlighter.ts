@@ -11,7 +11,8 @@ export async function getSyntaxHighlighter(): Promise<Highlighter> {
   setOnigasmWASM('https://unpkg.com/shiki@0.9.4/dist/onigasm.wasm')
   setCDN('https://unpkg.com/shiki@0.9.4/')
   const highlighter = await getHighlighter({
-    theme: 'material-palenight',
+    theme: 'poimandres',
+    // theme: 'material-palenight',
     langs: supportedLanguages,
   })
 
