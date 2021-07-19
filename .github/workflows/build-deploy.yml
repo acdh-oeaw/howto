@@ -17,6 +17,8 @@ jobs:
       packages: write
 
     steps:
+      # the buildx action does this step automatically, however we have to be
+      # explicit in order to be able to use a build context (see below)
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -39,7 +41,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: . # build context needed because we copy `.git` folder for last updated at timestamps
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
