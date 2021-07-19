@@ -27,3 +27,15 @@ production build of the website with
 build with `yarn dev` and visit
 [http://localhost:3000/cms](http://localhost:3000/cms). Don't forget to commit
 and push changes via `git`.
+
+### Use your favorite text editor
+
+Since content is saved to `.mdx` files in the `content/posts` folder, you can
+use your favourite text editor to make changes and commit via git. When using VS
+Code you can install the recommended extensions to get linting aud
+auto-formatting for markdown.
+
+### Contributing guidelines
+
+When contributing content directly via git, please use feature branches and
+don't push to `main`, to allow for review.
