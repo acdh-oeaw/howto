@@ -39,6 +39,9 @@ const config = {
               /** Don't add quotes around `blockquote`. */
               'blockquote p:first-of-type::before': null,
               'blockquote p:last-of-type::after': null,
+              /** Don't add backticks around inline `code`. */
+              'code::before': null,
+              'code::after': null,
               a: {
                 '&:focus': {
                   outline: 'none',
