@@ -275,7 +275,7 @@ function Search() {
       if (searchIndex == null) return
       const results = await searchIndex.search<IndexedResource>(searchTerm, {
         hitsPerPage: 10,
-        attributesToRetrieve: ['title', 'tags', 'abstract'],
+        attributesToRetrieve: ['id', 'kind', 'title', 'tags', 'abstract'],
         attributesToHighlight: ['title'],
         attributesToSnippet: ['abstract'],
         highlightPreTag: '<mark>',
@@ -409,7 +409,7 @@ function SearchField(props: SearchFieldProps) {
     >
       <span className="text-sm font-medium">{label}</span>
       <div className="flex px-4 py-2 border rounded border-neutral-200">
-        <input {...inputProps} ref={inputRef} className="flex-1" />
+        <input {...inputProps} ref={inputRef} className="flex-1 min-w-0" />
         {state.value !== '' ? (
           <button {...buttonProps} ref={buttonRef}>
             <Icon icon={ClearIcon} className="flex-shrink-0 w-5 h-5" />
