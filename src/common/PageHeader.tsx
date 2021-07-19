@@ -275,9 +275,9 @@ function Search() {
       if (searchIndex == null) return
       const results = await searchIndex.search<IndexedResource>(searchTerm, {
         hitsPerPage: 10,
-        attributesToRetrieve: ['id', 'kind', 'title', 'tags', 'abstract'],
+        attributesToRetrieve: ['id', 'kind', 'title', 'tags'],
         attributesToHighlight: ['title'],
-        attributesToSnippet: ['abstract'],
+        attributesToSnippet: ['abstract', 'body'],
         highlightPreTag: '<mark>',
         highlightPostTag: '</mark>',
         snippetEllipsisText: '&hellip;',
@@ -339,12 +339,21 @@ function Search() {
                           >
                             <a className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100">
                               <h3 className="font-medium">{result.title}</h3>
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html:
-                                    result._snippetResult?.abstract.value ?? '',
-                                }}
-                              />
+                              {result._snippetResult?.abstract.value != null ? (
+                                <p
+                                  dangerouslySetInnerHTML={{
+                                    __html:
+                                      result._snippetResult.abstract.value,
+                                  }}
+                                />
+                              ) : null}
+                              {result._snippetResult?.body.value != null ? (
+                                <p
+                                  dangerouslySetInnerHTML={{
+                                    __html: result._snippetResult.body.value,
+                                  }}
+                                />
+                              ) : null}
                               <dl>
                                 <dt className="sr-only">{t('common.tags')}</dt>
                                 <dd className="my-px">

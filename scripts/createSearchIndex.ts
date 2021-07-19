@@ -1,8 +1,15 @@
+import { promises as fs } from 'fs'
+
 import { loadEnvConfig } from '@next/env'
 import algoliasearch from 'algoliasearch'
 import type { SearchIndex } from 'algoliasearch'
+import remark from 'remark'
+import withFootnotes from 'remark-footnotes'
+import withFrontmatter from 'remark-frontmatter'
+import withGfm from 'remark-gfm'
+import toPlaintext from 'strip-markdown'
 
-import { getPostPreviews } from '@/cms/api/posts.api'
+import { getPostFilePath, getPostPreviews } from '@/cms/api/posts.api'
 import type { IndexedResource } from '@/cms/api/resources.api'
 import { log } from '@/utils/log'
 import { noop } from '@/utils/noop'
@@ -38,37 +45,68 @@ function getAlgoliaSearchIndex(): SearchIndex | null {
 }
 
 /**
+ * Creates `unified` processor to convert mdx to plaintext. Keeps image alt text.
+ */
+async function createProcessor() {
+  // TODO:
+  // const { remarkMdx } = await import('xdm/lib/plugin/remark-mdx')
+  const processor = remark()
+    .use(withFrontmatter)
+    .use(withGfm)
+    .use(withFootnotes)
+    // .use(remarkMdx)
+    .use(toPlaintext)
+  return processor
+}
+
+/**
  * Updates Algolia search index.
  */
 async function generate() {
   const searchIndex = getAlgoliaSearchIndex()
   if (searchIndex == null) return
 
+  const processor = await createProcessor()
+
   const locale = 'en'
   const resources = await getPostPreviews(locale)
-  const kind = 'posts'
+  const kind = 'posts' as const
 
-  const resourcesWithAlgoliaId: Array<IndexedResource> = resources.map(
-    (resource) => {
-      return {
-        ...resource,
-        objectID: `${kind}-${resource.id}`,
-        kind,
-        authors: resource.authors.map((author) => {
-          return {
-            id: author.id,
-            lastName: author.lastName,
-            firstName: author.firstName,
-          }
-        }),
-        tags: resource.tags.map((tag) => {
-          return {
-            name: tag.name,
-            id: tag.id,
-          }
-        }),
-      }
-    },
+  const resourcesWithAlgoliaId: Array<IndexedResource> = await Promise.all(
+    resources
+      .map((resource) => {
+        return {
+          id: resource.id,
+          kind,
+          objectID: `${kind}-${resource.id}`,
+          title: resource.title,
+          date: resource.date,
+          lang: resource.lang,
+          authors: resource.authors.map((author) => {
+            return {
+              id: author.id,
+              lastName: author.lastName,
+              firstName: author.firstName,
+            }
+          }),
+          tags: resource.tags.map((tag) => {
+            return {
+              name: tag.name,
+              id: tag.id,
+            }
+          }),
+          abstract: resource.abstract,
+        }
+      })
+      .map(async (resource) => {
+        const filePath = getPostFilePath(resource.id, locale)
+        const fileContent = await fs.readFile(filePath, { encoding: 'utf-8' })
+        const plaintext = String(await processor.process(fileContent))
+        return {
+          ...resource,
+          body: plaintext,
+        }
+      }),
   )
 
   return searchIndex.saveObjects(resourcesWithAlgoliaId)

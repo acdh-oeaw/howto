@@ -1,5 +1,5 @@
 import remark from 'remark'
-import stripMarkdown from 'strip-markdown'
+import toPlaintext from 'strip-markdown'
 import type { Transformer } from 'unified'
 import type * as Unist from 'unist'
 import type { VFile } from 'vfile'
@@ -10,7 +10,7 @@ import type { VFile } from 'vfile'
 export default function attacher(): Transformer {
   const WORDS_PER_MINUTE = 265
   /** Uses `alt` text for images, keeps footnotes. */
-  const processor = remark().use(stripMarkdown)
+  const processor = remark().use(toPlaintext)
 
   return transformer
 
