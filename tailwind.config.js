@@ -15,14 +15,15 @@ const config = {
         sans: ['Inter var', 'system-ui', 'sans-serif'],
       },
       gridTemplateColumns: {
-        'content-columns': '1fr 80ch 1fr',
+        'content-columns': '1fr 720px 1fr',
         cards: 'repeat(auto-fill, minmax(320px, 1fr))',
       },
       gridTemplateRows: {
         'page-layout': 'auto 1fr auto',
       },
       maxWidth: {
-        '80ch': '80ch',
+        /** Character units `ch` change with font size, we just want a fixed width container. */
+        '80ch': '720px',
       },
       ringOffsetWidth: {
         DEFAULT: '2px',
