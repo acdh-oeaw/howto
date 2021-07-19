@@ -1255,7 +1255,7 @@ video {
 }
 
 .max-w-80ch {
-  max-width: 80ch;
+  max-width: 720px;
 }
 
 .max-w-none {
@@ -1955,7 +1955,7 @@ video {
   }
 
   .\32xl\:grid-cols-content-columns {
-    grid-template-columns: 1fr 80ch 1fr;
+    grid-template-columns: 1fr 720px 1fr;
   }
 
   .\32xl\:gap-x-10 {
