@@ -23,7 +23,7 @@
     "lint:md:fix": "yarn run lint:md --output",
     "lint:mdx": "xdm . --quiet --frail --ignore-path .gitignore",
     "lint:mdx:fix": "yarn run lint:mdx --output",
-    "postbuild": "yarn run create:feed && yarn run create:sitemap && yarn run create:search-index && yarn run create:resource-dump",
+    "postbuild": "yarn run create:feed && yarn run create:sitemap && yarn run create:resource-dump",
     "postinstall": "patch-package",
     "prebuild": "yarn run create:favicons && yarn run cms:styles",
     "prepare": "simple-git-hooks || true",

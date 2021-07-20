@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.3
+# syntax=docker/dockerfile:1
 
 # base
 # we don't use node:14-slim because we need `git` to get the last updated timestamps
@@ -41,11 +41,16 @@ ARG NEXT_PUBLIC_ALGOLIA_APP_ID
 ARG NEXT_PUBLIC_ALGOLIA_API_KEY
 ARG NEXT_PUBLIC_ALGOLIA_INDEX_NAME
 
+RUN yarn build
+
 # docker buildkit currently cannot mount secrets directly to env vars
 # @see https://github.com/moby/buildkit/issues/2122
+USER root
 RUN --mount=type=secret,id=ALGOLIA_ADMIN_API_KEY \
-    export ALGOLIA_ADMIN_API_KEY="$(cat /run/secrets/ALGOLIA_ADMIN_API_KEY)" && \
-    yarn build
+  export ALGOLIA_ADMIN_API_KEY="$(cat /run/secrets/ALGOLIA_ADMIN_API_KEY)" && \
+  yarn create:search-index && \
+  unset ALGOLIA_ADMIN_API_KEY
+USER node
 
 # serve
 FROM base AS serve
