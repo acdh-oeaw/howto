@@ -5,7 +5,6 @@ date: 2021-06-09T00:00:00.000Z
 version: 1.0.0
 authors:
   - ebel-carla
-  - pirgie-gregor
 editors:
   - königshofer-elisabeth
   - wiencek-florian
@@ -17,7 +16,6 @@ licence: ccby-4.0
 toc: true
 uuid: 4heHodnOBIbAkLImG2Jky
 ---
-
 ## Prosopographic Modelling - Ontologies
 
 In philosophy, ontology studies the concepts and the basic structures of being and existing.
@@ -30,15 +28,15 @@ The development of ontologies is a challenging task that requires a deep underst
 
 ### Main concepts
 
-In the context of Digital Humanities (DH), an Ontology is mostly defined as **_"[...] a formal, explicit specification of a shared conceptualization."_** (Studer et al, 1998). An ontology is an explicit model of concepts, which are defined with clear semantics. In DH they help to bring together data from different sources in a useful way by applying these shared conceptualizations. It is important that users understand the underlying assumptions about the chosen domain. A domain is the specific field that an ontology covers. In our examples of application, this is prosopographic data that is limited by the available historical data. _"As defined above, an ontology is a formalized specification of a conceptualization. Such a specification can be expressed in many ways. It is commonly done in the form of a **set of classes and properties representing the concepts and their relationships**. The concepts are usually organized in hierarchies."_ (Eide, Ore 2018)
+In the context of Digital Humanities (DH), an Ontology is mostly defined as ***"\[...] a formal, explicit specification of a shared conceptualization."*** (Studer et al, 1998). An ontology is an explicit model of concepts, which are defined with clear semantics. In DH they help to bring together data from different sources in a useful way by applying these shared conceptualizations. It is important that users understand the underlying assumptions about the chosen domain. A domain is the specific field that an ontology covers. In our examples of application, this is prosopographic data that is limited by the available historical data. *"As defined above, an ontology is a formalized specification of a conceptualization. Such a specification can be expressed in many ways. It is commonly done in the form of a **set of classes and properties representing the concepts and their relationships**. The concepts are usually organized in hierarchies."* (Eide, Ore 2018)
 
-![image](images/classesmodel.png)
+![classmodel](images/classmodel_highres.png)
 
 #### Class Hierarchy
 
 Classes are usually organized hierarchically. At the top of the hierarchy is the most general class. The further down a class is in the hierarchy, the more specialized the definition. The relationship between a super- and a subclass is called an "is a" relationship. In Western science, e.g. in biological classification and the organisation of libraries, the hierarchical organisation of knowledge has a long tradition. The property **rdfs:subClassOf** is used to state that all the instances of one class (= subclass) are instances of another (= superclass).
 
-![classhierarchy2](images/classhierarchy.png)
+![classhierarchy](images/classhierarchy_highres.png)
 
 **Example:**
 
@@ -48,13 +46,13 @@ artworkclass rdfs:subClassOf objectclass .
 
 #### Class (Concept) vs. Instance (Individual)
 
-When we define an ontology as _"a formal, explicit specification of a shared conceptualization."_ (Studer et al, 1998), the most common way to express such a specification are classes (also known as concepts) and properties. In this case, classes are concepts and properties are relations between concepts.
+When we define an ontology as *"a formal, explicit specification of a shared conceptualization."* (Studer et al, 1998), the most common way to express such a specification are classes (also known as concepts) and properties. In this case, classes are concepts and properties are relations between concepts.
 
 The **objects from the world that we want to represent** (= the domain) in an ontology are called instances or individuals. Instances are subsumed under classes. The concept that we have of the instance, has to be consistent with the definition of its class. The affiliation of an instance to a class is expressed with an rdf:type.
 
 When an RDF resource is described with an **rdf:type** property, the value of that property is considered to be a resource that represents a class, and the subject of that property is considered to be an instance of that category or class.
 
-![classinstance](images/classinstance.png)
+![classinstance](images/classinstance_highres.png)
 
 **Example:**
 
@@ -94,13 +92,11 @@ ex:livingPerson owl:disjointWith ex:deadPerson .
 
 There are three different versions of OWL with different levels of expressiveness:
 
-- [OWL Lite](https://www.w3.org/TR/2004/REC-owl-features-20040210/#s3) is useful for expressing classification hierarchies and simple constraints. It is not widely used.
+* [OWL Lite](https://www.w3.org/TR/2004/REC-owl-features-20040210/#s3) is useful for expressing classification hierarchies and simple constraints. It is not widely used.
+* [OWL DL](http://www.w3.org/TR/2004/REC-owl-features-20040210/#s2.1) (extension of OWL Lite) OWL DL owes its name to its correspondence with description logic. OWL DL offers maximum expressiveness, computational completeness, decidability and the possibility of practical reasoning algorithms.
+* [OWL Full](http://www.w3.org/TR/2004/REC-owl-features-20040210/#s2.1) (extension of OWL DL) OWL Full is compatible with RDFS and widely used. Reasoning software is not able to perform complete reasoning for OWL Full because it is not completely decidable.
 
-- [OWL DL](http://www.w3.org/TR/2004/REC-owl-features-20040210/#s2.1) (extension of OWL Lite) OWL DL owes its name to its correspondence with description logic. OWL DL offers maximum expressiveness, computational completeness, decidability and the possibility of practical reasoning algorithms.
-
-- [OWL Full](http://www.w3.org/TR/2004/REC-owl-features-20040210/#s2.1) (extension of OWL DL) OWL Full is compatible with RDFS and widely used. Reasoning software is not able to perform complete reasoning for OWL Full because it is not completely decidable.
-
-_OWL2_ provides sublanguages for OWL Lite, OWL DL and OWL Full to offer easier ways to use OWL for specific tasks.
+*OWL2* provides sublanguages for OWL Lite, OWL DL and OWL Full to offer easier ways to use OWL for specific tasks.
 
 **Example:**
 
@@ -124,32 +120,32 @@ Therefore, we have stated the identity of the two **instances** of Maria Theresi
 
 ### Recommended reading
 
-- [Tim Berners-Lee, James Hendler and Ora Lassila, The Semantic Web, Scientific American, May 2001, p. 29-37](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf) _just 5 pages and freely available_
-- [Holger Sistig, semantisches web // semantic web // web 3.0. Informationen zur Zukunft des Internets, website based on diploma thesis of Holger Sistig](https://semantisches-web.net/) (2008). _freely available_
-- Øyvind Eide and Christian-Emil Smith Ore, Ontologies and data modeling, in: The Shape of Data in the Digital Humanities. Modeling Texts and Text-based Resources, J. Flanders and F. Janidis (Ed.), London 2018, pp.179-196. _not freely available_
-- Fotis Jannidis, Grundlagen der Datenmodellierung, in: H. Kohle and M. Rehbein (Ed.): Digital Humanities. Eine Einführung. Stuttgart: Metzler 2017, 99-108. _not freely available_
-- Rudi Studer et al. Knowledge engineering: Principles and methods, in: Data & Knowledge Engineering 25(1–2), 1998, pp. 161–198.
+* [Tim Berners-Lee, James Hendler and Ora Lassila, The Semantic Web, Scientific American, May 2001, p. 29-37](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf) *just 5 pages and freely available*
+* [Holger Sistig, semantisches web // semantic web // web 3.0. Informationen zur Zukunft des Internets, website based on diploma thesis of Holger Sistig](https://semantisches-web.net/) (2008). *freely available*
+* Øyvind Eide and Christian-Emil Smith Ore, Ontologies and data modeling, in: The Shape of Data in the Digital Humanities. Modeling Texts and Text-based Resources, J. Flanders and F. Janidis (Ed.), London 2018, pp.179-196. *not freely available*
+* Fotis Jannidis, Grundlagen der Datenmodellierung, in: H. Kohle and M. Rehbein (Ed.): Digital Humanities. Eine Einführung. Stuttgart: Metzler 2017, 99-108. *not freely available*
+* Rudi Studer et al. Knowledge engineering: Principles and methods, in: Data & Knowledge Engineering 25(1–2), 1998, pp. 161–198.
 
 Video resources
 
-- [Tara Raafat: RDF and OWL : the powerful duo](https://youtu.be/zteyEk9LADs) (uploaded: 18.12.2017).
-- [Harald Sack: Online Lecture. Knowledge Engineerung with Semantic Web Technologies](https://youtu.be/eJ9H1SakPoA) (uploaded 2019), especially: _3.1 Ontology in Philosophy and Computer Science_ and _4.2 Web Ontology Language OWL_ .
-- [RDF-Primer](https://www.w3.org/TR/rdf-primer/)
-- [RDFS Documentation](https://www.w3.org/TR/rdf-schema/)
-- [OWL-Primer](https://www.w3.org/TR/owl2-primer/)
+* [Tara Raafat: RDF and OWL : the powerful duo](https://youtu.be/zteyEk9LADs) (uploaded: 18.12.2017).
+* [Harald Sack: Online Lecture. Knowledge Engineerung with Semantic Web Technologies](https://youtu.be/eJ9H1SakPoA) (uploaded 2019), especially: *3.1 Ontology in Philosophy and Computer Science* and *4.2 Web Ontology Language OWL* .
+* [RDF-Primer](https://www.w3.org/TR/rdf-primer/)
+* [RDFS Documentation](https://www.w3.org/TR/rdf-schema/)
+* [OWL-Primer](https://www.w3.org/TR/owl2-primer/)
 
 ### Exercise 1: Explore the ontologies via OWL files and their visualizations
 
-Download the ontologies of _NAMPI_ (Monastic Life) and _VieCPro_.
+Download the ontologies of *NAMPI* (Monastic Life) and *VieCPro*.
 
-- [OWL file for NAMPI (Monastic Life)](downloads/nampi.owl)
-- [OWL file for VieCPro](downloads/viecpro.owl)
+* [OWL file for NAMPI (Monastic Life)](downloads/nampi.owl)
+* [OWL file for VieCPro](downloads/viecpro.owl)
 
 Check out the visualizations of the owl files in the WebVOWL application:
 
-- http://www.visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/nam-pi/monastic-life-owl/master/monastic-life.owl
+* http://www.visualdataweb.de/webvowl/#iri=https://raw.githubusercontent.com/nam-pi/monastic-life-owl/master/monastic-life.owl
 
-Compare the person classes, their properties and connected classes in the visualizations of the _NAMPI_ and the _VieCPro_ ontologies and try to find the paragraph in the downloaded OWL-files, where the person classes are defined.
+Compare the person classes, their properties and connected classes in the visualizations of the *NAMPI* and the *VieCPro* ontologies and try to find the paragraph in the downloaded OWL-files, where the person classes are defined.
 
 **Solution:**
 
