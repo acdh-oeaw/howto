@@ -44,8 +44,7 @@ ARG NEXT_PUBLIC_ALGOLIA_INDEX_NAME
 # docker buildkit currently cannot mount secrets directly to env vars
 # @see https://github.com/moby/buildkit/issues/2122
 RUN --mount=type=secret,id=ALGOLIA_ADMIN_API_KEY \
-    ALGOLIA_ADMIN_API_KEY="$(cat /run/secrets/ALGOLIA_ADMIN_API_KEY)" && \
-    export ALGOLIA_ADMIN_API_KEY && \
+    export ALGOLIA_ADMIN_API_KEY="$(cat /run/secrets/ALGOLIA_ADMIN_API_KEY)" && \
     yarn build
 
 # serve
