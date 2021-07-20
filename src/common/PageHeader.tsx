@@ -19,10 +19,11 @@ import { useRouter } from 'next/router'
 import type { ReactNode } from 'react'
 import { useState, Fragment, useEffect, useRef } from 'react'
 
+import { Svg as AcademicCapIcon } from '@/assets/icons/academic-cap.svg'
+import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
 import { Svg as MenuIcon } from '@/assets/icons/menu.svg'
 import { Svg as SearchIcon } from '@/assets/icons/search.svg'
 import { Svg as ClearIcon } from '@/assets/icons/x.svg'
-import type { IndexedResource } from '@/cms/api/resources.api'
 import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { useLocale } from '@/i18n/useLocale'
@@ -30,6 +31,7 @@ import { navigation } from '@/navigation/navigation.config'
 import { NavLink } from '@/navigation/NavLink'
 import { routes } from '@/navigation/routes.config'
 import { getAlgoliaSearchIndex } from '@/search/getAlgoliaSearchIndex'
+import type { IndexedCourse, IndexedResource } from '@/search/types'
 
 /**
  * Page header.
@@ -242,7 +244,7 @@ function Search() {
   const dialogState = useOverlayTriggerState({})
   const [searchIndex] = useState(() => getAlgoliaSearchIndex())
   const [searchResults, setSearchResults] = useState<
-    Array<Hit<IndexedResource>>
+    Array<Hit<IndexedResource | IndexedCourse>>
   >([])
 
   const openButtonRef = useRef<HTMLButtonElement>(null)
@@ -273,15 +275,18 @@ function Search() {
       if (searchTerm.trim().length === 0) return
 
       if (searchIndex == null) return
-      const results = await searchIndex.search<IndexedResource>(searchTerm, {
-        hitsPerPage: 10,
-        attributesToRetrieve: ['id', 'kind', 'title', 'tags'],
-        attributesToHighlight: ['title'],
-        attributesToSnippet: ['abstract', 'body'],
-        highlightPreTag: '<mark>',
-        highlightPostTag: '</mark>',
-        snippetEllipsisText: '&hellip;',
-      })
+      const results = await searchIndex.search<IndexedResource | IndexedCourse>(
+        searchTerm,
+        {
+          hitsPerPage: 10,
+          attributesToRetrieve: ['type', 'kind', 'id', 'title', 'tags'],
+          attributesToHighlight: ['title'],
+          attributesToSnippet: ['abstract', 'body'],
+          highlightPreTag: '<mark>',
+          highlightPostTag: '</mark>',
+          snippetEllipsisText: '&hellip;',
+        },
+      )
 
       if (!wasCanceled) {
         setSearchResults(results.hits)
@@ -328,17 +333,23 @@ function Search() {
               {searchResults.length > 0 ? (
                 <ul>
                   {searchResults.map((result) => {
+                    const href =
+                      result.type === 'courses'
+                        ? routes.course({ id: result.id })
+                        : routes.resource({ kind: result.kind, id: result.id })
+
+                    const icon =
+                      result.type === 'courses' ? AcademicCapIcon : DocumentIcon
+
                     return (
                       <li key={result.id}>
                         <article>
-                          <Link
-                            href={routes.resource({
-                              kind: result.kind,
-                              id: result.id,
-                            })}
-                          >
+                          <Link href={href}>
                             <a className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100">
-                              <h3 className="font-medium">{result.title}</h3>
+                              <h3 className="flex items-center space-x-2 font-medium">
+                                <Icon icon={icon} className="w-5 h-5" />
+                                <span>{result.title}</span>
+                              </h3>
                               {result._snippetResult?.abstract.value != null ? (
                                 <p
                                   dangerouslySetInnerHTML={{

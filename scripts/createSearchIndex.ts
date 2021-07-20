@@ -8,9 +8,16 @@ import withFootnotes from 'remark-footnotes'
 import withFrontmatter from 'remark-frontmatter'
 import withGfm from 'remark-gfm'
 import toPlaintext from 'strip-markdown'
+import type { Processor } from 'unified'
 
+import { getCourseFilePath, getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostFilePath, getPostPreviews } from '@/cms/api/posts.api'
-import type { IndexedResource } from '@/cms/api/resources.api'
+import type { Locale } from '@/i18n/i18n.config'
+import type {
+  IndexedCourse,
+  IndexedResource,
+  IndexedType,
+} from '@/search/types'
 import { log } from '@/utils/log'
 import { noop } from '@/utils/noop'
 
@@ -59,26 +66,26 @@ async function createProcessor() {
   return processor
 }
 
-/**
- * Updates Algolia search index.
- */
-async function generate() {
-  const searchIndex = getAlgoliaSearchIndex()
-  if (searchIndex == null) return
+function createObjectId(...args: [IndexedType, ...Array<string>]) {
+  return args.join('-')
+}
 
-  const processor = await createProcessor()
-
-  const locale = 'en'
+async function getResourceObjects(
+  locale: Locale,
+  processor: Processor,
+): Promise<Array<IndexedResource>> {
   const resources = await getPostPreviews(locale)
+  const type = 'resources' as const
   const kind = 'posts' as const
 
-  const resourcesWithAlgoliaId: Array<IndexedResource> = await Promise.all(
+  return Promise.all(
     resources
       .map((resource) => {
         return {
-          id: resource.id,
+          type,
           kind,
-          objectID: `${kind}-${resource.id}`,
+          id: resource.id,
+          objectID: createObjectId(type, kind, resource.id),
           title: resource.title,
           date: resource.date,
           lang: resource.lang,
@@ -108,8 +115,60 @@ async function generate() {
         }
       }),
   )
+}
 
-  return searchIndex.saveObjects(resourcesWithAlgoliaId)
+async function getCourseObjects(
+  locale: Locale,
+  processor: Processor,
+): Promise<Array<IndexedCourse>> {
+  const courses = await getCoursePreviews(locale)
+  const type = 'courses' as const
+
+  return Promise.all(
+    courses
+      .map((course) => {
+        return {
+          type,
+          id: course.id,
+          objectID: createObjectId(type, course.id),
+          title: course.title,
+          date: course.date,
+          lang: course.lang,
+          tags: course.tags.map((tag) => {
+            return {
+              name: tag.name,
+              id: tag.id,
+            }
+          }),
+          abstract: course.abstract,
+        }
+      })
+      .map(async (course) => {
+        const filePath = getCourseFilePath(course.id, locale)
+        const fileContent = await fs.readFile(filePath, { encoding: 'utf-8' })
+        const plaintext = String(await processor.process(fileContent))
+        return {
+          ...course,
+          body: plaintext,
+        }
+      }),
+  )
+}
+
+/**
+ * Updates Algolia search index.
+ */
+async function generate() {
+  const searchIndex = getAlgoliaSearchIndex()
+  if (searchIndex == null) return
+
+  const processor = await createProcessor()
+
+  const locale = 'en'
+  const resources = await getResourceObjects(locale, processor)
+  const courses = await getCourseObjects(locale, processor)
+
+  return searchIndex.saveObjects([...resources, ...courses])
 }
 
 generate()
