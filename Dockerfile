@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1.3
+
 # base
 # we don't use node:14-slim because we need `git` to get the last updated timestamps
 FROM node:14 AS base
@@ -39,7 +41,9 @@ ARG NEXT_PUBLIC_ALGOLIA_APP_ID
 ARG NEXT_PUBLIC_ALGOLIA_API_KEY
 ARG NEXT_PUBLIC_ALGOLIA_INDEX_NAME
 
-RUN yarn build
+# docker buildkit currently cannot mount secrets directly to env vars
+# @see https://github.com/moby/buildkit/issues/2122
+RUN --mount=type=secret,id=ALGOLIA_ADMIN_API_KEY ALGOLIA_ADMIN_API_KEY="$(cat /run/secrets/ALGOLIA_ADMIN_API_KEY)" yarn build
 
 # serve
 FROM base AS serve

@@ -55,7 +55,10 @@ jobs:
             NEXT_PUBLIC_ALGOLIA_API_KEY=${{ secrets.NEXT_PUBLIC_ALGOLIA_API_KEY }}
             NEXT_PUBLIC_ALGOLIA_INDEX_NAME=${{ secrets.NEXT_PUBLIC_ALGOLIA_INDEX_NAME }}
           secrets: |
-            ALGOLIA_ADMIN_API_KEY=${{ secrets.ALGOLIA_ADMIN_API_KEY }}
+            "ALGOLIA_ADMIN_API_KEY=${{ secrets.ALGOLIA_ADMIN_API_KEY }}"
+          # enable once released
+          # cache-from: type=gha
+          # cache-to: type=gha
 
       - name: Deploy to Rancher
         run: |
