@@ -20,15 +20,15 @@ uuid: j51QIatS7jhSnysibO4Cs
 ---
 ## Grundlagen
 
-Im TEI-Header werden die Metadaten *über* ein TEI-Dokument erfasst. Der Header ist vom Element `<teiHeader>` umschlossen, die Metadaten über das Dokument selber werden innerhalb des Elements `<fileDesc>` angegeben, was das erste Element innerhalb des Headers darstellt. Diese **'file description'** enthält alle Informationen zum elektronischen Dokument (Name des elektronischen Dokuments, Autor etc.).
+Im TEI-Header werden die Metadaten *über* ein TEI-Dokument erfasst. Der Header ist vom Element `<teiHeader>` umschlossen, die Metadaten über das Dokument selber werden innerhalb des Elements `<fileDesc>` angegeben, was das erste Element innerhalb des Headers darstellt. Diese **'file description'** enthält alle Informationen zum elektronischen Dokument (Name des elektronischen Dokuments, Autor*in etc.).
 
 Die Metadaten sollten folgende Informationen enthalten:
 
-* **Identifikation** („Was ist das?“) `<titleStmt>`
-* **Angabe der Quelle** („Woraus wurde es abgeleitet?“) `<sourceDesc>`
-* **Kodierung** („Wie wurde der Text kodiert?“) `<encodingDesc>`
-* **Veröffentlichung** („Wer gibt es unter welchen Bedingungen für wen frei?“) `<publicationStmt>`
-* **Provenienz** („Wer hat was wann damit gemacht?“) `<revisionDesc>`
+* **Identifikation** ("Was ist das?") `<titleStmt>`
+* **Angabe der Quelle** ("Woraus wurde es abgeleitet?") `<sourceDesc>`
+* **Kodierung** ("Wie wurde der Text kodiert?") `<encodingDesc>`
+* **Veröffentlichung** ("Wer gibt es unter welchen Bedingungen für wen frei?") `<publicationStmt>`
+* **Provenienz** ("Wer hat was wann damit gemacht?") `<revisionDesc>`
 
 ## Praktische Anwendung
 
@@ -41,44 +41,44 @@ Im Folgenden ist eine einfache Grundstruktur eines TEI Dokuments abgebildet, auf
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
-      <fileDesc>
-         <titleStmt>
-            <title>Title</title>
-         </titleStmt>
-         <publicationStmt>
-            <p>Publication Information</p>
-         </publicationStmt>
-         <sourceDesc>
-            <p>Information about the source</p>
-         </sourceDesc>
-      </fileDesc>
+    <fileDesc>
+      <titleStmt>
+        <title>Title</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
   </teiHeader>
   <text>
-      <body>
-         <p>Some text here.</p>
-      </body>
+    <body>
+      <p>Some text here.</p>
+    </body>
   </text>
 </TEI>
 ```
 
-Der TEI-Header besteht in unserem Fall aus der **'file description'**, die alle Informationen zum elektronischen Dokument enthält (Name des elektronischen Dokuments, Autor etc.). Nachdem wir in unserem Beispiel den Text nicht selbst verfassen, sondern einen Ausschnitt aus einer historischen Zeitschrift kodieren, ist darin auch eine Quellenangabe **'source description'** `<sourceDesc>` enthalten.
+Der TEI-Header besteht in unserem Fall aus der **'file description'**, die alle Informationen zum elektronischen Dokument enthält (Name des elektronischen Dokuments, Autor*in etc.). Nachdem wir in unserem Beispiel den Text nicht selbst verfassen, sondern einen Ausschnitt aus einer historischen Zeitschrift kodieren, ist darin auch eine Quellenangabe **'source description'** `<sourceDesc>` enthalten.
 
 Im Folgenden gehen wir auf die wichtigsten Metadaten-Informationen ein, die auch für unser Beispiel der "Filmwelt" relevant sind. In einer Übung werden dann die Informationen der zwei Seiten aus der "Filmwelt" entsprechend kodiert.
 
-### Identifikation:
+### Identifikation
 
-Das **'title statement'** `<titleStmt>` gruppiert Informationen im Hinblick auf den Titel eines elektronischen Dokuments sowie die Verantwortlichen für den Inhalt.
+Das **'title statement'** `<titleStmt>` gruppiert Informationen im Hinblick auf den Titel eines elektronischen Dokuments, sowie die Verantwortlichen für den Inhalt.
 
 Hier ein Beispiel:
 
 ```xml
 <titleStmt>
-	<title type="main">Titel des elektronischen Dokuments</title>
-	<title type="sub">Untertitel des elektronischen Dokuments</title>
-	<respStmt>
-		<resp>TEI Kodierung</resp>
-		<persName xml:id="uc">Vorname Nachname</persName>
-	</respStmt>
+  <title type="main">Titel des elektronischen Dokuments</title>
+  <title type="sub">Untertitel des elektronischen Dokuments</title>
+  <respStmt>
+    <resp>TEI Kodierung</resp>
+    <persName xml:id="uc">Vorname Nachname</persName>
+  </respStmt>
 </titleStmt>
 ```
 
@@ -102,45 +102,45 @@ In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument 
   <Quiz.Card>
     <Quiz.XmlCodeEditor
       code="<TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
-        <teiHeader>
-            <fileDesc>
-               <titleStmt>
-                  <title>Title</title>
-               </titleStmt>
-               <publicationStmt>
-                  <p>Publication Information</p>
-               </publicationStmt>
-               <sourceDesc>
-                  <p>Information about the source</p>
-               </sourceDesc>
-            </fileDesc>
-        </teiHeader>
-        <text>
-            <body>
-               <p>Some text here.</p>
-            </body>
-        </text>
+      <teiHeader>
+      <fileDesc>
+      <titleStmt>
+      <title>Title</title>
+      </titleStmt>
+      <publicationStmt>
+      <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+      <p>Information about the source</p>
+      </sourceDesc>
+      </fileDesc>
+      </teiHeader>
+      <text>
+      <body>
+      <p>Some text here.</p>
+      </body>
+      </text>
       </TEI>"
       solution="<TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
-        <teiHeader>
-            <fileDesc>
-               <titleStmt>
-                  <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
-                  <title type=&#x22;sub&#x22;>Digitale Version</title>
-               </titleStmt>
-               <publicationStmt>
-                  <p>Publication Information</p>
-               </publicationStmt>
-               <sourceDesc>
-                  <p>Information about the source</p>
-               </sourceDesc>
-            </fileDesc>
-        </teiHeader>
-        <text>
-            <body>
-               <p>Some text here.</p>
-            </body>
-        </text>
+      <teiHeader>
+      <fileDesc>
+      <titleStmt>
+      <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
+      <title type=&#x22;sub&#x22;>Digitale Version</title>
+      </titleStmt>
+      <publicationStmt>
+      <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+      <p>Information about the source</p>
+      </sourceDesc>
+      </fileDesc>
+      </teiHeader>
+      <text>
+      <body>
+      <p>Some text here.</p>
+      </body>
+      </text>
       </TEI>"
       validate="input"
     >
@@ -156,50 +156,50 @@ In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument 
   <Quiz.Card>
     <Quiz.XmlCodeEditor
       code="<TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
-        <teiHeader>
-            <fileDesc>
-               <titleStmt>
-                  <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
-                  <title type=&#x22;sub&#x22;>Digitale Version</title>
-               </titleStmt>
-               <publicationStmt>
-                  <p>Publication Information</p>
-               </publicationStmt>
-               <sourceDesc>
-                  <p>Information about the source</p>
-               </sourceDesc>
-            </fileDesc>
-        </teiHeader>
-        <text>
-            <body>
-               <p>Some text here.</p>
-            </body>
-        </text>
+      <teiHeader>
+      <fileDesc>
+      <titleStmt>
+      <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
+      <title type=&#x22;sub&#x22;>Digitale Version</title>
+      </titleStmt>
+      <publicationStmt>
+      <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+      <p>Information about the source</p>
+      </sourceDesc>
+      </fileDesc>
+      </teiHeader>
+      <text>
+      <body>
+      <p>Some text here.</p>
+      </body>
+      </text>
       </TEI>"
       solution="<TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
-        <teiHeader>
-            <fileDesc>
-               <titleStmt>
-                  <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
-                  <title type=&#x22;sub&#x22;>Digitale Version</title>
-                  <respStmt>
-                    <resp>TEI Kodierung</resp>
-                    <persName>Maxi Musterfrau</persName>
-                  </respStmt>
-               </titleStmt>
-               <publicationStmt>
-                  <p>Publication Information</p>
-               </publicationStmt>
-               <sourceDesc>
-                  <p>Information about the source</p>
-               </sourceDesc>
-            </fileDesc>
-        </teiHeader>
-        <text>
-            <body>
-               <p>Some text here.</p>
-            </body>
-        </text>
+      <teiHeader>
+      <fileDesc>
+      <titleStmt>
+      <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
+      <title type=&#x22;sub&#x22;>Digitale Version</title>
+      <respStmt>
+      <resp>TEI Kodierung</resp>
+      <persName>Maxi Musterfrau</persName>
+      </respStmt>
+      </titleStmt>
+      <publicationStmt>
+      <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+      <p>Information about the source</p>
+      </sourceDesc>
+      </fileDesc>
+      </teiHeader>
+      <text>
+      <body>
+      <p>Some text here.</p>
+      </body>
+      </text>
       </TEI>"
       validate="input"
     >
@@ -215,13 +215,13 @@ In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument 
 
 ### Angabe der Quelle
 
-Die **'source description'** `<sourceDesc>` beschreibt die Quelle, aus der der elektronische Text stammt oder aus der dieser generiert wurde. In der Regel ist dies bei einem digitalisierten Text eine kann eine bibliographische Quelle, die in strukturierter Form beispielsweise mit dem Element **'structured bibliographic citation'** `<biblStruct>` angegeben werden kann, oder loser strukturiert mit dem Element **'bibliographic citation'** `<bibl>`. Für einen digital erstellten Text ohne eine Quelle kann man einen Absatz wie zum Beispiel "Digitales Originaldokument" innerhalb eines Absatzes in der 'source description' einfügen.
+Die **'source description'** `<sourceDesc>` beschreibt die Quelle, aus der der elektronische Text stammt oder aus der dieser generiert wurde. In der Regel ist dies bei einem digitalisierten Text eine bibliographische Quelle, die in strukturierter Form beispielsweise mit dem Element **'structured bibliographic citation'** `<biblStruct>` angegeben werden kann, oder loser strukturiert mit dem Element **'bibliographic citation'** `<bibl>`. Für einen digital erstellten Text ohne eine Quelle kann man einen Absatz wie zum Beispiel "Digitales Originaldokument" innerhalb eines Absatzes in der 'source description' einfügen.
 
 Hier ein Beispiel für ein "born digital" Dokument:
 
 ```xml
 <sourceDesc>
- <p>Digitales Originaldokument</p>
+  <p>Digitales Originaldokument</p>
 </sourceDesc>
 ```
 
@@ -257,11 +257,11 @@ Das obige Beispiel könnte in einer möglichen strukturierter Form wie folgt aus
 </biblStruct>
 ```
 
-Hierbei wird innerhalb der **'structured bibliographic citation'** ein Buch oder eine Zeitschrift mit dem Element **'monographic level'** `<monogr>` umschlossen und die Information so gruppiert. Innerhalb dessen können Autoren mit dem `<author>` sowie Editoren mit dem Element `<editor>` Editoren eines Buches oder einer Zeitschrift benannt werden.
+Hierbei wird innerhalb der **'structured bibliographic citation'** ein Buch oder eine Zeitschrift mit dem Element **'monographic level'** `<monogr>` umschlossen und die Information so gruppiert. Innerhalb dessen können Autor*innen mit dem `<author>` sowie Editor*innen eines Buches oder einer Zeitschrift mit dem Element `<editor>` benannt werden.
 
 `<imprint>` gruppiert vorhandene Informationen zur Publikation und Distribution des Werks.
 
-Der **'scope of bibliographic reference'** `<biblScope>`definiert auf welchen Teil einer Arbeit sich die Referenz bezieht. Dies können z.B. bestimmte Seiten sein, die mit dem Attribut `unit="page"`angegeben werden, oder ein bestimmter Jahrgang einer Zeitschrift `unit="volume"`.
+Der **'scope of bibliographic reference'** `<biblScope>`definiert, auf welchen Teil einer Arbeit sich die Referenz bezieht. Dies können z.B. bestimmte Seiten sein, die mit dem Attribut `unit="page"` angegeben werden, oder ein bestimmter Jahrgang einer Zeitschrift `unit="volume"`.
 
 #### Übung
 
@@ -271,77 +271,77 @@ In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer struktur
   <Quiz.Card>
     <Quiz.XmlCodeEditor
       code="<TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
-              <teiHeader>
-                  <fileDesc>
-                     <titleStmt>
-                        <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
-                        <title type=&#x22;sub&#x22;>Digitale Version</title>
-                        <respStmt>
-                          <resp>TEI Kodierung</resp>
-                          <persName>Maxi Musterfrau</persName>
-                        </respStmt>
-                     </titleStmt>
-                     <publicationStmt>
-                        <p>Publication Information</p>
-                     </publicationStmt>
-                     <sourceDesc>
-                        <p>Information about the source</p>
-                     </sourceDesc>
-                  </fileDesc>
-              </teiHeader>
-              <text>
-                  <body>
-                     <p>Some text here.</p>
-                  </body>
-              </text>
-            </TEI>"
+      <teiHeader>
+      <fileDesc>
+      <titleStmt>
+      <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
+      <title type=&#x22;sub&#x22;>Digitale Version</title>
+      <respStmt>
+      <resp>TEI Kodierung</resp>
+      <persName>Maxi Musterfrau</persName>
+      </respStmt>
+      </titleStmt>
+      <publicationStmt>
+      <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+      <p>Information about the source</p>
+      </sourceDesc>
+      </fileDesc>
+      </teiHeader>
+      <text>
+      <body>
+      <p>Some text here.</p>
+      </body>
+      </text>
+      </TEI>"
       solution="<TEI xmlns=&#x22;http://www.tei-c.org/ns/1.0&#x22;>
-              <teiHeader>
-                  <fileDesc>
-                     <titleStmt>
-                        <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
-                        <title type=&#x22;sub&#x22;>Digitale Version</title>
-                        <respStmt>
-                          <resp>TEI Kodierung</resp>
-                          <persName>Maxi Musterfrau</persName>
-                        </respStmt>
-                     </titleStmt>
-                     <publicationStmt>
-                        <p>Publication Information</p>
-                     </publicationStmt>
-                      <sourceDesc>
-            <biblStruct>
-              <monogr>
-                <title type=&#x22;main&#x22;>Die Filmwelt</title>
-                <title type=&#x22;sub&#x22;>Illustrierte Kino Revue</title>
-                <editor>Felix Brasch</editor>
-                <imprint>
-                  <publisher>
-                    <orgName>Zeitungsverlag Universale Ges. m. b. H.</orgName>
-                    <address>
-                      <addrLine>Wien, VII., Hermanngasse 5</addrLine>
-                    </address>
-                  </publisher>
-                  <respStmt>
-                    <resp>Druckerei</resp>
-                    <orgName>L. Beck und Sohn</orgName>
-                  </respStmt>
-                  <pubPlace>Wien</pubPlace>
-                  <date>1924</date>
-                </imprint>
-                <biblScope unit=&#x22;volume&#x22;>31, 1924</biblScope>
-                <biblScope unit=&#x22;page&#x22;>11-12</biblScope>
-              </monogr>
-            </biblStruct>
-          </sourceDesc>
-                  </fileDesc>
-              </teiHeader>
-              <text>
-                  <body>
-                     <p>Some text here.</p>
-                  </body>
-              </text>
-            </TEI>"
+      <teiHeader>
+      <fileDesc>
+      <titleStmt>
+      <title type=&#x22;main&#x22;>Die Filmwelt - ein Ausschnitt</title>
+      <title type=&#x22;sub&#x22;>Digitale Version</title>
+      <respStmt>
+      <resp>TEI Kodierung</resp>
+      <persName>Maxi Musterfrau</persName>
+      </respStmt>
+      </titleStmt>
+      <publicationStmt>
+      <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+      <biblStruct>
+      <monogr>
+      <title type=&#x22;main&#x22;>Die Filmwelt</title>
+      <title type=&#x22;sub&#x22;>Illustrierte Kino Revue</title>
+      <editor>Felix Brasch</editor>
+      <imprint>
+      <publisher>
+      <orgName>Zeitungsverlag Universale Ges. m. b. H.</orgName>
+      <address>
+      <addrLine>Wien, VII., Hermanngasse 5</addrLine>
+      </address>
+      </publisher>
+      <respStmt>
+      <resp>Druckerei</resp>
+      <orgName>L. Beck und Sohn</orgName>
+      </respStmt>
+      <pubPlace>Wien</pubPlace>
+      <date>1924</date>
+      </imprint>
+      <biblScope unit=&#x22;volume&#x22;>31, 1924</biblScope>
+      <biblScope unit=&#x22;page&#x22;>11-12</biblScope>
+      </monogr>
+      </biblStruct>
+      </sourceDesc>
+      </fileDesc>
+      </teiHeader>
+      <text>
+      <body>
+      <p>Some text here.</p>
+      </body>
+      </text>
+      </TEI>"
       validate="input"
     >
       <Quiz.Question>
@@ -351,7 +351,7 @@ In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer struktur
 
         1. Geben Sie Haupt- und Untertitel der Zeitschrift an `<title>` + @type main / sub
         2. Benennen Sie den Herausgeber der Zeitschrift `<editor>`
-        3. Ergänzen Sie im Impressum den Verlag inkl. seiner Adresse im Element `<imprint>`. Der **Verlag** `<publisher>`enthält hierbei den **Namen der Firma / Organisation** `<orgName>`, samt ihrer **Adresse** `<address>` bestehend aus einer oder mehrerer **Adresszeilen** `<addrLine>`.
+        3. Ergänzen Sie im Impressum den Verlag inkl. seiner Adresse im Element `<imprint>`. Der **Verlag** `<publisher>` enthält hierbei den **Namen der Firma / Organisation** `<orgName>`, samt ihrer **Adresse** `<address>` bestehend aus einer oder mehrerer **Adresszeilen** `<addrLine>`.
         4. Weisen Sie die Fa. 'L. Beck & Sohn' in einem 'responsibility statement' als Druckerei aus unter Verwendung von `<resp>`, `<orgName>`
         5. Geben Sie Wien als Publikationsort und das Erscheinungsjahr an `<pubPlace>`, `<date>`
         6. Kodieren Sie, dass der gewählte Textausschnitt aus der Nr. 31, 1924, Seite 11-12 stammt 'scope of bibliographic reference' `<biblScope>` + @type volume / page
@@ -388,7 +388,7 @@ Der bei dieser Übung entstandene TEI-Header umfasst nur einige wesentliche Elem
 </encodingDesc>
 ```
 
-Hier einige Beispiele für mögliche Angaben, die innerhalb der 'encoding description':
+Hier einige Beispiele für mögliche Angaben innerhalb der 'encoding description':
 
 * **editorische Angaben:** beschreibt die angewandten Richtlinien und Prinzipien für die Annotation `<editorialDecl>`.
 
@@ -397,19 +397,38 @@ Hier einige Beispiele für mögliche Angaben, die innerhalb der 'encoding descri
 * **Tagverwendung:** gibt informationen zum Tagging, das innerhalb des Dokuments angewendet wird `<tagsDecl>`
 * **Auswahlverfahren:** Fließtext, der das angewandte Samplingverfahren für einen Korpus oder eine Sammlung an Texten beschreibt `<samplingDecl>`
 
-#### Übung:
+#### Übung
 
-Welche Aspekte eines Dokuments werden in der Encoding Description eines Dokuments erfasst? (mehrere Antworten möglich)
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Welche Aspekte eines Dokuments werden in der Encoding Description eines Dokuments erfasst? (mehrere Antworten möglich)
+      </Quiz.Question>
 
-\[x] editorische Angaben
+      <Quiz.MultipleChoice.Option isCorrect>
+        editorische Angaben
+      </Quiz.MultipleChoice.Option>
 
-\[x] Informationen über Glyphen und Beschreibung von nicht-standard Zeichenformaten, die im Quelltext verwendet werden
+      <Quiz.MultipleChoice.Option isCorrect>
+        Informationen über Glyphen und Beschreibung von nicht-standard Zeichenformaten, die im Quelltext verwendet werden
+      </Quiz.MultipleChoice.Option>
 
-\[x] Projektbeschreibung
+      <Quiz.MultipleChoice.Option isCorrect>
+        Projektbeschreibung
+      </Quiz.MultipleChoice.Option>
 
-\[x] Tagverwendung
+      <Quiz.MultipleChoice.Option isCorrect>
+        Tagverwendung
+      </Quiz.MultipleChoice.Option>
 
-**Feedback:** Alle Antworten sind in diesem Falle richtig. Neben den im obenstehenden Text beschriebenen Angaben kann die Encoding-Description in der Character-Declaration `<charDecl>` auch Informationen zu nicht-standard Zeichenformaten und Glyphen enthalten.
+      <Quiz.Message type="correct">
+        **Feedback:** Alle Antworten sind in diesem Falle richtig. Neben den im obenstehenden Text beschriebenen Angaben kann die Encoding-Description in der Character-Declaration `<charDecl>` auch Informationen zu nicht-standard Zeichenformaten und Glyphen enthalten.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
 
 ### Veröffentlichung
 
@@ -419,17 +438,17 @@ Dies reicht vom unveröffentlichten Arbeitsdokument...
 
 ```xml
 <publicationStmt>
-	<p>Unveröffentlichtes Arbeitsdokument.</p>
- </publicationStmt>
+  <p>Unveröffentlichtes Arbeitsdokument.</p>
+</publicationStmt>
 ```
 
-... bis hin zur unter einer Creative Commons Lizenz veröffentlichten authorisierten wissenschaftlichen Quelle.
+... bis hin zur unter einer Creative Commons Lizenz veröffentlichten autorisierten wissenschaftlichen Quelle.
 
 ```xml
 <publicationStmt>
   <publisher>
-  	<orgName>Austrian Centre for Digital Humanities</orgName>
-  	<email>acdh@oeaw.ac.at</email>
+    <orgName>Austrian Centre for Digital Humanities</orgName>
+    <email>acdh@oeaw.ac.at</email>
     <idno type="VIAF">6515148451584915970000</idno>
   </publisher>
   <pubPlace>Vienna</pubPlace>
@@ -444,7 +463,7 @@ Dies reicht vom unveröffentlichten Arbeitsdokument...
 
 Wie am ersten Beispiel ersichtlich reicht ein einfacher Absatz um eine Publikation zu beschreiben, oder aber man verwendet eine deutlich komplexere semantische Schreibweise. Einige Elemente wie `<publisher>`, `<orgName>`, `<pubPlace>` oder `<date>` im obigen Beispiel sind bereits bekannt.
 
-Das Element **'electronic mail address'** enthält eine Emailadresse. das Element **'identifier'** `<idno>`enthält einen Form der standardisierten Indentifikation eines Objects - in unserem Fall eines bibliografischen Objekts. Das Attribut `type` gibt die Art der Identifikation an. Diese kann beispielsweise folgende sein:
+Das Element **'electronic mail address'** enthält eine Emailadresse. Das Element **'identifier'** `<idno>` enthält eine Form der standardisierten Identifikation eines Objekts -- in unserem Fall eines bibliografischen Objekts. Das Attribut `type` gibt die Art der Identifikation an. Diese kann beispielsweise folgende sein:
 
 * **ISBN**: "International Standard Book Number" (ISBN-Nummer), die Bücher international eindeutig identifiziert.
 * **ISSN:** "International Standard Serial Number" (ISSN-Nummer), eine international einheitliche Indentifikationsnummer für serielle Publikationen, wie z.B. Zeitschriften.
@@ -452,19 +471,32 @@ Das Element **'electronic mail address'** enthält eine Emailadresse. das Elemen
 * **URI:** Uniform Resource Identifier, eine eindeutige Identifikation einer Ressource (von physischen Objekte bis hin zu digitalen Ressourcen wie Webseiten), die gleichzeitig Hinweise auf den Zugriff der Ressource gibt.
 * **VIAF:** Eine Normdatennummer im Virtual International Authority File (VIAF), einer virtuellen internationalen Normdatei als Verknüpfung nationaler Normdateien z.B. der gemeinsamen Normdatei. Diese wird als Uniform Resource Identifier für Linked-Open-Data Anwendungen genutzt.
 
-Das Element `<availability>` gibt Informationen zur Verfügbarkeit des Textes sowie Einschränkungen zur Nutzbarkeit, der Verbreitung, dem Copyright Status, oder der Lizensierung. Die **Lizenzinformation** wird innerhalb des **availability-Elements** mittels des Elements `<licence>` angegeben. Das Attribut `target` wird hierbei zur Referenzierung des Volltextes der Lizenz verwendet.
+Das Element `<availability>` gibt Informationen zur Verfügbarkeit des Textes sowie Einschränkungen zur Nutzbarkeit, der Verbreitung, dem Copyright Status, oder der Lizenzierung. Die **Lizenzinformation** wird innerhalb des **availability-Elements** mittels des Elements `<licence>` angegeben. Das Attribut `target` wird hierbei zur Referenzierung des Volltextes der Lizenz verwendet.
 
-#### Übung:
+#### Übung
 
-Was wird im Publication Statement dokumentiert?
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Was wird im Publication Statement dokumentiert?
+      </Quiz.Question>
 
-\[ ] Das Publication Statement enhält die Angaben zur Publikation des originalen Textes in Print.
+      <Quiz.MultipleChoice.Option>
+        Das Publication Statement enhält die Angaben zur Publikation des originalen Textes in Print.
+      </Quiz.MultipleChoice.Option>
 
-\[x] Das Publication Statement enhält alle Informationen rund um die Publikation und Distribution des elektronischen Texts.
+      <Quiz.MultipleChoice.Option isCorrect>
+        Das Publication Statement enhält alle Informationen rund um die Publikation und Distribution des elektronischen Texts.
+      </Quiz.MultipleChoice.Option>
 
-\[ ] Das Publication Statement enhält das Vorwort des Herausgebers zur Publikation.
+      <Quiz.MultipleChoice.Option>
+        Das Publication Statement enhält das Vorwort des Herausgebers zur Publikation.
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
 
-**Feedback:** ...
 
 ### Provenienz
 
@@ -491,13 +523,13 @@ Die **'revision description'** `<revisionDesc>` fasst die Revisionsgeschichte ei
 </revisionDesc>
 ```
 
-Das Attribut `when` im change-Statement enhält das Datum der Änderung, der `status` den Status des Dokuments (also Entwurf, Revision, publiziert), `who`verweist auf eine Person, die an der Änderung beteiligt oder für diese verantwortlich ist, und die für gewöhnlich im 'responsibility statement' oder in einem `<person>`-Element an anderer Stelle im Dokument näher bezeichnet wird.
+Das Attribut `when` im change-Statement enhält das Datum der Änderung, der `status` den Status des Dokuments (also Entwurf, Revision, publiziert), `who` verweist auf eine Person, die an der Änderung beteiligt oder für diese verantwortlich ist, und die für gewöhnlich im 'responsibility statement' oder in einem `<person>`-Element an anderer Stelle im Dokument näher bezeichnet wird.
 
 Die neueste Veränderung am Dokument sollte hierbei zuerst aufgeführt werden.
 
-#### Übung:
+#### Übung
 
-Fügen Sie dem bisherigen Dokument den ersten Eintrag der Revision History mit dem heutigen Datum und Ihrem Namenskürzel als Autor hinzu. Markieren Sie das Dokument als Entwurf beschreiben Sie den Status als "erster Entwurf abgeschlossen".
+Fügen Sie dem bisherigen Dokument den ersten Eintrag der Revision History mit dem heutigen Datum und Ihrem Namenskürzel als Autor*in hinzu. Markieren Sie das Dokument als Entwurf, beschreiben Sie den Status als "erster Entwurf abgeschlossen".
 
 ```xml
 <revisionDesc>
@@ -522,20 +554,39 @@ Innerhalb der 'text-profile description' können beispielsweise folgende Aspekte
 * Briefe `<correspDesc>`
 * Personen im Text `<particDesc>`
 
-#### Übung:
+#### Übung
 
-Welche Aspekte eines Textes werden in der 'Text Profile Description' erfasst? (mehrere Antworten möglich)
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Welche Aspekte eines Textes werden in der 'Text Profile Description' erfasst? (mehrere Antworten möglich)
+      </Quiz.Question>
 
-\[ ] Bibliographische Angaben zu einem Text.
+      <Quiz.MultipleChoice.Option>
+        Bibliographische Angaben zu einem Text.
+      </Quiz.MultipleChoice.Option>
 
-\[x] Nicht-bibliographische Aspekte des Textes.
+      <Quiz.MultipleChoice.Option isCorrect>
+        Nicht-bibliographische Aspekte des Textes.
+      </Quiz.MultipleChoice.Option>
 
-\[x] Informationen zum Inhalt des elektronischen Dokuments, z.B. im Text vorkommende Personen, Sprachen, o.ä.
+      <Quiz.MultipleChoice.Option isCorrect>
+        Informationen zum Inhalt des elektronischen Dokuments, z.B. im Text vorkommende Personen, Sprachen, o.ä.
+      </Quiz.MultipleChoice.Option>
 
-\[x] Verschlagwortung der Textsorte oder des Themas eines Textes mittels eines standardisierten Klassifikationsschemas oder Thesaurus.
+      <Quiz.MultipleChoice.Option isCorrect>
+        Verschlagwortung der Textsorte oder des Themas eines Textes mittels eines standardisierten Klassifikationsschemas oder Thesaurus.
+      </Quiz.MultipleChoice.Option>
 
-**Feedback:** Die 'Text Profile Description' enthält keine bibliographischen Angaben zum Text. Nicht-bibliographische Aspekte, wie auch Informationen zum Inhalt oder Verschlagwortungen zum Text können aber enthalten sein.
+      <Quiz.Message type="correct">
+        **Feedback:** Die 'Text Profile Description' enthält keine bibliographischen Angaben zum Text. Nicht-bibliographische Aspekte, wie auch Informationen zum Inhalt oder Verschlagwortungen zum Text können aber enthalten sein.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
 
 ## Weiterführende Information
 
-Eine tiefergehende Einführung zum TEI Header gibt es auf der Seite der Text Encoding Initiative unter https://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html#HD21
+Eine tiefergehende Einführung zum TEI Header gibt es [auf der Seite der Text Encoding Initiative](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html#HD21).
