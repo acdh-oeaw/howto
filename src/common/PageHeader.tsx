@@ -141,11 +141,7 @@ function MobilePageNavigation() {
             isDismissable
           >
             <div>
-              <ul
-                className="flex flex-col items-center space-y-8 font-medium"
-                // FIXME:
-                style={{ minWidth: '60vw' }}
-              >
+              <ul className="flex flex-col items-center space-y-8 font-medium">
                 {Object.entries(navigation).map(([route, { href }]) => {
                   return (
                     <li key={route}>
@@ -186,11 +182,11 @@ function ModalDialog(props: ModalDialogProps) {
   return (
     <div
       {...underlayProps}
-      className="fixed inset-0 z-10 flex items-center justify-center bg-black bg-opacity-50"
+      className="fixed inset-0 z-10 flex flex-col items-center justify-start bg-black bg-opacity-50"
     >
       <FocusScope contain restoreFocus autoFocus>
         <div
-          className="p-8 bg-white rounded"
+          className="flex flex-col p-8 bg-white rounded"
           {...overlayProps}
           {...dialogProps}
           {...modalProps}
@@ -357,8 +353,7 @@ function Search() {
                                       result._snippetResult.abstract.value,
                                   }}
                                 />
-                              ) : null}
-                              {result._snippetResult?.body.value != null ? (
+                              ) : result._snippetResult?.body.value != null ? (
                                 <p
                                   dangerouslySetInnerHTML={{
                                     __html: result._snippetResult.body.value,
@@ -421,12 +416,7 @@ function SearchField(props: SearchFieldProps) {
   const { buttonProps } = useButton(clearButtonProps, buttonRef)
 
   return (
-    <label
-      {...labelProps}
-      className="flex flex-col space-y-1.5"
-      // FIXME:
-      style={{ minWidth: '40vw' }}
-    >
+    <label {...labelProps} className="flex flex-col space-y-1.5">
       <span className="text-sm font-medium">{label}</span>
       <div className="flex px-4 py-2 border rounded border-neutral-200">
         <input {...inputProps} ref={inputRef} className="flex-1 min-w-0" />

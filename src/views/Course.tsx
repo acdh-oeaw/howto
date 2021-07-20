@@ -2,8 +2,6 @@ import Image from 'next/image'
 import type { ImageProps } from 'next/image'
 import Link from 'next/link'
 
-import { ResourcesList } from './ResourcesList'
-
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
 import type { Course as CourseData } from '@/cms/api/courses.api'
 import { getFullName } from '@/cms/utils/getFullName'
@@ -14,6 +12,7 @@ import { Mdx } from '@/mdx/Mdx'
 import { routes } from '@/navigation/routes.config'
 import type { IsoDateString } from '@/utils/ts/aliases'
 import { EditLink } from '@/views/EditLink'
+import { ResourcesList } from '@/views/ResourcesList'
 
 export interface CourseProps {
   course: CourseData

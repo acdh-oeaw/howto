@@ -10,10 +10,13 @@ import type {
 import Link from 'next/link'
 import { Fragment } from 'react'
 
+import { Svg as AcademicCapIcon } from '@/assets/icons/academic-cap.svg'
 import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
+import type { CoursePreview } from '@/cms/api/courses.api'
 import { getPostById, getPostFilePath, getPostIds } from '@/cms/api/posts.api'
 import type { Post as PostData, PostPreview } from '@/cms/api/posts.api'
 import type { ResourceKind } from '@/cms/api/resources.api'
+import { getCoursePreviewsByResourceId } from '@/cms/queries/courses.queries'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
 import { getFullName } from '@/cms/utils/getFullName'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
@@ -48,6 +51,7 @@ export interface ResourcePageProps {
   dictionary: Dictionary
   resource: PostData
   related: Array<PostPreview>
+  courses: Array<CoursePreview>
   lastUpdatedAt: IsoDateString | null
 }
 
@@ -105,6 +109,8 @@ export async function getStaticProps(
     .filter((resource) => resource.id !== id)
   const related = pickRandom(resourcesWithSharedTags, RELATED_RESOURCES_COUNT)
 
+  const courses = await getCoursePreviewsByResourceId(id, locale)
+
   const lastUpdatedAt = await getLastUpdatedTimestamp(
     getPostFilePath(id, locale),
   )
@@ -114,6 +120,7 @@ export async function getStaticProps(
       dictionary,
       resource,
       related,
+      courses,
       lastUpdatedAt,
     },
   }
@@ -123,7 +130,7 @@ export async function getStaticProps(
  * Resource page.
  */
 export default function ResourcePage(props: ResourcePageProps): JSX.Element {
-  const { resource, related, lastUpdatedAt } = props
+  const { resource, related, courses, lastUpdatedAt } = props
   const { metadata, toc } = resource.data
 
   const { t } = useI18n()
@@ -212,7 +219,9 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         siteTitle={siteMetadata.title}
       />
       <PageContent className="grid w-full max-w-screen-lg px-10 py-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
-        <aside />
+        <aside>
+          <CourseLinks courses={courses} />
+        </aside>
         <div className="min-w-0">
           <Resource resource={resource} lastUpdatedAt={lastUpdatedAt} />
           <RelatedResources resources={related} />
@@ -235,6 +244,41 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         ) : null}
       </PageContent>
     </Fragment>
+  )
+}
+
+interface CourseLinksProps {
+  courses: Array<CoursePreview>
+}
+
+/**
+ * List of courses the resource is part of.
+ */
+function CourseLinks(props: CourseLinksProps) {
+  const { courses } = props
+
+  const { t } = useI18n()
+
+  if (courses.length === 0) return null
+
+  return (
+    <nav aria-label={t('common.containedIn')}>
+      <h2>{t('common.containedIn')}</h2>
+      <ul>
+        {courses.map((course) => {
+          return (
+            <li key={course.id}>
+              <Link href={routes.course({ id: course.id })}>
+                <a className="flex items-center text-sm">
+                  <Icon icon={AcademicCapIcon} className="w-4 h-4" />
+                  <span>{course.title}</span>
+                </a>
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </nav>
   )
 }
 

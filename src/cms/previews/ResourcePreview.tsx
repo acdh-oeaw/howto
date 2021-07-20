@@ -15,6 +15,7 @@ import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
 import withCmsPreviewAssets from '@/mdx/plugins/remark-cms-preview-assets'
+import withTypographicQuotesAndDashes from '@/mdx/plugins/remark-smartypants'
 import { useDebouncedState } from '@/utils/useDebouncedState'
 import { Resource } from '@/views/Resource'
 
@@ -66,6 +67,7 @@ export function ResourcePreview(
           remarkPlugins: [
             withGitHubMarkdown,
             withFootnotes,
+            withTypographicQuotesAndDashes,
             [withCmsPreviewAssets, getAsset],
           ],
           rehypePlugins: [

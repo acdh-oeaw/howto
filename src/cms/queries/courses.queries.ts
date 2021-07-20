@@ -33,3 +33,19 @@ export async function getCoursePreviewsByTagId(
 
   return coursesByTag
 }
+
+/**
+ * Returns metadata for courses which contain the specified resource id.
+ */
+export async function getCoursePreviewsByResourceId(
+  id: string,
+  locale: Locale,
+): Promise<Array<CoursePreview>> {
+  const postPreviews = await getCoursePreviews(locale)
+
+  const coursesByTag = postPreviews.filter((post) =>
+    post.resources.some((resource) => resource.id === id),
+  )
+
+  return coursesByTag
+}

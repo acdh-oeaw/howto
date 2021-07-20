@@ -15,6 +15,7 @@ import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
 import withCmsPreviewAssets from '@/mdx/plugins/remark-cms-preview-assets'
+import withTypographicQuotesAndDashes from '@/mdx/plugins/remark-smartypants'
 import { useDebouncedState } from '@/utils/useDebouncedState'
 import { Course } from '@/views/Course'
 
@@ -67,6 +68,7 @@ export function CoursePreview(
           remarkPlugins: [
             withGitHubMarkdown,
             withFootnotes,
+            withTypographicQuotesAndDashes,
             [withCmsPreviewAssets, getAsset],
           ],
           rehypePlugins: [
