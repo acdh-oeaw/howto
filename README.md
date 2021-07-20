@@ -39,3 +39,13 @@ auto-formatting for markdown.
 
 When contributing content directly via git, please use feature branches and
 don't push to `main`, to allow for review.
+
+### Note on writing Markdown
+
+Content is saved in MDX format, which is markdown with custom JavaScript
+components. Most markdown syntax is supported, however there are
+[subtle parsing differences](https://github.com/micromark/mdx-state-machine#72-deviations-from-markdown)
+to be aware of. Most notably: the "leser than" sign `<` needs to be HTML-escaped
+to `&lt;` (because it signifies the start of a custom component), and similarly
+"autolinks" (`<https://example.com>` instead of
+`[https://example.com](https://example.com)`) are not allowed.
