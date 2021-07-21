@@ -356,29 +356,36 @@ Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Sie mö
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.XmlCodeEditor
-      code="<xml></xml>"
+      code="<xml>
+        <div>
+          FILM-KRITIKEN „Die Schlacht.“ Nach dem Roman ...
+        </div>
+        <div type=&#x22;review&#x22; n=&#x22;2&#x22;>
+          <p> &#x22;Die Wunder des Meeres.&#x22; In diesem...</p>
+        </div>
+      </xml>"
       solution="<xml>
         <div type=&#x22;reviews&#x22;>
           <head type=&#x22;columnTitle&#x22;>FILM-KRITIKEN</head>
           <div type=&#x22;review&#x22; n=&#x22;1&#x22;>
-          <p>„Die Schlacht.“ Nach dem Roman ...</p>
+            <p>„Die Schlacht.“ Nach dem Roman ...</p>
           </div>
-          ...
+          <div type=&#x22;review&#x22; n=&#x22;2&#x22;>
+            <p> &#x22;Die Wunder des Meeres.&#x22; In diesem...</p>
+          </div>
         </div>
       </xml>"
       validate="input"
     >
       <Quiz.Question>
-
+        FILM-KRITIKEN „Die Schlacht.“ Nach dem Roman ...
       </Quiz.Question>
     </Quiz.XmlCodeEditor>
   </Quiz.Card>
 </Quiz>
 
 
-FILM-KRITIKEN „Die Schlacht.“ Nach dem Roman ...
 
-*\#==== Lösung - in finaler Version entfernen*
 
 ```xml
 <div type="reviews">
