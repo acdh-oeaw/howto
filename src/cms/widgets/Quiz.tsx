@@ -142,7 +142,8 @@ function createStringLiteralAttribute(value: string) {
 }
 
 function getStringLiteralAttribute(value: any) {
-  return value.data.estree.body[0].expression.value
+  if (typeof value === 'string') return value
+  return value.data?.estree?.body?.[0]?.expression?.value
 }
 
 const processor = remark()
