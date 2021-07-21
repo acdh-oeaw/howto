@@ -1,5 +1,5 @@
 ---
-title: TEI - Body
+title: TEI Body
 lang: de
 date: 2021-07-12T06:56:55.554Z
 version: 1.0.0
@@ -138,61 +138,91 @@ Durch ein zusätzliches Attribut können Textteile noch genauer bestimmt werden,
 
 #### Übung 1a: Fließtextabschnitte auszeichnen
 
-In einer späteren Analyse sollen alle Überschriften getrennt von Artikeln aus mehreren Zeitschriftenausgaben gefunden werden können, um ein Verzeichnis aller Titel zu erstellen. Wir beginnen mit einem Beispieltext. Welche Fließtextabschnitte können Sie erkennen? Fügen Sie `<div>` (Abschnitt), `<head>` (Überschrift) und `<p>` (Absatz) an den richtigen Stellen ein. Vergessen Sie nicht, die Auszeichnungen zu schließen, sodass jedes Element umschlossen ist.
+In einer späteren Analyse sollen alle Überschriften getrennt von Artikeln aus mehreren Zeitschriftenausgaben gefunden werden können, um ein Verzeichnis aller Titel zu erstellen. Wir beginnen mit einem Beispieltext. Welche Fließtextabschnitte können Sie erkennen? Fügen Sie `<div>` (Abschnitt), `<head>` (Überschrift) und `<p>` (Absatz) an den richtigen Stellen ein. Vergessen Sie nicht, die Auszeichnungen zu schließen, sodass jedes Textelement umschlossen ist. Bitte beachten Sie, dass Überschrift und Absatz gemeinsam einen Abschnitt bilden sollen.
 
 ![Die Wunder des Meeres, Überschrift](images/filmwelt_1923_31_11_titel.png "Die Wunder des Meeres, Überschrift")
 
 ![Die Wunder des Meeres, Text](images/filmwelt_1923_31_11_text.png "Die Wunder des Meeres, Text")
 
+**Text:**
+
 Die Wunder des Meeres.
 
 Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E. Williamson hat ...
 
-*\#==== Lösung - in finaler Version entfernen*
-
 ```xml
 <div>
   <head>Die Wunder des Meeres.</head>
-  <p>Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes
+    <p>Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes
     Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E.
     Williamson hat ...</p>
 </div>
 ```
 
-*\====#*
-
 #### Übung 1b: Fließtextabschnitte auszeichnen
 
-In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die zwischen 1921 und 1935 geöffnet waren. In diesem Beispiel sehen Sie eine Liste. Zeichnen Sie bitte die Einträge `<item>` richtig aus.
+In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die zwischen 1921 und 1935 geöffnet waren. In diesem Beispiel sehen Sie eine Liste `<list>.` Zeichnen Sie bitte die ersten vier Einträge als `<item>` richtig aus und schließen Sie dann die Liste. Die umschließenden `<xml>` Tags sind bereits vorgegeben.
 
-![Spielplan]()
+![Spielplan von Die Wunder des Meeres](images/filmwelt_1923_31_11_spielplan.png "Spielplan von Die Wunder des Meeres")
 
-Imperial-Kino, I., Rothgasse 9; Schwarzenberg-Kino, III., Schwarzenbergplatz; Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4;
 
-*\#==== Lösung - in finaler Version entfernen*
 
-```xml
-<list>
-  <item>Imperial-Kino, I., Rothgasse 9;</item>
-  <item>Schwarzenberg-Kino, III., Schwarzenbergplatz;</item>
-  <item>Flotten-Kino, VI., Mariahilferstraße 85;</item>
-  <item>Wienzeile-Kino, VI., Linke Wienzeile 4;</item>
-</list>
-```
+<Quiz>
+  <Quiz.Card validateButtonLabel="Überprüfen">
+    <Quiz.XmlCodeEditor
+      code="<xml>
+        <div>
+      </xml>"
+      solution="<xml>
+        <list>
+          <item>Imperial-Kino, I., Rothgasse 9;</item>
+          <item>Schwarzenberg-Kino, III., Schwarzenbergplatz;</item>
+          <item>Flotten-Kino, VI., Mariahilferstraße 85;</item>
+          <item>Wienzeile-Kino, VI., Linke Wienzeile 4;</item>
+        </list>
+      </xml>"
+      validate="input"
+    >
+      <Quiz.Question>
+        Imperial-Kino, I., Rothgasse 9; Schwarzenberg-Kino, III., Schwarzenbergplatz; Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4;
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
 
-*\====#*
 
-* Welche drei Aussagen sind richtig:
+<Quiz>
+  <Quiz.Card validateButtonLabel="Überprüfen">
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Welche drei Aussagen sind richtig?
+      </Quiz.Question>
 
-a) alle Einträge `<item>` sind gleichwertig und deshalb auf derselben Hierarchieebene
+      <Quiz.MultipleChoice.Option isCorrect>
+        a) alle Einträge `<item>` sind gleichwertig und deshalb auf derselben Hierarchieebene
+      </Quiz.MultipleChoice.Option>
 
-b) die Einträge `<item>` sind nicht gleichwertig, sondern untereinander abgestuft und bilden eine Hierarchie
+      <Quiz.MultipleChoice.Option>
+        b) die Einträge `<item>` sind nicht gleichwertig, sondern untereinander abgestuft und bilden eine Hierarchie
+      </Quiz.MultipleChoice.Option>
 
-c) die Aufzählung `<list>` und die Einträge `<item>` müssen sich auf derselben Hierarchieebene befinden, da sie gleichwertig sind.
+      <Quiz.MultipleChoice.Option>
+        c) die Aufzählung `<list>` und die Einträge `<item>` müssen sich auf derselben Hierarchieebene befinden, da sie gleichwertig sind.
+      </Quiz.MultipleChoice.Option>
 
-d) die Aufzählung `<list>` und die Einträge `<item>` sind nicht gleichwertig. Die Einträge `<item>` sind Teil der Aufzählung `<list>`. `<list>` muss also alle `<item>` umgeben.
+      <Quiz.MultipleChoice.Option isCorrect>
+        d) die Aufzählung `<list>` und die Einträge `<item>` sind nicht gleichwertig. Die Einträge `<item>` sind Teil der Aufzählung `<list>`. `<list>` muss also alle `<item>` umgeben.
+      </Quiz.MultipleChoice.Option>
 
-e) `<list>`und `<item>` sind wohlgeformt, da sie in sich geschlossen sind und die Hierarchie eingehalten wird.
+      <Quiz.MultipleChoice.Option isCorrect>
+        e) `<list>`und `<item>` sind wohlgeformt, da sie in sich geschlossen sind und die Hierarchie eingehalten wird.
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+
+
 
 #### Übung 1c: Fließtextabschnitte auszeichnen
 
