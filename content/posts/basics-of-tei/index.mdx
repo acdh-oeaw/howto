@@ -294,6 +294,57 @@ Die Forschungsgruppe interessiert sich dafür, welche Texte außer Kritiken und 
 
 #### Übung 2a: Attribute festlegen
 
+<Quiz>
+  <Quiz.Card>
+    <Quiz.XmlCodeEditor
+      code="<xml>
+        <div type=&#x22;article&#x22;>
+          <head>Die Wunder des Meeres.</head>
+          <p>Der Film „Die Wunder des Meeres“ führt ...</p>
+        </div>
+        <div type=&#x22;movieSchedule&#x22;>
+          <p>Der Film »Die Wunder des Meeres« läuft ab ...</p>
+        </div>
+        <div type=&#x22;poem&#x22;>
+          <lg>
+            <head>Der Filmstar.</head>
+            <l>Du ahnst bei ihm die Schwüle</l>
+            <l>...</l>
+            <l>Um jede Großaufnahme.</l>
+            <byline>Friedrich Zelnik.</byline>
+          </lg>
+        </div>
+      </xml>"
+      solution="<xml>
+        <div type=&#x22;article&#x22;>
+          <head>Die Wunder des Meeres.</head>
+          <p>Der Film „Die Wunder des Meeres“ führt ...</p>
+        </div>
+        <div type=&#x22;movieSchedule&#x22;>
+          <p>Der Film »Die Wunder des Meeres« läuft ab ...</p>
+        </div>
+        <div type=&#x22;poem&#x22;>
+          <lg>
+            <head>Der Filmstar.</head>
+            <l>Du ahnst bei ihm die Schwüle</l>
+            <l>...</l>
+            <l>Um jede Großaufnahme.</l>
+            <byline>Friedrich Zelnik.</byline>
+          </lg>
+        </div>
+      </xml>"
+      validate="input"
+    >
+      <Quiz.Question>
+        Die Forschungsgruppe interessiert sich dafür, welche Texte in den Zeitschriften gefunden werden können, da sie später von verschiedenen Personen beforscht werden sollen. Zeichnen Sie bitte die Textteile mit einem passenden Attribut aus. Wählen Sie das richtige Attribut für den entsprechende Fließtext aus:
+
+        - article / movieSchedule / poem / editorialStatement / reviews (es muss zwischen "..." eingesetzt werden; wählen Sie nur die drei richtigen aus)
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
+
+
 Die Forschungsgruppe interessiert sich dafür, welche Texte in den Zeitschriften gefunden werden können, da sie später von verschiedenen Personen beforscht werden sollen. Zeichnen Sie bitte die Textteile mit einem passenden Attribut aus. Wählen Sie das richtige Attribut für den entsprechende Fließtext aus:
 
 * article / movieSchedule / poem / editorialStatement / reviews (es muss zwischen "..." eingesetzt werden; wählen Sie nur die drei richtigen aus)
