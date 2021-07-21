@@ -138,11 +138,37 @@ Durch ein zusätzliches Attribut können Textteile noch genauer bestimmt werden,
 
 #### Übung 1a: Fließtextabschnitte auszeichnen
 
-In einer späteren Analyse sollen alle Überschriften getrennt von Artikeln aus mehreren Zeitschriftenausgaben gefunden werden können, um ein Verzeichnis aller Titel zu erstellen. Wir beginnen mit einem Beispieltext. Welche Fließtextabschnitte können Sie erkennen? Fügen Sie `<div>` (Abschnitt), `<head>` (Überschrift) und `<p>` (Absatz) an den richtigen Stellen ein. Vergessen Sie nicht, die Auszeichnungen zu schließen, sodass jedes Textelement umschlossen ist. Bitte beachten Sie, dass Überschrift und Absatz gemeinsam einen Abschnitt bilden sollen.
+In einer späteren Analyse sollen alle Überschriften getrennt von Artikeln aus mehreren Zeitschriftenausgaben gefunden werden können, um ein Verzeichnis aller Titel zu erstellen. Wir beginnen mit einem Beispieltext. Welche Fließtextabschnitte können Sie erkennen? Fügen Sie `<div>` (Abschnitt), `<head>` (Überschrift) und `<p>` (Absatz) an den richtigen Stellen ein. Vergessen Sie nicht, die Auszeichnungen zu schließen, sodass jedes Textelement umschlossen ist. Bitte beachten Sie, dass Überschrift und Absatz gemeinsam einen Abschnitt bilden sollen. Die umschließenden `<xml>`-Tags und der Fließtext sind bereits vorgegeben.
 
 ![Die Wunder des Meeres, Überschrift](images/filmwelt_1923_31_11_titel.png "Die Wunder des Meeres, Überschrift")
 
 ![Die Wunder des Meeres, Text](images/filmwelt_1923_31_11_text.png "Die Wunder des Meeres, Text")
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.XmlCodeEditor
+      code="<xml>Die Wunder des Meeres.
+
+      Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E. Williamson hat ...</xml>"
+      solution="<xml>
+        <div>
+          <head>Die Wunder des Meeres.</head>
+            <p>Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes
+          Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E.
+          Williamson hat ...</p>
+        </div>
+      </xml>"
+      validate="input"
+    >
+      <Quiz.Question>
+        Die Wunder des Meeres.
+
+        Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E. Williamson hat ...
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
+
 
 **Text:**
 
@@ -165,21 +191,19 @@ In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die
 
 ![Spielplan von Die Wunder des Meeres](images/filmwelt_1923_31_11_spielplan.png "Spielplan von Die Wunder des Meeres")
 
-
-
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.XmlCodeEditor
       code="<xml>
-        <div>
+      <div>
       </xml>"
       solution="<xml>
-        <list>
-          <item>Imperial-Kino, I., Rothgasse 9;</item>
-          <item>Schwarzenberg-Kino, III., Schwarzenbergplatz;</item>
-          <item>Flotten-Kino, VI., Mariahilferstraße 85;</item>
-          <item>Wienzeile-Kino, VI., Linke Wienzeile 4;</item>
-        </list>
+      <list>
+      <item>Imperial-Kino, I., Rothgasse 9;</item>
+      <item>Schwarzenberg-Kino, III., Schwarzenbergplatz;</item>
+      <item>Flotten-Kino, VI., Mariahilferstraße 85;</item>
+      <item>Wienzeile-Kino, VI., Linke Wienzeile 4;</item>
+      </list>
       </xml>"
       validate="input"
     >
@@ -220,8 +244,6 @@ In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
-
-
 
 
 #### Übung 1c: Fließtextabschnitte auszeichnen
