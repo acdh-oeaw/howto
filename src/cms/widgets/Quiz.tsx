@@ -89,15 +89,22 @@ function withQuizCards() {
           last.type = 'XmlCodeEditor'
           last.question = ''
 
+          // @ts-expect-error Attributes exist.
+          const codeAttribute = node.attributes?.find(
+            (attribute: any) => attribute.name === 'code',
+          )
           const code =
-            // @ts-expect-error Attributes exist.
-            node.attributes?.find((attribute: any) => attribute.name === 'code')
-              ?.value ?? ''
+            codeAttribute != null
+              ? getStringLiteralAttribute(codeAttribute.value)
+              : ''
+          // @ts-expect-error Attributes exist.
+          const solutionAttribute = node.attributes?.find(
+            (attribute: any) => attribute.name === 'solution',
+          )
           const solution =
-            // @ts-expect-error Attributes exist.
-            node.attributes?.find(
-              (attribute: any) => attribute.name === 'solution',
-            )?.value ?? ''
+            solutionAttribute != null
+              ? getStringLiteralAttribute(solutionAttribute.value)
+              : ''
 
           last.code = code
           last.solution = solution
@@ -107,6 +114,35 @@ function withQuizCards() {
       }
     }
   }
+}
+
+/** Wraps string jsx attribute in expression to preserve whitespace. */
+function createStringLiteralAttribute(value: string) {
+  return {
+    type: 'mdxJsxAttributeValueExpression',
+    value: JSON.stringify(value),
+    data: {
+      estree: {
+        type: 'Program',
+        sourceType: 'module',
+        comments: [],
+        body: [
+          {
+            type: 'ExpressionStatement',
+            expression: {
+              type: 'Literal',
+              value: value,
+              raw: JSON.stringify(value),
+            },
+          },
+        ],
+      },
+    },
+  }
+}
+
+function getStringLiteralAttribute(value: any) {
+  return value.data.estree.body[0].expression.value
 }
 
 const processor = remark()
@@ -361,14 +397,14 @@ export const quizEditorWidget: EditorComponentOptions = {
                   attributes.push({
                     type: 'mdxJsxAttribute',
                     name: 'code',
-                    value: card.code,
+                    value: createStringLiteralAttribute(card.code),
                   })
                 }
                 if (card.solution != null) {
                   attributes.push({
                     type: 'mdxJsxAttribute',
                     name: 'solution',
-                    value: card.solution,
+                    value: createStringLiteralAttribute(card.solution),
                   })
                 }
                 if (card.validate != null) {
