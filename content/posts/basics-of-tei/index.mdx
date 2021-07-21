@@ -235,26 +235,35 @@ In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die
 
 #### Übung 1c: Fließtextabschnitte auszeichnen
 
-Die Forschungsgruppe interessiert sich dafür, welche Texte außer Kritiken und Spielplänen gefunden werden können. Diese Texte sollen gefunden werden können, und zu einem späteren Zeitpunkt möchte man diese genauer beforschen; unter anderem soll ein Autorenverzeichnis angelegt werden. Benutzen Sie die Auszeichnungen Strophe `<lg>` (Linegroup), Überschrift `<head>`, Zeile `<l>` und Verfasserzeile `<byline>`, um dieses Gedicht auszuzeichnen. Zeichnen Sie auch den Abschnitt `<div>`mit der genaueren Bezeichnung `type="poem"` Achten Sie auf die verschiedenen Hierarchieebenen! Vergessen Sie nicht, die Auszeichnungen zu schließen.
+Die Forschungsgruppe interessiert sich dafür, welche Texte außer Kritiken und Spielplänen gefunden werden können. Diese Texte sollen gefunden werden können, und zu einem späteren Zeitpunkt möchte man diese genauer beforschen; unter anderem soll ein Autorenverzeichnis angelegt werden. Benutzen Sie die Auszeichnungen Strophe `<lg>` (Linegroup), Überschrift `<head>`, Zeile `<l>` und Verfasserzeile `<byline>`, um dieses Gedicht auszuzeichnen. Zeichnen Sie auch den Abschnitt `<div>`mit der genaueren Bezeichnung `type="poem"` Achten Sie auf die verschiedenen Hierarchieebenen! Vergessen Sie nicht, die Auszeichnungen zu schließen. Die umschließenden `<xml>`-Tags und der Fließtext sind bereits vorgegeben.
 
-![Der Filmstar](images/filmwelt_1923_31_11_gedicht_filmstar.png)
+![Der Filmstar](images/filmwelt_1923_31_11_gedicht_filmstar.png "Der Filmstar")
 
-Der Filmstar. Du ahnst bei ihm die Schwüle Leise glimmender Gefühle. Friedrich Zelnik.
+<Quiz>
+  <Quiz.Card validateButtonLabel="Überprüfen">
+    <Quiz.XmlCodeEditor
+      code="<xml>Der Filmstar. Du ahnst bei ihm die Schwüle Leise glimmender Gefühle. Friedrich Zelnik.</xml>"
+      solution="<xml>
+        <div type=&#x22;poem&#x22;>
+          <lg>
+            <head>Der Filmstar.</head>
+            <l>Du ahnst bei ihm die Schwüle</l>
+            <l>Leise glimmender Gefühle.</l>
+            <byline>Friedrich Zelnik.</byline>
+          </lg>
+        </div>
+      </xml>"
+      validate="input"
+    >
+      <Quiz.Question>
+        Der Filmstar. Du ahnst bei ihm die Schwüle Leise glimmender Gefühle. Friedrich Zelnik.
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
 
-*\#==== Lösung - in finaler Version entfernen*
 
-```xml
-<div type="poem">
-  <lg>
-    <head>Der Filmstar.</head>
-    <l>Du ahnst bei ihm die Schwüle</l>
-    <l>Leise glimmender Gefühle.</l>
-    <byline>Friedrich Zelnik.</byline>
-  </lg>
-</div>
-```
 
-*\====#*
 
 Welche Funktion hat `<div type="poem">`? Wählen Sie alle richtigen Antworten aus. a) `<div type="poem">` nutzt ein Attribut, um explizit Gedichte auszuzeichnen. b) `<div type="poem">` für jede Art von Abschnitt benutzt werden. c) `<div type="poem">` gibt Auskunft darüber, welche Textsorte man in diesem Teil des Fließtextes findet. d) `<div type="poem">` bezeichnet den Autor eines Gedichts.
 
