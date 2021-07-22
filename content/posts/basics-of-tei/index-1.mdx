@@ -193,7 +193,7 @@ Es handelt sich hier um einen Ausschnitt aus der Gesetzgebung in Form einer numm
 <Quiz>
   <Quiz.Card>
     <Quiz.XmlCodeEditor
-      code={"<xml>\n  <item n=\"2\"> Concerning lordless men. And we pronounced about these lordless men, from whom no justice can be obtained, that one should order their kindred to fetch back such a person to justice and to find him a lord in public meeting.\n<list rend=\"x\">\nAnd if they then will not, or cannot, produce him on that appointed day, he is then to be a fugitive afterwards, and he who encounters him is to strike him down as a thief.\n\nAnd he who harbours him after that, is to pay for him with his wergild or to clear himself by an oath of that amount.\n</xml>"}
+      code={"<xml>\n  <item n=\"2\"> Concerning lordless men. And we pronounced about these lordless men, from whom no justice can be obtained, that one should order their kindred to fetch back such a person to justice and to find him a lord in public meeting.\n    <list rend=\"x\">\nAnd if they then will not, or cannot, produce him on that appointed day, he is then to be a fugitive afterwards, and he who encounters him is to strike him down as a thief.\n\nAnd he who harbours him after that, is to pay for him with his wergild or to clear himself by an oath of that amount.\n</xml>"}
       solution={"<xml>\n  <item n=\"2\"> Concerning lordless men. And we pronounced about these lordless men, from whom\n     no justice can be obtained, that one should order their kindred to fetch back such a\n     person to justice and to find him a lord in public meeting.\n    <list rend=\"numbered\">\n      <item n=\"2.1\"> And if they then will not, or cannot, produce him on that appointed day,\n         he is then to be a fugitive afterwards, and he who encounters him is to strike him\n         down as a thief.</item>\n      <item n=\"2.2\"> And he who harbours him after that, is to pay for him with his wergild\n         or to clear himself by an oath of that amount.</item>\n     </list>\n  </item>\n</xml>"}
       validate="input"
     >
@@ -215,47 +215,7 @@ Es handelt sich hier um einen Ausschnitt aus der Gesetzgebung in Form einer numm
 </Quiz>
 
 
-Sehen Sie sich bitte den nächsten Abschnitt aus *Athelstans* **Gesetzgebung** an. Bitte beachten Sie, dass diese Liste nicht nur eine Liste ist, sondern auch ein Listeneintrag im Gesetzbuch; deshalb steht hier das Element `item` außerhalb des `list`-Elements.
 
-Zeichnen Sie die Liste, die sich innerhalb des Listeneintrags Nummer 2 befindet, richtig aus, indem Sie die globalen Attribute `@rend` und `@n` benutzen.
-
-1. Zeichnen Sie die Liste als nummerierte Liste aus.
-2. Zeichnen Sie den erste Listeneintrag `item` mit dem globalen Attribut `@n` als `n="2.1"` aus. Das Element beginnt mit "And if they then will not..."
-3. Schließen Sie bitte das Listeneintragselement bevor Sie sich dem nächsten Eintrag zuwenden.
-4. Zeichnen Sie das nächste Listeneintragselement richtig als Folgeelement aus. Achten Sie auf die richtige Nummerierung. Das Element beginnt mit "And he who harbours..."
-5. Schließen Sie bitte dieses zweite Listeneintragselement.
-6. Schließen Sie die Liste.
-7. Schließen Sie den Listeneintrag `item n="2"`.
-
-`<item n="2">` Concerning lordless men. And we pronounced about these lordless men, from whom no justice can be obtained, that one should order their kindred to fetch back such a person to justice and to find him a lord in public meeting.
-
-And if they then will not, or cannot, produce him on that appointed day, he is then to be a fugitive afterwards, and he who encounters him is to strike him down as a thief.
-
-And he who harbours him after that, is to pay for him with his wergild or to clear himself by an oath of that amount.
-
-*\#==== Lösung - in finaler Version entfernen*
-
-```xml
-<item
-  n="2"
->Concerning lordless men. And we pronounced about these lordless men, from whom
-     no justice can be obtained, that one should order their kindred to fetch back such a
-     person to justice and to find him a lord in public meeting.
-  <list rend="numbered">
-    <item
-      n="2.1"
-    >And if they then will not, or cannot, produce him on that appointed day,
-         he is then to be a fugitive afterwards, and he who encounters him is to strike him
-         down as a thief.</item>
-    <item
-      n="2.2"
-    >And he who harbours him after that, is to pay for him with his wergild
-         or to clear himself by an oath of that amount.</item>
-   </list>
-</item>
-```
-
-*\====#*
 
 #### Übung 2b: Globale Attribute verwenden
 
