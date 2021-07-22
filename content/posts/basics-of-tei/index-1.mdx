@@ -153,47 +153,9 @@ Hier wurde zusätzliche Information mit den globalen Attribute `@type`, `@n`, `x
 </Quiz>
 
 
-Im Folgenden sehen Sie den Beginn von Goethes Faust. Zeichnen Sie bitte mit Hilfe der globalen Attribute aus:
 
-1. Benutzen Sie `<div type="act">` um die gesamte Passage als Teil eines Aktes zu kennzeichnen. Der Rest des Aktes liegt hier nicht vor, könnte aber auch Teil dieses Elements sein. Schließen Sie dieses Element als letztes.
-2. Innerhalb des Elements `<div type="act">` gibt es eine Szene, die wir hier sehen. Umschließen Sie den gesamten Text mit einem weiteren Abschnittselement und dem Attribut `type="scene"`, um die Szene auszuzeichnen. Vergessen Sie bitte nicht das Element vor dem Schließelement von `<div type="act"`zu schließen.
-3. Zeichnen Sie dann die Titelzeile "Nacht" mit dem Element `<head>`aus. Vergessen Sie bitte nicht, das Element am Ende der Überschrift zu schließen, bevor Sie weiter arbeiten.
-4. In der nächsten Zeile folgt eine Bühnenanweisung `<stage>`. Umschließen Sie die gesamte Bühnenanweisung mit diesem Element.
-5. Der Bereich der Rede `<sp>`(speech) ist bereits für Sie vorbereitet. Hier wurde der Sprecher, Faust, ausgezeichnet, und der erste Absatz `<p>`des Eröffnungsmonologs.
-6. Stellen Sie sicher, dass Sie die TEI-Elemente alle in der richtigen Reihenfolge geschlossen haben, vom Innersten zum Äußersten.
 
-Nacht.
-
-In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.
-
-`<sp who="#FAU">`
-
-`<speaker>`Faust.`</speaker>`
-
-`<p>`Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...`</p>`
-
-`</sp>`
-
-*\#==== Lösung - in finaler Version entfernen*
-
-```xml
-<div type="act">
- <div type="stage">
-  <head>Nacht.</head>
-  <stage
-    >In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.</stage>
-  <sp who="#FAU">
-  <speaker>Faust.</speaker>
-  <p
-      >Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...</p>
-  </sp>
- </div>
-</div>
-```
-
-*\====#*
-
-Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um eine Ausschnitta aus *Athelstans* **Gesetzgebung**. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
+Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um eine Ausschnitt aus *Athelstans* **Gesetzgebung**. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
 
 ```xml
 <div1 type="section">
