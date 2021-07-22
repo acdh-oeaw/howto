@@ -19,7 +19,7 @@ uuid: 6lAg1chkYR48_lWk_jBa5
 ---
 ## Grundlegendes zu Globalen Attributen
 
-Globale Attribute sind jene Attribute, die einem jedem TEI-Element zugeordnet werden können, um es genauer zu beschreiben. Meistens findet man ein globales Attribut als `name="value"` nach der entsprechenden TEI-Element-Auszeichnung. Globale Attribute sind nicht an bestimmte TEI-Elemente gebunden, sondern können immer verwendet werden. Daher ist es sinnvoll, sich diese Attribute zu merken. Die folgenden Attribute gehören zu den globalen Attributen:
+Globale Attribute sind jene Attribute, die einem TEI-Element zugeordnet werden können, um es genauer zu beschreiben. Meistens findet man ein globales Attribut als `name="value"` nach der entsprechenden TEI-Element-Auszeichnung. Globale Attribute sind nicht an bestimmte TEI-Elemente gebunden, sondern können immer verwendet werden. Daher ist es sinnvoll, sich diese Attribute zu merken. Die folgenden Attribute gehören zu den globalen Attributen:
 
 * **Identität**, `@xml:id`: Mit diesem Attribut weisen Sie einem Element eine ganz eindeutige Identifikation zu. Sie muss einzigartig im Dokument sein, muss mit einem Buchstaben oder Unterstrich beginnen und darf keine Sonderzeichen wie zum Beispiel Doppelpunkte enthalten.
 * **Typisierung**, `@type`und `@subtype`
@@ -60,7 +60,7 @@ Hier wurde zusätzliche Information mit den globalen Attribute `@type`, `@n`, `x
 * `xml:id="Zelnik1"` beschreibt eine zusätzliche Identifikationsangabe, die diesen Text auszeichnet. Welche Bezeichnung verwendet wird, entscheidet die auszeichnende Person, oder orientiert sich an Vorgaben. Eine leicht verständliche Bezeichnung ist in jedem Fall sinnvoll.
 * `div type="poem"` sagt aus, dass es sich bei diesem Textabschnitt `div` um ein Gedicht `type="poem"` handelt.
 * `head xml:lang="de"`gibt an, dass die Überschrift `head`in deutscher Sprache `xml:lang="de"`geschrieben wurde.
-* `lg n="1"`bezeichnet den ersten `n=1`Vers des Gedichts.
+* `lg n="1"`bezeichnet den ersten `n="1"` Vers des Gedichts.
 * `lg n="2"`bezeichnet dann den zweiten `n="2"` Vers des Gedichts.
 
 Da die Auszeichnungen global sind, sind sie nicht zwingend an die oben genannten Stellen gebunden.
@@ -76,7 +76,7 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
 
 #### Alternatives Beispiel
 
-Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um eine Ausschnitta aus *Ingeborg Bachmanns* Gedicht **Römisches Nachtbild**. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
+Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um eine Ausschnitt aus Ingeborg Bachmann*s* Gedicht *Römisches Nachtbild*. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
 
 ```xml
 <div xml:id="Bachmann1" type="poem">
@@ -96,11 +96,36 @@ Hier wurde zusätzliche Information mit den globalen Attribute `@type`, `@n`, `x
 * `xml:id="Bachmann1"` beschreibt eine zusätzliche Identifikationsangabe, die diesen Text auszuzeichnet.
 * `div type="poem"` sagt aus, dass es sich bei diesem Textabschnitt `div` um ein Gedicht `type="poem"`handelt.
 * `head xml:lang="de"`gibt an, dass die Überschrift `head`in deutscher Sprache `xml:lang="de"`geschrieben wurde.
-* `lg n="1"`bezeichnet den ersten `n=1`Vers des Gedichts.
-
-[Lyrikline](https://www.lyrikline.org/de/gedichte/roemisches-nachtbild-269)
+* `lg n="1"`bezeichnet den ersten `n=1`Vers des Gedichts
 
 #### Übung 1a: Globale Attribute erkennen
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Welches der folgenden Attribute ist _kein_ globales Attribut?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        a) die Auszeichnung einer Sprache, zum Beispiel Französisch `@xml:lang=fr`
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        b) die Auszeichnung eines Texttyps, zum Beispiel Glosse oder Artikel `type="gloss"`, `type="article"`
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        c) die Auszeichnung einer Kopfzeile `head`
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        d) die Auszeichnung einer Formattierung, zB für kleinen Schriftgröße `renditon xml:id="r-small" scheme="css"`
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
 
 Welches der folgenden Attribute ist *kein* globales Attribut? a) die Auszeichnung einer Sprache, zum Beispiel Französisch `@xml:lang=fr` b) die Auszeichnung eines Texttyps, zum Beispiel Glosse oder Artikel `type="gloss"`, `type="article"` c) die Auszeichnung einer Kopfzeile `head` d) die Auszeichnung einer Formattierung, zB für kleinen Schriftgröße `renditon xml:id="r-small" scheme="css"`
 
@@ -252,3 +277,5 @@ Hier finden Sie weitere Beispiele für die Verwendung globaler Attribute am Beis
 Hier finden Sie eine Liste der ISO-Codes für Sprache: [ISO-Code Sprache](https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes)
 
 Hier finden Sie Beispiel für das Rendition-Element `rend`, das das Textaussehen beschreibt: [Rendition](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rendition.html)
+
+Hier finden Sie Ingeborg Bachmanns Gedicht *Römisches Nachtbild* in voller Länge: [Lyrikline](https://www.lyrikline.org/de/gedichte/roemisches-nachtbild-269)
