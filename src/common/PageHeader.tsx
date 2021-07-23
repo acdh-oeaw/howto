@@ -1,4 +1,3 @@
-import type { Hit } from '@algolia/client-search'
 import { useButton } from '@react-aria/button'
 import { useDialog } from '@react-aria/dialog'
 import { FocusScope } from '@react-aria/focus'
@@ -30,8 +29,7 @@ import { useLocale } from '@/i18n/useLocale'
 import { navigation } from '@/navigation/navigation.config'
 import { NavLink } from '@/navigation/NavLink'
 import { routes } from '@/navigation/routes.config'
-import { getAlgoliaSearchIndex } from '@/search/getAlgoliaSearchIndex'
-import type { IndexedCourse, IndexedResource } from '@/search/types'
+import { useSearch } from '@/search/useSearch'
 
 /**
  * Page header.
@@ -140,8 +138,8 @@ function MobilePageNavigation() {
             onClose={dialogState.close}
             isDismissable
           >
-            <div>
-              <ul className="flex flex-col items-center space-y-8 font-medium">
+            <div className="flex flex-col">
+              <ul className="flex flex-col items-center space-y-8 overflow-y-auto font-medium">
                 {Object.entries(navigation).map(([route, { href }]) => {
                   return (
                     <li key={route}>
@@ -186,7 +184,7 @@ function ModalDialog(props: ModalDialogProps) {
     >
       <FocusScope contain restoreFocus autoFocus>
         <div
-          className="flex flex-col w-full p-8 bg-white rounded"
+          className="flex flex-col w-full p-8 overflow-hidden bg-white rounded shadow-md"
           {...overlayProps}
           {...dialogProps}
           {...modalProps}
@@ -239,10 +237,7 @@ function Search() {
 
   const dialogState = useOverlayTriggerState({})
   const [searchTerm, setSearchTerm] = useState('')
-  const [searchIndex] = useState(() => getAlgoliaSearchIndex())
-  const [searchResults, setSearchResults] = useState<
-    Array<Hit<IndexedResource | IndexedCourse>>
-  >([])
+  const { data: searchResults, status } = useSearch(searchTerm)
 
   const openButtonRef = useRef<HTMLButtonElement>(null)
   const { buttonProps: openButtonProps } = useButton(
@@ -270,38 +265,6 @@ function Search() {
   }
 
   useEffect(() => {
-    let wasCanceled = false
-
-    async function search() {
-      if (searchTerm.length === 0) return
-
-      if (searchIndex == null) return
-      const results = await searchIndex.search<IndexedResource | IndexedCourse>(
-        searchTerm,
-        {
-          hitsPerPage: 10,
-          attributesToRetrieve: ['type', 'kind', 'id', 'title', 'tags'],
-          attributesToHighlight: ['title'],
-          attributesToSnippet: ['abstract', 'body'],
-          highlightPreTag: '<mark>',
-          highlightPostTag: '</mark>',
-          snippetEllipsisText: '&hellip;',
-        },
-      )
-
-      if (!wasCanceled) {
-        setSearchResults(results.hits)
-      }
-    }
-
-    search()
-
-    return () => {
-      wasCanceled = true
-    }
-  }, [searchTerm, searchIndex])
-
-  useEffect(() => {
     router.events.on('routeChangeStart', dialogState.close)
 
     return () => {
@@ -324,15 +287,19 @@ function Search() {
             onClose={dialogState.close}
             isDismissable
           >
-            <div className="space-y-4">
+            <div className="flex flex-col space-y-4">
               <SearchField
                 label={t('common.search')}
                 placeholder={t('common.search')}
                 onSubmit={onSubmit}
-                isDisabled={searchIndex == null}
+                isDisabled={status === 'disabled'}
+                // FIXME: make search field controlled, or clear the searchresults when closing the dialog.
+                // otherwise we will see the search results, but not the search term in the input,
+                // when reopening the search dialog
+                // TODO: Loading indicator
               />
-              {searchResults.length > 0 ? (
-                <ul>
+              {Array.isArray(searchResults) && searchResults.length > 0 ? (
+                <ul className="overflow-y-auto">
                   {searchResults.map((result) => {
                     const href =
                       result.type === 'courses'
