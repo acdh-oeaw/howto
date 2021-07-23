@@ -58,12 +58,12 @@ export default function HomePage(_props: HomePageProps): JSX.Element {
         <div className="grid items-center w-full h-full p-8 mx-auto max-w-80ch">
           <div className="flex flex-col-reverse">
             <h1
-              className="font-black tracking-tighter text-7xl md:text-8xl"
+              className="text-6xl font-black tracking-tighter xs:text-7xl md:text-8xl"
               style={{ lineHeight: 0.8 }}
             >
               {title}
             </h1>
-            <h2 className="mb-4 text-lg font-semibold tracking-tight uppercase text-neutral-400">
+            <h2 className="mb-4 text-sm font-semibold tracking-tight uppercase xs:text-lg text-neutral-400">
               {subtitle}
             </h2>
           </div>
