@@ -24,7 +24,7 @@ export interface ResourceProps {
 export function Resource(props: ResourceProps): JSX.Element {
   const { resource, lastUpdatedAt, isPreview } = props
   const { metadata, timeToRead } = resource.data
-  const { title, date: publishDate, authors, tags } = metadata
+  const { title, date: publishDate, authors, tags, featuredImage } = metadata
 
   const { t, formatDate, pluralize } = useI18n()
 
@@ -126,6 +126,13 @@ export function Resource(props: ResourceProps): JSX.Element {
         </dl>
       </header>
       <div className="prose max-w-none">
+        {featuredImage != null ? (
+          typeof featuredImage === 'string' ? (
+            <img src={featuredImage} alt="" />
+          ) : (
+            <ResponsiveImage {...featuredImage} alt="" priority />
+          )
+        ) : null}
         <Mdx
           code={resource.code}
           components={{ Image: ResponsiveImage, Quiz }}

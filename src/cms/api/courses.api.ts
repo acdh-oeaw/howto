@@ -1,8 +1,9 @@
 import { join } from 'path'
 
+import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
 // import withExtractedTableOfContents from '@stefanprobst/rehype-extract-toc'
 // import type { Toc } from '@stefanprobst/rehype-extract-toc'
-import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
+import sizeOf from 'image-size'
 import withHeadingIds from 'rehype-slug'
 import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
@@ -29,6 +30,7 @@ import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
 import withTypographicQuotesAndDashes from '@/mdx/plugins/remark-smartypants'
 import { readFile } from '@/mdx/readFile'
 import { readFolder } from '@/mdx/readFolder'
+import { copyAsset } from '@/mdx/utils/copyAsset'
 import type { FilePath, IsoDateString } from '@/utils/ts/aliases'
 
 const coursesFolder = join(process.cwd(), 'content', 'courses')
@@ -62,7 +64,13 @@ export interface CourseFrontmatter {
 export interface CourseMetadata
   extends Omit<
     CourseFrontmatter,
-    'authors' | 'editors' | 'contributors' | 'tags' | 'resources' | 'licence' // FIXME:
+    | 'authors' // FIXME:
+    | 'editors'
+    | 'contributors'
+    | 'tags'
+    | 'resources'
+    | 'licence'
+    | 'featuredImage'
   > {
   // authors: Array<Person>
   // contributors?: Array<Person>
@@ -70,6 +78,7 @@ export interface CourseMetadata
   tags: Array<Tag>
   resources: Array<PostPreview>
   // licence: Licence
+  featuredImage?: FilePath | { src: FilePath; width: number; height: number }
 }
 
 export interface CourseData {
@@ -203,7 +212,7 @@ async function getCourseMetadata(
 ): Promise<CourseMetadata> {
   const matter = await getCourseFrontmatter(file, locale)
 
-  const metadata = {
+  const metadata: CourseMetadata = {
     ...matter,
     // authors: Array.isArray(matter.authors)
     //   ? await Promise.all(
@@ -241,6 +250,20 @@ async function getCourseMetadata(
         )
       : [],
     // licence: await getLicenceById(matter.licence, locale),
+  }
+
+  if (matter.featuredImage != null) {
+    const result = copyAsset(matter.featuredImage, file.path)
+    if (result != null) {
+      const dimensions = sizeOf(result.srcFilePath)
+      if (dimensions.width != null && dimensions.height != null) {
+        metadata.featuredImage = {
+          src: result.publicPath,
+          width: dimensions.width,
+          height: dimensions.height,
+        }
+      }
+    }
   }
 
   return metadata
