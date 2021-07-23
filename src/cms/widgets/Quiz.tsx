@@ -134,6 +134,20 @@ function createStringLiteralAttribute(value: string) {
               value: value,
               raw: JSON.stringify(value),
             },
+            // expression: {
+            //   type: 'TemplateLiteral',
+            //   expressions: [],
+            //   quasis: [
+            //     {
+            //       type: 'TemplateElement',
+            //       value: {
+            //         raw: value,
+            //         cooked: value,
+            //       },
+            //       tail: true,
+            //     },
+            //   ],
+            // },
           },
         ],
       },
@@ -143,7 +157,9 @@ function createStringLiteralAttribute(value: string) {
 
 function getStringLiteralAttribute(value: any) {
   if (typeof value === 'string') return value
-  return value.data?.estree?.body?.[0]?.expression?.value
+  const expression = value.data?.estree?.body?.[0]?.expression
+  /** Template literal or regular string. */
+  return expression?.quasis?.[0]?.value?.cooked ?? expression?.value
 }
 
 const processor = remark()
