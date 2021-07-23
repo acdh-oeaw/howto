@@ -56,6 +56,7 @@ const config = {
                     'colors.primary.600',
                   )} 0px 0px 0px 5px`,
                 },
+                'overflow-wrap': 'break-word',
               },
               strong: {
                 color: 'inherit',

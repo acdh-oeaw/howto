@@ -67,7 +67,7 @@ function PageNavigation() {
   const { t } = useI18n()
 
   return (
-    <nav className="hidden sm:items-center sm:space-x-8 sm:flex">
+    <nav className="hidden md:items-center md:space-x-8 md:flex">
       <ul className="flex items-center space-x-8 text-sm font-medium">
         {Object.entries(navigation).map(([route, { href }]) => {
           return (
@@ -124,11 +124,11 @@ function MobilePageNavigation() {
   }, [router.events, dialogState.close])
 
   return (
-    <nav className="flex items-center space-x-8 sm:hidden">
+    <nav className="flex items-center space-x-6 md:hidden">
       <Search />
       <LanguageSwitcher />
       <button {...openButtonProps} ref={openButtonRef}>
-        <Icon icon={MenuIcon} className="flex-shrink-0 w-6 h-6" />
+        <Icon icon={MenuIcon} className="flex-shrink-0 w-10 h-10 p-2" />
       </button>
       {dialogState.isOpen ? (
         <OverlayContainer>
@@ -182,7 +182,7 @@ function ModalDialog(props: ModalDialogProps) {
   return (
     <div
       {...underlayProps}
-      className="fixed inset-0 z-10 flex flex-col items-center justify-start bg-black bg-opacity-50 p-10vmin"
+      className="fixed inset-0 z-10 flex flex-col items-center justify-start p-4 bg-black bg-opacity-50 md:p-10vmin"
     >
       <FocusScope contain restoreFocus autoFocus>
         <div
@@ -218,7 +218,7 @@ function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLocale}
-      className="p-1.5 text-neutral-100 rounded focus:outline-none bg-neutral-800 text-xs font-medium hover:bg-neutral-700 transition"
+      className="w-10 h-10 text-xs font-medium transition rounded text-neutral-100 focus:outline-none bg-neutral-800 hover:bg-neutral-700"
     >
       <span className="sr-only">
         {t('common.switchLanguage', {
@@ -238,6 +238,7 @@ function Search() {
   const router = useRouter()
 
   const dialogState = useOverlayTriggerState({})
+  const [searchTerm, setSearchTerm] = useState('')
   const [searchIndex] = useState(() => getAlgoliaSearchIndex())
   const [searchResults, setSearchResults] = useState<
     Array<Hit<IndexedResource | IndexedCourse>>
@@ -265,10 +266,14 @@ function Search() {
   // )
 
   function onSubmit(searchTerm: string) {
+    setSearchTerm(searchTerm.trim())
+  }
+
+  useEffect(() => {
     let wasCanceled = false
 
     async function search() {
-      if (searchTerm.trim().length === 0) return
+      if (searchTerm.length === 0) return
 
       if (searchIndex == null) return
       const results = await searchIndex.search<IndexedResource | IndexedCourse>(
@@ -294,7 +299,7 @@ function Search() {
     return () => {
       wasCanceled = true
     }
-  }
+  }, [searchTerm, searchIndex])
 
   useEffect(() => {
     router.events.on('routeChangeStart', dialogState.close)
@@ -307,7 +312,7 @@ function Search() {
   return (
     <Fragment>
       <button {...openButtonProps} ref={openButtonRef}>
-        <Icon icon={SearchIcon} className="flex-shrink-0 w-6 h-6" />
+        <Icon icon={SearchIcon} className="flex-shrink-0 w-10 h-10 p-2" />
       </button>
       {dialogState.isOpen ? (
         <OverlayContainer>
@@ -384,11 +389,11 @@ function Search() {
                     )
                   })}
                 </ul>
-              ) : (
+              ) : searchTerm.length > 0 ? (
                 <div className="py-4 text-center text-neutral-500">
                   {t('common.noResultsFound')}
                 </div>
-              )}
+              ) : null}
             </div>
           </ModalDialog>
         </OverlayContainer>
@@ -418,8 +423,12 @@ function SearchField(props: SearchFieldProps) {
   return (
     <label {...labelProps} className="flex flex-col space-y-1.5">
       <span className="text-sm font-medium">{label}</span>
-      <div className="flex px-4 py-2 border rounded border-neutral-200">
-        <input {...inputProps} ref={inputRef} className="flex-1 min-w-0" />
+      <div className="flex px-4 py-2 border rounded border-neutral-200 focus-within:ring-primary-600 focus-within:ring">
+        <input
+          {...inputProps}
+          ref={inputRef}
+          className="flex-1 min-w-0 focus:outline-none"
+        />
         {state.value !== '' ? (
           <button {...buttonProps} ref={buttonRef}>
             <Icon icon={ClearIcon} className="flex-shrink-0 w-5 h-5" />
