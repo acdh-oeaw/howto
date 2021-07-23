@@ -143,6 +143,11 @@ export function CoursePreview(
         ? initialMetadata.date
         : frontmatter.date
 
+    const featuredImage =
+      frontmatter.featuredImage != null
+        ? String(getAsset(frontmatter.featuredImage))
+        : frontmatter.featuredImage
+
     const metadata = {
       ...initialMetadata,
       ...frontmatter,
@@ -153,10 +158,11 @@ export function CoursePreview(
       tags,
       resources,
       // licence,
+      featuredImage,
     }
 
     setMetadata(metadata)
-  }, [data, fieldsMetaData])
+  }, [data, fieldsMetaData, getAsset])
 
   useEffect(() => {
     let wasCanceled = false
