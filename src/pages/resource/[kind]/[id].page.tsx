@@ -179,7 +179,10 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
           }),
           version: metadata.version,
           license: metadata.licence.url,
-          image: metadata.featuredImage,
+          image:
+            typeof metadata.featuredImage === 'string'
+              ? metadata.featuredImage
+              : metadata.featuredImage?.src,
           keywords: metadata.tags.map((tag) => tag.name),
           publisher: {
             '@type': 'Organization',
