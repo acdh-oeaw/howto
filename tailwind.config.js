@@ -25,6 +25,9 @@ const config = {
         /** Character units `ch` change with font size, we just want a fixed width container. */
         '80ch': '720px',
       },
+      padding: {
+        '10vmin': '10vmin',
+      },
       ringOffsetWidth: {
         DEFAULT: '2px',
       },

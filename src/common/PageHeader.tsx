@@ -182,11 +182,11 @@ function ModalDialog(props: ModalDialogProps) {
   return (
     <div
       {...underlayProps}
-      className="fixed inset-0 z-10 flex flex-col items-center justify-start bg-black bg-opacity-50"
+      className="fixed inset-0 z-10 flex flex-col items-center justify-start bg-black bg-opacity-50 p-10vmin"
     >
       <FocusScope contain restoreFocus autoFocus>
         <div
-          className="flex flex-col p-8 bg-white rounded"
+          className="flex flex-col w-full p-8 bg-white rounded"
           {...overlayProps}
           {...dialogProps}
           {...modalProps}
