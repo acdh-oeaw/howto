@@ -219,7 +219,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         siteTitle={siteMetadata.title}
       />
       <PageContent className="grid w-full max-w-screen-lg px-10 py-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
-        <aside>
+        <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col justify-self-end">
           <CourseLinks courses={courses} />
         </aside>
         <div className="min-w-0">
@@ -228,7 +228,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         </div>
         {metadata.toc === true && toc.length > 0 ? (
           <Fragment>
-            <aside className="sticky top-0 hidden max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm 2xl:block text-neutral-500">
+            <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col">
               <TableOfContents
                 toc={toc}
                 title={
@@ -236,7 +236,7 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
                     {t('common.tableOfContents')}
                   </h2>
                 }
-                className="space-y-2"
+                className="w-full space-y-2"
               />
             </aside>
             {/* <FloatingTableOfContentsButton toc={toc} /> */}
@@ -262,14 +262,16 @@ function CourseLinks(props: CourseLinksProps) {
   if (courses.length === 0) return null
 
   return (
-    <nav aria-label={t('common.containedIn')}>
-      <h2>{t('common.containedIn')}</h2>
-      <ul>
+    <nav aria-label={t('common.containedIn')} className="w-full space-y-2">
+      <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">
+        {t('common.containedIn')}
+      </h2>
+      <ul className="space-y-2">
         {courses.map((course) => {
           return (
             <li key={course.id}>
               <Link href={routes.course({ id: course.id })}>
-                <a className="flex items-center text-sm">
+                <a className="flex items-center text-sm space-x-1.5 transition hover:text-primary-600 relative focus:outline-none rounded focus-visible:ring focus-visible:ring-primary-600">
                   <Icon icon={AcademicCapIcon} className="w-4 h-4" />
                   <span>{course.title}</span>
                 </a>
@@ -297,7 +299,10 @@ function RelatedResources(props: RelatedResourcesProps) {
   if (resources.length === 0) return null
 
   return (
-    <nav className="w-full py-12 mx-auto my-12 space-y-3 border-t border-neutral-200 max-w-80ch">
+    <nav
+      aria-label={t('common.relatedResources')}
+      className="w-full py-12 mx-auto my-12 space-y-3 border-t border-neutral-200 max-w-80ch"
+    >
       <h2 className="text-2xl font-bold">{t('common.relatedResources')}</h2>
       <ul className="flex flex-col space-y-4">
         {props.resources.map((resource) => {
