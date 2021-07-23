@@ -60,7 +60,7 @@
     "hastscript": "^6.0.0",
     "js-yaml": "^4.1.0",
     "netlify-cms-app": "^2.15.19",
-    "next": "^11.0.2-canary.15",
+    "next": "^11.0.2-canary.20",
     "nprogress": "^0.2.0",
     "patch-package": "^6.4.7",
     "react": "^17.0.2",
@@ -89,7 +89,7 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@next/bundle-analyzer": "^11.0.2-canary.15",
+    "@next/bundle-analyzer": "^11.0.2-canary.20",
     "@stefanprobst/commitlint-config": "^1.0.1",
     "@stefanprobst/favicons": "^1.0.7",
     "@stefanprobst/next-feed": "^1.0.0",
