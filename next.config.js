@@ -1,5 +1,5 @@
 /** @typedef {import('@/i18n/i18n.config').Locale} Locale */
-/** @typedef {Partial<import('next').NextConfig> & {i18n?: {locales: Array<Locale>; defaultLocale: Locale}}} NextConfig */
+/** @typedef {import('next').NextConfig & {i18n?: {locales: Array<Locale>; defaultLocale: Locale}}} NextConfig */
 
 /** @type {NextConfig} */
 const config = {

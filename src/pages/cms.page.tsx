@@ -27,6 +27,9 @@ const Cms = dynamic(
     const { sideNoteEditorWidget } = await import('@/cms/widgets/SideNote')
     const { videoEditorWidget } = await import('@/cms/widgets/Video')
     const { quizEditorWidget } = await import('@/cms/widgets/Quiz')
+    const { default: withResourceLinks } = await import(
+      '@stefanprobst/remark-resource-links'
+    )
 
     Cms.init({ config })
 
@@ -73,6 +76,19 @@ const Cms = dynamic(
     Cms.registerEditorComponent(sideNoteEditorWidget)
     Cms.registerEditorComponent(videoEditorWidget)
     Cms.registerEditorComponent(quizEditorWidget)
+
+    /**
+     * Register plugins to the richtext editor widget to (i) avoid saving
+     * autolinks, and (ii) enforce serialisation that is closer to `prettier`'s
+     * format.
+     */
+    Cms.registerRemarkPlugin(withResourceLinks)
+    Cms.registerRemarkPlugin({
+      settings: {
+        bullet: '-',
+      },
+      plugins: [],
+    })
 
     return () => null
   },
