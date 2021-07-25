@@ -41,11 +41,13 @@ export function PageHeader(): JSX.Element {
   return (
     <header className="flex items-center justify-between px-8 py-4">
       <Link href={navigation.home.href}>
-        <a aria-label={t('common.page.home')}>
+        <a
+          aria-label={t('common.page.home')}
+          className="inline-flex transition rounded focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+        >
           <Image
             src={Logo}
             alt=""
-            className="inline-block h-10"
             height="40"
             width="36"
             layout="fixed"
@@ -72,7 +74,9 @@ function PageNavigation() {
           return (
             <li key={route}>
               <NavLink href={href}>
-                <a>{t(`common.page.${route}`)}</a>
+                <a className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+                  {t(`common.page.${route}`)}
+                </a>
               </NavLink>
             </li>
           )
@@ -126,7 +130,11 @@ function MobilePageNavigation() {
     <nav className="flex items-center space-x-6 md:hidden">
       <Search />
       <LanguageSwitcher />
-      <button {...openButtonProps} ref={openButtonRef}>
+      <button
+        {...openButtonProps}
+        ref={openButtonRef}
+        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+      >
         <Icon icon={MenuIcon} className="flex-shrink-0 w-10 h-10 p-2" />
       </button>
       {dialogState.isOpen ? (
@@ -140,12 +148,14 @@ function MobilePageNavigation() {
             isDismissable
           >
             <div className="flex flex-col">
-              <ul className="flex flex-col items-center space-y-8 overflow-y-auto font-medium">
+              <ul className="flex flex-col space-y-4 overflow-y-auto font-medium">
                 {Object.entries(navigation).map(([route, { href }]) => {
                   return (
-                    <li key={route}>
+                    <li key={route} className="flex px-2 py-2">
                       <NavLink href={href}>
-                        <a>{t(`common.page.${route}`)}</a>
+                        <a className="flex items-center justify-center flex-1 py-2 transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+                          {t(`common.page.${route}`)}
+                        </a>
                       </NavLink>
                     </li>
                   )
@@ -217,7 +227,7 @@ function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLocale}
-      className="w-10 h-10 text-xs font-medium transition rounded text-neutral-100 focus:outline-none bg-neutral-800 hover:bg-neutral-700"
+      className="w-10 h-10 text-xs font-medium transition rounded text-neutral-100 focus:outline-none bg-neutral-800 hover:bg-primary-600 focus-visible:ring focus-visible:ring-primary-600"
     >
       <span className="sr-only">
         {t('common.switchLanguage', {
@@ -275,7 +285,11 @@ function Search() {
 
   return (
     <Fragment>
-      <button {...openButtonProps} ref={openButtonRef}>
+      <button
+        {...openButtonProps}
+        ref={openButtonRef}
+        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+      >
         <Icon icon={SearchIcon} className="flex-shrink-0 w-10 h-10 p-2" />
       </button>
       {dialogState.isOpen ? (
