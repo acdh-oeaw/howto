@@ -30,6 +30,7 @@ import { navigation } from '@/navigation/navigation.config'
 import { NavLink } from '@/navigation/NavLink'
 import { routes } from '@/navigation/routes.config'
 import { useSearch } from '@/search/useSearch'
+import Logo from '~/public/assets/images/logo-tinted.svg'
 
 /**
  * Page header.
@@ -42,7 +43,7 @@ export function PageHeader(): JSX.Element {
       <Link href={navigation.home.href}>
         <a aria-label={t('common.page.home')}>
           <Image
-            src="/assets/images/logo.svg"
+            src={Logo}
             alt=""
             className="inline-block h-10"
             height="40"
