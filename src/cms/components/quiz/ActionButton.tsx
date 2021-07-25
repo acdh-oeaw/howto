@@ -1,10 +1,9 @@
+import { useButton } from '@react-aria/button'
+import type { AriaButtonProps } from '@react-types/button'
 import cx from 'clsx'
-import type { ReactNode } from 'react'
+import { useRef } from 'react'
 
-export interface ActionButtonProps {
-  children: ReactNode
-  isDisabled?: boolean
-  onClick: JSX.IntrinsicElements['button']['onClick']
+export interface ActionButtonProps extends AriaButtonProps {
   variant?: 'error' | 'success'
 }
 
@@ -14,6 +13,9 @@ export interface ActionButtonProps {
 export function ActionButton(props: ActionButtonProps): JSX.Element {
   const isDisabled = props.isDisabled === true
   const variant = props.variant
+
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const { buttonProps } = useButton(props, buttonRef)
 
   return (
     <button
@@ -27,8 +29,8 @@ export function ActionButton(props: ActionButtonProps): JSX.Element {
           ? 'text-green-800 bg-green-100 hover:bg-green-200'
           : 'text-blue-800 bg-blue-100 hover:bg-blue-200',
       )}
-      disabled={isDisabled}
-      onClick={props.onClick}
+      {...buttonProps}
+      ref={buttonRef}
     >
       {props.children}
     </button>
