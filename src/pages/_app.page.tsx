@@ -2,7 +2,7 @@ import 'tailwindcss/tailwind.css'
 import '@/styles/index.css'
 
 import ErrorBoundary from '@stefanprobst/next-error-boundary'
-import type { AppProps } from 'next/app'
+import type { AppProps as NextAppProps } from 'next/app'
 import Head from 'next/head'
 import type { ComponentType } from 'react'
 import { Fragment } from 'react'
@@ -17,15 +17,17 @@ import { ClientError } from '@/error/ClientError'
 import { Feed } from '@/metadata/Feed'
 import { usePageLoadProgressIndicator } from '@/navigation/usePageLoadProgressIndicator'
 
+export interface AppProps extends NextAppProps {
+  Component: NextAppProps['Component'] & { Layout?: ComponentType }
+}
+
 /**
  * Shared application shell.
  */
 export default function App(props: AppProps): JSX.Element {
   const { Component, pageProps, router } = props
 
-  const Layout =
-    (Component as typeof Component & { Layout?: ComponentType }).Layout ??
-    PageLayout
+  const Layout = Component.Layout ?? PageLayout
 
   useMatomo()
   usePageLoadProgressIndicator()
