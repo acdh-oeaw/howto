@@ -32,6 +32,24 @@
 :focus:not(:focus-visible):-moz-focusring {
   outline: none;
 }
+:root {
+  -webkit-tap-highlight-color: transparent;
+
+  -webkit-text-size-adjust: none;
+
+  -moz-text-size-adjust: none;
+
+  text-size-adjust: none;
+}
+body: {
+  min-height: 100vh;
+}
+/** Safari only. */
+@supports (-webkit-touch-callout: none) {
+  body: {
+    min-height: -webkit-fill-available;
+  }
+}
 body {
   --tw-bg-opacity: 1;
   background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
