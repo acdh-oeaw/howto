@@ -285,13 +285,15 @@ function Search() {
 
   return (
     <Fragment>
-      <button
-        {...openButtonProps}
-        ref={openButtonRef}
-        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
-      >
-        <Icon icon={SearchIcon} className="flex-shrink-0 w-10 h-10 p-2" />
-      </button>
+      <div role="search" className="flex items-center">
+        <button
+          {...openButtonProps}
+          ref={openButtonRef}
+          className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+        >
+          <Icon icon={SearchIcon} className="flex-shrink-0 w-10 h-10 p-2" />
+        </button>
+      </div>
       {dialogState.isOpen ? (
         <OverlayContainer>
           <ModalDialog
