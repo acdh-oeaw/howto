@@ -41,12 +41,12 @@
 
   text-size-adjust: none;
 }
-body: {
+body {
   min-height: 100vh;
 }
 /** Safari only. */
 @supports (-webkit-touch-callout: none) {
-  body: {
+  body {
     min-height: -webkit-fill-available;
   }
 }
