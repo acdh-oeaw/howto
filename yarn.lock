@@ -2392,10 +2392,10 @@
     "@svgr/webpack" "^5.5.0"
     url-loader "^4.1.0"
 
-"@stefanprobst/prettier-config@^1.0.3":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@stefanprobst/prettier-config/-/prettier-config-1.0.4.tgz#ec524e749ca74bd90945456c2f50682c88d1f539"
-  integrity sha512-vUhbPL8q5XrJx5b/tuDnZTAnDJn0YBUobbQnPLGTGKNnb9AEQ2Y8956bmMOLBscR7CKahbY0z/+i3Kmrh7DCQg==
+"@stefanprobst/prettier-config@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/@stefanprobst/prettier-config/-/prettier-config-1.0.5.tgz#9c9190c7bb18501da61b456fc5cb078c9559a960"
+  integrity sha512-QHv8SF1nNYYVq+pBHgH5xeDH3FljtAnJ88nSzM6na4vTiyC65HmXMgugSEiQ8+xeZdhb1FeVqeKUgUIehvkNzw==
 
 "@stefanprobst/rehype-extract-toc@^1.0.3":
   version "1.0.3"
