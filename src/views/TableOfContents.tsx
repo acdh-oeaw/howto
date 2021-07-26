@@ -42,7 +42,7 @@ export function TableOfContents(props: TableOfContentsProps): JSX.Element {
   )
 }
 
-interface TableOfContentsLevelProps {
+export interface TableOfContentsLevelProps {
   /**
    * Table of contents branch.
    */
@@ -57,7 +57,7 @@ interface TableOfContentsLevelProps {
 /**
  * Table of contents level.
  */
-function TableOfContentsLevel(
+export function TableOfContentsLevel(
   props: TableOfContentsLevelProps,
 ): JSX.Element | null {
   if (!Array.isArray(props.headings) || props.headings.length === 0) {

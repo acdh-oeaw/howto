@@ -36,7 +36,7 @@ import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 import { routes } from '@/navigation/routes.config'
 import { createUrl } from '@/utils/createUrl'
 import type { IsoDateString } from '@/utils/ts/aliases'
-// import { FloatingTableOfContentsButton } from '@/views/FloatingTableOfContentsButton'
+import { FloatingTableOfContents } from '@/views/FloatingTableOfContents'
 import { Resource } from '@/views/Resource'
 import { TableOfContents } from '@/views/TableOfContents'
 
@@ -246,7 +246,9 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
                 className="w-full space-y-2"
               />
             </aside>
-            {/* <FloatingTableOfContentsButton toc={toc} /> */}
+            <aside className="2xl:hidden">
+              <FloatingTableOfContents toc={toc} />
+            </aside>
           </Fragment>
         ) : null}
       </PageContent>
