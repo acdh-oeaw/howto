@@ -50,7 +50,7 @@ export default function ImprintPage(props: ImprintPageProps): JSX.Element {
       <PageContent className="flex flex-col w-full px-10 py-16 mx-auto space-y-10 max-w-80ch">
         <PageTitle>{t('common.imprint')}</PageTitle>
         <div
-          className="prose-sm prose max-w-none sm:prose"
+          className="prose-sm prose max-w-none sm:max-w-none sm:prose"
           dangerouslySetInnerHTML={{ __html: imprintHtml }}
         />
       </PageContent>

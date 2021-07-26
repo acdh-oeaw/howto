@@ -125,7 +125,7 @@ export function Resource(props: ResourceProps): JSX.Element {
           </div>
         </dl>
       </header>
-      <div className="prose-sm prose max-w-none sm:prose">
+      <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
         {featuredImage != null ? (
           typeof featuredImage === 'string' ? (
             <img src={featuredImage} alt="" />

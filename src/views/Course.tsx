@@ -114,7 +114,7 @@ export function Course(props: CourseProps): JSX.Element {
           </div>
         </dl>
       </header>
-      <div className="prose-sm prose max-w-none sm:prose">
+      <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
         <Mdx code={course.code} components={{ Image: ResponsiveImage }} />
       </div>
       {resources.length > 0 ? (
