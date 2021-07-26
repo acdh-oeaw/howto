@@ -20,15 +20,18 @@ import { useState, Fragment, useEffect, useRef } from 'react'
 
 import { Svg as AcademicCapIcon } from '@/assets/icons/academic-cap.svg'
 import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
+import { Svg as LightningBoltIcon } from '@/assets/icons/lightning-bolt.svg'
 import { Svg as MenuIcon } from '@/assets/icons/menu.svg'
 import { Svg as SearchIcon } from '@/assets/icons/search.svg'
 import { Svg as ClearIcon } from '@/assets/icons/x.svg'
 import { Icon } from '@/common/Icon'
+import { Spinner } from '@/common/Spinner'
 import { useI18n } from '@/i18n/useI18n'
 import { useLocale } from '@/i18n/useLocale'
 import { navigation } from '@/navigation/navigation.config'
 import { NavLink } from '@/navigation/NavLink'
 import { routes } from '@/navigation/routes.config'
+import type { SearchStatus } from '@/search/useSearch'
 import { useSearch } from '@/search/useSearch'
 import Logo from '~/public/assets/images/logo-tinted.svg'
 
@@ -311,6 +314,7 @@ function Search() {
                 placeholder={t('common.search')}
                 onSubmit={onSubmit}
                 isDisabled={status === 'disabled'}
+                loadingState={status}
                 // FIXME: make search field controlled, or clear the searchresults when closing the dialog.
                 // otherwise we will see the search results, but not the search term in the input,
                 // when reopening the search dialog
@@ -387,13 +391,16 @@ function Search() {
   )
 }
 
-type SearchFieldProps = AriaSearchFieldProps
+interface SearchFieldProps extends AriaSearchFieldProps {
+  loadingState?: SearchStatus
+}
 
 /**
  * Search input field.
  */
 function SearchField(props: SearchFieldProps) {
   const { label } = props
+  const loadingState = props.loadingState ?? 'idle'
 
   const state = useSearchFieldState(props)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -408,7 +415,17 @@ function SearchField(props: SearchFieldProps) {
   return (
     <label {...labelProps} className="flex flex-col space-y-1.5">
       <span className="text-sm font-medium">{label}</span>
-      <div className="flex px-4 py-2 border rounded border-neutral-200 focus-within:ring-primary-600 focus-within:ring">
+      <div className="flex px-4 py-2 space-x-4 border rounded border-neutral-200 focus-within:ring-primary-600 focus-within:ring">
+        {loadingState === 'loading' ? (
+          <Spinner className="flex-shrink-0 w-5 h-5 text-primary-600" />
+        ) : loadingState === 'error' ? (
+          <Icon
+            icon={LightningBoltIcon}
+            className="flex-shrink-0 w-5 h-5 text-error-600"
+          />
+        ) : (
+          <Icon icon={SearchIcon} className="flex-shrink-0 w-5 h-5" />
+        )}
         <input
           {...inputProps}
           ref={inputRef}

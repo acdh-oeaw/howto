@@ -8,6 +8,7 @@ const config = {
   theme: {
     extend: {
       colors: {
+        error: colors.red,
         neutral: colors.coolGray,
         primary: colors.blue,
       },

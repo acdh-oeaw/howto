@@ -6,13 +6,13 @@ import type { IndexedCourse, IndexedResource } from '@/search/types'
 
 const searchStatus = [
   'idle',
-  'pending',
+  'loading',
   'success',
   'error',
   'disabled',
 ] as const
 
-type SearchStatus = typeof searchStatus[number]
+export type SearchStatus = typeof searchStatus[number]
 
 /**
  * Returns search results for search term.
@@ -40,7 +40,7 @@ export function useSearch(searchTerm: string): {
 
       if (searchTerm.length === 0) return
 
-      setStatus('pending')
+      setStatus('loading')
 
       try {
         const results = await searchIndex.search<
