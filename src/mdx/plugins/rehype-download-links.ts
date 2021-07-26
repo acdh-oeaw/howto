@@ -33,15 +33,17 @@ export default function attacher(): Transformer {
       if (node.name !== 'Download') return
 
       const urlAttribute = node.attributes.find(
-        (attribute) => attribute.name === 'url',
+        /** Ignore `MDXJsxExpressionAttribute`. */
+        (attribute) => 'name' in attribute && attribute.name === 'url',
       )
 
       const paths = copyAsset(urlAttribute?.value, file.path, 'asset')
       if (paths == null) return
       const { publicPath } = paths
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      urlAttribute!.value = publicPath
+      if (urlAttribute != null) {
+        urlAttribute.value = publicPath
+      }
     }
   }
 }

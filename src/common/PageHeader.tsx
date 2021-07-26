@@ -304,6 +304,7 @@ function Search() {
           >
             <div className="flex flex-col space-y-4">
               <SearchField
+                autoFocus
                 label={t('common.search')}
                 placeholder={t('common.search')}
                 onSubmit={onSubmit}

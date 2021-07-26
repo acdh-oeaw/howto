@@ -45,6 +45,7 @@ const config = {
               /** Don't add backticks around inline `code`. */
               'code::before': null,
               'code::after': null,
+              'overflow-wrap': 'break-word',
               a: {
                 '&:focus': {
                   outline: 'none',
@@ -56,7 +57,6 @@ const config = {
                     'colors.primary.600',
                   )} 0px 0px 0px 5px`,
                 },
-                'overflow-wrap': 'break-word',
               },
               strong: {
                 color: 'inherit',

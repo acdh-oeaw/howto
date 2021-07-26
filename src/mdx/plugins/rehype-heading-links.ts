@@ -18,7 +18,7 @@ const plugin: Pluggable<[withHeadingLinks.Options]> = [
      * - https://github.com/remarkjs/remark-autolink-headings/issues/49#issuecomment-553945053
      * - https://github.com/remarkjs/remark-autolink-headings/issues/49#issuecomment-553654194
      */
-    content(heading: Hast.Element): Array<Hast.Node> {
+    content(heading: Hast.Element): Array<Hast.Element> {
       heading.properties = heading.properties ?? {}
       heading.properties.className = (heading.properties.className ??
         []) as Array<string>
