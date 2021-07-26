@@ -58,9 +58,9 @@ export default function HomePage(_props: HomePageProps): JSX.Element {
       />
       <PageContent className="text-neutral-100 bg-gradient-to-br from-neutral-800 to-neutral-900">
         <div className="flex flex-col p-8 mx-auto max-w-80ch">
-          <div className="flex flex-col-reverse py-48">
+          <div className="flex flex-col-reverse py-24 xs:py-48">
             <h1
-              className="text-6xl font-black tracking-tighter xs:text-7xl md:text-8xl"
+              className="text-5xl font-black tracking-tighter 2xs:text-6xl xs:text-7xl md:text-8xl"
               style={{ lineHeight: 0.8 }}
             >
               {title}
@@ -71,7 +71,7 @@ export default function HomePage(_props: HomePageProps): JSX.Element {
           </div>
           <div className="py-16">
             <Link href={routes.resources({ kind: 'posts' })}>
-              <a className="inline-flex px-12 py-4 text-lg font-medium tracking-wide text-white uppercase transition rounded bg-primary-600 hover:bg-primary-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+              <a className="inline-flex px-12 py-4 text-base font-medium tracking-wide text-white uppercase transition rounded xs:text-lg bg-primary-600 hover:bg-primary-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
                 {t('common.browse')}
               </a>
             </Link>

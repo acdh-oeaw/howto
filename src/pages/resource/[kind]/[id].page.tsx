@@ -234,8 +234,12 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
             <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col">
               <TableOfContents
                 toc={toc}
+                aria-labelledby="table-of-contents"
                 title={
-                  <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">
+                  <h2
+                    id="table-of-contents"
+                    className="text-xs font-bold tracking-wide uppercase text-neutral-600"
+                  >
                     {t('common.tableOfContents')}
                   </h2>
                 }

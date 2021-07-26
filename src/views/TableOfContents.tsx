@@ -1,5 +1,5 @@
-// import { Svg as ChevronIcon } from '@/assets/icons/chevron.svg'
-// import { Icon } from '@/common/Icon'
+import { useLabels } from '@react-aria/utils'
+import type { AriaLabelingProps } from '@react-types/shared'
 import type { Toc } from '@stefanprobst/rehype-extract-toc'
 import cx from 'clsx'
 import Link from 'next/link'
@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { useI18n } from '@/i18n/useI18n'
 import { useTableOfContentsHighlight } from '@/views/useTableOfContentsHighlight'
 
-export interface TableOfContentsProps {
+export interface TableOfContentsProps extends AriaLabelingProps {
   /**
    * Table of contents.
    */
@@ -16,10 +16,6 @@ export interface TableOfContentsProps {
    * Optional heading. Should be wrapped in an appropriate heading element.
    */
   title?: JSX.Element
-  /**
-   * Label for the `nav` element. Defaults to "Table of contents".
-   */
-  'aria-label'?: string
   className?: string
 }
 
@@ -28,13 +24,15 @@ export interface TableOfContentsProps {
  */
 export function TableOfContents(props: TableOfContentsProps): JSX.Element {
   const { t } = useI18n()
+  // TODO: check for aria-labelledby or aria-label when no title provided
+  // TODO: automatically apply aria-labelledby on title prop if provided
   const title = props.title ?? null
-  const label = props['aria-label'] ?? t('tableOfContents')
+  const labelProps = useLabels(props, t('tableOfContents'))
 
   const highlightedHeadingId = useTableOfContentsHighlight()
 
   return (
-    <nav aria-label={label} className={props.className}>
+    <nav {...labelProps} className={props.className}>
       {title}
       <TableOfContentsLevel
         headings={props.toc}

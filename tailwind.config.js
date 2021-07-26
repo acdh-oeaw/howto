@@ -32,6 +32,7 @@ const config = {
         DEFAULT: '2px',
       },
       screens: {
+        '2xs': '360px',
         xs: '480px',
         '2xl': '1440px',
       },

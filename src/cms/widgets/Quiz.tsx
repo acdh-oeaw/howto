@@ -1,3 +1,4 @@
+import type { MDXJsxFlowElement } from 'hast-util-to-estree'
 import type { EditorComponentOptions } from 'netlify-cms-core'
 import remark from 'remark'
 import withFootnotes from 'remark-footnotes'
@@ -22,16 +23,17 @@ function withQuizCards() {
 
     visit(tree, 'mdxJsxFlowElement', onMdx)
 
-    function onMdx(node: Node) {
+    function onMdx(node: MDXJsxFlowElement) {
       switch (node.name) {
         case 'Quiz.Card': {
           const card = {} as { controls?: { validate?: string } }
-          // @ts-expect-error Attributes exist
-          const validateButtonLabel = node.attributes?.find(
+          const validateButtonLabel = node.attributes.find(
             (attribute: any) => attribute.name === 'validateButtonLabel',
           )?.value
+          /* @ts-expect-error Waiting for updated remark types. */
           if (validateButtonLabel != null && validateButtonLabel.length > 0) {
             card.controls = card.controls ?? {}
+            /* @ts-expect-error Waiting for updated remark types. */
             card.controls.validate = validateButtonLabel
           }
           cards.push(card)
@@ -41,6 +43,7 @@ function withQuizCards() {
           const last = cards[cards.length - 1]
           last.question = processor.stringify({
             type: 'root',
+            /* @ts-expect-error Waiting for updated remark types. */
             children: node.children,
           })
           break
@@ -48,13 +51,15 @@ function withQuizCards() {
         case 'Quiz.Message': {
           const last = cards[cards.length - 1]
           last.messages = last.messages ?? {}
-          // @ts-expect-error Attributes exist.
-          const type = node.attributes?.find(
+          const type = node.attributes.find(
             (attribute: any) => attribute.name === 'type',
           )?.value
+          /* @ts-expect-error Waiting for updated remark types. */
           if (type != null && allowedQuizMessageTypes.includes(type)) {
+            /* @ts-expect-error Waiting for updated remark types. */
             last.messages[type] = processor.stringify({
               type: 'root',
+              /* @ts-expect-error Waiting for updated remark types. */
               children: node.children,
             })
           }
@@ -73,9 +78,9 @@ function withQuizCards() {
           last.options.push({
             option: processor.stringify({
               type: 'root',
+              /* @ts-expect-error Waiting for updated remark types. */
               children: node.children,
             }),
-            // @ts-expect-error Attributes exist.
             isCorrect: node.attributes.some(
               (attribute: any) =>
                 attribute.name === 'isCorrect' && attribute.value !== false,
@@ -89,16 +94,14 @@ function withQuizCards() {
           last.type = 'XmlCodeEditor'
           last.question = ''
 
-          // @ts-expect-error Attributes exist.
-          const codeAttribute = node.attributes?.find(
+          const codeAttribute = node.attributes.find(
             (attribute: any) => attribute.name === 'code',
           )
           const code =
             codeAttribute != null
               ? getStringLiteralAttribute(codeAttribute.value)
               : ''
-          // @ts-expect-error Attributes exist.
-          const solutionAttribute = node.attributes?.find(
+          const solutionAttribute = node.attributes.find(
             (attribute: any) => attribute.name === 'solution',
           )
           const solution =
@@ -111,6 +114,7 @@ function withQuizCards() {
           last.validate = 'input'
           break
         }
+        default:
       }
     }
   }
