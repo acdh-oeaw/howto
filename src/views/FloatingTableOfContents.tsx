@@ -75,7 +75,6 @@ export function FloatingTableOfContents(
           isDismissable
         >
           <TableOfContents toc={toc} className="w-full space-y-2" />
-          {/* <TableOfContentsLevel headings={toc} className="w-full space-y-2" /> */}
         </ModalDialog>
       ) : null}
     </nav>
