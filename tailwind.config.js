@@ -32,11 +32,6 @@ const config = {
       ringOffsetWidth: {
         DEFAULT: '2px',
       },
-      screens: {
-        '2xs': '360px',
-        xs: '480px',
-        '2xl': '1440px',
-      },
       typography(/** @type {(key: string) => string} */ theme) {
         return {
           DEFAULT: {
@@ -67,6 +62,15 @@ const config = {
           },
         }
       },
+    },
+    screens: {
+      '2xs': '360px',
+      xs: '480px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1440px',
     },
   },
   variants: {
