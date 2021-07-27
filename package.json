@@ -152,6 +152,20 @@
       "plugin:jest/style",
       "plugin:@next/next/core-web-vitals"
     ],
+    "parser": "next/dist/compiled/babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true,
+      "babelOptions": {
+        "presets": [
+          "next/babel"
+        ],
+        "caller": {
+          "supportsTopLevelAwait": true
+        }
+      }
+    },
     "settings": {},
     "rules": {
       "@next/next/no-img-element": "off",
