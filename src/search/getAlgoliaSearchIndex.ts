@@ -3,6 +3,8 @@ import type { SearchIndex } from 'algoliasearch/lite'
 
 import { log } from '@/utils/log'
 
+let hasDisplayedWarning = false
+
 /**
  * Returns configured algolia search client.
  */
@@ -12,7 +14,10 @@ export function getAlgoliaSearchIndex(): SearchIndex | null {
     process.env.NEXT_PUBLIC_ALGOLIA_API_KEY == null ||
     process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME == null
   ) {
-    log.warn('Search is disabled because no Algolia config was provided.')
+    if (!hasDisplayedWarning) {
+      log.warn('Search is disabled because no Algolia config was provided.')
+      hasDisplayedWarning = true
+    }
     return null
   }
 
