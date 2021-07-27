@@ -63,9 +63,9 @@ export function FloatingTableOfContents(
       <button
         {...openButtonProps}
         ref={openButtonRef}
-        className="fixed p-2 text-white rounded-full bg-primary-600 right-6 bottom-6"
+        className="fixed flex items-center justify-center w-12 h-12 text-white rounded-full bg-primary-600 right-6 bottom-6"
       >
-        <Icon icon={TocIcon} className="w-6 h-6" />
+        <Icon icon={TocIcon} className="w-10 h-10 p-2" />
       </button>
       {dialogState.isOpen ? (
         <ModalDialog
