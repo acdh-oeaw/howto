@@ -8,6 +8,7 @@ import withHeadingIds from 'rehype-slug'
 import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import type { VFile } from 'vfile'
+import vfile from 'vfile'
 
 // import type { Licence, LicenceId } from '@/cms/api/licences.api'
 // import { getLicenceById } from '@/cms/api/licences.api'
@@ -300,7 +301,12 @@ async function compileMdx(file: VFile): Promise<VFile> {
 
   const highlighter = await getSyntaxHighlighter()
 
-  return compile(file, {
+  /**
+   * FIXME: We clone the input 'vfile' because we cannot mutate the cached 'vfile',
+   * which will be reused as input in development with "fast refresh".
+   * See below: we shouldn't cache the vfile in the first place, only the metadata.
+   */
+  return compile(vfile({ ...file }), {
     outputFormat: 'function-body',
     useDynamicImport: false,
     remarkPlugins: [
