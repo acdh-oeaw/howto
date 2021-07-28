@@ -1,0 +1,6 @@
+name: properties
+description: "In OWL, there are two main categories of properties: object
+  properties that link individuals to individuals, or data properties that link
+  individuals to data values. For example, a property is the definition that one
+  individual is equivalent to another, although they might be represented by
+  different names etc."
