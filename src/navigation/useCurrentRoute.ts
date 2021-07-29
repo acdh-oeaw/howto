@@ -4,6 +4,7 @@ import type { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 
 import { createUrl } from '@/utils/createUrl'
+import { removeTrailingSlash } from '@/utils/removeTrailingSlash'
 
 export interface RouteMatcher {
   (href: UrlObject, route: UrlObject, _page: string): boolean
@@ -36,5 +37,8 @@ function isMatchingPathnameExactly(
   route: UrlObject,
   _page: string,
 ): boolean {
-  return route.pathname === href.pathname
+  return (
+    removeTrailingSlash(route.pathname ?? '') ===
+    removeTrailingSlash(href.pathname ?? '')
+  )
 }

@@ -11,7 +11,7 @@ import type { ReactNode } from 'react'
 import { useRef } from 'react'
 
 export interface ModalDialogProps extends AriaOverlayProps {
-  title: string
+  title?: string
   children: ReactNode
 }
 
@@ -43,9 +43,11 @@ export function ModalDialog(props: ModalDialogProps): JSX.Element {
             {...modalProps}
             ref={overlayRef}
           >
-            <h2 {...titleProps} className="sr-only">
-              {title}
-            </h2>
+            {title != null ? (
+              <h2 {...titleProps} className="sr-only">
+                {title}
+              </h2>
+            ) : null}
             {children}
           </div>
         </FocusScope>

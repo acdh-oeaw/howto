@@ -58,7 +58,7 @@ jobs:
             "ALGOLIA_ADMIN_API_KEY=${{ secrets.ALGOLIA_ADMIN_API_KEY }}"
           # enable once released
           # cache-from: type=gha
-          # cache-to: type=gha
+          # cache-to: type=gha,mode=max
 
       - name: Deploy to Rancher
         run: |

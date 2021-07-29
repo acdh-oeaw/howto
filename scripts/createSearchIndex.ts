@@ -98,8 +98,9 @@ async function getResourceObjects(
           }),
           tags: resource.tags.map((tag) => {
             return {
-              name: tag.name,
               id: tag.id,
+              name: tag.name,
+              description: tag.description,
             }
           }),
           abstract: resource.abstract,
@@ -136,8 +137,9 @@ async function getCourseObjects(
           lang: course.lang,
           tags: course.tags.map((tag) => {
             return {
-              name: tag.name,
               id: tag.id,
+              name: tag.name,
+              description: tag.description,
             }
           }),
           abstract: course.abstract,
