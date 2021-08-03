@@ -58,7 +58,7 @@ const config = {
         ([uuid, id]) => {
           return {
             source: `/id/${uuid}`,
-            destination: `/course/${id}`,
+            destination: `/curriculum/${id}`,
             permanent: false,
           }
         },
