@@ -1,2 +1,7 @@
 name: SKOS
-description: Simple Knowledge Organization System
+description: SKOS, Simple Knowledge Organization System, is a W3C recommendation
+  designed for representation of thesauri, classification schemes, taxonomies,
+  subject-heading systems, or any other type of structured controlled
+  vocabulary. SKOS is part of the Semantic Web family of standards built upon
+  RDF and RDFS, and its main objective is to enable easy publication and use of
+  such vocabularies as linked data.
