@@ -1,8 +1,8 @@
-name: controlled vocabulary
+name: Controlled vocabulary
 description: A controlled vocabulary is used to organise knowledge and make this
   knowledge available for retrieval. The scheme designers define the specific
   terminology that must be used to organise and index this knowledge. The
   biggest advantage of a controlled vocabulary is that it defines a clear
-  terminology which is cosnsistently used, therefore knowledge is more easily
-  searchable and findable. Famous examples are  the Dublin Core and the Library
+  terminology which is consistently used, therefore knowledge is more easily
+  searchable and findable. Famous examples are the Dublin Core and the Library
   of Congress Subject Headings.
