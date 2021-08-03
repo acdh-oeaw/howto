@@ -28,6 +28,6 @@ export interface IndexedCourse
   extends Pick<CoursePreview, 'id' | 'title' | 'date' | 'lang' | 'abstract'> {
   type: 'courses'
   objectID: string
-  tags: Array<Pick<PostPreview['tags'][number], 'id' | 'name'>>
+  tags: Array<Pick<CoursePreview['tags'][number], 'id' | 'name'>>
   body: string
 }
