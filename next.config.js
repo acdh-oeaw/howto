@@ -44,14 +44,26 @@ const config = {
     ]
   },
   async redirects() {
-    const redirects = require('./redirects.resources.json')
-    return Object.entries(redirects).map(([uuid, id]) => {
-      return {
-        source: `/id/${uuid}`,
-        destination: `/resource/posts/${id}`,
-        permanent: false,
-      }
-    })
+    return [
+      ...Object.entries(require('./redirects.resources.json')).map(
+        ([uuid, id]) => {
+          return {
+            source: `/id/${uuid}`,
+            destination: `/resource/posts/${id}`,
+            permanent: false,
+          }
+        },
+      ),
+      ...Object.entries(require('./redirects.courses.json')).map(
+        ([uuid, id]) => {
+          return {
+            source: `/id/${uuid}`,
+            destination: `/course/${id}`,
+            permanent: false,
+          }
+        },
+      ),
+    ]
   },
   async rewrites() {
     return [
