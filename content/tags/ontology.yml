@@ -1,2 +1,9 @@
 name: ontology
-description: ontology
+description: An ontology represents entities, data and ideas through the
+  definition of categories, their properties, their interdependencies and
+  relations, that show how the concepts, data and entities are related to a
+  particular subject area, i.e. discourse. An ontology limits the complexity of
+  a subject area and groups data into information and knowledge. When a
+  controlled vocabulary is used to talk about the information and knowledge that
+  are represented in an ontology, communication issues between experts are
+  minimised.
