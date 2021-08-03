@@ -1,2 +1,8 @@
 name: RDF
-description: Resource Description Framework
+description: RDF, the Resource Description Framework, is based on the idea that
+  statements about resources are expressed as so-called triples,
+  subject-predicate-object, a form of knowledge representation. The subject
+  denotes the resource, and the predicate denotes traits or aspects of the
+  resource, and expresses a relationship between the subject and the object. RDF
+  is an abstract model, but it has several specialised file formats. The
+  encoding for triples can vary, depending on the format.
