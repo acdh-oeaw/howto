@@ -43,6 +43,16 @@ const config = {
       },
     ]
   },
+  async redirects() {
+    const redirects = require('./redirects.resources.json')
+    return Object.entries(redirects).map(([uuid, id]) => {
+      return {
+        source: `/id/${uuid}`,
+        destination: `/resource/posts/${id}`,
+        permanent: false,
+      }
+    })
+  },
   async rewrites() {
     return [
       { source: '/resources/:type', destination: '/resources/:type/page/1' },

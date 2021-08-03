@@ -35,11 +35,13 @@
 :root {
   -webkit-tap-highlight-color: transparent;
 
+  /** Probably only needed on mobile WebKit to prevent input zoom. */
   -webkit-text-size-adjust: none;
-
   -moz-text-size-adjust: none;
-
   text-size-adjust: none;
+
+  /** Disable double-tap to zoom, so press events are not delayed. */
+  /* touch-action: manipulation; */
 }
 body {
   min-height: 100vh;
