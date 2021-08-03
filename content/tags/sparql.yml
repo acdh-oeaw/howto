@@ -2,6 +2,6 @@ name: SPARQL
 description: SPARQL, SPARQL Protocol And RDF Query Language, can be used to
   query, retrieve and manipulate information that is stored in RDF format.
   SPARQL is a key technology of the semantic web and has implementations for
-  various programme languages. SPARQL write queries against data that follows
+  various programming languages. SPARQL write queries against data that follows
   the RDF specifications, therefore the database is a set of
   subject-predicate-object triples.
