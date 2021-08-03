@@ -2,8 +2,8 @@ name: Linked Open Data
 description: Linked Open Data, LOD for short, is a term coined by Tim
   Berners-Lee in 2006. He said that "Linked Open Data (LOD) is Linked Data which
   is released under an open license, which does not impede its reuse for free."
-  Linked Data is structured data that interlinked with other data. You can apply
-  semantic queries to this data. Standard web technologies like HTTP, RDF and
-  URIs are used to share information that can be read by computers, and the
+  Linked Data is structured data that is interlinked with other data. You can
+  apply semantic queries to this data. Standard web technologies like HTTP, RDF
+  and URIs are used to share information that can be read by computers, and the
   internet becomes a global database. Examples for LOD are DBpedia, Wikidata and
   Geonames.
