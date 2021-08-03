@@ -9,15 +9,18 @@ import { log } from '@/utils/log'
  */
 async function main() {
   const locale = 'en'
-  const resources = await getPostPreviews(locale)
 
   const outputFolder = path.join(process.cwd(), 'public', 'resources')
-  const outputFilePath = path.join(outputFolder, 'resources.json')
-
   fs.mkdirSync(outputFolder, { recursive: true })
-  fs.writeFileSync(outputFilePath, JSON.stringify({ resources }), {
-    encoding: 'utf-8',
-  })
+
+  const resources = await getPostPreviews(locale)
+  fs.writeFileSync(
+    path.join(outputFolder, 'resources.json'),
+    JSON.stringify({ resources }),
+    {
+      encoding: 'utf-8',
+    },
+  )
 }
 
 main()
