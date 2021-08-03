@@ -26,6 +26,7 @@ COPY --chown=node:node public ./public
 COPY --chown=node:node patches ./patches
 COPY --chown=node:node src ./src
 COPY --chown=node:node content ./content
+COPY --chown=node:node redirects.*.json ./
 # currently the .git folder is used to retrieve last-updated timestamps
 COPY --chown=node:node .git ./.git
 
