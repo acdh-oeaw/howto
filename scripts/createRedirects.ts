@@ -7,6 +7,25 @@ import { getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostPreviews } from '@/cms/api/posts.api'
 import { log } from '@/utils/log'
 
+function createRedirects(
+  resources: Array<{ uuid: string; id: string }>,
+  fileName: string,
+) {
+  const redirects: Record<string, string> = {}
+
+  resources.forEach((resource) => {
+    redirects[resource.uuid] = resource.id
+  })
+
+  fs.writeFileSync(
+    path.join(process.cwd(), fileName),
+    format(JSON.stringify(redirects), { parser: 'json' }),
+    {
+      encoding: 'utf-8',
+    },
+  )
+}
+
 /**
  * Dumps resource metadata to public folder as json.
  */
@@ -14,30 +33,10 @@ async function main() {
   const locale = 'en'
 
   const resources = await getPostPreviews(locale)
-  const resourceRedirects: Record<string, string> = {}
-  resources.forEach((resource) => {
-    resourceRedirects[resource.uuid] = resource.id
-  })
-  fs.writeFileSync(
-    path.join(process.cwd(), 'redirects.resources.json'),
-    format(JSON.stringify(resourceRedirects), { parser: 'json' }),
-    {
-      encoding: 'utf-8',
-    },
-  )
+  createRedirects(resources, 'redirects.resources.json')
 
   const courses = await getCoursePreviews(locale)
-  const courseRedirects: Record<string, string> = {}
-  courses.forEach((course) => {
-    courseRedirects[course.uuid] = course.id
-  })
-  fs.writeFileSync(
-    path.join(process.cwd(), 'redirects.courses.json'),
-    format(JSON.stringify(resourceRedirects), { parser: 'json' }),
-    {
-      encoding: 'utf-8',
-    },
-  )
+  createRedirects(courses, 'redirects.courses.json')
 }
 
 main()
