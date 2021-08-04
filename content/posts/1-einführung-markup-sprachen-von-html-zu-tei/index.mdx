@@ -17,6 +17,7 @@ licence: ccby-4.0
 toc: false
 uuid: ycJztJbuEaDJyNFBehyEe
 ---
+
 * Digitalisat vs. born-digital
 * Herkunft von Markup-Sprachen
 * Einführung in Markup-Sprachen
@@ -132,9 +133,26 @@ Daneben gibt es noch weitere Sprachen um XML-Strukturen zu definieren wie z. B. 
 
 #### Aufbau von XML Dokumenten
 
-Kommen wir nun zum Aufbau von XML-Dokumenten.
-Jedes Dokument beginnt mit einem Prolog, der zumindest die XML-Deklaration enthält, die angibt, um welche XML-Version es sich handelt. Die Tags des Prologs zeichnen sich durch eine besondere Schreibweise aus: sie sind einteilig und an den Fragezeichen vorne und hinten zu erkennen. Die XML-Deklaration kann optional zwei Attribute enthalten, eines, das die Art der Zeichenkodierung angibt und ein weiteres, das festhält, ob sich das verwendete Schema in derselben Datei oder extern befindet – standalone no bedeutet, dass es ein externes Schema gibt.
+![](images/xml-dokument.png "Aufbau eines XML Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
 
-Daran anschließend kann optional ein Verweis auf dieses externe Schema folgen und ebenso optional ein weiterer Verweis, der processing instruction genannt wird und den Pfad zu einem sogenannten Stylesheet angibt, in dem die Verarbeitungsanweisungen definiert sind.
+Kommen wir nun zum Aufbau von XML-Dokumenten. Jedes Dokument beginnt mit einem **Prolog**, der zumindest die **XML-Deklaration** enthält, die angibt, um welche XML-Version es sich handelt. Die Tags des Prologs zeichnen sich durch eine besondere Schreibweise aus: sie sind einteilig und an den Fragezeichen vorne und hinten zu erkennen. 
 
-Nach dem Prolog folgen die eigentlichen Elemente. Wesentlich ist hier, dass es nur ein einziges Wurzel- oder Root-Element geben darf, das alle anderen Elemente (Kinder und Kindeskinder) umschließt. Im Wurzelelement befindet sich ein Attribut mit der Bezeichnung namespace, das als Wert einen Unified Ressource Identifier URI enthält, der angibt, woher die verwendeten Elemente und Attribute stammen. Handelt es sich z.B. um ein Dokument, das nach den Richtlinien der TEI erstellt wurde, ist der Name des Root-Elements TEI. Der
+Die XML-Deklaration kann optional zwei Attribute enthalten, eines, das die Art der Zeichenkodierung angibt und ein weiteres, das festhält, ob sich das verwendete Schema in derselben Datei oder extern befindet – standalone no bedeutet, dass es ein externes Schema gibt.
+
+Daran anschließend kann optional ein **Verweis auf dieses externe Schema** folgen und ebenso optional ein weiterer Verweis, der **processing instruction** (Verarbeitungsverweis) genannt wird und den Pfad zu einem sogenannten Stylesheet angibt, in dem die Verarbeitungsanweisungen definiert sind.
+
+Nach dem Prolog folgen die eigentlichen Elemente. Wesentlich ist hier, dass es **nur ein einziges Wurzel- oder Root-Element** geben darf, das **alle anderen Elemente (Kinder und Kindeskinder) umschließt**. 
+
+Im Wurzelelement befindet sich ein Attribut mit der Bezeichnung **namespace**, das als Wert einen Unified Ressource Identifier (URI) enthält, der angibt, woher die verwendeten Elemente und Attribute stammen. 
+
+Handelt es sich z.B. um ein **Dokument, das nach den Richtlinien der TEI** erstellt wurde, ist der **Name des Root-Elements TEI**. Der Attributwert der namespace declaration verweist darauf, dass ausschließlich von der TEI definierte Elemente und Attribute verwendet wurden. 
+
+Möchte man Komponenten aus verschiedenen Namensräumen mischen, müssen zwei Namenraum-Deklarationen angegeben werden, die jeweils unterschiedliche Präfixe definieren, z.B. ein Attribut xmlns:tei und ein Attribut xmlns:xyz. 
+
+Im Dokument selbst müssen diese Präfixe, gefolgt von einem Doppelpunkt, den betreffenden Elementnamen vorangestellt werden um deren Schema-Zugehörigkeit anzuzeigen.
+
+Zum Schluss sei an dieser Stelle nur noch erwähnt, dass Kommentare außerhalb von einführenden oder schließenden Tags überall erlaubt sind. Sie werden eingeleitet von einer Spitzklammer, einem Rufzeichen, sowie zwei Minuszeichen. Dann folgt der Kommentartext und danach zwei Minuszeichen und eine schließende Spitzklammer.
+
+
+
+Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen und sind von jeglicher Verarbeitung ausgenommen.
