@@ -40,36 +40,101 @@ Deswegen erfolgt daran anschließend in einem zweiten Schritt die **Texterkennun
 
 Ziel der Erstellung elektronischer Ressourcen ist in unserem Fall die Nutzung in sprachwissenschaftlicher, literaturwissenschaftlicher oder kulturwissenschaftlicher Forschung. Um elektronische Daten systematisch, am besten mehrfach und interdisziplinär nutzen zu können, benötigen sie **dauerhafte** strukturelle und semantische und linguistische **Annotationen**. An diesem Punkt kommen sogenannte Auszeichnungs- oder Markupsprachen zum Einsatz. 
 
-### Markupsprachen
+### Markup-Sprachen
 
-Eine **Markupsprache** ist im Wesentlichen eine Strukturierungssprache, die es erlaubt, maschinenlesbar die Gliederung und Formatierung u.a. von Texten auszuzeichnen. Eine der bekanntesten "Markup Languages" (ML) ist die "[Hypertext Markup Language" (HTML)](https://www.w3.org/html/), die eine der technologischen Grundlagen des World Wide Webs bildet. Sie gliedert die multimodalen Inhalte einer Webseite so, dass ein Webbrowser aber auch Suchmaschinen und Algorithmen diese interpretieren und darstellen können. Hierfür kommt ein beschränktes Vokabular an vordefinierten "Tags" zum Einsatz, das in Web-Standards und Richtlinien des[ World Wide Web Consortiums (W3C)](https://www.w3.org/) festgelegt wurde und von standardkonformen Webbrowsern unterstützt wird. Im modernen Web-Publikationen werden Inhaltsstruktur bzw. strukturelle Semantik (z.B. Überschriftenebenen, Absätze, Listen, Hyperlinks, Zitate, und andere Medienelemente oder interaktive Elemente) und deren Darstellung getrennt. HTML übernimmt dabei die logische Strukturierung der Inhalte, während andere Technologien wie [Cascading Stylesheets (CSS)](https://www.w3.org/Style/CSS/Overview.en.html) oder [JavaScript](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/) für die Darstellung und die Interaktion mit den Inhalten zum Einsatz kommen.
+Auszeichnungssprachen dienen der Beschreibung von unterschiedlichsten Daten z.B. von Texten, Bildern, Filmen usw. Gleichzeitig dienen sie auch der Beschreibung des Verfahrens, das zu ihrer Weiterverarbeitung bzw. den Datenaustausch notwendig ist. Eine **Markup-Sprache** ist also im Wesentlichen eine Strukturierungssprache, die es erlaubt, maschinenlesbar die Gliederung und Formatierung von u.a. Texten auszuzeichnen. 
 
-Für unsere Zwecke der wissenschaftlichen Nutzung der Daten bietet HTML mit seinem beschränkten und auf Grundbausteine für Web-Publikationen fokussierten Vokabular allerdings zu wenig Flexibilität in der Auszeichnung und damit Weiterverarbeitungsmöglichkeit. Dies würde letztlich auch die Forschungsfragen einschränken, die nach der Annotation an die Daten gestellt und durch die Daten beantwortet werden könnten. Deswegen bietet es sich an für die Modellierung und Strukturierung von Daten die erweiterbare Auszeichnungssprache ["Extensible Markup Language" (XML)](https://www.w3.org/XML/) zu verwenden.
+Eine der bekanntesten "Markup Languages" (ML) ist die "[Hypertext Markup Language" (HTML)](https://www.w3.org/html/), die eine der technologischen Grundlagen des World Wide Webs bildet. Sie gliedert die multimodalen Inhalte einer Webseite so, dass ein Webbrowser aber auch Suchmaschinen und Algorithmen diese interpretieren und darstellen können. Hierfür kommt ein beschränktes Vokabular an vordefinierten "Tags" zum Einsatz, das in Web-Standards und Richtlinien des[ World Wide Web Consortiums (W3C)](https://www.w3.org/) festgelegt wurde und von standardkonformen Webbrowsern unterstützt wird. Im modernen Web-Publikationen werden Inhaltsstruktur bzw. strukturelle Semantik (z.B. Überschriftenebenen, Absätze, Listen, Hyperlinks, Zitate, und andere Medienelemente oder interaktive Elemente) und deren Darstellung getrennt. HTML übernimmt dabei die logische Strukturierung der Inhalte, während andere Technologien wie [Cascading Stylesheets (CSS)](https://www.w3.org/Style/CSS/Overview.en.html) oder [JavaScript](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/) für die Darstellung und die Interaktion mit den Inhalten zum Einsatz kommen.
 
-XML ist ein einfaches, flexibles Format zur strukturierten Beschreibung von Daten. XML ist unabhängig von Hard- oder Software und besteht selbst aus Text, der sowohl für Menschen als auch für Maschinen lesbar und interpretierbar ist. Im Gegensatz zu HTML definiert XML selbst keine Auszeichnungselemente sondern stellt Regeln bereit, wie Elemente zu definieren und anzuwenden sind. Dadurch ist die Auszeichnungssprache beliebig erweiterbar.
+Für unsere Zwecke der wissenschaftlichen Nutzung der Daten bietet HTML mit seinem beschränkten und auf Grundbausteine für Web-Publikationen fokussierten Vokabular allerdings zu wenig Flexibilität in der Auszeichnung und damit Weiterverarbeitungsmöglichkeit. Dies würde letztlich auch die Forschungsfragen einschränken, die nach der Annotation an die Daten gestellt und durch die Daten beantwortet werden könnten. Im Gegensatz zu HTML, einer Auszeichnungssprache, die überwiegend für die **Darstellung** von Inhalten im Internet Verwendung findet, ist die  ["Extensible Markup Language" (XML)](https://www.w3.org/XML/) oder zu Deutsch erweiterbare Auszeichnungssprache eher ein abstraktes Werkzeug zur Modellierung und Strukturierung von Informationen und zur Haltung von Daten. Wesentlich ist hier der Unterschied zwischen Daten und Informationen. Daten sind Sammlungen von Zeichen, hingegen sind Informationen Daten in Zusammenhängen, die für die Benutzer sinnvoll lesbar sind. 
 
-### XML Syntax
+XML stellt die Grundlage für zahlreiche fachspezifische Auszeichnungssprachen dar — bereits etablierte Beispiele dafür sind z.B. die geografische Auszeichnungssprache für raumbezogene Informationen, die Mathematische Auszeichnungssprache zur Beschreibung komplexer mathematischer Ausdrücke und Formeln, oder MusicXML für die westliche Notenschrift.
 
-Ein XML-Element besteht grundsätzlich aus einem **Start-Tag** und einem **End-Tag**, die den Inhalt umschließen. Tags werden von eckigen Klammern umschlossen. Der End-Tag wird immer mit einem "/" vor dem Elementnamen geschlossen. 
+Auch in den Textwissenschaften ist XML heute die wichtigste Markupsprache, da es das ideale Werkzeug ist um Texte zu strukturieren, zu vermitteln und zu nutzen. Federführend in diesem Fachbereich ist die **Text Encoding Initiative**, kurz **TEI**. Doch bevor wir dazu ins Detail gehen, sollen einige grundlegende Aspekte von XML zur Sprache kommen.
+
+### Grundlagen von XML
+
+Wie schon erwähnt, dient XML dazu, beliebige Informationen und Inhalte in strukturierter Form zu beschreiben um diese Daten weiterzuverarbeiten, zu verwalten, oder sie im Internet auszutauschen. Eine – wenn nicht die wesentlichste – Eigenschaft von XML ist dabei die Unabhängigkeit von einzelner Hard- und Software. Möglich ist das, weil XML komplexe Inhalte beschreibt, ohne festzulegen, in welcher Form und mit welchen Computerprogrammen die Daten weiterverarbeitet werden sollen. Das bedeutet, es handelt sich um eine sogenannte Descriptive und keine Processing Markup Language. XML ist so konzipiert, dass es von vielen unterschiedlichen Programmen gelesen werden kann, was eine enorme Freiheit gegenüber herstellergebundenen Sprachen bedeutet. Diese Eigenschaft war zugleich die wichtigste Voraussetzung für einen problemlosen und weltweiten Datenaustausch.
+
+Die Bezeichnung als Markup Language ist leider nicht sehr präzise gewählt, wenn nicht sogar irreführend. Denn eigentlich ist XML selbst keine Auszeichnungssprache, denn sie definiert keine Elemente. Sie stellt vielmehr ein Regelwerk für den Entwurf von konkreten Auszeichnungssprachen und ihren Anwendungen dar und wird deshalb auch als Metasprache bezeichnet, die unbegrenzt erweiterbar ist. Das bedeutet, dass sich mit XML beliebig viele unterschiedliche Sprachen definieren lassen, die jeweils ganz unterschiedliche Zwecke verfolgen können. Die Sprache selbst ist leicht verständlich, da sie nicht aus abstrakten Codes, sondern aus Text besteht, was den Vorteil hat, dass sie von Mensch und Maschine gelesen werden kann. Dies ist neben der Plattformunabhängigkeit und der Erweiterbarkeit mit ein Grund für die weite Verbreitung und den Erfolg von XML.
+
+Verantwortlich für die Entwicklung dieses Standards ist das 1994 gegründete World Wide Web Consortium unter der Leitung von Timm Berners-Lee, dem Erfinder der Hypertext Markup Language und des World Wide Web. Dieses internationale Gremium bemüht sich darum, Web-Standards zu entwickeln und Richtlinien zu den einzelnen Spezifikationen herauszugeben mit dem Ziel, das Potential und die Reichweite des Web zu vergrößern, es langfristig zu sichern und von einzelnen Herstellern unabhängig zu erhalten.
+
+#### XML Syntax
+
+Auszeichnungselemente sind die wichtigste Struktureinheit von XML und bestehen aus mehreren Teilen. Um einen Inhalt zu beschreiben, bedient man sich sogenannter Tags – das sind Etiketten, die eigentlich nur aus spitzen Klammern und Text bestehen. Man unterscheidet öffnende und schließende Tags, wobei die schließenden einen Schrägstrich vor dem Text besitzen. Diese Tags umgeben den Inhalt, den sie beschreiben sollen. Der Text ist im Normalfall ein sinnvoller Elementname wie z.B. `<placeName>` für eine Ortsbezeichnung oder `<date>` für ein Datum. Zunächst sollen einige abstrakte Beispiele die Grundprinzipien erläutern.
+
+Ein vollständiges XML-Element besteht aus einem **Start-Tag**, einem **End-Tag** und dem **Inhalt dazwischen**, wobei es unerheblich ist, ob es sich dabei um Text, Zahlen, eine Grafik, eine Partitur oder irgendeine andere Information handelt. 
 
 ![XML-Element](images/xml_element.png "XML-Element, Bild: Ulrike Czeitschner, ACDH-CH")
 
-Ein Beispiel für ein XML-Element ist z.B. folgendes in XML ausgezeichnete Datum:
+Ein konkretes Beispiel ist wie erwähnt z.B. ein Datum:
 
 ```xml
 <date>01.12.2018</date>
 ```
 
-XML Elemente können auch **leer** bleiben. Hierfür gibt es 2 Arten, diese korrekt zu notieren:
+Neben den Elementen mit Inhalt, gibt es auch **leere Elemente** – sie werden verwendet um z.B. die Position von etwas anzugeben, z.B. ein Zeilenumbruch. Da die Tags in diesem Fall nichts umschließen, kann man statt der paarigen Schreibweise auch eine einteilige Kurzform verwenden, man erkennt sie am Schrägstich hinter dem Elementnamen.
 
 ```xml
 a) <element></element>
 b) <element/>
 ```
 
-Mit **Attributen** und **Werten** lassen sich XML-Tags weiter ausdefinieren. Die Syntax dafür ist wie folgt:
+Zur **Beschreibung komplexer Inhalte**, reicht ein Elementname alleine meist nicht aus, weshalb mehrere verschiedene Elemente für denselben Inhalt vergeben werden können. Zusatzinformationen lassen sich aber auch unterbringen, indem man im Start-Tag eines Elements sogenannte Attribute einfügt, die umgeben von Anführungszeichen bestimmte Werte enthalten. Ein Element darf selbstverständlich mehrere unterschiedliche Attribute besitzen. Grundsätzlich können Element-, Attribut- und Wertebezeichnungen aus jeder beliebigen Sprache gewählt werden, im Sinne der Austauschbarkeit haben sich jedoch englische Bezeichnungen durchgesetzt.
+
+Es gibt also **Tags**, die zusammen mit den Inhalten Elemente bilden, die **mit Hilfe von Attributen und Attributwerten genauer spezifiziert** werden können. Die Syntax dafür ist wie folgt:
 
 ```xml
 <element attribut="wert">Inhalt</element>
 <element attribut="wert" attribut2="wert"/>
 ```
+
+#### Wohlgeformtheit
+
+Jede XML-Annotation bedient sich dieser einfachen Bausteine. In der konkreten Anwendung sind jedoch, wie könnte es auch anders sein, besondere Regeln einzuhalten. U.a. syntaktische Vorschriften.
+
+Die wichtigste davon ist die Einhaltung der **Wohlgeformtheit** oder **well-formedness**. Sie bedeutet, dass **jedes geöffnete Element auch wieder geschlossen**werden muss, wie im untenstehenden Beispiel die Elemente a und b. **Andernfalls** kann es sich nur um ein **Empty-Element** handeln, wie z.B. das im Beispiel angeführte leere c-Element. 
+
+```xml
+<a>Inhalt</a> Inhalt <b>Inhalt</b> Inhalt ... <c/>
+```
+
+Sollten **Elemente verschachtelt** sein, so müssen sie **in der richtigen Reihenfolge geöffnet und geschlossen werden**. Dies gilt auch für den Fall, dass mehrere Phänomene einander überlappen. 
+
+*Falsch:*
+
+```xml
+<a>Inhalt <b>Inhalt</a> Inhalt</b>
+```
+
+*Richtig:*
+
+```xml
+<a>Inhalt <b>Inhalt</b></a> <b>Inhalt</b>
+```
+
+Diese Regel ist zwingend, d.h. **alle XML-Dokumente müssen wohlgeformt sein!**
+
+#### Validität
+
+Zusätzlich dazu kann ein XML-Dokument auch valide oder gültig sein. Was bedeutet das? 
+
+Wie schon erwähnt, kann im Grunde jeder mit XML seine eigene Markup-Sprache für bestimmte Zwecke definieren. Gleichzeitig geht es aber auch immer darum, die erzeugten Dokumente austauschen und mehrfach nutzen zu können. Wenn man also eine Sprache "erfindet", muss man nicht nur das Vokabular, sprich die Elemente, Attribute und Werte festlegen, sondern sollte auch eine Grammatik schreiben, in der definiert ist, was die Elemente bedeuten, in welcher Beziehung sie zueinander stehen, wo und wie sie verwendet werden dürfen. 
+
+Obwohl diese Regel optional ist, empfiehlt es sich, sie einzuhalten – aus mehreren Gründen: eine Grammatik ist zum einen nützlich, damit man selbst überprüfen kann, ob man mehrere Dokumente desselben Typs einheitlich annotiert hat. Zum anderen dokumentiert sie die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder z.B. fremde Daten mit nutzen wollen.
+
+Es gibt mehrere Möglichkeiten, eine Grammatik zu schreiben. Am Beginn der Entwicklung standen sogenannte **[Document Type Definitions](https://www.w3schools.com/xml/xml_dtd.asp)**. Sie wurden vom Vorgängerstandard SGML übernommen und sind allerdings in einer Sprache geschrieben, die selbst kein XML ist. Dies bedeutet einen Zusatzaufwand, da man diese Sprache erst erlernen muss. 
+
+Dieser Mangel konnte mit **[XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema11-1/)** behoben werden – das ist ebenfalls eine W3C-Empfehlung und mittlerweile sehr weit verbreitet. 
+
+Daneben gibt es noch weitere Sprachen um XML-Strukturen zu definieren wie z. B. die **[Regular Description for XML New Generation (Relax NG)](https://relaxng.org/)** und andere mehr. Da diese Grammatiken selbst in XML geschrieben sind, sind auch sie praktischerweise für Menschen und Maschinen lesbar.
+
+#### Aufbau von XML Dokumenten
+
+Kommen wir nun zum Aufbau von XML-Dokumenten.
+Jedes Dokument beginnt mit einem Prolog, der zumindest die XML-Deklaration enthält, die angibt, um welche XML-Version es sich handelt. Die Tags des Prologs zeichnen sich durch eine besondere Schreibweise aus: sie sind einteilig und an den Fragezeichen vorne und hinten zu erkennen. Die XML-Deklaration kann optional zwei Attribute enthalten, eines, das die Art der Zeichenkodierung angibt und ein weiteres, das festhält, ob sich das verwendete Schema in derselben Datei oder extern befindet – standalone no bedeutet, dass es ein externes Schema gibt.
+
+Daran anschließend kann optional ein Verweis auf dieses externe Schema folgen und ebenso optional ein weiterer Verweis, der processing instruction genannt wird und den Pfad zu einem sogenannten Stylesheet angibt, in dem die Verarbeitungsanweisungen definiert sind.
+
+Nach dem Prolog folgen die eigentlichen Elemente. Wesentlich ist hier, dass es nur ein einziges Wurzel- oder Root-Element geben darf, das alle anderen Elemente (Kinder und Kindeskinder) umschließt. Im Wurzelelement befindet sich ein Attribut mit der Bezeichnung namespace, das als Wert einen Unified Ressource Identifier URI enthält, der angibt, woher die verwendeten Elemente und Attribute stammen. Handelt es sich z.B. um ein Dokument, das nach den Richtlinien der TEI erstellt wurde, ist der Name des Root-Elements TEI. Der
