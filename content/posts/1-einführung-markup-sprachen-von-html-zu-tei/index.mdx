@@ -164,12 +164,20 @@ Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen u
 
 #### Elementhierarchie in XML
 
+Ein XML-Dokument ist eine hierarchische Strukturierung und Anordnung von Inhalten. Diese ist jedoch nicht beliebig, sondern wird im Dokument-Schema festgelegt. Und da Dokumente gültig sein sollen, kann man sich die Strukturierung nicht willkürlich aussuchen.
+
+**Das Schema schreibt vor, welche Elemente es gibt, wo sie anzutreffen sein dürfen und wo nicht.** So kann beispielsweise im Schema definiert werden, dass ein Element nur ein bestimmtes Elternelement haben kann.
+
+* ein Vorname darf nur das Kind eines Personennamens sein.
+* ein Personenname kann nur *innerhalb* einer Überschrift, eines Paragraphen oder einer Verszeile vorkommen, aber niemals außerhalb
+
+Neben den Beziehungen regelt ein Schema auch, **wie oft ein Element oder Attributwert vorkommen darf**. 
+
+* Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. 
+* Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
+
 Ein Buch, könnte in XML etwa wie folgt abgebildet werden: 
 
 ![XML Hierarchie eines Buches](images/xmlhierarchiebuch.png "XML Hierarchie eines Buches. Bild: Ulrike Czeitschner, ACDH-CH")
 
-Innerhalb des Wurzelelements befindet sich ein Element mit dem Namen Buch, das die Kindelemente Vorwort und mehrere Kapitel enthält, vielleicht gefolgt von einem Nachwort, eventuell einem Register und einem Impressum. Diese Kindelemente verhalten sich zueinander alle wie Geschwister und sind aber selbst auch Eltern der Titel-, Paragraphen- und Verszeilen-Elemente, die ebenfalls Geschwister sind und selbstverständlich auch wieder Kinder haben können. Somit ergibt sich eine hierarchische Anordnung und Struktur der Inhalte.
-
-Die hierarchische Anordnung der Elementen wird im Schema festgelegt, das dem Dokument zugrunde liegt und gegen das die Validität des Dokuments geprüft wird. So kann beispielsweise im Schema definiert werden, dass ein Element nur ein bestimmtes Elternelement haben kann, wie z.B. ein Vorname nur das Kind eines Personennamen sein kann. Oder, dass ein Personenname nur innerhalb einer Überschrift, eines Paragraphen oder einer Verszeile vorkommen kann, aber niemals außerhalb. 
-
-Das Schema schreibt also vor, welche Elemente es gibt, wo sie anzutreffen sein dürfen und wo nicht und da Dokumente gültig sein sollen, kann man sich das nicht willkürlich aussuchen. Neben den Beziehungen regelt ein Schema auch, wie oft ein Element oder Attributwert vorkommen darf. Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
+Innerhalb des Wurzelelements befindet sich ein Element mit dem Namen Buch, das die Kindelemente Vorwort und mehrere Kapitel enthält, vielleicht gefolgt von einem Nachwort, eventuell einem Register und einem Impressum. Diese Kindelemente verhalten sich zueinander alle wie Geschwister und sind aber selbst auch Eltern der Titel-, Paragraphen- und Verszeilen-Elemente, die ebenfalls Geschwister sind und selbstverständlich auch wieder Kinder haben können. Somit ergibt sich eine hierarchische Anordnung und Struktur der Inhalte, die den Aufbau des Buches wiederspiegelt.
