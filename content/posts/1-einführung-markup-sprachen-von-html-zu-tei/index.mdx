@@ -17,7 +17,6 @@ licence: ccby-4.0
 toc: false
 uuid: ycJztJbuEaDJyNFBehyEe
 ---
-
 * Digitalisat vs. born-digital
 * Herkunft von Markup-Sprachen
 * Einführung in Markup-Sprachen
@@ -133,7 +132,7 @@ Daneben gibt es noch weitere Sprachen um XML-Strukturen zu definieren wie z. B. 
 
 #### Aufbau von XML Dokumenten
 
-![](images/xml-dokument.png "Aufbau eines XML Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
+![Aufbau XML Dokument](images/xml-dokument.png "Aufbau eines XML Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
 
 Kommen wir nun zum Aufbau von XML-Dokumenten. Jedes Dokument beginnt mit einem **Prolog**, der zumindest die **XML-Deklaration** enthält, die angibt, um welche XML-Version es sich handelt. Die Tags des Prologs zeichnen sich durch eine besondere Schreibweise aus: sie sind einteilig und an den Fragezeichen vorne und hinten zu erkennen. 
 
@@ -147,12 +146,18 @@ Im Wurzelelement befindet sich ein Attribut mit der Bezeichnung **namespace**, d
 
 Handelt es sich z.B. um ein **Dokument, das nach den Richtlinien der TEI** erstellt wurde, ist der **Name des Root-Elements TEI**. Der Attributwert der namespace declaration verweist darauf, dass ausschließlich von der TEI definierte Elemente und Attribute verwendet wurden. 
 
+![TEI Namensraum](images/tei-namensraum.png "TEI Namensraum. Bild: Ulrike Czeitschner, ACDH-CH")
+
 Möchte man Komponenten aus verschiedenen Namensräumen mischen, müssen zwei Namenraum-Deklarationen angegeben werden, die jeweils unterschiedliche Präfixe definieren, z.B. ein Attribut xmlns:tei und ein Attribut xmlns:xyz. 
 
 Im Dokument selbst müssen diese Präfixe, gefolgt von einem Doppelpunkt, den betreffenden Elementnamen vorangestellt werden um deren Schema-Zugehörigkeit anzuzeigen.
 
+![mehrere Namensraeume](images/mehrerenamensraeumexml.png "Mehrere Namensräume. Bild: Ulrike Czeitschner, ACDH-CH")
+
 Zum Schluss sei an dieser Stelle nur noch erwähnt, dass Kommentare außerhalb von einführenden oder schließenden Tags überall erlaubt sind. Sie werden eingeleitet von einer Spitzklammer, einem Rufzeichen, sowie zwei Minuszeichen. Dann folgt der Kommentartext und danach zwei Minuszeichen und eine schließende Spitzklammer.
 
-
+```xml
+<!-- Kommentar -->
+```
 
 Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen und sind von jeglicher Verarbeitung ausgenommen.
