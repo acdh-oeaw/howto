@@ -25,9 +25,9 @@ Bevor wir uns an die Arbeit mit dem spezifischen Beispiel machen, gilt es den Au
 
 ### Praktische Anwendung
 
-Ein **TEI-konformes Dokument** wird vom TEI-Element `<TEI>`  - dem Wurzelelement - umschlossen. Dass Attribut **'XML Namespace'** `xmlns`, in dem es auf eine eindeutige Definition der Elemente in einem XML-Schema referenziert wird, die innerhalb des spezifischen Dokuments verwendet wird.
+Ein **TEI-konformes Dokument** wird vom TEI-Element `<TEI>`  - dem Wurzelelement - umschlossen. Dass Attribut **'XML Namespace'** `xmlns`, in dem es auf eine eindeutige Definition der Elemente in einem XML-Schema referenziert wird, die innerhalb des spezifischen Dokuments verwendet wird. Dies ist für einen Prozessor wichtig um das XML-Dokument als TEI-Dokument zu erkennen.
 
-Eine TEI-Datei gliedert sich grundsätzlich in den **'TEI-Header'** `<teiHeader>` **(*Sprungmarke zu TEI Header Kapitel*)**, der die Metadaten zum elektronischen Dokument enthält, sowie den annotierten **Text**, der vom Element `<text>` umschlossen wird.
+Das Wurzelelement enthält den **'TEI-Header'** `<teiHeader>` **(*Sprungmarke zu TEI Header Kapitel*)**, der die Metadaten zum elektronischen Dokument und seine Herkunft enthält, sowie den annotierten **Text**, der vom Element `<text>` umschlossen wird.
 
 ```xml
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
