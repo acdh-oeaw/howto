@@ -131,7 +131,7 @@ Es gibt also **Tags**, die zusammen mit den Inhalten Elemente bilden, die **mit 
 
 Jede XML-Annotation bedient sich dieser einfachen Bausteine. In der konkreten Anwendung sind jedoch, wie könnte es auch anders sein, besondere Regeln einzuhalten. U.a. syntaktische Vorschriften.
 
-Die wichtigste davon ist die Einhaltung der **Wohlgeformtheit** oder **well-formedness**. Sie bedeutet, dass **jedes geöffnete Element auch wieder geschlossen**werden muss, wie im untenstehenden Beispiel die Elemente a und b. **Andernfalls** kann es sich nur um ein **Empty-Element** handeln, wie z.B. das im Beispiel angeführte leere c-Element. 
+Die wichtigste davon ist die Einhaltung der **Wohlgeformtheit** oder **well-formedness**. Sie bedeutet, dass **jedes geöffnete Element auch wieder geschlossen** werden muss, wie im untenstehenden Beispiel die Elemente a und b. **Andernfalls** kann es sich nur um ein **Empty-Element** handeln, wie z.B. das im Beispiel angeführte leere c-Element. 
 
 ```xml
 <a>Inhalt</a> Inhalt <b>Inhalt</b> Inhalt ... <c/>
@@ -153,21 +153,33 @@ Sollten **Elemente verschachtelt** sein, so müssen sie **in der richtigen Reihe
 
 <SideNote type="note" title="Merke">
 Die Regel der "well-formedness" ist zwingend, d.h. **alle XML-Dokumente müssen wohlgeformt sein!**
+
+* Geöffnete Element müssen wieder geschlossen werden, oder leere Elemente sein. 
+* Bei Verschachtelung muss die richtige Reihenfolge beim öffnen und schließen von Elementen eingehalten werden.
 </SideNote>
 
 ### Validität
 
 Zusätzlich dazu kann ein XML-Dokument auch valide oder gültig sein. Was bedeutet das? 
 
-Wie schon erwähnt, kann im Grunde jeder mit XML seine eigene Markup-Sprache für bestimmte Zwecke definieren. Gleichzeitig geht es aber auch immer darum, die erzeugten Dokumente austauschen und mehrfach nutzen zu können. Wenn man also eine Sprache "erfindet", muss man nicht nur das Vokabular, sprich die Elemente, Attribute und Werte festlegen, sondern sollte auch eine Grammatik schreiben, in der definiert ist, was die Elemente bedeuten, in welcher Beziehung sie zueinander stehen, wo und wie sie verwendet werden dürfen. 
+Wie schon erwähnt, kann im Grunde jeder mit XML seine eigene Markup-Sprache für bestimmte Zwecke definieren. Gleichzeitig geht es aber auch immer darum, die erzeugten Dokumente austauschen und mehrfach nutzen zu können. **Wenn man also eine Sprache "erfindet", muss man nicht nur das Vokabular, sprich die Elemente, Attribute und Werte festlegen, sondern sollte auch eine Grammatik schreiben**, in der definiert ist, was die Elemente bedeuten, in welcher Beziehung sie zueinander stehen, wo und wie sie verwendet werden dürfen. 
 
-Obwohl diese Regel optional ist, empfiehlt es sich, sie einzuhalten – aus mehreren Gründen: eine Grammatik ist zum einen nützlich, damit man selbst überprüfen kann, ob man mehrere Dokumente desselben Typs einheitlich annotiert hat. Zum anderen dokumentiert sie die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder z.B. fremde Daten mit nutzen wollen.
+Obwohl diese Regel optional ist, empfiehlt es sich, sie einzuhalten – aus mehreren Gründen: 
+
+* Eine Grammatik ist zum einen nützlich, damit man selbst überprüfen kann, ob man mehrere Dokumente desselben Typs einheitlich annotiert hat. 
+* Zum anderen dokumentiert sie die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder z.B. fremde Daten mit nutzen wollen.
 
 Es gibt mehrere Möglichkeiten, eine Grammatik zu schreiben. Am Beginn der Entwicklung standen sogenannte **[Document Type Definitions](https://www.w3schools.com/xml/xml_dtd.asp)**. Sie wurden vom Vorgängerstandard SGML übernommen und sind allerdings in einer Sprache geschrieben, die selbst kein XML ist. Dies bedeutet einen Zusatzaufwand, da man diese Sprache erst erlernen muss. 
 
 Dieser Mangel konnte mit **[XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema11-1/)** behoben werden – das ist ebenfalls eine W3C-Empfehlung und mittlerweile sehr weit verbreitet. 
 
 Daneben gibt es noch weitere Sprachen um XML-Strukturen zu definieren wie z. B. die **[Regular Description for XML New Generation (Relax NG)](https://relaxng.org/)** und andere mehr. Da diese Grammatiken selbst in XML geschrieben sind, sind auch sie praktischerweise für Menschen und Maschinen lesbar.
+
+<SideNote type="note" title="Merke">
+**Validität** bezieht sich auf das einhalten einer vordefinierten **Grammatik**. 
+
+Dies ermöglicht eine Überprüfung einer **einheitlichen Annotation** über Dokumente hinweg und **dokumentiert** die Struktur für kollaboratives Arbeiten oder der **Nachnutzung** von Quellen Dritter.
+</SideNote>
 
 ### Aufbau von XML Dokumenten
 
