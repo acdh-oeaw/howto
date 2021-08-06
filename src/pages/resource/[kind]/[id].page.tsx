@@ -281,7 +281,10 @@ function CourseLinks(props: CourseLinksProps) {
             <li key={course.id}>
               <Link href={routes.course({ id: course.id })}>
                 <a className="flex items-center text-sm space-x-1.5 transition hover:text-primary-600 relative focus:outline-none rounded focus-visible:ring focus-visible:ring-primary-600">
-                  <Icon icon={AcademicCapIcon} className="w-4 h-4" />
+                  <Icon
+                    icon={AcademicCapIcon}
+                    className="flex-shrink-0 w-4 h-4"
+                  />
                   <span>{course.title}</span>
                 </a>
               </Link>
