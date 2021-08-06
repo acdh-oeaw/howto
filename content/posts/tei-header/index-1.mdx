@@ -22,7 +22,7 @@ uuid: j51QIatS7jhSnysibO4Cs
 
 Im TEI-Header werden die Metadaten *über* ein TEI-Dokument erfasst. Der Header ist vom Element `<teiHeader>` umschlossen, die Metadaten über das Dokument selber werden innerhalb des Elements `<fileDesc>` angegeben, was das erste Element innerhalb des Headers darstellt. Diese **'file description'** enthält alle Informationen zum elektronischen Dokument (Name des elektronischen Dokuments, Autor*in etc.).
 
-Die Metadaten sollten folgende Informationen enthalten:
+Ein TEI-Header ist für jedes TEI-Dokument obligatorisch. Er kann nur einige wesentliche Elemente enthalten, kann aber auch sehr detailliert sein, wenn es nötig ist. Die Metadaten können u.a. folgende Informationen enthalten:
 
 * **Identifikation** ("Was ist das?") `<titleStmt>`
 * **Angabe der Quelle** ("Woraus wurde es abgeleitet?") `<sourceDesc>`
@@ -383,7 +383,7 @@ Die neueste Veränderung am Dokument sollte hierbei zuerst aufgeführt werden.
 
 ### Inhalt & Kontext
 
-Auch Informationen zum Inhalt des elektronischen Dokuments und Kontext können bereits im Header erfasst werden. Hierfür kommt die **'text-profile description'** `<profileDesc>` zum Einsatz, die nicht-bibliographische Aspekte des Textes wie Sprachen, Produktionskontext oder die vorkommenden Personen / Stimmen erfasst.
+Auch Informationen zum Inhalt des elektronischen Dokuments und seinem Kontext können bereits im Header erfasst werden. Hierfür kommt die **'text-profile description'** `<profileDesc>` zum Einsatz, die nicht-bibliographische Aspekte des Textes wie Sprachen, Produktionskontext oder die vorkommenden Personen / Stimmen erfasst.
 
 Innerhalb der 'text-profile description' können beispielsweise folgende Aspekte mit dem jeweils nachstehenden Element erfasst werden:
 
