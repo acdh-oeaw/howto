@@ -132,7 +132,7 @@ In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument 
 
 ### Angabe der Quelle
 
-Die **'source description'** `<sourceDesc>` beschreibt die Quelle, aus der der elektronische Text stammt oder aus der dieser generiert wurde. In der Regel ist dies bei einem digitalisierten Text eine bibliographische Quelle, die in strukturierter Form beispielsweise mit dem Element **'structured bibliographic citation'** `<biblStruct>` angegeben werden kann, oder loser strukturiert mit dem Element **'bibliographic citation'** `<bibl>`. Für einen digital erstellten Text ohne eine Quelle kann man einen Absatz wie zum Beispiel "Digitales Originaldokument" innerhalb eines Absatzes in der 'source description' einfügen.
+Die **'source description'** `<sourceDesc>` gibt an, ob es sich um ein born-digital Dokument handelt oder im Falle von retrodigitalisiertem Material enthält sie Informationen über die Quelle, auf der das Dokument basiert. In der Regel ist dies bei einem digitalisierten Text eine bibliographische Quelle, die in vollständig strukturierter Form beispielsweise mit dem Element **'structured bibliographic citation'** `<biblStruct>` angegeben werden kann, oder einfacher strukturiert mit dem Element **'bibliographic citation'** `<bibl>`. Für einen digital erstellten Text ohne eine physische Quelle kann man einen Absatz wie zum Beispiel "Digitales Originaldokument" innerhalb eines Absatzes in der 'source description' einfügen.
 
 Hier ein Beispiel für ein "born digital" Dokument:
 
@@ -210,7 +210,7 @@ In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer struktur
 
 ### Kodierung
 
-Der bei dieser Übung entstandene TEI-Header umfasst nur einige wesentliche Elemente, er kann im Bedarfsfall weitaus detaillierter ausfallen. Ergänzend kann dieser beispielhaft auch einige Angaben zur Annotation **'encoding description'** `<encodingDesc>` enthalten, die den Zusammenhang der physischen Ressource und des elektronischen Dokuments beschreibt:
+Der bei dieser Übung entstandene TEI-Header umfasst nur einige wesentliche Elemente, er kann im Bedarfsfall weitaus detaillierter ausfallen. Ergänzend kann dieser beispielhaft auch einige Angaben zur Annotation **'encoding description'** `<encodingDesc>` enthalten, die den Zusammenhang der physischen Ressource und des elektronischen Dokuments beschreibt. Diese reichen von Informationen zu Redaktionsprinzipien über Projektbeschreibungen, Angaben zur Verwendung von Tags bis hin zur  zugrundeliegenden Textauswahl.
 
 ```xml
 <encodingDesc>
@@ -279,7 +279,7 @@ Hier einige Beispiele für mögliche Angaben innerhalb der 'encoding description
 
 ### Veröffentlichung
 
-Das **'publication statement'** `<publicationStmt>` gruppiert Informationen zur Publikation oder Distribution des elektronischen Texts.
+Das **'publication statement'** `<publicationStmt>` gruppiert Informationen zur Publikation oder Distribution des elektronischen Texts, wie z.B. Informationen über den Herausgeber, den Erscheinungsort und das Erscheinungsdatum. Auch die Verfügbarkeit kann im TEI-Header enthalten sein, etwa unter welcher Lizenz das Dokument veröffentlicht wurde.
 
 Dies reicht vom unveröffentlichten Arbeitsdokument...
 
