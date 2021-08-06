@@ -14,24 +14,18 @@ tags:
   - xml
 abstract: von XML zu TEI
 licence: ccby-4.0
-toc: false
+toc: true
 uuid: ycJztJbuEaDJyNFBehyEe
 ---
-* Digitalisat vs. born-digital
-* Herkunft von Markup-Sprachen
-* Einführung in Markup-Sprachen
+## Lernziele:
 
-  * Von HTML über XML bis TEI als Standard für Textannotationen
-* Einführung von TEI (Über TEI) => Was ist TEI & was nicht?
+* Überblick über den Digitalisierungsprozess von physischen Originaldokument zu digitaler Annotation
+* Kennenlernen von XML-Elementen, -Syntax, -Dokumentmodell, und -Hierarchie
+* Definition der Begriffe Wohlgeformtheit und Validität
+* Definition von Schema und Namensraum
+* Einführung der TEI 
 
-## Einführung: XML / TEI Basics
-
-* Elemente, Syntax, Dokumentmodell, Hierarchie
-* Wohlgeformtheit, Validität
-* Schema, Namensraum
-* Was ist die TEI?
-
-### Wie kommt mein Text in ein digitales Format?
+## Wie kommt mein Text in ein digitales Format?
 
 Sofern es sich nicht um ein born digital-Dokument handelt - also ein Dokument das mit einem Computer erstellt wurde und deswegen bereits in digital verarbeitbarer Form vorliegt -, beginnt die
 Erstellung einer digitalen Text-Ressource mit dem **[Einscannen einer Vorlage](https://dhmuseum.uni-trier.de/node/5)**. Dieser Scan resultiert in einem Pixelbild (z.B. im TIF, JPG oder PNG-Format) oder einem PDF. Das Aussehen der Print-Quelle ist in den Bilddaten ersichtlich, aber der textuelle Inhalt ist noch nicht digital weiter verarbeitbar. 
@@ -40,19 +34,62 @@ Deswegen erfolgt daran anschließend in einem zweiten Schritt die **Texterkennun
 
 Ziel der Erstellung elektronischer Ressourcen ist in unserem Fall die Nutzung in sprachwissenschaftlicher, literaturwissenschaftlicher oder kulturwissenschaftlicher Forschung. Um elektronische Daten systematisch, am besten mehrfach und interdisziplinär nutzen zu können, benötigen sie **dauerhafte** strukturelle und semantische und linguistische **Annotationen**. An diesem Punkt kommen sogenannte Auszeichnungs- oder Markupsprachen zum Einsatz. 
 
-### Markup-Sprachen
+## Markup-Sprachen
 
 Auszeichnungssprachen dienen der Beschreibung von unterschiedlichsten Daten z.B. von Texten, Bildern, Filmen usw. Gleichzeitig dienen sie auch der Beschreibung des Verfahrens, das zu ihrer Weiterverarbeitung bzw. den Datenaustausch notwendig ist. Eine **Markup-Sprache** ist also im Wesentlichen eine Strukturierungssprache, die es erlaubt, maschinenlesbar die Gliederung und Formatierung von u.a. Texten auszuzeichnen. 
 
 Eine der bekanntesten "Markup Languages" (ML) ist die "[Hypertext Markup Language" (HTML)](https://www.w3.org/html/), die eine der technologischen Grundlagen des World Wide Webs bildet. Sie gliedert die multimodalen Inhalte einer Webseite so, dass ein Webbrowser aber auch Suchmaschinen und Algorithmen diese interpretieren und darstellen können. Hierfür kommt ein beschränktes Vokabular an vordefinierten "Tags" zum Einsatz, das in Web-Standards und Richtlinien des[ World Wide Web Consortiums (W3C)](https://www.w3.org/) festgelegt wurde und von standardkonformen Webbrowsern unterstützt wird. Im modernen Web-Publikationen werden Inhaltsstruktur bzw. strukturelle Semantik (z.B. Überschriftenebenen, Absätze, Listen, Hyperlinks, Zitate, und andere Medienelemente oder interaktive Elemente) und deren Darstellung getrennt. HTML übernimmt dabei die logische Strukturierung der Inhalte, während andere Technologien wie [Cascading Stylesheets (CSS)](https://www.w3.org/Style/CSS/Overview.en.html) oder [JavaScript](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/) für die Darstellung und die Interaktion mit den Inhalten zum Einsatz kommen.
 
-Für unsere Zwecke der wissenschaftlichen Nutzung der Daten bietet HTML mit seinem beschränkten und auf Grundbausteine für Web-Publikationen fokussierten Vokabular allerdings zu wenig Flexibilität in der Auszeichnung und damit Weiterverarbeitungsmöglichkeit. Dies würde letztlich auch die Forschungsfragen einschränken, die nach der Annotation an die Daten gestellt und durch die Daten beantwortet werden könnten. Im Gegensatz zu HTML, einer Auszeichnungssprache, die überwiegend für die **Darstellung** von Inhalten im Internet Verwendung findet, ist die  ["Extensible Markup Language" (XML)](https://www.w3.org/XML/) oder zu Deutsch erweiterbare Auszeichnungssprache eher ein abstraktes Werkzeug zur Modellierung und Strukturierung von Informationen und zur Haltung von Daten. Wesentlich ist hier der Unterschied zwischen Daten und Informationen. Daten sind Sammlungen von Zeichen, hingegen sind Informationen Daten in Zusammenhängen, die für die Benutzer sinnvoll lesbar sind. 
+Für unsere Zwecke der wissenschaftlichen Nutzung der Daten bietet HTML mit seinem beschränkten und auf Grundbausteine für Web-Publikationen fokussierten Vokabular allerdings zu wenig Flexibilität in der Auszeichnung und damit Weiterverarbeitungsmöglichkeit. Dies würde letztlich auch die Forschungsfragen einschränken, die nach der Annotation an die Daten gestellt und durch die Daten beantwortet werden könnten. Im Gegensatz zu HTML, einer Auszeichnungssprache, die überwiegend für die Darstellung von Inhalten im World Wide Web Verwendung findet, ist die  ["Extensible Markup Language" (XML)](https://www.w3.org/XML/) oder zu Deutsch erweiterbare Auszeichnungssprache eher ein abstraktes Werkzeug zur Modellierung und Strukturierung von Informationen und zur Haltung von Daten. Wesentlich ist hier der Unterschied zwischen Daten und Informationen. Daten sind Sammlungen von Zeichen, hingegen sind Informationen Daten in Zusammenhängen, die für die Benutzer sinnvoll lesbar sind. 
 
 XML stellt die Grundlage für zahlreiche fachspezifische Auszeichnungssprachen dar — bereits etablierte Beispiele dafür sind z.B. die geografische Auszeichnungssprache für raumbezogene Informationen, die Mathematische Auszeichnungssprache zur Beschreibung komplexer mathematischer Ausdrücke und Formeln, oder MusicXML für die westliche Notenschrift.
 
 Auch in den Textwissenschaften ist XML heute die wichtigste Markupsprache, da es das ideale Werkzeug ist um Texte zu strukturieren, zu vermitteln und zu nutzen. Federführend in diesem Fachbereich ist die **Text Encoding Initiative**, kurz **TEI**. Doch bevor wir dazu ins Detail gehen, sollen einige grundlegende Aspekte von XML zur Sprache kommen.
 
-### Grundlagen von XML
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        **Welche der folgenden Aussagen sind richtig?**
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        TEI ist eine spezialisierte Auszeichnungssprache für Text
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        TEI basiert auf XML.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        XML stellt ein festes Vokabular für die Strukturierung von Dokumenten zur Verfügung.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        HTML ist eine Auszeichnungssprache, die vor allem auf die Strukturierung von Inhalten für die Veröffentlichung im World Wide Web entwickelt wurde.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        **Richtig!**
+
+        TEI ist eine fachspezifische Markup-Sprache, die auf XML basiert und dafür ausgelegt ist, Dokumente für textwissenschaftliche Forschung zu annotieren.
+
+        Andere Markup-Sprachen sind HTML und XML. Während HTML allerdings ein festes Vokabular anbietet, das für die Strukturierung von Inhalten für Webpublikationen ausgelegt ist, stellt XML als ein abstraktes Werzeug zur Modellierung und Strukturierung von Informationen lediglich Regeln bereit, wie Elemente zu definieren und anzuwenden sind. Man kann aber beliebig viele konkrete Auszeichnungssprachen mithilfe von XML definieren.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        **Leider nicht ganz richtig!**
+
+        TEI ist eine fachspezifische Markup-Sprache, die auf XML basiert und dafür ausgelegt ist, Dokumente für textwissenschaftliche Forschung zu annotieren.
+
+        Andere Markup-Sprachen sind HTML und XML. Während HTML allerdings ein festes Vokabular anbietet, das für die Strukturierung von Inhalten für Webpublikationen ausgelegt ist, stellt XML als ein abstraktes Werzeug zur Modellierung und Strukturierung von Informationen lediglich Regeln bereit, wie Elemente zu definieren und anzuwenden sind. Man kann aber beliebig viele konkrete Auszeichnungssprachen mithilfe von XML definieren.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+
+## Grundlagen von XML
 
 Wie schon erwähnt, dient XML dazu, beliebige Informationen und Inhalte in strukturierter Form zu beschreiben um diese Daten weiterzuverarbeiten, zu verwalten, oder sie im Internet auszutauschen. Eine – wenn nicht die wesentlichste – Eigenschaft von XML ist dabei die Unabhängigkeit von einzelner Hard- und Software. Möglich ist das, weil XML komplexe Inhalte beschreibt, ohne festzulegen, in welcher Form und mit welchen Computerprogrammen die Daten weiterverarbeitet werden sollen. Das bedeutet, es handelt sich um eine sogenannte Descriptive und keine Processing Markup Language. XML ist so konzipiert, dass es von vielen unterschiedlichen Programmen gelesen werden kann, was eine enorme Freiheit gegenüber herstellergebundenen Sprachen bedeutet. Diese Eigenschaft war zugleich die wichtigste Voraussetzung für einen problemlosen und weltweiten Datenaustausch.
 
@@ -60,7 +97,7 @@ Die Bezeichnung als Markup Language ist leider nicht sehr präzise gewählt, wen
 
 Verantwortlich für die Entwicklung dieses Standards ist das 1994 gegründete World Wide Web Consortium unter der Leitung von Timm Berners-Lee, dem Erfinder der Hypertext Markup Language und des World Wide Web. Dieses internationale Gremium bemüht sich darum, Web-Standards zu entwickeln und Richtlinien zu den einzelnen Spezifikationen herauszugeben mit dem Ziel, das Potential und die Reichweite des Web zu vergrößern, es langfristig zu sichern und von einzelnen Herstellern unabhängig zu erhalten.
 
-#### XML Syntax
+### XML Syntax
 
 Auszeichnungselemente sind die wichtigste Struktureinheit von XML und bestehen aus mehreren Teilen. Um einen Inhalt zu beschreiben, bedient man sich sogenannter Tags – das sind Etiketten, die eigentlich nur aus spitzen Klammern und Text bestehen. Man unterscheidet öffnende und schließende Tags, wobei die schließenden einen Schrägstrich vor dem Text besitzen. Diese Tags umgeben den Inhalt, den sie beschreiben sollen. Der Text ist im Normalfall ein sinnvoller Elementname wie z.B. `<placeName>` für eine Ortsbezeichnung oder `<date>` für ein Datum. Zunächst sollen einige abstrakte Beispiele die Grundprinzipien erläutern.
 
@@ -90,7 +127,7 @@ Es gibt also **Tags**, die zusammen mit den Inhalten Elemente bilden, die **mit 
 <element attribut="wert" attribut2="wert"/>
 ```
 
-#### Wohlgeformtheit
+### Wohlgeformtheit
 
 Jede XML-Annotation bedient sich dieser einfachen Bausteine. In der konkreten Anwendung sind jedoch, wie könnte es auch anders sein, besondere Regeln einzuhalten. U.a. syntaktische Vorschriften.
 
@@ -114,9 +151,11 @@ Sollten **Elemente verschachtelt** sein, so müssen sie **in der richtigen Reihe
 <a>Inhalt <b>Inhalt</b></a> <b>Inhalt</b>
 ```
 
-Diese Regel ist zwingend, d.h. **alle XML-Dokumente müssen wohlgeformt sein!**
+<SideNote type="note" title="Merke">
+Die Regel der "well-formedness" ist zwingend, d.h. **alle XML-Dokumente müssen wohlgeformt sein!**
+</SideNote>
 
-#### Validität
+### Validität
 
 Zusätzlich dazu kann ein XML-Dokument auch valide oder gültig sein. Was bedeutet das? 
 
@@ -130,7 +169,7 @@ Dieser Mangel konnte mit **[XML Schema Definition (XSD)](https://www.w3.org/TR/x
 
 Daneben gibt es noch weitere Sprachen um XML-Strukturen zu definieren wie z. B. die **[Regular Description for XML New Generation (Relax NG)](https://relaxng.org/)** und andere mehr. Da diese Grammatiken selbst in XML geschrieben sind, sind auch sie praktischerweise für Menschen und Maschinen lesbar.
 
-#### Aufbau von XML Dokumenten
+### Aufbau von XML Dokumenten
 
 ![Aufbau XML Dokument](images/xml-dokument.png "Aufbau eines XML Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
 
@@ -162,7 +201,7 @@ Zum Schluss sei an dieser Stelle nur noch erwähnt, dass Kommentare außerhalb v
 
 Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen und sind von jeglicher Verarbeitung ausgenommen.
 
-#### Elementhierarchie in XML
+### Elementhierarchie in XML
 
 Ein XML-Dokument ist eine hierarchische Strukturierung und Anordnung von Inhalten. Diese ist jedoch nicht beliebig, sondern wird im Dokument-Schema festgelegt. Und da Dokumente gültig sein sollen, kann man sich die Strukturierung nicht willkürlich aussuchen.
 
@@ -182,7 +221,7 @@ Ein Buch, könnte in XML etwa wie folgt abgebildet werden:
 
 Innerhalb des Wurzelelements befindet sich ein Element mit dem Namen Buch, das die Kindelemente Vorwort und mehrere Kapitel enthält, vielleicht gefolgt von einem Nachwort, eventuell einem Register und einem Impressum. Diese Kindelemente verhalten sich zueinander alle wie Geschwister und sind aber selbst auch Eltern der Titel-, Paragraphen- und Verszeilen-Elemente, die ebenfalls Geschwister sind und selbstverständlich auch wieder Kinder haben können. Somit ergibt sich eine hierarchische Anordnung und Struktur der Inhalte, die den Aufbau des Buches widerspiegelt.
 
-### Von XML zu TEI
+## Von XML zu TEI
 
 Ein spezialisiertes Schema für die Kodierung von Texten und sprachlichen Informationen ist das Schema der 1987 gegründeten Text Encoding Initiative (TEI)-Markup.  Basierend auf XML ist TEI mittlerweile der de-facto-Standard für die Kodierung von Texten und sprachlichen Informationen und ist innerhalb der Geisteswissenschaften federführend.  Die derzeit empfohlene Version P5 wurde 2007 veröffentlicht und seitdem regelmäßig verbessert und aktualisiert. Das Regelwerk enthält mehr als 500 Elemente und ebenso zahlreiche Attribute, die in sachbezogenen Modulen organisiert sind. Sie berücksichtigen Lyrik und Dramentexte ebenso wie Handschriften, Kritische Apparate oder Wörterbücher. Darüber hinaus bietet die TEI Komponenten sowohl für die Schemagenerierung als auch die Schema-Anpassung an und stellt integrierte Stylesheets zur Verfügung.
 
