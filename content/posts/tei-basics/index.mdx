@@ -46,7 +46,9 @@ Das Wurzelelement enthält den **'TEI-Header'** `<teiHeader>` **(*Sprungmarke zu
 </TEI>
 ```
 
-Ein Text kann entweder 'unitary' - also ein organisches Ganzes – oder 'composite' sein – also aus mehreren voneinander unabhängigen Komponenten bestehend. Ein Text kann optional einen **'front matter'** `<front>` oder auf Deutsch **Titelei** enthalten, die beispielsweise die Inhalte der **Titelseite** `<titlePage>` enthalten kann, wie auch die Position einer automatisch generierten Gliederung wie einem Index, einem Inhaltsverzeichnis o.ä.. Für Letzteres kommt das Element **'text division'** `<divGen>` mit einer der folgenden type-Attribute zum Einsatz:
+Ein Text kann entweder 'unitary' - also ein organisches Ganzes – oder 'composite' sein – also aus mehreren voneinander unabhängigen Komponenten bestehend. 
+
+Ein Text kann optional einen **'front matter'** `<front>` oder auf Deutsch **Titelei** enthalten, die beispielsweise die Inhalte der **Titelseite** `<titlePage>` enthalten kann, wie auch die Position einer automatisch generierten Gliederung wie einem Index, einem Inhaltsverzeichnis o.ä.. Für Letzteres kommt das Element **'text division'** `<divGen>` mit einer der folgenden type-Attribute zum Einsatz:
 
 * `index`: hier soll ein automatisch generierter Index eingesetzt werden.
 * `toc`: Inhaltsverzeichnis
@@ -55,7 +57,7 @@ Ein Text kann entweder 'unitary' - also ein organisches Ganzes – oder 'composi
 
 Der erforderliche **'text body'** `<body>` umschließt den Hauptext eines einzelnen 'unitary' Dokuments.
 
-Das optionale Element **'back matter'** `<back>` enthält den Anhangteil eines Dokuments, und kann z.B. **Index-Einträge** `<index>` enthalten.
+Nach dem body folgt optional der Nachspann, das sogenannte "back matter". Hier könnte sich z.B. das Register eines gedruckten Werkes befinden. Dieser wird mit dem Element **'back matter'** `<back>`  und kann z.B. **Index-Einträge** `<index>` enthalten.
 
 Im folgenden Code-Beispiel sieht man die Makrostruktur eines 'unitary'-Textes, z.B. eine Monografie oder ein Drama, das eine Titelseite und ein Inhaltsverzeichnis enthält, und zudem einen Index am Ende des Buches.
 
@@ -174,3 +176,17 @@ Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metad
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
+
+
+<SideNote type="note" title="Merke">
+**Es gibt häufig mehrere Möglichkeiten , einzelne Aspekte zu in TEI kodieren. Wie ein Dokument im Verhältnis zur Vorlage strukturiert werden soll, gibt nicht die TEI vor, sondern ist Ihre Entscheidung.** 
+
+In einer Briefedition können beispielsweise Regest und editorische Notiz im Vorspann (`<front>)`, der edierte Brief im Textkörper (`<body>`) und der Stellenkommentar im Nachspann (`<back>`) kodiert sein. Damit bildet die Grobstruktur des TEI-Dokuments die Struktur der modernen Edition ab, aber nicht die Grobstruktur der Quelle.
+
+Genauso gut ist es möglich, dass ein vollständig kodiertes historisches Buch aus dem 18. Jahrhundert eine sehr reiche Titelei mit mehreren Titelseiten, Widmungen und Vorworten und ein mehrteiliges Register im Anhang aufweist, und dass diese Struktur auch im `<front>` bzw. `<back>` abgebildet ist. Der moderne Kommentar könnte dann z.B. überhaupt in ein eigenständiges TEI-Dokument ausgelagert werden, damit der Primärtext und der editorische Text klar voneinander getrennt sind.
+
+* Das bedeutet auch: Was Sie als ein TEI-Dokument modellieren, ist Ihnen überlassen:
+* en Brief, ein Buch, ein Aufsatz
+* ein Band mit allen Ausgaben einer Zeitschrift aus einem Jahr
+* ein Korpus von mehreren Texten
+</SideNote>
