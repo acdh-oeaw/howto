@@ -59,7 +59,7 @@ Beachten Sie, dass ein Dokument erst well-formed ist, wenn Sie damit fertig sind
 
 Sehen Sie sich bitte die folgenden Beispiele an. Es handelt sich um einen (gekürzten) Abschnitt aus einer Filmbeschreibung. Wir betrachten im Folgenden die Filmbeschreibung, einen Spielplan, und ein Gedicht mit dem Titel "Der Filmstar" näher. Um den Text und viele ähnliche Texte automatisiert bearbeiten zu können, muss entsprechend ausgezeichnet werden. 
 
-Sie sehen eine Blanko-Vorlage und im zweiten Feld die ausgezeichnete Filmbeschreibung. Bitte beachten Sie, dass der `<header>` nicht vollständig ausgezeichnet wurde, da wir uns vor allem mit dme `<body>` beschäftigen.
+Für jeden Abschnitt ist ein Annotationsvorschlag mit dem entsprechenden Beispieltext sowie eine Blanko-Vorlage angegeben. Bitte beachten Sie, dass der `<header>` nicht vollständig ausgezeichnet wurde, da wir uns vor allem mit dem `<body>` beschäftigen.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -205,10 +205,10 @@ Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<
 </TEI>
 ```
 
-Wie im vorangegangenen Beispiel sehen Sie, dass das Listenelement in ein `<div>`-Element eingebettet ist. Beachten Sie, dass die Listenelemente `<item>` wiederum in das Element `<list>` eingebettet sind, und so klar ersichtlich ist, dass alle Listenelemente teil der Liste sind. Achtung, die Listenelement sind nicht ineinander eingebettet, sondern stehen auf der selben Hierarchiestufe, also Geschwisterelemente sind.
+Wie im vorangegangenen Beispiel sehen Sie, dass das Listenelement in ein `<div>`-Element eingebettet ist. Beachten Sie, dass alle `<item>` wiederum vom Element `<list>` umgeben sind, und so klar ersichtlich ist, dass alle Listenelemente teil der Liste sind. Achtung, die Listenelemente sind nicht ineinander eingebettet, sondern stehen auf der selben Hierarchiestufe, sie sind Geschwisterelemente.
 
 <SideNote type="info" title="Einrückungen">
-
+Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstellen. So sehen Sie, welche child-Elemente in ein parent-Element eingebettet sind. Diese Darstellung verändert die Textanordnung nicht.
 </SideNote>
 
 ```xml
@@ -233,7 +233,7 @@ Wie im vorangegangenen Beispiel sehen Sie, dass das Listenelement in ein `<div>`
 
 Die Auszeichnung verändert nicht die Anordnung der einzelnen Textteile, aber durch Einrückungen wird gezeigt, wie die Textteile zueinander strukturiert sind. `<div>` bildet die oberste Hierarchieebene, darin folgen dann `<head>`, `<p>`, etc als weitere Ebenen. Sie können gleichwertig sein, oder weiter ineinander verschachtelt. Bei Aufzählungen wird die oberste Hierarchieebene mit `<list>` gekennzeichnet, innerhalb der `<list>` findet man einen oder mehrere `<item>`.
 
-Beachten Sie, dass der Fließtext in einem Element von einem kleineren `<head>`-, `<p>`- bzw. `<item>` oder `<l>`-Element umgeben sein muss.
+
 
 Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten [^6] aus, worum es sich bei dem Element konkret handelt (z.B. Gedicht, Spielplan, Artikel,...).
 
