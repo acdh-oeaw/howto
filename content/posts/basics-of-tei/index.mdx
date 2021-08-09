@@ -59,7 +59,7 @@ Beachten Sie, dass ein Dokument erst well-formed ist, wenn Sie damit fertig sind
 
 Sehen Sie sich bitte die folgenden Beispiele an. Es handelt sich um einen (gekürzten) Abschnitt aus einer Filmbeschreibung. Wir betrachten im Folgenden die Filmbeschreibung, einen Spielplan, und ein Gedicht mit dem Titel "Der Filmstar" näher. Um den Text und viele ähnliche Texte automatisiert bearbeiten zu können, muss entsprechend ausgezeichnet werden. 
 
-Sie sehen eine Blanko-Vorlage und im zweiten Feld die ausgezeichnte Filmbeschreibung.
+Sie sehen eine Blanko-Vorlage und im zweiten Feld die ausgezeichnete Filmbeschreibung.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -134,11 +134,10 @@ Sie sehen eine Blanko-Vorlage und im zweiten Feld die ausgezeichnte Filmbeschrei
       </div>
     </body>
   </text>
-</TEI><div>
- <head></head>
- <p></p>
-</div>
+</TEI>
 ```
+
+Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>\` und Absatz \`<p>\`geteilt wurde. Beide Element befinden sich innerhalb eines \`<div>`-Elements, das die beiden Elemente gemeinsam einen Abschnitt im Fließtext bilden. Bitte beachten Sie, dass dieser Abschnitt well-formed ist, da alle Textteile umgeben sind und die Tags geschlossen wurden.
 
 ```xml
 <list>
@@ -147,6 +146,12 @@ Sie sehen eine Blanko-Vorlage und im zweiten Feld die ausgezeichnte Filmbeschrei
  <item>...</item>
 </list>
 ```
+
+
+
+
+
+
 
 ```xml
 <list>
