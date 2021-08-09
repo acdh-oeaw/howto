@@ -12,10 +12,11 @@ editors:
 tags:
   - xml
   - tei
-abstract: In diesem Modul erfahren Sie mehr über den sogenannten Body, den
-  Bereich Ihres Dokuments, in dem sich der Text befindet, den Sie annotieren
-  (ohne Vor- und Nachspann). Die Textstruktur wird besprochen, genauso die
-  Auszeichnung durch Elemente und Attribute.
+abstract: In diesem Modul erfahren Sie mehr über die Auszeichnung des
+  Fließtextes. Es geht vor allem um den sogenannten Body, den Bereich Ihres
+  Dokuments, in dem sich der Text befindet, den Sie annotieren (ohne Vor- und
+  Nachspann). Die Textstruktur wird besprochen, genauso die Auszeichnung durch
+  Elemente und Attribute.
 licence: ccby-4.0
 toc: true
 uuid: KekCIIoGVVJb_wDu5cYBU
@@ -24,31 +25,35 @@ uuid: KekCIIoGVVJb_wDu5cYBU
 
 ### Grundlegende Strukturierung von Fließtext in TEI; der Body
 
-Jedes TEI Dokument folgt einer bestimmten Struktur, die vor und während der Dokumenterstellung festgelegt wird. Diese ist wichtig, um eine Ordnung im Textdokument festzulegen. So können später Elemente im annotierten Text gefunden werden und die entstehenden Hierarchien sind für die Maschine lesbar. Im sogenannten Body[^1] legt man eine Struktur des Fließtextes fest, die zeigt, wie das Textdokument aufgebaut ist. Der Body ist vom element `<body>` umschlossen. Innerhalb des Body werden die einzelnen Abschnitte als Elemente, zum Beispiel `<div>`-Elemente[^2], gekennzeichnet. Innerhalb dieser `<div>`-Elemente können beispielsweise weitere Überschriften (`<head>`) und Absätzen (`<p>`) bzw. Strophen (`<lg>` mit `<l>`) ausgezeichnet werden. Im Header[^3] wird Metainformation zum Text festgehalten, zum Beispiel Autor, Textart, Dokumentart, usw. Dies ist nicht Teil des Fließtextes. Es ist wichtig, dass jedem Textabschnitt eine Auszeichnung zugewiesen wurde, damit das Dokument wohlgeformt[^4] ist. Elemente mit fehlenden Auszeichnungen sind nicht valide[^5].
+Ein TEI Dokument besteht aus verschiedenen Abschnitten, wenn Sie darin ein Textdokument auszeichnen möchten. Nach dem (`<header>`), in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung des Fließtextes Ihres Dokuments. In diesem sogenannten (`<body>`)[^1] erfassen Sie unter anderem die Struktur Ihres Fließtextes. Diese Struktur legen Sie vor und während der Dokumenterstellung fest, und folgen dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und auch Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
+
+Der gesamte Body ist vom Element (`<body>`) umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des (`<body>`) zunächst die einzelnen Abschnitte als (`<div>`)-Elemente[^2] mit Überschriften (`<head>`) und Absätzen (`<p>`) bzw. Strophen (`<lg>` mit `<l>`) ausgezeichnet.
 
 Im Folgenden werden Sie erste Schritte kennenlernen, was und wie Sie einen Fließtext auszeichnen können.
 
 *Die wichtigsten Auszeichnung sind:*
 
-* **Abschnitt**, größere Textteile`<div>`
-* **Überschriften**, `<head>`
-* **Verfasserzeilen**, `<byline>`
-* **Absätze**, `<p>`
-* **Verse und Verszeilen**, `<lg>`, `<l>`
-* **Allgemeiner Block**, `<ab>`
-* **Zitate**, `<cit>`
-* **Listen und Listeneinträge**, `<list>` mit `<item>`
-* **Tabellen und Tabelleneinträge**, `<table>` mit `<row>`(Zeile), `<cell>`(Zelle)
-* **Abbildungen und Abbildungsbeschreibungen**, `<figure>` mit `<figDesc>` oder `<graphic>`
-* **Titelseiten mit Titel**, `<title>` mit `<docTitle>` und `<titlePart>`
-* **Autorenangaben**, `<docAuthor>`
-* **Impressum**, `<imprint>`
-* **Publikationsdatum**, `<docDate>`
-* **Imprimatur**, `<imprimatur>`
-* **Eröffnungs- und Schlussformeln**, `<opener>` und `<closer>`
-* **Anreden**, `<salute>`
-* **Postscriptum**, `<postscript>`
-* **Unterschrift**, `<signed>`
+- **Abschnitt**, größere Textteile`<div>`
+- **Überschriften**, `<head>`
+- **Verfasserzeilen**, `<byline>`
+- **Absätze**, `<p>`
+- **Verse und Verszeilen**, `<lg>`, `<l>`
+- **Allgemeiner Block**, `<ab>`
+- **Zitate**, `<cit>`
+- **Listen und Listeneinträge**, `<list>` mit `<item>`
+- **Tabellen und Tabelleneinträge**, `<table>` mit `<row>`(Zeile), `<cell>`(Zelle)
+- **Abbildungen und Abbildungsbeschreibungen**, `<figure>` mit `<figDesc>` oder `<graphic>`
+- **Titelseiten mit Titel**, `<title>` mit `<docTitle>` und `<titlePart>`
+- **Autorenangaben**, `<docAuthor>`
+- **Impressum**, `<imprint>`
+- **Publikationsdatum**, `<docDate>`
+- **Imprimatur**, `<imprimatur>`
+- **Eröffnungs- und Schlussformeln**, `<opener>` und `<closer>`
+- **Anreden**, `<salute>`
+- **Postscriptum**, `<postscript>`
+- **Unterschrift**, `<signed>`
+
+Beachten Sie, dass ein Dokument erst well-formed ist, wenn Sie damit fertig sind, d.h. wenn es keinen Text mehr gibt, der nicht von Elementen (an der jeweils erlaubten Position) umgeben ist. Beachten Sie dabei, dass der Text in einem (`<div>`)-Element von einem (`<head>`) -, (`<p>`)- bzw. (`<lg>`)-Element umgeben sein muss.
 
 ### Praktische Anwendung
 
@@ -114,9 +119,9 @@ Beachten Sie, dass der Fließtext in einem Element von einem kleineren `<head>`-
 
 Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten [^6] aus, worum es sich bei dem Element konkret handelt (z.B. Gedicht, Spielplan, Artikel,...).
 
-* `<div>` + type article / movieSchedule / poem / editorialStatement / reviews / review
-* `<div>` type review + n 1 / 2
-* `<head>` + type columnTitle [^5]
+- `<div>` + type article / movieSchedule / poem / editorialStatement / reviews / review
+- `<div>` type review + n 1 / 2
+- `<head>` + type columnTitle [^5]
 
 ```xml
 <div type="article">
@@ -150,17 +155,8 @@ In einer späteren Analyse sollen alle Überschriften getrennt von Artikeln aus 
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.XmlCodeEditor
-      code="<xml>Die Wunder des Meeres.
-
-      Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E. Williamson hat ...</xml>"
-      solution="<xml>
-        <div>
-          <head>Die Wunder des Meeres.</head>
-            <p>Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes
-          Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E.
-          Williamson hat ...</p>
-        </div>
-      </xml>"
+      code={"<xml>Die Wunder des Meeres.\n\nDer Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E. Williamson hat ...</xml>"}
+      solution={"<xml>\n<div>\n<head>Die Wunder des Meeres.</head>\n<p>Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes\nMilieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E.\nWilliamson hat ...</p>\n</div>\n</xml>"}
       validate="input"
     >
       <Quiz.Question>
@@ -173,8 +169,6 @@ In einer späteren Analyse sollen alle Überschriften getrennt von Artikeln aus 
 </Quiz>
 
 
-
-
 #### Übung 1b: Fließtextabschnitte auszeichnen
 
 In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die zwischen 1921 und 1935 geöffnet waren. In diesem Beispiel sehen Sie eine Liste `<list>.` Zeichnen Sie bitte die ersten vier Einträge als `<item>` richtig aus und schließen Sie dann die Liste. Die umschließenden `<xml>` Tags sind bereits vorgegeben.
@@ -184,17 +178,8 @@ In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.XmlCodeEditor
-      code="<xml>
-      <div>
-      </xml>"
-      solution="<xml>
-      <list>
-      <item>Imperial-Kino, I., Rothgasse 9;</item>
-      <item>Schwarzenberg-Kino, III., Schwarzenbergplatz;</item>
-      <item>Flotten-Kino, VI., Mariahilferstraße 85;</item>
-      <item>Wienzeile-Kino, VI., Linke Wienzeile 4;</item>
-      </list>
-      </xml>"
+      code={"<xml>\n<div>\n</xml>"}
+      solution={"<xml>\n<list>\n<item>Imperial-Kino, I., Rothgasse 9;</item>\n<item>Schwarzenberg-Kino, III., Schwarzenbergplatz;</item>\n<item>Flotten-Kino, VI., Mariahilferstraße 85;</item>\n<item>Wienzeile-Kino, VI., Linke Wienzeile 4;</item>\n</list>\n</xml>"}
       validate="input"
     >
       <Quiz.Question>
@@ -245,17 +230,8 @@ Die Forschungsgruppe interessiert sich dafür, welche Texte außer Kritiken und 
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.XmlCodeEditor
-      code="<xml>Der Filmstar. Du ahnst bei ihm die Schwüle Leise glimmender Gefühle. Friedrich Zelnik.</xml>"
-      solution="<xml>
-        <div type=&#x22;poem&#x22;>
-          <lg>
-            <head>Der Filmstar.</head>
-            <l>Du ahnst bei ihm die Schwüle</l>
-            <l>Leise glimmender Gefühle.</l>
-            <byline>Friedrich Zelnik.</byline>
-          </lg>
-        </div>
-      </xml>"
+      code={"<xml>Der Filmstar. Du ahnst bei ihm die Schwüle Leise glimmender Gefühle. Friedrich Zelnik.</xml>"}
+      solution={"<xml>\n<div type=\"poem\">\n<lg>\n<head>Der Filmstar.</head>\n<l>Du ahnst bei ihm die Schwüle</l>\n<l>Leise glimmender Gefühle.</l>\n<byline>Friedrich Zelnik.</byline>\n</lg>\n</div>\n</xml>"}
       validate="input"
     >
       <Quiz.Question>
@@ -293,49 +269,13 @@ Die Forschungsgruppe interessiert sich dafür, welche Texte außer Kritiken und 
 </Quiz>
 
 
-
-
 #### Übung 2a: Attribute festlegen
 
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.XmlCodeEditor
-      code="<xml>
-        <div type=&#x22;x&#x22;>
-          <head>Die Wunder des Meeres.</head>
-          <p>Der Film „Die Wunder des Meeres“ führt ...</p>
-        </div>
-        <div type=&#x22;x&#x22;>
-          <p>Der Film »Die Wunder des Meeres« läuft ab ...</p>
-        </div>
-        <div type=&#x22;x&#x22;>
-          <lg>
-            <head>Der Filmstar.</head>
-            <l>Du ahnst bei ihm die Schwüle</l>
-            <l>...</l>
-            <l>Um jede Großaufnahme.</l>
-            <byline>Friedrich Zelnik.</byline>
-          </lg>
-        </div>
-      </xml>"
-      solution="<xml>
-        <div type=&#x22;article&#x22;>
-          <head>Die Wunder des Meeres.</head>
-          <p>Der Film „Die Wunder des Meeres“ führt ...</p>
-        </div>
-        <div type=&#x22;movieSchedule&#x22;>
-          <p>Der Film »Die Wunder des Meeres« läuft ab ...</p>
-        </div>
-        <div type=&#x22;poem&#x22;>
-          <lg>
-            <head>Der Filmstar.</head>
-            <l>Du ahnst bei ihm die Schwüle</l>
-            <l>...</l>
-            <l>Um jede Großaufnahme.</l>
-            <byline>Friedrich Zelnik.</byline>
-          </lg>
-        </div>
-      </xml>"
+      code={"<xml>\n<div type=\"x\">\n<head>Die Wunder des Meeres.</head>\n<p>Der Film „Die Wunder des Meeres“ führt ...</p>\n</div>\n<div type=\"x\">\n<p>Der Film »Die Wunder des Meeres« läuft ab ...</p>\n</div>\n<div type=\"x\">\n<lg>\n<head>Der Filmstar.</head>\n<l>Du ahnst bei ihm die Schwüle</l>\n<l>...</l>\n<l>Um jede Großaufnahme.</l>\n<byline>Friedrich Zelnik.</byline>\n</lg>\n</div>\n</xml>"}
+      solution={"<xml>\n<div type=\"article\">\n<head>Die Wunder des Meeres.</head>\n<p>Der Film „Die Wunder des Meeres“ führt ...</p>\n</div>\n<div type=\"movieSchedule\">\n<p>Der Film »Die Wunder des Meeres« läuft ab ...</p>\n</div>\n<div type=\"poem\">\n<lg>\n<head>Der Filmstar.</head>\n<l>Du ahnst bei ihm die Schwüle</l>\n<l>...</l>\n<l>Um jede Großaufnahme.</l>\n<byline>Friedrich Zelnik.</byline>\n</lg>\n</div>\n</xml>"}
       validate="input"
     >
       <Quiz.Question>
@@ -348,8 +288,6 @@ Die Forschungsgruppe interessiert sich dafür, welche Texte außer Kritiken und 
 </Quiz>
 
 
-
-
 #### Übung 2b: Attribute festlegen
 
 Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Sie möchten, nachdem mehrere Beispiele ausgezeichnet wurden, wissen, ob sich die Title der Kolumnen verändern und wie viele Filme im Durchschnitt rezensiert werden. In diesem Beispiel sehen Sie viele Hierarchieebenen. Es handelt sich um den Beginn des Film-Kritiken-Abschnitts. Sie sehen den Beginn der ersten Kritik. Zeichnen Sie bitte sowohl die Überkategorie Rezensionen "reviews", die Art der Überschrift "columnTitle" für den Textabschnitt, und die erste Rezension "review" klar aus. Geben Sie bitte auch an, dass es sich um die erste Rezension handelt, "n=1". Vergessen Sie nicht, alle Elemente, auch mehrere `<div>`-Elemente, zu schließen. Achten Sie auch hier auf die Ebenen.
@@ -357,25 +295,8 @@ Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Sie mö
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.XmlCodeEditor
-      code="<xml>
-        <div>
-          FILM-KRITIKEN „Die Schlacht.“ Nach dem Roman ...
-        </div>
-        <div type=&#x22;review&#x22; n=&#x22;2&#x22;>
-          <p> &#x22;Die Wunder des Meeres.&#x22; In diesem...</p>
-        </div>
-      </xml>"
-      solution="<xml>
-        <div type=&#x22;reviews&#x22;>
-          <head type=&#x22;columnTitle&#x22;>FILM-KRITIKEN</head>
-          <div type=&#x22;review&#x22; n=&#x22;1&#x22;>
-            <p>„Die Schlacht.“ Nach dem Roman ...</p>
-          </div>
-          <div type=&#x22;review&#x22; n=&#x22;2&#x22;>
-            <p> &#x22;Die Wunder des Meeres.&#x22; In diesem...</p>
-          </div>
-        </div>
-      </xml>"
+      code={"<xml>\n<div>\nFILM-KRITIKEN „Die Schlacht.“ Nach dem Roman ...\n</div>\n<div type=\"review\" n=\"2\">\n<p> \"Die Wunder des Meeres.\" In diesem...</p>\n</div>\n</xml>"}
+      solution={"<xml>\n<div type=\"reviews\">\n<head type=\"columnTitle\">FILM-KRITIKEN</head>\n<div type=\"review\" n=\"1\">\n<p>„Die Schlacht.“ Nach dem Roman ...</p>\n</div>\n<div type=\"review\" n=\"2\">\n<p> \"Die Wunder des Meeres.\" In diesem...</p>\n</div>\n</div>\n</xml>"}
       validate="input"
     >
       <Quiz.Question>
@@ -407,8 +328,6 @@ Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Sie mö
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
-
-
 
 
 ### Glossar
