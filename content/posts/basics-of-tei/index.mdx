@@ -94,11 +94,49 @@ Sie sehen eine Blanko-Vorlage und im zweiten Feld die ausgezeichnte Filmbeschrei
 ```
 
 ```xml
-<div>
- <head>Die Wunder des Meeres.</head>
- <p>Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes
-   Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E.
-   Williamson hat ...</p>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Title</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div>
+        <head>Die Wunder des Meeres.</head>
+        <p>Der Film „Die Wunder des Meeres“ führt uns
+          in ein bisher nie gezeigtes Milieu: auf den Grund
+          des Meeres. Der berühmte Ozeanforscher Sir J. E.
+          Williamson hat als erster das nie vorher er-
+          hellte Dunkel der Meerestiefen mittels seiner eigens
+          konstruierten Tiefseestation für kinematographische
+          Aufnahmen dem menschlichen Auge enthüllt. Unge-
+          heure Schwierigkeiten und Gefahren mußten auf dem
+          Meeresgrunde überwunden werden, um diese Meister-
+          leistung der kinematographischen Technik zu voll-
+          enden, die auch als Kulturwerk ersten Ranges ge-
+          wertet werden muß. Was nicht hindert, daß der Film
+          (aus dem wir eine interessante Aufnahme im Bilde
+          zeigen) vom ersten bis zum letzten Meter den Zu-
+          schauer in vollster Spannung fesselt.</p>
+      </div>
+    </body>
+  </text>
+</TEI><div>
+ <head></head>
+ <p></p>
 </div>
 ```
 
