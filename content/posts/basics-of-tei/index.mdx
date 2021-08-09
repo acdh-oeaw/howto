@@ -61,6 +61,38 @@ Sehen Sie sich bitte die folgenden Beispiele an. Es handelt sich um einen (gekü
 
 Sie sehen eine Blanko-Vorlage und im zweiten Feld die ausgezeichnte Filmbeschreibung.
 
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Title</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div>
+        <head>Titel.</head>
+        <p>Erster Absatz.</p>
+        <p>Zweiter Absatz.</p>
+        <p>Dritter Absatz.</p>
+      </div>
+    </body>
+  </text>
+</TEI>
+```
+
 ```xml
 <div>
  <head>Die Wunder des Meeres.</head>
