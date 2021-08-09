@@ -25,9 +25,9 @@ uuid: KekCIIoGVVJb_wDu5cYBU
 
 ### Grundlegende Strukturierung von Fließtext in TEI; der Body
 
-Ein TEI Dokument besteht aus verschiedenen Abschnitten, wenn Sie darin ein Textdokument auszeichnen möchten. Nach dem (`<header>`), in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung des Fließtextes Ihres Dokuments. In diesem sogenannten (`<body>`)[^1] erfassen Sie unter anderem die Struktur Ihres Fließtextes. Diese Struktur legen Sie vor und während der Dokumenterstellung fest, und folgen dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und auch Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
+Ein TEI Dokument besteht aus verschiedenen Abschnitten, wenn Sie darin ein Textdokument auszeichnen möchten. Nach dem `<header>`, in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung des Fließtextes Ihres Dokuments. In diesem sogenannten `<body>`[^1] erfassen Sie unter anderem die Struktur Ihres Fließtextes. Diese Struktur legen Sie vor und während der Dokumenterstellung fest, und folgen dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und auch Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
 
-Der gesamte Body ist vom Element (`<body>`) umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des (`<body>`) zunächst die einzelnen Abschnitte als (`<div>`)-Elemente[^2] mit Überschriften (`<head>`) und Absätzen (`<p>`) bzw. Strophen (`<lg>` mit `<l>`) ausgezeichnet.
+Der gesamte Body ist vom Element `<body>` umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des `<body>` zunächst die einzelnen Abschnitte als `<div>`-Elemente[^2] mit Überschriften `<head>` und Absätzen `<p>` bzw. Strophen `<lg>` und Verse mit `<l>` ausgezeichnet.
 
 Im Folgenden werden Sie erste Schritte kennenlernen, was und wie Sie einen Fließtext auszeichnen können.
 
@@ -137,7 +137,7 @@ Sie sehen eine Blanko-Vorlage und im zweiten Feld die ausgezeichnete Filmbeschre
 </TEI>
 ```
 
-Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>\` und Absatz \`<p>\`geteilt wurde. Beide Element befinden sich innerhalb eines \`<div>`-Elements, das die beiden Elemente gemeinsam einen Abschnitt im Fließtext bilden. Bitte beachten Sie, dass dieser Abschnitt well-formed ist, da alle Textteile umgeben sind und die Tags geschlossen wurden.
+Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<p>`geteilt wurde. Beide Element befinden sich innerhalb eines `<div>`-Elements, das die beiden Elemente gemeinsam einen Abschnitt im Fließtext bilden. Bitte beachten Sie, dass dieser Abschnitt well-formed ist, da alle Textteile umgeben sind und die Tags geschlossen wurden.
 
 ```xml
 <list>
@@ -146,12 +146,6 @@ Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>\` und Absatz \
  <item>...</item>
 </list>
 ```
-
-
-
-
-
-
 
 ```xml
 <list>
