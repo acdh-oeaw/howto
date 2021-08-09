@@ -323,11 +323,45 @@ Je nachdem mit welchem Verständnis man an die Sache herangeht, sind die Grenzen
 
 Bei der TEI geht es dezidiert darum, **Texte kodierend zu beschreiben**, daher ist sie klar vorwiegend **deskriptiv**.
 
-Mit der TEI können unterschiedlichste Aspekte eines Textes kodiert werden. Einige relevanten Fragen sind hier z.B.:
+Mit der TEI können unterschiedlichste **Aspekte eines Textes kodiert** werden. Einige relevanten Fragen sind hier z.B.:
 
-* Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.?
-* Über welche ‘Dinge’ spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte, etc.), aber auch Konzepte, Ideen, andere Texte usw. usf.
-* Wie spricht der Text? Mit welchen linguistischen, rhetorischen oder narratologischen Mitteln arbeitet er – Aspekte, die nicht an der Textoberfläche manifest sind, sondern erst durch einen Analyseschritt erfassbar werden.
-* Und schließlich: Wie sieht der Text aus?
+* Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.? Dies erfasst das **strukturelle Markup**.
+* Über welche ‘Dinge’ spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte, etc.), aber auch Konzepte, Ideen, andere Texte usw. Diese Aspekte werden im **semantischen Markup** annotiert.
+* Wie spricht der Text? Mit welchen linguistischen, rhetorischen oder narratologischen Mitteln arbeitet er – Aspekte, die nicht an der Textoberfläche manifest sind, sondern erst durch einen Analyseschritt erfassbar werden, werden im **analytischen Markup** beschrieben.
+* Und schließlich: Wie sieht der Text aus? Dies erfasst das **repräsentationale Markup**.
 
 Die folgenden Kapitel werden einen kurzen Überblick über die Struktur von TEI-Dokumenten geben und dabei einige sehr häufig verwendete Elemente hervorheben.
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        **Zu welcher Form von Markup wird TEI zugeordnet?**
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        **Prozedurales Markup** - TEI beschreibt Prozeduren, die ein Grafiker oder Setzer mit dem Text durchführen soll.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        **Deskriptives Markup** - TEI beschreibt unterschiedliche Aspekte der Texte selber, von Struktur, Semantik, über linguistische Aspekte bis hin zur Repräsentation des Textes.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        **Präsentationales Markup** - TEI definiert Darstellungsregeln für eine digitale Druckvorlage.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        **Richtig!**
+
+        TEI ist vorwiegend deskriptiv.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        **Leider falsch.**
+
+        TEI gehört zum deskriptiven Markup. Vom logischen und formalen Aufbau eines Textes, seiner Semantik bis hin zur Repräsentation können unterschiedlichste Aspekte des Textmaterials kodiert werden.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
