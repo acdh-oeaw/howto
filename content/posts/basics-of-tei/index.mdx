@@ -208,7 +208,7 @@ Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<
 Wie im vorangegangenen Beispiel sehen Sie, dass das Listenelement in ein `<div>`-Element eingebettet ist. Beachten Sie, dass alle `<item>` wiederum vom Element `<list>` umgeben sind, und so klar ersichtlich ist, dass alle Listenelemente teil der Liste sind. Achtung, die Listenelemente sind nicht ineinander eingebettet, sondern stehen auf der selben Hierarchiestufe, sie sind Geschwisterelemente.
 
 <SideNote type="info" title="Einrückungen">
-Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstellen. So sehen Sie, welche child-Elemente in ein parent-Element eingebettet sind. Diese Darstellung verändert die Textanordnung nicht.
+Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstellen. So sehen Sie, welche Kindelemente in ein Elternelement eingebettet sind. Diese Darstellung verändert die Textanordnung nicht.
 </SideNote>
 
 ```xml
@@ -231,20 +231,57 @@ Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstell
 </lg>
 ```
 
-Die Auszeichnung verändert nicht die Anordnung der einzelnen Textteile, aber durch Einrückungen wird gezeigt, wie die Textteile zueinander strukturiert sind. `<div>` bildet die oberste Hierarchieebene, darin folgen dann `<head>`, `<p>`, etc als weitere Ebenen. Sie können gleichwertig sein, oder weiter ineinander verschachtelt. Bei Aufzählungen wird die oberste Hierarchieebene mit `<list>` gekennzeichnet, innerhalb der `<list>` findet man einen oder mehrere `<item>`.
 
-Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten [^6] aus, worum es sich bei dem Element konkret handelt (z.B. Gedicht, Spielplan, Artikel,...).
+
+Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten [^6] aus, um konkreter zu bezeichnen, worum es sich bei dem Element handelt (z.B. Gedicht, Spielplan, Artikel,...). Hier sehen Sie Auszeichnungen, die Ihnen in unserem Beispiel begegnen.
 
 - `<div>` + type article / movieSchedule / poem / editorialStatement / reviews / review
 - `<div>` type review + n 1 / 2
 - `<head>` + type columnTitle [^5]
 
 ```xml
-<div type="article">
- <head>Die Wunder des Meeres.</head>
- <p>Der Film „Die Wunder des Meeres“ führt ...</p>
-</div>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="article">
+        <head>Die Wunder des Meeres.</head>
+        <p>Der Film „Die Wunder des Meeres“ führt uns
+          in ein bisher nie gezeigtes Milieu: auf den Grund
+          des Meeres. Der berühmte Ozeanforscher Sir J. E.
+          Williamson hat als erster das nie vorher er-
+          hellte Dunkel der Meerestiefen mittels seiner eigens
+          konstruierten Tiefseestation für kinematographische
+          Aufnahmen dem menschlichen Auge enthüllt. Unge-
+          heure Schwierigkeiten und Gefahren mußten auf dem
+          Meeresgrunde überwunden werden, um diese Meister-
+          leistung der kinematographischen Technik zu voll-
+          enden, die auch als Kulturwerk ersten Ranges ge-
+          wertet werden muß. Was nicht hindert, daß der Film
+          (aus dem wir eine interessante Aufnahme im Bilde
+          zeigen) vom ersten bis zum letzten Meter den Zu-
+          schauer in vollster Spannung fesselt.</p>
+      </div>
+    </body>
+  </text>
+</TEI>
 ```
+
+Wie Sie im Beispiel sehen, wird der Fließtext nicht nur als Abschnitt ausgezeichnet
 
 ```xml
 <div type="poem">
@@ -258,7 +295,7 @@ Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift
 </div>
 ```
 
-Durch ein zusätzliches Attribut können Textteile noch genauer bestimmt werden, hier zum Beispiel durch `<div type="article">` der Artikel, oder durch `<div type="poem">` das Gedicht.
+
 
 #### Übung 1a: Fließtextabschnitte auszeichnen
 
