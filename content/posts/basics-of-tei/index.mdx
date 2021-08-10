@@ -211,26 +211,6 @@ Wie im vorangegangenen Beispiel sehen Sie, dass das Listenelement in ein `<div>`
 Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstellen. So sehen Sie, welche Kindelemente in ein Elternelement eingebettet sind. Diese Darstellung verändert die Textanordnung nicht.
 </SideNote>
 
-```xml
-<lg>
- <head>Titel</head>
- <l>Erste Verszeile</l>
- <l>Zweite Verszeile</l>
- <l>Dritte Verszeile</l>
- <byline>Verfasserzeile</byline>
-</lg>
-
-<lg>
- <head>Der Filmstar.</head>
- <l>Du ahnst bei ihm die Schwüle</l>
- <l>Leise glimmender Gefühle.</l>
- <l>...</l>
- <l>Drum kämpft er mit Beharrlichkeit</l>
- <l>Um jede Großaufnahme.</l>
- <byline>Friedrich Zelnik.</byline>
-</lg>
-```
-
 Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten [^6] aus, um konkreter zu bezeichnen, worum es sich bei dem Element handelt (z.B. Gedicht, Spielplan, Artikel,...). Hier sehen Sie Auszeichnungen, die Ihnen in unserem Beispiel begegnen.
 
 - `<div>` + type article / movieSchedule / poem / editorialStatement / reviews / review
@@ -280,18 +260,6 @@ Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift
 ```
 
 Wie Sie im Beispiel sehen, wird der Fließtext nicht nur als Abschnitt `<div>`, sondern noch genauer als `type="article"` ausgezeichnet. Die Verwendung von Attributen und Werten ermöglicht die Erfassung von textrelevanten Details, die Ihnen bei der weiteren Textarbeit helfen werden.
-
-```xml
-<div type="poem">
- <lg>
-  <head>Der Filmstar.</head>
-  <l>Du ahnst bei ihm die Schwüle</l>
-  <l>...</l>
-  <l>Um jede Großaufnahme.</l>
-  <byline>Friedrich Zelnik.</byline>
- </lg>
-</div>
-```
 
 #### Übung 1a: Fließtextabschnitte auszeichnen
 
@@ -463,6 +431,8 @@ Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Sie mö
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
+
+
 
 
 ### Glossar
