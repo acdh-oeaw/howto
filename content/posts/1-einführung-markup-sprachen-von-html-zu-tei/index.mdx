@@ -19,18 +19,18 @@ uuid: ycJztJbuEaDJyNFBehyEe
 ---
 ## Lernziele
 
-* Überblick über den Digitalisierungsprozess vom physischen Originaldokument zu digitaler Annotation
-* Kennenlernen von XML-Elementen, -Syntax, -Dokumentmodell, und -Hierarchie
-* Definition der Begriffe Wohlgeformtheit und Validität
-* Definition von Schema und Namensraum
-* Einführung der TEI 
+- Überblick über den Digitalisierungsprozess vom physischen Originaldokument zu digitaler Annotation
+- Kennenlernen von XML-Elementen, -Syntax, -Dokumentmodell, und -Hierarchie
+- Definition der Begriffe Wohlgeformtheit und Validität
+- Definition von Schema und Namensraum
+- Einführung der TEI 
 
 ## Wie kommt mein Text in ein digitales Format?
 
 Sofern es sich nicht um ein born digital-Dokument handelt - also ein Dokument das mit einem Computer erstellt wurde und deswegen bereits in digital verarbeitbarer Form vorliegt -, beginnt die
-Erstellung einer digitalen Text-Ressource mit dem **[Einscannen einer Vorlage](https://dhmuseum.uni-trier.de/node/5)**. Dieser Scan resultiert in einem Pixelbild (z.B. im TIF, JPG oder PNG-Format) oder einem PDF. Das Aussehen der Print-Quelle ist in den Bilddaten ersichtlich, aber der textuelle Inhalt ist noch nicht digital weiter verarbeitbar. 
+Erstellung einer digitalen Text-Ressource mit dem **[Einscannen einer Vorlage](https://dhmuseum.uni-trier.de/node/5)**. Dieser Scan resultiert in einem Pixelbild  - z.B. im TIF, JPG oder PNG-Format - oder einem PDF. Das Aussehen der Print-Quelle ist in den Bilddaten ersichtlich, aber der textuelle Inhalt ist noch nicht digital weiter verarbeitbar. 
 
-Deswegen erfolgt daran anschließend in einem zweiten Schritt die **Texterkennung mittels ["optical character recognition" (OCR)](https://de.wikipedia.org/wiki/Texterkennung)**. Das Ergebnis ist ein elektronischer Text z.B. in Form eines Word-Dokuments oder einer Text-Datei, den man zwar mit verschiedenen Programmen strukturieren und formatieren kann, wobei die Möglichkeiten sowohl im Hinblick auf das Layout als auch die inhaltliche Beschreibung meistens sehr begrenzt sind. Außerdem ist die Konvertierung in andere Formate oft nicht verlustfrei möglich, wenn die Formatierungs- oder Strukturinformationen in programmspezifischen Formaten abgespeichert sind. ([\> mehr Informationen zu Volltextdigitalisierung](https://dhmuseum.uni-trier.de/node/49))
+Deswegen erfolgt daran anschließend in einem zweiten Schritt die **Texterkennung mittels ["optical character recognition" (OCR)](https://de.wikipedia.org/wiki/Texterkennung)**. Das Ergebnis ist ein elektronischer Text - z.B. in Form eines Word-Dokuments - oder einer Text-Datei, den man zwar mit verschiedenen Programmen strukturieren und formatieren kann, wobei die Möglichkeiten sowohl im Hinblick auf das Layout als auch die inhaltliche Beschreibung meistens sehr begrenzt sind. Außerdem ist die Konvertierung in andere Formate oft nicht verlustfrei möglich, wenn die Formatierungs- oder Strukturinformationen in programmspezifischen Formaten abgespeichert sind. ([\> mehr Informationen zu Volltextdigitalisierung](https://dhmuseum.uni-trier.de/node/49))
 
 Ziel der Erstellung elektronischer Ressourcen ist in unserem Fall die Nutzung in sprachwissenschaftlicher, literaturwissenschaftlicher oder kulturwissenschaftlicher Forschung. Um elektronische Daten systematisch, am besten mehrfach und interdisziplinär nutzen zu können, benötigen sie **dauerhafte** strukturelle und semantische und linguistische **Annotationen**. An diesem Punkt kommen sogenannte Auszeichnungs- oder Markupsprachen zum Einsatz. 
 
@@ -166,8 +166,8 @@ Wie schon erwähnt, kann im Grunde jeder mit XML seine eigene Markup-Sprache fü
 
 Obwohl diese Regel optional ist, empfiehlt es sich, sie einzuhalten – aus mehreren Gründen: 
 
-* Eine Grammatik ist zum einen nützlich, damit man selbst überprüfen kann, ob man mehrere Dokumente desselben Typs einheitlich annotiert hat. 
-* Zum anderen dokumentiert sie die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder z.B. fremde Daten mit nutzen wollen.
+- Eine Grammatik ist zum einen nützlich, damit man selbst überprüfen kann, ob man mehrere Dokumente desselben Typs einheitlich annotiert hat. 
+- Zum anderen dokumentiert sie die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder z.B. fremde Daten mit nutzen wollen.
 
 Es gibt mehrere Möglichkeiten, eine Grammatik zu schreiben. Am Beginn der Entwicklung standen sogenannte **[Document Type Definitions](https://www.w3schools.com/xml/xml_dtd.asp)**. Sie wurden vom Vorgängerstandard SGML übernommen und sind allerdings in einer Sprache geschrieben, die selbst kein XML ist. Dies bedeutet einen Zusatzaufwand, da man diese Sprache erst erlernen muss. 
 
@@ -297,13 +297,13 @@ Ein XML-Dokument ist eine hierarchische Strukturierung und Anordnung von Inhalte
 
 **Das Schema schreibt vor, welche Elemente es gibt, wo sie anzutreffen sein dürfen und wo nicht.** So kann beispielsweise im Schema definiert werden, dass ein Element nur ein bestimmtes Elternelement haben kann.
 
-* ein Vorname darf nur das Kind eines Personennamens sein.
-* ein Personenname kann nur *innerhalb* einer Überschrift, eines Paragraphen oder einer Verszeile vorkommen, aber niemals außerhalb
+- ein Vorname darf nur das Kind eines Personennamens sein.
+- ein Personenname kann nur *innerhalb* einer Überschrift, eines Paragraphen oder einer Verszeile vorkommen, aber niemals außerhalb
 
 Neben den Beziehungen regelt ein Schema auch, **wie oft ein Element oder Attributwert vorkommen darf**. 
 
-* Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. 
-* Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
+- Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. 
+- Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
 
 Ein Buch, könnte in XML etwa wie folgt abgebildet werden: 
 
@@ -325,10 +325,10 @@ Bei der TEI geht es dezidiert darum, **Texte kodierend zu beschreiben**, daher i
 
 Mit der TEI können unterschiedlichste **Aspekte eines Textes kodiert** werden. Einige relevanten Fragen sind hier z.B.:
 
-* Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.? Dies erfasst das **strukturelle Markup**.
-* Über welche ‘Dinge’ spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte, etc.), aber auch Konzepte, Ideen, andere Texte usw. Diese Aspekte werden im **semantischen Markup** annotiert.
-* Wie spricht der Text? Mit welchen linguistischen, rhetorischen oder narratologischen Mitteln arbeitet er – Aspekte, die nicht an der Textoberfläche manifest sind, sondern erst durch einen Analyseschritt erfassbar werden, werden im **analytischen Markup** beschrieben.
-* Und schließlich: Wie sieht der Text aus? Dies erfasst das **repräsentationale Markup**.
+- Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.? Dies erfasst das **strukturelle Markup**.
+- Über welche ‘Dinge’ spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte, etc.), aber auch Konzepte, Ideen, andere Texte usw. Diese Aspekte werden im **semantischen Markup** annotiert.
+- Wie spricht der Text? Mit welchen linguistischen, rhetorischen oder narratologischen Mitteln arbeitet er – Aspekte, die nicht an der Textoberfläche manifest sind, sondern erst durch einen Analyseschritt erfassbar werden, werden im **analytischen Markup** beschrieben.
+- Und schließlich: Wie sieht der Text aus? Dies erfasst das **repräsentationale Markup**.
 
 Die folgenden Kapitel werden einen kurzen Überblick über die Struktur von TEI-Dokumenten geben und dabei einige sehr häufig verwendete Elemente hervorheben.
 
