@@ -18,10 +18,12 @@ export interface TagId {
 
 type ID = TagId['id']
 
-export interface TagData {
+export interface TagYaml {
   name: string
   description: string
 }
+
+export type TagData = TagYaml
 
 export interface Tag extends TagId, TagData {}
 

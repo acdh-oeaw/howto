@@ -90,7 +90,8 @@ export async function getStaticProps(
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const { id } = context.params as CoursePageParams
+  const params = context.params as CoursePageParams
+  const id = params.id
 
   const course = await getCourseById(id, locale)
 

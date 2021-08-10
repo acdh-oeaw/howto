@@ -1,6 +1,6 @@
 import * as YAML from 'js-yaml'
 import type { VFile } from 'vfile'
-import matter from 'vfile-matter'
+import { matter } from 'vfile-matter'
 
 /**
  * Extracts YAML frontmatter from `VFile`.

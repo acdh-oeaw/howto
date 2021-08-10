@@ -81,7 +81,9 @@ export async function getStaticProps(
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const page = Number(context.params?.page)
+  const params = context.params as AuthorsPageParams
+  const page = Number(params.page)
+
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
   const authors = paginate(await getPersons(locale), pageSize)[page - 1]!
   const authorsWithPostCount = (

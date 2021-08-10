@@ -1,11 +1,12 @@
 import type * as Mdast from 'mdast'
-import retext from 'retext'
+import { retext } from 'retext'
+import type { Options } from 'retext-smartypants'
 import smartypants from 'retext-smartypants'
 import type { Transformer } from 'unified'
 import type * as Unist from 'unist'
-import visit from 'unist-util-visit'
+import { visit } from 'unist-util-visit'
 
-const options = { dashes: 'oldschool' }
+const options: Options = { dashes: 'oldschool' }
 const processor = retext().use(smartypants, options)
 
 /**

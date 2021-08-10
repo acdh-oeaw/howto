@@ -9,12 +9,9 @@ import type {
 import { Fragment } from 'react'
 
 import type { PostPreview } from '@/cms/api/posts.api'
-import { getTagById, getTagIds } from '@/cms/api/tags.api'
-import type { Tag as TagData } from '@/cms/api/tags.api'
-import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
+import { getPostPreviews, getPostIds } from '@/cms/api/posts.api'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
-import { LeadIn } from '@/common/LeadIn'
 import { PageContent } from '@/common/PageContent'
 import { PageTitle } from '@/common/PageTitle'
 import { getLocale } from '@/i18n/getLocale'
@@ -26,48 +23,39 @@ import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
 import { Pagination } from '@/views/Pagination'
-import { ResourcesList as PostsList } from '@/views/ResourcesList'
+import { ResourcesList } from '@/views/ResourcesList'
 
 const pageSize = 12
 
-export interface TagPageParams extends ParsedUrlQuery {
-  id: string
+export interface ResourcesPageParams extends ParsedUrlQuery {
   page: string
 }
 
-export interface TagPageProps {
+export interface ResourcesPageProps {
   dictionary: Dictionary
-  tag: TagData
   resources: Page<PostPreview>
 }
 
 /**
- * Creates page for every tag.
+ * Creates resources pages.
  */
 export async function getStaticPaths(
   context: GetStaticPathsContext,
-): Promise<GetStaticPathsResult<TagPageParams>> {
+): Promise<GetStaticPathsResult<ResourcesPageParams>> {
   const { locales } = getLocale(context)
 
   const paths = (
     await Promise.all(
       locales.map(async (locale) => {
-        const ids = await getTagIds(locale)
-        return (
-          await Promise.all(
-            ids.map(async (id) => {
-              const posts = await getPostPreviewsByTagId(id, locale)
+        const ids = await getPostIds(locale)
+        const pages = getPageRange(ids, pageSize)
 
-              const pages = getPageRange(posts, pageSize)
-              return pages.map((page) => {
-                return {
-                  params: { id, page: String(page) },
-                  locale,
-                }
-              })
-            }),
-          )
-        ).flat()
+        return pages.map((page) => {
+          return {
+            params: { page: String(page) },
+            locale,
+          }
+        })
       }),
     )
   ).flat()
@@ -79,23 +67,19 @@ export async function getStaticPaths(
 }
 
 /**
- * Provides tag metadata, metadata for posts tagged with that tag and
- * translations for tag page.
+ * Provides translations and metadata for resources page.
  */
 export async function getStaticProps(
-  context: GetStaticPropsContext<TagPageParams>,
-): Promise<GetStaticPropsResult<TagPageProps>> {
+  context: GetStaticPropsContext<ResourcesPageParams>,
+): Promise<GetStaticPropsResult<ResourcesPageProps>> {
   const { locale } = getLocale(context)
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const params = context.params as TagPageParams
-  const id = params.id
+  const params = context.params as ResourcesPageParams
+  const page = Number(params.page)
 
-  const tag = await getTagById(id, locale)
-
-  const page = Number(context.params?.page)
-  const postPreviews = await getPostPreviewsByTagId(id, locale)
+  const postPreviews = await getPostPreviews(locale)
   const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) =>
     a.date > b.date ? -1 : 1,
   )
@@ -106,17 +90,16 @@ export async function getStaticProps(
   return {
     props: {
       dictionary,
-      tag,
       resources,
     },
   }
 }
 
 /**
- * Tag page.
+ * Resources page.
  */
-export default function TagPage(props: TagPageProps): JSX.Element {
-  const { tag, resources: posts } = props
+export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
+  const { resources } = props
 
   const { t } = useI18n()
   const canonicalUrl = useCanonicalUrl()
@@ -125,22 +108,18 @@ export default function TagPage(props: TagPageProps): JSX.Element {
   return (
     <Fragment>
       <Metadata
-        title={tag.name}
+        title={t('common.page.resources')}
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <PageTitle>{tag.name}</PageTitle>
-        <LeadIn>{tag.description}</LeadIn>
-        <section className="space-y-5">
-          <h2 className="sr-only">{t('common.resources')}</h2>
-          <PostsList resources={posts.items} />
-          <Pagination
-            page={posts.page}
-            pages={posts.pages}
-            href={(page) => routes.tag({ id: tag.id, resourcePage: page })}
-          />
-        </section>
+      <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
+        <PageTitle>{t('common.posts')}</PageTitle>
+        <ResourcesList resources={resources.items} />
+        <Pagination
+          page={resources.page}
+          pages={resources.pages}
+          href={(page) => routes.resources({ page })}
+        />
       </PageContent>
     </Fragment>
   )

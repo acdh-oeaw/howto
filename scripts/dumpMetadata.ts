@@ -1,16 +1,17 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
+import { getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostPreviews } from '@/cms/api/posts.api'
 import { log } from '@/utils/log'
 
 /**
- * Dumps resource metadata to public folder as json.
+ * Dumps metadata to public folder as json.
  */
 async function main() {
   const locale = 'en'
 
-  const outputFolder = path.join(process.cwd(), 'public', 'resources')
+  const outputFolder = path.join(process.cwd(), 'public', 'metadata')
   fs.mkdirSync(outputFolder, { recursive: true })
 
   const resources = await getPostPreviews(locale)
@@ -21,10 +22,17 @@ async function main() {
       encoding: 'utf-8',
     },
   )
+
+  const curricula = await getCoursePreviews(locale)
+  fs.writeFileSync(
+    path.join(outputFolder, 'curricula.json'),
+    JSON.stringify({ curricula }),
+    {
+      encoding: 'utf-8',
+    },
+  )
 }
 
 main()
-  .then(() =>
-    log.success('Successfully dumped resource metadata to public folder.'),
-  )
+  .then(() => log.success('Successfully dumped metadata to public folder.'))
   .catch(log.error)

@@ -40,11 +40,11 @@ interface ResourcePreviewCardProps {
  */
 function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
   const { resource } = props
-  const { id, title, authors, abstract } = resource
+  const { id, kind, title, authors, abstract } = resource
 
   const { t } = useI18n()
 
-  const href = routes.resource({ kind: 'posts', id })
+  const href = routes.resource({ kind, id })
 
   return (
     <article className="flex flex-col py-12 space-y-6">
@@ -71,10 +71,12 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
                           <Image
                             src={author.avatar}
                             alt=""
-                            className="object-cover w-8 h-8 rounded-full"
+                            className="w-8 h-8 rounded-full"
                             layout="fixed"
                             width={32}
                             height={32}
+                            objectFit="cover"
+                            placeholder="blur"
                           />
                         ) : null}
                       </li>

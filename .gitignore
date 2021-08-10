@@ -61,5 +61,5 @@ public/feed.xml
 public/robots.txt
 public/sitemap.xml
 
-# resource dump
-public/resources/*.json
+# metadata dump
+public/metadata/*.json

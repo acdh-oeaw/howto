@@ -1,3 +1,7 @@
-export const resourceKinds = ['posts'] as const
+import type { Post, PostPreview } from '@/cms/api/posts.api'
 
-export type ResourceKind = typeof resourceKinds[number]
+export type Resource = Post
+
+export type ResourcePreview = PostPreview
+
+export type ResourceKind = Resource['kind']

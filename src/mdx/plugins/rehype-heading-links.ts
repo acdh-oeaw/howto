@@ -1,11 +1,12 @@
 import type * as Hast from 'hast'
 import withHeadingLinks from 'rehype-autolink-headings'
+import type { Options } from 'rehype-autolink-headings'
 import type { Pluggable } from 'unified'
 
 /**
  * Returns preconfigured `rehype-autolink-headings` plugin.
  */
-const plugin: Pluggable<[withHeadingLinks.Options]> = [
+const plugin: Pluggable<[Options]> = [
   withHeadingLinks,
   {
     /**

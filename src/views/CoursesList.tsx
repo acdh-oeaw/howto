@@ -71,10 +71,12 @@ function CoursePreviewCard(props: CoursePreviewCardProps): JSX.Element {
                           <Image
                             src={author.avatar}
                             alt=""
-                            className="object-cover w-8 h-8 rounded-full"
+                            className="w-8 h-8 rounded-full"
                             layout="fixed"
                             width={32}
                             height={32}
+                            objectFit="cover"
+                            placeholder="blur"
                           />
                         ) : null}
                       </li>

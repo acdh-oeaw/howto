@@ -18,10 +18,12 @@ export interface LicenceId {
 
 type ID = LicenceId['id']
 
-export interface LicenceData {
+export interface LicenceYaml {
   name: string
   url: UrlString
 }
+
+export type LicenceData = LicenceYaml
 
 export interface Licence extends LicenceId, LicenceData {}
 

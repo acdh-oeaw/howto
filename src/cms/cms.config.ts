@@ -51,6 +51,7 @@ export const config: CmsConfig = {
     },
   },
   publish_mode: 'editorial_workflow',
+  show_preview_links: false,
   media_folder: 'public/assets/cms/images',
   public_folder: '/assets/cms/images',
   editor: { preview: false },

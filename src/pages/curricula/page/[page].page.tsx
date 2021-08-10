@@ -76,7 +76,9 @@ export async function getStaticProps(
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const page = Number(context.params?.page)
+  const params = context.params as CoursesPageParams
+  const page = Number(params.page)
+
   const coursePreviews = await getCoursePreviews(locale)
   const sortedCourses: Array<CoursePreview> = coursePreviews.sort((a, b) =>
     a.date > b.date ? -1 : 1,

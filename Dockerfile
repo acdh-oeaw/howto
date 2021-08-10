@@ -18,13 +18,13 @@ FROM base AS build
 
 RUN yarn install --frozen-lockfile --silent
 
+COPY --chown=node:node patches ./patches
 COPY --chown=node:node tsconfig.json app-env.d.ts next-env.d.ts next.config.js ./
 COPY --chown=node:node scripts ./scripts
 COPY --chown=node:node config ./config
 COPY --chown=node:node tailwind.config.js ./
-COPY --chown=node:node public ./public
-COPY --chown=node:node patches ./patches
 COPY --chown=node:node src ./src
+COPY --chown=node:node public ./public
 COPY --chown=node:node content ./content
 COPY --chown=node:node redirects.*.json ./
 # currently the .git folder is used to retrieve last-updated timestamps
@@ -58,6 +58,7 @@ FROM base AS serve
 
 COPY --from=build --chown=node:node /app/next.config.js ./
 COPY --from=build --chown=node:node /app/public ./public
+COPY --from=build --chown=node:node /app/redirects.*.json ./
 COPY --from=build --chown=node:node /app/.next ./.next
 
 # Ensures folder is owned by node:node when mounted as volume.

@@ -1,4 +1,4 @@
-import remark from 'remark'
+import { remark } from 'remark'
 import toPlaintext from 'strip-markdown'
 import type { Transformer } from 'unified'
 import type * as Unist from 'unist'
@@ -9,8 +9,10 @@ import type { VFile } from 'vfile'
  */
 export default function attacher(): Transformer {
   const WORDS_PER_MINUTE = 265
-  /** Uses `alt` text for images, keeps footnotes. */
-  const processor = remark().use(toPlaintext)
+  /** Uses `alt` text for images, everything wrapped in custom mdx elements is removed. */
+  const processor = remark().use(toPlaintext, {
+    remove: ['mdxJsxFlowElement', 'mdxJsxTextElement'],
+  })
 
   return transformer
 
@@ -21,7 +23,6 @@ export default function attacher(): Transformer {
     const words = plainText.trim().split(/\s+/)
     const minutes = Math.ceil(words.length / WORDS_PER_MINUTE)
 
-    file.data = file.data ?? {}
     const data = file.data as { timeToRead: number }
     data.timeToRead = minutes
   }

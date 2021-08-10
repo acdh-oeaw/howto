@@ -1,8 +1,8 @@
 import type * as Hast from 'hast'
-import h from 'hastscript'
+import { h } from 'hastscript'
 import type { Transformer } from 'unified'
 import type * as Unist from 'unist'
-import visit from 'unist-util-visit'
+import { visit, SKIP } from 'unist-util-visit'
 
 /**
  * Rehype plugin which wraps images in `<figure>` and adds `<figcaption>` when a `title` attribute is provided.
@@ -13,16 +13,22 @@ export default function attacher(): Transformer {
   function transformer(tree: Hast.Node) {
     visit(tree, 'element', visitor)
 
-    function visitor(node: Hast.Element, index: number, parent?: Unist.Parent) {
+    function visitor(
+      node: Hast.Element,
+      index: number | null,
+      parent: Unist.Parent | null,
+    ) {
       if (node.tagName !== 'img') return
-      if (node.properties?.title === undefined || parent === undefined) return
+      if (node.properties?.title == null || parent == null) return
 
       const title = node.properties.title as string
       const figure = h('figure', [node, h('figcaption', title)])
 
-      parent.children[index] = figure
+      if (index != null) {
+        parent.children[index] = figure
+      }
 
-      return visit.SKIP
+      return SKIP
     }
   }
 }

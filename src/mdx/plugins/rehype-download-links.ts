@@ -1,7 +1,7 @@
 import type * as Hast from 'hast'
-import type { MDXJsxTextElement } from 'hast-util-to-estree'
+import type { MDXJsxFlowElement, MDXJsxTextElement } from 'hast-util-to-estree'
 import type { Transformer } from 'unified'
-import visit from 'unist-util-visit'
+import { visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
 
 import { copyAsset } from '@/mdx/utils/copyAsset'
@@ -27,9 +27,9 @@ export default function attacher(): Transformer {
       node.properties.download = true
     }
 
-    visit(tree, 'mdxJsxTextElement', onMdxJsxTextElement)
+    visit(tree, ['mdxJsxFlowElement', 'mdxJsxTextElement'], onMdxJsxElement)
 
-    function onMdxJsxTextElement(node: MDXJsxTextElement) {
+    function onMdxJsxElement(node: MDXJsxFlowElement | MDXJsxTextElement) {
       if (node.name !== 'Download') return
 
       const urlAttribute = node.attributes.find(

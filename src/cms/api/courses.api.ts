@@ -7,8 +7,7 @@ import sizeOf from 'image-size'
 import withHeadingIds from 'rehype-slug'
 import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
-import type { VFile } from 'vfile'
-import vfile from 'vfile'
+import { VFile } from 'vfile'
 
 // import type { Licence, LicenceId } from '@/cms/api/licences.api'
 // import { getLicenceById } from '@/cms/api/licences.api'
@@ -306,7 +305,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
    * which will be reused as input in development with "fast refresh".
    * See below: we shouldn't cache the vfile in the first place, only the metadata.
    */
-  return compile(vfile({ ...file }), {
+  return compile(new VFile({ ...file }), {
     outputFormat: 'function-body',
     useDynamicImport: false,
     remarkPlugins: [

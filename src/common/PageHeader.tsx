@@ -141,7 +141,7 @@ function MobilePageNavigation() {
           isDismissable
         >
           <div className="flex flex-col">
-            <ul className="flex flex-col space-y-4 overflow-y-auto font-medium">
+            <ul className="flex flex-col my-8 space-y-4 overflow-y-auto font-medium">
               {Object.entries(navigation).map(([route, { href }]) => {
                 return (
                   <li key={route} className="flex px-2 py-2">
@@ -281,7 +281,10 @@ function Search() {
                         <Link href={href}>
                           <a className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100">
                             <h3 className="flex items-center space-x-2 font-medium">
-                              <Icon icon={icon} className="w-5 h-5" />
+                              <Icon
+                                icon={icon}
+                                className="flex-shrink-0 w-5 h-5"
+                              />
                               <span>{result.title}</span>
                             </h3>
                             {result._snippetResult?.abstract.value != null ? (

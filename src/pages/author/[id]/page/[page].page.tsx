@@ -90,10 +90,12 @@ export async function getStaticProps(
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const { id } = context.params as AuthorPageParams
+  const params = context.params as AuthorPageParams
+  const id = params.id
+  const page = Number(params.page)
+
   const author = await getPersonById(id, locale)
 
-  const page = Number(context.params?.page)
   const postPreviews = await getPostPreviewsByAuthorId(id, locale)
   const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) =>
     a.date > b.date ? -1 : 1,

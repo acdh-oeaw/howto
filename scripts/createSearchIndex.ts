@@ -3,7 +3,7 @@ import { promises as fs } from 'fs'
 import { loadEnvConfig } from '@next/env'
 import algoliasearch from 'algoliasearch'
 import type { SearchIndex } from 'algoliasearch'
-import remark from 'remark'
+import { remark } from 'remark'
 import withFootnotes from 'remark-footnotes'
 import withFrontmatter from 'remark-frontmatter'
 import withGfm from 'remark-gfm'
@@ -76,16 +76,15 @@ async function getResourceObjects(
 ): Promise<Array<IndexedResource>> {
   const resources = await getPostPreviews(locale)
   const type = 'resources' as const
-  const kind = 'posts' as const
 
   return Promise.all(
     resources
       .map((resource) => {
         return {
           type,
-          kind,
+          kind: resource.kind,
           id: resource.id,
-          objectID: createObjectId(type, kind, resource.id),
+          objectID: createObjectId(type, resource.kind, resource.id),
           title: resource.title,
           date: resource.date,
           lang: resource.lang,

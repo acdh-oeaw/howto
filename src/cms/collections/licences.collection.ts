@@ -19,7 +19,7 @@ export const collection: CmsCollection = {
   slug: '{{slug}}',
   media_folder: '../../{{media_folder}}/licences',
   public_folder: '{{public_folder}}/licences',
-  preview_path: 'licences/{{slug}}',
+  preview_path: 'licence/{{slug}}',
   sortable_fields: ['commit_date', 'name'],
   fields: [
     {
