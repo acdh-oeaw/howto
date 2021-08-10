@@ -77,7 +77,7 @@ export interface PostMetadata
   editors?: Array<Person>
   tags: Array<Tag>
   licence: Licence
-  featuredImage?: FilePath | { src: FilePath; width: number; height: number }
+  featuredImage?: FilePath | StaticImageData
 }
 
 export interface PostData {
