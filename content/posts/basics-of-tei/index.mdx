@@ -55,11 +55,15 @@ Im Folgenden werden Sie erste Schritte kennenlernen, was und wie Sie einen Flie�
 
 Beachten Sie, dass ein Dokument erst well-formed ist, wenn Sie damit fertig sind, d.h. wenn es keinen Text mehr gibt, der nicht von Elementen (an der jeweils erlaubten Position) umgeben ist. Beachten Sie dabei, dass der Text in einem `<div>`-Element von einem `<head>` -, `<p>`- bzw. `<lg>`-Element, oder einem ähnlichen Element umgeben sein muss.
 
+Die Element können durch Attribute und Werte noch genauer definiert werden. Sie werden hierzu am Ende der praktischen Anwendung mehr erfahren.
+
 ### Praktische Anwendung
 
-Sehen Sie sich bitte die folgenden Beispiele an. Es handelt sich um einen (gekürzten) Abschnitt aus einer Filmbeschreibung. Wir betrachten im Folgenden die Filmbeschreibung, einen Spielplan, und ein Gedicht mit dem Titel "Der Filmstar" näher. Um den Text und viele ähnliche Texte automatisiert bearbeiten zu können, muss entsprechend ausgezeichnet werden. 
+Wir betrachten im Folgenden die Filmbeschreibung, einen Spielplan, und ein Gedicht mit dem Titel "Der Filmstar" näher. Beim ersten Beispiel handelt es sich um einen (gekürzten) Abschnitt aus einer Filmbeschreibung.  Um den Text und viele ähnliche Texte automatisiert bearbeiten zu können, müssen sie entsprechend ausgezeichnet werden. 
 
 Für jeden Abschnitt ist ein Annotationsvorschlag mit dem entsprechenden Beispieltext sowie eine Blanko-Vorlage angegeben. Bitte beachten Sie, dass der `<header>` nicht vollständig ausgezeichnet wurde, da wir uns vor allem mit dem `<body>` beschäftigen.
+
+##### Beispiel Filmbeschreibung
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -92,6 +96,8 @@ Für jeden Abschnitt ist ein Annotationsvorschlag mit dem entsprechenden Beispie
   </text>
 </TEI>
 ```
+
+![Text der Filmbeschreibung Die Wunder des Meeres mit Bild einer Meerjungfrau](images/die_wunder_popout_dark.png "Filmbeschreibung Die Wunder des Meeres")
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -138,6 +144,8 @@ Für jeden Abschnitt ist ein Annotationsvorschlag mit dem entsprechenden Beispie
 ```
 
 Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<p>`geteilt wurde. Beide Element befinden sich innerhalb eines `<div>`-Elements, das die beiden Elemente gemeinsam einen Abschnitt im Fließtext bilden. Bitte beachten Sie, dass dieser Abschnitt well-formed ist, da alle Textteile umgeben sind und die Tags geschlossen wurden.
+
+##### Beispiel Spielplan
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -210,6 +218,8 @@ Wie im vorangegangenen Beispiel sehen Sie, dass das Listenelement in ein `<div>`
 <SideNote type="info" title="Einrückungen">
 Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstellen. So sehen Sie, welche Kindelemente in ein Elternelement eingebettet sind. Diese Darstellung verändert die Textanordnung nicht.
 </SideNote>
+
+#### Attribute und Werte
 
 Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten [^6] aus, um konkreter zu bezeichnen, worum es sich bei dem Element handelt (z.B. Gedicht, Spielplan, Artikel,...). Hier sehen Sie Auszeichnungen, die Ihnen in unserem Beispiel begegnen.
 
@@ -431,8 +441,6 @@ Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Sie mö
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
-
-
 
 
 ### Glossar
