@@ -25,7 +25,7 @@ uuid: KekCIIoGVVJb_wDu5cYBU
 
 ### Grundlegende Strukturierung von Fließtext in TEI; der Body
 
-Ein TEI Dokument besteht aus verschiedenen Abschnitten, wenn Sie darin ein Textdokument auszeichnen möchten. Nach dem `<header>`, in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung des Fließtextes Ihres Dokuments. In diesem sogenannten `<body>`[^1] erfassen Sie unter anderem die Struktur Ihres Fließtextes. Diese Struktur legen Sie vor und während der Dokumenterstellung fest, und folgen dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und auch Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
+Ein TEI Dokument, in dem Sie ein Textdokument - sei es aus einer physischen Vorlage oder born digital - auszeichnen, besteht aus verschiedenen Abschnitten. Nach dem `<header>`, in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung des Fließtextes Ihres Dokuments. In diesem sogenannten `<body>`[^1] erfassen Sie unter anderem die Struktur Ihres Fließtextes. Diese Struktur legen Sie vor und während der Dokumenterstellung fest, und folgen dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und auch Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
 
 Der gesamte Body ist vom Element `<body>` umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des `<body>` zunächst die einzelnen Abschnitte als `<div>`-Elemente[^2] mit Überschriften `<head>` und Absätzen `<p>` bzw. Strophen `<lg>` und Verse mit `<l>` ausgezeichnet.
 
@@ -232,8 +232,6 @@ Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstell
 ```
 
 Die Auszeichnung verändert nicht die Anordnung der einzelnen Textteile, aber durch Einrückungen wird gezeigt, wie die Textteile zueinander strukturiert sind. `<div>` bildet die oberste Hierarchieebene, darin folgen dann `<head>`, `<p>`, etc als weitere Ebenen. Sie können gleichwertig sein, oder weiter ineinander verschachtelt. Bei Aufzählungen wird die oberste Hierarchieebene mit `<list>` gekennzeichnet, innerhalb der `<list>` findet man einen oder mehrere `<item>`.
-
-
 
 Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten [^6] aus, worum es sich bei dem Element konkret handelt (z.B. Gedicht, Spielplan, Artikel,...).
 
