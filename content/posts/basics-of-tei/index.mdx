@@ -331,7 +331,7 @@ Wie Sie im Beispiel sehen, wird der Fließtext nicht nur als Abschnitt `<div>`, 
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        a) alle Einträge `<item>` sind gleichwertig und deshalb auf derselben Hierarchieebene
+        a) alle Einträge `<item>` sind Geschwisterelemente und deshalb auf derselben Hierarchieebene
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
@@ -339,16 +339,20 @@ Wie Sie im Beispiel sehen, wird der Fließtext nicht nur als Abschnitt `<div>`, 
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-        c) die Aufzählung `<list>` und die Einträge `<item>` müssen sich auf derselben Hierarchieebene befinden, da sie gleichwertig sind.
+        c) die Aufzählung `<list>` und die Einträge `<item>` müssen sich auf derselben Hierarchieebene befinden, da sie Geschwisterelemente sind.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        d) die Aufzählung `<list>` und die Einträge `<item>` sind nicht gleichwertig. Die Einträge `<item>` sind Teil der Aufzählung `<list>`. `<list>` muss also alle `<item>` umgeben.
+        d) die Aufzählung `<list>` und die Einträge `<item>` sind nicht gleichwertig. Die Einträge `<item>` sind Kindelemente der Aufzählung `<list>`. Das Elternelement `<list>` muss also alle `<item>` umgeben.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        e) `<list>`und `<item>` sind wohlgeformt, da sie in sich geschlossen sind und die Hierarchie eingehalten wird.
+        e) `<list>`und `<item>` sind wohlgeformt, wenn sie in sich geschlossen sind und die Hierarchie eingehalten wird.
       </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut!
+      </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
