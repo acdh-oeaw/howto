@@ -23,6 +23,13 @@ uuid: KekCIIoGVVJb_wDu5cYBU
 ---
 ## TEI Body
 
+### Lernziele
+
+- Unterscheidung der TEI-Dokumentteile header und text
+- Auszeichnung strukturelle Element des Fließtextes
+- Nutzung von Attributen und Werten zur genaueren Auszeichnung im Fließtext
+
+
 ### Grundlegende Strukturierung von Fließtext in TEI; der Body
 
 Ein TEI Dokument, in dem Sie ein Textdokument - sei es aus einer physischen Vorlage oder born digital - auszeichnen, besteht aus verschiedenen Abschnitten. Nach dem `<header>`, in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung Ihres Textes im Abschnitt `<text>`. In diesem Bereich können neben dem Fließtext auch ein Vorspann, Nachspannoder ähnliches ausgezeichnet werden. Der Fließtext befindet sich im sogenannten `<body>`-Element, wo Sie unter anderem die Struktur Ihres Fließtextes erfassen können. Diese Struktur folgt dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und genauso Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
@@ -386,7 +393,7 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
 
 #### Übung 2a: Attribute festlegen
 
-![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\"Die Filmwelt\\\"")
+![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\\"Die Filmwelt\\\\"")
 
 <Quiz>
   <Quiz.Card>
@@ -482,11 +489,9 @@ Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Da häu
 [^1]: Body enthält den gesamten, eigenständigen Text, außer Vorspann (front) und Nachspann (back)
 [^2]: `<div>`-Element steht für division, und ist ein neutrales Element für Textabschnitte. Sie können beliebt detailliert Schachteln und auch Elemente wie zum Beispiel eine Überschrift `<head>` und ein Absatz `<p>` (als Geschwisterelemente) einem Elternelement `<div>` unterordnen.
 
-Das Glossar wurde [Einführung in die TEI, Christiane Fritze, Winter School Digitale Editionen Halle (Saale), 2019] (https://www.i-d-e.de/wp-content/uploads/2019/11/05_Einf%C3%BChrung-TEI.pdf) entnommen.
+Das Glossar wurde [Einführung in die TEI, Christiane Fritze, Winter School Digitale Editionen Halle (Saale), 2019](https://www.i-d-e.de/wp-content/uploads/2019/11/05_Einf%C3%BChrung-TEI.pdf) entnommen.
 
 ### Weiterführende Quellen:
-
-
 
 [Defaut text structure, 4.1 Divisions of the body](https://tei-c.org/release/doc/tei-p5-doc/en/html/DS.html#DSDIV)
 
