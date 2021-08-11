@@ -25,7 +25,7 @@ uuid: KekCIIoGVVJb_wDu5cYBU
 
 ### Grundlegende Strukturierung von Fließtext in TEI; der Body
 
-Ein TEI Dokument, in dem Sie ein Textdokument - sei es aus einer physischen Vorlage oder born digital - auszeichnen, besteht aus verschiedenen Abschnitten. Nach dem `<header>`, in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung des Fließtextes Ihres Dokuments. In diesem sogenannten `<body>`[^1] erfassen Sie unter anderem die Struktur Ihres Fließtextes. Diese Struktur legen Sie vor und während der Dokumenterstellung fest, und folgen dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und auch Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
+Ein TEI Dokument, in dem Sie ein Textdokument - sei es aus einer physischen Vorlage oder born digital - auszeichnen, besteht aus verschiedenen Abschnitten. Nach dem `<header>`, in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung Ihres Textes im Abschnitt `<text>`. In diesem Bereich können neben dem Fließtext auch ein Vorspann, Nachspannoder ähnliches ausgezeichnet werden. Der Fließtext befindet sich im sogenannten `<body>`-Element, wo Sie unter anderem die Struktur Ihres Fließtextes erfassen können. Diese Struktur folgt dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und genauso Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
 
 Der gesamte Body ist vom Element `<body>` umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des `<body>` zunächst die einzelnen Abschnitte als `<div>`-Elemente[^2] mit Überschriften `<head>` und Absätzen `<p>` bzw. Strophen `<lg>` und Verse mit `<l>` ausgezeichnet.
 
@@ -221,11 +221,11 @@ Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstell
 
 #### Attribute und Werte
 
-Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten [^6] aus, um konkreter zu bezeichnen, worum es sich bei dem Element handelt (z.B. Gedicht, Spielplan, Artikel,...). Hier sehen Sie Auszeichnungen, die Ihnen in unserem Beispiel begegnen.
+Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten aus, um konkreter zu bezeichnen, worum es sich bei dem Element handelt (z.B. Gedicht, Spielplan, Artikel,...). Hier sehen Sie Auszeichnungen, die Ihnen in unserem Beispiel begegnen.
 
 - `<div>` + type article / movieSchedule / poem / editorialStatement / reviews / review
 - `<div>` type review + n 1 / 2
-- `<head>` + type columnTitle [^5]
+- `<head>` + type columnTitle
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -386,7 +386,7 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
 
 #### Übung 2a: Attribute festlegen
 
-![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\"Die Filmwelt\\"")
+![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\"Die Filmwelt\\\"")
 
 <Quiz>
   <Quiz.Card>
@@ -479,15 +479,14 @@ Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Da häu
 
 ### Glossar
 
-[^1]: Body bezeichnet den Fließtext. Gemeinsam mit dem Header bildet er das TEI-Dokument.
-[^2]: `<div>`-Element steht für division, eine obere Strukturebene, die einen Abschnitt, der von anderen Textabschnitten abgesetzt ist, bezeichnet. Innerhalb eines `<div>`-Elements können mehrere Elemente sitzen, zum Beispiel eine Überschrift `<head>` und ein Absatz `<p>`.
-[^3]: Header bezeichnet die Metadaten über den Text, die nicht Teil des Fließtextes sind. Gemeinsam mit dem Body bildet er das TEI-Dokument.
-[^4]: wohlgeformte Elemente wurden geöffnet und wieder geschlossen, zum Beispiel `<head>` Trainspotting `</head>`. Wohlgeformte Elemente werden immer auf kleinster Ebene geschlossen, bevor sie in eine größere Struktur eingebettet sind.
-[^5]: valide Elemente sind nicht nur wohlgeformt, sondern auch konform zum festgelegten XML Schema.
+[^1]: Body enthält den gesamten, eigenständigen Text, außer Vorspann (front) und Nachspann (back)
+[^2]: `<div>`-Element steht für division, und ist ein neutrales Element für Textabschnitte. Sie können beliebt detailliert Schachteln und auch Elemente wie zum Beispiel eine Überschrift `<head>` und ein Absatz `<p>` (als Geschwisterelemente) einem Elternelement `<div>` unterordnen.
+
+Das Glossar wurde [Einführung in die TEI, Christiane Fritze, IDE, 2019] (https://www.i-d-e.de/wp-content/uploads/2019/11/05_Einf%C3%BChrung-TEI.pdf) entnommen.
 
 ### Weiterführende Quellen:
 
-nicht notwendig [^5]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II_FW_11_12.xml`
+
 
 [Defaut text structure, 4.1 Divisions of the body](https://tei-c.org/release/doc/tei-p5-doc/en/html/DS.html#DSDIV)
 
