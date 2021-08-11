@@ -113,7 +113,7 @@ Ein konkretes Beispiel ist wie erwähnt z.B. ein Datum:
 <date>01.12.2018</date>
 ```
 
-Neben den Elementen mit Inhalt, gibt es auch **leere Elemente** – sie werden verwendet um z.B. die Position von etwas anzugeben, z.B. ein Zeilenumbruch. Da die Tags in diesem Fall nichts umschließen, kann man statt der paarigen Schreibweise auch eine einteilige Kurzform verwenden, man erkennt sie am Schrägstich hinter dem Elementnamen.
+Neben den Elementen mit Inhalt, gibt es auch **leere Elemente** – sie werden verwendet um z.B. die Position von etwas anzugeben, z.B. ein Zeilenumbruch. Da die Tags in diesem Fall nichts umschließen, kann man statt der paarigen Schreibweise auch eine einteilige Kurzform verwenden, man erkennt sie am Schrägstich hinter dem Elementnamen:
 
 ```xml
 a) <element></element>
@@ -122,11 +122,11 @@ b) <element/>
 
 Zur **Beschreibung komplexer Inhalte**, reicht ein Elementname alleine meist nicht aus, weshalb mehrere verschiedene Elemente für denselben Inhalt vergeben werden können. Zusatzinformationen lassen sich aber auch unterbringen, indem man im Start-Tag eines Elements sogenannte Attribute einfügt, die umgeben von Anführungszeichen bestimmte Werte enthalten. Ein Element darf selbstverständlich mehrere unterschiedliche Attribute besitzen. Grundsätzlich können Element-, Attribut- und Wertebezeichnungen aus jeder beliebigen Sprache gewählt werden, im Sinne der Austauschbarkeit haben sich jedoch englische Bezeichnungen durchgesetzt.
 
-Es gibt also **Tags**, die zusammen mit den Inhalten Elemente bilden, die **mit Hilfe von Attributen und Attributwerten genauer spezifiziert** werden können. Die Syntax dafür ist wie folgt:
+Es gibt also a) **Tags**, die zusammen mit den Inhalten Elemente bilden  als auch b) **leere Elemente**, die **mit Hilfe von Attributen und Attributwerten genauer spezifiziert** werden können. Die Syntax dafür ist wie folgt:
 
 ```xml
-<element attribut="wert">Inhalt</element>
-<element attribut="wert" attribut2="wert"/>
+a) <element attribut="wert">Inhalt</element>
+b) <element attribut="wert" attribut2="wert"/>
 ```
 
 ### Wohlgeformtheit
