@@ -220,6 +220,26 @@ Dies ermöglicht die Überprüfung einer **einheitlichen Annotation** über Doku
 </Quiz>
 
 
+### Elementhierarchie in XML
+
+Ein XML-Dokument ist eine hierarchische Strukturierung und Anordnung von Inhalten. Diese ist jedoch nicht beliebig, sondern wird im Dokument-Schema festgelegt. Und da Dokumente gültig sein sollen, kann man sich die Strukturierung nicht willkürlich aussuchen.
+
+**Das Schema schreibt vor, welche Elemente es gibt, wo sie anzutreffen sein dürfen und wo nicht.** So kann beispielsweise im Schema definiert werden, dass ein Element nur ein bestimmtes Elternelement haben kann.
+
+- Ein Vorname darf nur das Kind eines Personennamens sein.
+- Ein Personenname kann nur *innerhalb* einer Überschrift, eines Paragraphen oder einer Verszeile vorkommen, aber niemals außerhalb.
+
+Neben den Beziehungen regelt ein Schema auch, **wie oft ein Element oder Attributwert vorkommen darf**. 
+
+- Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. 
+- Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
+
+Ein Buch, könnte in XML etwa wie folgt abgebildet werden: 
+
+![XML Hierarchie eines Buches](images/xmlhierarchiebuch.png "XML Hierarchie eines Buches. Bild: Ulrike Czeitschner, ACDH-CH")
+
+Innerhalb des Wurzelelements befindet sich ein Element mit dem Namen Buch, das die Kindelemente Vorwort und mehrere Kapitel enthält, vielleicht gefolgt von einem Nachwort, eventuell einem Register und einem Impressum. Diese Kindelemente verhalten sich zueinander alle wie Geschwister und sind aber selbst auch Eltern der Titel-, Paragraphen- und Verszeilen-Elemente, die ebenfalls Geschwister sind und selbstverständlich auch wieder Kinder haben können. Somit ergibt sich eine hierarchische Anordnung und Struktur der Inhalte, die den Aufbau des Buches widerspiegelt.
+
 ### Aufbau von XML Dokumenten
 
 ![Aufbau XML Dokument](images/xml-dokument.png "Aufbau eines XML Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
@@ -301,29 +321,9 @@ Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen u
 </Quiz>
 
 
-### Elementhierarchie in XML
-
-Ein XML-Dokument ist eine hierarchische Strukturierung und Anordnung von Inhalten. Diese ist jedoch nicht beliebig, sondern wird im Dokument-Schema festgelegt. Und da Dokumente gültig sein sollen, kann man sich die Strukturierung nicht willkürlich aussuchen.
-
-**Das Schema schreibt vor, welche Elemente es gibt, wo sie anzutreffen sein dürfen und wo nicht.** So kann beispielsweise im Schema definiert werden, dass ein Element nur ein bestimmtes Elternelement haben kann.
-
-- Ein Vorname darf nur das Kind eines Personennamens sein.
-- Ein Personenname kann nur *innerhalb* einer Überschrift, eines Paragraphen oder einer Verszeile vorkommen, aber niemals außerhalb.
-
-Neben den Beziehungen regelt ein Schema auch, **wie oft ein Element oder Attributwert vorkommen darf**. 
-
-- Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. 
-- Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
-
-Ein Buch, könnte in XML etwa wie folgt abgebildet werden: 
-
-![XML Hierarchie eines Buches](images/xmlhierarchiebuch.png "XML Hierarchie eines Buches. Bild: Ulrike Czeitschner, ACDH-CH")
-
-Innerhalb des Wurzelelements befindet sich ein Element mit dem Namen Buch, das die Kindelemente Vorwort und mehrere Kapitel enthält, vielleicht gefolgt von einem Nachwort, eventuell einem Register und einem Impressum. Diese Kindelemente verhalten sich zueinander alle wie Geschwister und sind aber selbst auch Eltern der Titel-, Paragraphen- und Verszeilen-Elemente, die ebenfalls Geschwister sind und selbstverständlich auch wieder Kinder haben können. Somit ergibt sich eine hierarchische Anordnung und Struktur der Inhalte, die den Aufbau des Buches widerspiegelt.
-
 ## Von XML zu TEI
 
-Ein spezialisiertes Schema für die Kodierung von Texten und sprachlichen Informationen ist das Schema der 1987 gegründeten Text Encoding Initiative (TEI).  Basierend auf XML ist TEI mittlerweile der de-facto-Standard für die Kodierung von Texten und sprachlichen Informationen und ist innerhalb der Geisteswissenschaften federführend.  Die derzeit empfohlene Version P5 wurde 2007 veröffentlicht und seitdem regelmäßig verbessert und aktualisiert. Das Regelwerk enthält mehr als 500 Elemente und ebenso zahlreiche Attribute, die in sachbezogenen Modulen organisiert sind. Sie berücksichtigen Lyrik und Dramentexte ebenso wie Handschriften, Kritische Apparate oder Wörterbücher. Darüber hinaus bietet die TEI Komponenten sowohl für die Schemagenerierung als auch die Schema-Anpassung an und stellt integrierte Stylesheets zur Verfügung.
+1987 enwickelte die gegründeten Text Encoding Initiative (TEI) ein spezialisiertes Schema für die Kodierung von Texten und sprachlichen Informationen.  Basierend auf XML ist TEI mittlerweile der de-facto-Standard für die Kodierung von Texten und sprachlichen Informationen und ist innerhalb der Geisteswissenschaften federführend.  Die derzeit empfohlene Version P5 wurde 2007 veröffentlicht und seitdem regelmäßig verbessert und aktualisiert. Das Regelwerk enthält mehr als 500 Elemente und ebenso zahlreiche Attribute, die in sachbezogenen Modulen organisiert sind. Sie berücksichtigen Lyrik und Dramentexte ebenso wie Handschriften, Kritische Apparate oder Wörterbücher. Darüber hinaus bietet die TEI Komponenten sowohl für die Schemagenerierung als auch die Schema-Anpassung an und stellt integrierte Stylesheets zur Verfügung.
 
 Der Begriff "Markup" stammt ursprünglich aus der Druckersprache und bedeutet "Textauszeichung". Ein Beispiel dafür wären "Fahnenkorrekturen". Sie enthalten z.B. Fehlerberichtigungen und Anweisungen, was mit den angestrichenen Stellen zu tun ist - Buchstabenverdreher umstellen, Doppelungen löschen, Absätze aufteilen usw. Dabei werden Prozeduren vorgegeben, die früher der Setzer, heute der Grafiker mit dem Text zu vollziehen hat. Das könnte man als **"Prozedurales Markup"** bezeichnen.
 
@@ -333,7 +333,7 @@ Je nachdem mit welchem Verständnis man an die Sache herangeht, sind die Grenzen
 
 Bei der TEI geht es dezidiert darum, **Texte kodierend zu beschreiben**, daher ist sie vorwiegend **deskriptiv**.
 
-Mit der TEI können unterschiedlichste **Aspekte eines Textes kodiert** werden. Einige relevanten Fragen sind hier z.B.:
+Mit der TEI können unterschiedlichste **Aspekte eines Textes kodiert** werden. Einige relevante Fragen sind hier z.B.:
 
 - Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.? Dies erfasst das **strukturelle Markup**.
 - Über welche ‘Dinge’ spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte, etc.), aber auch Konzepte, Ideen, andere Texte usw. Diese Aspekte werden im **semantischen Markup** annotiert.
