@@ -384,19 +384,35 @@ Wie Sie im Beispiel sehen, wird der Fließtext nicht nur als Abschnitt `<div>`, 
 
 #### Übung 2a: Attribute festlegen
 
-<Quiz>
-  <Quiz.Card validateButtonLabel="Überprüfen">
-    <Quiz.XmlCodeEditor
-      code={"<xml>\n<div type=\"x\">\n<head>Die Wunder des Meeres.</head>\n<p>Der Film „Die Wunder des Meeres“ führt ...</p>\n</div>\n<div type=\"x\">\n<p>Der Film »Die Wunder des Meeres« läuft ab ...</p>\n</div>\n<div type=\"x\">\n<lg>\n<head>Der Filmstar.</head>\n<l>Du ahnst bei ihm die Schwüle</l>\n<l>...</l>\n<l>Um jede Großaufnahme.</l>\n<byline>Friedrich Zelnik.</byline>\n</lg>\n</div>\n</xml>"}
-      solution={"<xml>\n<div type=\"article\">\n<head>Die Wunder des Meeres.</head>\n<p>Der Film „Die Wunder des Meeres“ führt ...</p>\n</div>\n<div type=\"movieSchedule\">\n<p>Der Film »Die Wunder des Meeres« läuft ab ...</p>\n</div>\n<div type=\"poem\">\n<lg>\n<head>Der Filmstar.</head>\n<l>Du ahnst bei ihm die Schwüle</l>\n<l>...</l>\n<l>Um jede Großaufnahme.</l>\n<byline>Friedrich Zelnik.</byline>\n</lg>\n</div>\n</xml>"}
-      validate="input"
-    >
-      <Quiz.Question>
-        Die Forschungsgruppe interessiert sich dafür, welche Texte in den Zeitschriften gefunden werden können, da sie später von verschiedenen Personen beforscht werden sollen. Zeichnen Sie bitte die Textteile mit einem passenden Attribut aus. Wählen Sie das richtige Attribut für den entsprechende Fließtext aus:
+![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \"Die Filmwelt\", Texte, Bild und Zierleisten")
 
-        - article / movieSchedule / poem / editorialStatement / reviews (es muss zwischen "..." eingesetzt werden; wählen Sie nur die drei richtigen aus)
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Für die Forschungsgruppe, ist des wichtig, dass die Texte in der Zeitschrift mit den richtigen Attributen und Werte versehen werden. Sehen Sie sich bitte Seite 11 an und wählen Sie alle richtigen Auszeichnungen aus, die auf dieser Seite vergeben werden können.
       </Quiz.Question>
-    </Quiz.XmlCodeEditor>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        a) `<div type="article">` kann für den Text _Die Wunder des Meeres_ vergeben werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        b) `<div type="article">` kann für den Text _Der Filmstar_ vergeben werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        c) `<div type="movieSchedule">` kann für den Spielplan vergeben werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        d) `<div type="poem">` kann für den Text _Die Wunder des Meeres_ vergeben werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        e) für jeden Text auf Seite 11 kann zusätzlich die Auszeichnung `<div type="editorialStatement">`
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
 
