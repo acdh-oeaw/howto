@@ -23,8 +23,6 @@ uuid: b5ZVIAok97iqiZpjpexFI
 - Definition der Begriffe Text vs. Dokument
 - Arbeit mit Faksimiles
 
-
-
 ## Einführung: Texte und ihre Vorlagen
 
 ![Balzac Corrections, Quelle: https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg](images/BALZAC_Corrections2.jpg "Balzac Corrections, Bild: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg")
@@ -169,67 +167,59 @@ Im gezeigten Beispiel wird im Surface Element das Grundkoordinatensystem festgel
 
 ##### Übung
 
-Annotieren Sie bitte die im Faksimile von Seite 11 der Filmwelt eingezeichneten Zonen als eine parallele Transkription der Seite.
+<Quiz>
+  <Quiz.Card>
+    <Quiz.XmlCodeEditor
+      code={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Die Filmwelt - ein Ausschnitt</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information zur Veröffentlichung</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  \n  <facsimile>\n    Annotation Facsimiles mit Zonen hier\n  </facsimile>\n  \n  <text>\n    Texttranskription hier\n  </text>\n</TEI>"}
+      solution={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Die Filmwelt - ein Ausschnitt</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information zur Veröffentlichung</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  \n  <facsimile>\n    <surface xml:id=\"page11\" ulx=\"0\" uly=\"0\" lrx=\"1081\" lry=\"1457\">\n      <graphic url=\"Filmwelt_1923_31_11.jpg\"/>\n      <zone xml:id=\"zone1\" ulx=\"52\" uly=\"780\" lrx=\"1023\" lry=\"934\">\n      </zone>\n      <zone xml:id=\"zone2\" ulx=\"389\" uly=\"1028\" lrx=\"703\" lry=\"1300\">\n      </zone>\n    </surface>\n  </facsimile>\n\n  <text>\n   <body>\n     \n      <div facs=\"zone2\">\n        <lg>\n           <head>Der Filmstar.</head> \n             <l>Du ahnst bei ihm die Schwüle</l> \n             <l>Leise glimmender Gefühle.</l> \n             <l>Steife Hemdbrust —</l> \n             <l>Heben — senken —</l> \n             <l>Augen, die sich stumm verrenken.</l> \n             <l>— — — — — —</l> \n             <l>Er ist von seltner Bescheidenheit.</l> \n             <l>Doch ihn verpflichtet sein Name,</l> \n             <l>Drum kämpft er mit Beharrlichkeit</l> \n             <l>Um jede Großaufnahme.</l> \n             <byline>Friedrich Zelnik.</byline> \n        </lg>\n      </div>\n    </body>\n  </text>\n</TEI>"}
+      validate="input"
+    >
+      <Quiz.Question>
+        **Annotieren Sie bitte die im Faksimile von Seite 11 der Filmwelt eingezeichneten Zonen als eine parallele Transkription der Seite.**
 
-![](images/filmwelt_1923_31_11_1080px_zonen.jpeg "Filmwelt 31, 1923, S. 11 - mit zwei eingezeichneten Zonen.")
+        ![](images/filmwelt\_1923\_31\_11\_1080px_zonen.jpeg "Filmwelt 31, 1923, S. 11 - mit zwei eingezeichneten Zonen.")
 
-Der Dateiname der Grafik lautet "Filmwelt_1923_31_11.jpg".
+        Der Dateiname der Grafik lautet "Filmwelt\_1923\_31\_11.jpg".
 
-Die linke obere Ecke der Seite hat die Koordinaten 0,0. Die rechte untere Ecke die Koordinaten 1081,1457.
+        Die linke obere Ecke der Seite hat die Koordinaten 0,0. Die rechte untere Ecke die Koordinaten 1081,1457.
 
-Die **Zone 1** (der Spielplan) hat folgende Koordinaten: die linke obere Ecke ist 52,780. Die rechte untere Ecke liegt bei 1023,934.
+        Die **Zone 1** (der Spielplan) hat folgende Koordinaten: die linke obere Ecke ist 52,780. Die rechte untere Ecke liegt bei 1023,934.
 
-Der transkribierte Inhalt von Zone 1 lautet wie folgt:
+        Der transkribierte Inhalt von Zone 1 lautet wie folgt:
 
-```
-Der Film »Die Wunder des Meeres« läuft ab 14. bis 17. November in: Imperial-Kino, I., Rothgasse 9; Schwarzenberg-Kino,
-III., Schwarzenbergplatz; Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4; 18. bis 20. November
-in: Elite-Kino, I., Wollzeile 34: Opern-Kino, I., Friedrichstraße 4; Zentral-Kino, II., Taborstraße 8b: Dreilaufer Kino, IX., Alser-
-straße; Flieger-Kino, IX., Liechtensteinstraße 36; Wiedner Grand Kino, IV., Mittersteig 15; 21. bis 24. November in: Münstedt-
-Kino, II., Prater; Joh. Strauß-Kino, IV., Favoritenstraße 12; Raimund-Lichtspiele. XIV., Sechshauserstraße 13; Abbazia-Kino,
-XV., Neubaugürtel 15; 25. bis 27. November in: Münstedt-Kino, II., Prater; Luna-Kino, XVII , Hauptstraße 117; Michelbeuern-
-Kino, XVIII., Kreuzgasse 27; Vindobona-Kino, XX., Wallensteinplatz 5—6. ∆
-```
+        ```
+        Der Film »Die Wunder des Meeres« läuft ab 14. bis 17. November in: Imperial-Kino, I., Rothgasse 9; Schwarzenberg-Kino,
+        III., Schwarzenbergplatz; Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4; 18. bis 20. November
+        in: Elite-Kino, I., Wollzeile 34: Opern-Kino, I., Friedrichstraße 4; Zentral-Kino, II., Taborstraße 8b: Dreilaufer Kino, IX., Alser-
+        straße; Flieger-Kino, IX., Liechtensteinstraße 36; Wiedner Grand Kino, IV., Mittersteig 15; 21. bis 24. November in: Münstedt-
+        Kino, II., Prater; Joh. Strauß-Kino, IV., Favoritenstraße 12; Raimund-Lichtspiele. XIV., Sechshauserstraße 13; Abbazia-Kino,
+        XV., Neubaugürtel 15; 25. bis 27. November in: Münstedt-Kino, II., Prater; Luna-Kino, XVII , Hauptstraße 117; Michelbeuern-
+        Kino, XVIII., Kreuzgasse 27; Vindobona-Kino, XX., Wallensteinplatz 5—6. ∆
+        ```
 
-Die **Zone 2** (Gedicht "Der Filmstar") hat folgende Koordinaten: die linke obere Ecke ist 389,1028. Die rechte untere Ecke liegt bei 703,1300.
+        Die **Zone 2** (Gedicht "Der Filmstar") hat folgende Koordinaten: die linke obere Ecke ist 389,1028. Die rechte untere Ecke liegt bei 703,1300.
 
-Der transkribierte Inhalt von Zone 2 lautet wie folgt:
+        Der transkribierte Inhalt von Zone 2 lautet wie folgt:
 
-```
-Der Filmstar.
-Du ahnst bei ihm die Schwüle
-Leise glimmender Gefühle.
-Steife Hemdbrust —
-Heben — senken —
-Augen, die sich stumm verrenken.
-— — — — — —
-Er ist von seltner Bescheidenheit.
-Doch ihn verpflichtet sein Name,
-Drum kämpft er mit Beharrlichkeit
-Um jede Großaufnahme.
-Friedrich Zelnik.
-```
+        ```
+        Der Filmstar.
+        Du ahnst bei ihm die Schwüle
+        Leise glimmender Gefühle.
+        Steife Hemdbrust —
+        Heben — senken —
+        Augen, die sich stumm verrenken.
+        — — — — — —
+        Er ist von seltner Bescheidenheit.
+        Doch ihn verpflichtet sein Name,
+        Drum kämpft er mit Beharrlichkeit
+        Um jede Großaufnahme.
+        Friedrich Zelnik.
+        ```
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
 
-Lösung:
-
-```xml
-<tei>
-  <facsimile>
-    <surface xml:id="page11" ulx="0" uly="0" lrx="1081" lry="1457">
-      <graphic url="Filmwelt_1923_31_11.jpg"/>
-      <zone xml:id="zone1" ulx="52" uly="780" lrx="1023" lry="934">
-      ==> braucht es eine Grafik?
-      </zone>
-      <zone xml:id="zone2" ulx="389" uly="1028" lrx="703" lry="1300">
-      </zone>
-    </surface>
-  <facsimile>
-
-  <text>
-    ==> Texttranskription hier
-  </text>
-</tei>
-```
 
 #### Aussehen der Vorlage
 
@@ -283,7 +273,7 @@ Kolumnentitel, Kustoden, Seitenzahlen etc. <fw type="header">…</fw> <fw type="
 
 Zeichnen im Inhalt des folgenden Absatz aus der Filmwelt die Hervorhebungen mithilfe des 'highlighted'-Elements aus sowie die korrekten Zeilenumbrüche aus, inklusive dem Hinweis, ob es zu einer Wortabteilung kommt.
 
-![Abschnitt "Die Schönheitskonkurrenz" aus Filmwelt 1923, 31, S. 12](images/Filmwelt_1923_31_12_Schoenheitskonkurrenz.png "Abschnitt \\"Die Schönheitskonkurrenz\\" aus Filmwelt 1923, 31, S. 12")
+![Abschnitt "Die Schönheitskonkurrenz" aus Filmwelt 1923, 31, S. 12](images/Filmwelt_1923_31_12_Schoenheitskonkurrenz.png "Abschnitt \\\"Die Schönheitskonkurrenz\\\" aus Filmwelt 1923, 31, S. 12")
 
 Rohtext:
 
@@ -385,7 +375,7 @@ Eine **Wiederherstellung**, oder defacto die Rückgängigmachung einer zuvor get
 
 Mit dem Attribut `type` kann im restore-Element ausgezeichnet werden, auf welche Weise die Editierung rückgängig gemacht wurde - z.B. durch eine Notiz in der Marginalspalte (siehe auch TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHCD))
 
-![](images/Folie67.png "Beispiel einer für eine \\"Metamark\\". Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta")
+![](images/Folie67.png "Beispiel einer für eine \\\"Metamark\\\". Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta")
 
 Manchmal ist die Bedeutung eines handschriftlichen, grafischen Zeichens innerhalb eines Original-Dokuments nicht eindeutig. Um eine Beschreibung hinzuzufügen, wie dieses Zeichen gelesen werden soll, kann das TEI-Element `<metamark>` verwendet werden. Für das obige Beispiel des senkrechten Striches könnte dies wie folgt aussehen:
 
