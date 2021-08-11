@@ -29,7 +29,6 @@ uuid: KekCIIoGVVJb_wDu5cYBU
 - Auszeichnung strukturelle Element des Fließtextes
 - Nutzung von Attributen und Werten zur genaueren Auszeichnung im Fließtext
 
-
 ### Grundlegende Strukturierung von Fließtext in TEI; der Body
 
 Ein TEI Dokument, in dem Sie ein Textdokument - sei es aus einer physischen Vorlage oder born digital - auszeichnen, besteht aus verschiedenen Abschnitten. Nach dem `<header>`, in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung Ihres Textes im Abschnitt `<text>`. In diesem Bereich können neben dem Fließtext auch ein Vorspann, Nachspannoder ähnliches ausgezeichnet werden. Der Fließtext befindet sich im sogenannten `<body>`-Element, wo Sie unter anderem die Struktur Ihres Fließtextes erfassen können. Diese Struktur folgt dabei zumeist dem Aufbau Ihres Textes. Haben Sie zum Beispiel einen Roman vor sich, werden Sie wahrscheinlich die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und genauso Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
@@ -393,7 +392,7 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
 
 #### Übung 2a: Attribute festlegen
 
-![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\\"Die Filmwelt\\\\"")
+![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\\\"Die Filmwelt\\\\\"")
 
 <Quiz>
   <Quiz.Card>
@@ -430,8 +429,6 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
 
 ![Filmkritiken, die Kritiken zu Z.R.III und Die Sphinx im Weibe hervorgehoben](images/filmkritik_popout-kopie.png "Filmkritiken der Filme Z.R.III und Die Sphinx im Weibe")
 
-Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Da häufig mehrere Filmkritiken gemeinsam abgedruckt wurde, möchte man mehr über die Struktur der Kritiken sowie Ähnlichkeiten und Unterschiede im Aufbau dieser Textteile herausfinden. Zeichnen Sie deshalb bitte die beiden im Bild hervorgehobenen Kritiken zu "Z.R.III" und "Die Sphinx im Weibe" als `<div type="review">\`, um geben Sie an, um die wievielte Kritik es sich handelt. Zeichnen Sie bitte alle Kritiken, auch die bereits ausgezeichneten, im Elternelement `<div type="reviews">` aus und zeichnen Sie die Überschrift "FILM-KRITIKEN" als solche mit dem Zusatz "columnTitle" aus. Die Fließtexte und die TEI-Umgebung dieses Abschnittes sind bereits für Sie vorgegeben.
-
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.XmlCodeEditor
@@ -440,7 +437,7 @@ Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Da häu
       validate="input"
     >
       <Quiz.Question>
-        Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Da häufig mehrere Filmkritiken gemeinsam abgedruckt wurde, möchte man mehr über die Struktur der Kritiken sowie Ähnlichkeiten und Unterschiede im Aufbau dieser Textteile herausfinden. Zeichnen Sie deshalb bitte die beiden im Bild hervorgehobenen Kritiken zu "Z.R.III" und "Die Sphinx im Weibe" als `<div type="review">\`, um geben Sie an, um die wievielte Kritik es sich handelt. Zeichnen Sie bitte alle Kritiken, auch die bereits ausgezeichneten, im Elternelement `<div type="reviews">` aus und zeichnen Sie die Überschrift "FILM-KRITIKEN" als solche mit dem Zusatz "columnTitle" aus. Die Fließtexte und die TEI-Umgebung dieses Abschnittes sind bereits für Sie vorgegeben. Achten Sie bitte vor allem auf Geschwisterelemente!
+        Eine Forschungsgruppe interessiert sich besonders für die Filmkritiken. Da häufig mehrere Filmkritiken gemeinsam abgedruckt wurde, möchte man mehr über die Struktur der Kritiken sowie Ähnlichkeiten und Unterschiede im Aufbau dieser Textteile herausfinden. Zeichnen Sie deshalb bitte die beiden im Bild hervorgehobenen Kritiken zu "Z.R.III" und "Die Sphinx im Weibe" als `<div type="review">`, um geben Sie an, um die wievielte Kritik es sich handelt. Zeichnen Sie bitte alle Kritiken, auch die bereits ausgezeichneten, im Elternelement `<div type="reviews">` aus und zeichnen Sie die Überschrift "FILM-KRITIKEN" als solche mit dem Zusatz "columnTitle" aus. Die Fließtexte und die TEI-Umgebung dieses Abschnittes sind bereits für Sie vorgegeben. Achten Sie bitte vor allem auf Geschwisterelemente!
       </Quiz.Question>
 
       <Quiz.Message type="correct">
