@@ -169,18 +169,18 @@ Wie schon erwähnt, kann im Grunde jeder mit XML seine eigene Markup-Sprache fü
 Obwohl diese Regel optional ist, empfiehlt es sich, sie einzuhalten – aus mehreren Gründen: 
 
 - Eine Grammatik ist zum einen nützlich, damit man selbst überprüfen kann, ob man mehrere Dokumente desselben Typs einheitlich annotiert hat. 
-- Zum anderen dokumentiert sie die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder z.B. fremde Daten mit nutzen wollen.
+- Zum anderen dokumentiert sie die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder Daten von anderen Wissenschaftler*innen nachnutzen wollen.
 
-Es gibt mehrere Möglichkeiten, eine Grammatik zu schreiben. Am Beginn der Entwicklung standen sogenannte **[Document Type Definitions](https://www.w3schools.com/xml/xml_dtd.asp)**. Sie wurden vom Vorgängerstandard SGML übernommen und sind allerdings in einer Sprache geschrieben, die selbst kein XML ist. Dies bedeutet einen Zusatzaufwand, da man diese Sprache erst erlernen muss. 
+Es gibt mehrere Möglichkeiten, eine Grammatik zu schreiben. Am Beginn der Entwicklung standen sogenannte **[Document Type Definitions](https://www.w3schools.com/xml/xml_dtd.asp) (DTD)**. DTD wurden vom XML-Vorgängerstandard [Standard Generalized Markup Language (SGML)](https://www.w3.org/History/19921103-hypertext/hypertext/WWW/MarkUp/SGML.html) übernommen und sind allerdings in einer Sprache geschrieben, die selbst kein XML ist. Dies bedeutet einen Zusatzaufwand, da man diese Sprache erst erlernen muss. 
 
-Dieser Mangel konnte mit **[XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema11-1/)** behoben werden – das ist ebenfalls eine W3C-Empfehlung und mittlerweile sehr weit verbreitet. 
+Dieser Mangel konnte mit **[XML Schema Definition (XSD)](https://www.w3.org/TR/xmlschema11-1/)** im Jahr 2001 behoben werden – das ist ebenfalls eine W3C-Empfehlung und mittlerweile sehr weit verbreitet. 
 
 Daneben gibt es noch weitere Sprachen um XML-Strukturen zu definieren wie z. B. die **[Regular Description for XML New Generation (Relax NG)](https://relaxng.org/)** und andere mehr. Da diese Grammatiken selbst in XML geschrieben sind, sind auch sie praktischerweise für Menschen und Maschinen lesbar.
 
 <SideNote type="note" title="Merke">
 **Validität** bezieht sich auf die Einhaltung einer vordefinierten **Grammatik**. 
 
-Dies ermöglicht eine Überprüfung einer **einheitlichen Annotation** über Dokumente hinweg und **dokumentiert** die Struktur für kollaboratives Arbeiten oder der **Nachnutzung** von Quellen Dritter.
+Dies ermöglicht die Überprüfung einer **einheitlichen Annotation** über Dokumente hinweg und **dokumentiert** die Struktur für kollaboratives Arbeiten oder der **Nachnutzung** von Quellen Dritter.
 </SideNote>
 
 #### Übung
@@ -224,11 +224,11 @@ Dies ermöglicht eine Überprüfung einer **einheitlichen Annotation** über Dok
 
 ![Aufbau XML Dokument](images/xml-dokument.png "Aufbau eines XML Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
 
-Kommen wir nun zum Aufbau von XML-Dokumenten. Jedes Dokument beginnt mit einem **Prolog**, der zumindest die **XML-Deklaration** enthält, die angibt, um welche XML-Version es sich handelt. Die Tags des Prologs zeichnen sich durch eine besondere Schreibweise aus: sie sind einteilig und an den Fragezeichen vorne und hinten zu erkennen. 
+Die obenstehende Grafik zeigt den Aufbau eines XML-Dokuments. Jedes XML-Dokument beginnt mit einem **Prolog**, der zumindest die **XML-Deklaration** enthält, die angibt, um welche XML-Version es sich handelt. Die Tags des Prologs zeichnen sich durch eine besondere Schreibweise aus: sie sind einteilig und an den Fragezeichen vorne und hinten zu erkennen. 
 
 Die XML-Deklaration kann optional zwei Attribute enthalten, eines, das die Art der Zeichenkodierung angibt und ein weiteres, das festhält, ob sich das verwendete Schema in derselben Datei oder extern befindet – standalone no bedeutet, dass es ein externes Schema gibt.
 
-Daran anschließend kann optional ein **Verweis auf dieses externe Schema** folgen und ebenso optional ein weiterer Verweis, der **processing instruction** (Verarbeitungsverweis) genannt wird und den Pfad zu einem sogenannten Stylesheet angibt, in dem die Verarbeitungsanweisungen definiert sind.
+Daran anschließend kann optional ein **Verweis auf dieses externe Schema** folgen und ebenso optional ein weiterer Verweis, der **processing instruction** (Verarbeitungsverweis) genannt wird und den Pfad zu einem sogenannten Stylesheet angibt, in dem die Verarbeitungsanweisungen definiert sind. Diese Anweisungen sind nicht Teil der aus Zeichen bestehenden Daten des XML-Dokuments, sondern dienen dazu Informationen und Anweisungen an Applikationen weiterzugeben, die diese Daten verarbeiten.
 
 Nach dem Prolog folgen die eigentlichen Elemente. Wesentlich ist hier, dass es **nur ein einziges Wurzel- oder Root-Element** geben darf, das **alle anderen Elemente (Kinder und Kindeskinder) umschließt**. 
 
