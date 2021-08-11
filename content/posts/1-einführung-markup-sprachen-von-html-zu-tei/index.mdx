@@ -113,7 +113,7 @@ Ein konkretes Beispiel ist wie erwähnt z.B. ein Datum:
 <date>01.12.2018</date>
 ```
 
-Neben den Elementen mit Inhalt, gibt es auch **leere Elemente** – sie werden verwendet um z.B. die Position von etwas anzugeben, z.B. ein Zeilenumbruch. Da die Tags in diesem Fall nichts umschließen, kann man statt der paarigen Schreibweise auch eine einteilige Kurzform verwenden, man erkennt sie am Schrägstich hinter dem Elementnamen:
+Neben den Elementen mit Inhalt, gibt es auch **leere Elemente** – sie werden verwendet um z.B. die Position von etwas anzugeben, z.B. einen Zeilenumbruch. Da die Tags in diesem Fall nichts umschließen, kann man statt der paarigen Schreibweise auch eine einteilige Kurzform verwenden, man erkennt sie am Schrägstich hinter dem Elementnamen:
 
 ```xml
 a) <element></element>
@@ -156,15 +156,15 @@ Sollten **Elemente verschachtelt** sein, so müssen sie **in der richtigen Reihe
 <SideNote type="note" title="Merke">
 Die Regel der "well-formedness" ist zwingend, d.h. **alle XML-Dokumente müssen wohlgeformt sein!**
 
-* Geöffnete Element müssen wieder geschlossen werden, oder leere Elemente sein. 
-* Bei Verschachtelung muss die richtige Reihenfolge beim öffnen und schließen von Elementen eingehalten werden.
+- Geöffnete Element müssen wieder geschlossen werden, oder leere Elemente sein. 
+- Bei Verschachtelung muss die richtige Reihenfolge beim Öffnen und Schließen von Elementen eingehalten werden.
 </SideNote>
 
 ### Validität
 
 Zusätzlich dazu kann ein XML-Dokument auch valide oder gültig sein. Was bedeutet das? 
 
-Wie schon erwähnt, kann im Grunde jeder mit XML seine eigene Markup-Sprache für bestimmte Zwecke definieren. Gleichzeitig geht es aber auch immer darum, die erzeugten Dokumente austauschen und mehrfach nutzen zu können. **Wenn man also eine Sprache "erfindet", muss man nicht nur das Vokabular, sprich die Elemente, Attribute und Werte festlegen, sondern sollte auch eine Grammatik schreiben**, in der definiert ist, was die Elemente bedeuten, in welcher Beziehung sie zueinander stehen, wo und wie sie verwendet werden dürfen. 
+Wie schon erwähnt, kann im Grunde jeder mit XML seine eigene Markup-Sprache für bestimmte Zwecke definieren. Gleichzeitig ist es für wissenschaftliche Kollaboration und Open Science wichtig, die erzeugten Dokumente weitergeben und mehrfach nachnutzen zu können. **Wenn man also eine Sprache "erfindet", muss man nicht nur das Vokabular, sprich die Elemente, Attribute und Werte festlegen, sondern sollte auch eine Grammatik schreiben**, in der definiert ist, was die Elemente bedeuten, in welcher Beziehung sie zueinander stehen, wo und wie sie verwendet werden dürfen. 
 
 Obwohl diese Regel optional ist, empfiehlt es sich, sie einzuhalten – aus mehreren Gründen: 
 
@@ -180,7 +180,7 @@ Daneben gibt es noch weitere Sprachen um XML-Strukturen zu definieren wie z. B. 
 <SideNote type="note" title="Merke">
 **Validität** bezieht sich auf die Einhaltung einer vordefinierten **Grammatik**. 
 
-Dies ermöglicht die Überprüfung einer **einheitlichen Annotation** über Dokumente hinweg und **dokumentiert** die Struktur für kollaboratives Arbeiten oder der **Nachnutzung** von Quellen Dritter.
+Dies ermöglicht die Überprüfung einer **einheitlichen Annotation** über Dokumente hinweg und **dokumentiert** die Struktur für kollaboratives Arbeiten oder die **Nachnutzung** von Quellen Dritter.
 </SideNote>
 
 #### Übung
@@ -244,13 +244,17 @@ Im Dokument selbst müssen diese Präfixe, gefolgt von einem Doppelpunkt, den be
 
 ![mehrere Namensraeume](images/mehrerenamensraeumexml.png "Mehrere Namensräume. Bild: Ulrike Czeitschner, ACDH-CH")
 
-Zum Schluss sei an dieser Stelle nur noch erwähnt, dass Kommentare außerhalb von einführenden oder schließenden Tags überall erlaubt sind. Sie werden eingeleitet von einer Spitzklammer, einem Rufzeichen, sowie zwei Minuszeichen. Dann folgt der Kommentartext und danach zwei Minuszeichen und eine schließende Spitzklammer.
+<SideNote type="note" title="Hinweis">
+Kommentare sind außerhalb von einführenden oder schließenden Tags überall erlaubt. Sie werden eingeleitet von einer Spitzklammer, einem Rufzeichen, sowie zwei Minuszeichen. Dann folgt der Kommentartext und danach zwei Minuszeichen und eine schließende Spitzklammer.
 
 ```xml
 <!-- Kommentar -->
 ```
 
 Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen und sind von jeglicher Verarbeitung ausgenommen. Dies ermöglicht es z.B. den Code zu dokumentieren und menschenlesbare Zusatzinformationen für Kollaboratoren oder andere Personen zu hinterlassen, die nach der Erstellung mit den Daten arbeiten.
+</SideNote>
+
+
 
 #### Übung
 
