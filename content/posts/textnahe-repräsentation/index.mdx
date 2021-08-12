@@ -271,51 +271,22 @@ Kolumnentitel, Kustoden, Seitenzahlen etc. <fw type="header">…</fw> <fw type="
 
 ##### Übung
 
-Zeichnen im Inhalt des folgenden Absatz aus der Filmwelt die Hervorhebungen mithilfe des 'highlighted'-Elements aus sowie die korrekten Zeilenumbrüche aus, inklusive dem Hinweis, ob es zu einer Wortabteilung kommt.
+<Quiz>
+  <Quiz.Card>
+    <Quiz.XmlCodeEditor
+      code={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Die Filmwelt - ein Ausschnitt</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information zur Veröffentlichung</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      Wir bringen die Zusammensetzung des Schiedsrichterkollegiums wie folgt: Josef Rémény, Direktor der\n      „Mondial“; Otto Kreisler, Direktor der „Helios“, die Herren Regisseure Hans Karl Breslauer, Peter\n      Paul Felner und Hans Otto; Gustav Körner, akademischer Maler, Felix Brasch, Herausgeber der „Film-\n      welt“, und der Briefkastenonkel der „Fimwelt“. — Die Bilder der von obigem Preisrichterkollegium\n      ausgesuchten schönsten Bewerberinnen werden in Nummer 33 und 34 der „Filmwelt“ veröffentlicht, damit\n      den Lesern und Leserinnen Gelegenheit gegeben wird — mittels Coupon — die endgültige Preisträgerin\n      selbst zu bestimmen.\n    </body>\n  </text>\n</TEI>"}
+      solution={"<xml></xml><TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Die Filmwelt - ein Ausschnitt</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information zur Veröffentlichung</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      Wir bringen die Zusammensetzung des Schiedsrichterkollegiums wie folgt: Josef <hi rend=\"bold\">Rémény</hi>, Direktor der <lb break=\"no\" /> \n      „Mondial“; Otto <hi rend=\"bold\">Kreisler</hi>, Direktor der „Helios“, die Herren Regisseure Hans Karl <hi rend=\"bold\">Breslauer</hi>, Peter <lb break=\"no\" /> \n      Paul <hi rend=\"bold\">Felner</hi> und Hans <hi rend=\"bold\">Otto</hi>; Gustav <hi rend=\"bold\">Körner</hi>, akademischer Maler, Felix <hi rend=\"bold\">Brasch</hi>, Herausgeber der „Film- <lb break=\"yes\"/>\n      welt“, und der Briefkastenonkel der „Fimwelt“. — Die Bilder der von obigem Preisrichterkollegium <lb break=\"no\"/>\n      ausgesuchten schönsten Bewerberinnen werden in Nummer 33 und 34 der „Filmwelt“ veröffentlicht, damit <lb break=\"no\"/>\n      den Lesern und Leserinnen Gelegenheit gegeben wird — mittels Coupon — die endgültige Preisträgerin <lb break=\"no\"/>\n      selbst zu bestimmen.\n    </body>\n  </text>\n</TEI>"}
+      validate="input"
+    >
+      <Quiz.Question>
+        **Zeichnen Sie im Inhalt des folgenden Absatz aus der Filmwelt bitte die Hervorhebungen mithilfe des 'highlighted'-Elements aus sowie die korrekten Zeilenumbrüche aus, inklusive dem Hinweis, ob es zu einer Wortabteilung kommt.**
 
-![Abschnitt "Die Schönheitskonkurrenz" aus Filmwelt 1923, 31, S. 12](images/Filmwelt_1923_31_12_Schoenheitskonkurrenz.png "Abschnitt \\\"Die Schönheitskonkurrenz\\\" aus Filmwelt 1923, 31, S. 12")
+        ![](images/Filmwelt\_1923\_31\_12\_Schoenheitskonkurrenz.png "Artikel \"Die Schönheitskonkurrenz\" in Filmwelt 31, 1923, S. 12")
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
 
-Rohtext:
-
-```xml
-Wir bringen die Zusammensetzung des Schiedsrichterkollegiums wie folgt: Josef Rémény, Direktor der
-„Mondial“; Otto Kreisler, Direktor der „Helios“, die Herren Regisseure Hans Karl Breslauer, Peter
-Paul Felner und Hans Otto; Gustav Körner, akademischer Maler, Felix Brasch, Herausgeber der „Film-
-welt“, und der Briefkastenonkel der „Fimwelt“. — Die Bilder der von obigem Preisrichterkollegium
-ausgesuchten schönsten Bewerberinnen werden in Nummer 33 und 34 der „Filmwelt“ veröffentlicht, damit
-den Lesern und Leserinnen Gelegenheit gegeben wird — mittels Coupon — die endgültige Preisträgerin
-selbst zu bestimmen.
-```
-
-Lösung:
-
-```xml
-<text>
-  <body>
-    Wir bringen die Zusammensetzung des Schiedsrichterkollegiums wie folgt: Josef <hi
-      rend="bold"
-    >Rémény</hi>, Direktor der <lb break="no" /> „Mondial“; Otto <hi
-      rend="bold"
-    >Kreisler</hi>, Direktor der „Helios“, die Herren Regisseure Hans Karl <hi
-      rend="bold"
-    >Breslauer</hi>, Peter <lb break="no" /> Paul <hi
-      rend="bold"
-    >Felner</hi> und Hans <hi rend="bold">Otto</hi>; Gustav <hi
-      rend="bold"
-    >Körner</hi>, akademischer Maler, Felix <hi
-      rend="bold"
-    >Brasch</hi>, Herausgeber der „Film- <lb
-      break="yes"
-    /> welt“, und der Briefkastenonkel der „Fimwelt“. — Die Bilder der von obigem Preisrichterkollegium <lb
-      break="no"
-    /> ausgesuchten schönsten Bewerberinnen werden in Nummer 33 und 34 der „Filmwelt“ veröffentlicht, damit <lb
-      break="no"
-    /> den Lesern und Leserinnen Gelegenheit gegeben wird — mittels Coupon — die endgültige Preisträgerin <lb
-      break="no"
-    /> selbst zu bestimmen.
-  </body>
-</text>
-```
 
 #### Umgang mit unleserlichen Stellen oder physischen Schäden bei den Vorlagen
 
@@ -375,7 +346,7 @@ Eine **Wiederherstellung**, oder defacto die Rückgängigmachung einer zuvor get
 
 Mit dem Attribut `type` kann im restore-Element ausgezeichnet werden, auf welche Weise die Editierung rückgängig gemacht wurde - z.B. durch eine Notiz in der Marginalspalte (siehe auch TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHCD))
 
-![](images/Folie67.png "Beispiel einer für eine \\\"Metamark\\\". Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta")
+![](images/Folie67.png "Beispiel einer für eine \\\\\\\"Metamark\\\\\\\". Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta")
 
 Manchmal ist die Bedeutung eines handschriftlichen, grafischen Zeichens innerhalb eines Original-Dokuments nicht eindeutig. Um eine Beschreibung hinzuzufügen, wie dieses Zeichen gelesen werden soll, kann das TEI-Element `<metamark>` verwendet werden. Für das obige Beispiel des senkrechten Striches könnte dies wie folgt aussehen:
 
