@@ -114,7 +114,7 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
   <Quiz.Card>
     <Quiz.XmlCodeEditor
       code={"<TEI>\nNacht.\n\nIn einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.\n\n`<sp who=\"#FAU\">`\n\n`<speaker>`Faust.`</speaker>`\n\n`<p>`Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...`</p>`\n\n`</sp>`\n</TEI>"}
-      solution={"<xml>\n  <div type=\"act\">\n   <div type=\"stage\">\n    <head>Nacht.</head>\n    <stage> In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.</stage>\n    <sp who=\"#FAU\">\n    <speaker>Faust.</speaker>\n    <p> Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...</p>\n    </sp>\n   </div>\n  </div>\n</xml>"}
+      solution={"<TEI>\n  <text>\n    <body>\n      <div type=\"act\">\n      <div type=\"stage\">\n        <head>Nacht.</head>\n        <stage> In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.</stage>\n        <sp who=\"#FAU\">\n        <speaker>Faust.</speaker>\n        <p> Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...</p>\n        </sp>\n      </div>\n      </div>\n    </body>\n  </text>\n</TEI>"}
       validate="input"
     >
       <Quiz.Question>
@@ -126,6 +126,8 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
         4. In der nächsten Zeile folgt eine Bühnenanweisung `<stage>`. Umschließen Sie die gesamte Bühnenanweisung mit diesem Element.
         5. Der Bereich der Rede `<sp>`(speech) ist bereits für Sie vorbereitet. Hier wurde der Sprecher, Faust, ausgezeichnet, und der erste Absatz `<p>`des Eröffnungsmonologs.
         6. Stellen Sie sicher, dass Sie die TEI-Elemente alle in der richtigen Reihenfolge geschlossen haben, vom Innersten zum Äußersten.
+
+        Bitte beachten Sie, dass hier kein vollständiges TEI-Dokument vorliegt, da Sie lediglich einen Ausschnitt aus dem `<text>` sehen.
       </Quiz.Question>
     </Quiz.XmlCodeEditor>
   </Quiz.Card>
