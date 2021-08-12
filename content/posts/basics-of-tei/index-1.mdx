@@ -32,14 +32,14 @@ Globale Attribute sind jene Attribute, die sich fast allen TEI-Tag-Elementen  zu
 - **Name bzw. Nummerierung**, `@n`: Mit diesem Attribut werden häufig Aufzählungen gekennzeichnet. Dieses Element kann mehrfach mit der selben Bezeichnung in einem Dokument vorkommen und jedes Zeichen ist zulässig.
 - **Sprache**, `@xml:lang(ISO Code)`: Mit diesem Attribut können Sie die Sprache auszeichnen. Wenn Sie ein Elternelement auszeichnen, gilt die Angabe auch für alle umschlossenen Kindelemente. Daher können Sie auch besonders solche Element auszeichnen, deren Sprache abweicht.
 - **Referenz**, `@xml:base`: Mit diesem Attribut können Sie auf URIs referenzieren. Jene sind entweder absolut gesetzt (zum Beispiel eine URL einer Website), oder relativ (zum Beispiel Bezug auf einen lokal abgelegten Ordner).
-- **Aussehen**, `@rend`, `@rendition` und `@style`: Alle drei Attribute beschreiben das Aussehen eines Elements näher. Während `@rend`innerhalb des Elements Kursiv- oder Fettschreibung kennzeichnen kann, so beschreibt `@style` eine Darstellungssprache wie [CSS] (https://www.uni-giessen.de/fbz/svc/hrz/org/mitarb/abt/3/zms/schulung/webtechniken/stylesheets). `@rendition`wird im Header verwendet. Dieses Attribut beschreibt eine bestimmte Textdarstellung, die auf alle Elemente, für die sie definiert wurde, angewendet wird.
-- **Besondere Abstände**, `xml:space`: Mit diesem eher seltenen Attribut können Sie bestimmen, wie bei der späteren Umsetzung Ihres TEI-Dokuments mit Abständen, sogenannten "white spaces", umgegangen wird. Es gibt zwei Möglichkeiten, entweder `default`oder `preserve`: ersteres normalisiert Abstände, die zweite Variante behält besondere Abstände bei. Das könnte interessant sein, wenn Sie zum Beispiel mit Texten arbeiten, wo mehrfache Abstände zwischen Worten eine besondere Bedeutung haben, oder Sie explizit auf Ungewöhnlichkeiten in einem Manuskript hinweisen möchten.
+- **Aussehen**, `@rend`, `@rendition` und `@style`: Alle drei Attribute beschreiben das Aussehen eines Elements näher. Während `@rend`innerhalb des Elements Kursiv- oder Fettschreibung kennzeichnen kann, so beschreibt `@style` eine Darstellungssprache wie [CSS](https://www.uni-giessen.de/fbz/svc/hrz/org/mitarb/abt/3/zms/schulung/webtechniken/stylesheets). `@rendition`wird im Header verwendet. Dieses Attribut beschreibt eine bestimmte Textdarstellung, die auf alle Elemente, für die sie definiert wurde, angewendet wird.
+- **Besondere Abstände**, `xml:space`: Mit diesem eher seltenen Attribut können Sie bestimmen, wie bei der späteren Umsetzung Ihres TEI-Dokuments mit Abständen, sogenannten "white spaces", umgegangen wird. Es gibt zwei Möglichkeiten, entweder `default`oder `preserve`: ersteres normalisiert Abstände, die zweite Variante behält besondere Abstände bei. Das könnte interessant sein, wenn Sie zum Beispiel mit Manuskripten arbeiten, bei denen Sie explizit auf Ungewöhnlichkeiten hinweisen möchten.
 
 ### Praktische Anwendung
 
-Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um Friedrich Zelniks Gedicht *Der Filmstar*, aus der Filmwelt 1924. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
+Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um Friedrich Zelniks Gedicht *Der Filmstar*, aus der Filmwelt 1923. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
 
-![Der Filmstar, Gedicht von Frriedrich Zelnik](images/filmwelt_1923_31_11_gedicht_filmstar.png "Der Filmstar, Gedicht von Frriedrich Zelnik")
+![Der Filmstar, Gedicht von Friedrich Zelnik](images/filmwelt_1923_31_11_gedicht_filmstar.png "Der Filmstar, Gedicht von Friedrich Zelnik")
 
 ```xml
 <div xml:id="Zelnik1" type="poem">
@@ -60,15 +60,15 @@ Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um Friedrich Zeln
 </div>
 ```
 
-Hier wurde zusätzliche Information mit den globalen Attribute `@type`, `@n`, `xml:id`und `xml:lang` ausgezeichnet.
+Hier wurden Tags mit den globalen Attributen zu Identifikation, Typisierung und Sprache (`@type`, `@n`, `xml:id`und `xml:lang`) ausgezeichnet.
 
-- `xml:id="Zelnik1"` beschreibt eine zusätzliche Identifikationsangabe, die diesen Text auszeichnet. Welche Bezeichnung verwendet wird, entscheidet die auszeichnende Person, oder orientiert sich an Vorgaben. Eine leicht verständliche Bezeichnung ist in jedem Fall sinnvoll.
+- `xml:id="Zelnik1"` beschreibt eine zusätzliche Identifikationsangabe, die diesen Text auszeichnet. Welche Bezeichnung verwendet wird kann frei entschieden werden, es sollte aber auf eine einheitliche Auszeichnungsweise geachtet werden. Eine leicht verständliche und nachvollziehbare Bezeichnung ist in jedem Fall sinnvoll.
 - `div type="poem"` sagt aus, dass es sich bei diesem Textabschnitt `div` um ein Gedicht `type="poem"` handelt.
-- `head xml:lang="de"`gibt an, dass die Überschrift `head`in deutscher Sprache `xml:lang="de"`geschrieben wurde.
-- `lg n="1"`bezeichnet den ersten `n="1"` Vers des Gedichts.
-- `lg n="2"`bezeichnet dann den zweiten `n="2"` Vers des Gedichts.
+- `head xml:lang="de"` gibt an, dass die Überschrift `head` in deutscher Sprache `xml:lang="de"` geschrieben wurde.
+- `lg n="1"` bezeichnet die erste `n="1"` Strophe des Gedichts.
+- `lg n="2"` bezeichnet dann den zweiten `n="2"` Strophe des Gedichts.
 
-Da die Auszeichnungen global sind, sind sie nicht zwingend an die oben genannten Stellen gebunden.
+Da die Auszeichnungen global sind, sind sie nicht zwingend an die oben genannten Stellen gebunden:
 
 ```xml
 <lg n="1" xml:lang="de">
