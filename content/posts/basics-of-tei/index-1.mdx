@@ -113,8 +113,8 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
 <Quiz>
   <Quiz.Card>
     <Quiz.XmlCodeEditor
-      code={"<TEI>\nNacht.\n\nIn einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.\n\n`<sp who=\"#FAU\">`\n\n`<speaker>`Faust.`</speaker>`\n\n`<p>`Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...`</p>`\n\n`</sp>`\n</TEI>"}
-      solution={"<TEI>\n  <text>\n    <body>\n      <div type=\"act\">\n      <div type=\"stage\">\n        <head>Nacht.</head>\n        <stage> In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.</stage>\n        <sp who=\"#FAU\">\n        <speaker>Faust.</speaker>\n        <p> Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...</p>\n        </sp>\n      </div>\n      </div>\n    </body>\n  </text>\n</TEI>"}
+      code={"<TEI>\n    <text>\n      <body>\nNacht.\n\nIn einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.\n\n`<sp who=\"#FAU\">`\n\n`<speaker>`Faust.`</speaker>`\n\n`<p>`Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...`</p>`\n\n`</sp>`\n      </body>\n  </text>\n</TEI>"}
+      solution={"<TEI>\n  <text>\n    <body>\n      <div type=\"act\">\n        <div type=\"scene\">\n          <head>Nacht.</head>\n          <stage> In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.</stage>\n          <sp who=\"#FAU\">\n            <speaker>Faust.</speaker>\n            <p> Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...</p>\n          </sp>\n        </div>\n      </div>\n    </body>\n  </text>\n</TEI>"}
       validate="input"
     >
       <Quiz.Question>
