@@ -133,68 +133,7 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
   </Quiz.Card>
 </Quiz>
 
-
-Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um eine Ausschnitt aus *Athelstans* **Gesetzgebung**. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
-
-```xml
-<div1 type="section">
- <head>Athelstan's Ordinance</head>
- <list rend="numbered">
-  <item n="1">Concerning thieves. First, that no thief is to be spared who is caught with
-     the stolen goods, [if he is] over twelve years and [if the value of the goods is] over
-     eightpence.
-  <list rend="numbered">
-    <item n="1.1">And if anyone does spare one, he is to pay for the thief with his
-         wergild — and the thief is to be no nearer a settlement on that account — or to
-         clear himself by an oath of that amount.</item>
-    <item n="1.2">If, however, he [the thief] wishes to defend himself or to escape, he is
-         not to be spared [whether younger or older than twelve].</item>
-    <item n="1.3">If a thief is put into prison, he is to be in prison 40 days, and he may
-         then be redeemed with 120 shillings; and the kindred are to stand surety for him
-         that he will desist for ever.</item>
- </list>
-```
-
-```xml
-<source> Example two derived from <ref>TEI head element examples</ref> on <date
-  >April 15</date> </source>
-```
-
-Es handelt sich hier um einen Ausschnitt aus der Gesetzgebung in Form einer nummerierten Liste. Hier wurde mit den globalen Attributen `@type`, `@rend`, `@n` und `@source` ausgezeichnet.
-
-- `div1 type="section"` bezeichnet den ersten Abschnitt und zeichnet explizit als Abschnitt `type="section"` aus.
-- `list rend="numbered"` zeichnet die nummerierte Darstellung `rend="numbered"` der Liste `list` aus.
-- `item n="1.1"` zeichnet jeden Listeneintrag `item` mit seiner Nummerierung `n=1.1` aus.
-- `source`bezeichnet die Quelle und enthält eine Referenzangabe `ref` und eine Datumsangabe `date`.
-
-#### Übung 2a: Globale Attribute auszeichnen
-
-<Quiz>
-  <Quiz.Card>
-    <Quiz.XmlCodeEditor
-      code={"<xml>\n  <item n=\"2\"> Concerning lordless men. And we pronounced about these lordless men, from whom no justice can be obtained, that one should order their kindred to fetch back such a person to justice and to find him a lord in public meeting.\n    <list rend=\"x\">\nAnd if they then will not, or cannot, produce him on that appointed day, he is then to be a fugitive afterwards, and he who encounters him is to strike him down as a thief.\n\nAnd he who harbours him after that, is to pay for him with his wergild or to clear himself by an oath of that amount.\n</xml>"}
-      solution={"<xml>\n  <item n=\"2\"> Concerning lordless men. And we pronounced about these lordless men, from whom\n     no justice can be obtained, that one should order their kindred to fetch back such a\n     person to justice and to find him a lord in public meeting.\n    <list rend=\"numbered\">\n      <item n=\"2.1\"> And if they then will not, or cannot, produce him on that appointed day,\n         he is then to be a fugitive afterwards, and he who encounters him is to strike him\n         down as a thief.</item>\n      <item n=\"2.2\"> And he who harbours him after that, is to pay for him with his wergild\n         or to clear himself by an oath of that amount.</item>\n     </list>\n  </item>\n</xml>"}
-      validate="input"
-    >
-      <Quiz.Question>
-        Sehen Sie sich bitte den nächsten Abschnitt aus Athelstans _Gesetzgebung_ an. Bitte beachten Sie, dass diese Liste nicht nur eine Liste ist, sondern auch ein Listeneintrag im Gesetzbuch; deshalb steht hier das Element `item` außerhalb des `list`-Elements.
-
-        Zeichnen Sie die Liste, die sich innerhalb des Listeneintrags Nummer 2 befindet, richtig aus, indem Sie die globalen Attribute `@rend` und `@n` benutzen.
-
-        1. Zeichnen Sie die Liste als nummerierte Liste aus.
-        2. Zeichnen Sie den erste Listeneintrag `item` mit dem globalen Attribut `@n` als `n="2.1"` aus. Das Element beginnt mit "And if they then will not..."
-        3. Schließen Sie bitte das Listeneintragselement bevor Sie sich dem nächsten Eintrag zuwenden.
-        4. Zeichnen Sie das nächste Listeneintragselement richtig als Folgeelement aus. Achten Sie auf die richtige Nummerierung. Das Element beginnt mit "And he who harbours..."
-        5. Schließen Sie bitte dieses zweite Listeneintragselement.
-        6. Schließen Sie die Liste.
-        7. Schließen Sie den Listeneintrag `item n="2"`.
-      </Quiz.Question>
-    </Quiz.XmlCodeEditor>
-  </Quiz.Card>
-</Quiz>
-
-
-#### Übung 2b: Globale Attribute verwenden
+#### Übung 2a: Globale Attribute verwenden
 
 <Quiz>
   <Quiz.Card>
@@ -236,5 +175,7 @@ Hier finden Sie weitere Beispiele für die Verwendung globaler Attribute am Beis
 Hier finden Sie eine Liste der ISO-Codes für Sprache: [ISO-Code Sprache](https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes)
 
 Hier finden Sie Beispiel für das Rendition-Element `rend`, das das Textaussehen beschreibt: [Rendition](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rendition.html)
+
+Hier finden Sie eine weitere Annotation eines dramatischen Textes. Auch hier werden globale Attribute verwendet: [TEI by example, Module 5] (https://teibyexample.org/tutorials/TBED05v00.htm)
 
 Hier finden Sie Ingeborg Bachmanns Gedicht *Römisches Nachtbild* in voller Länge: [Lyrikline](https://www.lyrikline.org/de/gedichte/roemisches-nachtbild-269)
