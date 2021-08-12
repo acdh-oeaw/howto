@@ -66,7 +66,7 @@ Hier wurden Tags mit den globalen Attributen zu Identifikation, Typisierung und 
 - `div type="poem"` sagt aus, dass es sich bei diesem Textabschnitt `div` um ein Gedicht `type="poem"` handelt.
 - `head xml:lang="de"` gibt an, dass die Überschrift `head` in deutscher Sprache `xml:lang="de"` geschrieben wurde.
 - `lg n="1"` bezeichnet die erste `n="1"` Strophe des Gedichts.
-- `lg n="2"` bezeichnet dann den zweiten `n="2"` Strophe des Gedichts.
+- `lg n="2"` bezeichnet dann die zweite `n="2"` Strophe des Gedichts.
 
 Da die Auszeichnungen global sind, sind sie nicht zwingend an die oben genannten Stellen gebunden:
 
@@ -78,30 +78,6 @@ Da die Auszeichnungen global sind, sind sie nicht zwingend an die oben genannten
 ```
 
 Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre beispielsweise sinnvoll, wenn die Sprache, in der die einzelnen Verse verfasst sind, wechselt.
-
-#### Alternatives Beispiel
-
-Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um eine Ausschnitt aus Ingeborg Bachmann*s* Gedicht *Römisches Nachtbild*. Sie sehen einige globale Attribute, die im Folgenden näher erklärt werden.
-
-```xml
-<div xml:id="Bachmann1" type="poem">
-  <head xml:lang="de"> Römisches Nachtbild </head>
-  <lg n="1">
-    <l> Wenn das Schaukelbrett die sieben Hügel</l>
-    <l>nach oben entführt, gleitet es auch,</l>
-    <l>von uns beschwert und umschlungen,</l>
-    <l>ins finstere Wasser,</l>
-    <l>...</l>
-  </lg>
-</div>
-```
-
-Hier wurde zusätzliche Information mit den globalen Attribute `@type`, `@n`, `xml:id`und `xml:lang` ausgezeichnet.
-
-- `xml:id="Bachmann1"` beschreibt eine zusätzliche Identifikationsangabe, die diesen Text auszuzeichnet.
-- `div type="poem"` sagt aus, dass es sich bei diesem Textabschnitt `div` um ein Gedicht `type="poem"`handelt.
-- `head xml:lang="de"`gibt an, dass die Überschrift `head`in deutscher Sprache `xml:lang="de"`geschrieben wurde.
-- `lg n="1"`bezeichnet den ersten `n=1`Vers des Gedichts
 
 #### Übung 1a: Globale Attribute erkennen
 
@@ -137,7 +113,7 @@ Hier wurde zusätzliche Information mit den globalen Attribute `@type`, `@n`, `x
 <Quiz>
   <Quiz.Card>
     <Quiz.XmlCodeEditor
-      code={"<xml>\nNacht.\n\nIn einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.\n\n`<sp who=\"#FAU\">`\n\n`<speaker>`Faust.`</speaker>`\n\n`<p>`Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...`</p>`\n\n`</sp>`\n</xml>"}
+      code={"<TEI>\nNacht.\n\nIn einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.\n\n`<sp who=\"#FAU\">`\n\n`<speaker>`Faust.`</speaker>`\n\n`<p>`Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...`</p>`\n\n`</sp>`\n</TEI>"}
       solution={"<xml>\n  <div type=\"act\">\n   <div type=\"stage\">\n    <head>Nacht.</head>\n    <stage> In einem hochgewölbten, engen, gothischen Zimmer Faust unruhig auf einem Sessel am Pulte.</stage>\n    <sp who=\"#FAU\">\n    <speaker>Faust.</speaker>\n    <p> Habe nun, ach! Philosophie, Juristerey und Medicin, Und leider auch Theologie! ...</p>\n    </sp>\n   </div>\n  </div>\n</xml>"}
       validate="input"
     >
