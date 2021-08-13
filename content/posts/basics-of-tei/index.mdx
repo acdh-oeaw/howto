@@ -33,10 +33,10 @@ uuid: KekCIIoGVVJb_wDu5cYBU
 
 Ein TEI Dokument, in dem Sie ein Textdokument - sei es aus einer physischen Vorlage oder born digital - auszeichnen, besteht aus verschiedenen Abschnitten. Nach dem `<header>`, in dem die Metadaten ausgezeichnet werden, folgt die Auszeichnung Ihres Textes im Abschnitt `<text>`. 
 Innerhalb des `<text>` kann weiter unterteilt werden. Häufig gibt zu Beginn den sogenannten Vorspann oder "front matter" `<front>`, das eine oder mehrere Titelseiten oder z.B. ein automatisch generiertes Inhaltsverzeichnis enthalten kann; dann folgt der Haupt- oder `<body>`-Text, zumeist der Fließtext; und schließlich folgt nach dem `<body>` der Nachspann, das sogenannte "back matter" `<back>`. Hier könnte sich z.B. das Register eines gedruckten Werkes befinden.
-Zu beachten ist, dass es häufig mehrere Möglichkeiten gibt, einzelne Aspekte zu kodieren. Wie ein Dokument im Verhältnis zur Vorlage strukturiert werden soll, gibt nicht die TEI vor, sondern ist Ihre Entscheidung. In einer Briefedition können beispielsweise Regest und editorische Notiz im Vorspann `<front>`, der edierte Brief im Textkörper `<body>` und der Stellenkommentar im Nachspann `<back>` kodiert sein. Damit bildet die Grobstruktur des TEI-Dokuments die Struktur einer modernen Edition ab, aber nicht die Grobstruktur der Quelle. Genauso gut ist es möglich, dass ein vollständig kodiertes historisches Buch aus dem 18. Jahrhundert eine sehr reiche Titelei mit mehreren Titelseiten, Widmungen und Vorworten und ein mehrteiliges Register im Anhang aufweist, und dass diese Struktur auch im <front> bzw. <back> abgebildet ist. Der moderne Kommentar könnte dann z.B. überhaupt in ein eigenständiges TEI-Dokument ausgelagert werden, damit der Primärtext und der editorische Text klar voneinander getrennt sind.
+Zu beachten ist, dass es häufig mehrere Möglichkeiten gibt, einzelne Aspekte zu kodieren. Wie ein Dokument im Verhältnis zur Vorlage strukturiert werden soll, gibt nicht die TEI vor, sondern ist Ihre Entscheidung.
 Im Folgenden geht es vor allem um die *strukturelle Auszeichnung des Fließtextes*. Im  `<body>`-Element zu einem Roman werden Sie z.B. die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und genauso Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
 
-Der gesamte Fließtext ist vom Element `<body>` umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des `<body>` zunächst die einzelnen Abschnitte als `<div>`-Elemente ausgezeichnet. Diese `<div>`-Elemente, für division, sind sehr allgemeine Auszeichnungen für irgendeine Art von Abschnitt, der (noch) nicht näher bestimmt ist. Sie können beliebig ineinander verschachtelt werden. In den Beispielen werden Sie sehen, dass die neutralen `<div>`-Elemente näher bestimmt werden und innerhalb dieser Elemente bestimmte Fließtextteile mit Überschriften `<head>` und Absätzen `<p>` bzw. Strophen `<lg>` und Verse mit `<l>` ausgezeichnet werden.
+Der gesamte Fließtext ist vom Element `<body>` umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des `<body>` zunächst die einzelnen Abschnitte als `<div>`-Elemente ausgezeichnet. Diese `<div>`-Elemente, für *division*, sind sehr allgemeine Auszeichnungen für irgendeine Art von Abschnitt, der (noch) nicht näher bestimmt ist. Sie können beliebig ineinander verschachtelt werden. In den Beispielen werden Sie sehen, dass die neutralen `<div>`-Elemente näher bestimmt werden und innerhalb dieser Elemente bestimmte Fließtextteile mit Überschriften `<head>` und Absätzen `<p>` bzw. Strophen `<lg>` und Verse mit `<l>` ausgezeichnet werden.
 
 Im Folgenden werden Sie erste Schritte kennenlernen, was und wie Sie einen Fließtext auszeichnen können.
 
@@ -62,15 +62,15 @@ Im Folgenden werden Sie erste Schritte kennenlernen, was und wie Sie einen Flie�
 - **Postscriptum**, `<postscript>`
 - **Unterschrift**, `<signed>`
 
-Beachten Sie, dass ein Dokument erst well-formed ist, wenn Sie damit fertig sind, d.h. wenn es keinen Text mehr gibt, der nicht von Elementen (an der jeweils erlaubten Position) umgeben ist. Beachten Sie dabei, dass der Text in einem `<div>`-Element von einem `<head>` -, `<p>`- bzw. `<lg>`-Element, oder einem ähnlichen Element umgeben sein muss.
+Beachten Sie, dass ein Dokument erst well-formed ist, wenn Sie fertig sind, d.h. wenn es keinen Text mehr gibt, der nicht von Elementen (an der jeweils erlaubten Position) umgeben ist. Beachten Sie dabei, dass der Text in einem nicht näher definierten `<div>`-Element von einem `<head>` -, `<p>`- bzw. `<lg>`-Element, oder einem ähnlichen Element umgeben sein muss.
 
 Die Element können durch Attribute und Werte noch genauer definiert werden. Sie werden hierzu am Ende der praktischen Anwendung mehr erfahren.
 
 ### Praktische Anwendung
 
-Wir betrachten im Folgenden die Filmbeschreibung, einen Spielplan, und ein Gedicht mit dem Titel "Der Filmstar" näher. Beim ersten Beispiel handelt es sich um einen (gekürzten) Abschnitt aus einer Filmbeschreibung.  Um den Text und viele ähnliche Texte automatisiert bearbeiten zu können, müssen sie entsprechend ausgezeichnet werden. 
+Wir bearbeiten im Folgenden die Filmbeschreibung, einen Spielplan, und ein Gedicht mit dem Titel "Der Filmstar" näher. Beim ersten Beispiel handelt es sich um einen (gekürzten) Abschnitt aus einer Filmbeschreibung.  Um den Text und viele ähnliche Texte automatisiert bearbeiten zu können, müssen sie entsprechend ausgezeichnet werden. 
 
-Für jeden Abschnitt ist ein Annotationsvorschlag mit dem entsprechenden Beispieltext sowie eine Blanko-Vorlage angegeben. Bitte beachten Sie, dass der `<header>` nicht vollständig ausgezeichnet wurde, da wir uns vor allem mit dem `<body>` beschäftigen.
+Um die Annotation des `<body>`besser zu veranschaulichen, wird für jeden Abschnitt ein Annotationsvorschlag mit dem entsprechenden Beispieltext sowie eine Blanko-Vorlage angegeben. Bitte beachten Sie, dass der `<header>` nicht vollständig ausgezeichnet wurde, da wir uns vor allem mit dem `<body>` beschäftigen.
 
 ##### Beispiel Filmbeschreibung
 
@@ -152,7 +152,7 @@ Für jeden Abschnitt ist ein Annotationsvorschlag mit dem entsprechenden Beispie
 </TEI>
 ```
 
-Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<p>`geteilt wurde. Beide Element befinden sich innerhalb eines `<div>`-Elements, das die beiden Elemente gemeinsam einen Abschnitt im Fließtext bilden. Bitte beachten Sie, dass dieser Abschnitt well-formed ist, da alle Textteile umgeben sind und die Tags geschlossen wurden.
+Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<p>`geteilt wurde. Beide Element befinden sich innerhalb eines `<div>`-Elements, sodass die beiden Elemente gemeinsam einen Abschnitt im Fließtext bilden. Bitte beachten Sie, dass dieser Abschnitt well-formed ist, da alle Textteile umgeben sind und die Tags geschlossen wurden.
 
 ##### Beispiel Spielplan
 
