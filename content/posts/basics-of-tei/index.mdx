@@ -192,7 +192,9 @@ Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<
   </text>
 </TEI>
 ```
+
 ##### Beispiel: annotierter Spielplan
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
@@ -237,7 +239,7 @@ Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstell
 Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift, Absatz, Strophe, Liste,...), zeichnet man im Body auch mit Attributen und Werten aus, um konkreter zu bezeichnen, worum es sich bei dem Element handelt (z.B. Gedicht, Spielplan, Artikel,...). Hier sehen Sie Auszeichnungen, die Ihnen in unserem Beispiel begegnen.
 
 - `<div>` + type "article" / "movieSchedule" / "poem" / "editorialStatement" / "reviews" / "review"
-- `<div>` type "review" + n 1 / 2
+- `<div>` type "review" + n="1" / "2"
 - `<head>` + type columnTitle
 
 ```xml
@@ -298,6 +300,7 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
       validate="input"
     >
       <Quiz.Question>
+        _Aufgabenstellung_
         In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die zwischen 1921 und 1935 geöffnet waren. Dazu müssen die Listen der Spielorte als solche ausgezeichnet werden. Im Bild sehen Sie den Originalausschnitt und im Code-Editor ist der Text bereits für Sie als Fließtext vorgegeben. Zeichnen Sie bitte alle Einträge, die zusammengehören, als eine gemeinsame Liste `<list>` aus. Achten Sie auf die Datumsangaben, nach diesen beginnt jeweils eine neue Liste. Anschließend zeichnen Sie bitte die jeweiligen Einträge als `<item>` richtig aus und schließen Sie dann die Liste. Die TEI-Umgebung dieses Abschnittes ist bereits für Sie vorgegeben.
       </Quiz.Question>
 
@@ -315,7 +318,7 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
   </Quiz.Card>
 </Quiz>
 
-
+##### Quiz
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.MultipleChoice>
@@ -399,7 +402,7 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
 
 #### Übung 2a: Attribute festlegen
 
-![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\\\\"Die Filmwelt\\\\\\"")
+![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\\\\\"Die Filmwelt\\\\\\\"")
 
 <Quiz>
   <Quiz.Card>
