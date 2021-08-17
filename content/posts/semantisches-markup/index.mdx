@@ -89,7 +89,7 @@ Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier we
 
 Sehen Sie sich bitte das folgende Beispiel an, das sich dem Inhalt des Textes zuwendet. Identifiziert werden verschiedene Werktitel, Firmennamen, Adressen und Verweise. Darüber hinaus kommt das Attribut `@ana` ('Analyseverweis') zum Einsatz, um das Gedicht mit einem analytischen Kommentar zu verknüpfen. Um z.B. anzugeben, dass sich das Gedicht von Prosatexten unterscheidet, ist nach dem `<body>` ein Nachspann (`<back>`) zu ergänzen, der die Definition festhält.
 
-Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der Film _Die Wunder des Meeres_ gezeigt wurde. Wie bereits im vorangegangenen Beispiel wird der Werktitel ausgezeichnet, genauso der Spielzeitraum `<date>`, und die Spielorte. Deren Adresse `<address>`wird hier genauer in Bezirk `<district>`und Straße `<street>`unterteilt. Die Name der Kinos werden als `<orgName>`ausgezeichnet.
+Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der Film *Die Wunder des Meeres* gezeigt wurde. Wie bereits im vorangegangenen Beispiel wird der Werktitel ausgezeichnet, genauso der Spielzeitraum `<date>`, und die Spielorte. Deren Adresse `<address>`wird hier genauer in Bezirk `<district>`und Straße `<street>`unterteilt. Die Name der Kinos werden als `<orgName>`ausgezeichnet.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -111,18 +111,17 @@ Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen 
   <text>
     <body>
       <div>
-<p>Der Film <title>»Die Wunder des Meeres«</title> läuft ab <date>14. bis 17. November</date> in:
-
+        <p>Der Film <title>»Die Wunder des Meeres«</title> läuft ab <date>14. bis 17. November</date> in:
         <list>
-          <item><orgName>Imperial-Kino</orgName>, <address><district>I.,</district> <street>Rothgasse 9</street></addrLine></address>;</item>
+          <item><orgName>Imperial-Kino</orgName>, <address><district>I.,</district> <street>Rothgasse 9</street></address>;</item>
           <item><orgName>Schwarzenberg-Kino</orgName>, <address><district>III.,</district> <street>Schwarzenbergplatz</street></address>;</item>
-
         </list>
       </div>
     </body>
   </text>
 </TEI>
 ```
+
 Beispiel für `<date>`:
 
 ```xml
