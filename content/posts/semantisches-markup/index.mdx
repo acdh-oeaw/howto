@@ -34,11 +34,11 @@ Das semantische Markup wird genutzt, um den Inhalt eines Textes auszuzeichnen. I
 * **Datumsangaben** `<date>`: Dieses Element enthält ein Datum oder einen Zeitpunkt. Jedes Format ist möglich.
 * **Namen von Organisationen** `<orgName>`: Mit diesem Element können Sie Organisationen auszeichnen.
 * **Adressen** `<address>` und `<addrLine>`: So können Sie Adressen `<address>` und eine Adressenzeile `<addrLine>`auszeichnen.
-* **Adressen** mit detailierter Auszeichnung: Sie können dem Element `<address>`auch die Auszeichnungen für Bezirke `<district>` und Straßen `<street>` unterordnen.
+* **Adressen** mit detailierter Auszeichnung: Sie können dem Element `<address>`auch die Komponenten für Bezirke `<district>` und Straßen `<street>` unterordnen.
 * **Ortsangaben** `<placeName>`: Mit diesem Element können Sie Orte auszeichnen.
-* **Verweis** auf 'etwas' oder 'jemanden': Um auf bestimmte Personen, Dinge, Orte etc. zu verweisen, können Sie den 'referencing string' `<rs>` nutzen. Dies ist besonders hilfreich, wenn immer wieder dieselben Elemente in Ihren Text vorkommen.
-* **Verweis** auf eine andere 'Quelle': Um auf andere Quellen innerhalb oder außerhalb Ihres Dokumentes zu verweisen, können Sie 'reference' `<ref>` nutzen. Zusätzlich können eine Kommentar oder Text ergänzen, wenn dies notwendig ist.
-* **Textabschnitte im `body`** `<div>` @type poem + @ana #verse: Der `body`kann durch das Element `div`weiter untergliedert werden, in Vorspann `front`, Textkörper, oder Nachspann `back`. `@type poem`ist ein Attribut um ein zu bestimmen, `@ana verse` steht für den Verweis auf einen analytischen Kommentar - das Gedicht ist in Versen geschrieben.
+* **Verweis** auf 'etwas' oder 'jemanden': Um auf bestimmte Personen, Dinge, Orte etc. zu verweisen, können Sie den 'referencing string' `<rs>` nutzen. Sie können dies z.B. nutzen, wenn eine Person oder ein Ort in Ihrem Text mit unterschiedlichen Begriffen bezeichnet wird, Sie aber zeigen möchten, dass es sich immer um dieselbe Person oder denselben Ort handelt.
+* **Verweis** auf eine andere 'Quelle': Um auf andere Quellen innerhalb oder außerhalb Ihres Dokumentes zu verweisen, können Sie 'reference' `<ref>` nutzen. Zusätzlich können Sie einen Kommentar oder Text ergänzen, wenn dies notwendig ist.
+* **Textabschnitte im `body`** `<div>` @type poem + @ana #verse: Der `body` kann durch das allgemeine Element `div` weiter in Abschnitte untergliedert werden, zudem in Vorspann `front`, Textkörper, oder Nachspann `back`. `@type poem`ist ein Attribut um ein zu bestimmen, `@ana #verse` steht für den Verweis auf einen analytischen Kommentar - das Gedicht ist in Versen geschrieben.
 * **Nachspann** 'back matter' `<back>`: Mit diesem Element können Sie den Nachspann eines Textes auszeichnen.
 * **Analyseverweis** 'interpretation' `<interp>` + @xml:id verse: Mit diesem Element könnnen Sie auf die Interpretation eines Textabschnittes hinweisen. Hier zum Beispiel wurde der Text als Verstext interpretiert.
 
