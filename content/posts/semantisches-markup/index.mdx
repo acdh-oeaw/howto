@@ -162,27 +162,6 @@ Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des F
 </TEI>   
 ```
 
-für `<placeName>`:
-
-```xml
-<placeName>Paris</placeName>
-<placeName>Japan</placeName>
-```
-
-Beispiel für den Verweis auf 'etwas' oder 'jemanden' mit `<rs>`:
-
-```xml
-<rs>∆</rs>
-```
-
-`<rs>` kann z.B. auch dafür verwendet werden, Anaphern zu kodieren:
-
-```xml
-<p>'Marquis Yorisaka weilt in geheimer diplomatischer Mission in Paris; als <rs
-  >er</rs> nach
-Japan zurückkehrt ...'</p>
-```
-
 Beispiel für den Verweis auf eine andere 'Quelle' mit `<ref>`:
 
 ```xml
@@ -252,8 +231,8 @@ Um eine Übersicht über die Filmlandschaft gegen Ende des Jahres 1924 zu bekomm
 4. Zeichnen Sie danach bitte zwei Absätze aus, einmal die Filmbeschreibung, einmal die Abgabe zu den Spielstätten.
 5. Zeichnen Sie in beiden Abschnitten den Filmtitel als `<title>`aus.
 6. Zeichnen Sie Sir J.E. Williamson als Person mit dem Element `<persName>`aus.
-7. Zeichnen Sie den Ausdruck "erster" al Verweise auf eine Person aus mit `<rs>`.
-8. Zeichnen Sie bitte innerhalb des zweiten Absatzes die zwei Spielstätten als Liste `<list>` aus, und die jeweilige Angabe zur Spielstätte als `<item>`.
+7. Zeichnen Sie den Ausdruck "erster" als Verweise auf eine Person aus mit `<rs>`.
+8. Zeichnen Sie bitte die zwei Spielstätten einerseits als neuen Abschnitt, anderseits als Liste `<list>` aus, und die jeweilige Angabe zur Spielstätte als `<item>`.
 9. Zeichnen Sie nun in jedem Listenelement die Spielstätte als `<orgName>`aus.
 10. Zeichnen Sie die angegebene Adresse richtig aus: benutzen Sie bitte die Elemente `<address>`, `<distric>` und `<street>`. Achten Sie bitte darauf alle Elemente richtig ineinander zu verschachteln.
 11. Überprüfen Sie, ob Sie die Elemente, die nur einzelne Worte oder Satzteile umschließen, geschlossen haben.
@@ -264,7 +243,24 @@ Die Wunder des Meeres. Der Film „Die Wunder des Meeres“ führt uns in ein bi
 *\#==== Lösung - in finaler Version entfernen*
 
 ```xml
-<body>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
  <div type="article">
     <head>Die Wunder des Meeres.</head>
        <p>Der Film <title
