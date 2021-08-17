@@ -44,26 +44,49 @@ Das semantische Markup wird genutzt, um den Inhalt eines Textes auszuzeichnen. I
 
 #### Praktische Anwendung
 
-Im folgenden Beispiel sehen Sie die Filmrezension zu _Der Film im Film_. Hier werden innerhalb eines durch ein Attribut genauer bestimmtes `<div>`-Element der Titel des Films `<title>`, sowie mehrere Personennamen `<persName>` ausgezeichnet. Beachten Sie, dass auch der Verfasser mit `<persName>` ausgezeichnet wird, ebenso der Titel eines weiteren Films ausgezeichnet wird.
+Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier werden innerhalb eines durch ein Attribut genauer bestimmtes `<div>`-Element der Titel des Films `<title>`, sowie mehrere Personennamen `<persName>` ausgezeichnet. Beachten Sie bitte, dass auch der Verfasser mit `<persName>` ausgezeichnet wird, ebenso der Titel eines weiteren Films ausgezeichnet wird.
 
 ```xml
-<div type="review" n="2">
-<p><title>„Der Film im Film“</title> (Pressevorführung) gab uns einmal
-Gelegenheit, nicht nur fertige Bilder zu beurteilen, sondern auch einen
-intimeren Blick in die Werkstatt der Filmkünstler zu tun und zu sehen, was
-alles und wie alles geschieht, ehe eine solche Tat vollbracht ist. Es ist
-eine Art Schöpfungsgeschichte im Kleinen, obwohl sie nicht in 6 Tagen,
-sondern in langen Monaten, selbst Jahren vollbracht ward, und jeder dieser
-tüchtigen Regisseure mag ein gottähnliches Gefühl in sich haben, wenn er aus 
-diesem Wust ungeordneten Materials eine Welt aufbaut, Wasser und Erde
-trennt. Himmel, Gestirne und Gebirge erstehen läßt. Wen wird es nicht
-interessieren, Künstler wie <persName>Henny Porten</persName>, <persName>Asta Nielsen</persName>,
-<persName>Morena</persName>, <persName>Jannings</persName>, <persName>Conradt Veidt</persName>,<persName>Max Linder</persName> und viele andere am Werke zu sehen,
-ebenso wie <persName>Fritz Lang</persName>, den genialen Regisseur der <title>Nibelungen</title>.
-<persName>Friedrich Porges</persName>, der Regisseur dieses ausgezeichneten, unterhaltendenund unterrichtenden Films, machte sich durch einen äußerst klaren, klugen und übersichtlichen Vortrag verdient, der so recht in den Geist der Materie einführt.</p>
-<byline><persName>J.</persName></byline>
-</div>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="review" n="2">
+        <p><title>„Der Film im Film“</title> (Pressevorführung) gab uns einmal
+        Gelegenheit, nicht nur fertige Bilder zu beurteilen, sondern auch einen
+        intimeren Blick in die Werkstatt der Filmkünstler zu tun und zu sehen, was
+        alles und wie alles geschieht, ehe eine solche Tat vollbracht ist. Es ist
+        eine Art Schöpfungsgeschichte im Kleinen, obwohl sie nicht in 6 Tagen,
+        sondern in langen Monaten, selbst Jahren vollbracht ward, und jeder dieser
+        tüchtigen Regisseure mag ein gottähnliches Gefühl in sich haben, wenn er aus 
+        diesem Wust ungeordneten Materials eine Welt aufbaut, Wasser und Erde
+        trennt. Himmel, Gestirne und Gebirge erstehen läßt. Wen wird es nicht
+        interessieren, Künstler wie <persName>Henny Porten</persName>, <persName>Asta Nielsen</persName>,
+        <persName>Morena</persName>, <persName>Jannings</persName>, <persName>Conradt Veidt</persName>,<persName>Max Linder</persName> und viele andere am Werke zu sehen,
+        ebenso wie <persName>Fritz Lang</persName>, den genialen Regisseur der <title>Nibelungen</title>.
+        <persName>Friedrich Porges</persName>, der Regisseur dieses ausgezeichneten, unterhaltendenund unterrichtenden Films, machte sich durch einen äußerst klaren, klugen und übersichtlichen Vortrag 
+        verdient, der so recht in den Geist der Materie einführt.</p>
+        <byline><persName>J.</persName></byline>
+       </div>
+      </body>
+  </text>
+</TEI>
 ```
+
 Sehen Sie sich bitte das folgende Beispiel an, das sich dem Inhalt des Textes zuwendet. Identifiziert werden verschiedene Werktitel, Firmennamen, Adressen und Verweise. Darüber hinaus kommt das Attribut `@ana` ('Analyseverweis') zum Einsatz, um das Gedicht mit einem analytischen Kommentar zu verknüpfen. Um z.B. anzugeben, dass sich das Gedicht von Prosatexten unterscheidet, ist nach dem `<body>` ein Nachspann (`<back>`) zu ergänzen, der die Definition festhält.
 
 Beispiele für `<title>` aus der Textvorlage:
