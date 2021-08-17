@@ -45,6 +45,7 @@ Das semantische Markup wird genutzt, um den Inhalt eines Textes auszuzeichnen. I
 #### Praktische Anwendung
 
 ##### Beispiel 1
+
 Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier werden innerhalb eines durch ein Attribut genauer bestimmtes `<div>`-Element der Titel des Films `<title>`, sowie mehrere Personennamen `<persName>` ausgezeichnet. Beachten Sie bitte, dass auch der Verfasser mit `<persName>` ausgezeichnet wird, ebenso der Titel eines weiteren Films ausgezeichnet wird.
 
 ```xml
@@ -89,6 +90,7 @@ Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier we
 ```
 
 ##### Beispiel 2
+
 Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der Film *Die Wunder des Meeres* gezeigt wurde. Wie bereits im vorangegangenen Beispiel wird der Werktitel ausgezeichnet, genauso der Spielzeitraum `<date>`, und die Spielorte. Deren Adressen werden hier beispielhaft auf zwei unterschiedliche Weisen dargestellt. Einerseits finden Sie das Element `<addrLine>`, andererseits kann hier genauso mit `<address>` genauer in Bezirk `<district>`und Straße `<street>`unterteilt. Die Name der Kinos werden als `<orgName>`ausgezeichnet.
 
 ```xml
@@ -122,8 +124,10 @@ Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen 
 </TEI>
  
 ```
+
 ##### Beispiel 3
-Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des Films _Die Schlacht_. Hier werden ein Ortsname `<placeName>`, Personenname `<persName>`, sowie eine Anapher `<rs>`ausgezeichnet.
+
+Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des Films *Die Schlacht*. Hier werden ein Ortsname `<placeName>`, Personenname `<persName>`, sowie eine Anapher `<rs>`ausgezeichnet.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -144,14 +148,20 @@ Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des F
   </teiHeader>
   <text>
     <body>
-<div type="reviews">
-<head type="columnTitle">FILM-KRITIKEN</head> 
-<div type="review" n="1">
-<p><title>„Die Schlacht.“</title> Nach dem Roman von <persName>Claude Farrère</persName> wurde 
-dieses Meisterwerk gedreht, doch es ist nicht „verfilmte Literatur“, sondern ein echtes Filmdrama. 
-<persName>Marquis Yorisaka</persName> weilt in geheimer diplomatischer Mission in <placeName>Paris</placeName>; 
-als <rs>er</rs> nach <placeName>Japan</placeName> zurückkehrt, findet er seine Frau, europäisch umgemodelt; ...</p>
+      <div type="reviews">
+        <head type="columnTitle">FILM-KRITIKEN</head> 
+        <div type="review" n="1">
+          <p><title>„Die Schlacht.“</title> Nach dem Roman von <persName>Claude Farrère</persName> wurde 
+          dieses Meisterwerk gedreht, doch es ist nicht „verfilmte Literatur“, sondern ein echtes Filmdrama. 
+          <persName>Marquis Yorisaka</persName> weilt in geheimer diplomatischer Mission in <placeName>Paris</placeName>; 
+          als <rs>er</rs> nach <placeName>Japan</placeName> zurückkehrt, findet er seine Frau, europäisch umgemodelt; ...</p>
+        </div>
+      </div>
+    </body>
+  </text>
+</TEI>   
 ```
+
 für `<placeName>`:
 
 ```xml
@@ -179,7 +189,9 @@ Beispiel für den Verweis auf eine andere 'Quelle' mit `<ref>`:
 <ref>Nummer 33</ref>
 <ref>34</ref>
 ```
+
 ##### Beispiel 4
+
 Nun sehen Sie ein Beispiel eines Gedichts, das explizit als Verstext ausgewiesen ist. 
 
 ```xml
