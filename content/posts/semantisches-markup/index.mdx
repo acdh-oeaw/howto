@@ -263,67 +263,44 @@ Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Füg
 </Quiz>
 
 
-Um einen Überblick über die Filmlandschaft gegen Ende des Jahres 1924 zu bekommen und mehr über den Typus der Filmzeitschrift zu erfahren, möchte die Forschungsgruppe wissen, welche Texttypen vorhanden sind, welche Filme genannt wurden, welche Personen damals dem Publikum vorgestellt wurden und wo das Publikum die Filme sehen konnte. Bitte zeichnen Sie deshalb im anschließenden Textabschnitt folgendes aus:
 
-1. Kennzeichnen Sie den gesamten Textabschnitt als `<body>`.
-2. Zeichnen Sie diesen bestimmten Textabschnitt außerdem als Artikel `<div type="article">`aus.
-3. Zeichnen Sie den Titel des Artikels mit `<head>`aus.
-4. Zeichnen Sie danach bitte zwei Absätze aus, einmal die Filmbeschreibung, einmal die Abgabe zu den Spielstätten.
-5. Zeichnen Sie in beiden Abschnitten den Filmtitel als `<title>`aus.
-6. Zeichnen Sie Sir J.E. Williamson als Person mit dem Element `<persName>`aus.
-7. Zeichnen Sie den Ausdruck "erster" als Verweise auf eine Person aus mit `<rs>`.
-8. Zeichnen Sie bitte die zwei Spielstätten einerseits als neuen Abschnitt, anderseits als Liste `<list>` aus, und die jeweilige Angabe zur Spielstätte als `<item>`.
-9. Zeichnen Sie nun in jedem Listenelement die Spielstätte als `<orgName>`aus.
-10. Zeichnen Sie die angegebene Adresse richtig aus: benutzen Sie bitte die Elemente `<address>`, `<distric>` und `<street>`. Achten Sie bitte darauf alle Elemente richtig ineinander zu verschachteln.
-11. Überprüfen Sie, ob Sie die Elemente, die nur einzelne Worte oder Satzteile umschließen, geschlossen haben.
-12. Schließen Sie bitte die Elemente, die noch offen sind in der richtigen Reihenfolge, sodass sie richtig verschachtelt sind.
 
-Die Wunder des Meeres. Der Film „Die Wunder des Meeres“ führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher Sir J. E. Williamson hat als erster das nie vorher erhellte Dunkel der Meerestiefen mittels seiner eigens konstruierten Tiefseestation für kinematographische Aufnahmen dem menschlichen Auge enthüllt. Der Film »Die Wunder des Meeres« läuft Flotten-Kino, VI., Mariahilferstraße 85; Wienzeile-Kino, VI., Linke Wienzeile 4;
+##### Quiz 1b: Verweise
 
-*\#==== Lösung - in finaler Version entfernen*
+<Quiz>
+  <Quiz.Card validateButtonLabel="Überprüfen">
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        In der Filmzeitschrift, die Sie im Rahmen der Forschungsgruppe bearbeiten, gibt es unterschiedliche Textarten. Deshalb entscheiden Sie sich, dem `<body>`einen Nachspann `<back>`, der als analytischer Kommentar dient, anzufügen. Hier sammeln Sie die Definitionen der verschiedenen Textformen und sorgen so für einheitliche Verweise. Wie weisen Sie innerhalb des `<body>`auf diesen analytischen Kommentar und die unterschiedlichen Textarten hin? Bitte wählen Sie die richtige Antwort aus.
+      </Quiz.Question>
 
-```xml
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
-	schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <teiHeader>
-    <fileDesc>
-      <titleStmt>
-        <title>Die Filmwelt - ein Ausschnitt</title>
-      </titleStmt>
-      <publicationStmt>
-        <p>Publication Information</p>
-      </publicationStmt>
-      <sourceDesc>
-        <p>Information zur Veröffentlichung</p>
-      </sourceDesc>
-    </fileDesc>
-  </teiHeader>
-  <text>
-    <body>
- <div type="article">
-    <head>Die Wunder des Meeres.</head>
-       <p>Der Film <title
-      >„Die Wunder des Meeres“</title> führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher <persName
-      >Sir J. E. Williamson</persName> hat als <rs
-      >erster</rs> das nie vorher erhellte Dunkel der Meerestiefen mittels seiner eigens konstruierten Tiefseestation für kinematographische Aufnahmen dem menschlichen Auge enthüllt.</p>
-       <p>Der Film <title>»Die Wunder des Meeres«</title> läuft
-        <list>
-         <item><orgName>Flotten-Kino</orgName>, <address><district
-            >VI.,</district> <street
-            >Mariahilferstraße 85</street></address>;</item>
-         <item><orgName>Wienzeile-Kino</orgName>, <address><district
-            >VI.,</district> <street
-            >Linke Wienzeile 4</street></address>;</item>
-        </list>
-        </p>
-  </div>
-</body>
-```
+      <Quiz.MultipleChoice.Option>
+        a) Ich verweise mit dem Attribut `@ana`. Damit verweise ich auf den Kommentar.
+      </Quiz.MultipleChoice.Option>
 
-*\====#*
+      <Quiz.MultipleChoice.Option isCorrect>
+        b) Ich verweise mit dem Attribut `@ana`, gefolgt von einer klaren Auszeichnung, worauf ich mich im Analytischen Kommentar beziehe. Dazu nutze ich den Hashtag: `ana=#verse`
+      </Quiz.MultipleChoice.Option>
 
-##### Übung 1b: Verweise
+      <Quiz.MultipleChoice.Option>
+        c) Ich verweise mit dem Hashtag `#verse`darauf, dass es sich um einen Text in Versform handelt.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        d) Ich beschreibe im `<back>`die Textart und diese Beschreibung kopiere ich an den passenden Stellen in den `<body>`.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Richtig!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Leider falsch, überlegen Sie bitte noch einmal!
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
 
 In der Filmzeitschrift, die Sie im Rahmen der Forschungsgruppe bearbeiten, gibt es unterschiedliche Textarten. Deshalb entscheiden Sie sich, dem `<body>`einen Nachspann `<back>`, der als analytischer Kommentar dient, anzufügen. Hier sammeln Sie die Definitionen der verschiedenen Textformen und sorgen so für einheitliche Verweise. Wie weisen Sie innerhalb des `<body>`auf diesen analytischen Kommentar und die unterschiedlichen Textarten hin? Bitte wählen Sie die richtige Antwort aus.
 
