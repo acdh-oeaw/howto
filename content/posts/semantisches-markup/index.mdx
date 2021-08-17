@@ -89,22 +89,7 @@ Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier we
 
 Sehen Sie sich bitte das folgende Beispiel an, das sich dem Inhalt des Textes zuwendet. Identifiziert werden verschiedene Werktitel, Firmennamen, Adressen und Verweise. Darüber hinaus kommt das Attribut `@ana` ('Analyseverweis') zum Einsatz, um das Gedicht mit einem analytischen Kommentar zu verknüpfen. Um z.B. anzugeben, dass sich das Gedicht von Prosatexten unterscheidet, ist nach dem `<body>` ein Nachspann (`<back>`) zu ergänzen, der die Definition festhält.
 
-Beispiele für `<title>` aus der Textvorlage:
-
-```xml
-<title>„Die Wunder des Meeres“</title>
-<title>„Die Schlacht.“</title>
-<title>„Filmwelt“</title>
-```
-
-Beispiele für `<persName>`:
-
-```xml
-<persName>Sir J. E. Williamson</persName>
-<persName>Marquis Yorisaka</persName>
-<persName>Sch.</persName>
-```
-Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der Film _Die Wunder des Meeres_ gezeigt wurde. Wie bereits im vorangegangenen Beispiel wird der Werktitel ausgezeichnet, genauso der Spielzeitraum `<date>`, und die Spielorte. Deren Adresse wird hier genauer in Bezirk `<district>`und Straße `<street>`unterteilt.
+Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der Film _Die Wunder des Meeres_ gezeigt wurde. Wie bereits im vorangegangenen Beispiel wird der Werktitel ausgezeichnet, genauso der Spielzeitraum `<date>`, und die Spielorte. Deren Adresse `<address>`wird hier genauer in Bezirk `<district>`und Straße `<street>`unterteilt. Die Name der Kinos werden als `<orgName>`ausgezeichnet.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
