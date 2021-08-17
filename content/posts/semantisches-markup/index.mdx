@@ -21,29 +21,49 @@ uuid: dg-X2hfAhCoVLDQqZqtts
 
 ### Lernziele:
 
-* Grundlegende Begriffe des semantischen Markup
-* Auszeichnung von Angaben zu Personen und Orten
-* der Nachspann als Verzeichnis und Verweise
+- Grundlegende Begriffe des semantischen Markup
+- Auszeichnung von Angaben zu Personen und Orten
+- der Nachspann als Verzeichnis und Verweise
 
 ### Grundlagen Basics
 
 Das semantische Markup wird genutzt, um den Inhalt eines Textes auszuzeichnen. Im Grunde sind Ihnen durch die TEI keine Grenzen gesetzt, was Sie und in welcher Tiefe Sie auszeichnen. Die Auszeichnungen, die Sie verwenden, werden von den Fragen abhängig sein, die Sie an Ihren Text stellen. Das semantische Markup zeichnet die Bedeutung der Textelement aus. Dazu gehören zum Beispiel Werktitel, Personennamen, Orts- und Zeitangaben, aber auch Verweise und Register. Die folgenden Elemente werden in den nächsten Übungen verwendet. Sie sind Beispiele für semantisches Markup, aber es gibt noch wesentlich mehr Attribute, die Sie nutzen können.
 
-* **Werktitel** `<title>`: Hier kann zum Beispiel der Titel eines Theaterstücks, eines Gedichtes, oder auch eines Buches ausgezeichnet werden.
-* **Personennamen** `<persName>`: Der Personenname bezeichnet den gesamten Namen einer Person, sowohl Vor- als auch Nachname. Wenn Sie Vorname `<forename>` und Nachname `<surname>`auch auszeichnen wollen, so könnten Sie diese innerhalb des `<persName>`-Elements setzen.
-* **Datumsangaben** `<date>`: Dieses Element enthält ein Datum oder einen Zeitpunkt. Jedes Format ist möglich.
-* **Namen von Organisationen** `<orgName>`: Mit diesem Element können Sie Organisationen auszeichnen.
-* **Adressen** `<address>` und `<addrLine>`: So können Sie Adressen `<address>` und eine Adressenzeile `<addrLine>`auszeichnen.
-* **Adressen** mit detailierter Auszeichnung: Sie können dem Element `<address>`auch die Komponenten für Bezirke `<district>` und Straßen `<street>` unterordnen.
-* **Ortsangaben** `<placeName>`: Mit diesem Element können Sie Orte auszeichnen.
-* **Verweis** auf 'etwas' oder 'jemanden': Um auf bestimmte Personen, Dinge, Orte etc. zu verweisen, können Sie den 'referencing string' `<rs>` nutzen. Sie können dies z.B. nutzen, wenn eine Person oder ein Ort in Ihrem Text mit unterschiedlichen Begriffen bezeichnet wird, Sie aber zeigen möchten, dass es sich immer um dieselbe Person oder denselben Ort handelt.
-* **Verweis** auf eine andere 'Quelle': Um auf andere Quellen innerhalb oder außerhalb Ihres Dokumentes zu verweisen, können Sie 'reference' `<ref>` nutzen. Zusätzlich können Sie einen Kommentar oder Text ergänzen, wenn dies notwendig ist.
-* **Textabschnitte im `body`** `<div>` @type poem + @ana #verse: Der `body` kann durch das allgemeine Element `div` weiter in Abschnitte untergliedert werden, zudem in Vorspann `front`, Textkörper, oder Nachspann `back`. Das Attribut `@type poem` bestimmt ein Gedicht, `@ana #verse` steht für den Verweis auf einen analytischen Kommentar - das Gedicht ist in Versen geschrieben.
-* **Nachspann** 'back matter' `<back>`: Mit diesem Element können Sie den Nachspann eines Textes auszeichnen.
-* **Analyseverweis** 'interpretation' `<interp>` + @xml:id verse: Mit diesem Element könnnen Sie auf die Interpretation eines Textabschnittes hinweisen. Hier zum Beispiel wurde der Text als Verstext interpretiert.
+- **Werktitel** `<title>`: Hier kann zum Beispiel der Titel eines Theaterstücks, eines Gedichtes, oder auch eines Buches ausgezeichnet werden.
+- **Personennamen** `<persName>`: Der Personenname bezeichnet den gesamten Namen einer Person, sowohl Vor- als auch Nachname. Wenn Sie Vorname `<forename>` und Nachname `<surname>`auch auszeichnen wollen, so könnten Sie diese innerhalb des `<persName>`-Elements setzen.
+- **Datumsangaben** `<date>`: Dieses Element enthält ein Datum oder einen Zeitpunkt. Jedes Format ist möglich.
+- **Namen von Organisationen** `<orgName>`: Mit diesem Element können Sie Organisationen auszeichnen.
+- **Adressen** `<address>` und `<addrLine>`: So können Sie Adressen `<address>` und eine Adressenzeile `<addrLine>`auszeichnen.
+- **Adressen** mit detailierter Auszeichnung: Sie können dem Element `<address>`auch die Komponenten für Bezirke `<district>` und Straßen `<street>` unterordnen.
+- **Ortsangaben** `<placeName>`: Mit diesem Element können Sie Orte auszeichnen.
+- **Verweis** auf 'etwas' oder 'jemanden': Um auf bestimmte Personen, Dinge, Orte etc. zu verweisen, können Sie den 'referencing string' `<rs>` nutzen. Sie können dies z.B. nutzen, wenn eine Person oder ein Ort in Ihrem Text mit unterschiedlichen Begriffen bezeichnet wird, Sie aber zeigen möchten, dass es sich immer um dieselbe Person oder denselben Ort handelt.
+- **Verweis** auf eine andere 'Quelle': Um auf andere Quellen innerhalb oder außerhalb Ihres Dokumentes zu verweisen, können Sie 'reference' `<ref>` nutzen. Zusätzlich können Sie einen Kommentar oder Text ergänzen, wenn dies notwendig ist.
+- **Textabschnitte im `body`** `<div>` @type poem + @ana #verse: Der `body` kann durch das allgemeine Element `div` weiter in Abschnitte untergliedert werden. Das Attribut `@type poem` bestimmt ein Gedicht, `@ana #verse` steht für den Verweis auf einen analytischen Kommentar - das Gedicht ist in Versen geschrieben.
+- **Nachspann** 'back matter' `<back>`: Mit diesem Element können Sie den Nachspann eines Textes auszeichnen.
+- **Analyseverweis** 'interpretation' `<interp>` + @xml:id verse: Mit diesem Element könnnen Sie auf die Interpretation eines Textabschnittes hinweisen. Hier zum Beispiel wurde der Text als Verstext interpretiert.
 
 #### Praktische Anwendung
 
+Im folgenden Beispiel sehen Sie die Filmrezension zu _Der Film im Film_. Hier werden innerhalb eines durch ein Attribut genauer bestimmtes `<div>`-Element der Titel des Films `<title>`, sowie mehrere Personennamen ausgezeichnet. Beachten Sie, dass auch der Verfasser ausgezeichnet wird.
+
+```xml
+<div type="review" n="2">
+<p><title>„Der Film im Film“</title> (Pressevorführung) gab uns einmal
+Gelegenheit, nicht nur fertige Bilder zu beurteilen, sondern auch einen
+intimeren Blick in die Werkstatt der Filmkünstler zu tun und zu sehen, was
+alles und wie alles geschieht, ehe eine solche Tat vollbracht ist. Es ist
+eine Art Schöpfungsgeschichte im Kleinen, obwohl sie nicht in 6 Tagen,
+sondern in langen Monaten, selbst Jahren vollbracht ward, und jeder dieser
+tüchtigen Regisseure mag ein gottähnliches Gefühl in sich haben, wenn er aus 
+diesem Wust ungeordneten Materials eine Welt aufbaut, Wasser und Erde
+trennt. Himmel, Gestirne und Gebirge erstehen läßt. Wen wird es nicht
+interessieren, Künstler wie <persName>Henny Porten</persName>, <persName>Asta Nielsen</persName>,
+<persName>Morena</persName>, <persName>Jannings</persName>, <persName>Conradt Veidt</persName>,<persName>Max Linder</persName> und viele andere am Werke zu sehen,
+ebenso wie <persName>Fritz Lang</persName>, den genialen Regisseur der <title>Nibelungen</title>.
+<persName>Friedrich Porges</persName>, der Regisseur dieses ausgezeichneten, unterhaltendenund unterrichtenden Films, machte sich durch einen äußerst klaren, klugen und übersichtlichen Vortrag verdient, der so recht in den Geist der Materie einführt.</p>
+<byline><persName>J.</persName></byline>
+</div>
+```
 Sehen Sie sich bitte das folgende Beispiel an, das sich dem Inhalt des Textes zuwendet. Identifiziert werden verschiedene Werktitel, Firmennamen, Adressen und Verweise. Darüber hinaus kommt das Attribut `@ana` ('Analyseverweis') zum Einsatz, um das Gedicht mit einem analytischen Kommentar zu verknüpfen. Um z.B. anzugeben, dass sich das Gedicht von Prosatexten unterscheidet, ist nach dem `<body>` ein Nachspann (`<back>`) zu ergänzen, der die Definition festhält.
 
 Beispiele für `<title>` aus der Textvorlage:
@@ -136,7 +156,7 @@ Beispiel eines Gedichts, das explizit als Verstext ausgewiesen ist:
 </div>
 ```
 
-Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Fügen Sie nach dem schließenden `<body>`-Tag einen Nachspann back mit einem `<interp>`-Element und das Attribut @xml:id mit dem Wert verse ein. Der Inhalt dieses Elements beschreibt, worum es sich handelt:
+Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Fügen Sie nach dem schließenden `<body>`-Tag einen Nachspann `back` mit einem `<interp>`-Element und das Attribut @xml:id mit dem Wert verse ein. Der Inhalt dieses Elements beschreibt, worum es sich handelt:
 
 ```xml
 <back>
@@ -215,19 +235,21 @@ Nachdem Sie nun schon die ersten Attribute und Werte kennengelernt haben, werden
 
 Anhand unserer Filmzeitschrift werden im folgenden Beispiel verschiedenartige Werktitel (Filmtitel mit `@type=movie`, Zeitschriftentitel mit `@type=journal`) unterschieden, und es wird angegeben, ob ein Personenname eine historische (persName type="historical"), religiöse (@type=religious) oder fiktionale (@type=fictional) Figur bezeichnet. Sofern es sich um letzteres handelt, ist zu ergänzen, dass der Figurenname aus den Bereichen 'Film' (@subtype=filmCharacter) oder 'Literatur' (@subtype=literaryCharacter) stammt. Zudem wird bei Personennamen zwischen Titel, Vor- und Nachnamen differenziert. Organisationsbezeichnungen werden unterteilt in Kinos (orgName type="cinema") und Filmfirmen (@type=filmCompany), Ortsbezeichnungen in Städte (placeName type="city") und Länder (@type=country).
 
-* **Titel** `<title>` + @type movie / journal: Zusätzlich zum Titel geben Sie an, um welches Medium es sich handelt.
-* **Personen** `<persName>` + @type historical / fictional / religious: Mit diesen Werten legen Sie mehr Information über die Personen fest.
-* **Fiktive Personen** `<persName>` @type fictional + @subtype filmCharacter / literaryCharacter: Wenn Sie einen fiktiven Personennamen auszeichnen möchten, können Sie zudem auszeichnen, ob diese Figur aus Film oder Literatur stammt.
-* **Personenname im Detail** `<persName>` + `<roleName>` + `<forename>` + `<surname>`: Sie können einen Personennamen auch in seinen einzelnen Bestandteilen auszeichnen. Verschachteln Sie im Attribut `<persName>`den Rollennamen `<roleName>`
-* **Namen von Organisationen** `<orgName>` + @type cinema / filmCompany: Mit `cinema`können Sie das Kino auszeichnen, mit `filmCompany` die Filmproduktions-/Filmvertriebsfirma
-* **Ortsangaben** `<placeName>` + @type city / country: Mit `city`können Sie die Stadt, wo vorgeführt wird, näher definieren, mit `country` das Land.
-* **Datumsangaben** `<date>` + @from + @to (Werte YYYY-MM-DD): Genauere Datumsangaben können Sie im Format Jahr-Monat-Tag angeben und so einen Beginn `@from`und ein Ende `@to`angeben. Da die Datumsangaben in unserem Beispieltext keine einzelnen Tage, sondern Zeiträume beschreiben, sind geeignete Attribute zu ergänzen.
-* **Verweis** `<rs>` + @type chiffre: Findet sich im Text eine Chiffre, kann mit `@type chiffre` darauf verwiesen werden. Bei den Verweisen ist anzugeben, worauf sie referenzieren.
-* **Verweis** `<ref>` + @type issue: Mit `@type issue`können Sie auf andere Ausgaben der Zeitschrift verweisen. Bei den Verweisen ist anzugeben, worauf sie referenzieren.
+- **Titel** `<title>` + @type movie / journal: Zusätzlich zum Titel geben Sie an, um welches Medium es sich handelt.
+- **Personen** `<persName>` + @type historical / fictional / religious: Mit diesen Werten legen Sie mehr Information über die Personen fest.
+- **Fiktive Personen** `<persName>` @type fictional + @subtype filmCharacter / literaryCharacter: Wenn Sie einen fiktiven Personennamen auszeichnen möchten, können Sie zudem auszeichnen, ob diese Figur aus Film oder Literatur stammt.
+- **Personenname im Detail** `<persName>` + `<roleName>` + `<forename>` + `<surname>`: Sie können einen Personennamen auch in seinen einzelnen Bestandteilen auszeichnen. Verschachteln Sie im Attribut `<persName>`den Rollennamen `<roleName>`
+- **Namen von Organisationen** `<orgName>` + @type cinema / filmCompany: Mit `cinema`können Sie das Kino auszeichnen, mit `filmCompany` die Filmproduktions-/Filmvertriebsfirma
+- **Ortsangaben** `<placeName>` + @type city / country: Mit `city`können Sie die Stadt, wo vorgeführt wird, näher definieren, mit `country` das Land.
+- **Datumsangaben** `<date>` + @from + @to (Werte YYYY-MM-DD): Genauere Datumsangaben können Sie im Format Jahr-Monat-Tag angeben und so einen Beginn `@from`und ein Ende `@to`angeben. Da die Datumsangaben in unserem Beispieltext keine einzelnen Tage, sondern Zeiträume beschreiben, sind geeignete Attribute zu ergänzen.
+- **Verweis** `<rs>` + @type chiffre: Findet sich im Text eine Chiffre, kann mit `@type chiffre` darauf verwiesen werden. Bei den Verweisen ist anzugeben, worauf sie referenzieren.
+- **Verweis** `<ref>` + @type issue: Mit `@type issue`können Sie auf andere Ausgaben der Zeitschrift verweisen. Bei den Verweisen ist anzugeben, worauf sie referenzieren.
 
 [^21]
 
 [^21]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `5_Semantik_II_FW_11_12.xml`
+
+``
 
 Beispiele für verschiedene Arten von Werktiteln:
 
@@ -539,8 +561,8 @@ Der Granularität der Annotation sind kaum Grenzen gesetzt. Weitere Möglichkeit
 
 Verwendete Elemente / Attribute / Werte:
 
-* `<forename>` oder `<surname>`+ @full init: Die optionale Auszeichnung `@full` zeigt an, ob der Name vollständig `yes`(voreingestellt), in abgekürzter Form `abb`oder als Initiale `init`im Text angeführt ist.
-* `<l>` + @rhyme a / b etc: Nach der Auszeichnung Zeile `<l>` können Sie zudem angeben, welches Reimschema gegeben ist, zum Beispiel `rhyme= abababcc`.
+- `<forename>` oder `<surname>`+ @full init: Die optionale Auszeichnung `@full` zeigt an, ob der Name vollständig `yes`(voreingestellt), in abgekürzter Form `abb`oder als Initiale `init`im Text angeführt ist.
+- `<l>` + @rhyme a / b etc: Nach der Auszeichnung Zeile `<l>` können Sie zudem angeben, welches Reimschema gegeben ist, zum Beispiel `rhyme= abababcc`.
 
 [^22]
 
@@ -602,19 +624,19 @@ Derartige Zusatzinformation sind nicht Teil des kodieten Textes selbst. Deshalb 
 
 Nachspann mit Listen:
 
-* `<listPerson>` + @type historical / fictional: Hier sehen Sie Angaben, die in einer Liste historischer oder fiktiver Personen verwendet werden können.
-* `<person>` + @xml:id pe1 / pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet.
-* `<person>` + @sex F / M / O / N / U: Einer Person können Sie ein Geschlecht zuordnen, und zwar `M` "männllich", `F` "weiblich", `O`"divers", `N` "nicht anwendbar", oder `U` "unbekannt".
-* `<person>` + @role actor / author / filmDirector / filmProducer / writer: Mit diesen Attributen können Sie eine berufliche Rolle auszeichnen.
-* `<persName>` + @type artistName / birthName + `<forename>` + `<surname>`: Mit diesen Attribute können Sie eine Künstler- oder Geburtsname auszeichnen.
-* `<birth>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Geburtsort auszeichnen.
-* `<death>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Sterbeort auszeichnen.
-* `<listPlace>`: Hier sehen Sie Angaben, die in einer Liste von Orten verwendet werden können.
-* `<place>` + @xml:id + pl1 / pl2 etc.: Jeder Ort wird mit einer einzigartigen ID-Nummer ausgezeichnet.
-* `<location>` + `<country>` + @key FR / JA / RU: Mit diesem Attribut können Sie bestimmte Länder auszeichnen. Wenn Sie die ISO 3166 Bezeichnungen nutzen, kann Ihre Auszeichnung universell verstanden werden.
-* `<location>` + `<bloc>` + @type continent
-* `<persName>` + @ref #pe1 / #pe2 etc.
-* `<placeName>` + @ref #pl1 / #pl2 etc.
+- `<listPerson>` + @type historical / fictional: Hier sehen Sie Angaben, die in einer Liste historischer oder fiktiver Personen verwendet werden können.
+- `<person>` + @xml:id pe1 / pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet.
+- `<person>` + @sex F / M / O / N / U: Einer Person können Sie ein Geschlecht zuordnen, und zwar `M` "männllich", `F` "weiblich", `O`"divers", `N` "nicht anwendbar", oder `U` "unbekannt".
+- `<person>` + @role actor / author / filmDirector / filmProducer / writer: Mit diesen Attributen können Sie eine berufliche Rolle auszeichnen.
+- `<persName>` + @type artistName / birthName + `<forename>` + `<surname>`: Mit diesen Attribute können Sie eine Künstler- oder Geburtsname auszeichnen.
+- `<birth>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Geburtsort auszeichnen.
+- `<death>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Sterbeort auszeichnen.
+- `<listPlace>`: Hier sehen Sie Angaben, die in einer Liste von Orten verwendet werden können.
+- `<place>` + @xml:id + pl1 / pl2 etc.: Jeder Ort wird mit einer einzigartigen ID-Nummer ausgezeichnet.
+- `<location>` + `<country>` + @key FR / JA / RU: Mit diesem Attribut können Sie bestimmte Länder auszeichnen. Wenn Sie die ISO 3166 Bezeichnungen nutzen, kann Ihre Auszeichnung universell verstanden werden.
+- `<location>` + `<bloc>` + @type continent
+- `<persName>` + @ref #pe1 / #pe2 etc.
+- `<placeName>` + @ref #pl1 / #pl2 etc.
 
 [^23]
 
