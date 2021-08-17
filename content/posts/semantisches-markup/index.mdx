@@ -44,6 +44,7 @@ Das semantische Markup wird genutzt, um den Inhalt eines Textes auszuzeichnen. I
 
 #### Praktische Anwendung
 
+##### Beispiel 1
 Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier werden innerhalb eines durch ein Attribut genauer bestimmtes `<div>`-Element der Titel des Films `<title>`, sowie mehrere Personennamen `<persName>` ausgezeichnet. Beachten Sie bitte, dass auch der Verfasser mit `<persName>` ausgezeichnet wird, ebenso der Titel eines weiteren Films ausgezeichnet wird.
 
 ```xml
@@ -87,8 +88,7 @@ Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier we
 </TEI>
 ```
 
-Sehen Sie sich bitte das folgende Beispiel an, das sich dem Inhalt des Textes zuwendet. Identifiziert werden verschiedene Werktitel, Firmennamen, Adressen und Verweise. Darüber hinaus kommt das Attribut `@ana` ('Analyseverweis') zum Einsatz, um das Gedicht mit einem analytischen Kommentar zu verknüpfen. Um z.B. anzugeben, dass sich das Gedicht von Prosatexten unterscheidet, ist nach dem `<body>` ein Nachspann (`<back>`) zu ergänzen, der die Definition festhält.
-
+##### Beispiel 2
 Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der Film *Die Wunder des Meeres* gezeigt wurde. Wie bereits im vorangegangenen Beispiel wird der Werktitel ausgezeichnet, genauso der Spielzeitraum `<date>`, und die Spielorte. Deren Adressen werden hier beispielhaft auf zwei unterschiedliche Weisen dargestellt. Einerseits finden Sie das Element `<addrLine>`, andererseits kann hier genauso mit `<address>` genauer in Bezirk `<district>`und Straße `<street>`unterteilt. Die Name der Kinos werden als `<orgName>`ausgezeichnet.
 
 ```xml
@@ -122,8 +122,37 @@ Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen 
 </TEI>
  
 ```
+##### Beispiel 3
+Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des Films _Die Schlacht_. Hier werden ein Ortsname `<placeName>`, Personenname `<persName>`, sowie eine Anapher `<rs>`ausgezeichnet.
 
-Im folgenden Beispiel finden Sie eine Ausschnitt aus der Rezension des Films \_Die Schlacht\_. für `<placeName>`:
+```xml
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+<div type="reviews">
+<head type="columnTitle">FILM-KRITIKEN</head> 
+<div type="review" n="1">
+<p><title>„Die Schlacht.“</title> Nach dem Roman von <persName>Claude Farrère</persName> wurde 
+dieses Meisterwerk gedreht, doch es ist nicht „verfilmte Literatur“, sondern ein echtes Filmdrama. 
+<persName>Marquis Yorisaka</persName> weilt in geheimer diplomatischer Mission in <placeName>Paris</placeName>; 
+als <rs>er</rs> nach <placeName>Japan</placeName> zurückkehrt, findet er seine Frau, europäisch umgemodelt; ...</p>
+```
+für `<placeName>`:
 
 ```xml
 <placeName>Paris</placeName>
@@ -150,7 +179,7 @@ Beispiel für den Verweis auf eine andere 'Quelle' mit `<ref>`:
 <ref>Nummer 33</ref>
 <ref>34</ref>
 ```
-
+##### Beispiel 4
 Nun sehen Sie ein Beispiel eines Gedichts, das explizit als Verstext ausgewiesen ist. 
 
 ```xml
