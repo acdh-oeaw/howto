@@ -156,17 +156,43 @@ Beispiel für den Verweis auf eine andere 'Quelle' mit `<ref>`:
 Beispiel eines Gedichts, das explizit als Verstext ausgewiesen ist:
 
 ```xml
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
 <div type="poem" ana="#verse">
   <lg>
     <head>Der Filmstar.</head>
     <l>Du ahnst bei ihm die Schwüle</l>
     <l>Leise glimmender Gefühle.</l>
-    <l>...</l>
+<l>Steife Hemdbrust —</l> 
+<l>Heben — senken —</l> 
+<l>Augen, die sich stumm verrenken.</l>
+<l>— — — — — —</l> 
+<l>Er ist von seltner Bescheidenheit.</l> 
+<l>Doch ihn verpflichtet sein Name,</l> 
     <l>Drum kämpft er mit Beharrlichkeit</l>
     <l>Um jede Großaufnahme.</l>
     <byline>Friedrich Zelnik.</byline>
   </lg>
 </div>
+   </body>
+  </text>
+</TEI>
 ```
 
 Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Fügen Sie nach dem schließenden `<body>`-Tag einen Nachspann `back` mit einem `<interp>`-Element und das Attribut @xml:id mit dem Wert verse ein. Der Inhalt dieses Elements beschreibt, worum es sich handelt:
@@ -179,7 +205,7 @@ Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Füg
 
 ##### Übung 1a: Inhalte im Text auszeichnen
 
-Um eine Übersicht über die Filmlandschaft gegen Ende des Jahres 1924 zu bekommen und mehr über den Typus der Filmzeitschrift zu erfahren, möchte die Forschungsgruppe wissen, welche Texttypen vorhanden sind, welche Filme genannt wurden, welche Personen damals dem Publikum vorgestellt wurden und wo das Publikum die Filme sehen konnte. Bitte zeichen Sie deshalb im anschließenden Textabschnitt folgendes aus:
+Um eine Übersicht über die Filmlandschaft gegen Ende des Jahres 1924 zu bekommen und mehr über den Typus der Filmzeitschrift zu erfahren, möchte die Forschungsgruppe wissen, welche Texttypen vorhanden sind, welche Filme genannt wurden, welche Personen damals dem Publikum vorgestellt wurden und wo das Publikum die Filme sehen konnte. Bitte zeichnen Sie deshalb im anschließenden Textabschnitt folgendes aus:
 
 1. Kennzeichnen Sie den gesamten Textabschnitt als `<body>`.
 2. Zeichnen Sie diesen bestimmten Textabschnitt außerdem als Artikel `<div type="article">`aus.
