@@ -104,7 +104,40 @@ Beispiele für `<persName>`:
 <persName>Marquis Yorisaka</persName>
 <persName>Sch.</persName>
 ```
+Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der FIlm _Die Wunder des Meeres_ gezeigt wurde. Hier werden der Spielzeitraum `<date>`, 
 
+```xml
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Title</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div>
+<p>Der Film <title>»Die Wunder des Meeres«</title> läuft ab <date>14. bis 17. November</date> in:
+
+        <list>
+          <item><item><orgName>Imperial-Kino</orgName>, I., Rothgasse 9</addrLine></address>;</item>
+          <item><orgName>Schwarzenberg-Kino</orgName>, <address><district>III.,</district> <street>Schwarzenbergplatz</street></address>;</item>
+
+        </list>
+      </div>
+    </body>
+  </text>
+</TEI>
+```
 Beispiel für `<date>`:
 
 ```xml
