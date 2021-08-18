@@ -122,7 +122,6 @@ Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen 
     </body>
   </text>
 </TEI>
- 
 ```
 
 ##### Beispiel 3
@@ -326,7 +325,7 @@ Anhand unserer Filmzeitschrift werden im folgenden Beispiel verschiedenartige We
 
 \##### Beispiel 1
 
-Im folgenden Beispiel werden Werkstitel als Filmtitel, als auch Personen als fiktive oder historische Personen ausgezeichnet. Beachten Sie hier bitte die gesonderte Auszeichnung der Vor- und Nachnamen.
+Im folgenden Beispiel werden Werkstitel als Filmtitel, als auch Personen als fiktive oder historische Personen ausgezeichnet. Beachten Sie hier bitte die gesonderte Auszeichnung der Vor- und Nachnamen. In der Autorenzeile sehen Sie, dass lediglich der Nachname ausgezeichnet wird.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -366,58 +365,39 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
 
 
-Beispiele für verschiedene Arten von Werktiteln:
+\##### Beispiel 2
+
+Im folgenden Beispiel sehen Sie zwei Verwendungen des Attributs `<type>`, und eine genauere Datumsangabe, die einen Zeitraum angibt. Außerdem werden Kinos als solche ausgewiesen. Am Ende der Liste wir ein Chiffre ausgezeichnet.
 
 ```xml
-<egXML xmlns="http://www.tei-c.org/ns/Examples">
-  <title type="movie">„Die Wunder des Meeres“</title>
-</egXML>
-
-<egXML xmlns="http://www.tei-c.org/ns/Examples">
-  <title type="movie">„Die Schlacht.“</title>
-</egXML>
-
-<egXML xmlns="http://www.tei-c.org/ns/Examples">
-  <title type="journal">„Filmwelt“</title>
-</egXML>
-```
-
-Beispiele für verschiedene Arten von Personennamen mit ausgewiesenen Komponenten:
-
-```xml
-<persName type="historical">
-  <roleName>Sir</roleName>
-  <forename>J.</forename>
-  <forename>E.</forename>
-  <surname>Williamson</surname>
-</persName>
-
-<persName type="historical">
-  <surname>Sch.</surname>
-</persName>
-
-<persName type="fictional"
-  subtype="filmCharacter">
-  <roleName>Marquis</roleName>
-  <surname>Yorisaka </surname>
-</persName>
-
-<persName type="religious">
-  <roleName>Budda's</roleName>
-</persName>
-```
-
-Beispiel für eine Zeitspanne:
-
-```xml
-<date from"1924-11-14" to="1924-11-17">14. bis 17. November</date>
-```
-
-Beispiele für verschiedene Arten von Organisationen:
-
-```xml
-<orgName type="cinema">Imperial-Kino</orgName>
-<orgName type="filmCompany">„Mondial“</orgName>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - Ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information about the source</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="movieSchedule">
+        <p>Der Film <title type="movie">»Die Wunder des Meeres«</title> läuft ab <date from="1924-11-14" to="1924-11-17">14. bis 17. November</date> in:
+          <list>
+            <item><orgName type="cinema">Imperial-Kino</orgName>, <address><district>I.,</district> <street> Rothgasse 9</street></address>;</item>
+            <item><orgName type="cinema">Schwarzenberg-Kino</orgName>, <address><district>III.,</district> <street>Schwarzenbergplatz</street></address>;</item>
+          </list> <rs type="chiffre">∆</rs></p>
+      </div>
+    </body>
+  </text>
+</TEI>
 ```
 
 Beispiele für verschiedene Arten von Ortsnamen:
@@ -425,12 +405,6 @@ Beispiele für verschiedene Arten von Ortsnamen:
 ```xml
 <placeName type="city">Paris</placeName>
 <placeName type="country">Japan</placeName>
-```
-
-Beispiel für den Verweis auf eine 'Chiffre':
-
-```xml
-<rs type="chiffre">∆</rs>
 ```
 
 Beispiele für den Verweis auf andere Ausgaben der Zeitschrift:
