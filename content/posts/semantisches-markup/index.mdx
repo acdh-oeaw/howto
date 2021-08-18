@@ -542,14 +542,47 @@ Diese Elemente, Attribute und Werte kommen in der folgenden praktischen Anwendun
 
 #### Praktische Anwendung
 
-Beispiele für Namensinitialen:
+##### Beispiele für Namensinitialen
 
 ```xml
-<forename full="init">Initiale</forename>
-<surname full="init">Initiale</surname>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+     <div type="article">
+       <head>Die Wunder des Meeres.</head> 
+       <p>Der Film <title type="movie">„Die Wunder des Meeres“</title> führt uns in ein 
+       bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte 
+       Ozeanforscher <persName type="historical" ref="#pe1"><roleName>Sir</roleName> <forename full="init">J.</forename> 
+       <forename full="init">E.</forename> <surname>Williamson</surname></persName> hat als erster das nie vorher 
+       erhellte Dunkel der Meerestiefen mittels seiner eigens konstruierten 
+       Tiefseestation für kinematographische Aufnahmen dem menschlichen Auge enthüllt. 
+       Ungeheure Schwierigkeiten und Gefahren mußten auf dem Meeresgrunde überwunden 
+       werden, um diese Meisterleistung der kinematographischen Technik zu vollenden, 
+       die auch als Kulturwerk ersten Ranges ge wertet werden muß. Was nicht hindert, 
+       daß der Film (aus dem wir eine interessante Aufnahme im Bilde zeigen) vom ersten 
+       bis zum letzten Meter den Zuschauer in vollster Spannung fesselt.</p>
+      </div>
+    </body>
+  </text>
+</TEI>
 ```
 
-Beispiel Reimschema:
+##### Beispiel Reimschema
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -594,6 +627,8 @@ Beispiel Reimschema:
 ##### Übung 3a: Initialen auszeichnen
 
 Während Sie an der Filmzeitschrift arbeiten, stellen Sie fest, dass nicht alle Namen vollständig ausgeschrieben wurden. Dies möchten Sie anzeigen, um Ihr team einen schnelleren Überblick zu verschaffen. Lesen Sie bitte die folgenden Auszeichnung und entscheiden Sie sich für die richtige Aussage.
+
+#### Quiz
 
 ```XML
 <persName>
