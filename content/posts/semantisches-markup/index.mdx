@@ -100,7 +100,7 @@ Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen 
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>Title</title>
+        <title>Die Filmwelt - Ein Ausschnitt</title>
       </titleStmt>
       <publicationStmt>
         <p>Publication Information</p>
@@ -324,7 +324,47 @@ Anhand unserer Filmzeitschrift werden im folgenden Beispiel verschiedenartige We
 
 [^21]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `5_Semantik_II_FW_11_12.xml`
 
-``
+\##### Beispiel 1
+
+Im folgenden Beispiel werden Werkstitel als Filmtitel, als auch Personen als fiktive oder historische Personen ausgezeichnet. Beachten Sie hier bitte die gesonderte Auszeichnung der Vor- und Nachnamen.
+
+```xml
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="review" n="4">
+        <p><title type="movie">„Die Sphinx im Weibe.“</title> Die alte, ewig neue 
+        Geschichte der Frau, die eigentlich nicht recht weiß, was und wen sie will 
+        und in einer plötzlichen Aufwallung ihre Neigung dem tief unter ihr 
+        stehenden Spaßmacher schenkt, wird, ziemlich unmotiviert, in ein 
+        mittelalterlich historisch sich gebärdendes Zeitalter mit abenteuerlich 
+        grotesken Trachten versetzt, die Lesebuchgeschichte <persName type="fictional" subtype="literaryCharacter"><surname>Wittingtons</surname></persName> 
+        und seiner Katze mit hinein verflochten. Der Film gibt der malerisch schönen 
+        <persName type="historical"><forename>Italia</forename> <surname>Almirante</surname></persName> Gelegenheit, ihre imposante 
+        Erscheinung ins richtige Licht zu setzen.</p>
+        <byline><persName type="historical"><surname>J.</surname></persName></byline>
+      </div>
+    </body>
+  </text>
+</TEI>
+```
+
+
 
 Beispiele für verschiedene Arten von Werktiteln:
 
