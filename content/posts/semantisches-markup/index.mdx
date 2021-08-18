@@ -529,9 +529,9 @@ Bitte beachten Sie, dass Sie, wenn Sie Oxygen XML Editor oder ähnliche Software
 
 #### Grundlagen Semantik advanced
 
-Der Granularität der Annotation sind kaum Grenzen gesetzt. Weitere Möglichkeiten für die Verfeinerung der semantischen Annotation unseres Beispieltexts könnten darin bestehen, explizit zu kodieren, dass es sich bei einem Vor- bzw. Nachnamen lediglich um Initialen handelt, oder welchem Reimschema die Verszeilen folgen. Um übersichtlicher zu arbeiten, können weiterführende Eigenschaften auch im Nachspann `<back>`genauer behandelt werden.
+Der Granularität der Annotation sind kaum Grenzen gesetzt. Weitere Möglichkeiten für die Verfeinerung der semantischen Annotation unseres Beispieltexts könnten darin bestehen, explizit zu kodieren, dass es sich bei einem Vor- bzw. Nachnamen lediglich um Initialen handelt, oder welchem Reimschema die Verszeilen folgen. Um übersichtlicher zu arbeiten, können weiterführende Eigenschaften der Elemente auch im Nachspann `<back>`genauer behandelt werden.
 
-Verwendete Elemente / Attribute / Werte:
+Diese Elemente, Attribute und Werte kommen in der folgenden praktischen Anwendung vor:
 
 - `<forename>` oder `<surname>`+ @full init: Die optionale Auszeichnung `@full` zeigt an, ob der Name vollständig `yes`(voreingestellt), in abgekürzter Form `abb`oder als Initiale `init`im Text angeführt ist.
 - `<l>` + @rhyme a / b etc: Nach der Auszeichnung Zeile `<l>` können Sie zudem angeben, welches Reimschema gegeben ist, zum Beispiel `rhyme= abababcc`.
@@ -552,18 +552,43 @@ Beispiele für Namensinitialen:
 Beispiel Reimschema:
 
 ```xml
-<lg rhyme="aabbcdcd">
-<l rhyme="a">Du ahnst bei ihm die Schwüle</l>
-<l rhyme="a">Leise glimmender Gefühle.</l>
-<l>Steife Hemdbrust —</l>
-<l rhyme="b">Heben — senken —</l>
-<l rhyme="b">Augen, die sich stumm verrenken.</l>
-<l>— — — — — —</l>
-<l rhyme="c">Er ist von seltner Bescheidenheit.</l>
-<l rhyme="d">Doch ihn verpflichtet sein Name,</l>
-<l rhyme="c">Drum kämpft er mit Beharrlichkeit</l>
-<l rhyme="d">Um jede Großaufnahme.</l>
-</lg>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="poem" ana="#verse">
+        <lg rhyme="aabbcdcd">
+          <head>Der Filmstar.</head>
+          <l rhyme="a">>Du ahnst bei ihm die Schwüle</l>
+          <l rhyme="a">>Leise glimmender Gefühle.</l>
+          <l>Steife Hemdbrust —</l> 
+          <l rhyme="b">>Heben — senken —</l> 
+          <l rhyme="b">Augen, die sich stumm verrenken.</l>
+          <l>— — — — — —</l> 
+          <l rhyme="c">Er ist von seltner Bescheidenheit.</l> 
+          <l rhyme="d">Doch ihn verpflichtet sein Name,</l> 
+          <l rhyme="c">Drum kämpft er mit Beharrlichkeit</l>
+          <l rhyme="d">Um jede Großaufnahme.</l>
+          <byline>Friedrich Zelnik.</byline>
+        </lg>
+      </div>
+    </body>
+  </text>
+</TEI>
 ```
 
 ##### Übung 3a: Initialen auszeichnen
