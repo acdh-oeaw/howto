@@ -400,7 +400,41 @@ Im folgenden Beispiel sehen Sie zwei Verwendungen des Attributs `<type>`, und ei
 </TEI>
 ```
 
-Beispiele für verschiedene Arten von Ortsnamen:
+\##### Beispiel 3
+
+In diesem Beispiel finden Sie nochmals das Attribut `<type>`, diesmal um auf die Zeitschrift \_Die Filmwelt\_ zu verweisen. Ebenso werden zukünftige Zeitschriftenausgaben ausgezeichnet.
+
+```xml
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="editorialAnnouncement">
+        <head>Zur Schönheitskonkurrenz!</head> 
+        <p>...<persName type="historical"><forename>Felix</forename> <surname>Brasch</surname></persName>, Herausgeber der
+        <title type="journal">„Filmwelt“</title>, und der Briefkastenonkel der <title type="journal">„Fimwelt“</title>. — Die Bilder
+        der von obigem Preisrichterkollegium ausgesuchten schönsten Bewerberinnen werden in <ref type="issue">Nummer 33</ref> und <ref type="issue">34</ref> der <title type="journal">„Filmwelt“</title>
+        veröffentlicht, damit den Lesern und Leserinnen Gelegenheit gegeben wird — mittels Coupon — die endgültige
+        Preisträgerin selbst zu bestimmen.</p>
+      </div>
+    </body>
+  </text>
+</TEI>
+```
 
 ```xml
 <placeName type="city">Paris</placeName>
@@ -420,7 +454,7 @@ Ihre Forschungsgruppe ist zufrieden mit Ihrer ersten Auszeichnung. Allerdings st
 
 1. Ergänzen Sie bitte im ersten Absatz, dass es sich bei dem Titel um einen Filmtitel handelt, `type="movie"`.
 2. Ergänzen Sie bitte Details zum Namen des Ozeanforschers. Es handelt sich um eine historische Person, mit dem Titel `roleName` Sir, zwei Vornamen `forename`und einem Nachnamen `surname`.
-3. Ergäzen Sie bitte in der Liste der Spielstätten, dass es sich hier um Kinos handelt.
+3. Ergänzen Sie bitte in der Liste der Spielstätten, dass es sich hier um Kinos handelt.
 4. Vergessen Sie bitte nicht, alle Attribute zu schließen.
 
 ```xml
