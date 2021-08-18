@@ -363,8 +363,6 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 </TEI>
 ```
 
-
-
 \##### Beispiel 2
 
 Im folgenden Beispiel sehen Sie zwei Verwendungen des Attributs `<type>`, und eine genauere Datumsangabe, die einen Zeitraum angibt. Außerdem werden Kinos als solche ausgewiesen. Am Ende der Liste wir ein Chiffre ausgezeichnet.
@@ -436,9 +434,41 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 </TEI>
 ```
 
-##### Übung 2a: Inhalte genauer auszeichnen.
+##### Übung 2a: Inhalte genauer auszeichnen
 
-Ihre Forschungsgruppe ist zufrieden mit Ihrer ersten Auszeichnung. Allerdings stellen Sie fest, dass für die spätere Erforschung des Textes eine genauere Auszeichnung sinnvoll wäre. Lesen Sie bitte das Beispiel der Übung 1a.
+<Quiz>
+  <Quiz.Card validateButtonLabel="Überprüfen">
+    <Quiz.XmlCodeEditor
+      code={"<?xml-model href=\"http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng\" type=\"application/xml\"\n\tschematypens=\"http://purl.oclc.org/dsdl/schematron\"?>\n<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Die Filmwelt - ein Ausschnitt</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information zur Veröffentlichung</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n     <div type=\"article\">\n        <head>Die Wunder des Meeres.</head>\n        <p>Der Film <title>„Die Wunder des Meeres“</title> führt uns in ein bisher nie \n        gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher <persName>Sir J. E. Williamson</persName> \n          hat als <rs>erster</rs> das nie vorher erhellte Dunkel der Meerestiefen mittels seiner eigens konstruierten \n        Tiefseestation für kinematographische Aufnahmen dem menschlichen Auge enthüllt. \n        Ungeheure Schwierigkeiten und Gefahren mußten auf dem Meeresgrunde überwunden \n        werden, um diese Meisterleistung der kinematographischen Technik zu vollenden, \n        die auch als Kulturwerk ersten Ranges ge wertet werden muß. Was nicht hindert, \n        daß der Film (aus dem wir eine interessante Aufnahme im Bilde zeigen) vom ersten \n        bis zum letzten Meter den Zuschauer in vollster Spannung fesselt.</p>\n      </div>\n      <div type=\"movieSchedule\">\n       <list>\n        <item><orgName>Elite-Kino</orgName>, <address><district>I.,</district> <street>Wollzeile 34</street></address>;</item> \n        <item><orgName>Opern-Kino</orgName>, <address><district>I.,</district> <street>Friedrichstraße 4</street></address>;</item> \n       </list>\n      </div>\n    </body>\n  </text>\n</TEI>"}
+      solution={"<?xml-model href=\"http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng\" type=\"application/xml\"\n\tschematypens=\"http://purl.oclc.org/dsdl/schematron\"?>\n<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Die Filmwelt - ein Ausschnitt</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information zur Veröffentlichung</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n     <div type=\"article\">\n        <head>Die Wunder des Meeres.</head>\n        <p>Der Film <title type=\"movie\">„Die Wunder des Meeres“</title> führt uns in ein bisher nie \n        gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher <persName type=\"historical\"><roleName>Sir</roleName><forename>J.</forename> <forename>E.</forename> <surname>Williamson</surname></persName> \n          hat als <rs>erster</rs> das nie vorher erhellte Dunkel der Meerestiefen mittels seiner eigens konstruierten \n        Tiefseestation für kinematographische Aufnahmen dem menschlichen Auge enthüllt. \n        Ungeheure Schwierigkeiten und Gefahren mußten auf dem Meeresgrunde überwunden \n        werden, um diese Meisterleistung der kinematographischen Technik zu vollenden, \n        die auch als Kulturwerk ersten Ranges ge wertet werden muß. Was nicht hindert, \n        daß der Film (aus dem wir eine interessante Aufnahme im Bilde zeigen) vom ersten \n        bis zum letzten Meter den Zuschauer in vollster Spannung fesselt.</p>\n      </div>\n      <div type=\"movieSchedule\">\n       <list>\n        <item><orgName type=\"cinema\">Elite-Kino</orgName>, <address><district>I.,</district> <street>Wollzeile 34</street></address>;</item> \n        <item><orgName type=\"cinema\">Opern-Kino</orgName>, <address><district>I.,</district> <street>Friedrichstraße 4</street></address>;</item> \n       </list>\n      </div>\n    </body>\n  </text>\n</TEI>"}
+      validate="input"
+    >
+      <Quiz.Question>
+        Ihre Forschungsgruppe ist zufrieden mit Ihrer ersten Auszeichnung zu _Die Wunder des Meeres_. Allerdings stellen Sie fest, dass für die spätere Erforschung des Textes eine genauere Auszeichnung sinnvoll wäre.
+
+        1. Ergänzen Sie bitte im ersten Abschnitt, dass es sich bei dem Titel um einen Filmtitel handelt, `type="movie"`.
+        2. Ergänzen Sie bitte Details zum Namen des Ozeanforschers. Es handelt sich um eine historische Person, mit dem Titel `roleName` Sir, zwei Vornamen `forename`und einem Nachnamen `surname`.
+        3. Ergänzen Sie bitte in der Liste der Spielstätten, dass es sich hier um Kinos handelt.
+        4. Vergessen Sie bitte nicht, alle Attribute und Elemente in der richtigen Reihenfolge zu schließen.
+
+        Der Text, in dem Sie ergänzen sollen ist bereits für Sie vorgegeben.
+      </Quiz.Question>
+
+      <Quiz.Message type="correct">
+        Ausgezeichnet!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Beachten Sie, dass der Forscher zwei, durch Initialen abgekürzte Vornamen hat, die Sie separat auszeichnen sollten.
+        Haben Sie alle Elemente in der richtigen Reihenfolge geschlossen?
+        Haben Sie auf Eltern- und Kindelemente geachtet?
+      </Quiz.Message>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
+
+
+Ihre Forschungsgruppe ist zufrieden mit Ihrer ersten Auszeichnung zu \_Die Wunder des Meeres\_. Allerdings stellen Sie fest, dass für die spätere Erforschung des Textes eine genauere Auszeichnung sinnvoll wäre. Lesen Sie bitte das Beispiel der Übung 1a.
 
 1. Ergänzen Sie bitte im ersten Absatz, dass es sich bei dem Titel um einen Filmtitel handelt, `type="movie"`.
 2. Ergänzen Sie bitte Details zum Namen des Ozeanforschers. Es handelt sich um eine historische Person, mit dem Titel `roleName` Sir, zwei Vornamen `forename`und einem Nachnamen `surname`.
@@ -446,13 +476,27 @@ Ihre Forschungsgruppe ist zufrieden mit Ihrer ersten Auszeichnung. Allerdings st
 4. Vergessen Sie bitte nicht, alle Attribute zu schließen.
 
 ```xml
-<body>
- <div type="article">
-    <head>Die Wunder des Meeres.</head>
-       <p>Der Film <title
-      >„Die Wunder des Meeres“</title> führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher <persName
-      >Sir J. E. Williamson</persName> hat als <rs
-      >erster</rs> das nie vorher erhellte Dunkel der Meerestiefen mittels seiner eigens konstruierten Tiefseestation für kinematographische Aufnahmen dem menschlichen Auge enthüllt.</p>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+     <div type="article">
+       <head>Die Wunder des Meeres.</head>
+       <p>Der Film <title>„Die Wunder des Meeres“</title> führt uns in ein bisher nie gezeigtes Milieu: auf den Grund des Meeres. Der berühmte Ozeanforscher <persName>Sir J. E. Williamson</persName> hat als <rs>erster</rs> das nie vorher erhellte Dunkel der Meerestiefen mittels seiner eigens konstruierten Tiefseestation für kinematographische Aufnahmen dem menschlichen Auge enthüllt.</p>
        <p>Der Film <title>»Die Wunder des Meeres«</title> läuft
         <list>
          <item><orgName>Flotten-Kino</orgName>, <address><district
