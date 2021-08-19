@@ -687,15 +687,13 @@ Während Sie an der Filmzeitschrift arbeiten, stellen Sie fest, dass nicht alle 
 </Quiz>
 
 
-
-
 #### Grundlagen Nachspann
 
 Im Beispieltext wurden bisher Personen- und Ortsbezeichnungen ausgezeichnet. Darüber hinausgehende Informationen wurden nicht in der Fließtextauszeichnung angegeben. Hierzu gehören z.B. das Geschlecht einer Person, oder deren berufliche Rolle. Genauso können Geburtsnamen, Künstlernamen etc. ausgezeichnet werden. Bei Orten können Sie beispielweise die Geokoordinaten oder auch größere geografische Einheiten wie Kontinente zuordnen.
 
 Derartige Zusatzinformation sind nicht Teil des kodierten Text im `<body>`. Deshalb werden Sie im Anschluss an den `<body>` im Nachspan `<back>` in entsprechenden Listen angeführt. Sie enthalten alle Personen und Orte sowie die gewünschten Informationen, wobei jeder Listeneintrag mit einer eindeutigen ID-Nummer versehen ist. Die einzelnen Belegstellen im Text erhalten Attribute, die auf diese ID-Nummern verweisen. Dadurch erhöht sich die semantische Aussagekraft beträchtlich: man kann Textstellen gezielt finden, z.B. alle Schauspielerinnen, oder alle Personen, die einen Künstlernamen haben, oder man könnte nach Städten und Ländern auf einem bestimmten Kontinent suchen.
 
-Nachspann mit Listen:
+##### Nachspann mit Listen:
 
 - `<listPerson>` + @type historical / fictional: Hier sehen Sie Angaben, die in einer Liste historischer oder fiktiver Personen verwendet werden können.
 - `<person>` + @xml:id pe1 / pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet.
@@ -708,8 +706,8 @@ Nachspann mit Listen:
 - `<place>` + @xml:id + pl1 / pl2 etc.: Jeder Ort wird mit einer einzigartigen ID-Nummer ausgezeichnet.
 - `<location>` + `<country>` + @key FR / JA / RU: Mit diesem Attribut können Sie bestimmte Länder auszeichnen. Wenn Sie die ISO 3166 Bezeichnungen nutzen, kann Ihre Auszeichnung universell verstanden werden.
 - `<location>` + `<bloc>` + @type continent
-- `<persName>` + @ref #pe1 / #pe2 etc.
-- `<placeName>` + @ref #pl1 / #pl2 etc.
+- `<persName>` + @ref #pe1 / #pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet. Wie Sie diese ID benennen, ist Ihnen überlassen.
+- `<placeName>` + @ref #pl1 / #pl2 etc. Jeder Ort wird mit einer einzigartigen ID-Nummer ausgezeichnet. Wie Sie diese ID benennen, ist Ihnen überlassen.
 
 [^23]
 
@@ -719,7 +717,7 @@ Nachspann mit Listen:
 
 ##### Beispiel 1
 
-Im folgenden Beispiel sehen Sie einen Nachspann mit einer Liste historischer Personen.
+Im folgenden Beispiel sehen Sie einen Nachspann mit einer Liste historischer Personen. Neben dem Namen wird auch die ID `<xml:id="pe1">`, das Geschlecht, der Beruf, als auch  Geburts- und Sterbeort mit Datum ausgezeichnet.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
