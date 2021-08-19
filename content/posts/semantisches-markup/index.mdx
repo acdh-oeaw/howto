@@ -691,9 +691,9 @@ Während Sie an der Filmzeitschrift arbeiten, stellen Sie fest, dass nicht alle 
 
 #### Grundlagen Nachspann
 
-Im Beispieltext wurden bisher die "Namen" von Personen und Orten ausgezeichnet. Darüber hiausgehende Eigenschaften wurde bisher nicht angegeben. Zu diesen Eigenschaften können zum Beispiel das Geschlecht einer Person, oder deren berufliche Rolle gehören. Genauso können Geburtsnamen, Künstlernamen etc. ausgezeichnet werden. Bei Orten können beispielweise die Geokoordinaten oder auch größere geografische Einheiten wie Kontinente zuordnen.
+Im Beispieltext wurden bisher Personen- und Ortsbezeichnungen ausgezeichnet. Darüber hinausgehende Informationen wurden nicht in der Fließtextauszeichnung angegeben. Hierzu gehören z.B. das Geschlecht einer Person, oder deren berufliche Rolle. Genauso können Geburtsnamen, Künstlernamen etc. ausgezeichnet werden. Bei Orten können Sie beispielweise die Geokoordinaten oder auch größere geografische Einheiten wie Kontinente zuordnen.
 
-Derartige Zusatzinformation sind nicht Teil des kodieten Textes selbst. Deshalb werden Sie im Anschluss an den `<body>` im Nachspan `<back>` in entsprechende Listen angeführt. Sie enthalten alle Personen und Orte sowie die gewünschten Informationen, wobei jeder Listeneintrag mit einer eindeutigen ID-Nummer versehen ist. Die einzelnen Belegstellen im Text erhalten Attribute, die auf diese ID-Nummern verweisen. Dadurch erhöht sich die semantische Aussagekraft beträchtlich: man kann Textstellen gezielt finden, z.B. alle Schauspielerinnen, oder alle Personen, die einen Künstlernamen haben, oder man könnte nach Städten und Ländern auf einem bestimmten Kontinent suchen.
+Derartige Zusatzinformation sind nicht Teil des kodierten Text im `<body>`. Deshalb werden Sie im Anschluss an den `<body>` im Nachspan `<back>` in entsprechenden Listen angeführt. Sie enthalten alle Personen und Orte sowie die gewünschten Informationen, wobei jeder Listeneintrag mit einer eindeutigen ID-Nummer versehen ist. Die einzelnen Belegstellen im Text erhalten Attribute, die auf diese ID-Nummern verweisen. Dadurch erhöht sich die semantische Aussagekraft beträchtlich: man kann Textstellen gezielt finden, z.B. alle Schauspielerinnen, oder alle Personen, die einen Künstlernamen haben, oder man könnte nach Städten und Ländern auf einem bestimmten Kontinent suchen.
 
 Nachspann mit Listen:
 
@@ -701,7 +701,7 @@ Nachspann mit Listen:
 - `<person>` + @xml:id pe1 / pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet.
 - `<person>` + @sex F / M / O / N / U: Einer Person können Sie ein Geschlecht zuordnen, und zwar `M` "männllich", `F` "weiblich", `O`"divers", `N` "nicht anwendbar", oder `U` "unbekannt".
 - `<person>` + @role actor / author / filmDirector / filmProducer / writer: Mit diesen Attributen können Sie eine berufliche Rolle auszeichnen.
-- `<persName>` + @type artistName / birthName + `<forename>` + `<surname>`: Mit diesen Attribute können Sie eine Künstler- oder Geburtsname auszeichnen.
+- `<persName>` + @type artistName / birthName + `<forename>` + `<surname>`: Mit diesen Attribute können Sie einen Künstler- oder Geburtsname auszeichnen.
 - `<birth>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Geburtsort auszeichnen.
 - `<death>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Sterbeort auszeichnen.
 - `<listPlace>`: Hier sehen Sie Angaben, die in einer Liste von Orten verwendet werden können.
@@ -717,19 +717,40 @@ Nachspann mit Listen:
 
 #### Praktische Anwendung
 
-Beispiel Nachspann mit historischer Personenliste und Komponenten:
+##### Beispiel 1
+
+Im folgenden Beispiel sehen Sie einen Nachspann mit einer Liste historischer Personen.
 
 ```xml
-<back>
-  <listPerson type="historical">
-  <person xml:id="pel" sex="M"
-    role="filmDirector">
-    <persName>
-    <forename>John</forename>
-    <forename>Ernest</forename>
-    <surname>Williamson</surname>
-    </persName>
-    <birth when="1881-12-08">8. Dezember 1881
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p> Text aus der Filmwelt. </p>
+    </body>
+    <back>
+      <listPerson type="historical">
+        <person xml:id="pel" sex="M" role="filmDirector">
+          <persName>
+            <forename>John</forename>
+            <forename>Ernest</forename>
+            <surname>Williamson</surname>
+          </persName>
+            <birth when="1881-12-08">8. Dezember 1881
     <placeName>
       <settlement type="city">Liverpool</settlement>
       <country>Großbritannien</country>
