@@ -766,6 +766,58 @@ Im folgenden Beispiel sehen Sie einen Nachspann mit kurzen einer Liste historisc
 
 Wie Sie an den beiden oben gezeigten Beispielen sehen können, wurde jede Person mit einer einzigartigen ID-Nummer ausgezeichnet. Bitte achten Sie bei der Auszeichnung der Zeitangaben zu Geburt und Tod auf das Format: Jahr-Monat-Tag als Wert des Attributs `<when>`, auch wenn das Datum in der Liste in anderer Form angegeben wird.
 
+##### Beispiel 2 
+
+Im folgenden Beispiel sehen Sie eine Liste fiktionaler Personen im Nachspann. Hier wäre es vermutlich sinnvoll, weitere Informationen anzuführen wie z.B. aus welchem Stück, Roman oder Film die jeweilige Figur stammt, wer das Werk geschrieben, wer die Rolle verkörpert hat, etc. Um die Beispieldateien einigermaßen übersichtlich zu gestalten und den Rahmen nicht zu sprengen, wurde darauf jedoch verzichtet. Beachten Sie bitte, dass eine fiktionale Figur nicht über Titel, Vor- und Nachname verfügen muss.
+
+```xml
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p> Text aus der Filmwelt. </p>
+    </body>
+    <back>
+      <listPerson type="fictional">
+        <person xml:id="pe26" sex="M">
+          <persName>
+            <forename>Richard</forename>
+            <surname>Wittington</surname>
+          </persName>
+        </person>
+        <person xml:id="pe27" sex="M">
+          <persName>
+            <roleName>Marquis</roleName>
+            <surname>Yorisaka</surname>
+          </persName>
+        </person>
+        <person xml:id="pe28" sex="M">
+          <persName>
+            <surname>Fergan</surname>
+          </persName>
+        </person>
+      </listPerson>
+     </back>
+  </text>
+</TEI>
+```
+
+
+
 #### Übung 4a: Personen im Nachspann auszeichnen
 
 <Quiz>
