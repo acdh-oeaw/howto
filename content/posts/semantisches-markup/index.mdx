@@ -818,7 +818,7 @@ Im folgenden Beispiel sehen Sie eine Liste fiktionaler Personen im Nachspann. Hi
 
 ##### Beispiel 3
 
-Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übungstext aus der *Filmwelt* auftauchen. Es werden nicht nur die Namen, sondern auch die Referenznummern aus der Datenbank [Geonames](http://www.geonames.org/) angegeben, ebenso geographische Angaben wie Kontinent oder ein Ländercode.
+Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übungstext aus der Rezension zu *Die Schlacht* auftauchen. Es werden nicht nur die Namen, sondern auch die Referenznummern aus der Datenbank [Geonames](http://www.geonames.org/) angegeben, ebenso geographische Angaben wie Kontinent oder ein Ländercode.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -977,49 +977,6 @@ Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übung
 
 
 
-
-
-
-Beispiel Nachspann mit Ortsliste und Komponenten:
-
-```xml
-<back>
-  ...
-  <listPlace>
-  <place xml:id="p11">
-    <placeName>
-    <settlement>Paris</settlement>
-    <idno type="geonames">2988506</idno>
-    </placeName>
-    <location>
-    <country key="FR">Frankreich</country>
-    <bloc type="continent">Europa</bloc>
-    </location>
-  </place>
-  <place xml:id="p12">
-    <placeName>
-    <country>Japan</country>
-    <idno type="geonames">1861060</idno>
-    </placeName>
-    <location>
-    <country key="JA">Japan</country>
-    <bloc type="continent">Asien</bloc>
-    </location>
-  </place>
-  <place xml:id="p12">
-    <placeName>
-    <country>Russland</country>
-    <idno type="geonames">2017370</idno>
-    </placeName>
-    <location>
-    <country key="RU">Russland</country>
-    <bloc type="continent">Europa</bloc>
-    <bloc type="continent">Asien</bloc>
-    </location>
-  </place>
-  </listPlace>
-</back>
-```
 
 Beispiele Belegstellen im Text, die auf Listeneinträge referenzieren:
 
