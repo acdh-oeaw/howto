@@ -773,8 +773,31 @@ Als dritte Person soll nur Claude Farrère ausgezeichnet werden, dessen Roman Vo
 1. Claude Farrère ist die dritte *Person*, die ausgezeichnet werden soll. Nutzen Sie die ID-Nummer `"pe3"`. Er ist zudem Schriftsteller `"writer"` und männlich.
 2. Claude Farrères Geburtsname lautet Frédéric Charles Bargone.
 3. Er wurde am 27. April 1876 in Lyon, Frankreich, geboren und starb am 21. Juni 1957 in Paris, Frankreich.
-4. Da Sie nur eine weitere Person auszeichnen und diese der `<listPerson>` hinzufügen würde, müssen Sie `<back>` und `<listPerson>`nicht nochmals auszeichnen.
+4. Die TEI-Umgebung ist für Sie bereits vorgegeben.
 5. Vergessen Sie nicht alle Elemente, die Sie eingefügt haben, wieder zu schließen.
+
+
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.XmlCodeEditor
+      code={"<?xml-model href=\"http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng\" type=\"application/xml\"\n\tschematypens=\"http://purl.oclc.org/dsdl/schematron\"?>\n<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Die Filmwelt - ein Ausschnitt</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information zur Veröffentlichung</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p> Text aus der Filmwelt. </p>\n    </body>\n    <back>\n      <listPerson type=\"historical\">\n        <person xml:id=\"pe3\" sex=\"M\" role=\"writer\">\n         <persName type=\"artistName\">\n          <forename>Claude</forename>\n          <surname>Farrère</surname>\n         </persName>\n         <persName type=\"birthName\">\n           <forename>Frédéric</forename>\n           <forename>Charles</forename>\n           <surname>Bargone</surname>\n          </persName>\n           <birth when=\"1876-04-27\"><date>27. April 1876</date> <placeName><settlement type=\"city\">Lyon</settlement> <country>Frankreich</country></placeName></birth>\n           <death when=\"1957-06-21\"><date>21. Juni 1957</date> <placeName><settlement type=\"city\">Paris</settlement> <country>Frankreich</country></placeName></death>\n        </person>\n      </listPerson>\n     </back>\n  </text>\n</TEI>"}
+      solution={"<?xml-model href=\"http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng\" type=\"application/xml\"\n\tschematypens=\"http://purl.oclc.org/dsdl/schematron\"?>\n<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Die Filmwelt - ein Ausschnitt</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information zur Veröffentlichung</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p> Text aus der Filmwelt. </p>\n    </body>\n    <back>\n      <listPerson type=\"historical\">\n        <person xml:id=\"pe3\" sex=\"M\" role=\"writer\">\n         <persName type=\"artistName\">\n          <forename>Claude</forename>\n          <surname>Farrère</surname>\n         </persName>\n         <persName type=\"birthName\">\n           <forename>Frédéric</forename>\n           <forename>Charles</forename>\n           <surname>Bargone</surname>\n          </persName>\n           <birth when=\"1876-04-27\"><date>27. April 1876</date> <placeName><settlement type=\"city\">Lyon</settlement> <country>Frankreich</country></placeName></birth>\n           <death when=\"1957-06-21\"><date>21. Juni 1957</date> <placeName><settlement type=\"city\">Paris</settlement> <country>Frankreich</country></placeName></death>\n        </person>\n      </listPerson>\n     </back>\n  </text>\n</TEI>"}
+      validate="input"
+    >
+      <Quiz.Question>
+        Als dritte Person soll nur Claude Farrère ausgezeichnet werden, dessen Roman Vorlag für dem Film _Die Schlacht_ war. Bitte nutzen Sie die nachstehenden Informationen, um eine richtige Auszeichnung für die Personenliste im Nachspann zu schreiben.
+
+        1. Claude Farrère ist die dritte _Person_, die ausgezeichnet werden soll. Nutzen Sie die ID-Nummer `"pe3"`. Er ist zudem Schriftsteller `"writer"` und männlich.
+        2. Claude Farrères Geburtsname `"birthname"`lautet Frédéric Charles Bargone. Zeichnen Sie diesen Namen bitte als zweiten Namen aus.
+        3. Er wurde am 27. April 1876 in Lyon, Frankreich, geboren und starb am 21. Juni 1957 in Paris, Frankreich.
+        4. Die TEI-Umgebung ist für Sie bereits vorgegeben.
+        5. Vergessen Sie nicht alle Elemente, die Sie eingefügt haben, wieder zu schließen.
+      </Quiz.Question>
+    </Quiz.XmlCodeEditor>
+  </Quiz.Card>
+</Quiz>
+
 
 *\#==== Lösung - in finaler Version entfernen*
 
