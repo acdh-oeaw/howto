@@ -717,7 +717,7 @@ Derartige Zusatzinformation sind nicht Teil des kodierten Text im `<body>`. Desh
 
 ##### Beispiel 1
 
-Im folgenden Beispiel sehen Sie einen Nachspann mit einer Liste historischer Personen. Neben dem Namen wird auch die ID `<xml:id="pe1">`, das Geschlecht, der Beruf, als auch  Geburts- und Sterbeort mit Datum ausgezeichnet.
+Im folgenden Beispiel sehen Sie einen Nachspann mit kurzen einer Liste historischer Personen. Neben dem Namen wird auch die ID `<xml:id="pe1">`, das Geschlecht, der Beruf, als auch  Geburts- und Sterbeort mit Datum ausgezeichnet.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -748,41 +748,23 @@ Im folgenden Beispiel sehen Sie einen Nachspann mit einer Liste historischer Per
             <forename>Ernest</forename>
             <surname>Williamson</surname>
           </persName>
-            <birth when="1881-12-08">8. Dezember 1881
-    <placeName>
-      <settlement type="city">Liverpool</settlement>
-      <country>Großbritannien</country>
-    </placeName>
-    </birth>
-    <death when="1966-07-15">15. Juli 1966
-    <placeName>
-      <settlement type="city">Norfolk</settlement>
-      <country>USA</country>
-    </placeName>
-    </death>
-  </person>
-  <person xml:id="pe2" sex="M" role="author">
-    <persName>
-    <forename>Friedrich</forename>
-    <surname>Zelnik</surname>
-    <birth when="1885-05-17">17. Mai 1885
-    <placeName>
-      <settlement type="city">Czernowitz</settlement>
-      <country>Österreich-Ungarn</country>
-    </placeName>
-    </birth>
-    <death when="1950-11-29">29. November 1950
-    <placeName>
-      <settlement type="city">London</settlement>
-      <country>Großbritannien</country>
-    </placeName>
-    </death>
-  </person>
- </listPerson>
-</back>
+            <birth when="1881-12-08">8. Dezember 1881<placeName><settlement type="city">Liverpool</settlement><country>Großbritannien</country></placeName></birth>
+            <death when="1966-07-15">15. Juli 1966<placeName><settlement type="city">Norfolk</settlement><country>USA</country></placeName></death>
+        </person>
+        <person xml:id="pe2" sex="M" role="author">
+          <persName>
+            <forename>Friedrich</forename>
+            <surname>Zelnik</surname>
+          </persName>
+            <birth when="1885-05-17">17. Mai 1885<placeName><settlement type="city">Czernowitz</settlement><country>Österreich-Ungarn</country></placeName></birth>
+            <death when="1950-11-29">29. November 1950<placeName><settlement type="city">London</settlement><country>Großbritannien</country></placeName></death></person>
+       </listPerson>
+     </back>
+  </text>
+</TEI>
 ```
 
-Wie Sie an den beiden oben gezeigten Beispielen sehen können, wurde jede Person mit einer einzigartigen ID-Nummer ausgezeichnet, und darüber hinaus Geschlecht und eine berufliche Rolle definiert. Bitte achten Sie bei der Auszeichnung der Zeitangaben zu Geburt und Tod auf das Format: Jahr-Monat-Tag.
+Wie Sie an den beiden oben gezeigten Beispielen sehen können, wurde jede Person mit einer einzigartigen ID-Nummer ausgezeichnet. Bitte achten Sie bei der Auszeichnung der Zeitangaben zu Geburt und Tod auf das Format: Jahr-Monat-Tag als Wert des Attributs `<when>`, auch wenn das Datum in der Liste in anderer Form angegeben wird.
 
 ##### Übung 4a: Personen im Nachspann auszeichnen
 
