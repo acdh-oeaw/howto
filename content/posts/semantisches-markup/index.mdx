@@ -657,11 +657,31 @@ Während Sie an der Filmzeitschrift arbeiten, stellen Sie fest, dass nicht alle 
     </Quiz.MultipleChoice>
   </Quiz.Card>
 
-  <Quiz.Card>
+  <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.MultipleChoice>
       <Quiz.Question>
         Welche Möglichkeiten haben Sie, wenn Sie ein Gedicht auszeichnen möchten?
       </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Ich kann dem Gedicht ein Reimschema zuweisen.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Jedem Vers kann zugewiesen werden, welchem Reimschema er folgt. Man verwendet hier das Attribut `rhyme`.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Wenn ich ein Reimschema zuweise, dann brauche ich die Auszeichnungen `lg`und `l` nicht mehr, sie werden durch `rhyme` ersetzt.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Überlegen Sie noch einmal und sehen Sie sich bitte das Beispiel oben an.
+      </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
