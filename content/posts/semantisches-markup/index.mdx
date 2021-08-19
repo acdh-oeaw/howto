@@ -811,11 +811,11 @@ Als dritte Person soll nur Claude Farrère ausgezeichnet werden, dessen Roman Vo
 
 
 
-##### Übung 4b: Besonderheiten bei Auszeichnung von zu Personen gehörigen Eigenschaften
-
-In der Rezension zum Film *"Die Schlacht"* wird beschrieben, dass die Frau des Marquis Yorisaka sich in ein buddhistisches Kloster zurückzieht. Dem Text folgend, soll auch Buddha ausgezeichnet werden. Lesen Sie sich bitte die unten stehende Auszeichnung durch. Was fällt Ihnen im Vergleich zu vorangegangene Personenauszeichnungen auf? Wählen Sie bitte alle passenden Antworten aus.
+##### Quiz: Besonderheiten bei Auszeichnung von zu Personen gehörigen Eigenschaften
 
 ```xml
+<back>
+<listPerson>
 <person xml:id="pe29" sex="M">
   <persName>
   <roleName>Buddha</roleName>
@@ -839,9 +839,42 @@ In der Rezension zum Film *"Die Schlacht"* wird beschrieben, dass die Frau des M
 </back>
 ```
 
-a) Eine Datumsangabe ohne Monats- und Tagesangabe ist möglich. b) Um die Zeit vor Christus anzugeben, muss vor die Jahreszahl "-" eingefügt werden. c) Die Orte Lumbini und Kushinagar sind heute anders zu verorten als zu Lebzeiten Buddhas. d) Buddha ist ein Ehrentitel und wird deshalb als `<roleName>` ausgezeichnet.
+<Quiz>
+  <Quiz.Card validateButtonLabel="Überprüfen">
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        In der Rezension zum Film _Die Schlacht_ wird beschrieben, dass die Frau des Marquis Yorisaka sich in ein buddhistisches Kloster zurückzieht. Dem Text folgend, soll auch Buddha ausgezeichnet werden. Lesen Sie sich bitte die unten stehende Auszeichnung durch. Was fällt Ihnen im Vergleich zu vorangegangene Personenauszeichnungen auf? Wählen Sie bitte alle richtigen Antworten aus.
+      </Quiz.Question>
 
-*\#==== Lösung - in finaler Version entfernen* Alle vier Antworten sind richtig. *\====#*
+      <Quiz.MultipleChoice.Option isCorrect>
+        Buddha ist ein Ehrentitel und wird deshalb als `<roleName>` ausgezeichnet.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Eine Datumsangabe ohne Monats- und Tagesangabe ist möglich.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Um die Zeit vor Christus anzugeben, muss vor die Jahreszahl "-" eingefügt werden
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Die Orte Lumbini und Kushinagar sind heute anders zu verorten als zu Lebzeiten Buddhas.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Überlegen Sie noch einmal und achten Sie besonders auf die Details im Codeblock.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+
+
 
 Beispiel Nachspann mit fiktionaler Personenliste und Komponenten:
 
