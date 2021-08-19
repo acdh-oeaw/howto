@@ -816,7 +816,69 @@ Im folgenden Beispiel sehen Sie eine Liste fiktionaler Personen im Nachspann. Hi
 </TEI>
 ```
 
+##### Beispiel 3
 
+Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übungstext aus der *Filmwelt* auftauchen. Es werden nicht nur die Namen, sondern auch die Referenznummern aus der Datenbank [Geonames](http://www.geonames.org/) angegeben, ebenso geographische Angaben wie Kontinent oder ein Ländercode.
+
+```xml
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p> Text aus der Filmwelt. </p>
+    </body>
+    <back>
+      <listPlace>
+        <place xml:id="p11">
+          <placeName>
+            <settlement>Paris</settlement>
+            <idno type="geonames">2988506</idno>
+          </placeName>
+          <location>
+            <country key="FR">Frankreich</country>
+            <bloc type="continent">Europa</bloc>
+          </location>
+        </place>
+        <place xml:id="p12">
+          <placeName>
+            <country>Japan</country>
+            <idno type="geonames">1861060</idno>
+          </placeName>
+          <location>
+            <country key="JA">Japan</country>
+            <bloc type="continent">Asien</bloc>
+          </location>
+        </place>
+        <place xml:id="p12">
+          <placeName>
+            <country>Russland</country>
+            <idno type="geonames">2017370</idno>
+          </placeName>
+          <location>
+            <country key="RU">Russland</country>
+            <bloc type="continent">Europa</bloc>
+            <bloc type="continent">Asien</bloc>
+          </location>
+        </place>
+      </listPlace>
+    </back>
+  </text>
+</TEI>
+```
 
 #### Übung 4a: Personen im Nachspann auszeichnen
 
@@ -916,35 +978,7 @@ Im folgenden Beispiel sehen Sie eine Liste fiktionaler Personen im Nachspann. Hi
 
 
 
-Beispiel Nachspann mit fiktionaler Personenliste und Komponenten:
 
-```xml
-<back>
-  ...
-  <listPerson type="fictional">
-  <person xml:id="pe26" sex="M">
-    <persName>
-    <forename>Richard</forename>
-    <surname>Wittington</surname>
-    </persName>
-  </person>
-  <person xml:id="pe27" sex="M">
-    <persName>
-    <roleName>Marquis</roleName>
-    <surname>Yorisaka</surname>
-    </persName>
-  </person>
-  <person xml:id="pe28" sex="M">
-    <persName>
-    <surname>Fergan</surname>
-    </persName>
-  </person>
-  </listPerson>
-  ...
-</back>
-```
-
-Hier wäre es vermutlich sinnvoll, weitere Informationen anzuführen wie z.B. aus welchem Stück, Roman oder Film die jeweilige Figur stammt, wer das Werk geschrieben, wer die Rolle verkörpert hat etc. Um die Beispieldateien einigermaßen übersichtlich zu gestalten und den Rahmen dieser Übung nicht zu sprengen, wurde darauf jedoch verzichtet.
 
 Beispiel Nachspann mit Ortsliste und Komponenten:
 
