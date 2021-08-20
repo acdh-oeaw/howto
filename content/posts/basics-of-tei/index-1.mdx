@@ -62,9 +62,9 @@ Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um Friedrich Zeln
 </div>
 ```
 
-Hier wurden Tags mit den globalen Attributen zu Identifikation, Typisierung und Sprache (`@type`, `@n`, `xml:id` und `xml:lang`) ausgezeichnet.
+Hier wurden Tags mit den globalen Attributen zu Identifikation, Typisierung und Sprache (`@type`, `@n`, `xml:id`und `xml:lang`) ausgezeichnet.
 
-- `xml:id="Zelnik1"` beschreibt eine zusätzliche Identifikationsangabe, die dieses Gedicht auszeichnet. Welche Bezeichnung verwendet wird kann frei entschieden werden, es sollte aber auf eine einheitliche, leicht verständliche und nachvollziehbare Auszeichnungsweise geachtet werden.
+- `xml:id="Zelnik1"` beschreibt eine zusätzliche Identifikationsangabe, die diesen Text auszeichnet. Welche Bezeichnung verwendet wird kann frei entschieden werden, es sollte aber auf eine einheitliche Auszeichnungsweise geachtet werden. Eine leicht verständliche und nachvollziehbare Bezeichnung ist in jedem Fall sinnvoll.
 - `div type="poem"` sagt aus, dass es sich bei diesem Textabschnitt `div` um ein Gedicht `type="poem"` handelt.
 - `head xml:lang="de"` gibt an, dass die Überschrift `head` in deutscher Sprache `xml:lang="de"` geschrieben wurde.
 - `lg n="1"` bezeichnet die erste Strophe des Gedichts.
@@ -103,7 +103,7 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-        d) die Auszeichnung einer Formattierung, z.B. für eine kleine Schriftgröße `renditon xml:id="r-small" scheme="css"`
+        d) die Auszeichnung einer Formattierung, zB für kleinen Schriftgröße `renditon xml:id="r-small" scheme="css"`
       </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
   </Quiz.Card>
@@ -123,11 +123,11 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
         Im Folgenden sehen Sie den Beginn von Goethes _Faust_. Da es sich um einen dramatischen Text handelt, werden Tags aus diesem Bereich genutzt. Zeichnen Sie bitte mit Hilfe der globalen Attribute aus:
 
         1. Benutzen Sie `<div type="act">` um die gesamte Passage als Teil eines Aktes zu kennzeichnen. Der Rest des Aktes liegt hier nicht vor, könnte aber auch Teil dieses Elements sein. Schließen Sie dieses Element als letztes.
-        2. Innerhalb des Elements `<div type="act">` gibt es eine Szene, die wir hier sehen. Umschließen Sie den gesamten Text der Szene mit einem weiteren Abschnittselement und dem Attribut `type="scene"`, um die Szene auszuzeichnen. Vergessen Sie bitte nicht, das Element vor dem Schließelement von `<div type="act"` zu schließen.
-        3. Zeichnen Sie dann die Titelzeile "Nacht" mit dem Element `<head>` aus. Vergessen Sie bitte nicht, das Element am Ende der Überschrift zu schließen, bevor Sie weiter arbeiten.
+        2. Innerhalb des Elements `<div type="act">` gibt es eine Szene, die wir hier sehen. Umschließen Sie den gesamten Text mit einem weiteren Abschnittselement und dem Attribut `type="scene"`, um die Szene auszuzeichnen. Vergessen Sie bitte nicht das Element vor dem Schließelement von `<div type="act"`zu schließen.
+        3. Zeichnen Sie dann die Titelzeile "Nacht" mit dem Element `<head>`aus. Vergessen Sie bitte nicht, das Element am Ende der Überschrift zu schließen, bevor Sie weiter arbeiten.
         4. In der nächsten Zeile folgt eine Bühnenanweisung `<stage>`. Umschließen Sie die gesamte Bühnenanweisung mit diesem Element.
-        5. Der Bereich der Rede `<sp>` (speech) ist bereits für Sie vorbereitet. Hier wurde der Sprecher, Faust, ausgezeichnet, und der erste Absatz `<p>` des Eröffnungsmonologs.
-        6. Stellen Sie als letzten Schritt sicher, dass Sie die TEI-Elemente alle in der richtigen Reihenfolge geschlossen haben, vom Innersten zum Äußersten.
+        5. Der Bereich der Rede `<sp>`(speech) ist bereits für Sie vorbereitet. Hier wurde der Sprecher, Faust, ausgezeichnet, und der erste Absatz `<p>`des Eröffnungsmonologs.
+        6. Stellen Sie sicher, dass Sie die TEI-Elemente alle in der richtigen Reihenfolge geschlossen haben, vom Innersten zum Äußersten.
 
         Bitte beachten Sie, dass hier kein vollständiges TEI-Dokument vorliegt, da Sie lediglich einen Ausschnitt aus dem `<text>` sehen. Ihre Bearbeitung wird wohlgeformt, aber nicht valide sein.
       </Quiz.Question>
@@ -142,7 +142,7 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
   <Quiz.Card>
     <Quiz.MultipleChoice>
       <Quiz.Question>
-        Angenommen in unserem Fließtext finden sich zwei verschiedene Textsorten. Innerhalb einer Szene in einem Stück spricht die Figur ein Gedicht. Welches globale Attribut kann man voranstellen um zu kennzeichnen, dass es sich sowohl um eine Szene `act`, als auch um Verse `stanza` handelt?
+        Angenommen in unserem Fließtext finden sich zwei verschiedene Textsorten. Innerhalb einer Szene in einem Stück spricht die Figur ein Gedicht. Welches globale Attribut kann man voranstellen um zu kennzeichnen, dass es sich um eine Szene `act`, aber auch um Verse `stanza` handelt?
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option>
@@ -171,12 +171,8 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
 
 ### Weiterführende Information
 
-Hier finden Sie genauere Erklärungen zu den globalen Attributen: [TEI by example](https://teibyexample.org/tutorials/TBED01v00.htm?target=globalattributes)
-
-Hier finden Sie weitere Beispiele für die Verwendung globaler Attribute am Beispiel des `<Head>`-Elements: [TEI head element examples](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/examples-head.html)
-
-Hier finden Sie eine Liste der ISO-Codes für Sprache: [ISO-Code Sprache](https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes)
-
-Hier finden Sie ein Beispiel für das Rendition-Element `rend`, das das Textaussehen beschreibt: [Rendition](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rendition.html)
-
-Hier finden Sie eine weitere Annotation eines dramatischen Textes. Auch hier werden globale Attribute verwendet: [TEI by example, Module 5](https://teibyexample.org/tutorials/TBED05v00.htm)
+- Hier finden Sie genauere Erklärungen zu den globalen Attributen: [TEI by example](https://teibyexample.org/tutorials/TBED01v00.htm?target=globalattributes)
+- Hier finden Sie weitere Beispiele für die Verwendung globaler Attribute am Beispiel des `<Head>`-Elements: [TEI head element examples](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/examples-head.html)
+- Hier finden Sie eine Liste der ISO-Codes für Sprache: [ISO-Code Sprache](https://de.wikipedia.org/wiki/Liste_der_ISO-639-1-Codes)
+- Hier finden Sie Beispiel für das Rendition-Element `rend`, das das Textaussehen beschreibt: [Rendition](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rendition.html)
+- Hier finden Sie eine weitere Annotation eines dramatischen Textes. Auch hier werden globale Attribute verwendet: [TEI by example, Module 5](https://teibyexample.org/tutorials/TBED05v00.htm)
