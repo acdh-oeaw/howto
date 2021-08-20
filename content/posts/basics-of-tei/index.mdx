@@ -74,7 +74,7 @@ Wir bearbeiten im Folgenden die Filmbeschreibung, einen Spielplan, und ein Gedic
 
 Um die Annotation des `<body>`besser zu veranschaulichen, wird für jeden Abschnitt ein Annotationsvorschlag mit dem entsprechenden Beispieltext sowie eine Blanko-Vorlage angegeben. Bitte beachten Sie, dass der `<header>` nicht vollständig ausgezeichnet wurde, da wir uns vor allem mit dem `<body>` beschäftigen.
 
-##### Beispiel: Blankostruktur der Filmbeschreibung
+##### Beispiel 1: Blankostruktur der Filmbeschreibung
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -110,7 +110,9 @@ Um die Annotation des `<body>`besser zu veranschaulichen, wird für jeden Abschn
 
 ![Text der Filmbeschreibung Die Wunder des Meeres mit Bild einer Meerjungfrau](images/die_wunder_popout_dark.png "Filmbeschreibung Die Wunder des Meeres")
 
-##### Beispiel: annotierte Filmbeschreibung
+##### Beispiel 2: annotierte Filmbeschreibung
+
+Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<p>` geteilt wurde. Beide Element befinden sich innerhalb eines `<div>`-Elements, sodass die beiden Elemente gemeinsam einen Abschnitt im Fließtext bilden. Bitte beachten Sie, dass dieser Abschnitt well-formed ist, da alle Textteile umgeben sind und die Tags geschlossen wurden.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -156,9 +158,9 @@ Um die Annotation des `<body>`besser zu veranschaulichen, wird für jeden Abschn
 </TEI>
 ```
 
-Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<p>` geteilt wurde. Beide Element befinden sich innerhalb eines `<div>`-Elements, sodass die beiden Elemente gemeinsam einen Abschnitt im Fließtext bilden. Bitte beachten Sie, dass dieser Abschnitt well-formed ist, da alle Textteile umgeben sind und die Tags geschlossen wurden.
 
-##### Beispiel: Blankostruktur des Spielplans
+
+##### Beispiel 3: Blankostruktur des Spielplans
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -193,7 +195,9 @@ Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<
 </TEI>
 ```
 
-##### Beispiel: annotierter Spielplan
+##### Beispiel 4: annotierter Spielplan
+
+Wie im vorangegangenen Beispiel sehen Sie, dass das Listenelement in ein `<div>`-Element eingebettet ist. Beachten Sie, dass alle `<item>` wiederum vom Element `<list>` umgeben sind, und so klar ersichtlich ist, dass alle Listenelemente teil der Liste sind. Achtung, die Listenelemente sind nicht ineinander eingebettet, sondern stehen auf der selben Hierarchiestufe, sie sind Geschwisterelemente.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -228,7 +232,7 @@ Im Beispiel sehen Sie, wie der Fließtext in Überschrift `<head>` und Absatz `<
 </TEI>
 ```
 
-Wie im vorangegangenen Beispiel sehen Sie, dass das Listenelement in ein `<div>`-Element eingebettet ist. Beachten Sie, dass alle `<item>` wiederum vom Element `<list>` umgeben sind, und so klar ersichtlich ist, dass alle Listenelemente teil der Liste sind. Achtung, die Listenelemente sind nicht ineinander eingebettet, sondern stehen auf der selben Hierarchiestufe, sie sind Geschwisterelemente.
+
 
 <SideNote type="info" title="Einrückungen">
 Annotierte Elemente lassen sich mithilfe von Einrückungen hierarchisch darstellen. So sehen Sie, welche Kindelemente in ein Elternelement eingebettet sind. Diese Darstellung verändert die Textanordnung nicht.
@@ -241,6 +245,8 @@ Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift
 - `<div>` + type "article" / "movieSchedule" / "poem" / "editorialStatement" / "reviews" / "review"
 - `<div>` type "review" + n="1" / "2"
 - `<head>` + type columnTitle
+
+Wie Sie im Beispiel sehen, wird der Fließtext nicht nur als Abschnitt `<div>`, sondern durch ein Attribut mit einem Wert noch genauer als `type="article"` ausgezeichnet. Die Verwendung von Attributen und Werten ermöglicht die Erfassung von textrelevanten Details, die Ihnen bei der weiteren Textarbeit helfen werden.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -284,7 +290,7 @@ Zusätzlich zur Identifizierung einzelner Abschnitte im Fließtext (Überschrift
 </TEI>
 ```
 
-Wie Sie im Beispiel sehen, wird der Fließtext nicht nur als Abschnitt `<div>`, sondern noch genauer als `type="article"` ausgezeichnet. Die Verwendung von Attributen und Werten ermöglicht die Erfassung von textrelevanten Details, die Ihnen bei der weiteren Textarbeit helfen werden.
+
 
 Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II_FW_11_12.xml`
 
@@ -301,7 +307,6 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
       solution={"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-model href=\"http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng\" type=\"application/xml\" schematypens=\"http://relaxng.org/ns/structure/1.0\"?>\n<?xml-model href=\"http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng\" type=\"application/xml\"\n\tschematypens=\"http://purl.oclc.org/dsdl/schematron\"?>\n<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title>Title</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Publication Information</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Information about the source</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <div>\n        <p>Der Film »Die Wunder des Meeres« läuft ab 14. bis 17. November in: \n          <list>\n            <item>Imperial-Kino, I., Rothgasse 9;</item>\n            <item>Schwarzenberg-Kino, III., Schwarzenbergplatz;</item> \n            <item>Flotten-Kino, VI., Mariahilferstraße 85;</item>\n            <item>Wienzeile-Kino, VI., Linke Wienzeile 4;</item> \n          </list>18. bis 20. November in:\n          <list>\n            <item>Elite-Kino, I., Wollzeile 34:</item>\n            <item>Opern-Kino, I., Friedrichstraße 4;</item> \n            <item>Zentral-Kino,III., Taborstraße 8b:</item>\n            <item>Dreilaufer Kino, IX., Alser-straße</item>\n            <item>Flieger-Kino, IX., Liechtensteinstraße 36;</item>\n            <item>Wiedner Grand Kino, IV., Mittersteig 15;</item>\n           </list>21. bis 24. November in:\n           <list>\n            <item>Münstedt-Kino, II., Prater;</item>\n            <item>Joh. Strauß-Kino, IV., Favoritenstraße 12;</item>\n            <item>Raimund-Lichtspiele. XIV., Sechshauserstraße 13;</item>\n            <item>Abbazia-Kino, XV., Neubaugürtel 15;</item>\n           </list>25. bis 27. November in:\n           <list>\n            <item>Münstedt-Kino, II., Prater;</item>\n            <item>Luna-Kino, XVII , Hauptstraße 117;</item>\n            <item>Michelbeuern-Kino, XVIII., Kreuzgasse 27;</item>\n            <item>Vindobona-Kino, XX., Wallensteinplatz 5—6.</item>\n           </list>\n        </p>\n      </div>\n    </body>\n  </text>\n</TEI>"}
       validate="input"
     >
-
       <Quiz.Question>
         In einer späteren Analyse soll ein Verzeichnis aller Kinos erstellt werden, die zwischen 1921 und 1935 geöffnet waren. Dazu müssen die Listen der Spielorte als solche ausgezeichnet werden. Im Bild sehen Sie den Originalausschnitt und im Code-Editor ist der Text bereits für Sie als Fließtext vorgegeben. Zeichnen Sie bitte alle Einträge, die zusammengehören, als eine gemeinsame Liste `<list>` aus. Achten Sie auf die Datumsangaben, nach diesen beginnt jeweils eine neue Liste. Anschließend zeichnen Sie bitte die jeweiligen Einträge als `<item>` richtig aus und schließen Sie dann die Liste. Die TEI-Umgebung dieses Abschnittes ist bereits für Sie vorgegeben.
       </Quiz.Question>
@@ -378,6 +383,7 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
   </Quiz.Card>
 </Quiz>
 
+
 ##### Quiz
 
 <Quiz>
@@ -409,7 +415,7 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
 
 #### Übung 2a: Attribute festlegen
 
-![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\\\\\\"Die Filmwelt\\\\\\\\"")
+![Seite 11 der Filmzeitschrift "Die Filmwelt", Texte, Bild und Zierleisten](images/filmwelt_1923_31_11.jpg "Seite 11 der Filmzeitschrift \\\\\\\\\"Die Filmwelt\\\\\\\\\"")
 
 ##### Quiz
 
@@ -474,7 +480,9 @@ Die vollständige Annotation dieses Schrittes finden Sie in Datei `3_Struktur_II
   </Quiz.Card>
 </Quiz>
 
+
 ##### Quiz
+
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.MultipleChoice>
