@@ -766,7 +766,7 @@ Im folgenden Beispiel sehen Sie einen Nachspann mit kurzen einer Liste historisc
 
 Wie Sie an den beiden oben gezeigten Beispielen sehen können, wurde jede Person mit einer einzigartigen ID-Nummer ausgezeichnet. Bitte achten Sie bei der Auszeichnung der Zeitangaben zu Geburt und Tod auf das Format: Jahr-Monat-Tag als Wert des Attributs `<when>`, auch wenn das Datum in der Liste in anderer Form angegeben wird.
 
-##### Beispiel 2 
+##### Beispiel 2
 
 Im folgenden Beispiel sehen Sie eine Liste fiktionaler Personen im Nachspann. Hier wäre es vermutlich sinnvoll, weitere Informationen anzuführen wie z.B. aus welchem Stück, Roman oder Film die jeweilige Figur stammt, wer das Werk geschrieben, wer die Rolle verkörpert hat, etc. Um die Beispieldateien einigermaßen übersichtlich zu gestalten und den Rahmen nicht zu sprengen, wurde darauf jedoch verzichtet. Beachten Sie bitte, dass eine fiktionale Figur nicht über Titel, Vor- und Nachname verfügen muss.
 
@@ -880,6 +880,23 @@ Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übung
 </TEI>
 ```
 
+Beispiel 4
+
+Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträge im `<back>` referenzieren:
+
+```xml
+<persName type="historical" ref="#pe1"
+  <roleName>Sir</roleName>
+  <forename full="init">J.</forename>
+  <forename full="init">E.</forename>
+  <surname>Williamson</surname>
+</persName>
+
+<placeName type="city" ref="p11">Paris</placeName>
+```
+
+Wenn Sie im Fließtext den Verweis auf einen Listeneintrag ergänzen möchten, gehen Sie wie folgt vor: positionieren Sie den Cursor nach dem Elementnamen bzw. nach dem letzten vorhandenen Attribut, fügen Sie ein Leerzeichen ein und tippen Sie `ref="` ein. Der Editor ergänzt das schließende Anführungszeichen und positioniert den Cursor automatisch dazwischen. Zudem erscheint ein Dropdown-Menü mit den vorhandenen ID-Nummern. Wenn Sie eine ID-Nummer markieren, zeigt der Editor eine Vorschau an, was die exakte Zuordnung wesentlich erleichert. Wenn Sie die richtige ID-Nummer gefunden haben, drücken sie Enter, der Editor fügt eine Raute sowie die ID-Nummer ein `ref="#pe1"`.
+
 #### Übung 4a: Personen im Nachspann auszeichnen
 
 <Quiz>
@@ -974,8 +991,6 @@ Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übung
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
-
-
 
 
 Beispiele Belegstellen im Text, die auf Listeneinträge referenzieren:
