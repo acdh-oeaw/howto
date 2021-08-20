@@ -77,7 +77,6 @@ export function Resource(props: ResourceProps): JSX.Element {
                                 width={32}
                                 height={32}
                                 objectFit="cover"
-                                placeholder="blur"
                               />
                             ) : (
                               <Icon

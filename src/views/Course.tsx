@@ -82,7 +82,6 @@ export function Course(props: CourseProps): JSX.Element {
                                 width={32}
                                 height={32}
                                 objectFit="cover"
-                                placeholder="blur"
                               />
                             ) : (
                               <Icon

@@ -76,7 +76,6 @@ function ResourcePreviewCard(props: ResourcePreviewCardProps): JSX.Element {
                             width={32}
                             height={32}
                             objectFit="cover"
-                            placeholder="blur"
                           />
                         ) : null}
                       </li>
