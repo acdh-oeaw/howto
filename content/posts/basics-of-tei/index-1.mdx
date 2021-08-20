@@ -21,12 +21,12 @@ uuid: 6lAg1chkYR48_lWk_jBa5
 ---
 ## Lernziele
 
+- Elemente, Attribute und Werte besser verstehen
 - Anwendung von globalen Attributen
--
 
 ## Grundlegendes zu Globalen Attributen
 
-Globale Attribute sind jene Attribute, die sich fast allen TEI-Tag-Elementen zuordnen lassen. Wie bei spezifischen Attributen findet man ein globales Attribut als `attribute="value"` im Öffnungstag des Elements nach der Elementsbezeichnung, `<element attribute="value">`. Da die globalen Attribute so flexibel sind, findet man sie in den unterschiedlichsten Annotierungen. Hier einige Beispiele, die zu den globalen Attributen gehören:
+Globale Attribute sind jene Attribute, die sich fast allen TEI-Elementen zuordnen lassen. Im Gegensatz dazu werden spezifische Attribute nur bei bestimmten Elementen genutzt. Zum Beispiel ist das Attribut `<forename>` spezifisch, weil es zwar Elementen zugeordnen werden kann, die Personen oder Figuren auszeichnen, aber nicht einem Element wie `<placeName>`, das einen Ort auszeichnet, denn hier wäre die Auszeichnung eines Vornamens nicht sinnvoll. Wie bei spezifischen Attributen findet man ein globales Attribut und seinen Wert als `attribute="value"` im ersten Teil des Elements nach der Elementsbezeichnung, `<element attribute="value">`. Da die globalen Attribute so flexibel sind, findet man sie in den unterschiedlichsten Annotierungen. Hier einige Beispiele, die zu den globalen Attributen gehören:
 
 - **Identität**, `@xml:id`: Mit diesem Attribut weisen Sie einem Element eine ganz eindeutige Identifikation zu. Sie muss einzigartig im Dokument sein, muss mit einem Buchstaben oder Unterstrich beginnen und darf keine Sonderzeichen wie zum Beispiel Doppelpunkte enthalten.
 - **Typisierung**, `@type`und `@subtype`
@@ -135,6 +135,7 @@ Man könnte die Sprache `xml:lang="de"` ebenso beim Vers auszeichnen; das wäre 
   </Quiz.Card>
 </Quiz>
 
+
 #### Übung 2a: Globale Attribute verwenden
 
 <Quiz>
@@ -178,4 +179,4 @@ Hier finden Sie eine Liste der ISO-Codes für Sprache: [ISO-Code Sprache](https:
 
 Hier finden Sie Beispiel für das Rendition-Element `rend`, das das Textaussehen beschreibt: [Rendition](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rendition.html)
 
-Hier finden Sie eine weitere Annotation eines dramatischen Textes. Auch hier werden globale Attribute verwendet: [TEI by example, Module 5] (https://teibyexample.org/tutorials/TBED05v00.htm)
+Hier finden Sie eine weitere Annotation eines dramatischen Textes. Auch hier werden globale Attribute verwendet: [TEI by example, Module 5](https://teibyexample.org/tutorials/TBED05v00.htm)
