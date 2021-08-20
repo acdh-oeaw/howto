@@ -40,5 +40,7 @@ async function main() {
 }
 
 main()
-  .then(() => log.success('Successfully updated redirects.'))
+  .then(() => {
+    log.success('Successfully updated redirects.')
+  })
   .catch(log.error)

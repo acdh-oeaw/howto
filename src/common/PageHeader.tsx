@@ -259,10 +259,8 @@ function Search() {
               onSubmit={onSubmit}
               isDisabled={status === 'disabled'}
               loadingState={status}
-              // FIXME: make search field controlled, or clear the searchresults when closing the dialog.
-              // otherwise we will see the search results, but not the search term in the input,
-              // when reopening the search dialog
-              // TODO: Loading indicator
+              value={searchTerm}
+              onChange={setSearchTerm}
             />
             {Array.isArray(searchResults) && searchResults.length > 0 ? (
               <ul className="overflow-y-auto">
@@ -278,7 +276,7 @@ function Search() {
                   return (
                     <li key={result.id}>
                       <article>
-                        <Link href={href}>
+                        <Link href={{ ...href, hash: result.heading?.id }}>
                           <a className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100">
                             <h3 className="flex items-center space-x-2 font-medium">
                               <Icon
@@ -287,16 +285,10 @@ function Search() {
                               />
                               <span>{result.title}</span>
                             </h3>
-                            {result._snippetResult?.abstract.value != null ? (
+                            {result._snippetResult?.content.value != null ? (
                               <p
                                 dangerouslySetInnerHTML={{
-                                  __html: result._snippetResult.abstract.value,
-                                }}
-                              />
-                            ) : result._snippetResult?.body.value != null ? (
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html: result._snippetResult.body.value,
+                                  __html: result._snippetResult.content.value,
                                 }}
                               />
                             ) : null}

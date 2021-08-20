@@ -96,9 +96,9 @@ export async function getStaticProps(
 
   const page = Number(context.params?.page)
   const postPreviews = await getPostPreviewsByTagId(id, locale)
-  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) =>
-    a.date > b.date ? -1 : 1,
-  )
+  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) => {
+    return a.date > b.date ? -1 : 1
+  })
 
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
   const resources = paginate(sortedResources, pageSize)[page - 1]!
@@ -138,7 +138,9 @@ export default function TagPage(props: TagPageProps): JSX.Element {
           <Pagination
             page={posts.page}
             pages={posts.pages}
-            href={(page) => routes.tag({ id: tag.id, resourcePage: page })}
+            href={(page) => {
+              return routes.tag({ id: tag.id, resourcePage: page })
+            }}
           />
         </section>
       </PageContent>

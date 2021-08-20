@@ -80,9 +80,9 @@ export async function getStaticProps(
   const page = Number(params.page)
 
   const postPreviews = await getPostPreviews(locale)
-  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) =>
-    a.date > b.date ? -1 : 1,
-  )
+  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) => {
+    return a.date > b.date ? -1 : 1
+  })
 
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
   const resources = paginate(sortedResources, pageSize)[page - 1]!
@@ -118,7 +118,9 @@ export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
         <Pagination
           page={resources.page}
           pages={resources.pages}
-          href={(page) => routes.resources({ page })}
+          href={(page) => {
+            return routes.resources({ page })
+          }}
         />
       </PageContent>
     </Fragment>

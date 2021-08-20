@@ -80,9 +80,9 @@ export async function getStaticProps(
   const page = Number(params.page)
 
   const coursePreviews = await getCoursePreviews(locale)
-  const sortedCourses: Array<CoursePreview> = coursePreviews.sort((a, b) =>
-    a.date > b.date ? -1 : 1,
-  )
+  const sortedCourses: Array<CoursePreview> = coursePreviews.sort((a, b) => {
+    return a.date > b.date ? -1 : 1
+  })
 
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
   const courses = paginate(sortedCourses, pageSize)[page - 1]!
@@ -118,7 +118,9 @@ export default function CoursesPage(props: CoursesPageProps): JSX.Element {
         <Pagination
           page={courses.page}
           pages={courses.pages}
-          href={(page) => routes.courses({ page })}
+          href={(page) => {
+            return routes.courses({ page })
+          }}
         />
       </PageContent>
     </Fragment>

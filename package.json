@@ -9,10 +9,10 @@
     "cms:dev": "netlify-cms-proxy-server",
     "cms:styles": "cross-env NODE_ENV='production' NODE_OPTIONS='-r tsconfig-paths/register' postcss --config src/cms/previews/postcss.config.js node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && prettier public/assets/css --write",
     "create:favicons": "ts-node scripts/createFavicons",
-    "create:feed": "ts-node scripts/createFeed",
-    "create:metadata-dump": "ts-node scripts/dumpMetadata",
-    "create:redirects": "ts-node scripts/createRedirects",
-    "create:search-index": "ts-node scripts/createSearchIndex",
+    "create:feed": "node .next/server/createFeed",
+    "create:metadata-dump": "node .next/server/dumpMetadata",
+    "create:redirects": "node .next/server/createRedirects",
+    "create:search-index": "node .next/server/createSearchIndex",
     "create:sitemap": "ts-node scripts/createSitemap",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "dev": "next dev",
@@ -24,7 +24,7 @@
     "lint:md:fix": "yarn run lint:md --output",
     "lint:mdx": "xdm . --quiet --frail --ignore-path .gitignore",
     "lint:mdx:fix": "yarn run lint:mdx --output",
-    "postbuild": "yarn run create:feed && yarn run create:sitemap && yarn run create:metadata-dump && yarn run create:redirects",
+    "postbuild": "yarn run create:feed && yarn run create:sitemap && yarn run create:redirects && yarn run create:search-index && yarn run create:metadata-dump",
     "postinstall": "patch-package",
     "prebuild": "yarn run create:favicons && yarn run cms:styles",
     "prepare": "simple-git-hooks || true",
@@ -54,16 +54,18 @@
     "@react-stately/overlays": "^3.1.2",
     "@react-stately/searchfield": "^3.1.2",
     "@stefanprobst/next-error-boundary": "^1.0.8",
+    "@stefanprobst/next-mdx": "^2.0.1",
     "@stefanprobst/next-page-metadata": "^1.0.10",
     "@stefanprobst/next-svg": "^2.0.0",
-    "@stefanprobst/rehype-extract-toc": "^1.0.3",
-    "@stefanprobst/rehype-shiki": "^1.1.0",
+    "@stefanprobst/rehype-extract-toc": "^2.0.1",
+    "@stefanprobst/rehype-shiki": "^2.0.2",
     "@stefanprobst/remark-resource-links": "^1.0.2",
     "algoliasearch": "^4.10.3",
     "hastscript": "^7.0.2",
     "js-yaml": "^4.1.0",
-    "netlify-cms-app": "^2.15.35",
-    "next": "^11.0.2-canary.27",
+    "mdast-util-to-string": "^3.1.0",
+    "netlify-cms-app": "^2.15.36",
+    "next": "^11.1.1-canary.11",
     "nprogress": "^0.2.0",
     "patch-package": "^6.4.7",
     "react": "^17.0.2",
@@ -75,6 +77,7 @@
     "remark-frontmatter": "^4.0.0",
     "remark-gfm": "^2.0.0",
     "remark-mdx-frontmatter": "^1.0.1",
+    "remark-slug": "^7.0.0",
     "retext": "^8.0.0",
     "retext-smartypants": "^5.0.0",
     "rosetta": "^1.1.0",
@@ -86,54 +89,52 @@
     "unist-util-visit": "^4.0.0",
     "vfile": "^5.0.2",
     "vfile-matter": "^3.0.1",
-    "xdm": "^1.12.2"
+    "xdm": "^2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@next/bundle-analyzer": "^11.0.2-canary.27",
-    "@next/eslint-plugin-next": "^11.0.2-canary.27",
-    "@stefanprobst/commitlint-config": "^1.0.1",
-    "@stefanprobst/favicons": "^1.0.7",
+    "@next/bundle-analyzer": "^11.1.1-canary.11",
+    "@next/eslint-plugin-next": "^11.1.1-canary.11",
+    "@stefanprobst/commitlint-config": "^1.0.2",
+    "@stefanprobst/eslint-config-next": "^3.0.6",
+    "@stefanprobst/favicons": "^1.0.9",
     "@stefanprobst/next-feed": "^1.0.0",
     "@stefanprobst/next-sitemap": "^1.0.6",
     "@stefanprobst/prettier-config": "^1.0.5",
-    "@stefanprobst/remark-preset": "^1.0.1",
-    "@stefanprobst/tsconfig": "^1.1.0",
-    "@stefanprobst/xdm-cli": "^1.0.2",
+    "@stefanprobst/remark-preset": "^2.0.0",
+    "@stefanprobst/tsconfig": "^1.1.1",
+    "@stefanprobst/xdm-cli": "^2.0.0",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/typography": "^0.4.1",
     "@types/hast": "^2.3.2",
     "@types/js-yaml": "^4.0.2",
     "@types/mdast": "^3.0.7",
-    "@types/node": "^16.4.10",
+    "@types/node": "^14.17.9",
     "@types/nprogress": "^0.2.0",
-    "@types/react": "^17.0.10",
-    "@types/sharp": "^0.28.4",
+    "@types/react": "^17.0.18",
+    "@types/sharp": "^0.28.5",
     "@types/unist": "^2.0.6",
     "@types/webpack": "^5.28.0",
-    "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/parser": "^4.29.0",
-    "autoprefixer": "^10.2.6",
+    "@typescript-eslint/eslint-plugin": "^4.29.1",
+    "@typescript-eslint/parser": "^4.29.1",
+    "autoprefixer": "^10.3.1",
     "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
-    "eslint-config-next": "^11.0.2-canary.27",
-    "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-jest": "^24.3.6",
-    "jest": "^27.0.4",
-    "lint-staged": "^11.0.0",
+    "eslint-config-next": "^11.1.1-canary.11",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.1.2",
     "netlify-cms-proxy-server": "^1.3.18",
-    "postcss": "^8.3.0",
+    "postcss": "^8.3.6",
     "postcss-cli": "^8.3.1",
     "postcss-import": "^14.0.2",
     "postcss-nesting": "^8.0.1",
-    "prettier": "^2.3.1",
+    "prettier": "^2.3.2",
     "remark-cli": "^10.0.0",
     "remark-lint-no-dead-urls": "^1.1.0",
-    "simple-git-hooks": "^2.4.1",
-    "tailwindcss": "^2.2.0",
+    "simple-git-hooks": "^2.5.1",
+    "tailwindcss": "^2.2.7",
     "ts-node": "^10.2.0",
-    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.5",
     "xast-util-feed": "^1.2.0",
     "xast-util-to-xml": "^3.0.0"
@@ -148,113 +149,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "eslint:recommended",
-      "plugin:import/recommended",
-      "plugin:jsx-a11y/recommended",
-      "plugin:jest/recommended",
-      "plugin:jest/style",
-      "plugin:@next/next/core-web-vitals"
-    ],
-    "parser": "next/dist/compiled/babel/eslint-parser",
-    "parserOptions": {
-      "requireConfigFile": false,
-      "sourceType": "module",
-      "allowImportExportEverywhere": true,
-      "babelOptions": {
-        "presets": [
-          "next/babel"
-        ],
-        "caller": {
-          "supportsTopLevelAwait": true
-        }
-      }
-    },
-    "settings": {},
-    "rules": {
-      "@next/next/no-img-element": "off",
-      "import/first": "error",
-      "import/newline-after-import": "error",
-      "import/no-duplicates": "error",
-      "import/no-named-as-default": "off",
-      "import/order": [
-        "error",
-        {
-          "newlines-between": "always",
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
-        }
-      ],
-      "jsx-a11y/anchor-is-valid": [
-        "error",
-        {
-          "components": [
-            "Link"
-          ],
-          "aspects": [
-            "invalidHref",
-            "preferButton"
-          ]
-        }
-      ],
-      "jsx-a11y/no-autofocus": [
-        "warn",
-        {
-          "ignoreNonDOM": true
-        }
-      ],
-      "jsx-a11y/no-onchange": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "*.config.js"
-        ],
-        "env": {
-          "node": true
-        }
-      },
-      {
-        "files": [
-          "**/*.@(ts|tsx)"
-        ],
-        "extends": [
-          "plugin:@typescript-eslint/recommended",
-          "plugin:import/typescript"
-        ],
-        "parserOptions": {
-          "project": [
-            "./tsconfig.json"
-          ]
-        },
-        "settings": {
-          "import/resolver": {
-            "typescript": {
-              "alwaysTryTypes": true
-            }
-          }
-        },
-        "rules": {
-          "@typescript-eslint/array-type": [
-            "error",
-            {
-              "default": "generic"
-            }
-          ],
-          "@typescript-eslint/consistent-type-imports": "error",
-          "@typescript-eslint/no-unnecessary-condition": "warn",
-          "@typescript-eslint/no-unused-vars": [
-            "error",
-            {
-              "argsIgnorePattern": "^_",
-              "varsIgnorePattern": "^_"
-            }
-          ],
-          "@typescript-eslint/strict-boolean-expressions": "error",
-          "@typescript-eslint/switch-exhaustiveness-check": "error"
-        }
-      }
+      "@stefanprobst/eslint-config-next"
     ]
   },
   "lint-staged": {

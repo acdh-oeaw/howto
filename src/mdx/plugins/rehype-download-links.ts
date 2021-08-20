@@ -2,17 +2,14 @@ import type * as Hast from 'hast'
 import type { MDXJsxFlowElement, MDXJsxTextElement } from 'hast-util-to-estree'
 import type { Transformer } from 'unified'
 import { visit } from 'unist-util-visit'
-import type { VFile } from 'vfile'
 
 import { copyAsset } from '@/mdx/utils/copyAsset'
 
 /**
  * Rehype plugin which copies linked assets.
  */
-export default function attacher(): Transformer {
-  return transformer
-
-  async function transformer(tree: Hast.Node, file: VFile) {
+export default function attacher(): Transformer<Hast.Root> {
+  return async function transformer(tree, file) {
     visit(tree, 'element', onElement)
 
     function onElement(node: Hast.Element) {
@@ -27,6 +24,7 @@ export default function attacher(): Transformer {
       node.properties.download = true
     }
 
+    /* @ts-expect-error Error in upstream types. */
     visit(tree, ['mdxJsxFlowElement', 'mdxJsxTextElement'], onMdxJsxElement)
 
     function onMdxJsxElement(node: MDXJsxFlowElement | MDXJsxTextElement) {
@@ -34,7 +32,9 @@ export default function attacher(): Transformer {
 
       const urlAttribute = node.attributes.find(
         /** Ignore `MDXJsxExpressionAttribute`. */
-        (attribute) => 'name' in attribute && attribute.name === 'url',
+        (attribute) => {
+          return 'name' in attribute && attribute.name === 'url'
+        },
       )
 
       const paths = copyAsset(urlAttribute?.value, file.path, 'asset')

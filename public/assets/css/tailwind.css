@@ -1345,6 +1345,11 @@ video {
   margin: 0px !important;
 }
 
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 .my-px {
   margin-top: 1px;
   margin-bottom: 1px;

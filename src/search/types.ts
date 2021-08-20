@@ -10,7 +10,7 @@ export type IndexedType = IndexedObject['type']
  * Resource fields indexed with Algolia.
  */
 export interface IndexedResource
-  extends Pick<PostPreview, 'id' | 'title' | 'date' | 'lang' | 'abstract'> {
+  extends Pick<PostPreview, 'id' | 'uuid' | 'title' | 'date' | 'lang'> {
   type: 'resources'
   kind: ResourceKind
   objectID: string
@@ -18,16 +18,22 @@ export interface IndexedResource
     Pick<PostPreview['authors'][number], 'id' | 'firstName' | 'lastName'>
   >
   tags: Array<Pick<PostPreview['tags'][number], 'id' | 'name'>>
-  body: string
+  /** Either the `abstract`, or a chunk of the `body`. */
+  content: string
+  /** Added id `content` is a chunk of the `body`, indicates the chunk's heading. */
+  heading?: { id: string | null; title: string | null; depth: number }
 }
 
 /**
  * Course fields indexed with Algolia.
  */
 export interface IndexedCourse
-  extends Pick<CoursePreview, 'id' | 'title' | 'date' | 'lang' | 'abstract'> {
+  extends Pick<CoursePreview, 'id' | 'uuid' | 'title' | 'date' | 'lang'> {
   type: 'courses'
   objectID: string
   tags: Array<Pick<CoursePreview['tags'][number], 'id' | 'name'>>
-  body: string
+  /** Either the `abstract`, or a chunk of the `body`. */
+  content: string
+  /** Added id `content` is a chunk of the `body`, indicates the chunk's heading. */
+  heading?: { id: string | null; title: string | null; depth: number }
 }

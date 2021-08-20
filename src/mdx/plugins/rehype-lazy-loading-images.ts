@@ -109,6 +109,7 @@ export default function attacher(): Transformer {
               body: [
                 {
                   type: 'ExpressionStatement',
+                  // @ts-expect-error Figure out correct type later.
                   expression: imageSrcProps,
                 },
               ],

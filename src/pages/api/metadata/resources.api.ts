@@ -8,6 +8,9 @@ import { log } from '@/utils/log'
  *
  * Metadata has already been parsed at build time and dumped in the public
  * folder by `scripts/dumpMetadata`.
+ *
+ * FIXME: We currently `fetch` metadata, even though it is available directly from file
+ * in the `public` folder, because of https://github.com/vercel/next.js/issues/24700
  */
 export default async function handler(
   request: NextApiRequest,

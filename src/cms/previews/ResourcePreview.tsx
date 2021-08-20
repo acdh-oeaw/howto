@@ -184,6 +184,7 @@ export function ResourcePreview(
         <Resource
           resource={{
             id: entry.get('slug'),
+            kind: 'posts',
             code: mdxContent,
             data: {
               metadata,

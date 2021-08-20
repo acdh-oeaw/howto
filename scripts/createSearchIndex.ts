@@ -7,17 +7,16 @@ import { remark } from 'remark'
 import withFootnotes from 'remark-footnotes'
 import withFrontmatter from 'remark-frontmatter'
 import withGfm from 'remark-gfm'
+import withHeadingIds from 'remark-slug'
 import toPlaintext from 'strip-markdown'
-import type { Processor } from 'unified'
+import { VFile } from 'vfile'
 
 import { getCourseFilePath, getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostFilePath, getPostPreviews } from '@/cms/api/posts.api'
 import type { Locale } from '@/i18n/i18n.config'
-import type {
-  IndexedCourse,
-  IndexedResource,
-  IndexedType,
-} from '@/search/types'
+import withChunks from '@/mdx/plugins/remark-split-by-heading'
+import type { Chunk } from '@/mdx/plugins/remark-split-by-heading'
+import type { IndexedCourse, IndexedResource } from '@/search/types'
 import { log } from '@/utils/log'
 import { noop } from '@/utils/noop'
 
@@ -52,108 +51,172 @@ function getAlgoliaSearchIndex(): SearchIndex | null {
 }
 
 /**
- * Creates `unified` processor to convert mdx to plaintext. Keeps image alt text.
+ * Creates `unified` processor to split mdx into chunks by heading.
  */
 async function createProcessor() {
-  // TODO:
-  // const { remarkMdx } = await import('xdm/lib/plugin/remark-mdx')
+  const { remarkMdx } = await import('xdm/lib/plugin/remark-mdx')
+
   const processor = remark()
     .use(withFrontmatter)
     .use(withGfm)
     .use(withFootnotes)
-    // .use(remarkMdx)
-    .use(toPlaintext)
+    .use(remarkMdx)
+    .use(withHeadingIds)
+    .use(withChunks)
+
   return processor
 }
 
-function createObjectId(...args: [IndexedType, ...Array<string>]) {
-  return args.join('-')
+/**
+ * Creates `unified` processor to serialize mdx ast to plaintext. Keeps image alt text.
+ */
+async function createPlaintextProcessor() {
+  const { remarkMdx } = await import('xdm/lib/plugin/remark-mdx')
+
+  const processor = remark()
+    .use(remarkMdx)
+    .use(toPlaintext, {
+      remove: [
+        [
+          'mdxJsxFlowElement',
+          function (node) {
+            return node.children ?? []
+          },
+        ],
+        [
+          'mdxJsxTextElement',
+          function (node) {
+            return node.children ?? []
+          },
+        ],
+      ],
+    })
+
+  return processor
 }
 
 async function getResourceObjects(
   locale: Locale,
-  processor: Processor,
 ): Promise<Array<IndexedResource>> {
-  const resources = await getPostPreviews(locale)
-  const type = 'resources' as const
+  const processor = await createProcessor()
+  const plaintextProcessor = await createPlaintextProcessor()
 
-  return Promise.all(
-    resources
-      .map((resource) => {
-        return {
-          type,
-          kind: resource.kind,
-          id: resource.id,
-          objectID: createObjectId(type, resource.kind, resource.id),
-          title: resource.title,
-          date: resource.date,
-          lang: resource.lang,
-          authors: resource.authors.map((author) => {
-            return {
-              id: author.id,
-              lastName: author.lastName,
-              firstName: author.firstName,
-            }
-          }),
-          tags: resource.tags.map((tag) => {
-            return {
-              id: tag.id,
-              name: tag.name,
-              description: tag.description,
-            }
-          }),
-          abstract: resource.abstract,
-        }
+  const entries: Array<IndexedResource> = []
+
+  const resources = await getPostPreviews(locale)
+  await Promise.all(
+    resources.map(async (resource) => {
+      const entry = {
+        type: 'resources' as const,
+        kind: resource.kind,
+        id: resource.id,
+        uuid: resource.uuid,
+        objectID: resource.uuid,
+        title: resource.title,
+        date: resource.date,
+        lang: resource.lang,
+        authors: resource.authors.map((author) => {
+          return {
+            id: author.id,
+            lastName: author.lastName,
+            firstName: author.firstName,
+          }
+        }),
+        tags: resource.tags.map((tag) => {
+          return {
+            id: tag.id,
+            name: tag.name,
+          }
+        }),
+      }
+
+      entries.push({
+        ...entry,
+        content: resource.abstract,
       })
-      .map(async (resource) => {
-        const filePath = getPostFilePath(resource.id, locale)
-        const fileContent = await fs.readFile(filePath, { encoding: 'utf-8' })
-        const plaintext = String(await processor.process(fileContent))
-        return {
-          ...resource,
-          body: plaintext,
-        }
-      }),
+
+      const filePath = getPostFilePath(resource.id, locale)
+      const fileContent = await fs.readFile(filePath, { encoding: 'utf-8' })
+
+      const file = new VFile({ value: fileContent, path: filePath })
+      const ast = processor.parse(file)
+      await processor.run(ast, file)
+      const chunks = file.data.chunks as Array<Chunk>
+      await Promise.all(
+        chunks.map(async (chunk, index) => {
+          const plaintextAst = await plaintextProcessor.run(chunk.content)
+          const content = plaintextProcessor.stringify(plaintextAst).trim()
+          if (content.length > 0) {
+            entries.push({
+              ...entry,
+              objectID: [entry.objectID, index].join('-'),
+              content,
+              heading: { id: chunk.id, title: chunk.title, depth: chunk.depth },
+            })
+          }
+        }),
+      )
+    }),
   )
+
+  return entries
 }
 
-async function getCourseObjects(
-  locale: Locale,
-  processor: Processor,
-): Promise<Array<IndexedCourse>> {
-  const courses = await getCoursePreviews(locale)
-  const type = 'courses' as const
+async function getCourseObjects(locale: Locale): Promise<Array<IndexedCourse>> {
+  const processor = await createProcessor()
+  const plaintextProcessor = await createPlaintextProcessor()
 
-  return Promise.all(
-    courses
-      .map((course) => {
-        return {
-          type,
-          id: course.id,
-          objectID: createObjectId(type, course.id),
-          title: course.title,
-          date: course.date,
-          lang: course.lang,
-          tags: course.tags.map((tag) => {
-            return {
-              id: tag.id,
-              name: tag.name,
-              description: tag.description,
-            }
-          }),
-          abstract: course.abstract,
-        }
+  const entries: Array<IndexedCourse> = []
+
+  const courses = await getCoursePreviews(locale)
+  await Promise.all(
+    courses.map(async (course) => {
+      const entry = {
+        type: 'courses' as const,
+        id: course.id,
+        uuid: course.uuid,
+        objectID: course.uuid,
+        title: course.title,
+        date: course.date,
+        lang: course.lang,
+        tags: course.tags.map((tag) => {
+          return {
+            id: tag.id,
+            name: tag.name,
+          }
+        }),
+      }
+
+      entries.push({
+        ...entry,
+        content: course.abstract,
       })
-      .map(async (course) => {
-        const filePath = getCourseFilePath(course.id, locale)
-        const fileContent = await fs.readFile(filePath, { encoding: 'utf-8' })
-        const plaintext = String(await processor.process(fileContent))
-        return {
-          ...course,
-          body: plaintext,
-        }
-      }),
+
+      const filePath = getCourseFilePath(course.id, locale)
+      const fileContent = await fs.readFile(filePath, { encoding: 'utf-8' })
+
+      const file = new VFile({ value: fileContent, path: filePath })
+      const ast = processor.parse(file)
+      await processor.run(ast, file)
+      const chunks = file.data.chunks as Array<Chunk>
+      await Promise.all(
+        chunks.map(async (chunk, index) => {
+          const plaintextAst = await plaintextProcessor.run(chunk.content)
+          const content = plaintextProcessor.stringify(plaintextAst).trim()
+          if (content.length > 0) {
+            entries.push({
+              ...entry,
+              objectID: [entry.objectID, index].join('-'),
+              content,
+              heading: { id: chunk.id, title: chunk.title, depth: chunk.depth },
+            })
+          }
+        }),
+      )
+    }),
   )
+
+  return entries
 }
 
 /**
@@ -163,15 +226,17 @@ async function generate() {
   const searchIndex = getAlgoliaSearchIndex()
   if (searchIndex == null) return
 
-  const processor = await createProcessor()
-
   const locale = 'en'
-  const resources = await getResourceObjects(locale, processor)
-  const courses = await getCourseObjects(locale, processor)
+  const resources = await getResourceObjects(locale)
+  const courses = await getCourseObjects(locale)
 
+  /** Clear search index, to avoid stale resources, or stale resource chunks. */
+  searchIndex.clearObjects()
   return searchIndex.saveObjects([...resources, ...courses])
 }
 
 generate()
-  .then(() => log.success('Successfully updated Algolia search index.'))
+  .then(() => {
+    log.success('Successfully updated Algolia search index.')
+  })
   .catch(log.error)

@@ -141,13 +141,13 @@ export async function getPosts(locale: Locale): Promise<Array<Post>> {
     }),
   )
 
-  posts.sort((a, b) =>
-    a.data.metadata.date === b.data.metadata.date
+  posts.sort((a, b) => {
+    return a.data.metadata.date === b.data.metadata.date
       ? 0
       : a.data.metadata.date > b.data.metadata.date
       ? -1
-      : 1,
-  )
+      : 1
+  })
 
   return posts
 }
@@ -178,7 +178,9 @@ export async function getPostPreviews(
     }),
   )
 
-  metadata.sort((a, b) => (a.date === b.date ? 0 : a.date > b.date ? -1 : 1))
+  metadata.sort((a, b) => {
+    return a.date === b.date ? 0 : a.date > b.date ? -1 : 1
+  })
 
   return metadata
 }

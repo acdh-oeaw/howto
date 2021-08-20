@@ -103,7 +103,9 @@ export async function getStaticProps(
     )
   )
     .flat()
-    .filter((course) => course.id !== id)
+    .filter((course) => {
+      return course.id !== id
+    })
   const related = pickRandom(coursesWithSharedTags, RELATED_COURSES_COUNT)
 
   const lastUpdatedAt = await getLastUpdatedTimestamp(

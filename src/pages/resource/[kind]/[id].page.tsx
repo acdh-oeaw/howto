@@ -107,7 +107,9 @@ export async function getStaticProps(
     )
   )
     .flat()
-    .filter((resource) => resource.id !== id)
+    .filter((resource) => {
+      return resource.id !== id
+    })
   const related = pickRandom(resourcesWithSharedTags, RELATED_RESOURCES_COUNT)
 
   const courses = await getCoursePreviewsByResourceId(id, locale)
@@ -184,7 +186,9 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
             typeof metadata.featuredImage === 'string'
               ? metadata.featuredImage
               : metadata.featuredImage?.src,
-          keywords: metadata.tags.map((tag) => tag.name),
+          keywords: metadata.tags.map((tag) => {
+            return tag.name
+          }),
           publisher: {
             '@type': 'Organization',
             name: siteMetadata.title,
@@ -207,7 +211,9 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         url={canonicalUrl}
         title={metadata.title}
         date={metadata.date}
-        authors={metadata.authors.map((author) => getFullName(author))}
+        authors={metadata.authors.map((author) => {
+          return getFullName(author)
+        })}
         abstract={metadata.abstract}
         lang={metadata.lang}
         siteTitle={siteMetadata.title}
@@ -215,11 +221,15 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
       <DublinCoreMetadata
         title={metadata.title}
         date={metadata.date}
-        authors={metadata.authors.map((author) => getFullName(author))}
+        authors={metadata.authors.map((author) => {
+          return getFullName(author)
+        })}
         abstract={metadata.abstract}
         lang={metadata.lang}
         licence={metadata.licence.name}
-        tags={metadata.tags.map((tag) => tag.name)}
+        tags={metadata.tags.map((tag) => {
+          return tag.name
+        })}
         siteTitle={siteMetadata.title}
       />
       <PageContent className="grid w-full max-w-screen-lg px-10 py-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">

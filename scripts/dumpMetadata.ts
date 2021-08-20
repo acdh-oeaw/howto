@@ -34,5 +34,7 @@ async function main() {
 }
 
 main()
-  .then(() => log.success('Successfully dumped metadata to public folder.'))
+  .then(() => {
+    log.success('Successfully dumped metadata to public folder.')
+  })
   .catch(log.error)

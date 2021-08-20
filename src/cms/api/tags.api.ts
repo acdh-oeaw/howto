@@ -58,7 +58,9 @@ export async function getTags(locale: Locale): Promise<Array<Tag>> {
     }),
   )
 
-  data.sort((a, b) => a.name.localeCompare(b.name, locale))
+  data.sort((a, b) => {
+    return a.name.localeCompare(b.name, locale)
+  })
 
   return data
 }
