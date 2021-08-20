@@ -882,10 +882,10 @@ Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übung
 
 Beispiel 4
 
-Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträge im `<back>` referenzieren:
+Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträge im `<back>` referenzieren. Der Ausdruck `<ref>` verweist auf die ID im `<back>`, die dem eintrag zugewiesen wurde. Wenn Sie einen Editor nutzen während Sie am Fließtext arbeiten, werden Sie hier bereits Vorschläge erhalten um einen Verweis auf einen Listeneintrag zu ergänzen: positionieren Sie den Cursor nach dem Elementnamen bzw. nach dem letzten vorhandenen Attribut, fügen Sie ein Leerzeichen ein und tippen Sie `ref="` ein. Der Editor ergänzt das schließende Anführungszeichen und positioniert den Cursor automatisch dazwischen. Zudem erscheint ein Dropdown-Menü mit den vorhandenen ID-Nummern. Wenn Sie eine ID-Nummer markieren, zeigt der Editor eine Vorschau an, was die exakte Zuordnung wesentlich erleichert. Wenn Sie die richtige ID-Nummer gefunden haben, drücken sie Enter, der Editor fügt eine Raute sowie die ID-Nummer ein `ref="#pe1"`.
 
 ```xml
-<persName type="historical" ref="#pe1"
+<persName type="historical" ref="#pe1">
   <roleName>Sir</roleName>
   <forename full="init">J.</forename>
   <forename full="init">E.</forename>
@@ -894,8 +894,6 @@ Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträ
 
 <placeName type="city" ref="p11">Paris</placeName>
 ```
-
-Wenn Sie im Fließtext den Verweis auf einen Listeneintrag ergänzen möchten, gehen Sie wie folgt vor: positionieren Sie den Cursor nach dem Elementnamen bzw. nach dem letzten vorhandenen Attribut, fügen Sie ein Leerzeichen ein und tippen Sie `ref="` ein. Der Editor ergänzt das schließende Anführungszeichen und positioniert den Cursor automatisch dazwischen. Zudem erscheint ein Dropdown-Menü mit den vorhandenen ID-Nummern. Wenn Sie eine ID-Nummer markieren, zeigt der Editor eine Vorschau an, was die exakte Zuordnung wesentlich erleichert. Wenn Sie die richtige ID-Nummer gefunden haben, drücken sie Enter, der Editor fügt eine Raute sowie die ID-Nummer ein `ref="#pe1"`.
 
 #### Übung 4a: Personen im Nachspann auszeichnen
 
@@ -1006,8 +1004,6 @@ Beispiele Belegstellen im Text, die auf Listeneinträge referenzieren:
 <placeName type="city" ref="p11">Paris</placeName>
 ```
 
-Wenn Sie im Fließtext den Verweis auf einen Listeneintrag ergänzen möchten, gehen Sie wie folgt vor: positionieren Sie den Cursor nach dem Elementnamen bzw. nach dem letzten vorhandenen Attribut, fügen Sie ein Leerzeichen ein und tippen Sie `ref="` ein. Der Editor ergänzt das schließende Anführungszeichen und positioniert den Cursor automatisch dazwischen. Zudem erscheint ein Dropdown-Menü mit den vorhandenen ID-Nummern. Wenn Sie eine ID-Nummer markieren, zeigt der Editor eine Vorschau an, was die exakte Zuordnung wesentlich erleichert. Wenn Sie die richtige ID-Nummer gefunden haben, drücken sie Enter, der Editor fügt eine Raute sowie die ID-Nummer ein `ref="#pe1"`.
-
 [^6]
 
 [^6]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `4_Semantik_I_FW_11_12.xml`
@@ -1015,3 +1011,4 @@ Wenn Sie im Fließtext den Verweis auf einen Listeneintrag ergänzen möchten, g
 ## weiterführende Links:
 
 https://www.tei-c.org/release/doc/tei-p5-doc/de/html/ND.html#NDPER
+[Geonames](http://www.geonames.org/)
