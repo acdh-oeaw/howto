@@ -23,7 +23,7 @@ uuid: dg-X2hfAhCoVLDQqZqtts
 
 - Grundlegende Begriffe des semantischen Markup
 - Auszeichnung von Angaben zu Personen und Orten
-- der Nachspann als Verzeichnis und Verweise
+- Der Nachspann mit Verzeichnis und Verweisen
 
 ### Grundlagen Basics
 
@@ -46,7 +46,7 @@ Das semantische Markup wird genutzt, um den Inhalt eines Textes auszuzeichnen. I
 
 ##### Beispiel 1
 
-Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier werden innerhalb eines durch ein Attribut genauer bestimmtes `<div>`-Element der Titel des Films `<title>`, sowie mehrere Personennamen `<persName>` ausgezeichnet. Beachten Sie bitte, dass auch der Verfasser mit `<persName>` ausgezeichnet wird, ebenso der Titel eines weiteren Films ausgezeichnet wird.
+Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier werden innerhalb eines durch ein Attribut genauer bestimmtes `<div>`-Element der Titel des Films `<title>`, sowie mehrere Personennamen `<persName>` ausgezeichnet. Beachten Sie bitte, dass auch der Verfasser mit `<persName>`  und der Titel eines weiteren Films ausgezeichnet wird.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -91,7 +91,7 @@ Im folgenden Beispiel sehen Sie die Filmrezension zu *Der Film im Film*. Hier we
 
 ##### Beispiel 2
 
-Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der Film *Die Wunder des Meeres* gezeigt wurde. Wie bereits im vorangegangenen Beispiel wird der Werktitel ausgezeichnet, genauso der Spielzeitraum `<date>`, und die Spielorte. Deren Adressen werden hier beispielhaft auf zwei unterschiedliche Weisen dargestellt. Einerseits finden Sie das Element `<addrLine>`, andererseits kann hier genauso mit `<address>` genauer in Bezirk `<district>`und Straße `<street>`unterteilt. Die Name der Kinos werden als `<orgName>`ausgezeichnet.
+Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen der Film *Die Wunder des Meeres* gezeigt wurde. Wie bereits im vorangegangenen Beispiel wird der Werktitel ausgezeichnet, genauso der Spielzeitraum `<date>`, und die Spielorte. Deren Adressen werden hier beispielhaft auf zwei unterschiedliche Weisen dargestellt. Einerseits finden Sie das Element `<addrLine>`, andererseits kann hier genauso mit `<address>` genauer in Bezirk `<district>`und Straße `<street>`unterteilt werden. Die Namen der Kinos werden mit `<orgName>`ausgezeichnet.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -212,7 +212,7 @@ Nun sehen Sie ein Beispiel eines Gedichts, das explizit als Verstext ausgewiesen
 </TEI>
 ```
 
-Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Fügen Sie nach dem schließenden `<body>`-Tag einen Nachspann `back` mit einem `<interp>`-Element und das Attribut @xml:id mit dem Wert verse ein. Der Inhalt dieses Elements beschreibt, worum es sich handelt:
+Die Raute bei ana=#verse ist ein Verweis auf ein anderswo im Dokument definiertes Element. Um es zu definieren, fügen Sie nach dem schließenden `<body>`-Tag einen Nachspann `back` mit einem `<interp>`-Element und das Attribut @xml:id mit dem Wert verse ein. Der Inhalt dieses Elements beschreibt, worum es sich handelt:
 
 ```xml
 <back>
@@ -235,15 +235,15 @@ Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Füg
         Um einen Überblick über die Filmlandschaft gegen Ende des Jahres 1924 zu bekommen und mehr über den Typus der Filmzeitschrift zu erfahren, möchte die Forschungsgruppe wissen, welche Texttypen vorhanden sind, welche Filme genannt wurden, welche Personen damals dem Publikum vorgestellt wurden und wo das Publikum die Filme sehen konnte. Bitte zeichnen Sie deshalb im anschließenden Textabschnitt folgendes aus:
 
         1. Kennzeichnen Sie den gesamten Textabschnitt als `<body>`.
-        2. Zeichnen Sie diesen bestimmten Textabschnitt außerdem als Artikel `<div type="article">`aus.
-        3. Zeichnen Sie den Titel des Artikels mit `<head>`aus.
+        2. Zeichnen Sie diesen bestimmten Textabschnitt außerdem als Artikel `<div type="article">` aus.
+        3. Zeichnen Sie den Titel des Artikels mit `<head>` aus.
         4. Zeichnen Sie danach bitte zwei Absätze aus, einmal die Filmbeschreibung, einmal die Abgabe zu den Spielstätten.
-        5. Zeichnen Sie in beiden Abschnitten den Filmtitel als `<title>`aus.
-        6. Zeichnen Sie Sir J.E. Williamson als Person mit dem Element `<persName>`aus.
-        7. Zeichnen Sie den Ausdruck "erster" als Verweise auf eine Person aus mit `<rs>`.
-        8. Zeichnen Sie bitte die zwei Spielstätten einerseits als neuen Abschnitt , anderseits als Liste `<list>` aus, und die jeweilige Angabe zur Spielstätte als `<item>`.
-        9. Zeichnen Sie nun in jedem Listenelement die Spielstätte als `<orgName>`aus.
-        10. Zeichnen Sie die angegebene Adresse richtig aus: benutzen Sie bitte die Elemente `<address>`, `<distric>` und `<street>`. Achten Sie bitte darauf alle Elemente richtig ineinander zu verschachteln.
+        5. Zeichnen Sie in beiden Abschnitten den Filmtitel als `<title>` aus.
+        6. Zeichnen Sie Sir J.E. Williamson als Person mit dem Element `<persName>` aus.
+        7. Zeichnen Sie den Ausdruck "erster" als Verweis auf eine Person aus mit `<rs>`.
+        8. Zeichnen Sie bitte die zwei Spielstätten einerseits als neuen Abschnitt, andererseits als Liste `<list>` aus, und die jeweilige Angabe zur Spielstätte als `<item>`.
+        9. Zeichnen Sie nun in jedem Listenelement die Spielstätte als `<orgName>` aus.
+        10. Zeichnen Sie die angegebene Adresse richtig aus: benutzen Sie bitte die Elemente `<address>`, `<district>` und `<street>`. Achten Sie bitte darauf alle Elemente richtig ineinander zu verschachteln.
         11. Überprüfen Sie, ob Sie die Elemente, die nur einzelne Worte oder Satzteile umschließen, geschlossen haben.
         12. Schließen Sie bitte die Elemente, die noch offen sind in der richtigen Reihenfolge, sodass sie richtig verschachtelt sind.
 
@@ -256,7 +256,7 @@ Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Füg
 
       <Quiz.Message type="incorrect">
         Haben Sie alle Elemente, die Sie geöffnet haben, wieder geschlossen?
-        Achten  Sie bitte darauf, welche Kindelementen von welchen Elternelementen abhängig sind.
+        Achten  Sie bitte darauf, welche Kindelemente von welchen Elternelementen abhängig sind.
         Achten Sie bitte auch auf die Groß- und Kleinschreibung.
       </Quiz.Message>
     </Quiz.XmlCodeEditor>
@@ -270,7 +270,7 @@ Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Füg
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.MultipleChoice>
       <Quiz.Question>
-        In der Filmzeitschrift, die Sie im Rahmen der Forschungsgruppe bearbeiten, gibt es unterschiedliche Textarten. Deshalb entscheiden Sie sich, dem `<body>`einen Nachspann `<back>`, der als analytischer Kommentar dient, anzufügen. Hier sammeln Sie die Definitionen der verschiedenen Textformen und sorgen so für einheitliche Verweise. Wie weisen Sie innerhalb des `<body>`auf diesen analytischen Kommentar und die unterschiedlichen Textarten hin? Bitte wählen Sie die richtige Antwort aus.
+        In der Filmzeitschrift, die Sie im Rahmen der Forschungsgruppe bearbeiten, gibt es unterschiedliche Textarten. Deshalb entscheiden Sie sich, dem `<body>` einen Nachspann `<back>`, der als analytischer Kommentar dient, anzufügen. Hier sammeln Sie die Definitionen der verschiedenen Textformen und sorgen so für einheitliche Verweise. Wie weisen Sie innerhalb des `<body>` auf diesen analytischen Kommentar und die unterschiedlichen Textarten hin? Bitte wählen Sie die richtige Antwort aus.
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option>
@@ -278,15 +278,15 @@ Die Raute ist ein Verweis auf ein anderswo im Dokument definiertes Element. Füg
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        b) Ich verweise mit dem Attribut `@ana`, gefolgt von einer klaren Auszeichnung, worauf ich mich im Analytischen Kommentar beziehe. Dazu nutze ich den Hashtag: `ana=#verse`
+        b) Ich verweise mit dem Attribut `@ana`, gefolgt von einer klaren Auszeichnung, worauf ich mich im analytischen Kommentar beziehe. Dazu nutze ich den Hashtag: `ana=#verse`.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-        c) Ich verweise mit dem Hashtag `#verse`darauf, dass es sich um einen Text in Versform handelt.
+        c) Ich verweise mit dem Hashtag `#verse` darauf, dass es sich um einen Text in Versform handelt.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-        d) Ich beschreibe im `<back>`die Textart und diese Beschreibung kopiere ich an den passenden Stellen in den `<body>`.
+        d) Ich beschreibe im `<back>` die Textart und diese Beschreibung kopiere ich an den passenden Stellen in den `<body>`.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.Message type="correct">
@@ -307,17 +307,17 @@ Nachdem Sie nun schon die ersten Elemente kennengelernt haben, werden Sie nun M�
 
 #### Praktische Anwendung
 
-Anhand unserer Filmzeitschrift werden im folgenden Beispiel verschiedenartige Werktitel (Filmtitel mit `@type=movie`, Zeitschriftentitel mit `@type=journal`) unterschieden, und es wird angegeben, ob ein Personenname eine historische (persName type="historical"), religiöse (@type=religious) oder fiktionale (@type=fictional) Figur bezeichnet. Sofern es sich um letzteres handelt, ist zu ergänzen, dass der Figurenname aus den Bereichen 'Film' (@subtype=filmCharacter) oder 'Literatur' (@subtype=literaryCharacter) stammt. Zudem wird bei Personennamen zwischen Titel, Vor- und Nachnamen differenziert. Organisationsbezeichnungen werden unterteilt in Kinos (orgName type="cinema") und Filmfirmen (@type=filmCompany), Ortsbezeichnungen in Städte (placeName type="city") und Länder (@type=country).
+Anhand unserer Filmzeitschrift werden im folgenden Beispiel verschiedenartige Werktitel (Filmtitel mit `@type=movie`, Zeitschriftentitel mit `@type=journal`) unterschieden, und es wird angegeben, ob ein Personenname eine historische (persName @type="historical"), religiöse (@type=religious) oder fiktionale (@type=fictional) Figur bezeichnet. Sofern es sich um letzteres handelt, ist zu ergänzen, ob der Figurenname aus dem Bereich "Film" (@subtype=filmCharacter) oder "Literatur" (@subtype=literaryCharacter) stammt. Zudem wird bei Personennamen zwischen Titel, Vor- und Nachnamen differenziert. Organisationsbezeichnungen werden unterteilt in Kinos (orgName @type="cinema") und Filmfirmen (@type=filmCompany), Ortsbezeichnungen in Städte (placeName @type="city") und Länder (@type=country).
 
 - **Titel** `<title>` + @type movie / journal: Zusätzlich zum Titel geben Sie an, um welches Medium es sich handelt.
-- **Personen** `<persName>` + @type historical / fictional / religious: Mit diesen Werten legen Sie mehr Information über die Personen fest.
+- **Personen** `<persName>` + @type historical / fictional / religious: Mit diesen Werten halten Sie mehr Informationen über die Personen fest.
 - **Fiktive Personen** `<persName>` @type fictional + @subtype filmCharacter / literaryCharacter: Wenn Sie einen fiktiven Personennamen auszeichnen möchten, können Sie zudem auszeichnen, ob diese Figur aus Film oder Literatur stammt.
-- **Personenname im Detail** `<persName>` + `<roleName>` + `<forename>` + `<surname>`: Sie können einen Personennamen auch in seinen einzelnen Bestandteilen auszeichnen. Verschachteln Sie im Attribut `<persName>`den Rollennamen `<roleName>`
-- **Namen von Organisationen** `<orgName>` + @type cinema / filmCompany: Mit `cinema`können Sie das Kino auszeichnen, mit `filmCompany` die Filmproduktions-/Filmvertriebsfirma
-- **Ortsangaben** `<placeName>` + @type city / country: Mit `city`können Sie die Stadt, wo vorgeführt wird, näher definieren, mit `country` das Land.
-- **Datumsangaben** `<date>` + @from + @to (Werte YYYY-MM-DD): Genauere Datumsangaben können Sie im Format Jahr-Monat-Tag angeben und so einen Beginn `@from`und ein Ende `@to`angeben. Da die Datumsangaben in unserem Beispieltext keine einzelnen Tage, sondern Zeiträume beschreiben, sind geeignete Attribute zu ergänzen.
+- **Personenname im Detail** `<persName>` + `<roleName>` + `<forename>` + `<surname>`: Sie können einen Personennamen auch in seinen einzelnen Bestandteilen auszeichnen. Verschachteln Sie im Attribut `<persName>` den Rollennamen `<roleName>`.
+- **Namen von Organisationen** `<orgName>` + @type cinema / filmCompany: Mit `cinema` können Sie das Kino auszeichnen, mit `filmCompany` die Filmproduktions-/Filmvertriebsfirma.
+- **Ortsangaben** `<placeName>` + @type city / country: Mit `city` können Sie die Stadt, wo vorgeführt wird, näher definieren, mit `country` das Land.
+- **Datumsangaben** `<date>` + @from + @to (Werte YYYY-MM-DD): Genauere Datumsangaben können Sie im Format Jahr-Monat-Tag angeben und so einen Beginn `@from` und ein Ende `@to` angeben. Da die Datumsangaben in unserem Beispieltext keine einzelnen Tage, sondern Zeiträume beschreiben, sind geeignete Attribute zu ergänzen.
 - **Verweis** `<rs>` + @type chiffre: Findet sich im Text eine Chiffre, kann mit `@type chiffre` darauf verwiesen werden. Bei den Verweisen ist anzugeben, worauf sie referenzieren.
-- **Verweis** `<ref>` + @type issue: Mit `@type issue`können Sie auf andere Ausgaben der Zeitschrift verweisen. Bei den Verweisen ist anzugeben, worauf sie referenzieren.
+- **Verweis** `<ref>` + @type issue: Mit `@type issue` können Sie auf andere Ausgaben der Zeitschrift verweisen. Bei den Verweisen ist anzugeben, worauf sie referenzieren.
 
 [^21]
 
@@ -400,7 +400,7 @@ Im folgenden Beispiel sehen Sie zwei Verwendungen des Attributs `<type>`, und ei
 
 \##### Beispiel 3
 
-In diesem Beispiel finden Sie nochmals das Attribut `<type>`, diesmal um auf die Zeitschrift \_Die Filmwelt\_ zu verweisen. Ebenso werden zukünftige Zeitschriftenausgaben ausgezeichnet.
+In diesem Beispiel finden Sie nochmals das Attribut `<type>`, diesmal um auf die Zeitschrift _Die Filmwelt_ zu verweisen. Ebenso werden zukünftige Zeitschriftenausgaben ausgezeichnet.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -447,11 +447,11 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
         Ihre Forschungsgruppe ist zufrieden mit Ihrer ersten Auszeichnung zu _Die Wunder des Meeres_. Allerdings stellen Sie fest, dass für die spätere Erforschung des Textes eine genauere Auszeichnung sinnvoll wäre.
 
         1. Ergänzen Sie bitte im ersten Abschnitt, dass es sich bei dem Titel um einen Filmtitel handelt, `type="movie"`.
-        2. Ergänzen Sie bitte Details zum Namen des Ozeanforschers. Es handelt sich um eine historische Person, mit dem Titel `roleName` Sir, zwei Vornamen `forename`und einem Nachnamen `surname`.
+        2. Ergänzen Sie bitte Details zum Namen des Ozeanforschers. Es handelt sich um eine historische Person, mit dem Titel `roleName` Sir, zwei Vornamen `forename` und einem Nachnamen `surname`.
         3. Ergänzen Sie bitte in der Liste der Spielstätten, dass es sich hier um Kinos handelt.
         4. Vergessen Sie bitte nicht, alle Attribute und Elemente in der richtigen Reihenfolge zu schließen.
 
-        Der Text, in dem Sie ergänzen sollen ist bereits für Sie vorgegeben.
+        Der Text, in dem Sie ergänzen sollen, ist bereits für Sie vorgegeben.
       </Quiz.Question>
 
       <Quiz.Message type="correct">
@@ -484,9 +484,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 
         Bitte zeichnen Sie Folgendes aus:
 
-        1. Bei jeder Figur oder Person soll ausgezeichnet werden, ob es sich um eine historische Person `type="historical"`oder eine fiktive Figur `type="fictional"` handelt.
+        1. Bei jeder Figur oder Person soll ausgezeichnet werden, ob es sich um eine historische Person `type="historical"` oder eine fiktive Figur `type="fictional"` handelt.
         2. Achten Sie bitte darauf, dass Sie bei jeder Auszeichnung innerhalb des Elements `persName` auch den Vornamen `forename`, den Nachnamen `surname` und den Titel der Person `roleName` auszeichnen.
-        3. Nicht jede Erwähnung einer Person oder Figur werden alle Teile des Namens erwähnt, zeichnen Sie bitte diese Teile aus, die Sie in der Textvorlage vorfinden.
+        3. Nicht bei jeder Erwähnung einer Person oder Figur werden alle Teile des Namens verwendet. Zeichnen Sie bitte die Teile aus, die Sie in der Textvorlage vorfinden.
         4. Bei _Claude Farrère_ handelt es sich um eine historische Figur, aber _Marquis Yorisaka_ und _Fergan_ sind Filmfiguren.
         5. Zeichnen Sie bitte die Filmfiguren _Yorisaka_ und _Fergan_ zusätzlich zum `type="fictional"`diese Figuren auch als explizit als Filmfigur `subtype="filmCharacter"`aus.
         6. Bitte vergessen Sie nicht, alle Elemente zu schließen.
@@ -506,7 +506,7 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
       validate="input"
     >
       <Quiz.Question>
-        Nachdem Sie die Namensauszeichnung erledigt haben, stellen Sie fest, dass Ihre Kollegin zwar die Ortsnamen ausgezeichnet hat, aber die teilweise genauere Bezeichnungen `type` fehlen oder falsch sind. Bitte lesen Sie den Ausschnitt und ergänzen Sie fehlendes bzw. stellen Sie die Fehler richtig. Sie müssen drei Änderungen oder Ergänzungen vornehmen.
+        Nachdem Sie die Namensauszeichnung erledigt haben, stellen Sie fest, dass Ihre Kollegin zwar die Ortsnamen ausgezeichnet hat, aber die teilweise genauere Bezeichnungen `type` fehlen oder falsch sind. Bitte lesen Sie sich den Ausschnitt durch und ergänzen Sie fehlendes bzw. stellen Sie die Fehler richtig. Sie müssen insgesamt drei Änderungen oder Ergänzungen vornehmen.
       </Quiz.Question>
 
       <Quiz.Message type="correct">
@@ -525,12 +525,12 @@ Bitte beachten Sie, dass Sie, wenn Sie Oxygen XML Editor oder ähnliche Software
 
 #### Grundlagen Semantik advanced
 
-Der Granularität der Annotation sind kaum Grenzen gesetzt. Weitere Möglichkeiten für die Verfeinerung der semantischen Annotation unseres Beispieltexts könnten darin bestehen, explizit zu kodieren, dass es sich bei einem Vor- bzw. Nachnamen lediglich um Initialen handelt, oder welchem Reimschema die Verszeilen folgen. Um übersichtlicher zu arbeiten, können weiterführende Eigenschaften der Elemente auch im Nachspann `<back>`genauer behandelt werden.
+Der Granularität der Annotation sind kaum Grenzen gesetzt. Weitere Möglichkeiten für die Verfeinerung der semantischen Annotation unseres Beispieltexts könnten darin bestehen, explizit zu kodieren, dass es sich bei einem Vor- bzw. Nachnamen lediglich um Initialen handelt, oder welchem Reimschema die Verszeilen folgen. Um übersichtlicher zu arbeiten, können weiterführende Eigenschaften der Elemente auch im Nachspann `<back>` genauer behandelt werden.
 
-Diese Elemente, Attribute und Werte kommen in der folgenden praktischen Anwendung vor:
+Die nachstehenden Elemente, Attribute und Werte werden in der folgenden praktischen Anwendung verwendet:
 
-- `<forename>` oder `<surname>`+ @full init: Die optionale Auszeichnung `@full` zeigt an, ob der Name vollständig `yes`(voreingestellt), in abgekürzter Form `abb`oder als Initiale `init`im Text angeführt ist.
-- `<l>` + @rhyme a / b etc: Nach der Auszeichnung Zeile `<l>` können Sie zudem angeben, welches Reimschema gegeben ist, zum Beispiel `rhyme= abababcc`.
+- `<forename>` oder `<surname>`+ @full init: Die optionale Auszeichnung `@full` zeigt an, ob der Name vollständig `yes` (voreingestellt), in abgekürzter Form `abb` oder als Initiale `init` im Text angeführt ist.
+- `<l>` + @rhyme a / b etc: Nach der Auszeichnung Zeile `<l>` können Sie zudem angeben, welches Reimschema gegeben ist, zum Beispiel `rhyme=abababcc`.
 
 [^22]
 
@@ -624,14 +624,14 @@ Diese Elemente, Attribute und Werte kommen in der folgenden praktischen Anwendun
 
 Während Sie an der Filmzeitschrift arbeiten, stellen Sie fest, dass nicht alle Namen vollständig ausgeschrieben wurden. Dies möchten Sie anzeigen, um Ihr team einen schnelleren Überblick zu verschaffen. Lesen Sie bitte die folgenden Auszeichnung und entscheiden Sie sich für die richtige Aussage.
 
-#### Quiz: detailierte Auszeichnung
+#### Quiz: Detailierte Auszeichnung von Namen
 
 <Quiz>
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.MultipleChoice>
       <Quiz.Question>
         Welche Elemente und Attribute können Sie beim folgenden Namen nutzen, um ihn möglichst genau auszuzeichnen?
-        P.Paul Felner
+        P. Paul Felner
         (Peter Paul Felner)
       </Quiz.Question>
 
@@ -697,7 +697,7 @@ Derartige Zusatzinformation sind nicht Teil des kodierten Text im `<body>`. Desh
 
 - `<listPerson>` + @type historical / fictional: Hier sehen Sie Angaben, die in einer Liste historischer oder fiktiver Personen verwendet werden können.
 - `<person>` + @xml:id pe1 / pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet.
-- `<person>` + @sex F / M / O / N / U: Einer Person können Sie ein Geschlecht zuordnen, und zwar `M` "männllich", `F` "weiblich", `O`"divers", `N` "nicht anwendbar", oder `U` "unbekannt".
+- `<person>` + @sex F / M / O / N / U: Einer Person können Sie ein Geschlecht zuordnen, und zwar `M` "männllich", `F` "weiblich", `O` "divers", `N` "nicht anwendbar", oder `U` "unbekannt".
 - `<person>` + @role actor / author / filmDirector / filmProducer / writer: Mit diesen Attributen können Sie eine berufliche Rolle auszeichnen.
 - `<persName>` + @type artistName / birthName + `<forename>` + `<surname>`: Mit diesen Attribute können Sie einen Künstler- oder Geburtsname auszeichnen.
 - `<birth>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Geburtsort auszeichnen.
@@ -717,7 +717,7 @@ Derartige Zusatzinformation sind nicht Teil des kodierten Text im `<body>`. Desh
 
 ##### Beispiel 1
 
-Im folgenden Beispiel sehen Sie einen Nachspann mit kurzen einer Liste historischer Personen. Neben dem Namen wird auch die ID `<xml:id="pe1">`, das Geschlecht, der Beruf, als auch  Geburts- und Sterbeort mit Datum ausgezeichnet. Beachten Sie bitte, dass diese ID mit einem Buchstaben oder Unterstrich beginnt und keine Sonderzeichen enthält (siehe [hier](https://teibyexample.org/tutorials/TBED01v00.htm?target=globalattributes#xmlid) und im Kapitel *Einführung in die Makrostruktur*).
+Im folgenden Beispiel sehen Sie einen Nachspann mit einer kurzen Liste historischer Personen. Neben dem Namen wird auch die ID `<xml:id="pe1">`, das Geschlecht, der Beruf, als auch  Geburts- und Sterbeort mit Datum ausgezeichnet. Beachten Sie bitte, dass diese ID mit einem Buchstaben oder Unterstrich beginnt und keine Sonderzeichen enthalten darf (siehe [hier](https://teibyexample.org/tutorials/TBED01v00.htm?target=globalattributes#xmlid) und im Kapitel *Einführung in die Makrostruktur*).
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -882,7 +882,7 @@ Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übung
 
 Beispiel 4
 
-Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträge im `<back>` referenzieren. Der Ausdruck `<ref>` verweist auf die ID im `<back>`, die dem eintrag zugewiesen wurde. Wenn Sie einen Editor nutzen während Sie am Fließtext arbeiten, werden Sie hier bereits Vorschläge erhalten um einen Verweis auf einen Listeneintrag zu ergänzen: positionieren Sie den Cursor nach dem Elementnamen bzw. nach dem letzten vorhandenen Attribut, fügen Sie ein Leerzeichen ein und tippen Sie `ref="` ein. Der Editor ergänzt das schließende Anführungszeichen und positioniert den Cursor automatisch dazwischen. Zudem erscheint ein Dropdown-Menü mit den vorhandenen ID-Nummern. Wenn Sie eine ID-Nummer markieren, zeigt der Editor eine Vorschau an, was die exakte Zuordnung wesentlich erleichert. Wenn Sie die richtige ID-Nummer gefunden haben, drücken sie Enter, der Editor fügt eine Raute sowie die ID-Nummer ein `ref="#pe1"`.
+Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträge im `<back>` referenzieren. Der Ausdruck `<ref>` verweist auf die ID im `<back>`, die dem Eintrag zugewiesen wurde. Wenn Sie einen Editor nutzen während Sie am Fließtext arbeiten, werden Sie hier bereits Vorschläge erhalten um einen Verweis auf einen Listeneintrag zu ergänzen: positionieren Sie den Cursor nach dem Elementnamen bzw. nach dem letzten vorhandenen Attribut, fügen Sie ein Leerzeichen ein und tippen Sie `ref="` ein. Der Editor ergänzt das schließende Anführungszeichen und positioniert den Cursor automatisch dazwischen. Zudem erscheint ein Dropdown-Menü mit den vorhandenen ID-Nummern. Wenn Sie eine ID-Nummer markieren, zeigt der Editor eine Vorschau an, was die exakte Zuordnung wesentlich erleichert. Wenn Sie die richtige ID-Nummer gefunden haben, drücken Sie 'Enter', der Editor fügt eine Raute sowie die ausgewählte ID-Nummer ein. Der Eintrag wird vervollständigt und sieht dann z.B. so aus: `ref="#pe1"`.
 
 ```xml
 <persName type="historical" ref="#pe1">
@@ -905,10 +905,10 @@ Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträ
       validate="input"
     >
       <Quiz.Question>
-        Als dritte Person soll nur Claude Farrère ausgezeichnet werden, dessen Roman Vorlag für dem Film _Die Schlacht_ war. Bitte nutzen Sie die nachstehenden Informationen, um eine richtige Auszeichnung für die Personenliste im Nachspann zu schreiben.
+        Als dritte Person soll nur Claude Farrère ausgezeichnet werden, dessen Roman Vorlage für den Film _Die Schlacht_ war. Bitte nutzen Sie die nachstehenden Informationen, um eine richtige Auszeichnung für die Personenliste im Nachspann zu schreiben.
 
         1. Claude Farrère ist die dritte _Person_, die ausgezeichnet werden soll. Nutzen Sie die ID-Nummer `"pe3"`. Er ist zudem Schriftsteller `"writer"` und männlich.
-        2. Claude Farrères Geburtsname `"birthname"`lautet Frédéric Charles Bargone. Zeichnen Sie diesen Namen bitte als zweiten Namen aus.
+        2. Claude Farrères Geburtsname `"birthname"` lautet Frédéric Charles Bargone. Zeichnen Sie diesen Namen bitte als zweiten Namen aus.
         3. Er wurde am 27. April 1876 in Lyon, Frankreich, geboren und starb am 21. Juni 1957 in Paris, Frankreich.
         4. Die TEI-Umgebung ist für Sie bereits vorgegeben.
         5. Vergessen Sie nicht alle Elemente, die Sie eingefügt haben, wieder zu schließen.
@@ -1008,7 +1008,7 @@ Beispiele Belegstellen im Text, die auf Listeneinträge referenzieren:
 
 [^6]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `4_Semantik_I_FW_11_12.xml`
 
-## weiterführende Links:
+## Weiterführende Informationen:
 
 https://www.tei-c.org/release/doc/tei-p5-doc/de/html/ND.html#NDPER
 [Geonames](http://www.geonames.org/)
