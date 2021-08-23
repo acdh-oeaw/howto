@@ -686,7 +686,7 @@ Während Sie an der Filmzeitschrift arbeiten, stellen Sie fest, dass nicht alle 
       </Quiz.Message>
 
       <Quiz.Message type="incorrect">
-        Überlegen Sie noch einmal. Beachten Sie bitte das Beispiel in der praktischen Anwendung!
+        Überlegen Sie noch einmal. Beachten Sie bitte das Beispiel vor dieser Übung!
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
@@ -729,23 +729,22 @@ Derartige Zusatzinformation sind nicht Teil des kodierten Text im `<body>`. Desh
 
 ##### Nachspann mit Listen:
 
-- `<listPerson>` + @type historical / fictional: Hier sehen Sie Angaben, die in einer Liste historischer oder fiktiver Personen verwendet werden können.
+- `<listPerson>` + @type historical / fictional: Hier finden Sie iene Liste von Personen. In einer Liste historischer oder fiktiver Personen können Sie Informtioenn wie Geschlecht, Geburtsorte, Professionen u. Ä. festhalten.
 - `<person>` + @xml:id pe1 / pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet.
 - `<person>` + @sex F / M / O / N / U: Einer Person können Sie ein Geschlecht zuordnen, und zwar `M` "männllich", `F` "weiblich", `O` "divers", `N` "nicht anwendbar", oder `U` "unbekannt".
 - `<person>` + @role actor / author / filmDirector / filmProducer / writer: Mit diesen Attributen können Sie eine berufliche Rolle auszeichnen.
-- `<persName>` + @type artistName / birthName + `<forename>` + `<surname>`: Mit diesen Attribute können Sie einen Künstler- oder Geburtsname auszeichnen.
-- `<birth>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Geburtsort auszeichnen.
-- `<death>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesem Attribut können Sie einen Sterbeort auszeichnen.
+- `<persName>` + @type artistName / birthName + `<forename>` + `<surname>`: Mit diesen Elementen und Attributen können Sie einen Künstler- oder Geburtsname auszeichnen.
+- `<birth>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesen Elementen und Attributen können Sie einen Geburtsort auszeichnen.
+- `<death>` + @when + `<placeName>` + `<settlement>` + @type city + `<country>`: Mit diesen Elementen und Attributen können Sie einen Sterbeort auszeichnen.
 - `<listPlace>`: Hier sehen Sie Angaben, die in einer Liste von Orten verwendet werden können.
 - `<place>` + @xml:id + pl1 / pl2 etc.: Jeder Ort wird mit einer einzigartigen ID-Nummer ausgezeichnet.
-- `<location>` + `<country>` + @key FR / JA / RU: Mit diesem Attribut können Sie bestimmte Länder auszeichnen. Wenn Sie die ISO 3166 Bezeichnungen nutzen, kann Ihre Auszeichnung universell verstanden werden.
-- `<location>` + `<bloc>` + @type continent
-- `<persName>` + @ref #pe1 / #pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet. Wie Sie diese ID benennen, ist Ihnen überlassen.
-- `<placeName>` + @ref #pl1 / #pl2 etc. Jeder Ort wird mit einer einzigartigen ID-Nummer ausgezeichnet. Wie Sie diese ID benennen, ist Ihnen überlassen.
+- `<location>` + `<country>` + @key FR / JA / RU: Mit diesem Attribut können Sie bestimmte Länder auszeichnen. Wenn Sie die [ISO 3166 Bezeichnungen](https://www.iso.org/iso-3166-country-codes.html) nutzen, kann Ihre Auszeichnung universell verstanden werden.
+- `<location>` + `<bloc>` + @type continent: Sie können genauso den Kontinent auszeichnen, an dem sich ein Ort befindet.
+- <idno type="geonames">: Sie können den Ort auch durch seine [Geonames Referenznummer](http://www.geonames.org/) auszeichnen.
+- `<persName>` + @ref #pe1 / #pe2 etc.: Jede Person wird mit einer einzigartigen ID-Nummer ausgezeichnet, auf die im Fließtext verwiesen wird. Wie Sie diese ID benennen, ist Ihnen überlassen, sie darf aber keine Sonderzeichen enthalten, und muss mit einem Unterstrich oder Buchstaben beginnen.
+- `<placeName>` + @ref #pl1 / #pl2 etc. Jeder Ort wird mit einer einzigartigen ID-Nummer ausgezeichnet, , auf die im Fließtext verwiesen wird. Wie Sie diese ID benennen, ist Ihnen überlassen, sie darf aber keine Sonderzeichen enthalten, und muss mit einem Unterstrich oder Buchstaben beginnen.
 
-[^23]
-
-[^23]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `6_Semantik_III_FW_11_12.xml` [Auszeichnung des Geschlechts](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-teidata.sex.html) [Auszeichnung nach ISO 3166](https://www.iso.org/iso-3166-country-codes.html)
+[](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-teidata.sex.html)
 
 #### Praktische Anwendung
 
@@ -914,19 +913,36 @@ Im folgenden Beispiel finden Sie eine Liste mit Ortsnamen, die in unserem Übung
 </TEI>
 ```
 
-Beispiel 4
+##### Beispiel 4
 
 Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträge im `<back>` referenzieren. Der Ausdruck `<ref>` verweist auf die ID im `<back>`, die dem Eintrag zugewiesen wurde. Wenn Sie einen Editor nutzen während Sie am Fließtext arbeiten, werden Sie hier bereits Vorschläge erhalten um einen Verweis auf einen Listeneintrag zu ergänzen: positionieren Sie den Cursor nach dem Elementnamen bzw. nach dem letzten vorhandenen Attribut, fügen Sie ein Leerzeichen ein und tippen Sie `ref="` ein. Der Editor ergänzt das schließende Anführungszeichen und positioniert den Cursor automatisch dazwischen. Zudem erscheint ein Dropdown-Menü mit den vorhandenen ID-Nummern. Wenn Sie eine ID-Nummer markieren, zeigt der Editor eine Vorschau an, was die exakte Zuordnung wesentlich erleichert. Wenn Sie die richtige ID-Nummer gefunden haben, drücken Sie 'Enter', der Editor fügt eine Raute sowie die ausgewählte ID-Nummer ein. Der Eintrag wird vervollständigt und sieht dann z.B. so aus: `ref="#pe1"`.
 
 ```xml
-<persName type="historical" ref="#pe1">
-  <roleName>Sir</roleName>
-  <forename full="init">J.</forename>
-  <forename full="init">E.</forename>
-  <surname>Williamson</surname>
-</persName>
-
-<placeName type="city" ref="p11">Paris</placeName>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p>...<persName type="historical" ref="#pe1"> <roleName>Sir</roleName>
+      <forename full="init">J.</forename> <forename full="init">E.</forename>
+      <surname>Williamson</surname></persName>...</p>
+      <p>...<placeName type="city" ref="p11">Paris</placeName></p>
+    </body>
+  </text>
+</TEI>
 ```
 
 #### Übung 4a: Personen im Nachspann auszeichnen
@@ -1025,22 +1041,9 @@ Im folgenden Beispiel sehen Sie zwei Belegstellen im Text, die auf Listeneinträ
 </Quiz>
 
 
-Beispiele Belegstellen im Text, die auf Listeneinträge referenzieren:
+[^23]
 
-```xml
-<persName type="historical" ref="#pe1"
-  <roleName>Sir</roleName>
-  <forename full="init">J.</forename>
-  <forename full="init">E.</forename>
-  <surname>Williamson</surname>
-</persName>
-
-<placeName type="city" ref="p11">Paris</placeName>
-```
-
-[^6]
-
-[^6]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `4_Semantik_I_FW_11_12.xml`
+[^23]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `6_Semantik_III_FW_11_12.xml` 
 
 ## Weiterführende Informationen:
 
