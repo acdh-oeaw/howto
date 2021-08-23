@@ -52,9 +52,10 @@ export function useCodeMirror(
       const styles = EditorView.theme({
         '.cm-focused': { outline: 'none' },
         '.cm-scroller': { overflow: 'auto' },
+        '.cm-gutters': { fontSize: '0.875rem' },
         '.cm-content': {
           fontFamily: '"Fira Code", "Source Code Pro", ui-monospace, monospace',
-          fontSize: '14px',
+          fontSize: '0.875rem',
         },
       })
 

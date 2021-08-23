@@ -21,7 +21,7 @@ export function QuizCardLayout(props: QuizCardLayoutProps): JSX.Element {
   const messages = childElements.filter(isQuizMessage)
 
   return (
-    <div className="flex flex-col p-8 space-y-8 rounded shadow-md bg-primary-50">
+    <div className="flex flex-col p-8 space-y-8 bg-white rounded shadow-md">
       {question}
       {props.component}
       <QuizControls onValidate={props.onValidate} />
