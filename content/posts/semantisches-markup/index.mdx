@@ -27,18 +27,18 @@ uuid: dg-X2hfAhCoVLDQqZqtts
 
 ### Grundlagen
 
-Das semantische Markup wird genutzt, um den Inhalt eines Textes auszuzeichnen. Im Grunde sind Ihnen durch die TEI keine Grenzen gesetzt, was Sie und in welcher Tiefe Sie auszeichnen. Die Auszeichnungen, die Sie verwenden, werden von den Fragen abhängig sein, die Sie an Ihren Text stellen. Das semantische Markup zeichnet die Bedeutung der Textelement aus. Dazu gehören zum Beispiel Werktitel, Personennamen, Orts- und Zeitangaben, aber auch Verweise und Register. Die folgenden Elemente werden in den nächsten Übungen verwendet. Sie sind Beispiele für semantisches Markup, aber es gibt noch wesentlich mehr Attribute, die Sie nutzen können.
+Das semantische Markup zeichnet die Bedeutung der Textelemente aus. Dazu gehören zum Beispiel Werktitel, Personennamen, Orts- und Zeitangaben, aber auch Verweise innerhalb des Texes oder ein Register. Im Grunde sind Ihnen durch die TEI keine Grenzen gesetzt, was Sie und in welcher Tiefe Sie auszeichnen. Die Auszeichnungen, die Sie verwenden, werden von den Fragen abhängig sein, die Sie an Ihren Text stellen. Weiterführende Informationen finden Sie [hier](https://tei-c.org/release/doc/tei-p5-doc/en/html/index.html). Die folgenden Elemente werden in den nächsten Übungen verwendet. Sie sind Beispiele für semantisches Markup, aber es gibt noch wesentlich mehr Elemente und Attribute, die Sie nutzen können. Wir werden im Laufe dieses Moduls mehr in die Tiefe gehen.
 
 - **Werktitel** `<title>`: Hier kann zum Beispiel der Titel eines Theaterstücks, eines Gedichtes, oder auch eines Buches ausgezeichnet werden.
-- **Personennamen** `<persName>`: Der Personenname bezeichnet den gesamten Namen einer Person, sowohl Vor- als auch Nachname. Wenn Sie Vorname `<forename>` und Nachname `<surname>`auch auszeichnen wollen, so könnten Sie diese innerhalb des `<persName>`-Elements setzen.
-- **Datumsangaben** `<date>`: Dieses Element enthält ein Datum oder einen Zeitpunkt. Jedes Format ist möglich.
+- **Personennamen** `<persName>`: Der Personenname bezeichnet den gesamten Namen einer Person, sowohl Vor- als auch Nachname. Wenn Sie Vorname `<forename>` und Nachname `<surname>`auch auszeichnen wollen, so könnten Sie diese Attribute zusätzlich innerhalb des `<persName>`-Elements setzen.
+- **Datumsangaben** `<date>`: Dieses Element enthält ein Datum oder einen Zeitpunkt, zum Beispiel Juni 1924, Freitag, der 13.Jänner, etc. Jedes Format ist möglich.
 - **Namen von Organisationen** `<orgName>`: Mit diesem Element können Sie Organisationen auszeichnen.
-- **Adressen** `<address>` und `<addrLine>`: So können Sie Adressen `<address>` und eine Adressenzeile `<addrLine>`auszeichnen.
+- **Adressen** `<address>` und `<addrLine>`: So können Sie Adressen `<address>` und eine Adressenzeile `<addrLine>`auszeichnen. Mit `<addrLine>` wird jede einzelne Adresszeile einer Adresse ausgezeichnet.
 - **Adressen** mit detailierter Auszeichnung: Sie können dem Element `<address>`auch die Komponenten für Bezirke `<district>` und Straßen `<street>` unterordnen.
 - **Ortsangaben** `<placeName>`: Mit diesem Element können Sie Orte auszeichnen.
 - **Verweis** auf 'etwas' oder 'jemanden': Um auf bestimmte Personen, Dinge, Orte etc. zu verweisen, können Sie den 'referencing string' `<rs>` nutzen. Sie können dies z.B. nutzen, wenn eine Person oder ein Ort in Ihrem Text mit unterschiedlichen Begriffen bezeichnet wird, Sie aber zeigen möchten, dass es sich immer um dieselbe Person oder denselben Ort handelt.
 - **Verweis** auf eine andere 'Quelle': Um auf andere Quellen innerhalb oder außerhalb Ihres Dokumentes zu verweisen, können Sie 'reference' `<ref>` nutzen. Zusätzlich können Sie einen Kommentar oder Text ergänzen, wenn dies notwendig ist.
-- **Textabschnitte im `body`** `<div>` @type poem + @ana #verse: Der `body` kann durch das allgemeine Element `div` weiter in Abschnitte untergliedert werden. Das Attribut `@type poem` bestimmt ein Gedicht, `@ana #verse` steht für den Verweis auf einen analytischen Kommentar - das Gedicht ist in Versen geschrieben.
+- **Textabschnitte im `body`** `<div>` @type poem + @ana #verse: Der `body` kann durch das allgemeine Element `div` weiter in Abschnitte untergliedert werden. Im folgenden Beispiel bestimmt das Attribut `@type poem` ein Gedicht, `@ana #verse` steht für den Verweis auf einen analytischen Kommentar - das Gedicht ist in Versen geschrieben. Die Raute bei `@ana #verse` ist ein Verweis auf ein anderswo im Dokument definiertes Element. 
 - **Nachspann** 'back matter' `<back>`: Mit diesem Element können Sie den Nachspann eines Textes auszeichnen.
 - **Analyseverweis** 'interpretation' `<interp>` + @xml:id verse: Mit diesem Element könnnen Sie auf die Interpretation eines Textabschnittes hinweisen. Hier zum Beispiel wurde der Text als Verstext interpretiert.
 
@@ -126,7 +126,7 @@ Im folgenden Beispiel sehen Sie die Auszeichnung zweier Spielstätten, in denen 
 
 ##### Beispiel 3
 
-Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des Films *Die Schlacht*. Hier werden ein Ortsname `<placeName>`, Personenname `<persName>`, sowie eine Anapher `<rs>`ausgezeichnet.
+Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des Films *Die Schlacht*. Hier werden ein Ortsname `<placeName>`, Personenname `<persName>`, sowie eine Anapher `<rs>` ausgezeichnet.
 
 ```xml
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
@@ -153,7 +153,7 @@ Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des F
           <p><title>„Die Schlacht.“</title> Nach dem Roman von <persName>Claude Farrère</persName> wurde 
           dieses Meisterwerk gedreht, doch es ist nicht „verfilmte Literatur“, sondern ein echtes Filmdrama. 
           <persName>Marquis Yorisaka</persName> weilt in geheimer diplomatischer Mission in <placeName>Paris</placeName>; 
-          als <rs>er</rs> nach <placeName>Japan</placeName> zurückkehrt, findet er seine Frau, europäisch umgemodelt; ...</p>
+            als <rs>er</rs> nach <placeName>Japan</placeName> zurückkehrt, findet <rs>er</rs> seine Frau, europäisch umgemodelt; ...</p>
         </div>
       </div>
     </body>
@@ -164,8 +164,34 @@ Im folgenden Beispiel finden Sie einen kurzen Ausschnitt aus der Rezension des F
 Beispiel für den Verweis auf eine andere 'Quelle' mit `<ref>`:
 
 ```xml
-<ref>Nummer 33</ref>
-<ref>34</ref>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Publication Information</p>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Information zur Veröffentlichung</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="editorialAnnouncement">
+        <head>Zur Schönheitskonkurrenz!</head> 
+        <p>...Die Bilder der von obigem Preisrichterkollegium ausgesuchten schönsten Bewerberinnen werden
+         in <ref type="issue">Nummer 33</ref> und <ref type="issue">34</ref> der <title type="journal">„Filmwelt“</title>  veröffentlicht, 
+         damit den Lesern und Leserinnen Gelegenheit gegeben wird — mittels Coupon — die endgültige 
+         Preisträgerin selbst zu bestimmen.</p>
+       </div>
+     </body>
+  </text>
+</TEI>
 ```
 
 ##### Beispiel 4
@@ -301,9 +327,9 @@ Die Raute bei ana=#verse ist ein Verweis auf ein anderswo im Dokument definierte
 </Quiz>
 
 
-### Grundlagen Intermediate
+### Grundlagen komplexerer Auszeichnung
 
-Nachdem Sie nun schon die ersten Elemente kennengelernt haben, werden Sie nun Möglichkeiten einer genaueren semantischen Auszeichnung durch Attribute und Werte kennenlernen. Häufig wird Ihnen das globale Attribut `@type`begegnen, dem Sie dann einen bestimmten Wert zuweisen können, zum Beispiel `type=movie`, um zu zeigen, dass es sich um einen Film handelt. Auch das Attribut `@subtype`kann verwendet werden, um mehr in die Tiefe zu gehen. Bei der Auszeichnung werden Sie an einem Schema orientieren, das Sie an Ihre Bedürfnissen anpassen können. Dieses Schema gibt die "Grammatik" Ihrer Auszeichnung vor, gegen die Ihre Arbeit validiert wird. Damit sind für Sie schon einige Elemente Attribute vorgegeben, die Sie nutzen können. Wenn Sie mehr über Schema erfahren möchten, können Sie auf der Website der TEI [https://tei-c.org/release/doc/tei-p5-doc/de/html/ref-schemaRef.html](https://tei-c.org/release/doc/tei-p5-doc/de/html/ref-schemaRef.html) mehr erfahren. Bei der Auszeichnung sind Ihnen kaum Grenzen gesetzt; abhängig von Ihrer Forschungsfrage werden Sie sich aber für bestimmte Attribute entscheiden und festlegen, wie detailliert Sie Ihren Text auszeichnen.
+Nachdem Sie nun schon die ersten Elemente kennengelernt haben, werden Sie nun Möglichkeiten einer genaueren semantischen Auszeichnung durch Attribute und Werte kennenlernen. Häufig wird Ihnen das globale Attribut `@type`begegnen, dem Sie dann einen bestimmten Wert zuweisen können, zum Beispiel `type=movie`, um zu zeigen, dass es sich um einen Film handelt. Auch das Attribut `@subtype`kann verwendet werden, um mehr in die Tiefe zu gehen. Bei der Auszeichnung werden Sie an einem Schema orientieren, das Sie an Ihre Bedürfnissen anpassen können. Dieses Schema gibt die "Grammatik" Ihrer Auszeichnung vor, gegen die Ihre Arbeit validiert wird. Damit sind für Sie schon einige Elemente Attribute vorgegeben, die Sie nutzen können. Wenn Sie mehr über Schema erfahren möchten, können Sie auf der [Website der TEI](https://tei-c.org/release/doc/tei-p5-doc/de/html/ref-schemaRef.html) [](https://tei-c.org/release/doc/tei-p5-doc/de/html/ref-schemaRef.html)mehr erfahren. Bei der Auszeichnung sind Ihnen kaum Grenzen gesetzt; abhängig von Ihrer Forschungsfrage werden Sie sich aber für bestimmte Attribute entscheiden und festlegen, wie detailliert Sie Ihren Text auszeichnen.
 
 #### Praktische Anwendung
 
@@ -323,7 +349,7 @@ Anhand unserer Filmzeitschrift werden im folgenden Beispiel verschiedenartige We
 
 [^21]: Die vollständige Annotation dieses Schrittes finden Sie in Datei `5_Semantik_II_FW_11_12.xml`
 
-\##### Beispiel 1
+##### Beispiel 1
 
 Im folgenden Beispiel werden Werkstitel als Filmtitel, als auch Personen als fiktive oder historische Personen ausgezeichnet. Beachten Sie hier bitte die gesonderte Auszeichnung der Vor- und Nachnamen. In der Autorenzeile sehen Sie, dass lediglich der Nachname ausgezeichnet wird.
 
@@ -363,7 +389,9 @@ schematypens="http://purl.oclc.org/dsdl/schematron"?>
 </TEI>
 ```
 
-\##### Beispiel 2
+##### Beispiel 2
+
+![Spielplan mit Chiffre rechts](images/spielplan_chiffre.png "Spielplan mit Chiffre")
 
 Im folgenden Beispiel sehen Sie zwei Verwendungen des Attributs `<type>`, und eine genauere Datumsangabe, die einen Zeitraum angibt. Außerdem werden Kinos als solche ausgewiesen. Am Ende der Liste wir ein Chiffre ausgezeichnet.
 
@@ -391,6 +419,7 @@ Im folgenden Beispiel sehen Sie zwei Verwendungen des Attributs `<type>`, und ei
           <list>
             <item><orgName type="cinema">Imperial-Kino</orgName>, <address><district>I.,</district> <street> Rothgasse 9</street></address>;</item>
             <item><orgName type="cinema">Schwarzenberg-Kino</orgName>, <address><district>III.,</district> <street>Schwarzenbergplatz</street></address>;</item>
+            <item> ... </item>
           </list> <rs type="chiffre">∆</rs></p>
       </div>
     </body>
@@ -398,7 +427,7 @@ Im folgenden Beispiel sehen Sie zwei Verwendungen des Attributs `<type>`, und ei
 </TEI>
 ```
 
-\##### Beispiel 3
+##### Beispiel 3
 
 In diesem Beispiel finden Sie nochmals das Attribut `<type>`, diesmal um auf die Zeitschrift *Die Filmwelt* zu verweisen. Ebenso werden zukünftige Zeitschriftenausgaben ausgezeichnet.
 
