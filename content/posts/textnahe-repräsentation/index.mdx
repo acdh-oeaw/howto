@@ -23,15 +23,15 @@ uuid: b5ZVIAok97iqiZpjpexFI
 - Definition der Begriffe Text vs. Dokument
 - Arbeit mit Faksimiles
 
-## Einführung: Texte und ihre Vorlagen
+## Grundlagen: Texte und ihre Vorlagen
 
 ![Balzac Corrections, Quelle: https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg](images/BALZAC_Corrections2.jpg "Balzac Corrections, Bild: Wikimedia Commons, https://commons.wikimedia.org/wiki/File:BALZAC_Corrections2.jpg")
 
-Beim Anblick der oben abgebildeten Seite mit einem Text von Balzac, in dem handschriftlich Korrekturen eingetragen wurden, stellt sich die Frage: wo ist hier der Text? Ist der Drucktext gemeint, der Schreibprozess oder die umgesetzten Änderungen? Abhängig von der Sichtweise auf den Text und auf die Fragestellungen, die man beantworten möchte, ist grundsätzlich alles möglich. Die **Übersetzung von Fragestellungen in Markup** kann man als **Datenmodellierung** bezeichnen. Man kann zwar einen Text nicht in all seinen Facetten in den Computer übertragen, jedoch drückt das, was man annotiert, ein Modell des Textes aus, das von den zugrundeliegenden Interessen mitbestimmt wird.
+Beim Anblick der oben abgebildeten Seite mit einem Text von Honore de Balzac (1799-1850), in dem handschriftlich Korrekturen eingetragen wurden, stellt sich die Frage: wo ist hier der Text? Ist der Drucktext gemeint, der Schreibprozess oder die umgesetzten Änderungen? Abhängig von der Sichtweise auf den Text und auf die Fragestellungen, die man beantworten möchte, ist grundsätzlich alles möglich. Die **Übersetzung von Fragestellungen in Markup** kann man als **Datenmodellierung** bezeichnen. Man kann zwar einen Text nicht in all seinen Facetten in den Computer übertragen, jedoch drückt das, was man annotiert, ein Modell des Textes aus, das von den zugrundeliegenden Interessen mitbestimmt wird.
 
 Wenn in der Einführung des TEI Markup davon die Rede war, dass man mit Markup das Aussehen eines Textes kodieren kann, ist das nur halb richtig: der Text selbst – zumindest aus Sicht der TEI - ist etwas Abstraktes. Vielmehr sind es die *Vorlagen* des kodierten Textes, die ein Aussehen haben, die physischen Dokumente. Wie ein Text digital hergestellt wird und wie er in maschinenlesbarer Form abgebildet ist, wird vom Editor bestimmt – und das ist, wie jeder weiß, der z.B. mit der Transkription von Handschriften betraut war, ein Übersetzungsprozess.
 
-Sehr vereinfacht kann man behaupten:
+Sehr vereinfacht kann man festhalten:
 
 - Ein Fleck auf einem Blatt Papier oder Pergament wird als Graph identifiziert.
 - Der Graph wird einem Graphem einer natürlichen Sprache zugewiesen, also einem Lautwert.
@@ -64,7 +64,7 @@ Aber es gibt in TEI auch die Möglichkeit, Glyphen und Zeichen zu annotieren, di
 
 Zeichen, die im Unicode-Zeichensatz vorhanden sind, können ohne weiteres auch auf dem Computer dargestellt, transkribiert und annotiert werden. Aber auch die Auszeichnung von Zeichen, die nicht in Unicode vorhanden sind, ist möglich. Hierfür kommen folgende Elemente zum Einsatz:
 
-Die **character declaration** `<charDecl>` umfasst die Information über nicht-standard Zeichen. Die Elemente `<char> `und `<glyph> `beinhalten eine kurze Beschreibung des Zeichens oder Glyphens. Auch wenn sie inhaltlich ähnlich sind, so werden diese beiden Elemente unterschiedlich verwendet. `<char>` definiert ein Zeichen das im aktuellen Zeichensatz des Dokuments nicht vorhanden ist, während `<glyph>` ein Zeichen annotiert, das schon einmal entweder im Zeichensatz des Dokuments oder durch ein `<char>` definiert wurde. Bei beiden wird als ein Attribut eine ID definiert, mit der im Text das definierte Zeichen referenziert werden kann.
+Die **character declaration** `<charDecl>` umfasst die Information über nicht-standard Zeichen. Die Elemente `<char>`und `<glyph>`beinhalten eine kurze Beschreibung des Zeichens oder Glyphens. Auch wenn sie inhaltlich ähnlich sind, so werden diese beiden Elemente unterschiedlich verwendet. `<char>` definiert ein Zeichen das im aktuellen Zeichensatz des Dokuments nicht vorhanden ist, während `<glyph>` ein Zeichen annotiert, das schon einmal entweder im Zeichensatz des Dokuments oder durch ein `<char>` definiert wurde. Bei beiden wird als ein Attribut eine ID definiert, mit der im Text das definierte Zeichen referenziert werden kann.
 
 Hier ein Beispiel für eine 'character declaration'
 
@@ -77,7 +77,7 @@ Hier ein Beispiel für eine 'character declaration'
 </charDecl>
 ```
 
-Das Element `<g/>` (gaiji) repräsentiert ein nicht-Standard-Zeichen oder Glyphe und ist quasi ein Stellvertreter für dieses Zeichen innerhalb des Textes. Dabei verweist das Attribut `ref `auf die in der character declaration festgelegte ID.
+Das Element `<g/>` (gaiji) repräsentiert ein nicht-Standard-Zeichen oder Glyphe und ist quasi ein Stellvertreter für dieses Zeichen innerhalb des Textes. Dabei verweist das Attribut `ref`auf die in der character declaration festgelegte ID.
 
 ```xml
 <p> ... <g ref="#Filig">Fi</g>lthy riches...</p>
@@ -109,7 +109,7 @@ Auf das Quellenmaterial kann auf vielfältige Weise innerhalb des TEI-Dokuments 
 
 #### Einbindung von Faksimiles und parallele Transkription
 
-Das Element `<facsimile>` ist die vielseitigste Möglichkeit um mit Faksimiles in TEI zu arbeiten. Das Element umschließt die Repräsentation einer Texquelle in Form von Digitalisaten der Primärquelle. Diese wird in einzelne "Oberflächen" also `<surface> `unterteilt (z.B. Seiten eines Dokuments), die benannt werden um später referenziert werden zu können. Diese einzelnen Oberflächen können eine oder mehrere Grafiken mit dem Element `<graphic> `zugewiesen bekommen.
+Das Element `<facsimile>` ist die vielseitigste Möglichkeit um mit Faksimiles in TEI zu arbeiten. Das Element umschließt die Repräsentation einer Texquelle in Form von Digitalisaten der Primärquelle. Diese wird in einzelne "Oberflächen" also `<surface>`unterteilt (z.B. Seiten eines Dokuments), die benannt werden um später referenziert werden zu können. Diese einzelnen Oberflächen können eine oder mehrere Grafiken mit dem Element `<graphic>`zugewiesen bekommen.
 
 ```xml
 <facsimile>
@@ -123,7 +123,7 @@ Das Element `<facsimile>` ist die vielseitigste Möglichkeit um mit Faksimiles i
 </facsimile>
 ```
 
-Über das Mittel der sogenannten "parallelen Transkription" werden die Inhalte der Faksimile unter Referenzierung der jeweiligen Seiten oder Oberflächen im Element `<text> `transkribiert. Hierbei werden also die Faksimile und die Transkription innerhalb des TEI-Dokuments getrennt und nicht miteinander verwoben, was für mehr Übersichtlichkeit im Dokument sorgt.
+Über das Mittel der sogenannten "parallelen Transkription" werden die Inhalte der Faksimile unter Referenzierung der jeweiligen Seiten oder Oberflächen im Element `<text>`transkribiert. Hierbei werden also die Faksimile und die Transkription innerhalb des TEI-Dokuments getrennt und nicht miteinander verwoben, was für mehr Übersichtlichkeit im Dokument sorgt.
 
 ```xml
 <facsimile>
@@ -141,9 +141,9 @@ Das Element `<facsimile>` ist die vielseitigste Möglichkeit um mit Faksimiles i
 </text>
 ```
 
-Im oben abgebildeten Codebeispiel markiert das Element `<pb> `('page beginning') den Anfang einer neuen Seite in einem Dokument mit Pagination. Gleichsam kann `<lb> `den Beginn einer Zeile und `<cb> `den Beginn einer Spalte anzeigen und referenzieren. Das Attribut `facs` bezeichnet hierbei die Referenz von einem Element, das transkribierten Text enthält zu einem Bild oder einem Teil eines Bildes das diesen Text repräsentiert.
+Im oben abgebildeten Codebeispiel markiert das Element `<pb>`('page beginning') den Anfang einer neuen Seite in einem Dokument mit Pagination. Gleichsam kann `<lb>`den Beginn einer Zeile und `<cb>`den Beginn einer Spalte anzeigen und referenzieren. Das Attribut `facs` bezeichnet hierbei die Referenz von einem Element, das transkribierten Text enthält zu einem Bild oder einem Teil eines Bildes das diesen Text repräsentiert.
 
-Zur besseren Adressierung von einzelnen Textteilen oder auch anderen Layoutelementen auf einem Faksimile kann eine Seite in mehrere Zonen aufgeteilt werden. Dies geschieht mit dem Element `<zone>`, das einen zweidimensionalen Bereich in Form eines geschlossenen Polygons innerhalb des `<surface> `dokuments definiert. Dies kann von einem simplen Rechteck bis hin zu einem frei geformten Polygon mit beliebig vielen Punkten gehen. Im untenstehenden Beispiel
+Zur besseren Adressierung von einzelnen Textteilen oder auch anderen Layoutelementen auf einem Faksimile kann eine Seite in mehrere Zonen aufgeteilt werden. Dies geschieht mit dem Element `<zone>`, das einen zweidimensionalen Bereich in Form eines geschlossenen Polygons innerhalb des `<surface>`dokuments definiert. Dies kann von einem simplen Rechteck bis hin zu einem frei geformten Polygon mit beliebig vielen Punkten gehen. Im untenstehenden Beispiel
 
 ![Digitalisat einer Quelle, in das unterschiedliche Zonen eingezeichnet sind. Bild: https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX](images/SourceWithZones.png "Digitalisat einer Quelle, in das unterschiedliche Zonen eingezeichnet sind. Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHFAX")
 
@@ -163,7 +163,7 @@ Zur besseren Adressierung von einzelnen Textteilen oder auch anderen Layouteleme
 </text>
 ```
 
-Im gezeigten Beispiel wird im Surface Element das Grundkoordinatensystem festgelegt. Die Attribute `ulx `und `uly `definieren die x und y Koordinate für die linke obere Ecke. Die Attribute `lrx `und `lry `die entsprechenden Koordinaten für die rechte untere Ecke der Oberfläche. Analog können die Koordinaten einer rechteckicken Zone im Element `<zone> `definiert werden. Verwendet man eine Polygon mit mehr Punkten kommt das Attribut `points `zum Einsatz, welches eine Liste an Koordinaten von Punkten im karthesischen Koordinatensystem enthält. Mehr Informationen zu diesem Thema finden Sie in der [TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-surfzone).
+Im gezeigten Beispiel wird im Surface Element das Grundkoordinatensystem festgelegt. Die Attribute `ulx`und `uly`definieren die x und y Koordinate für die linke obere Ecke. Die Attribute `lrx`und `lry`die entsprechenden Koordinaten für die rechte untere Ecke der Oberfläche. Analog können die Koordinaten einer rechteckicken Zone im Element `<zone>`definiert werden. Verwendet man eine Polygon mit mehr Punkten kommt das Attribut `points`zum Einsatz, welches eine Liste an Koordinaten von Punkten im karthesischen Koordinatensystem enthält. Mehr Informationen zu diesem Thema finden Sie in der [TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-surfzone).
 
 ##### Übung
 
@@ -225,7 +225,7 @@ Im gezeigten Beispiel wird im Surface Element das Grundkoordinatensystem festgel
 
 Im TEI-Dokument kann nicht nur der textliche Inhalt eines Dokuments sondern auch das Aussehen des Textes in der Vorlage ausgezeichnet werden.
 
-Eine einfache Art ein hervorgehobenes Wort oder eine Phrase auszuzeichnen ist die Verwendung globaler Attribute, die auf alle Elemente eingesetzt werden können. Eine generische Hervorhebung vom umgebenden Text, die häufig angewendet wird, ist das Element **'higlighted'** `<hi>`. Die Art der Hervorhebung wird mit dem Attribut `rend `festgelegt. Dies kann unter anderem die Werte `bold`, `italic `oder `centered `haben.
+Eine einfache Art ein hervorgehobenes Wort oder eine Phrase auszuzeichnen ist die Verwendung globaler Attribute, die auf alle Elemente eingesetzt werden können. Eine generische Hervorhebung vom umgebenden Text, die häufig angewendet wird, ist das Element **'higlighted'** `<hi>`. Die Art der Hervorhebung wird mit dem Attribut `rend`festgelegt. Dies kann unter anderem die Werte `bold`, `italic`oder `centered`haben.
 
 Hier ein Beispiel für die Verwendung des Elements. Auf der Seite 12 der Zeitschrift ist am Anfang jeder Filmkritik der Titel des Films in fetter Schrift hervorgehoben. Dies könnte für den ersten Absatz zum Film "Die Schlacht" wie folgt ausgezeichnet werden:
 
@@ -233,7 +233,7 @@ Hier ein Beispiel für die Verwendung des Elements. Auf der Seite 12 der Zeitsch
 <hi rend="bold">"Die Schlacht."</hi> Nach dem Roman von Claude Farrère wurde dieses Meisterwerk gedreht, ...
 ```
 
-Ein häufiger wiederkehrendes, spezielleres Aussehen kann auch zentral im TEI Header definiert werden. Dies geschieht im Abschnitt 'Tagging Declaration' `<tagsDecl> `mit dem Element `rendition`, das in der Textauszeichnung einem Element als Attribut zugeordnet wird.
+Ein häufiger wiederkehrendes, spezielleres Aussehen kann auch zentral im TEI Header definiert werden. Dies geschieht im Abschnitt 'Tagging Declaration' `<tagsDecl>`mit dem Element `rendition`, das in der Textauszeichnung einem Element als Attribut zugeordnet wird.
 
 Im TEI-Header wird die rendition wie folgt mittels CSS-Attributen zentral definiert. Dies kann auch komplexer werden.
 
@@ -259,7 +259,7 @@ Die CSS-Attribute können aber auch direkt in einem Attribut in der Texttranskri
 
 Neben Auszeichnungen können auch Umbrüche im Text ausgezeichnet werden. Seitenumbrüche `<pb/>` Zeilenumbrüche `<lb/>` Spaltenumbrüche `<cb/>`
 
-Innerhalb dieser Umbruch-Auszeichnung kann angegeben werden ob es hierbei zu einer Wortabteilung kommt. Hierfür wird das Attribut `break="yes"` oder `"no" `verwendet.
+Innerhalb dieser Umbruch-Auszeichnung kann angegeben werden ob es hierbei zu einer Wortabteilung kommt. Hierfür wird das Attribut `break="yes"` oder `"no"`verwendet.
 
 Das vorige Beispiel des ersten Absatzes zum Film "Die Schlacht" wurde hier nun noch einmal um die eingeführten Elemente ergänzt:
 
@@ -361,7 +361,7 @@ Eine **Wiederherstellung**, oder defacto die Rückgängigmachung einer zuvor get
 
 Mit dem Attribut `type` kann im restore-Element ausgezeichnet werden, auf welche Weise die Editierung rückgängig gemacht wurde - z.B. durch eine Notiz in der Marginalspalte (siehe auch TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHCD))
 
-![Beispiel für eine "Metamark"](images/Folie67.png "Beispiel einer für eine \"Metamark\". Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta")
+![Beispiel für eine "Metamark"](images/Folie67.png "Beispiel einer für eine \\"Metamark\\". Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta")
 
 Manchmal ist die Bedeutung eines handschriftlichen, grafischen Zeichens innerhalb eines Original-Dokuments nicht eindeutig. Um eine Beschreibung hinzuzufügen, wie dieses Zeichen gelesen werden soll, kann das TEI-Element `<metamark>` verwendet werden. Für das obige Beispiel des senkrechten Striches könnte dies wie folgt aussehen:
 
