@@ -18,17 +18,22 @@ licence: ccby-4.0
 toc: false
 uuid: j51QIatS7jhSnysibO4Cs
 ---
+## Lernziele
+
+- Angabe der Metadaten eines TEI-Dokuments
+- Strukturierung des Headers
+
 ## Grundlagen
 
-Im TEI-Header werden die Metadaten *über* ein TEI-Dokument erfasst. Der Header ist vom Element `<teiHeader>` umschlossen, die Metadaten über das Dokument selber werden innerhalb des Elements `<fileDesc>` angegeben, welches das erste Element innerhalb des Headers darstellt. Diese **'file description'** enthält alle Informationen zum elektronischen Dokument (Name des elektronischen Dokuments, Autor*in, etc.).
+Im TEI-Header werden die Metadaten *über* ein TEI-Dokument erfasst. Der Header ist vom Element `<teiHeader>` umschlossen, die Metadaten über das Dokument selber werden innerhalb des Elements `<fileDesc>` angegeben, was das erste Element innerhalb des Headers darstellt. Diese **'file description'** enthält alle Informationen zum elektronischen Dokument (Name des elektronischen Dokuments, Autor*in etc.).
 
 Ein TEI-Header ist für jedes TEI-Dokument obligatorisch. Er kann nur einige wesentliche Elemente enthalten, kann aber auch sehr detailliert sein, wenn es nötig ist. Die Metadaten können u.a. folgende Informationen enthalten:
 
-* **Identifikation** ("Was ist das?") `<titleStmt>`
-* **Angabe der Quelle** ("Woraus wurde es abgeleitet?") `<sourceDesc>`
-* **Kodierung** ("Wie wurde der Text kodiert?") `<encodingDesc>`
-* **Veröffentlichung** ("Wer gibt es unter welchen Bedingungen für wen frei?") `<publicationStmt>`
-* **Provenienz** ("Wer hat was wann damit gemacht?") `<revisionDesc>`
+- **Identifikation** ("Was ist das?") `<titleStmt>`
+- **Angabe der Quelle** ("Woraus wurde es abgeleitet?") `<sourceDesc>`
+- **Kodierung** ("Wie wurde der Text kodiert?") `<encodingDesc>`
+- **Veröffentlichung** ("Wer gibt es unter welchen Bedingungen für wen frei?") `<publicationStmt>`
+- **Provenienz** ("Wer hat was wann damit gemacht?") `<revisionDesc>`
 
 ## Praktische Anwendung
 
@@ -61,7 +66,7 @@ Im Folgenden ist eine einfache Grundstruktur eines TEI Dokuments abgebildet, auf
 </TEI>
 ```
 
-Der TEI-Header besteht in unserem Fall aus der **'file description'**, die alle Informationen zum elektronischen Dokument enthält (Name des elektronischen Dokuments, Autor*in, etc.). Nachdem wir in unserem Beispiel den Text nicht selbst verfassen, sondern einen Ausschnitt aus einer historischen Zeitschrift kodieren, ist darin auch eine Quellenangabe **'source description'** `<sourceDesc>` enthalten.
+Der TEI-Header besteht in unserem Fall aus der **'file description'**, die alle Informationen zum elektronischen Dokument enthält (Name des elektronischen Dokuments, Autor*in etc.). Nachdem wir in unserem Beispiel den Text nicht selbst verfassen, sondern einen Ausschnitt aus einer historischen Zeitschrift kodieren, ist darin auch eine Quellenangabe **'source description'** `<sourceDesc>` enthalten.
 
 Im Folgenden gehen wir auf die wichtigsten Metadaten-Informationen ein, die auch für unser Beispiel der "Filmwelt" relevant sind. In einer Übung werden dann die Informationen der zwei Seiten aus der "Filmwelt" entsprechend kodiert.
 
@@ -84,11 +89,11 @@ Hier ein Beispiel:
 
 Das `<title>`-Element enhält den Titel des elektronischen Dokuments. Mit dem Attribut `@type` lassen sich unterschiedliche Arten von Titeln klassifizieren, beispielsweise:
 
-* **'main'**: Haupttitel
-* **'sub'**: Untertitel
-* **'alt'**: Alternativer Titel unter dem das Werk ebenso bekannt ist, oft in einer anderen Sprache
-* **'short'**: Kurzform des Titels
-* **'desc'**: deskriptive Paraphrasierung der Arbeit die als Titel fungiert.
+- **'main'**: Haupt-Titel
+- **'sub'**: Untertitel
+- **'alt'**: Alternativer Titel unter dem das Werk ebenso bekannt ist, oft in einer anderen Sprache
+- **'short'**: Kurzform des Titels
+- **'desc'**: deskriptive Paraphrasierung der Arbeit die als Titel fungiert.
 
 In der Praxis ist eine Klassifizierung der einzelnen Titelteile nicht unbedingt notwendig. Der komplette Titel mit Untertitel könnte auch in einem einzigen `<title>` Element geschrieben werden.
 
@@ -106,7 +111,7 @@ In der ersten Übung sollen die ersten Grundangaben zum elektronischen Dokument 
       validate="input"
     >
       <Quiz.Question>
-        1. Geben Sie einen vollständigen Titel für das TEI-Dokument an, indem Sie das `<title>`-Element der Vorlage ersetzen durch:
+        1. Geben Sie einen vollständigen Titel für das TEI-Dokument an: ersetzen Sie das `<title>`-Element der Vorlage durch:
 
         - **Titel des elektronische Dokuments:** Die Filmwelt - ein Ausschnitt.
         - **Untertitel des elektronischen Dokuments:** Digitale Version.
@@ -178,7 +183,7 @@ Hierbei wird innerhalb der **'structured bibliographic citation'** ein Buch oder
 
 `<imprint>` gruppiert vorhandene Informationen zur Publikation und Distribution des Werks.
 
-Der **'scope of bibliographic reference'** `<biblScope>` definiert, auf welchen Teil einer Arbeit sich die Referenz bezieht. Dies können z.B. bestimmte Seiten sein, die mit dem Attribut `unit="page"` angegeben werden, oder ein bestimmter Jahrgang einer Zeitschrift, der mit `unit="volume"`ausgezeichnet wird.
+Der **'scope of bibliographic reference'** `<biblScope>`definiert, auf welchen Teil einer Arbeit sich die Referenz bezieht. Dies können z.B. bestimmte Seiten sein, die mit dem Attribut `unit="page"` angegeben werden, oder ein bestimmter Jahrgang einer Zeitschrift `unit="volume"`.
 
 #### Übung
 
@@ -201,7 +206,7 @@ In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer struktur
         3. Ergänzen Sie im Impressum den Verlag inkl. seiner Adresse im Element `<imprint>`. Der **Verlag** `<publisher>` enthält hierbei den **Namen der Firma / Organisation** `<orgName>`, samt ihrer **Adresse** `<address>` bestehend aus einer oder mehrerer **Adresszeilen** `<addrLine>`.
         4. Weisen Sie die Fa. 'L. Beck und Sohn' in einem 'responsibility statement' als Druckerei aus unter Verwendung von `<resp>`, `<orgName>`
         5. Geben Sie Wien als Publikationsort und das Erscheinungsjahr an `<pubPlace>`, `<date>`
-        6. Kodieren Sie, dass der gewählte Textausschnitt aus der Nr. 31, 1924, Seite 11-12 stammt mit Hilfe von 'scope of bibliographic reference' `<biblScope>` + @type volume / page
+        6. Kodieren Sie, dass der gewählte Textausschnitt aus der Nr. 31, 1924, Seite 11-12 stammt 'scope of bibliographic reference' `<biblScope>` + @type volume / page
       </Quiz.Question>
     </Quiz.XmlCodeEditor>
   </Quiz.Card>
@@ -210,7 +215,7 @@ In dieser Übung wollen wir die Literaturangabe unserer Quelle in einer struktur
 
 ### Kodierung
 
-Der bei dieser Übung entstandene TEI-Header umfasst nur einige wesentliche Elemente, er kann im Bedarfsfall weitaus detaillierter ausfallen. Ergänzend kann dieser beispielhaft auch einige Angaben zur Annotation **'encoding description'** `<encodingDesc>` enthalten, die den Zusammenhang der physischen Ressource und des elektronischen Dokuments beschreibt. Diese reichen von Informationen zu Redaktionsprinzipien über Projektbeschreibungen und Angaben zur Verwendung von Tags bis hin zur zugrundeliegenden Textauswahl.
+Der bei dieser Übung entstandene TEI-Header umfasst nur einige wesentliche Elemente, er kann im Bedarfsfall weitaus detaillierter ausfallen. Ergänzend kann dieser beispielhaft auch einige Angaben zur Annotation **'encoding description'** `<encodingDesc>` enthalten, die den Zusammenhang der physischen Ressource und des elektronischen Dokuments beschreibt. Diese reichen von Informationen zu Redaktionsprinzipien über Projektbeschreibungen, Angaben zur Verwendung von Tags bis hin zur  zugrundeliegenden Textauswahl.
 
 ```xml
 <encodingDesc>
@@ -235,14 +240,14 @@ Der bei dieser Übung entstandene TEI-Header umfasst nur einige wesentliche Elem
 </encodingDesc>
 ```
 
-Hier einige Beispiele für mögliche Angaben innerhalb der **'encoding description'**:
+Hier einige Beispiele für mögliche Angaben innerhalb der 'encoding description':
 
-* **editorische Angaben:** beschreibt die angewandten Richtlinien und Prinzipien für die Annotation `<editorialDecl>`.
+- **editorische Angaben:** beschreibt die angewandten Richtlinien und Prinzipien für die Annotation `<editorialDecl>`.
 
-  Wie in obenstehendem Beispiel können u.a. der Umgang mit Silbentrennung `<hyphenation>`, Normalisierung und Regulierung der originalen Quelle `<normalization>`, Korrekturen `<correction>` oder das Ausmaß an analytischer und interpretativer Information, die dem Text in der Transkription hinzugefügt wurde `<interpretation>`, angegeben werden
-* **Projektbeschreibung:** beschreibt das Ziel für das die Quelle kodiert wurde `<projectDesc>`
-* **Tagverwendung:** gibt Informationen zum Tagging, das innerhalb des Dokuments angewendet wird `<tagsDecl>`
-* **Auswahlverfahren:** Fließtext, der das angewandte Samplingverfahren für einen Korpus oder eine Sammlung an Texten beschreibt `<samplingDecl>`
+  Wie in obenstehendem Beispiel können u.a. der Umgang mit Silbentrennung `<hyphenation>`, Normalisierung und Regulierung der originalen Quelle `<normalization>`, Korrekturen `<correction>` oder das Ausmaß an analytischer und interpretativer Information, die dem Text in der Transkription hinzugefügt wurde `<interpretation>`.
+- **Projektbeschreibung:** beschreibt das Ziel für das die Quelle kodiert wurde `<projectDesc>`
+- **Tagverwendung:** gibt informationen zum Tagging, das innerhalb des Dokuments angewendet wird `<tagsDecl>`
+- **Auswahlverfahren:** Fließtext, der das angewandte Samplingverfahren für einen Korpus oder eine Sammlung an Texten beschreibt `<samplingDecl>`
 
 #### Übung
 
@@ -312,11 +317,11 @@ Wie am ersten Beispiel ersichtlich reicht ein einfacher Absatz um eine Publikati
 
 Das Element **'electronic mail address'** enthält eine Emailadresse. Das Element **'identifier'** `<idno>` enthält eine Form der standardisierten Identifikation eines Objekts -- in unserem Fall eines bibliografischen Objekts. Das Attribut `type` gibt die Art der Identifikation an. Diese kann beispielsweise folgende sein:
 
-* **ISBN**: "International Standard Book Number" (ISBN-Nummer), die Bücher international eindeutig identifiziert.
-* **ISSN:** "International Standard Serial Number" (ISSN-Nummer), eine international einheitliche Identifikationsnummer für serielle Publikationen, wie z.B. Zeitschriften.
-* **DOI:** "Digital Object Identifier", eine einmalige Zeichenfolge (aus Nummern und Buchstaben) die ein elektronisches Dokument identifiziert.
-* **URI:** Uniform Resource Identifier, eine eindeutige Identifikation einer Ressource (von physischen Objekten bis hin zu digitalen Ressourcen wie Webseiten), die gleichzeitig Hinweise auf den Zugriff der Ressource gibt.
-* **VIAF:** Eine Normdatennummer im Virtual International Authority File (VIAF), einer virtuellen internationalen Normdatei als Verknüpfung nationaler Normdateien. Diese wird als Uniform Resource Identifier für Linked-Open-Data Anwendungen genutzt.
+- **ISBN**: "International Standard Book Number" (ISBN-Nummer), die Bücher international eindeutig identifiziert.
+- **ISSN:** "International Standard Serial Number" (ISSN-Nummer), eine international einheitliche Indentifikationsnummer für serielle Publikationen, wie z.B. Zeitschriften.
+- **DOI:** "Digital Object Identifier", eine einmalige Zeichenfolge (aus Nummern und Buchstaben) die ein elektronisches Dokument identifiziert.
+- **URI:** Uniform Resource Identifier, eine eindeutige Identifikation einer Ressource (von physischen Objekte bis hin zu digitalen Ressourcen wie Webseiten), die gleichzeitig Hinweise auf den Zugriff der Ressource gibt.
+- **VIAF:** Eine Normdatennummer im Virtual International Authority File (VIAF), einer virtuellen internationalen Normdatei als Verknüpfung nationaler Normdateien z.B. der gemeinsamen Normdatei. Diese wird als Uniform Resource Identifier für Linked-Open-Data Anwendungen genutzt.
 
 Das Element `<availability>` gibt Informationen zur Verfügbarkeit des Textes sowie Einschränkungen zur Nutzbarkeit, der Verbreitung, dem Copyright Status, oder der Lizenzierung. Die **Lizenzinformation** wird innerhalb des **availability-Elements** mittels des Elements `<licence>` angegeben. Das Attribut `target` wird hierbei zur Referenzierung des Volltextes der Lizenz verwendet.
 
@@ -334,11 +339,11 @@ Das Element `<availability>` gibt Informationen zur Verfügbarkeit des Textes so
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        Das Publication Statement enthält alle Informationen rund um die Publikation und Distribution des elektronischen Texts.
+        Das Publication Statement enhält alle Informationen rund um die Publikation und Distribution des elektronischen Texts.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-        Das Publication Statement enthält das Vorwort des Herausgebers zur Publikation.
+        Das Publication Statement enhält das Vorwort des Herausgebers zur Publikation.
       </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
   </Quiz.Card>
@@ -383,16 +388,16 @@ Die neueste Veränderung am Dokument sollte hierbei zuerst aufgeführt werden.
 
 ### Inhalt & Kontext
 
-Auch Informationen zum Inhalt des elektronischen Dokuments und seinem Kontext können bereits im Header erfasst werden. Hierfür kommt die **'text-profile description'** `<profileDesc>` zum Einsatz, die nicht-bibliographische Aspekte des Textes wie Sprachen, Produktionskontext oder die vorkommenden Personen und Stimmen erfasst.
+Auch Informationen zum Inhalt des elektronischen Dokuments und seinem Kontext können bereits im Header erfasst werden. Hierfür kommt die **'text-profile description'** `<profileDesc>` zum Einsatz, die nicht-bibliographische Aspekte des Textes wie Sprachen, Produktionskontext oder die vorkommenden Personen / Stimmen erfasst.
 
 Innerhalb der 'text-profile description' können beispielsweise folgende Aspekte mit dem jeweils nachstehenden Element erfasst werden:
 
-* Sprachen im Text `<langUsage>`
-* Verschlagwortung `<textClass>`
-* Entstehung `<creation>`
-* Zusammenfassung `<abstract>`
-* Briefe `<correspDesc>`
-* Personen im Text `<particDesc>`
+- Sprachen im Text `<langUsage>`
+- Verschlagwortung `<textClass>`
+- Entstehung `<creation>`
+- Zusammenfassung `<abstract>`
+- Briefe `<correspDesc>`
+- Personen im Text `<particDesc>`
 
 #### Übung
 
