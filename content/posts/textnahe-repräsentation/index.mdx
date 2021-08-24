@@ -48,7 +48,7 @@ Die Unterscheidung der Begriffe "Zeichen" und "Glyphen" ist an dieser Stelle von
 
 ![Zeichen vs. Glyphen](images/ZeichenVsGlyphen.png "Zeichen vs. Glyphen. Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/CH.html#D4-42")
 
-Die obenstehende Abbildung zeigt das Zeichen a in unterschiedlichen Schriftarten. Die konkrete und sich unterscheidende Repräsentation des Zeichens ist also ein Glyphe. Eine Zusammenstellung von abstrakten Zeichen, die benötigt werden um Dokumente in einem bestimmten Schriftsystem darzustellen wird als **character set** bezeichnet. Während der Grundbegriff den Zeichensatz in einem Dokument bezeichnet, so wandelt sich der Begriff in der digitalen Umsetzung etwas. Hier wird ein bestimmtes abstraktes Zeichen wird hierbei intern durch einen eindeutigen Code repräsentiert. Deswegen bezeichnet man einen solchen digitalen Zeichensatz auch als **coded character set**. Ein Beispiel hierfür ist [Unicode](http://unicode.e-workers.de/about_unicode.php), ein von der ISO (internationale Organisation für Normung) genormtes System zur Kodierung von Textzeichen, das versucht alle weltweit bekannten Textzeichen zu umfassen.
+Die obenstehende Abbildung zeigt das Zeichen a in unterschiedlichen Schriftarten. Die konkrete und sich unterscheidende Repräsentation des Zeichens ist also ein Glyphe. Eine Zusammenstellung von abstrakten Zeichen, die benötigt werden um Dokumente in einem bestimmten Schriftsystem darzustellen wird als **character set** bezeichnet. Während der Grundbegriff den Zeichensatz in einem Dokument bezeichnet, so wandelt sich der Begriff in der digitalen Umsetzung etwas. Hier wird ein bestimmtes abstraktes Zeichen intern durch einen eindeutigen Code repräsentiert. Deswegen bezeichnet man einen solchen digitalen Zeichensatz auch als **coded character set**. Ein Beispiel hierfür ist [Unicode](http://unicode.e-workers.de/about_unicode.php), ein von der ISO (internationale Organisation für Normung) genormtes System zur Kodierung von Textzeichen, das versucht alle weltweit bekannten Textzeichen zu umfassen.
 
 ![Unicode](images/Unicode.png "Unicode. Bild: ??")
 
@@ -77,7 +77,7 @@ Hier ein Beispiel für eine 'character declaration'
 </charDecl>
 ```
 
-Das Element `<g/>` (gaiji) repräsentiert ein nicht-Standard-Zeichen oder Glyphe und ist quasi ein Stellvertreter für dieses Zeichen innerhalb des Textes. Dabei verweist das Attribut `ref`auf die in der character declaration festgelegte ID.
+Das Element `<g/>` (gaiji) repräsentiert ein nicht-standard-Zeichen oder Glyphe und ist quasi ein Stellvertreter für dieses Zeichen innerhalb des Textes. Dabei verweist das Attribut `ref`auf die in der character declaration festgelegte ID.
 
 ```xml
 <p> ... <g ref="#Filig">Fi</g>lthy riches...</p>
@@ -225,9 +225,9 @@ Im gezeigten Beispiel wird im Surface Element das Grundkoordinatensystem festgel
 
 Im TEI-Dokument kann nicht nur der textliche Inhalt eines Dokuments sondern auch das Aussehen des Textes in der Vorlage ausgezeichnet werden.
 
-Eine einfache Art ein hervorgehobenes Wort oder eine Phrase auszuzeichnen ist die Verwendung globaler Attribute, die auf alle Elemente eingesetzt werden können. Eine generische Hervorhebung vom umgebenden Text, die häufig angewendet wird, ist das Element **'higlighted'** `<hi>`. Die Art der Hervorhebung wird mit dem Attribut `rend`festgelegt. Dies kann unter anderem die Werte `bold`, `italic`oder `centered`haben.
+Eine einfache Art ein hervorgehobenes Wort oder eine Phrase auszuzeichnen ist die Verwendung globaler Attribute, die auf alle Elemente eingesetzt werden können. Eine generische Hervorhebung vom umgebenden Text, die häufig angewendet wird, ist das Element **'higlighted'** `<hi>`. Die Art der Hervorhebung wird mit dem Attribut `rend` festgelegt. Dies kann unter anderem die Werte `bold`, `italic`oder `centered`haben.
 
-Hier ein Beispiel für die Verwendung des Elements. Auf der Seite 12 der Zeitschrift ist am Anfang jeder Filmkritik der Titel des Films in fetter Schrift hervorgehoben. Dies könnte für den ersten Absatz zum Film "Die Schlacht" wie folgt ausgezeichnet werden:
+Hier ein Beispiel für die Verwendung des Elements. Auf der Seite 12 der Zeitschrift ist am Anfang jeder Filmkritik der Titel des Films in fetter Schrift hervorgehoben. Dies könnte für den ersten Absatz zum Film *Die Schlacht* wie folgt ausgezeichnet werden:
 
 ```xml
 <hi rend="bold">"Die Schlacht."</hi> Nach dem Roman von Claude Farrère wurde dieses Meisterwerk gedreht, ...
@@ -245,13 +245,13 @@ Im TEI-Header wird die rendition wie folgt mittels CSS-Attributen zentral defini
 </encodingDesc>
 ```
 
-Der Einsatz im Text erfolgt als ein Attribut das auf die zentrale Definition im Header referenziert. In diesem Fall wird einem Absatz in diesem Stil ausgezeichnet:
+Der Einsatz im Text erfolgt als ein Attribut, das auf die zentrale Definition im Header referenziert. In diesem Fall wird einem Absatz in diesem Stil, der bereits im Header angegeben wurde, ausgezeichnet, erkennbar an `#b`:
 
 ```xml
 <p rendition="#b">…</p>
 ```
 
-Die CSS-Attribute können aber auch direkt in einem Attribut in der Texttranskription zur Definition des Aussehens eines Wortes etc. verwendet werden - analog zur HTML-Syntax. Hierfür kommt das Attribut `style` zum Einsatz. Die selbe CSS Definition wie im obigen Beispiel sähe in dieser Variante wie folgt aus:
+Die CSS-Attribute können aber auch direkt in einem Attribut in der Texttranskription zur Definition des Aussehens eines Wortes, eines Absatzes, etc. verwendet werden - analog zur HTML-Syntax. Hierfür kommt das Attribut `style` zum Einsatz. Das obige Beispiel sähe mit einer CSS Definition in der Texttranskription wie folgt aus:
 
 ```xml
 <p style="font-weight:bold;">…</p>
@@ -261,7 +261,7 @@ Neben Auszeichnungen können auch Umbrüche im Text ausgezeichnet werden. Seiten
 
 Innerhalb dieser Umbruch-Auszeichnung kann angegeben werden ob es hierbei zu einer Wortabteilung kommt. Hierfür wird das Attribut `break="yes"` oder `"no"`verwendet.
 
-Das vorige Beispiel des ersten Absatzes zum Film "Die Schlacht" wurde hier nun noch einmal um die eingeführten Elemente ergänzt:
+Im folgenden Beispiel wurde der ersten Absatzes des Textes zum Film "Die Schlacht" hier um die eingeführten Elemente ergänzt:
 
 ```xml
 <hi rend="bold">"Die Schlacht."</hi> Nach dem Roman von Claude <lb break="no"/> Farrère wurde dieses Meisterwerk gedreht, ...
@@ -340,7 +340,7 @@ Bei Streichungen von längeren Passagen, ggf. auch mit strukturellen Unterteilun
 
 **Ergänzungen** werden mit dem **'Addition'-Element** umschlossen `<add place="above">…</add>`.
 
-Die Nutzung dieser Auszeichnung setzen voraus, dass in der Edition von historischen Texten Ergänzungen oder Rekonstruktionen von Inhalten als Teil des Quelltextes betrachtet werden. Die Nutzung ist aber immer abhängig von der editorischen Philosophie hinter einem konkreten Projekt. Zudem bezieht sich diese Auszeichnung nur auf Ergänzungen, die im originalen Text vorhanden sind. Für Ergänzungen durch die kodierende Person oder die Editor*in werden andere Auszeichnungen verwendet (siehe Textkritisches Markup).
+Die Nutzung dieser Auszeichnung setzt voraus, dass in der Edition von historischen Texten Ergänzungen oder Rekonstruktionen von Inhalten als Teil des Quelltextes betrachtet werden. Die Nutzung ist aber immer abhängig von der editorischen Philosophie hinter einem konkreten Projekt. Zudem bezieht sich diese Auszeichnung nur auf Ergänzungen, die im originalen Text vorhanden sind. Für Ergänzungen durch die kodierende Person oder die Editor*in werden andere Auszeichnungen verwendet (siehe Textkritisches Markup).
 
 **Ersetzungen** werden mittels des **'substituton'**-Elements `<subst>` vorgenommen.
 
@@ -359,7 +359,7 @@ Eine **Wiederherstellung**, oder defacto die Rückgängigmachung einer zuvor get
 </restore>
 ```
 
-Mit dem Attribut `type` kann im restore-Element ausgezeichnet werden, auf welche Weise die Editierung rückgängig gemacht wurde - z.B. durch eine Notiz in der Marginalspalte (siehe auch TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHCD))
+Mit dem Attribut `type` kann im restore-Element ausgezeichnet werden, auf welche Weise die Editierung rückgängig gemacht wurde - z.B. durch eine Notiz in der Marginalspalte (siehe auch [TEI Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHCD).
 
 ![Beispiel für eine "Metamark"](images/Folie67.png "Beispiel einer für eine \\"Metamark\\". Bild: Text Encoding Initiative, https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta")
 
