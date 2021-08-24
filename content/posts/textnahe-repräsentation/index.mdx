@@ -35,7 +35,7 @@ Sehr vereinfacht kann man festhalten:
 
 - Ein Fleck auf einem Blatt Papier oder Pergament wird als Graph identifiziert.
 - Der Graph wird einem Graphem einer natürlichen Sprache zugewiesen, also einem Lautwert.
-- Im Zusammenspiel mit den anderen Graphemen im Kontext wird ein 'Wort' identifiziert.
+- Im Zusammenspiel mit den anderen Graphemen im Kontext wird ein "Wort" identifiziert.
 - Die Bedeutung dieses Wortes wird durch Einbeziehung der anderen Wörter in seiner Umgebung, im Dokument und Weltwissen des Lesers generiert, und im Wechselspiel daraus wiederum wird das Dokument an sich 'verständlich'.
 
 Diese Kette von interpretativen Vorgängen erlernen menschliche Leser durch Übung – Maschinen hingegen fehlt diese Fähigkeit. Sie können durch statistische Algorithmen inzwischen erstaunliche Erfolge bei der Texterkennung (auch von Handschriften) erzielen, sogar Layout erkennen und daraus einfache Textstrukturen ableiten. Möchte man jedoch das Wissen über einen Text festhalten, muss das zu einem großen Teil manuell geschehen. Die Frage, welche Aspekte von diesem Übersetzungs- und Interpretationsprozess explizit gemacht werden und welche nicht, bezeichnet man als Datenmodellierung: Ist die Form von Buchstaben signifikant? Ist es wichtig für eine bestimmte Forschungsfrage, dass die Datumszeile im Brief rechtsbündig steht? Ist es für die Leserschaft wichtig, dass der Text, den man kodiert, voller Pleonasmen ist? Oder ist es das Ziel, unterschiedliche Versionen eines Textes miteinander vergleichbar zu machen?
@@ -56,7 +56,7 @@ Mehr Informationen zu Unicode: [Unicode Standards](https://www.unicode.org/stand
 
 Für die konkrete Darstellung dieser Zeichen in einem digitalen System sind den Glyphen einer bestimmten Schriftart die Codes des verwendeten Zeichensatzes zugeordnet.
 
-Aber es gibt in TEI auch die Möglichkeit, Glyphen und Zeichen zu annotieren, die nicht in Unicode enthalten sind. Mehr dazu in der Praktischen Anwendung.
+Aber es gibt in der TEI auch die Möglichkeit, Glyphen und Zeichen zu annotieren, die nicht in Unicode enthalten sind. Mehr dazu in der Praktischen Anwendung.
 
 ### Praktische Anwendung
 
@@ -66,7 +66,7 @@ Zeichen, die im Unicode-Zeichensatz vorhanden sind, können ohne weiteres auch a
 
 Die **character declaration** `<charDecl>` umfasst die Information über nicht-standard Zeichen. Die Elemente `<char>`und `<glyph>`beinhalten eine kurze Beschreibung des Zeichens oder Glyphens. Auch wenn sie inhaltlich ähnlich sind, so werden diese beiden Elemente unterschiedlich verwendet. `<char>` definiert ein Zeichen das im aktuellen Zeichensatz des Dokuments nicht vorhanden ist, während `<glyph>` ein Zeichen annotiert, das schon einmal entweder im Zeichensatz des Dokuments oder durch ein `<char>` definiert wurde. Bei beiden wird als ein Attribut eine ID definiert, mit der im Text das definierte Zeichen referenziert werden kann.
 
-Hier ein Beispiel für eine 'character declaration'
+Hier ein Beispiel für eine 'character declaration' und danach für eine Glyphe:
 
 ```xml
 <charDecl>
@@ -101,7 +101,7 @@ Mehr Informationen zur Auszeichnung von nicht-standard-Zeichen ist in der [TEI-D
 
 ### Grundlagen
 
-Eine gängige Alternative zur direkten Transkription von primären Quellen oder eine andere Konvertierung in Form von digitalen Zeichen ist die Einbettung derselben in TEI als Digitalisate der Quelle, für gewöhnlich in Form von Bildern. Diese Art von Ressource wird **digitales Faksimile** genannt, und besteht im einfachsten Fall aus einer Sammlung an Bilder zusammen mit Metadaten, die diese Bilder als Quellenmaterial identifizieren.
+Eine gängige Alternative zur direkten Transkription von primären Quellen oder einer anderen Konvertierung in Form von digitalen Zeichen ist die Einbettung derselben in der TEI als Digitalisate der Quelle, für gewöhnlich in Form von Bildern. Diese Art von Ressource wird **digitales Faksimile** genannt, und besteht im einfachsten Fall aus einer Sammlung an Bildern zusammen mit Metadaten, die diese Bilder als Quellenmaterial identifizieren.
 
 Auf das Quellenmaterial kann auf vielfältige Weise innerhalb des TEI-Dokuments Bezug genommen werden und Faksimile werden in digitalen Editionen zumeist parallel zur Transkription eingebunden. Einige Möglichkeiten der Bezugnahme und Annotation zeigt der folgende Abschnitt. 
 
@@ -175,7 +175,7 @@ Im gezeigten Beispiel wird im Surface Element das Grundkoordinatensystem festgel
       validate="input"
     >
       <Quiz.Question>
-        **Annotieren Sie bitte die im Faksimile von Seite 11 der Filmwelt eingezeichneten Zonen als eine parallele Transkription der Seite.**
+        **Annotieren Sie bitte die im Faksimile von Seite 11 der _Filmwelt_ eingezeichneten Zonen als eine parallele Transkription der Seite.**
 
         ![](images/filmwelt\_1923\_31\_11\_1080px_zonen.jpeg "Filmwelt 31, 1923, S. 11 - mit zwei eingezeichneten Zonen.")
 
@@ -235,7 +235,7 @@ Hier ein Beispiel für die Verwendung des Elements. Auf der Seite 12 der Zeitsch
 
 Ein häufiger wiederkehrendes, spezielleres Aussehen kann auch zentral im TEI Header definiert werden. Dies geschieht im Abschnitt 'Tagging Declaration' `<tagsDecl>`mit dem Element `rendition`, das in der Textauszeichnung einem Element als Attribut zugeordnet wird.
 
-Im TEI-Header wird die rendition wie folgt mittels CSS-Attributen zentral definiert. Dies kann auch komplexer werden.
+Im TEI-Header wird die rendition wie folgt mittels CSS-Attributen zentral definiert. Dies kann auch komplexer als hier abgebildet werden.
 
 ```xml
 <encodingDesc>
@@ -245,7 +245,7 @@ Im TEI-Header wird die rendition wie folgt mittels CSS-Attributen zentral defini
 </encodingDesc>
 ```
 
-Der Einsatz im Text erfolgt als ein Attribut das auf die zentrale Definition im Header referenziert. In diesem Fall wird einem Absatz in diesem Stil ausgezeichnet:
+Der Einsatz im Text erfolgt als ein Attribut das auf die zentrale Definition im Header referenziert. In diesem Fall wird ein Absatz in diesem Stil ausgezeichnet:
 
 ```xml
 <p rendition="#b">…</p>
@@ -257,7 +257,7 @@ Die CSS-Attribute können aber auch direkt in einem Attribut in der Texttranskri
 <p style="font-weight:bold;">…</p>
 ```
 
-Neben Auszeichnungen können auch Umbrüche im Text ausgezeichnet werden. Seitenumbrüche `<pb/>` Zeilenumbrüche `<lb/>` Spaltenumbrüche `<cb/>`
+Neben Auszeichnungen können auch Umbrüche im Text ausgezeichnet werden, wie z.B. Seitenumbrüche `<pb/>` , Zeilenumbrüche `<lb/>`, und Spaltenumbrüche `<cb/>`.
 
 Innerhalb dieser Umbruch-Auszeichnung kann angegeben werden ob es hierbei zu einer Wortabteilung kommt. Hierfür wird das Attribut `break="yes"` oder `"no"`verwendet.
 
@@ -273,7 +273,7 @@ Und auch zusätzliche gleichbleibende Informations-Elemente auf einer Seite wie 
 - Seitenzahl: `<fw type="pageNum">- 11 -</fw>` 
 - Kustode / Stichwort: `<fw type="catchword">…</fw>`
 
-Über das Attribut `place` kann angegeben werden, wo die Information auf der Seite platziert ist: z.B. 
+Über das Attribut `place` kann angegeben werden, wo die Information auf der Seite platziert ist, z.B.: 
 
 - oben in der Mitte: `place="top-centre"`
 - oben rechts: `place="top-right"`
@@ -294,7 +294,7 @@ Mehr Informationen zu diesem Thema gibt es in der [TEI Dokumentation](https://te
       validate="input"
     >
       <Quiz.Question>
-        **Zeichnen Sie im Inhalt des folgenden Absatz aus der Filmwelt bitte die Hervorhebungen mithilfe des 'highlighted'-Elements aus sowie die korrekten Zeilenumbrüche aus, inklusive dem Hinweis, ob es zu einer Wortabteilung kommt.**
+        **Zeichnen Sie im Inhalt des folgenden Absatzes aus der _Filmwelt_ bitte die Hervorhebungen mithilfe des 'highlighted'-Elements aus. Zeichnen Sie ebenfalls die korrekten Zeilenumbrüche aus, inklusive dem Hinweis, ob es zu einer Wortabteilung kommt.**
 
         ![](images/Filmwelt\_1923\_31\_12\_Schoenheitskonkurrenz.png "Artikel \"Die Schönheitskonkurrenz\" in Filmwelt 31, 1923, S. 12")
       </Quiz.Question>
@@ -305,9 +305,9 @@ Mehr Informationen zu diesem Thema gibt es in der [TEI Dokumentation](https://te
 
 #### Umgang mit unleserlichen Stellen oder physischen Schäden bei den Vorlagen
 
-Gerade wenn man schwerpunktmäßig an der Transkription von originalen z.T. handschriftlichen Vorlagen arbeitet, kann es vorkommen, dass Passagen nur schwer leserlich oder gar beschädigt sind. Dies kann auch in der Transkription ausgezeichnet werden.
+Gerade wenn man schwerpunktmäßig an der Transkription von originalen, z.T. handschriftlichen, Vorlagen arbeitet, kann es vorkommen, dass Passagen nur schwer leserlich oder gar beschädigt sind. Dies kann auch in der Transkription ausgezeichnet werden.
 
-Ein physischer Schaden, kann mit dem Element `<damage>` angezeigt werden, der mit weiteren Attributen klassifiziert werden kann. Siehe hierzu die [TEI-Dokumentation](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHDA).
+Ein physischer Schaden kann mit dem Element `<damage>` angezeigt werden, der mit weiteren Attributen klassifiziert werden kann. Siehe hierzu die [TEI-Dokumentation](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PHDA).
 
 Eine solche beschädigte Stelle wird oft schwer leserliche oder unklare Passagen enthalten, die mit dem `<unclear>`-Element gekennzeichnet werden können:
 
@@ -315,7 +315,7 @@ Eine solche beschädigte Stelle wird oft schwer leserliche oder unklare Passagen
 <unclear reason="illegible">...</unclear>
 ```
 
-Wenn einige Buchstaben, ein Wort oder eine ganze Passage ausgelassen werden muss so wird dies mit dem `<gap>`-Element ausgezeichnet, in dem das Ausmaß der Auslassung angegeben wird. Die folgenden zwei Beispiele zeigen die Möglichkeit der Auslassung auf Grund einer Beschädigung von a) einem Wort, und b) fünf Buchstaben.
+Wenn einige Buchstaben, ein Wort oder eine ganze Passage ausgelassen werden muss, so wird dies mit dem `<gap>`-Element ausgezeichnet, in dem das Ausmaß der Auslassung angegeben wird. Die folgenden zwei Beispiele zeigen die Möglichkeit der Auslassung auf Grund einer Beschädigung von a) einem Wort, und b) fünf Buchstaben.
 
 ```xml
 <gap reason="damage" extent="1 word"/>
@@ -334,7 +334,7 @@ Bei Manuskripten und Arbeitsfassungen eines Dokuments kann es vorkommen, dass Ed
 
 **Streichungen** von kurzen Sequenzen im Text - z.B. einzelne Worte oder Phrasen - werden mit dem **'Deletion'**-Element `<del>…</del>` umschlossen. Zu beachten gilt es, dass der gestrichene Text zumindest teilweise lesbar sein sollte.
 
-Bei Streichungen von längeren Passagen, ggf. auch mit strukturellen Unterteilungen kommt das Element **'Deleted Span of Text'** `<delSpan>`. Dieses Element kennzeichnet den Beginn einer Streichung. Den Endpunkt markiert ein Anker `<anchor>`mit einer bestimmten ID, die wiederum im Attribut `spanTo`des `<delSpan>`Elements referenziert wird. Selbiges funktioniert auch für andere Editierungen.
+Bei Streichungen von längeren Passagen, ggf. auch mit strukturellen Unterteilungen kommt das Element **'Deleted Span of Text'** `<delSpan>` zum Einsatz. Dieses Element kennzeichnet den Beginn einer Streichung. Den Endpunkt markiert ein Anker `<anchor>` mit einer bestimmten ID, die wiederum im Attribut `spanTo` des `<delSpan>` Elements referenziert wird. Selbiges funktioniert auch für andere Editierungen.
 
 ![Hierarchieübergreifende Editierungen](images/delSpan_hierarchieuebergreifend.png "Hierarchieübergreifende Editierungen. Bild: Ulrike Czeitschner, ACDH-CH")
 
@@ -351,7 +351,7 @@ Die Nutzung dieser Auszeichnung setzen voraus, dass in der Edition von historisc
 </subst>
 ```
 
-Eine **Wiederherstellung**, oder defacto die Rückgängigmachung einer zuvor getätigten Editierung, wird mit dem Element `<restore>` gekennzeichnet.
+Eine **Wiederherstellung**, oder de facto die Rückgängigmachung einer zuvor getätigten Editierung, wird mit dem Element `<restore>` gekennzeichnet.
 
 ```xml
 <restore>
