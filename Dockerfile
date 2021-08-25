@@ -11,6 +11,7 @@ USER node
 
 COPY --chown=node:node package.json yarn.lock ./
 
+COPY --chown=node:node patches ./patches
 RUN yarn install --frozen-lockfile --silent --production && yarn cache clean
 
 # build
@@ -18,7 +19,6 @@ FROM base AS build
 
 RUN yarn install --frozen-lockfile --silent
 
-COPY --chown=node:node patches ./patches
 COPY --chown=node:node tsconfig.json app-env.d.ts next-env.d.ts next.config.js ./
 COPY --chown=node:node scripts ./scripts
 COPY --chown=node:node config ./config
