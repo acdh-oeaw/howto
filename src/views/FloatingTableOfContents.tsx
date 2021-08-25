@@ -38,16 +38,6 @@ export function FloatingTableOfContents(
     openButtonRef,
   )
 
-  // const closeButtonRef = useRef<HTMLButtonElement>(null)
-  // const { buttonProps: closeButtonProps } = useButton(
-  //   {
-  //     onPress() {
-  //       dialogState.close()
-  //     },
-  //   },
-  //   closeButtonRef,
-  // )
-
   useEffect(() => {
     router.events.on('routeChangeStart', dialogState.close)
     router.events.on('hashChangeStart', dialogState.close)

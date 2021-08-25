@@ -1,16 +1,11 @@
 import { join } from 'path'
 
 import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
-// import withExtractedTableOfContents from '@stefanprobst/rehype-extract-toc'
-// import type { Toc } from '@stefanprobst/rehype-extract-toc'
 import sizeOf from 'image-size'
 import withHeadingIds from 'rehype-slug'
 import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import { VFile } from 'vfile'
-
-// import type { Licence, LicenceId } from '@/cms/api/licences.api'
-// import { getLicenceById } from '@/cms/api/licences.api'
 
 import { getPersonById } from '@/cms/api/people.api'
 import type { Person, PersonId } from '@/cms/api/people.api'
@@ -26,7 +21,6 @@ import withHeadingLinks from '@/mdx/plugins/rehype-heading-links'
 import withImageCaptions from '@/mdx/plugins/rehype-image-captions'
 import withLazyLoadingImages from '@/mdx/plugins/rehype-lazy-loading-images'
 import withNoReferrerLinks from '@/mdx/plugins/rehype-no-referrer-links'
-// import withReadingTime from '@/mdx/plugins/remark-reading-time'
 import withTypographicQuotesAndDashes from '@/mdx/plugins/remark-smartypants'
 import { readFile } from '@/mdx/readFile'
 import { readFolder } from '@/mdx/readFolder'
@@ -50,44 +44,27 @@ export interface CourseFrontmatter {
   lang: 'en' | 'de'
   date: IsoDateString
   version: string
-  // authors: Array<PersonId['id']>
-  // contributors?: Array<PersonId['id']>
   editors?: Array<PersonId['id']>
   tags: Array<TagId['id']>
   resources: Array<PostId['id']>
   featuredImage?: FilePath
   abstract: string
-  // licence: LicenceId['id']
-  // toc?: boolean
 }
 
 export interface CourseMetadata
   extends Omit<
     CourseFrontmatter,
-    | 'authors' // FIXME:
-    | 'editors'
-    | 'contributors'
-    | 'tags'
-    | 'resources'
-    | 'licence'
-    | 'featuredImage'
+    'editors' | 'tags' | 'resources' | 'featuredImage'
   > {
-  // authors: Array<Person>
-  // contributors?: Array<Person>
   editors?: Array<Person>
   tags: Array<Tag>
   resources: Array<PostPreview>
-  // licence: Licence
   featuredImage?: FilePath | StaticImageData
 }
 
 export interface CourseData {
   /** Metadata. */
   metadata: CourseMetadata
-  /** Table of contents. */
-  // toc: Toc
-  /** Time to read, in minutes. */
-  // timeToRead: number
 }
 
 export interface Course extends CourseId {
@@ -114,13 +91,7 @@ export async function getCourseIds(_locale: Locale): Promise<Array<string>> {
 export async function getCourseById(id: ID, locale: Locale): Promise<Course> {
   const [file, metadata] = await readFileAndGetCourseMetadata(id, locale)
   const code = String(await compileMdx(file))
-  // const vfileData = file.data as { toc: Toc; timeToRead: number }
 
-  // const data = {
-  //   metadata,
-  //   toc: vfileData.toc,
-  //   timeToRead: vfileData.timeToRead,
-  // }
   const data = { metadata }
 
   return {
@@ -216,13 +187,6 @@ async function getCourseMetadata(
 
   const metadata: CourseMetadata = {
     ...matter,
-    // authors: Array.isArray(matter.authors)
-    //   ? await Promise.all(
-    //       matter.authors.map((id) => {
-    //         return getPersonById(id, locale)
-    //       }),
-    //     )
-    //   : [],
     editors: Array.isArray(matter.editors)
       ? await Promise.all(
           matter.editors.map((id) => {
@@ -230,13 +194,6 @@ async function getCourseMetadata(
           }),
         )
       : [],
-    // contributors: Array.isArray(matter.contributors)
-    //   ? await Promise.all(
-    //       matter.contributors.map((id) => {
-    //         return getPersonById(id, locale)
-    //       }),
-    //     )
-    //   : [],
     tags: Array.isArray(matter.tags)
       ? await Promise.all(
           matter.tags.map((id) => {
@@ -251,7 +208,6 @@ async function getCourseMetadata(
           }),
         )
       : [],
-    // licence: await getLicenceById(matter.licence, locale),
   }
 
   if (matter.featuredImage != null) {
@@ -314,12 +270,10 @@ async function compileMdx(file: VFile): Promise<VFile> {
       withGitHubMarkdown,
       withFootnotes,
       withTypographicQuotesAndDashes,
-      // withReadingTime,
     ],
     rehypePlugins: [
       [withSyntaxHighlighting, { highlighter }],
       withHeadingIds,
-      // withExtractedTableOfContents,
       withHeadingLinks,
       withNoReferrerLinks,
       withLazyLoadingImages,

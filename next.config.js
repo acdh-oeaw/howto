@@ -44,26 +44,44 @@ const config = {
     ]
   },
   async redirects() {
-    return [
-      ...Object.entries(require('./redirects.resources.json')).map(
-        ([uuid, id]) => {
+    const { promises: fs } = require('fs')
+    const path = require('path')
+
+    try {
+      const resourcesRedirects = JSON.parse(
+        await fs.readFile(
+          path.join(process.cwd(), './redirects.resources.json'),
+          { encoding: 'utf-8' },
+        ),
+      )
+      const coursesRedirects = JSON.parse(
+        await fs.readFile(
+          path.join(process.cwd(), './redirects.courses.json'),
+          {
+            encoding: 'utf-8',
+          },
+        ),
+      )
+
+      return [
+        ...Object.entries(resourcesRedirects).map(([uuid, id]) => {
           return {
             source: `/id/${uuid}`,
             destination: `/resource/posts/${id}`,
             permanent: false,
           }
-        },
-      ),
-      ...Object.entries(require('./redirects.courses.json')).map(
-        ([uuid, id]) => {
+        }),
+        ...Object.entries(coursesRedirects).map(([uuid, id]) => {
           return {
             source: `/id/${uuid}`,
             destination: `/curriculum/${id}`,
             permanent: false,
           }
-        },
-      ),
-    ]
+        }),
+      ]
+    } catch {
+      return []
+    }
   },
   async rewrites() {
     return [

@@ -38,8 +38,6 @@ export const config: CmsConfig = {
     base_url: url,
     auth_endpoint: 'api/auth/github',
     auth_scope: 'public_repo',
-    // open_authoring: true,
-    // always_fork: true,
     squash_merges: true,
     commit_messages: {
       create: 'content(cms): create {{collection}} "{{slug}}"',

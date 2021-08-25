@@ -55,7 +55,7 @@ export function createI18n<T>(
     options?: Intl.DateTimeFormatOptions,
   ): string {
     const language = lang ?? i18n.locale()
-    // @ts-expect-error "Index signature is missing" error for Intl interface.
+    /* @ts-expect-error "Index signature is missing" error for Intl interface. */
     const dateFormat = intl.getDateFormatter(language, options)
 
     return dateFormat.format(date)
@@ -71,7 +71,7 @@ export function createI18n<T>(
     options?: Intl.RelativeTimeFormatOptions,
   ): string {
     const language = lang ?? i18n.locale()
-    // @ts-expect-error "Index signature is missing" error for Intl interface.
+    /* @ts-expect-error "Index signature is missing" error for Intl interface. */
     const dateFormat = intl.getRelativeTimeFormatter(language, options)
 
     return dateFormat.format(time, unit)
@@ -86,7 +86,7 @@ export function createI18n<T>(
     options?: Intl.NumberFormatOptions,
   ): string {
     const language = lang ?? i18n.locale()
-    // @ts-expect-error "Index signature is missing" error for Intl interface.
+    /* @ts-expect-error "Index signature is missing" error for Intl interface. */
     const numberFormat = intl.getNumberFormatter(language, options)
 
     return numberFormat.format(number)
@@ -103,7 +103,7 @@ export function createI18n<T>(
     options?: Intl.PluralRulesOptions,
   ): string {
     const language = lang ?? i18n.locale()
-    // @ts-expect-error "Index signature is missing" error for Intl interface.
+    /* @ts-expect-error "Index signature is missing" error for Intl interface. */
     const pluralRules = intl.getPluralRules(language, options)
     const pluralKey = pluralRules.select(count)
 
@@ -118,7 +118,7 @@ export function createI18n<T>(
     options?: Intl.CollatorOptions,
   ): Intl.Collator['compare'] {
     const language = lang ?? i18n.locale()
-    // @ts-expect-error "Index signature is missing" error for Intl interface.
+    /* @ts-expect-error "Index signature is missing" error for Intl interface. */
     const collator = intl.getCollator(language, options)
 
     return collator.compare

@@ -13,7 +13,7 @@ export const videoEditorWidget: EditorComponentOptions = {
       name: 'provider',
       label: 'Provider',
       widget: 'select',
-      // @ts-expect-error Missing in upstream type.
+      /* @ts-expect-error Missing in upstream type. */
       options: Object.entries(videoProviders).map(([value, label]) => {
         return { value, label }
       }),
@@ -24,20 +24,20 @@ export const videoEditorWidget: EditorComponentOptions = {
       name: 'caption',
       label: 'Caption',
       widget: 'string',
-      // @ts-expect-error Missing in upstream type.
+      /* @ts-expect-error Missing in upstream type. */
       required: false,
     },
     {
       name: 'autoPlay',
       label: 'Autoplay',
       widget: 'boolean',
-      // @ts-expect-error Missing in upstream type.
+      /* @ts-expect-error Missing in upstream type. */
       required: false,
     },
     {
       name: 'startTime',
       label: 'Start time',
-      // @ts-expect-error Missing in upstream type.
+      /* @ts-expect-error Missing in upstream type. */
       hint: 'In seconds',
       widget: 'number',
       required: false,
@@ -45,7 +45,7 @@ export const videoEditorWidget: EditorComponentOptions = {
   ],
   pattern: /^<Video([^]*?)\/>/,
   fromBlock(match) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     const attrs = match[1]!
 
     const provider = /provider="([^"]*)"/.exec(attrs)
@@ -66,16 +66,16 @@ export const videoEditorWidget: EditorComponentOptions = {
   toBlock(data) {
     let attrs = ''
 
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.provider) attrs += ` provider="${data.provider}"`
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.id) attrs += ` id="${data.id}"`
 
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.caption) attrs += ` caption="${data.caption}"`
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.autoPlay) attrs += ` autoPlay`
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.startTime) attrs += ` startTime="${data.startTime}"`
 
     return `<Video${attrs} />`

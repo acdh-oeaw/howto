@@ -26,10 +26,9 @@ async function generate() {
 
   const channel = {
     title: metadata.title,
-    url: siteUrl, // metadata.url
+    url: siteUrl,
     feedUrl: String(createUrl({ pathname: fileName, baseUrl: siteUrl })),
     description: metadata.description,
-    // lang: locale,
     author: metadata.creator?.name,
     tags: ['Digital Humanities'],
   }

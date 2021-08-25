@@ -102,16 +102,6 @@ function MobilePageNavigation() {
     openButtonRef,
   )
 
-  // const closeButtonRef = useRef<HTMLButtonElement>(null)
-  // const { buttonProps: closeButtonProps } = useButton(
-  //   {
-  //     onPress() {
-  //       dialogState.close()
-  //     },
-  //   },
-  //   closeButtonRef,
-  // )
-
   useEffect(() => {
     router.events.on('routeChangeStart', dialogState.close)
 
@@ -134,7 +124,6 @@ function MobilePageNavigation() {
       {dialogState.isOpen ? (
         <ModalDialog
           // TODO: use aria-label instead of title
-          // If a dialog does not have a visible title element, an aria-label or aria-labelledby prop must be passed instead to identify the element to assistive technology.
           title={t('common.mainNavigationMenu')}
           isOpen
           onClose={dialogState.close}
@@ -211,16 +200,6 @@ function Search() {
     openButtonRef,
   )
 
-  // const closeButtonRef = useRef<HTMLButtonElement>(null)
-  // const { buttonProps: closeButtonProps } = useButton(
-  //   {
-  //     onPress() {
-  //       dialogState.close()
-  //     },
-  //   },
-  //   closeButtonRef,
-  // )
-
   function onSubmit(searchTerm: string) {
     setSearchTerm(searchTerm.trim())
   }
@@ -245,7 +224,6 @@ function Search() {
       {dialogState.isOpen ? (
         <ModalDialog
           // TODO: use aria-label instead of title
-          // If a dialog does not have a visible title element, an aria-label or aria-labelledby prop must be passed instead to identify the element to assistive technology.
           title={t('common.search')}
           isOpen
           onClose={dialogState.close}

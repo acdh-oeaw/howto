@@ -26,7 +26,7 @@ export function Course(props: CourseProps): JSX.Element {
   const {
     title,
     date: publishDate,
-    editors: authors = [], // FIXME: editors / authors
+    editors: authors = [],
     tags,
     resources,
   } = metadata

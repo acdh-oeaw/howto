@@ -13,7 +13,7 @@ export const sideNoteEditorWidget: EditorComponentOptions = {
       name: 'type',
       label: 'Type',
       widget: 'select',
-      // @ts-expect-error Missing in upstream types.
+      /* @ts-expect-error Missing in upstream types. */
       options,
       default: 'note',
     },
@@ -22,15 +22,14 @@ export const sideNoteEditorWidget: EditorComponentOptions = {
       name: 'children',
       label: 'Content',
       widget: 'markdown',
-      // FIXME: https://github.com/netlify/netlify-cms/issues/5514
-      // @ts-expect-error Missing in upstream types.
+      /* @ts-expect-error Missing in upstream types. */
       editor_components: ['image', 'code-block'],
       // modes: ['raw'],
     },
   ],
   pattern: /^<SideNote(.*?)>\n([^]*?)\n<\/SideNote>/,
   fromBlock(match) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     const attrs = match[1]!
 
     const type = /type="([^"]*)"/.exec(attrs)
@@ -45,9 +44,9 @@ export const sideNoteEditorWidget: EditorComponentOptions = {
   toBlock(data) {
     let attrs = ''
 
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.type) attrs += ` type="${data.type}"`
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.title) attrs += ` title="${data.title}"`
 
     return `<SideNote${attrs}>

@@ -238,7 +238,7 @@ export const quizEditorWidget: EditorComponentOptions = {
     {
       name: 'cards',
       label: 'Cards',
-      // @ts-expect-error Missing in upstream type.
+      /* @ts-expect-error Missing in upstream type. */
       label_singular: 'Card',
       widget: 'list',
       types: [
@@ -318,12 +318,12 @@ export const quizEditorWidget: EditorComponentOptions = {
   ],
   pattern: /^<Quiz>\n([^]*?)\n<\/Quiz>/,
   fromBlock(match) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     const children = match[1]!
     const ast = processor.parse(children)
     const file = { data: {} }
     processor.runSync(ast, file)
-    // @ts-expect-error Cards are mutated in the transformer.
+    /* @ts-expect-error Cards are mutated in the transformer. */
     const cards = file.data.cards
 
     return {

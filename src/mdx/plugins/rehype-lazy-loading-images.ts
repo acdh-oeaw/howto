@@ -109,7 +109,7 @@ export default function attacher(): Transformer {
               body: [
                 {
                   type: 'ExpressionStatement',
-                  // @ts-expect-error Figure out correct type later.
+                  /* @ts-expect-error Figure out correct type later. */
                   expression: imageSrcProps,
                 },
               ],
@@ -136,19 +136,6 @@ export default function attacher(): Transformer {
 
       imageBlurPromises.push(
         generateBlurDataUrl(srcFilePath).then((dataUrl) => {
-          // if added to expression, need to update expression `value`
-          // imageSrcProps.properties.push({
-          //   type: 'Property',
-          //   key: {
-          //     type: 'Identifier',
-          //     name: 'blurDataURL',
-          //   },
-          //   value: {
-          //     type: 'Literal',
-          //     value: dataUrl,
-          //   },
-          //   kind: 'init',
-          // })
           imageComponent.attributes.push({
             type: 'mdxJsxAttribute',
             name: 'blurDataURL',
