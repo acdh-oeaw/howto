@@ -14,7 +14,16 @@ async function main() {
   const outputFolder = path.join(process.cwd(), 'public', 'metadata')
   fs.mkdirSync(outputFolder, { recursive: true })
 
-  const resources = await getPostPreviews(locale)
+  const resourcesPreviews = await getPostPreviews(locale)
+  const resources = resourcesPreviews.map((preview) => {
+    return {
+      ...preview,
+      authors: preview.authors.map((author) => {
+        if (typeof author.avatar === 'object') delete author.avatar.blurDataURL
+        return author
+      }),
+    }
+  })
   fs.writeFileSync(
     path.join(outputFolder, 'resources.json'),
     JSON.stringify({ resources }),
@@ -23,7 +32,18 @@ async function main() {
     },
   )
 
-  const curricula = await getCoursePreviews(locale)
+  const curriculaPreviews = await getCoursePreviews(locale)
+  const curricula = curriculaPreviews.map((preview) => {
+    return {
+      ...preview,
+      editors:
+        preview.editors?.map((author) => {
+          if (typeof author.avatar === 'object')
+            delete author.avatar.blurDataURL
+          return author
+        }) ?? [],
+    }
+  })
   fs.writeFileSync(
     path.join(outputFolder, 'curricula.json'),
     JSON.stringify({ curricula }),
