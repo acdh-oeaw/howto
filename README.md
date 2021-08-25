@@ -25,8 +25,9 @@ does not require authentication, with `yarn cms:dev`. Then run either a
 production build of the website with
 `NEXT_PUBLIC_USE_LOCAL_CMS='true' yarn build && yarn start` or a development
 build with `yarn dev` and visit
-[http://localhost:3000/cms](http://localhost:3000/cms). Don't forget to commit
-and push changes via `git`.
+[http://localhost:3000/cms](http://localhost:3000/cms). To apply the correct
+styles to the CMS preview, you will have to run `yarn cms:styles` once. Don't
+forget to commit and push changes via `git`.
 
 ### Use your favorite text editor
 
