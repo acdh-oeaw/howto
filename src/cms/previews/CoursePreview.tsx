@@ -20,9 +20,7 @@ import { useDebouncedState } from '@/utils/useDebouncedState'
 import { Course } from '@/views/Course'
 
 const initialMetadata: CourseMetadata = {
-  // authors: [],
   tags: [],
-  // licence: { id: '', name: '', url: '' },
   uuid: '',
   title: '',
   lang: 'en',
@@ -93,28 +91,20 @@ export function CoursePreview(
     const { body: _, ...partialFrontmatter } = data.toJS()
     const frontmatter = partialFrontmatter as Partial<CourseFrontmatter>
 
-    // const authors = Array.isArray(frontmatter.authors)
-    //   ? frontmatter.authors
-    //       .map((id) => {
-    //         return resolveRelation(['authors', 'people'], id)
-    //       })
-    //       .filter(Boolean)
-    //   : []
-
-    // const contributors = Array.isArray(frontmatter.contributors)
-    //   ? frontmatter.contributors
-    //       .map((id) => {
-    //         return resolveRelation(['contributors', 'people'], id)
-    //       })
-    //       .filter(Boolean)
-    //   : []
-
     const editors = Array.isArray(frontmatter.editors)
       ? frontmatter.editors
           .map((id) => {
             return resolveRelation(['editors', 'people'], id)
           })
           .filter(Boolean)
+          .map((editor) => {
+            // FIXME: how to resolve asset path on related item?
+            // We cannot use `getAsset` because that is bound to the `posts` collection.
+            return {
+              ...editor,
+              avatar: undefined,
+            }
+          })
       : []
 
     const tags = Array.isArray(frontmatter.tags)
@@ -133,11 +123,6 @@ export function CoursePreview(
           .filter(Boolean)
       : []
 
-    // const licence =
-    //   frontmatter.licence != null
-    //     ? resolveRelation(['licence', 'licences'], frontmatter.licence)
-    //     : null
-
     const date =
       frontmatter.date == null || frontmatter.date.length === 0
         ? initialMetadata.date
@@ -151,13 +136,10 @@ export function CoursePreview(
     const metadata = {
       ...initialMetadata,
       ...frontmatter,
-      // authors,
-      // contributors,
       date,
       editors,
       tags,
       resources,
-      // licence,
       featuredImage,
     }
 
@@ -197,7 +179,6 @@ export function CoursePreview(
             code: mdxContent,
             data: {
               metadata,
-              // toc: [],
             },
           }}
           lastUpdatedAt={null}

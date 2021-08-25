@@ -26,10 +26,9 @@ async function generate() {
 
   const channel = {
     title: metadata.title,
-    url: siteUrl, // metadata.url
+    url: siteUrl,
     feedUrl: String(createUrl({ pathname: fileName, baseUrl: siteUrl })),
     description: metadata.description,
-    // lang: locale,
     author: metadata.creator?.name,
     tags: ['Digital Humanities'],
   }
@@ -44,9 +43,15 @@ async function generate() {
         }),
       ),
       description: resource.abstract,
-      author: resource.authors.map((author) => getFullName(author)).join(', '),
+      author: resource.authors
+        .map((author) => {
+          return getFullName(author)
+        })
+        .join(', '),
       published: resource.date,
-      tags: resource.tags.map((tag) => tag.name),
+      tags: resource.tags.map((tag) => {
+        return tag.name
+      }),
     }
   })
 
@@ -58,5 +63,7 @@ async function generate() {
 }
 
 generate()
-  .then(() => log.success('Successfully generated RSS feed.'))
+  .then(() => {
+    log.success('Successfully generated RSS feed.')
+  })
   .catch(log.error)

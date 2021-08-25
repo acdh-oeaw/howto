@@ -7,8 +7,7 @@ import sizeOf from 'image-size'
 import withHeadingIds from 'rehype-slug'
 import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
-import type { VFile } from 'vfile'
-import vfile from 'vfile'
+import { VFile } from 'vfile'
 
 import type { Licence, LicenceId } from '@/cms/api/licences.api'
 import { getLicenceById } from '@/cms/api/licences.api'
@@ -31,12 +30,17 @@ import { readFolder } from '@/mdx/readFolder'
 import { copyAsset } from '@/mdx/utils/copyAsset'
 import type { FilePath, IsoDateString } from '@/utils/ts/aliases'
 
+/** Resource kind. */
+const kind = 'posts'
+
 const postsFolder = join(process.cwd(), 'content', 'posts')
 const postExtension = '.mdx'
 
 export interface PostId {
   /** Slug. */
   id: string
+  /** Resource kind. */
+  kind: typeof kind
 }
 
 type ID = PostId['id']
@@ -73,7 +77,7 @@ export interface PostMetadata
   editors?: Array<Person>
   tags: Array<Tag>
   licence: Licence
-  featuredImage?: FilePath | { src: FilePath; width: number; height: number }
+  featuredImage?: FilePath | StaticImageData
 }
 
 export interface PostData {
@@ -119,6 +123,7 @@ export async function getPostById(id: ID, locale: Locale): Promise<Post> {
 
   return {
     id,
+    kind,
     data,
     code,
   }
@@ -136,13 +141,13 @@ export async function getPosts(locale: Locale): Promise<Array<Post>> {
     }),
   )
 
-  posts.sort((a, b) =>
-    a.data.metadata.date === b.data.metadata.date
+  posts.sort((a, b) => {
+    return a.data.metadata.date === b.data.metadata.date
       ? 0
       : a.data.metadata.date > b.data.metadata.date
       ? -1
-      : 1,
-  )
+      : 1
+  })
 
   return posts
 }
@@ -156,7 +161,7 @@ export async function getPostPreviewById(
 ): Promise<PostPreview> {
   const [, metadata] = await readFileAndGetPostMetadata(id, locale)
 
-  return { id, ...metadata }
+  return { id, kind, ...metadata }
 }
 
 /**
@@ -173,7 +178,9 @@ export async function getPostPreviews(
     }),
   )
 
-  metadata.sort((a, b) => (a.date === b.date ? 0 : a.date > b.date ? -1 : 1))
+  metadata.sort((a, b) => {
+    return a.date === b.date ? 0 : a.date > b.date ? -1 : 1
+  })
 
   return metadata
 }
@@ -292,7 +299,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
    * which will be reused as input in development with "fast refresh".
    * See below: we shouldn't cache the vfile in the first place, only the metadata.
    */
-  return compile(vfile({ ...file }), {
+  return compile(new VFile({ ...file }), {
     outputFormat: 'function-body',
     useDynamicImport: false,
     remarkPlugins: [

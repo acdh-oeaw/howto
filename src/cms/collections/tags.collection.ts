@@ -16,7 +16,7 @@ export const collection: CmsCollection = {
   slug: '{{slug}}',
   media_folder: '../../{{media_folder}}/tags',
   public_folder: '{{public_folder}}/tags',
-  preview_path: 'tags/{{slug}}',
+  preview_path: 'tag/{{slug}}',
   sortable_fields: ['commit_date', 'name'],
   fields: [
     {

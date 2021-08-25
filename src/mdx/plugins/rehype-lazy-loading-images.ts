@@ -1,15 +1,13 @@
-import { promises as fs } from 'fs'
-
 import type * as Hast from 'hast'
 import type { MDXJsxTextElement } from 'hast-util-to-estree'
 import sizeOf from 'image-size'
-import sharp from 'sharp'
 import type { Transformer } from 'unified'
 import type * as Unist from 'unist'
-import visit from 'unist-util-visit'
+import { visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
 
 import { copyAsset } from '@/mdx/utils/copyAsset'
+import { generateBlurDataUrl } from '@/mdx/utils/generateBlurDataUrl'
 
 /**
  * Rehype plugin which copies linked image assets, and adds width and height.
@@ -26,8 +24,8 @@ export default function attacher(): Transformer {
 
     function visitor(
       node: Hast.Element,
-      index: number,
-      parent: Unist.Parent | undefined,
+      index: number | null,
+      parent: Unist.Parent | null,
     ) {
       if (node.tagName !== 'img') return
 
@@ -111,6 +109,7 @@ export default function attacher(): Transformer {
               body: [
                 {
                   type: 'ExpressionStatement',
+                  /* @ts-expect-error Figure out correct type later. */
                   expression: imageSrcProps,
                 },
               ],
@@ -136,20 +135,7 @@ export default function attacher(): Transformer {
       }
 
       imageBlurPromises.push(
-        generateBlurDateUrl(srcFilePath).then((dataUrl) => {
-          // if added to expression, need to update expression `value`
-          // imageSrcProps.properties.push({
-          //   type: 'Property',
-          //   key: {
-          //     type: 'Identifier',
-          //     name: 'blurDataURL',
-          //   },
-          //   value: {
-          //     type: 'Literal',
-          //     value: dataUrl,
-          //   },
-          //   kind: 'init',
-          // })
+        generateBlurDataUrl(srcFilePath).then((dataUrl) => {
           imageComponent.attributes.push({
             type: 'mdxJsxAttribute',
             name: 'blurDataURL',
@@ -163,25 +149,9 @@ export default function attacher(): Transformer {
         }),
       )
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      parent!.children.splice(index, 1, imageComponent)
+      if (parent != null && index != null) {
+        parent.children.splice(index, 1, imageComponent)
+      }
     }
   }
-}
-
-/**
- * Generates a base64 encoded string to be used as data url for an image `src` attribute.
- */
-async function generateBlurDateUrl(filePath: string) {
-  const BLUR_SIZE = 8
-
-  const buffer = await fs.readFile(filePath)
-
-  return sharp(buffer)
-    .resize(BLUR_SIZE)
-    .toBuffer({ resolveWithObject: true })
-    .then(
-      ({ data, info }) =>
-        `data:image/${info.format};base64,` + data.toString('base64'),
-    )
 }

@@ -26,7 +26,7 @@ export function Course(props: CourseProps): JSX.Element {
   const {
     title,
     date: publishDate,
-    editors: authors = [], // FIXME: editors / authors
+    editors: authors = [],
     tags,
     resources,
   } = metadata
@@ -77,10 +77,11 @@ export function Course(props: CourseProps): JSX.Element {
                               <Image
                                 src={author.avatar}
                                 alt=""
-                                className="object-cover w-8 h-8 rounded-full"
+                                className="w-8 h-8 rounded-full"
                                 layout="fixed"
                                 width={32}
                                 height={32}
+                                objectFit="cover"
                               />
                             ) : (
                               <Icon

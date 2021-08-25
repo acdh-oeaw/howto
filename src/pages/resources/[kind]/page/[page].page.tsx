@@ -34,6 +34,7 @@ export interface ResourcesPageParams extends ParsedUrlQuery {
 }
 
 export interface ResourcesPageProps {
+  kind: ResourceKind
   dictionary: Dictionary
   resources: Page<PostPreview>
 }
@@ -78,17 +79,21 @@ export async function getStaticProps(
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const page = Number(context.params?.page)
+  const params = context.params as ResourcesPageParams
+  const kind = params.kind
+  const page = Number(params.page)
+
   const postPreviews = await getPostPreviews(locale)
-  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) =>
-    a.date > b.date ? -1 : 1,
-  )
+  const sortedResources: Array<PostPreview> = postPreviews.sort((a, b) => {
+    return a.date > b.date ? -1 : 1
+  })
 
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
   const resources = paginate(sortedResources, pageSize)[page - 1]!
 
   return {
     props: {
+      kind,
       dictionary,
       resources,
     },
@@ -99,7 +104,7 @@ export async function getStaticProps(
  * Resources page.
  */
 export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
-  const { resources } = props
+  const { resources, kind } = props
 
   const { t } = useI18n()
   const canonicalUrl = useCanonicalUrl()
@@ -118,7 +123,9 @@ export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
         <Pagination
           page={resources.page}
           pages={resources.pages}
-          href={(page) => routes.resources({ kind: 'posts', page })}
+          href={(page) => {
+            return routes.resources({ kind, page })
+          }}
         />
       </PageContent>
     </Fragment>

@@ -12,20 +12,15 @@ export const collection: CmsCollection = {
   description: '',
   folder: 'content/people',
   path: '{{slug}}',
-  // TODO: move to folders (to be able to colocate images)
-  // path: '{{slug}}/index',
   identifier_field: 'lastName',
   format: 'yml',
   create: true,
   delete: false,
   slug: '{{lastName}}-{{firstName}}',
   summary: '{{firstName}} {{lastName}}',
-  media_folder: '../../{{media_folder}}/people',
-  public_folder: '{{public_folder}}/people',
-  // TODO:
-  // media_folder: '', // set `images` folder on widget level
-  // public_folder: '', // set `images` folder on widget level
-  preview_path: 'people/{{slug}}',
+  media_folder: 'images',
+  public_folder: 'images',
+  preview_path: 'author/{{slug}}',
   sortable_fields: ['commit_date', 'lastName'],
   fields: [
     {

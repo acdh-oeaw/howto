@@ -2,7 +2,7 @@ import type * as Mdast from 'mdast'
 import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
 import type { Transformer } from 'unified'
 import type * as Unist from 'unist'
-import visit from 'unist-util-visit'
+import { visit } from 'unist-util-visit'
 
 /**
  * Remark plugin which resolves asset references for the cms preview.

@@ -80,7 +80,9 @@ export async function getStaticProps(
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const page = Number(context.params?.page)
+  const params = context.params as TagsPageParams
+  const page = Number(params.page)
+
   /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
   const tags = paginate(await getTags(locale), pageSize)[page - 1]!
   const tagsWithPostCount = (
@@ -94,7 +96,9 @@ export async function getStaticProps(
         }
       }),
     )
-  ).filter((tag) => tag.posts > 0) // FIXME: paginate after filtering - needs caching!
+  ).filter((tag) => {
+    return tag.posts > 0
+  }) // FIXME: paginate after filtering - needs caching!
 
   return {
     props: {

@@ -3,22 +3,6 @@ import { getCoursePreviews } from '@/cms/api/courses.api'
 import type { Locale } from '@/i18n/i18n.config'
 
 /**
- * Returns metadata for courses filtered by author id.
- */
-// export async function getCoursePreviewsByAuthorId(
-//   id: string,
-//   locale: Locale,
-// ): Promise<Array<CoursePreview>> {
-//   const postPreviews = await getCoursePreviews(locale)
-
-//   const coursesByAuthor = postPreviews.filter((post) =>
-//     post.authors.some((author) => author.id === id),
-//   )
-
-//   return coursesByAuthor
-// }
-
-/**
  * Returns metadata for courses filtered by tag id.
  */
 export async function getCoursePreviewsByTagId(
@@ -27,9 +11,11 @@ export async function getCoursePreviewsByTagId(
 ): Promise<Array<CoursePreview>> {
   const postPreviews = await getCoursePreviews(locale)
 
-  const coursesByTag = postPreviews.filter((post) =>
-    post.tags.some((tag) => tag.id === id),
-  )
+  const coursesByTag = postPreviews.filter((post) => {
+    return post.tags.some((tag) => {
+      return tag.id === id
+    })
+  })
 
   return coursesByTag
 }
@@ -43,9 +29,11 @@ export async function getCoursePreviewsByResourceId(
 ): Promise<Array<CoursePreview>> {
   const postPreviews = await getCoursePreviews(locale)
 
-  const coursesByTag = postPreviews.filter((post) =>
-    post.resources.some((resource) => resource.id === id),
-  )
+  const coursesByTag = postPreviews.filter((post) => {
+    return post.resources.some((resource) => {
+      return resource.id === id
+    })
+  })
 
   return coursesByTag
 }

@@ -98,6 +98,14 @@ export function ResourcePreview(
             return resolveRelation(['authors', 'people'], id)
           })
           .filter(Boolean)
+          .map((author) => {
+            // FIXME: how to resolve asset path on related item?
+            // We cannot use `getAsset` because that is bound to the `posts` collection.
+            return {
+              ...author,
+              avatar: undefined,
+            }
+          })
       : []
 
     const contributors = Array.isArray(frontmatter.contributors)
@@ -184,6 +192,7 @@ export function ResourcePreview(
         <Resource
           resource={{
             id: entry.get('slug'),
+            kind: 'posts',
             code: mdxContent,
             data: {
               metadata,

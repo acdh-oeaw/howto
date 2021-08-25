@@ -11,8 +11,7 @@ export const downloadWidget: EditorComponentOptions = {
       name: 'url',
       label: 'Document',
       widget: 'file',
-      // FIXME: https://github.com/netlify/netlify-cms/issues/5514
-      // @ts-expect-error Missing in upstream types.
+      /* @ts-expect-error Missing in upstream types. */
       media_folder: 'downloads',
       public_folder: 'downloads',
     },
@@ -20,7 +19,7 @@ export const downloadWidget: EditorComponentOptions = {
   ],
   pattern: /^<Download(.*?)\/>/,
   fromBlock(match) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     const attrs = match[1]!
 
     const url = /url="([^"]*)"/.exec(attrs)
@@ -34,9 +33,9 @@ export const downloadWidget: EditorComponentOptions = {
   toBlock(data) {
     let attrs = ''
 
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.url) attrs += ` url="${data.url}"`
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
     if (data.title) attrs += ` title="${data.title}"`
 
     return `<Download${attrs} />`

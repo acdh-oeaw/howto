@@ -22,9 +22,9 @@ export function Preview(props: PreviewProps): JSX.Element {
   >(undefined)
 
   useEffect(() => {
-    loadDictionary(locale, ['common']).then((dictionary) =>
-      setDictionary(dictionary),
-    )
+    loadDictionary(locale, ['common']).then((dictionary) => {
+      return setDictionary(dictionary)
+    })
   }, [locale])
 
   return (

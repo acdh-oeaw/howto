@@ -65,10 +65,17 @@ public/de/favicon-32x32.png
 public/de/favicon.ico
 public/de/site.webmanifest
 
-# auto-generated files
+# auto-generated artefacts
 public/feed.xml
 public/robots.txt
 public/sitemap.xml
 
-# resource dump
-public/resources/*.json
+# auto-generated css for cms preview
+public/assets/css/index.css
+public/assets/css/tailwind.css
+
+# auto-generated redirects
+redirects.*.json
+
+# auto-generated metadata dump
+public/metadata/*.json

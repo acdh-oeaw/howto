@@ -1,10 +1,10 @@
 import type { MDXJsxFlowElement } from 'hast-util-to-estree'
 import type { EditorComponentOptions } from 'netlify-cms-core'
-import remark from 'remark'
+import { remark } from 'remark'
 import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import type { Node } from 'unist'
-import visit from 'unist-util-visit'
+import { visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
 import { remarkMarkAndUnravel as withUnraveledJsxChildren } from 'xdm/lib/plugin/remark-mark-and-unravel.js'
 import { remarkMdx as withMdx } from 'xdm/lib/plugin/remark-mdx.js'
@@ -27,9 +27,9 @@ function withQuizCards() {
       switch (node.name) {
         case 'Quiz.Card': {
           const card = {} as { controls?: { validate?: string } }
-          const validateButtonLabel = node.attributes.find(
-            (attribute: any) => attribute.name === 'validateButtonLabel',
-          )?.value
+          const validateButtonLabel = node.attributes.find((attribute: any) => {
+            return attribute.name === 'validateButtonLabel'
+          })?.value
           /* @ts-expect-error Waiting for updated remark types. */
           if (validateButtonLabel != null && validateButtonLabel.length > 0) {
             card.controls = card.controls ?? {}
@@ -51,9 +51,9 @@ function withQuizCards() {
         case 'Quiz.Message': {
           const last = cards[cards.length - 1]
           last.messages = last.messages ?? {}
-          const type = node.attributes.find(
-            (attribute: any) => attribute.name === 'type',
-          )?.value
+          const type = node.attributes.find((attribute: any) => {
+            return attribute.name === 'type'
+          })?.value
           /* @ts-expect-error Waiting for updated remark types. */
           if (type != null && allowedQuizMessageTypes.includes(type)) {
             /* @ts-expect-error Waiting for updated remark types. */
@@ -81,10 +81,9 @@ function withQuizCards() {
               /* @ts-expect-error Waiting for updated remark types. */
               children: node.children,
             }),
-            isCorrect: node.attributes.some(
-              (attribute: any) =>
-                attribute.name === 'isCorrect' && attribute.value !== false,
-            ),
+            isCorrect: node.attributes.some((attribute: any) => {
+              return attribute.name === 'isCorrect' && attribute.value !== false
+            }),
           })
           break
         }
@@ -94,16 +93,16 @@ function withQuizCards() {
           last.type = 'XmlCodeEditor'
           last.question = ''
 
-          const codeAttribute = node.attributes.find(
-            (attribute: any) => attribute.name === 'code',
-          )
+          const codeAttribute = node.attributes.find((attribute: any) => {
+            return attribute.name === 'code'
+          })
           const code =
             codeAttribute != null
               ? getStringLiteralAttribute(codeAttribute.value)
               : ''
-          const solutionAttribute = node.attributes.find(
-            (attribute: any) => attribute.name === 'solution',
-          )
+          const solutionAttribute = node.attributes.find((attribute: any) => {
+            return attribute.name === 'solution'
+          })
           const solution =
             solutionAttribute != null
               ? getStringLiteralAttribute(solutionAttribute.value)
@@ -239,7 +238,7 @@ export const quizEditorWidget: EditorComponentOptions = {
     {
       name: 'cards',
       label: 'Cards',
-      // @ts-expect-error Missing in upstream type.
+      /* @ts-expect-error Missing in upstream type. */
       label_singular: 'Card',
       widget: 'list',
       types: [
@@ -319,12 +318,12 @@ export const quizEditorWidget: EditorComponentOptions = {
   ],
   pattern: /^<Quiz>\n([^]*?)\n<\/Quiz>/,
   fromBlock(match) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
     const children = match[1]!
     const ast = processor.parse(children)
     const file = { data: {} }
     processor.runSync(ast, file)
-    // @ts-expect-error Cards are mutated in the transformer.
+    /* @ts-expect-error Cards are mutated in the transformer. */
     const cards = file.data.cards
 
     return {

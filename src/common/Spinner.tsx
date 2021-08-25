@@ -1,7 +1,10 @@
 import { useProgressBar } from '@react-aria/progress'
+import type { AriaLabelingProps } from '@react-types/shared'
 import type { SVGProps } from 'react'
 
-export interface SpinnerProps {
+import { useI18n } from '@/i18n/useI18n'
+
+export interface SpinnerProps extends AriaLabelingProps {
   className?: string
 }
 
@@ -9,7 +12,10 @@ export interface SpinnerProps {
  * Loading spinner.
  */
 export function Spinner(props: SpinnerProps): JSX.Element {
+  const { t } = useI18n()
   const { progressBarProps } = useProgressBar({
+    'aria-label': t('common.loading'),
+    ...props,
     isIndeterminate: true,
   })
 

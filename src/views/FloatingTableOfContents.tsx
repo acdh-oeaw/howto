@@ -38,16 +38,6 @@ export function FloatingTableOfContents(
     openButtonRef,
   )
 
-  // const closeButtonRef = useRef<HTMLButtonElement>(null)
-  // const { buttonProps: closeButtonProps } = useButton(
-  //   {
-  //     onPress() {
-  //       dialogState.close()
-  //     },
-  //   },
-  //   closeButtonRef,
-  // )
-
   useEffect(() => {
     router.events.on('routeChangeStart', dialogState.close)
     router.events.on('hashChangeStart', dialogState.close)
@@ -65,7 +55,7 @@ export function FloatingTableOfContents(
         ref={openButtonRef}
         className="fixed flex items-center justify-center w-12 h-12 text-white rounded-full bg-primary-600 right-6 bottom-6"
       >
-        <Icon icon={TocIcon} className="w-10 h-10 p-2" />
+        <Icon icon={TocIcon} className="flex-shrink-0 w-10 h-10 p-2" />
       </button>
       {dialogState.isOpen ? (
         <ModalDialog

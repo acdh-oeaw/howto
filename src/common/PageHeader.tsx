@@ -102,16 +102,6 @@ function MobilePageNavigation() {
     openButtonRef,
   )
 
-  // const closeButtonRef = useRef<HTMLButtonElement>(null)
-  // const { buttonProps: closeButtonProps } = useButton(
-  //   {
-  //     onPress() {
-  //       dialogState.close()
-  //     },
-  //   },
-  //   closeButtonRef,
-  // )
-
   useEffect(() => {
     router.events.on('routeChangeStart', dialogState.close)
 
@@ -134,14 +124,13 @@ function MobilePageNavigation() {
       {dialogState.isOpen ? (
         <ModalDialog
           // TODO: use aria-label instead of title
-          // If a dialog does not have a visible title element, an aria-label or aria-labelledby prop must be passed instead to identify the element to assistive technology.
           title={t('common.mainNavigationMenu')}
           isOpen
           onClose={dialogState.close}
           isDismissable
         >
           <div className="flex flex-col">
-            <ul className="flex flex-col space-y-4 overflow-y-auto font-medium">
+            <ul className="flex flex-col my-8 space-y-4 overflow-y-auto font-medium">
               {Object.entries(navigation).map(([route, { href }]) => {
                 return (
                   <li key={route} className="flex px-2 py-2">
@@ -211,16 +200,6 @@ function Search() {
     openButtonRef,
   )
 
-  // const closeButtonRef = useRef<HTMLButtonElement>(null)
-  // const { buttonProps: closeButtonProps } = useButton(
-  //   {
-  //     onPress() {
-  //       dialogState.close()
-  //     },
-  //   },
-  //   closeButtonRef,
-  // )
-
   function onSubmit(searchTerm: string) {
     setSearchTerm(searchTerm.trim())
   }
@@ -245,7 +224,6 @@ function Search() {
       {dialogState.isOpen ? (
         <ModalDialog
           // TODO: use aria-label instead of title
-          // If a dialog does not have a visible title element, an aria-label or aria-labelledby prop must be passed instead to identify the element to assistive technology.
           title={t('common.search')}
           isOpen
           onClose={dialogState.close}
@@ -259,10 +237,8 @@ function Search() {
               onSubmit={onSubmit}
               isDisabled={status === 'disabled'}
               loadingState={status}
-              // FIXME: make search field controlled, or clear the searchresults when closing the dialog.
-              // otherwise we will see the search results, but not the search term in the input,
-              // when reopening the search dialog
-              // TODO: Loading indicator
+              value={searchTerm}
+              onChange={setSearchTerm}
             />
             {Array.isArray(searchResults) && searchResults.length > 0 ? (
               <ul className="overflow-y-auto">
@@ -278,22 +254,19 @@ function Search() {
                   return (
                     <li key={result.id}>
                       <article>
-                        <Link href={href}>
+                        <Link href={{ ...href, hash: result.heading?.id }}>
                           <a className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100">
                             <h3 className="flex items-center space-x-2 font-medium">
-                              <Icon icon={icon} className="w-5 h-5" />
+                              <Icon
+                                icon={icon}
+                                className="flex-shrink-0 w-5 h-5"
+                              />
                               <span>{result.title}</span>
                             </h3>
-                            {result._snippetResult?.abstract.value != null ? (
+                            {result._snippetResult?.content.value != null ? (
                               <p
                                 dangerouslySetInnerHTML={{
-                                  __html: result._snippetResult.abstract.value,
-                                }}
-                              />
-                            ) : result._snippetResult?.body.value != null ? (
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html: result._snippetResult.body.value,
+                                  __html: result._snippetResult.content.value,
                                 }}
                               />
                             ) : null}

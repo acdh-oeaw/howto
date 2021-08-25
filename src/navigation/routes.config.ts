@@ -16,7 +16,8 @@ export const routes = {
   resource({ kind, id }: { kind: ResourceKind; id: string }) {
     return { pathname: `/resource/${kind}/${id}` }
   },
-  resources({ kind, page = 1 }: { kind: ResourceKind; page?: number }) {
+  resources({ kind, page = 1 }: { kind?: ResourceKind; page?: number } = {}) {
+    if (kind == null) return { pathname: `/resources/page/${page}` }
     return { pathname: `/resources/${kind}/page/${page}` }
   },
   course({ id }: { id: string }) {

@@ -38,8 +38,6 @@ export const config: CmsConfig = {
     base_url: url,
     auth_endpoint: 'api/auth/github',
     auth_scope: 'public_repo',
-    // open_authoring: true,
-    // always_fork: true,
     squash_merges: true,
     commit_messages: {
       create: 'content(cms): create {{collection}} "{{slug}}"',
@@ -51,6 +49,7 @@ export const config: CmsConfig = {
     },
   },
   publish_mode: 'editorial_workflow',
+  show_preview_links: false,
   media_folder: 'public/assets/cms/images',
   public_folder: '/assets/cms/images',
   editor: { preview: false },

@@ -44,26 +44,44 @@ const config = {
     ]
   },
   async redirects() {
-    return [
-      ...Object.entries(require('./redirects.resources.json')).map(
-        ([uuid, id]) => {
+    const { promises: fs } = require('fs')
+    const path = require('path')
+
+    try {
+      const resourcesRedirects = JSON.parse(
+        await fs.readFile(
+          path.join(process.cwd(), './redirects.resources.json'),
+          { encoding: 'utf-8' },
+        ),
+      )
+      const coursesRedirects = JSON.parse(
+        await fs.readFile(
+          path.join(process.cwd(), './redirects.courses.json'),
+          {
+            encoding: 'utf-8',
+          },
+        ),
+      )
+
+      return [
+        ...Object.entries(resourcesRedirects).map(([uuid, id]) => {
           return {
             source: `/id/${uuid}`,
             destination: `/resource/posts/${id}`,
             permanent: false,
           }
-        },
-      ),
-      ...Object.entries(require('./redirects.courses.json')).map(
-        ([uuid, id]) => {
+        }),
+        ...Object.entries(coursesRedirects).map(([uuid, id]) => {
           return {
             source: `/id/${uuid}`,
             destination: `/curriculum/${id}`,
             permanent: false,
           }
-        },
-      ),
-    ]
+        }),
+      ]
+    } catch {
+      return []
+    }
   },
   async rewrites() {
     return [
@@ -74,6 +92,31 @@ const config = {
       { source: '/tags', destination: '/tags/page/1' },
       { source: '/tag/:id', destination: '/tag/:id/page/1' },
     ]
+  },
+  webpack(
+    /** @type {import('webpack').Configuration} */ config,
+    /** @type {{ isServer: boolean; dev: boolean }} */ { isServer, dev },
+  ) {
+    if (!dev && isServer) {
+      /** @type {any} */
+      const createEntryPoints = config.entry
+      config.entry = async function () {
+        return {
+          ...(await createEntryPoints()),
+          /**
+           * We run these scripts through webpack, because we cannot currently run
+           * typescript scripts which require esm and tsconfig-paths, i.e. with
+           * `node --experimental-specifier-resolution=node --loader ts-node/esm -r tsconfig-paths/register`.
+           * In `package.json` scripts we invoke the compiled versions from the `.next/server` folder.
+           */
+          createFeed: './scripts/createFeed.ts',
+          createRedirects: './scripts/createRedirects.ts',
+          createSearchIndex: './scripts/createSearchIndex.ts',
+          dumpMetadata: './scripts/dumpMetadata.ts',
+        }
+      }
+    }
+    return config
   },
 }
 
@@ -92,40 +135,25 @@ const plugins = [
       titleProp: true,
     },
   }),
-  function (nextConfig = {}) {
-    return {
-      ...nextConfig,
-      /** @type {(config: WebpackConfig, options: any) => WebpackConfig} */
-      webpack(config, options) {
-        /* @ts-expect-error */
-        config.module.rules.push({
-          test: /\.mdx?$/,
-          use: [
-            options.defaultLoaders.babel,
-            {
-              loader: require.resolve('xdm/webpack.cjs'),
-              options: {
-                remarkPlugins: [
-                  require('remark-gfm'),
-                  require('remark-frontmatter'),
-                  [
-                    require('remark-mdx-frontmatter').remarkMdxFrontmatter,
-                    { name: 'metadata' },
-                  ],
-                ],
-              },
-            },
-          ],
-        })
-
-        if (typeof nextConfig.webpack === 'function') {
-          return nextConfig.webpack(config, options)
-        }
-
-        return config
-      },
-    }
-  },
+  /**
+   * Because `next.config.js` cannot currently import ESM-only packages, we use
+   * this plugin which depends on `xdm@1`.
+   *
+   * @see https://github.com/vercel/next.js/issues/9607
+   */
+  /** @ts-expect-error Missing module declaration. */
+  require('@stefanprobst/next-mdx')({
+    options: {
+      remarkPlugins: [
+        /** @ts-expect-error Missing module declaration. */
+        ...require('@stefanprobst/next-mdx').defaults.remarkPlugins,
+        [
+          require('remark-mdx-frontmatter').remarkMdxFrontmatter,
+          { name: 'metadata' },
+        ],
+      ],
+    },
+  }),
 ]
 
 module.exports = plugins.reduce((config, plugin) => {

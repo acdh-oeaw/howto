@@ -22,7 +22,9 @@ export function useSearch(searchTerm: string): {
   status: SearchStatus
   error: Error | null
 } {
-  const [searchIndex] = useState(() => getAlgoliaSearchIndex())
+  const [searchIndex] = useState(() => {
+    return getAlgoliaSearchIndex()
+  })
   const [searchResults, setSearchResults] = useState<
     Array<Hit<IndexedResource | IndexedCourse>>
   >([])
@@ -48,8 +50,8 @@ export function useSearch(searchTerm: string): {
         >(searchTerm, {
           hitsPerPage: 10,
           attributesToRetrieve: ['type', 'kind', 'id', 'title', 'tags'],
-          attributesToHighlight: ['title'],
-          attributesToSnippet: ['abstract', 'body'],
+          attributesToHighlight: ['title', 'content'],
+          attributesToSnippet: ['content'],
           highlightPreTag: '<mark>',
           highlightPostTag: '</mark>',
           snippetEllipsisText: '&hellip;',

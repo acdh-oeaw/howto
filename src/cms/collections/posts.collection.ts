@@ -17,7 +17,7 @@ export const collection: CmsCollection = {
   slug: '{{slug}}',
   media_folder: 'images',
   public_folder: 'images',
-  preview_path: 'resources/posts/{{slug}}',
+  preview_path: 'resource/posts/{{dirname}}',
   editor: { preview: true },
   sortable_fields: ['commit_date', 'date', 'title', 'commit_author'],
   view_groups: [

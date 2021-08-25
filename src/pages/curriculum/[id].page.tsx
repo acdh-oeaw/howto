@@ -1,6 +1,5 @@
 import type { ParsedUrlQuery } from 'querystring'
 
-// import { SchemaOrg as SchemaOrgMetadata } from '@stefanprobst/next-page-metadata'
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -18,7 +17,6 @@ import {
 } from '@/cms/api/courses.api'
 import type { Course as CourseData, CoursePreview } from '@/cms/api/courses.api'
 import { getCoursePreviewsByTagId } from '@/cms/queries/courses.queries'
-// import { getFullName } from '@/cms/utils/getFullName'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
 import { pickRandom } from '@/cms/utils/pickRandom'
 import { Icon } from '@/common/Icon'
@@ -27,14 +25,10 @@ import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
 import { loadDictionary } from '@/i18n/loadDictionary'
 import { useI18n } from '@/i18n/useI18n'
-// import { DublinCore as DublinCoreMetadata } from '@/metadata/DublinCore'
-// import { Highwire as HighwireMetadata } from '@/metadata/Highwire'
 import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
-// import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 import { routes } from '@/navigation/routes.config'
-// import { createUrl } from '@/utils/createUrl'
 import type { IsoDateString } from '@/utils/ts/aliases'
 import { Course } from '@/views/Course'
 
@@ -90,7 +84,8 @@ export async function getStaticProps(
 
   const dictionary = await loadDictionary(locale, ['common'])
 
-  const { id } = context.params as CoursePageParams
+  const params = context.params as CoursePageParams
+  const id = params.id
 
   const course = await getCourseById(id, locale)
 
@@ -102,7 +97,9 @@ export async function getStaticProps(
     )
   )
     .flat()
-    .filter((course) => course.id !== id)
+    .filter((course) => {
+      return course.id !== id
+    })
   const related = pickRandom(coursesWithSharedTags, RELATED_COURSES_COUNT)
 
   const lastUpdatedAt = await getLastUpdatedTimestamp(
@@ -128,9 +125,8 @@ export default function CoursePage(props: CoursePageProps): JSX.Element {
 
   const canonicalUrl = useCanonicalUrl()
   const languageAlternates = useAlternateUrls()
-  // const siteMetadata = useSiteMetadata()
 
-  // FIXME: metadata
+  // TODO: metadata
   return (
     <Fragment>
       <Metadata
@@ -141,76 +137,6 @@ export default function CoursePage(props: CoursePageProps): JSX.Element {
           type: 'article',
         }}
       />
-      {/* <SchemaOrgMetadata
-        schema={{
-          '@type': 'LearningCourse',
-          url: canonicalUrl,
-          headline: metadata.title,
-          datePublished: metadata.date,
-          abstract: metadata.abstract,
-          inLanguage: metadata.lang,
-          author: metadata.authors.map((author) => {
-            return {
-              '@type': 'Person',
-              familyName: author.lastName,
-              givenName: author.firstName,
-            }
-          }),
-          editor: metadata.editors?.map((editor) => {
-            return {
-              '@type': 'Person',
-              familyName: editor.lastName,
-              givenName: editor.firstName,
-            }
-          }),
-          contributor: metadata.contributors?.map((contributor) => {
-            return {
-              '@type': 'Person',
-              familyName: contributor.lastName,
-              givenName: contributor.firstName,
-            }
-          }),
-          version: metadata.version,
-          license: metadata.licence.url,
-          image: metadata.featuredImage,
-          keywords: metadata.tags.map((tag) => tag.name),
-          publisher: {
-            '@type': 'Organization',
-            name: siteMetadata.title,
-            description: siteMetadata.description,
-            url: siteMetadata.url,
-            logo: siteMetadata.image.publicPath,
-            sameAs:
-              siteMetadata.twitter != null
-                ? String(
-                    createUrl({
-                      pathname: siteMetadata.twitter,
-                      baseUrl: 'https://twitter.com',
-                    }),
-                  )
-                : undefined,
-          },
-        }}
-      />
-      <HighwireMetadata
-        url={canonicalUrl}
-        title={metadata.title}
-        date={metadata.date}
-        authors={metadata.authors.map((author) => getFullName(author))}
-        abstract={metadata.abstract}
-        lang={metadata.lang}
-        siteTitle={siteMetadata.title}
-      />
-      <DublinCoreMetadata
-        title={metadata.title}
-        date={metadata.date}
-        authors={metadata.authors.map((author) => getFullName(author))}
-        abstract={metadata.abstract}
-        lang={metadata.lang}
-        licence={metadata.licence.name}
-        tags={metadata.tags.map((tag) => tag.name)}
-        siteTitle={siteMetadata.title}
-      /> */}
       <PageContent className="grid w-full max-w-screen-lg px-10 py-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
         <aside />
         <div className="min-w-0">

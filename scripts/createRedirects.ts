@@ -27,7 +27,7 @@ function createRedirects(
 }
 
 /**
- * Dumps resource metadata to public folder as json.
+ * Creates redirects for UUID urls.
  */
 async function main() {
   const locale = 'en'
@@ -40,5 +40,7 @@ async function main() {
 }
 
 main()
-  .then(() => log.success('Successfully updated redirects.'))
+  .then(() => {
+    log.success('Successfully updated redirects.')
+  })
   .catch(log.error)

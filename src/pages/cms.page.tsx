@@ -58,7 +58,7 @@ const Cms = dynamic(
     /**
      * Register preview styles.
      *
-     * These are created in a `postbuild` script with `postcss-cli`.
+     * These are created in a `prebuild` script with `postcss-cli`.
      */
     Cms.registerPreviewStyle('/assets/css/tailwind.css')
     Cms.registerPreviewStyle('/assets/css/index.css')
@@ -90,7 +90,9 @@ const Cms = dynamic(
       plugins: [],
     })
 
-    return () => null
+    return function () {
+      return null
+    }
   },
   {
     ssr: false,

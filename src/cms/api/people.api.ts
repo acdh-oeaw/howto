@@ -3,6 +3,7 @@ import { join } from 'path'
 import * as YAML from 'js-yaml'
 import type { VFile } from 'vfile'
 
+import { createStaticImage } from '@/cms/utils/createStaticImage'
 import type { Locale } from '@/i18n/i18n.config'
 import { readFile } from '@/mdx/readFile'
 import { readFolder } from '@/mdx/readFolder'
@@ -18,7 +19,7 @@ export interface PersonId {
 
 type ID = PersonId['id']
 
-export interface PersonData {
+export interface PersonYaml {
   firstName: string
   lastName: string
   title?: string
@@ -28,6 +29,10 @@ export interface PersonData {
   twitter?: string
   website?: string
   orcid?: string
+}
+
+export interface PersonData extends Omit<PersonYaml, 'avatar'> {
+  avatar?: FilePath | StaticImageData
 }
 
 export interface Person extends PersonId, PersonData {}
@@ -48,6 +53,10 @@ export async function getPersonById(id: ID, locale: Locale): Promise<Person> {
   const file = await getPersonFile(id, locale)
   const data = await getPersonData(file, locale)
 
+  if (typeof data.avatar === 'string' && data.avatar.length > 0) {
+    data.avatar = await createStaticImage(data.avatar, file.path)
+  }
+
   return { id, ...data }
 }
 
@@ -63,7 +72,9 @@ export async function getPersons(locale: Locale): Promise<Array<Person>> {
     }),
   )
 
-  data.sort((a, b) => a.lastName.localeCompare(b.lastName, locale))
+  data.sort((a, b) => {
+    return a.lastName.localeCompare(b.lastName, locale)
+  })
 
   return data
 }
