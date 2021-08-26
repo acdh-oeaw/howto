@@ -1,6 +1,8 @@
+import { promises as fs } from 'fs'
+import * as path from 'path'
+
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { createUrl } from '@/utils/createUrl'
 import { log } from '@/utils/log'
 
 /**
@@ -8,29 +10,17 @@ import { log } from '@/utils/log'
  *
  * Metadata has already been parsed at build time and dumped in the public
  * folder by `scripts/dumpMetadata`.
- *
- * FIXME: We currently `fetch` metadata, even though it is available directly from file
- * in the `public` folder, because of https://github.com/vercel/next.js/issues/24700
  */
 export default async function handler(
   request: NextApiRequest,
   response: NextApiResponse,
 ): Promise<void> {
   try {
-    const fetchedFileResponse = await fetch(
-      String(
-        createUrl({
-          pathname: '/metadata/curricula.json',
-          baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
-        }),
-      ),
+    const filePath = path.join(
+      process.cwd(),
+      './public/metadata/resources.json',
     )
-
-    if (!fetchedFileResponse.ok) {
-      throw new Error('Failed to fetch file.')
-    }
-
-    const fileContent = await fetchedFileResponse.json()
+    const fileContent = await fs.readFile(filePath, { encoding: 'utf-8' })
 
     if (request.query.offset == null && request.query.limit == null) {
       return response.json(fileContent)
@@ -51,7 +41,7 @@ export default async function handler(
     }
     const limit = Math.min(providedLimit, 100)
 
-    const { curricula } = fileContent
+    const { curricula } = JSON.parse(fileContent)
 
     return response.json({
       curricula: curricula.slice(offset, offset + limit),
