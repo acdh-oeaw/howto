@@ -26,7 +26,7 @@ uuid: BRXyYRvhzMEJDguy-r58Z
 
 ### Grundlagen: Module und Schemata
 
-Selten benötigt man in einem Projekt alle von der TEI zur Verfügung gestellten Komponenten. Daher empfiehlt es sich, das verwendete Schema den eigenen Bedürfnissen anzupassen. Dies erleichtert zum einen die Annotationsarbeit, indem der Editor (z.B. Oxygen) nur die für ein Projekt relevanten Elemente und Attribute einblendet. Zum anderen dokumentiert ein angepasstes Schema die eigene Annotationsstrategie und macht sie für Dritte nachvollziehbar. Das [TEI Consortium](https://tei-c.org/) bietet neben dem Schema *'All'* bereits einige an unterschiedliche Bedürfnisse angepasste und reduzierte Versionen an, wie z.B. ‘TEI Lite’, ‘Corpus’, ‘Drama’ oder ‘Speech.’ Darüber hinaus besteht die Möglichkeit, selbst eine Auswahl aus den zahlreichen Modulen zu treffen, Adaptierungen an bestehenden Elementen und Attributen vorzunehmen sowie eigene Komponenten hinzuzufügen und entsprechend zu dokumentieren. Mit [TEI Roma](http://www.tei-c.org/Roma/) steht ein webbasiertes Werkzeug bereit, dass Sie dabei unterstützt.
+Selten benötigt man in einem Projekt alle von der TEI zur Verfügung gestellten Komponenten. Daher empfiehlt es sich, das verwendete Schema den eigenen Bedürfnissen anzupassen. Dies erleichtert zum einen die Annotationsarbeit, indem der Editor (z.B. [Oxygen](https://www.oxygenxml.com/)) nur die für ein Projekt relevanten Elemente und Attribute einblendet. Zum anderen dokumentiert ein angepasstes Schema die eigene Annotationsstrategie und macht sie für Dritte nachvollziehbar. Das [TEI Consortium](https://tei-c.org/) bietet neben dem Schema *'All'* bereits einige an unterschiedliche Bedürfnisse angepasste und reduzierte Versionen an, wie z.B. ‘TEI Lite’, ‘Corpus’, ‘Drama’ oder ‘Speech.’ Darüber hinaus besteht die Möglichkeit, selbst eine Auswahl aus den zahlreichen Modulen zu treffen, Adaptierungen an bestehenden Elementen und Attributen vorzunehmen sowie eigene Komponenten hinzuzufügen und entsprechend zu dokumentieren. Mit [TEI Roma](http://www.tei-c.org/Roma/) steht ein webbasiertes Werkzeug bereit, dass Sie dabei unterstützt.
 
 Unter einem Schema versteht man eine festgelegte Auswahl von TEI Komponenten für den jeweiligen Text und Kontext, für den sie verwendet werden sollen. Einige dieser Schemata werden vom TEI Consortium zur Verfügung gestellt und setzen sich aus verschiedenen *Modulen* zusammen. Diese *Module* können genutzt werden, um bestimmte Textkomponenten auszuzeichnen. Werden sie kombiniert, so entsteht ein Schema, nach dem die Auszeichnung in TEI valid ist. Die *Module* enthalten verschiedenste Elemente und Attribute, die für den jeweiligen Zweck sinnvoll sind. Hier finden Sie eine Liste der [Module](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STMA/), unten seien nur ein paar Beispiele genannt:
 
@@ -34,10 +34,10 @@ Unter einem Schema versteht man eine festgelegte Auswahl von TEI Komponenten fü
 - **namesdates**: Dieses Modul, "Names, Dates, People, and Places" enthält, wie der Name schon sagt, Elemente und Attribute um Informationen zu Personen, Zeitpunkten und Orten auszuzeichnen. Beispielsweise gibt es das Element `<name>`, das durch die Attribute `<role="actor">`und `<type="person">` erweitert werden kann, um in einem Text einen Schauspieler auszuzeichnen.
 - **verse**: Dieses Modul bietet Elemente und Attribute um Texte in Versform auszuzeichnen, zum Beispiel durch Tags für Strophen `<lg type="stanza">`, Zeilen `<l>`, oder die Auszeichnung eines Reimschemas.
 
-Das Schema "All" enthält alle zu diesem Zeitpunkt verfügbaren TEI Module. Im Gegensatz dazu bietet das Schema "Bare" das absolute Minimum, das Sie für eine Annotation benötigen. Da aber selten alle verfügbaren Komponenten benötigt werden, gibt es bereits einige reduziertere Schema, wie z.B. "TEI Lite", "Corpus", "Drama" oder "Speech". Wie die Namen schon verraten, wurden diese Schemata zur leichteren Annotation bestimmter Texte oder von bestimmten Textteilen zusammengestellt. Das TEI Consortium stellt bestimmte [Schemata](https://tei-c.org/guidelines/customization/) zur Verfügung, andere werden von der Community verwaltet. Hier einige Beispiele:
+Das Schema "All" enthält alle zu diesem Zeitpunkt verfügbaren TEI Module. Im Gegensatz dazu bietet das Schema "Bare" das absolute Minimum, das Sie für eine Annotation benötigen. Selten werden alle verfügbaren Komponenten benötigt, deshalb gibt es bereits einige reduziertere Schema, wie z.B. "TEI Lite", "Corpus", "Drama" oder "Speech". Wie die Namen schon verraten, wurden diese Schemata zur leichteren Annotation bestimmter Texte oder von bestimmten Textteilen zusammengestellt. Das TEI Consortium stellt bestimmte [Schemata](https://tei-c.org/guidelines/customization/) zur Verfügung, andere werden von der Community verwaltet. Hier einige Beispiele:
 
 - **TEI Lite**: Dieses Schema bietet generische Komponenten, die für "90% of the needs of 90% of the TEI user community" die meisten Zwecke erfüllen. Dieses Schema kann schnell erlernt werden, und wird sehr häufig eingesetzt.
-- **Corpus**: Dieses Schema eignet sich für die Auszeichnung von unterschiedlichsten Sprachkorpora. Man findet hier unter anderem Komponenten, mit denen man kontextuelle Informationen, aber auch linguistische Informationen auszeichnen kann.
+- **Corpus**: Dieses Schema eignet sich für die Auszeichnung von unterschiedlichsten Sprachkorpora. Man findet hier unter anderem Komponenten, mit denen man kontextuelle, aber auch linguistische Informationen auszeichnen kann.
 - **Drama**: Dieses Schema eignet sich für die Auszeichnung performativer Texte, zum Beispiel Theaterstücke oder Filmskripte. Komponenten, die man hier findet, sind zum Beispiel `<castlist>`, um die Figuren auszuzeichen, Regieanweisungen, aber auch `<epilogue>`und `<prologue>` als spezifische Abschnitte des auszuzeichnenden Textes.
 - **Speech**: Dieses Schema eignet sich zur Auszeichnung transkribierter gesprochener Texte. Allerdings ist es möglich, dass für detailliertere Diskursanalysen oder phonologische Untersuchungen das Schema erweitert werden sollte, damit es sinnvoll verwendet werden kann.
 
@@ -67,11 +67,12 @@ Im oben gezeigten Beispiel sehen Sie die ersten Zeilen der Auszeichnung unserer 
 
 ##### Übung 1a: Schema erkennen
 
-Sie möchten eine Schema nutzen, um Ihre Auszeichnung von *Friedrich Zelniks* Gedicht **Der Filmstar** zu validieren.
+Sie möchten ein Schema nutzen, um Ihre Auszeichnung von *Friedrich Zelniks* Gedicht **Der Filmstar** zu validieren.
 
 ![Friedrich Zelniks Gedicht Der Filmstar](images/filmwelt_1923_31_11_gedicht_filmstar.png "Friedrich Zelniks Gedicht Der Filmstar")
 
 ```xml
+
 <div xml:id="Zelnik1" type="poem">
  <head xml:lang="de"> Der Filmstar </head>
   <lg n="1">
