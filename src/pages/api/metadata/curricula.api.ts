@@ -50,7 +50,7 @@ export default async function handler(
       total: curricula.length,
     })
   } catch (error) {
-    log.error(error)
+    log.error(String(error))
     return response.status(500).end()
   }
 }

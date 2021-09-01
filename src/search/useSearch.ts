@@ -63,7 +63,11 @@ export function useSearch(searchTerm: string): {
         }
       } catch (error) {
         if (!wasCanceled) {
-          setError(error)
+          setError(
+            error instanceof Error
+              ? error
+              : new Error('An unexpected error has occurred.'),
+          )
           setStatus('error')
         }
       }
