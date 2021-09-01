@@ -10,11 +10,11 @@
     "notFound": "Seite nicht gefunden",
     "error": "Fehler"
   },
-  "loading": "Laden",
+  "loading": "Wird geladen",
   "skipToMainContent": "Zum Hauptinhalt springen",
   "browse": "Blättern",
   "search": "Suchen",
-  "noResultsFound": "Nichts gefunden",
+  "noResultsFound": "Keine Ergebnisse",
   "readMore": "Mehr lesen",
   "publishDate": "Veröffentlicht am",
   "lastUpdated": "Zuletzt geändert am",
