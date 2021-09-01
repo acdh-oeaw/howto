@@ -44,22 +44,40 @@ Sehen Sie sich bitte das folgende Beispiel an. Es handelt sich um Friedrich Zeln
 ![Der Filmstar, Gedicht von Friedrich Zelnik](images/filmwelt_1923_31_11_gedicht_filmstar.png "Der Filmstar, Gedicht von Friedrich Zelnik")
 
 ```xml
-<div xml:id="Zelnik1" type="poem">
- <head xml:lang="de"> Der Filmstar </head>
-  <lg n="1">
-   <l>Du ahnst bei ihm die Schwüle</l>
-   <l>Leise glimmender Gefühle</l>
-   <l>Steife Hemdbrust -</l>
-   <l>Heben - senken -</l>
-   <l>Augen, die sich stumm verrenken.</l>
-  </lg>
-  <lg n="2">
-   <l>Er ist von seltner Bescheidenheit,</l>
-   <l>Doch ihn verpflichtet sein Name,</l>
-   <l>Drum kämpft er mit Beharrlichkeit</l>
-   <l>Um jede Großaufnahme.</l>
-  </lg>
-</div>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Information zur Veröffentlichung</p>
+      </publicationStmt>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div xml:id="Zelnik1" type="poem">
+       <head xml:lang="de"> Der Filmstar </head>
+       <lg n="1">
+         <l>Du ahnst bei ihm die Schwüle</l>
+         <l>Leise glimmender Gefühle</l>
+         <l>Steife Hemdbrust -</l>
+         <l>Heben - senken -</l>
+         <l>Augen, die sich stumm verrenken.</l>
+        </lg>
+        <lg n="2">
+         <l>Er ist von seltner Bescheidenheit,</l>
+         <l>Doch ihn verpflichtet sein Name,</l>
+         <l>Drum kämpft er mit Beharrlichkeit</l>
+         <l>Um jede Großaufnahme.</l>
+        </lg>
+      </div>
+    </body>
+  </text>
+</TEI>
 ```
 
 Hier wurden Tags mit den globalen Attributen zu Identifikation, Typisierung und Sprache (`@type`, `@n`, `xml:id`und `xml:lang`) ausgezeichnet.
