@@ -34,7 +34,7 @@ Unter einem Schema versteht man eine festgelegte Auswahl von TEI Komponenten fü
 - **namesdates**: Dieses Modul, "Names, Dates, People, and Places" enthält, wie der Name schon sagt, Elemente und Attribute um Informationen zu Personen, Zeitpunkten und Orten auszuzeichnen. Beispielsweise gibt es das Element `<name>`, das durch die Attribute `<role="actor">`und `<type="person">` erweitert werden kann, um in einem Text einen Schauspieler auszuzeichnen.
 - **verse**: Dieses Modul bietet Elemente und Attribute um Texte in Versform auszuzeichnen, zum Beispiel durch Tags für Strophen `<lg type="stanza">`, Zeilen `<l>`, oder die Auszeichnung eines Reimschemas.
 
-Das Schema "All" enthält alle zu diesem Zeitpunkt verfügbaren TEI Module. Im Gegensatz dazu bietet das Schema "Bare" das absolute Minimum, das Sie für eine Annotation benötigen. Selten werden alle verfügbaren Komponenten benötigt, deshalb gibt es bereits einige reduziertere Schema, wie z.B. "TEI Lite", "Corpus", "Drama" oder "Speech". Wie die Namen schon verraten, wurden diese Schemata zur leichteren Annotation bestimmter Texte oder von bestimmten Textteilen zusammengestellt. Das TEI Consortium stellt bestimmte [Schemata](https://tei-c.org/guidelines/customization/) zur Verfügung, andere werden von der Community verwaltet. Hier einige Beispiele:
+Das Schema "All" enthält alle zu diesem Zeitpunkt verfügbaren TEI Module, derzeit sind dies 23. Im Gegensatz dazu bietet das Schema "Bare" das absolute Minimum, das Sie für eine Annotation benötigen. Selten werden alle verfügbaren Komponenten benötigt, deshalb gibt es bereits einige reduziertere Schema, wie z.B. "TEI Lite", "Corpus", "Drama" oder "Speech". Wie die Namen schon verraten, wurden diese Schemata zur leichteren Annotation bestimmter Texte oder von bestimmten Textteilen zusammengestellt. Das TEI Consortium stellt bestimmte [Schemata](https://tei-c.org/guidelines/customization/) zur Verfügung, andere werden von der Community verwaltet. Hier einige Beispiele:
 
 - **TEI Lite**: Dieses Schema bietet generische Komponenten, die für "90% of the needs of 90% of the TEI user community" die meisten Zwecke erfüllen. Dieses Schema kann schnell erlernt werden, und wird sehr häufig eingesetzt.
 - **Corpus**: Dieses Schema eignet sich für die Auszeichnung von unterschiedlichsten Sprachkorpora. Man findet hier unter anderem Komponenten, mit denen man kontextuelle, aber auch linguistische Informationen auszeichnen kann.
@@ -72,27 +72,42 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von *Friedrich Zelniks* Ged
 ![Friedrich Zelniks Gedicht Der Filmstar](images/filmwelt_1923_31_11_gedicht_filmstar.png "Friedrich Zelniks Gedicht Der Filmstar")
 
 ```xml
-
-<div xml:id="Zelnik1" type="poem">
- <head xml:lang="de"> Der Filmstar </head>
-  <lg n="1">
-   <l>Du ahnst bei ihm die Schwüle</l>
-   <l>Leise glimmender Gefühle</l>
-   <l>Steife Hemdbrust -</l>
-   <l>Heben - senken -</l>
-   <l>Augen, die sich stumm verrenken.</l>
-  </lg>
-  <lg n="2">
-   <l>Er ist von seltner Bescheidenheit,</l>
-   <l>Doch ihn verpflichtet sein Name,</l>
-   <l>Drum kämpft er mit Beharrlichkeit</l>
-   <l>Um jede Großaufnahme.</l>
-  </lg>
-</div>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Die Filmwelt - ein Ausschnitt</title>
+      </titleStmt>
+      <publicationStmt>
+        <p>Information zur Veröffentlichung</p>
+      </publicationStmt>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div xml:id="Zelnik1" type="poem">
+       <head xml:lang="de"> Der Filmstar </head>
+       <lg n="1">
+         <l>Du ahnst bei ihm die Schwüle</l>
+         <l>Leise glimmender Gefühle</l>
+         <l>Steife Hemdbrust -</l>
+         <l>Heben - senken -</l>
+         <l>Augen, die sich stumm verrenken.</l>
+        </lg>
+        <lg n="2">
+         <l>Er ist von seltner Bescheidenheit,</l>
+         <l>Doch ihn verpflichtet sein Name,</l>
+         <l>Drum kämpft er mit Beharrlichkeit</l>
+         <l>Um jede Großaufnahme.</l>
+        </lg>
+      </div>
+    </body>
+  </text>
+</TEI>
 ```
 
 <Quiz>
-  <Quiz.Card>
+  <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.MultipleChoice>
       <Quiz.Question>
         Wie können Sie vorgehen?
@@ -113,6 +128,14 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von *Friedrich Zelniks* Ged
       <Quiz.MultipleChoice.Option>
         d) Ich arbeite mit dem Schema, dass mir eine erfahrene Kollegin empfiehlt. Auf Ihr Wissen kann ich vertrauen.
       </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Sehr gut!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Überlegen Sie nochmal!
+      </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
@@ -156,14 +179,20 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von *Friedrich Zelniks* Ged
       </Quiz.MultipleChoice.Option>
 
       <Quiz.Message type="correct">
-        Die Möglichkeit der alphabetischen Sortierung ist für die Definition dessen, worauf Elemente, Klassen, Attribute im Text verweisen, irrelevant.
+        Richtig! Die Möglichkeit der alphabetischen Sortierung ist für die Definition dessen, worauf Elemente, Klassen, Attribute im Text verweisen, irrelevant.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Überlegen Sie nochmal!
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
 
 
-Die Auszeichnung des Schemas finden Sie unter: `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"`.
+Die Auszeichnung des Schemas finden Sie zu Beginn einer Auszeichnung Ihres Dokumentes im folgenden Ausdruck: `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"`.
+
+Insgesamt gibt es derzeit 23 Module, in denen die Deklarationen der verfügbaren Elemente festgehalten werden. Aus ihnen können Sie beliebig viele für Ihr Schema wählen. Die TEI empfiehlt, dass die Module **core**  (Elemente, die in jedem TEI Dokument vorkommen), **header** (gemeinsame Metadaten), **textstructure** (grundlegende Textstruktur) und **TEI** (TEI Infrastruktur) immer vorkommen sollten. Eine Auflistung der Module finden Sie [hier](https://tei-c.org/release/doc/tei-p5-doc/en/html/ST.html). 
 
 /* ![TEI Schema?](images/Folie89.png)* /
 
@@ -206,5 +235,7 @@ Text Encoding Initiative. "P5: Guidelines for Electronic Text Encoding and Inter
 ———. "Verse," https://www.tei-c.org/release/doc/tei-p5-doc/en/html/VE.html.
 
 ———. "The TEI Header," https://www.tei-c.org/release/doc/tei-p5-doc/en/html/HD.html.
+
+———. "The TEI Infrastructure," https://tei-c.org/release/doc/tei-p5-doc/en/html/ST.html.
 
 Dumont, Stefan. 2017. "TEI-Customization," https://www.i-d-e.de/wp-content/uploads/2017/11/IDE_2017_TEI-Customization.pdf.
