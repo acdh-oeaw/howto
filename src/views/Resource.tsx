@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import type { ImageProps } from 'next/image'
 import Link from 'next/link'
 
 import { Svg as ClockIcon } from '@/assets/icons/clock.svg'
@@ -9,6 +8,7 @@ import { Quiz } from '@/cms/components/quiz/Quiz'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
 import { PageTitle } from '@/common/PageTitle'
+import { ResponsiveImage } from '@/common/ResponsiveImage'
 import { useI18n } from '@/i18n/useI18n'
 import { Mdx } from '@/mdx/Mdx'
 import { routes } from '@/navigation/routes.config'
@@ -128,11 +128,7 @@ export function Resource(props: ResourceProps): JSX.Element {
       </header>
       <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
         {featuredImage != null ? (
-          typeof featuredImage === 'string' ? (
-            <img src={featuredImage} alt="" />
-          ) : (
-            <ResponsiveImage {...featuredImage} alt="" priority />
-          )
+          <ResponsiveImage src={featuredImage} alt="" priority />
         ) : null}
         <Mdx
           code={resource.code}
@@ -164,8 +160,4 @@ export function Resource(props: ResourceProps): JSX.Element {
       </footer>
     </article>
   )
-}
-
-function ResponsiveImage(props: ImageProps) {
-  return <Image layout="responsive" sizes="800px" {...props} alt={props.alt} />
 }

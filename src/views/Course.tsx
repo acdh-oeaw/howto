@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import type { ImageProps } from 'next/image'
 import Link from 'next/link'
 
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
@@ -7,6 +6,7 @@ import type { Course as CourseData } from '@/cms/api/courses.api'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
 import { PageTitle } from '@/common/PageTitle'
+import { ResponsiveImage } from '@/common/ResponsiveImage'
 import { useI18n } from '@/i18n/useI18n'
 import { Mdx } from '@/mdx/Mdx'
 import { routes } from '@/navigation/routes.config'
@@ -149,8 +149,4 @@ export function Course(props: CourseProps): JSX.Element {
       </footer>
     </article>
   )
-}
-
-function ResponsiveImage(props: ImageProps) {
-  return <Image layout="responsive" sizes="800px" {...props} alt={props.alt} />
 }
