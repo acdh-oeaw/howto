@@ -20,7 +20,7 @@ export function PageContent(props: PageContentProps): JSX.Element {
       tabIndex={-1}
       className={cx(
         className,
-        'focus-visible:ring-inset focus-visible:ring focus-visible:ring-primary-600',
+        'focus:outline-none focus-visible:ring-inset focus-visible:ring focus-visible:ring-primary-600',
       )}
     >
       {children}
