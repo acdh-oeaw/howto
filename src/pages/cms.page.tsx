@@ -86,6 +86,7 @@ const Cms = dynamic(
     Cms.registerRemarkPlugin({
       settings: {
         bullet: '-',
+        emphasis: '_',
       },
       plugins: [],
     })
