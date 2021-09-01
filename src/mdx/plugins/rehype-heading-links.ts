@@ -3,6 +3,8 @@ import withHeadingLinks from 'rehype-autolink-headings'
 import type { Options } from 'rehype-autolink-headings'
 import type { Pluggable } from 'unified'
 
+import { headingAnchorClassName } from '@/mdx/config'
+
 /**
  * Returns preconfigured `rehype-autolink-headings` plugin.
  */
@@ -53,6 +55,3 @@ const plugin: Pluggable<[Options]> = [
 ]
 
 export default plugin
-
-/** Allows identifying headings for table of contents highlighting. */
-export const headingAnchorClassName = 'heading-anchor'
