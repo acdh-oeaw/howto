@@ -24,6 +24,7 @@ import { NavLink } from '@/navigation/NavLink'
 import { routes } from '@/navigation/routes.config'
 import type { SearchStatus } from '@/search/useSearch'
 import { useSearch } from '@/search/useSearch'
+import { MIN_SEARCH_TERM_LENGTH } from '~/config/search.config'
 import Logo from '~/public/assets/images/logo-tinted.svg'
 
 /**
@@ -294,7 +295,7 @@ function Search() {
                   )
                 })}
               </ul>
-            ) : searchTerm.length > 0 ? (
+            ) : searchTerm.trim().length >= MIN_SEARCH_TERM_LENGTH ? (
               <div className="py-4 text-center text-neutral-500">
                 {t('common.noResultsFound')}
               </div>

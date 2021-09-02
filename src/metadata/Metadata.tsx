@@ -1,4 +1,5 @@
 import type { PageMetadataProps } from '@stefanprobst/next-page-metadata'
+/* eslint-disable-next-line import/no-named-as-default */
 import PageMetadata from '@stefanprobst/next-page-metadata'
 
 import { useLocale } from '@/i18n/useLocale'

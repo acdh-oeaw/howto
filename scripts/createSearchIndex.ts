@@ -34,6 +34,10 @@ function getAlgoliaSearchIndex(): SearchIndex | null {
     const error = new Error(
       'Failed to update search index because no Algolia config was provided.',
     )
+    console.error(
+      'App ID: ' + process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+      'Index name: ' + process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
+    )
     delete error.stack
     throw error
   }
