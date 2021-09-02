@@ -1,5 +1,5 @@
 /**
- * Number of words in abstract snippet.
+ * Number of words in content snippet.
  */
 export const SNIPPET_WORDS = 20
 
