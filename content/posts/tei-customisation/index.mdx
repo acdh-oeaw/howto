@@ -26,9 +26,9 @@ uuid: BRXyYRvhzMEJDguy-r58Z
 
 ### Grundlagen: Module und Schemata
 
-Selten benötigt man in einem Projekt alle von der TEI zur Verfügung gestellten Komponenten. Daher empfiehlt es sich, das verwendete Schema den eigenen Bedürfnissen anzupassen. Dies erleichtert zum einen die Annotationsarbeit, indem der Editor (z.B. [Oxygen](https://www.oxygenxml.com/)) nur die für ein Projekt relevanten Elemente und Attribute einblendet. Zum anderen dokumentiert ein angepasstes Schema die eigene Annotationsstrategie und macht sie für Dritte nachvollziehbar. Das [TEI Consortium](https://tei-c.org/) bietet neben dem Schema *'All'* bereits einige an unterschiedliche Bedürfnisse angepasste und reduzierte Versionen an, wie z.B. ‘TEI Lite’, ‘Corpus’, ‘Drama’ oder ‘Speech.’ Darüber hinaus besteht die Möglichkeit, selbst eine Auswahl aus den zahlreichen Modulen zu treffen, Adaptierungen an bestehenden Elementen und Attributen vorzunehmen sowie eigene Komponenten hinzuzufügen und entsprechend zu dokumentieren. Mit [TEI Roma](http://www.tei-c.org/Roma/) steht ein webbasiertes Werkzeug bereit, dass Sie dabei unterstützt.
+Selten benötigt man in einem Projekt alle von der TEI zur Verfügung gestellten Komponenten. Daher empfiehlt es sich, das verwendete Schema den eigenen Bedürfnissen anzupassen. Dies erleichtert zum einen die Annotationsarbeit, indem der Editor (z.B. [Oxygen](https://www.oxygenxml.com/)) nur die für ein Projekt relevanten Elemente und Attribute einblendet. Zum anderen dokumentiert ein angepasstes Schema die eigene Annotationsstrategie und macht sie für Dritte nachvollziehbar. Das [TEI Consortium](https://tei-c.org/) bietet neben dem Schema _'All'_ bereits einige an unterschiedliche Bedürfnisse angepasste und reduzierte Versionen an, wie z.B. ‘TEI Lite’, ‘Corpus’, ‘Drama’ oder ‘Speech.’ Darüber hinaus besteht die Möglichkeit, selbst eine Auswahl aus den zahlreichen Modulen zu treffen, Adaptierungen an bestehenden Elementen und Attributen vorzunehmen sowie eigene Komponenten hinzuzufügen und entsprechend zu dokumentieren. Mit [TEI Roma](http://www.tei-c.org/Roma/) steht ein webbasiertes Werkzeug bereit, dass Sie dabei unterstützt.
 
-Unter einem Schema versteht man eine festgelegte Auswahl von TEI Komponenten für den jeweiligen Text und Kontext, für den sie verwendet werden sollen. Einige dieser Schemata werden vom TEI Consortium zur Verfügung gestellt und setzen sich aus verschiedenen *Modulen* zusammen. Diese *Module* können genutzt werden, um bestimmte Textkomponenten auszuzeichnen. Werden sie kombiniert, so entsteht ein Schema, nach dem die Auszeichnung in TEI valid ist. Die *Module* enthalten verschiedenste Elemente und Attribute, die für den jeweiligen Zweck sinnvoll sind. Hier finden Sie eine Liste der [Module](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STMA/), unten seien nur ein paar Beispiele genannt:
+Unter einem Schema versteht man eine festgelegte Auswahl von TEI Komponenten für den jeweiligen Text und Kontext, für den sie verwendet werden sollen. Einige dieser Schemata werden vom TEI Consortium zur Verfügung gestellt und setzen sich aus verschiedenen _Modulen_ zusammen. Diese _Module_ können genutzt werden, um bestimmte Textkomponenten auszuzeichnen. Werden sie kombiniert, so entsteht ein Schema, nach dem die Auszeichnung in TEI valid ist. Die _Module_ enthalten verschiedenste Elemente und Attribute, die für den jeweiligen Zweck sinnvoll sind. Hier finden Sie eine Liste der [Module](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STMA/), unten seien nur ein paar Beispiele genannt:
 
 - **header**: Die hier enthaltenen Elemente sind Ihnen teilweise schon bekannt aus dem Modul **TEI header** bekannt. Diese Elemente zeichnen vor allem Metadaten zu Ihrem Dokument aus.
 - **namesdates**: Dieses Modul, "Names, Dates, People, and Places" enthält, wie der Name schon sagt, Elemente und Attribute um Informationen zu Personen, Zeitpunkten und Orten auszuzeichnen. Beispielsweise gibt es das Element `<name>`, das durch die Attribute `<role="actor">`und `<type="person">` erweitert werden kann, um in einem Text einen Schauspieler auszuzeichnen.
@@ -65,13 +65,20 @@ Sehen Sie sich bitte das folgende Beispiel für ein Schema an, das zur Validieru
 
 Im oben gezeigten Beispiel sehen Sie die ersten Zeilen der Auszeichnung unserer Beispielzeitschrift. Neben der Angabe der Kodierung der genutzten Zeichen `UTF-8`, finden Sie hier auch die Angabe zum verwendeten Schema. Die Auszeichnung mit Referenz-URI, `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"` zeigt, dass diese Auszeichnung gegen das `relaxng`- Schema validiert wird. Das bedeutet, dass alle Elemente, Klassen und Attribute, die in diesem Schema verfügbar sind, als gültig akzeptiert werden. Entsprechende Referenzen finden Sie auf der TEI-Website, sofern Sie sich auf ein bereits vorhandenes Schema beziehen.
 
+Die Auszeichnung des Schemas finden Sie zu Beginn einer Auszeichnung Ihres Dokumentes im folgenden Ausdruck: `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"`.
+
+Insgesamt gibt es derzeit 23 Module, in denen die Deklarationen der verfügbaren Elemente festgehalten werden. Aus ihnen können Sie beliebig viele für Ihr Schema wählen. Die TEI empfiehlt, dass die Module **core**  (Elemente, die in jedem TEI Dokument vorkommen), **header** (gemeinsame Metadaten), **textstructure** (grundlegende Textstruktur) und **TEI** (TEI Infrastruktur) immer vorkommen sollten. Eine Auflistung der Module finden Sie [hier](https://tei-c.org/release/doc/tei-p5-doc/en/html/ST.html). 
+
+Eine Auflistung der Schema, die von der TEI zur Verfügung gestellt werden und auch in Roma bzw im Editor Oxygen verfügbar sind, finden Sie [hier](https://tei-c.org/guidelines/customization/).
+
 ##### Übung 1a: Schema erkennen
 
-Sie möchten ein Schema nutzen, um Ihre Auszeichnung von *Friedrich Zelniks* Gedicht **Der Filmstar** zu validieren.
+Sie möchten ein Schema nutzen, um Ihre Auszeichnung von _Friedrich Zelniks_ Gedicht **Der Filmstar** zu validieren.
 
 ![Friedrich Zelniks Gedicht Der Filmstar](images/filmwelt_1923_31_11_gedicht_filmstar.png "Friedrich Zelniks Gedicht Der Filmstar")
 
 ```xml
+?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
@@ -190,29 +197,25 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von *Friedrich Zelniks* Ged
 </Quiz>
 
 
-Die Auszeichnung des Schemas finden Sie zu Beginn einer Auszeichnung Ihres Dokumentes im folgenden Ausdruck: `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"`.
+### TEI Klassen
 
-Insgesamt gibt es derzeit 23 Module, in denen die Deklarationen der verfügbaren Elemente festgehalten werden. Aus ihnen können Sie beliebig viele für Ihr Schema wählen. Die TEI empfiehlt, dass die Module **core**  (Elemente, die in jedem TEI Dokument vorkommen), **header** (gemeinsame Metadaten), **textstructure** (grundlegende Textstruktur) und **TEI** (TEI Infrastruktur) immer vorkommen sollten. Eine Auflistung der Module finden Sie [hier](https://tei-c.org/release/doc/tei-p5-doc/en/html/ST.html). 
+In TEI finden sich über 500 Elemente. Zur besseren Übersicht und Verständlichkeit wurden die Elemente klassifiziert, wobei es zwei verschiedene Möglichkeiten des Ausdruck von Gemeinsamkeiten gibt: entweder teilen Elemente dieselben Attribute, oder aber die Elemente kommen im _content model_ am selben Ort in der Texthierarchie vor. Ein Element "erbt" auch die Eigenschaften der Klassen, in die es eingebettet ist, da durch die hierarchische Struktur der TEI auch Über- und Unterklassen entstehen.
 
-/* ![TEI Schema?](images/Folie89.png)* /
+**Attributklassen** (_[attribute class](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STECAT)_): Gruppierung ähnliche Attribute (z.B. `<att.typed>`)
 
-/ *Verweis [I](https://tei-c.org/guidelines/customization/)* /
+**Model-Klassen** (_[model class](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STECCM)_): Gruppierung ähnlicher Elemete (z.B. `<model.divTop>`)
 
-/* ![ODD?](images/Folie90.png)* /
+/_ ![TEI Klassen](images/Folie92.png)_ /
 
-/* ![Vereinfachung](images/Folie91.png)* /
+/_ ![ODD-Anpassung (1)](images/Folie93.png)_ /
 
-/* ![TEI Klassen](images/Folie92.png)* /
+/_ ![ODD-Anpassung (2)](images/Folie94.png)_ /
 
-/* ![ODD-Anpassung (1)](images/Folie93.png)* /
+/_ ![ODD-Anpassung (3)](images/Folie95.png)_ /
 
-/* ![ODD-Anpassung (2)](images/Folie94.png)* /
+/_ ![TEI Roma](images/Folie96.png)_ /
 
-/* ![ODD-Anpassung (3)](images/Folie95.png)* /
-
-/* ![TEI Roma](images/Folie96.png)* /
-
-/ *Verweis [I](https://roma2.tei-c.org/)* /
+/ _Verweis [I](https://roma2.tei-c.org/)_ /
 
 ### Weiterführende Informationen
 
