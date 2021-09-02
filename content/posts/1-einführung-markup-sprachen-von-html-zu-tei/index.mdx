@@ -25,9 +25,9 @@ uuid: ycJztJbuEaDJyNFBehyEe
 - Definition von Schema und Namensraum
 - Einordnung von TEI als fachspezifische Auszeichnungssprache für Textwissenschaften
 
-## Wie kommt ein Text in ein digitales Format?
+## Vom analogen zum digitalen Text
 
-Sofern es sich nicht um ein born digital-Dokument handelt - also ein Dokument das mit einem Computer erstellt wurde und deswegen bereits in digital verarbeitbarer Form vorliegt -, beginnt die
+Sofern es sich nicht um ein 'born digital'-Dokument handelt, also ein Dokument, das mit einem Computer erstellt wurde und daher bereits in digitaler Form vorliegt, beginnt die
 Erstellung einer digitalen Text-Ressource mit dem **[Einscannen einer Vorlage](https://dhmuseum.uni-trier.de/node/5)**. Dieser Scan resultiert in einem Pixelbild  - z.B. im TIF, JPG oder PNG-Format - oder einem PDF. Das Aussehen der Print-Quelle ist in den Bilddaten ersichtlich, aber der textuelle Inhalt ist noch nicht digital weiter verarbeitbar. 
 
 Deswegen erfolgt daran anschließend in einem zweiten Schritt die **Texterkennung mittels ["optical character recognition" (OCR)](https://de.wikipedia.org/wiki/Texterkennung)**. Das Ergebnis ist ein elektronischer Text - z.B. in Form eines Word-Dokuments - oder einer Text-Datei, den man zwar mit verschiedenen Programmen strukturieren und formatieren kann, wobei die Möglichkeiten sowohl im Hinblick auf das Layout als auch die inhaltliche Beschreibung meistens sehr begrenzt sind. Außerdem ist die Konvertierung in andere Formate oft nicht verlustfrei möglich, wenn die Formatierungs- oder Strukturinformationen in programmspezifischen Formaten abgespeichert sind. ([\> mehr Informationen zu Volltextdigitalisierung](https://dhmuseum.uni-trier.de/node/49))
@@ -42,9 +42,9 @@ Eine der bekanntesten "Markup Languages" (ML) ist die "[Hypertext Markup Languag
 
 Für die wissenschaftliche Nutzung der Daten in den Sprachwissenschaften bietet HTML mit seinem beschränkten und auf Grundbausteine für Web-Publikationen fokussierten Vokabular allerdings zu wenig Flexibilität in der Auszeichnung und damit Weiterverarbeitungsmöglichkeit. Dies würde letztlich auch die Forschungsfragen einschränken, die nach der Annotation an die Daten gestellt und durch die Daten beantwortet werden könnten. Im Gegensatz zu HTML, einer Auszeichnungssprache, die überwiegend für die Darstellung von Inhalten im World Wide Web Verwendung findet, ist die  ["Extensible Markup Language" (XML)](https://www.w3.org/XML/) oder zu Deutsch erweiterbare Auszeichnungssprache eher ein abstraktes Werkzeug zur Modellierung und Strukturierung von Informationen einerseits und zur Datenhaltung andererseits.
 
-XML stellt die Grundlage für zahlreiche **fachspezifische Auszeichnungssprachen** dar — bereits etablierte Beispiele dafür sind z.B. **GML,** die geografische Auszeichnungssprache für raumbezogene Informationen; **MathML**, die mathematische Auszeichnungssprache zur Beschreibung komplexer mathematischer Ausdrücke und Formeln; oder **MusicXML** für die westliche Notenschrift.
+XML stellt die Grundlage für zahlreiche **fachspezifische Auszeichnungssprachen** dar — bereits etablierte Beispiele dafür sind z.B. **GML**, die geografische Auszeichnungssprache für raumbezogene Informationen, **MathML**, die mathematische Auszeichnungssprache zur Beschreibung komplexer mathematischer Ausdrücke und Formeln, oder **MusicXML** für die westliche Notenschrift.
 
-Auch in den Textwissenschaften ist XML heute die wichtigste Markupsprache, da es das ideale Werkzeug ist um Texte zu strukturieren, zu vermitteln und zu nutzen. Federführend in diesem Fachbereich ist die **Text Encoding Initiative**, kurz **TEI**. Doch bevor wir uns der TEI zuwenden, ist es wichtig, einige grundlegende Aspekte von XML zu erklären.
+Auch in den Textwissenschaften ist XML heute die wichtigste Markup-Sprache, da es das ideale Werkzeug ist um Texte zu strukturieren, zu vermitteln und zu nutzen. Federführend in diesem Fachbereich ist die **Text Encoding Initiative**, kurz **TEI**. Doch bevor wir uns der TEI zuwenden, ist es notwendig, einige grundlegende Aspekte von XML näher zu betrachten.
 
 ### Übung
 
@@ -56,7 +56,7 @@ Auch in den Textwissenschaften ist XML heute die wichtigste Markupsprache, da es
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        TEI ist eine spezialisierte Auszeichnungssprache für Text
+        TEI ist eine Auszeichnungssprache speziell für Texte.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
@@ -74,7 +74,7 @@ Auch in den Textwissenschaften ist XML heute die wichtigste Markupsprache, da es
       <Quiz.Message type="correct">
         **Richtig!**
 
-        TEI ist eine fachspezifische Markup-Sprache, die auf XML basiert und dafür ausgelegt ist, Dokumente für textwissenschaftliche Forschung zu annotieren.
+        TEI ist eine fachspezifische Markup-Sprache, die auf XML basiert und dazu dient, Dokumente für die textwissenschaftliche Forschung zu annotieren.
 
         Andere Markup-Sprachen sind HTML und XML. Während HTML allerdings ein festes Vokabular anbietet, das für die Strukturierung von Inhalten für Webpublikationen ausgelegt ist, stellt XML als ein abstraktes Werzeug zur Modellierung und Strukturierung von Informationen lediglich Regeln bereit, wie Elemente zu definieren und anzuwenden sind. Man kann aber beliebig viele konkrete Auszeichnungssprachen mithilfe von XML definieren.
       </Quiz.Message>
@@ -82,7 +82,7 @@ Auch in den Textwissenschaften ist XML heute die wichtigste Markupsprache, da es
       <Quiz.Message type="incorrect">
         **Leider nicht ganz richtig!**
 
-        TEI ist eine fachspezifische Markup-Sprache, die auf XML basiert und dafür ausgelegt ist, Dokumente für textwissenschaftliche Forschung zu annotieren.
+        TEI ist eine fachspezifische Markup-Sprache, die auf XML basiert und dazu dient, Dokumente für die textwissenschaftliche Forschung zu annotieren.
 
         Andere Markup-Sprachen sind HTML und XML. Während HTML allerdings ein festes Vokabular anbietet, das für die Strukturierung von Inhalten für Webpublikationen ausgelegt ist, stellt XML als ein abstraktes Werzeug zur Modellierung und Strukturierung von Informationen lediglich Regeln bereit, wie Elemente zu definieren und anzuwenden sind. Man kann aber beliebig viele konkrete Auszeichnungssprachen mithilfe von XML definieren.
       </Quiz.Message>
@@ -103,7 +103,7 @@ Verantwortlich für die Entwicklung von XML ist das 1994 gegründete [World Wide
 
 Auszeichnungselemente sind die wichtigste Struktureinheit von XML und bestehen aus mehreren Teilen. Um einen Inhalt zu beschreiben, bedient man sich sogenannter Tags – das sind Etiketten, die eigentlich nur aus spitzen Klammern und Text bestehen. Man unterscheidet öffnende und schließende Tags, wobei die schließenden einen Schrägstrich vor dem Text besitzen. Diese Tags umgeben den Inhalt, den sie beschreiben sollen. Der Text ist im Normalfall ein sinnvoller Elementname wie z.B. `<placeName>` für eine Ortsbezeichnung oder `<date>` für ein Datum. Zunächst sollen einige abstrakte Beispiele die Grundprinzipien erläutern.
 
-Ein vollständiges XML-Element besteht aus einem **Start-Tag**, einem **End-Tag** und dem **Inhalt dazwischen**, wobei es unerheblich ist, ob es sich dabei um Text, Zahlen, eine Grafik, eine Partitur oder irgendeine andere Information handelt. 
+Ein vollständiges XML-Element besteht aus einem **Start-Tag**, einem **End-Tag** und dem **Inhalt** dazwischen, wobei es unerheblich ist, ob es sich dabei um Text, Zahlen, eine Grafik, eine Partitur oder irgendeine andere Information handelt. 
 
 ![XML-Element](images/xml_element.png "XML-Element, Bild: Ulrike Czeitschner, ACDH-CH")
 
@@ -113,14 +113,14 @@ Ein konkretes Beispiel ist wie erwähnt z.B. ein Datum:
 <date>01.12.2018</date>
 ```
 
-Neben den Elementen mit Inhalt, gibt es auch **leere Elemente** – sie werden verwendet um z.B. die Position von etwas anzugeben, z.B. einen Zeilenumbruch. Da die Tags in diesem Fall nichts umschließen, kann man statt der paarigen Schreibweise auch eine einteilige Kurzform verwenden, man erkennt sie am Schrägstich hinter dem Elementnamen:
+Neben den Elementen mit Inhalt, gibt es auch **leere Elemente** – sie werden verwendet um z.B. die Position von etwas anzugeben, wie etwa einem Zeilenumbruch. Da die Tags in diesem Fall nichts umschließen, kann man statt der paarigen Schreibweise auch eine einteilige Kurzform verwenden, man erkennt sie am Schrägstich hinter dem Elementnamen:
 
 ```xml
 a) <element></element>
 b) <element/>
 ```
 
-Zur **Beschreibung komplexer Inhalte**, reicht ein Elementname alleine meist nicht aus, weshalb mehrere verschiedene Elemente für denselben Inhalt vergeben werden können. Zusatzinformationen lassen sich aber auch unterbringen, indem man im Start-Tag eines Elements sogenannte Attribute einfügt, die umgeben von Anführungszeichen bestimmte Werte enthalten. Ein Element darf selbstverständlich mehrere unterschiedliche Attribute besitzen. Grundsätzlich können Element-, Attribut- und Wertebezeichnungen aus jeder beliebigen Sprache gewählt werden, im Sinne der Austauschbarkeit haben sich jedoch englische Bezeichnungen durchgesetzt.
+Zur **Beschreibung komplexer Inhalte** reicht ein Elementname alleine meist nicht aus, weshalb mehrere verschiedene Elemente für denselben Inhalt vergeben werden können. Zusatzinformationen lassen sich jedoch auch unterbringen, indem man im Start-Tag eines Elements sogenannte **Attribute** einfügt, die umgeben von Anführungszeichen bestimmte **Werte** enthalten. Ein Element darf selbstverständlich mehrere unterschiedliche Attribute besitzen. Grundsätzlich können Element-, Attribut- und Wertebezeichnungen aus jeder beliebigen Sprache gewählt werden, im Sinne der Austauschbarkeit haben sich jedoch englische Bezeichnungen durchgesetzt.
 
 Es gibt also a) **Tags**, die zusammen mit den Inhalten Elemente bilden  als auch b) **leere Elemente**, die **mit Hilfe von Attributen und Attributwerten genauer spezifiziert** werden können. Die Syntax dafür ist wie folgt:
 
@@ -131,7 +131,7 @@ b) <element attribut="wert" attribut2="wert"/>
 
 ### Wohlgeformtheit
 
-Jede XML-Annotation bedient sich dieser einfachen Bausteine. In der konkreten Anwendung sind jedoch, wie könnte es auch anders sein, besondere Regeln einzuhalten. U.a. syntaktische Vorschriften.
+Jede XML-Annotation bedient sich dieser einfachen Bausteine. In der konkreten Anwendung sind jedoch besondere Regeln einzuhalten. U.a. syntaktische Vorschriften.
 
 Die wichtigste davon ist die Einhaltung der **Wohlgeformtheit** oder **well-formedness**. Sie bedeutet, dass **jedes geöffnete Element auch wieder geschlossen** werden muss, wie im untenstehenden Beispiel die Elemente a und b. **Andernfalls** kann es sich nur um ein **Empty-Element** handeln, wie z.B. das im Beispiel angeführte leere c-Element. 
 
@@ -156,7 +156,7 @@ Sollten **Elemente verschachtelt** sein, so müssen sie **in der richtigen Reihe
 <SideNote type="note" title="Merke">
 Die Regel der "well-formedness" ist zwingend, d.h. **alle XML-Dokumente müssen wohlgeformt sein!**
 
-- Geöffnete Element müssen wieder geschlossen werden, oder leere Elemente sein. 
+- Geöffnete Elemente müssen wieder geschlossen werden oder leere Elemente sein. 
 - Bei Verschachtelung muss die richtige Reihenfolge beim Öffnen und Schließen von Elementen eingehalten werden.
 </SideNote>
 
@@ -193,11 +193,11 @@ Dies ermöglicht die Überprüfung einer **einheitlichen Annotation** über Doku
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option>
-        Ein XML Dokument muss valide sein. Idealerweise ist es auch wohlgeformt.
+        Ein XML-Dokument muss valide sein. Idealerweise ist es auch wohlgeformt.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        Ein XML Dokument muss wohlgeformt sein. Es wird empfohlen durch die Nutzung und Überprüfung einer Grammatik auch die Validität des Dokuments zu gewährleisten.
+        Ein XML-Dokument muss wohlgeformt sein. Es wird empfohlen, durch die Nutzung einer Grammatik bzw. eines Schemas auch die Validität von XML-Dokumenten zu überprüfen und zu gewährleisten.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
@@ -234,19 +234,19 @@ Neben den Beziehungen regelt ein Schema auch, **wie oft ein Element oder Attribu
 - Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. 
 - Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
 
-Ein Buch, könnte in XML etwa wie folgt abgebildet werden: 
+Die Struktur eines Buches könnte in XML etwa wie folgt abgebildet werden: 
 
-![XML Hierarchie eines Buches](images/xmlhierarchiebuch.png "XML Hierarchie eines Buches. Bild: Ulrike Czeitschner, ACDH-CH")
+![XML Hierarchie eines Buches](images/xmlhierarchiebuch.png "XML-Struktur eines Buches. Bild: Ulrike Czeitschner, ACDH-CH")
 
 Innerhalb des Wurzelelements befindet sich ein Element mit dem Namen Buch, das die Kindelemente Vorwort und mehrere Kapitel enthält, vielleicht gefolgt von einem Nachwort, eventuell einem Register und einem Impressum. Diese Kindelemente verhalten sich zueinander alle wie Geschwister und sind aber selbst auch Eltern der Titel-, Paragraphen- und Verszeilen-Elemente, die ebenfalls Geschwister sind und selbstverständlich auch wieder Kinder haben können. Somit ergibt sich eine hierarchische Anordnung und Struktur der Inhalte, die den Aufbau des Buches widerspiegelt.
 
-### Aufbau von XML Dokumenten
+### Aufbau von XML-Dokumenten
 
-![Aufbau XML Dokument](images/xml-dokument.png "Aufbau eines XML Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
+![Aufbau XML Dokument](images/xml-dokument.png "Aufbau eines XML-Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
 
 Die obenstehende Grafik zeigt den Aufbau eines XML-Dokuments. Jedes XML-Dokument beginnt mit einem **Prolog**, der zumindest die **XML-Deklaration** enthält, die angibt, um welche XML-Version es sich handelt. Die Tags des Prologs zeichnen sich durch eine besondere Schreibweise aus: sie sind einteilig und an den Fragezeichen vorne und hinten zu erkennen. 
 
-Die XML-Deklaration kann optional zwei Attribute enthalten, eines, das die Art der Zeichenkodierung angibt und ein weiteres, das festhält, ob sich das verwendete Schema in derselben Datei oder extern befindet – standalone no bedeutet, dass es ein externes Schema gibt.
+Die XML-Deklaration kann optional zwei Attribute enthalten, eines, das die Art der Zeichenkodierung angibt und ein weiteres, das festhält, ob sich das verwendete Schema in derselben Datei oder extern befindet – `@standalone=no` bedeutet, dass es ein externes Schema gibt.
 
 Daran anschließend kann optional ein **Verweis auf dieses externe Schema** folgen und ebenso optional ein weiterer Verweis, der **processing instruction** (Verarbeitungsverweis) genannt wird und den Pfad zu einem sogenannten Stylesheet angibt, in dem die Verarbeitungsanweisungen definiert sind. Diese Anweisungen sind nicht Teil der aus Zeichen bestehenden Daten des XML-Dokuments, sondern dienen dazu Informationen und Anweisungen an Applikationen weiterzugeben, die diese Daten verarbeiten.
 
@@ -256,16 +256,16 @@ Im Wurzelelement befindet sich ein Attribut mit der Bezeichnung **namespace**, d
 
 Handelt es sich z.B. um ein **Dokument, das nach den Richtlinien der TEI** erstellt wurde, ist der **Name des Root-Elements TEI**. Der Attributwert der namespace declaration verweist darauf, dass ausschließlich von der TEI definierte Elemente und Attribute verwendet wurden. 
 
-![TEI Namensraum](images/tei-namensraum.png "TEI Namensraum. Bild: Ulrike Czeitschner, ACDH-CH")
+![TEI Namensraum](images/tei-namensraum.png "TEI-Namensraum. Bild: Ulrike Czeitschner, ACDH-CH")
 
 Möchte man Komponenten aus verschiedenen Namensräumen mischen, müssen zwei Namenraum-Deklarationen angegeben werden, die jeweils unterschiedliche Präfixe definieren, z.B. ein Attribut xmlns:tei und ein Attribut xmlns:xyz. 
 
-Im Dokument selbst müssen diese Präfixe, gefolgt von einem Doppelpunkt, den betreffenden Elementnamen vorangestellt werden um deren Schema-Zugehörigkeit anzuzeigen.
+Im Dokument selbst müssen diese Präfixe, gefolgt von einem Doppelpunkt, den betreffenden Elementnamen vorangestellt werden um deren Schema-Zugehörigkeit anzuzeigen:
 
 ![mehrere Namensraeume](images/mehrerenamensraeumexml.png "Mehrere Namensräume. Bild: Ulrike Czeitschner, ACDH-CH")
 
 <SideNote type="note" title="Hinweis">
-Kommentare sind außerhalb von einführenden oder schließenden Tags überall erlaubt. Sie werden eingeleitet von einer Spitzklammer, einem Rufzeichen, sowie zwei Minuszeichen. Dann folgt der Kommentartext und danach zwei Minuszeichen und eine schließende Spitzklammer.
+Kommentare sind außerhalb von einführenden oder schließenden Tags überall erlaubt. Sie werden eingeleitet von einer Spitzklammer, einem Rufzeichen, sowie zwei Minuszeichen. Dann folgt der Kommentartext und danach zwei Minuszeichen und eine schließende Spitzklammer:
 
 ```xml
 <!-- Kommentar -->
@@ -280,19 +280,19 @@ Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen u
   <Quiz.Card>
     <Quiz.MultipleChoice>
       <Quiz.Question>
-        **Welche der folgenden Angaben sind Teil des Prologs eines XML-Dokuments sein?** Bitte wählen Sie alle richtigen Antworten aus.
+        **Welche der folgenden Angaben sind Teil des Prologs eines XML-Dokuments?** Bitte wählen Sie alle richtigen Antworten aus.
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        **XML-Deklaration**: gibt an um welche Version von XML es sich handelt
+        **XML-Deklaration**: gibt an um welche Version von XML es sich handelt.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        **Schema-Verweis**: verweist auf ein externes Schema mit Definitionen für die Validierung des Dokuments, wenn das XML-Schema nicht in derselben Datei definiert wird.
+        **Schema-Verweis**: verweist auf ein externes Schema, das die Regeln für die Validierung eines XML-Dokuments enthält, sofern es sich nicht in derselben Datei befindet.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-        **Namensraum-Deklaration**: URI die angibt, woher die Elemente und Attribute stammen.
+        **Namensraum-Deklaration**: URI die angibt, woher die verwendeten Elemente und Attribute stammen.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
@@ -304,7 +304,7 @@ Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen u
 
         Die XML-Deklaration, der Schema-Verweis und der Verarbeitungsverweis können Teil des Prologs einer XML-Datei sein.
 
-        Die Namensraum-Deklaration ist Teil des Wurzelelements, das auf den Prolog folgt.
+        Die Namensraum-Deklaration wird im Wurzelelement angegeben, das unmittelbar auf den Prolog folgt.
       </Quiz.Message>
 
       <Quiz.Message type="incorrect">
@@ -312,7 +312,7 @@ Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen u
 
         Die XML-Deklaration, der Schema-Verweis und der Verarbeitungsverweis können Teil des Prologs einer XML-Datei sein.
 
-        Die Namensraum-Deklaration ist Teil des Wurzelelements, das auf den Prolog folgt.
+        Die Namensraum-Deklaration wird im Wurzelelement angegeben, das unmittelbar auf den Prolog folgt.
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
@@ -323,9 +323,9 @@ Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen u
 
 1987 entwickelte die neu gegründete Text Encoding Initiative (TEI) ein spezialisiertes Schema für die Kodierung von Texten und sprachlichen Informationen.  Basierend auf XML ist TEI mittlerweile der de-facto-Standard für die Kodierung von Texten und sprachlichen Informationen und ist innerhalb der Geisteswissenschaften federführend.  Die derzeit empfohlene Version P5 wurde 2007 veröffentlicht und seitdem regelmäßig verbessert und aktualisiert. Das Regelwerk enthält mehr als 500 Elemente und ebenso zahlreiche Attribute, die in sachbezogenen Modulen organisiert sind. Sie berücksichtigen Lyrik und Dramentexte ebenso wie Handschriften, kritische Apparate oder Wörterbücher. Darüber hinaus bietet die TEI Komponenten sowohl für die Schemagenerierung als auch die Schema-Anpassung an und stellt integrierte Stylesheets zur Verfügung.
 
-Der Begriff "Markup" stammt ursprünglich aus der Druckersprache und bedeutet "Textauszeichung". Ein Beispiel dafür wären "Fahnenkorrekturen". Sie enthalten z.B. Fehlerberichtigungen und Anweisungen, was mit den angestrichenen Stellen zu tun ist - Buchstabenverdreher umstellen, Doppelungen löschen, Absätze aufteilen usw. Dabei werden Prozeduren vorgegeben, die früher der Setzer, heute der Grafiker mit dem Text zu vollziehen hat. Das könnte man als **"Prozedurales Markup"** bezeichnen.
+Der Begriff "Markup" stammt ursprünglich aus der Druckersprache und bedeutet "Textauszeichung". Ein Beispiel dafür wären "Fahnenkorrekturen". Sie enthalten z.B. Fehlerberichtigungen und Anweisungen, was mit den angestrichenen Stellen zu tun ist – Buchstabenverdreher umstellen, Doppelungen löschen, Absätze aufteilen usw. Dabei werden Prozeduren vorgegeben, die früher der Setzer, heute der Grafiker mit dem Text zu vollziehen hat. Das könnte man als **"Prozedurales Markup"** bezeichnen.
 
-In vielen Fällen ist das Ziel von solchen ‘Prozeduren’ die Darstellung eines Dokuments in einer digitalen Druckvorlage. Wenn die Auszeichnung darauf abzielt, solche Darstellungsregeln zu definieren, spricht man von **"Präsentationalem Markup"**.
+In vielen Fällen ist das Ziel von solchen "Prozeduren" die Darstellung eines Dokuments in einer digitalen Druckvorlage. Wenn die Auszeichnung darauf abzielt, solche Darstellungsregeln zu definieren, spricht man vom **"Präsentationalen Markup"**.
 
 Je nachdem mit welchem Verständnis man an die Sache herangeht, sind die Grenzen natürlich fließend – letztendlich muss eine Software das Markup interpretieren und in eine Seitenbeschreibungssprache wie z.B. PDF übersetzen, die das Aussehen der Seite in absoluten Koordinaten beschreibt. Prinzipiell gibt XML nur die Regeln der Syntax an, in der Dokumente kodiert werden – nicht aber die Bedeutung der Auszeichnung. 
 
@@ -346,11 +346,11 @@ Die folgenden Kapitel werden einen kurzen Überblick über die Struktur von TEI-
   <Quiz.Card>
     <Quiz.MultipleChoice>
       <Quiz.Question>
-        **Zu welcher Form von Markup zählt TEI?**
+        **Zu welcher Art von Markup zählt TEI?**
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        **Prozedurales Markup** - TEI beschreibt Prozeduren, die ein Grafiker oder Setzer mit dem Text durchführen soll.
+        **Prozedurales Markup** – TEI beschreibt Prozeduren, die ein Setzer oder Grafiker mit dem Text durchführen soll.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
@@ -358,7 +358,7 @@ Die folgenden Kapitel werden einen kurzen Überblick über die Struktur von TEI-
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-        **Präsentationales Markup** - TEI definiert Darstellungsregeln für eine digitale Druckvorlage.
+        **Präsentationales Markup** – TEI definiert Darstellungsregeln für eine digitale Druckvorlage.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.Message type="correct">
@@ -370,7 +370,7 @@ Die folgenden Kapitel werden einen kurzen Überblick über die Struktur von TEI-
       <Quiz.Message type="incorrect">
         **Leider falsch.**
 
-        TEI gehört zum deskriptiven Markup. Vom logischen und formalen Aufbau eines Textes, seiner Semantik bis hin zur Repräsentation können unterschiedlichste Aspekte des Textmaterials kodiert werden.
+        TEI zählt zum deskriptiven Markup. Vom logischen und formalen Aufbau eines Textes, seiner Semantik bis hin zu seiner Repräsentation können unterschiedlichste Aspekte kodiert werden.
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
