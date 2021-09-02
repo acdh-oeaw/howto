@@ -199,11 +199,21 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von _Friedrich Zelniks_ Ged
 
 ### TEI Klassen
 
-In TEI finden sich über 500 Elemente. Zur besseren Übersicht und Verständlichkeit wurden die Elemente klassifiziert, wobei es zwei verschiedene Möglichkeiten des Ausdruck von Gemeinsamkeiten gibt: entweder teilen Elemente dieselben Attribute, oder aber die Elemente kommen im _content model_ am selben Ort in der Texthierarchie vor. Ein Element "erbt" auch die Eigenschaften der Klassen, in die es eingebettet ist, da durch die hierarchische Struktur der TEI auch Über- und Unterklassen entstehen.
+In TEI finden sich über 500 Elemente. Wie Sie inzwischen wissen, finden sich diese Elemente (und ihre Attribute) in den TEI Modulen. Doch auch wenn die Element einem Modul zugeordnet sind, haben viele Elemente und Attribute Gemeinsamkeiten, die über die Grenzen der Module hinausgehen. Zur besseren Übersicht und Verständlichkeit dieser Gemeinsamkeiten wurden die Elemente in Klassen eingeteilt. Bevor man sich näher mit den Klassen einzelner Elemente beschäftigt, muss angemerkt werden, dass zwei unterschiedliche Möglichkeiten des Ausdrucks von Gemeinsamkeiten gibt: wenn man Elemente danach einteilt, dass sie Attribute teilen, werden sie über Attributsklassen klassizifiert. Werden Elemente danach klassifiziert, dass sie im _content model_ am selben Ort in der Texthierarchie vorkommen, spricht man von Model-Klassen.
 
-**Attributklassen** (_[attribute class](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STECAT)_): Gruppierung ähnliche Attribute (z.B. `<att.typed>`)
+<SideNote type="note" title="Ererbte Eigenschaften">
+Die Mitglieder einer Klasse teilen bestimmte Eigenschaften miteinander. Diese Eigenschaften werden kaum im Element selbst definiert, sondern ergeben sich aus der Mitgliedschaft in einer Klasse. Ebenso werden Eigenschaften "vererbt", wenn die Klasse eines Elements oder Attributs einer Über- oder Unterklasse zugeordnet ist.
+</SideNote>
+
+**Attributklassen** (_[attribute class](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STECAT)_): Gruppierung ähnlicher Attribute (z.B. `<att.typed>`)
+
+**Beispiel:** Die Attributklasse [`<att.canonical>`](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.canonical.html) umfasst die Attribute "key" und "ref", die autorisierte Informationen mit Elementen wie `<birth>`,`<country>`,`<title>`, oder auch Personennamen `<forename>` verknüpfen. Man muss also nicht bei jedem der genannten Elemente die Attribute definieren, sie werden durch die Zugehörigkeit zur Klasse zugewiesen. Gleichzeitig haben diese Element die genannten Attribute gemeinsam und sind durch sie miteinander verbunden. Jede Attributsklasse startet mit "att.".
+
+Achtung: Die Attributsklasse `<att.global>` der globalen Attribute ist in jedem TEI-Modul definiert und deshalb immer verfügbar. Wenn Sie und aber bestimmte Attributsklassen nutzen möchten, müssen diese in den von Ihnen für Ihr Schema gewählten Modulen verfügbar sein, da sie ansonsten für Sie nicht nutzbar sind.
 
 **Model-Klassen** (_[model class](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STECCM)_): Gruppierung ähnlicher Elemete (z.B. `<model.divTop>`)
+
+**Beispiel:**  Die Model-Klasse [`<model.pLike>`](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-model.pLike.html) umfasst Elemente, die Absatz `<p>` (paragraph) -ähnliche Strukturen auszeichnen. Durch die Zugehörigkeit zur Model-Klasse `<model.pLike>` wird festgelegt, dass sowohl das Element `<p>` (Absatz), als auch `<front>` (Vorspann), `<back>` (Nachspann), oder auch `<quotation>` (Auszeichnung von Zitat im Dokument), etc., eine absatzähnliche Struktur aufweisen. Jede Model-Klasse startet mit "model.", danach folgt eine Bezeichnung der Elemente, die folgt.
 
 /_ ![TEI Klassen](images/Folie92.png)_ /
 
