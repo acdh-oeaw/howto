@@ -66,7 +66,14 @@ export function useSearch(searchTerm: string): {
           IndexedResource | IndexedCourse
         >(debouncedSearchTerm, {
           hitsPerPage: MAX_SEARCH_RESULTS,
-          attributesToRetrieve: ['type', 'kind', 'id', 'title', 'tags'],
+          attributesToRetrieve: [
+            'type',
+            'kind',
+            'id',
+            'title',
+            'tags',
+            'heading',
+          ],
           attributesToHighlight: ['title', 'content'],
           attributesToSnippet: [`content:${SNIPPET_WORDS}`],
           highlightPreTag: '<mark>',
