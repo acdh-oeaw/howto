@@ -228,6 +228,14 @@ Im folgenden Codeblock sehen Sie ein Beispiel einer Auszeichnung eines Elements.
  <elementSpec>  
 ```
 
+### ODD-Anpassung
+
+Wenn Sie für Ihr Projekt ein für Ihre Bedürfnisse angepasstes Schema (_customization_) erstellen, können Sie dies in einer [TEI ODD-Datei](https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/) tun. Diese Datei beeinflusst die Anpassungsregeln, an denen sich Ihr TEI Textdokument orientiert. TEI ODD steht für "TEI- One Document Does it all". Diese Datei muss in der Datei-Endung **.odd** enden und `<namespace>` **http://www.tei-c.org/ns/1.0** enthalten. Es wird in der TEI ODD Auszeichnungssprache in einem XML-Dokument geschrieben und enthält die Dokumentation von Schemafragmenten, aber auch von ausgeschriebenen Verweisen und weiteren Referenzen. ODD  nützt das **tagdocs**-Modul, mit dem sich TEI-Richtlinien anpassen lassen.
+
+Das Schema wir durch die `<schemaSpec>`definiert, die wiederum Definitionen und Verweise auf Elemente `<elementSpec>`, Klassen `<classSpec>`, Makrospefizikationen `<makroSpec>` oder Module `<moduleRef>` enthält.
+`<moduleRef>` nimmt eine Sonderstelluung ein, weil hier entweder durch _url_ auf ein externes Schema in der RelaxNG Sprache verwiesen wird (so kann auf Schemata, die nicht aus TEI stammen, verwiesen werden), oder durch _key_ auf bereits vorhandene TEI Module.
+
+
 /_ ![TEI Klassen](images/Folie92.png)_ /
 
 /_ ![ODD-Anpassung (1)](images/Folie93.png)_ /
