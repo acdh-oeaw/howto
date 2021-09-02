@@ -213,7 +213,20 @@ Achtung: Die Attributsklasse `<att.global>` der globalen Attribute ist in jedem 
 
 **Model-Klassen** (_[model class](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STECCM)_): Gruppierung ähnlicher Elemete (z.B. `<model.divTop>`)
 
-**Beispiel:**  Die Model-Klasse [`<model.pLike>`](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-model.pLike.html) umfasst Elemente, die Absatz `<p>` (paragraph) -ähnliche Strukturen auszeichnen. Durch die Zugehörigkeit zur Model-Klasse `<model.pLike>` wird festgelegt, dass sowohl das Element `<p>` (Absatz), als auch `<front>` (Vorspann), `<back>` (Nachspann), oder auch `<quotation>` (Auszeichnung von Zitat im Dokument), etc., eine absatzähnliche Struktur aufweisen. Jede Model-Klasse startet mit "model.", danach folgt eine Bezeichnung der Elemente, die folgt.
+**Beispiel:**  Die Model-Klasse [`<model.pLike>`](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-model.pLike.html) umfasst Elemente, die Absatz `<p>` (paragraph) -ähnliche Strukturen auszeichnen. Durch die Zugehörigkeit zur Model-Klasse `<model.pLike>` wird festgelegt, dass sowohl das Element `<p>` (Absatz), als auch `<ab>` (ein unbestimmtes, absatzartiges Element, das nicht dieselbe semantische Konnotation eines Absatzes hat) eine absatzähnliche Struktur aufweisen. Jede Model-Klasse startet mit "model.", danach folgt eine Bezeichnung der Elemente, die folgt.
+
+#### Praktische Anwendung
+
+Im folgenden Codeblock sehen Sie ein Beispiel einer Auszeichnung eines Elements. Das Element [`<elementSpec>`](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-elementSpec.html) zeichnet die Struktur, den Inhalt und die Verwendung eines bestimmten Elements aus. In diesem Fall geht es um das Element `<div>`.  Des weiteren sehen Sie hier, welchen Klassen das Element angehört, nämlich einerseits der Attributsklasse `<att.typed>`, andererseits oder Model-Klasse `<model.inter>`.  Über diese Klassen sind nun bestimmte Eigenschaften und Ähnlichkeiten zu anderen Elementen festgelegt.
+
+```xml
+<elementSpec ident="div"mode="change">
+  <classes>
+    <memberOf key="att.typed"/>
+    <memberOf key="model.inter"/>
+  </classes>
+ <elementSpec>  
+```
 
 /_ ![TEI Klassen](images/Folie92.png)_ /
 
