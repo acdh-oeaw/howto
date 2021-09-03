@@ -1,5 +1,5 @@
 ---
-title: 1. Markup-Sprachen: Von HTML zu TEI
+title: 1. Einführung Markup-Sprachen - von HTML zu TEI
 lang: de
 date: 2021-07-23T10:36:13.905Z
 version: 1.0.0
@@ -46,6 +46,59 @@ XML stellt die Grundlage für zahlreiche **fachspezifische Auszeichnungssprachen
 
 Auch in den Textwissenschaften ist XML heute die wichtigste Markup-Sprache, da es das ideale Werkzeug ist um Texte zu strukturieren, zu vermitteln und zu nutzen. Federführend in diesem Fachbereich ist die **Text Encoding Initiative**, kurz **TEI**. Doch bevor wir uns der TEI zuwenden, ist es notwendig, einige grundlegende Aspekte von XML näher zu betrachten.
 
+### Quiz
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        **Welche der folgenden Aussagen sind richtig?** (mehrere Antworten möglich)
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Durch die Verwendung von Markup-Sprachen werden die Strukturen von Texten für Maschinen lesbar.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        HTML bildet die Grundlage für spezifische Markup-Sprachen wie TEI und MEI.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        OCR sorgt dafür, dass die Textstruktur von Maschinen erkannt wird.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Cascading Style Sheets (CSS) und Java Script sind für die korrekte Darstellung von Inhalten notwendig
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        **Richtig!**
+
+        TEI ist eine fachspezifische Markup-Sprache, die auf XML basiert und dazu dient, Dokumente für die textwissenschaftliche Forschung zu annotieren.
+
+        Andere Markup-Sprachen sind HTML und XML. Während HTML allerdings ein festes Vokabular anbietet, das für die Strukturierung von Inhalten für Webpublikationen ausgelegt ist, stellt XML als ein abstraktes Werzeug zur Modellierung und Strukturierung von Informationen lediglich Regeln bereit, wie Elemente zu definieren und anzuwenden sind. Man kann aber beliebig viele konkrete Auszeichnungssprachen mithilfe von XML definieren.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        **Leider nicht ganz richtig!**
+
+        TEI ist eine fachspezifische Markup-Sprache, die auf XML basiert und dazu dient, Dokumente für die textwissenschaftliche Forschung zu annotieren.
+
+        Andere Markup-Sprachen sind HTML und XML. Während HTML allerdings ein festes Vokabular anbietet, das für die Strukturierung von Inhalten für Webpublikationen ausgelegt ist, stellt XML als ein abstraktes Werzeug zur Modellierung und Strukturierung von Informationen lediglich Regeln bereit, wie Elemente zu definieren und anzuwenden sind. Man kann aber beliebig viele konkrete Auszeichnungssprachen mithilfe von XML definieren.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+
+## Grundlagen von XML
+
+Wie schon erwähnt, dient XML dazu, beliebige Informationen und Inhalte in strukturierter Form zu beschreiben um diese Daten weiterzuverarbeiten, zu verwalten, oder sie im Internet auszutauschen. Eine – wenn nicht die wesentlichste – Eigenschaft von XML ist dabei die Unabhängigkeit von einzelner Hard- und Software. Möglich ist das, weil XML komplexe Inhalte beschreibt, ohne festzulegen, in welcher Form und mit welchen Computerprogrammen die Daten weiterverarbeitet werden sollen. Das bedeutet, es handelt sich um eine sogenannte Deskriptive und keine Processing Markup Language. XML ist so konzipiert, dass es von vielen unterschiedlichen Programmen gelesen werden kann, was eine enorme Freiheit gegenüber herstellergebundenen Formaten wie Microsoft Word, das ohne die entsprechende Software lange Zeit nicht verarbeitet werden konnte. Diese Eigenschaft war zugleich die wichtigste Voraussetzung für einen problemlosen und weltweiten Datenaustausch.
+
+Die Bezeichnung von XML als Markup Language ist leider nicht sehr präzise gewählt, wenn nicht sogar irreführend. Denn XML  definiert keine Elemente. Es stellt vielmehr ein Regelwerk für den Entwurf von konkreten Auszeichnungssprachen und ihren Anwendungen dar und wird deshalb auch als Metasprache bezeichnet, die unbegrenzt erweiterbar ist. Das bedeutet, dass sich mit XML beliebig viele unterschiedliche Markup-Sprachen definieren lassen, die jeweils ganz unterschiedliche Zwecke verfolgen können. XML selbst ist leicht verständlich, da es nicht aus abstrakten Codes, sondern aus Text besteht, was den Vorteil hat, dass sie von Mensch und Maschine gelesen werden kann. Dies ist neben der Plattformunabhängigkeit und der Erweiterbarkeit mit ein Grund für die weite Verbreitung und den Erfolg von XML.
+
+Verantwortlich für die Entwicklung von XML ist das 1994 gegründete [World Wide Web Consortium](https://www.w3.org/) unter der Leitung von Tim Berners-Lee, dem Erfinder der Hypertext Markup Language und des World Wide Web. Dieses internationale Gremium bemüht sich darum, Web-Standards zu entwickeln und Richtlinien zu den einzelnen Spezifikationen herauszugeben mit dem Ziel, das Potential und die Reichweite des Web zu vergrößern, es langfristig zu sichern und von einzelnen Herstellern unabhängig zu erhalten.
+
 ### Übung
 
 <Quiz>
@@ -91,14 +144,6 @@ Auch in den Textwissenschaften ist XML heute die wichtigste Markup-Sprache, da e
 </Quiz>
 
 
-## Grundlagen von XML
-
-Wie schon erwähnt, dient XML dazu, beliebige Informationen und Inhalte in strukturierter Form zu beschreiben um diese Daten weiterzuverarbeiten, zu verwalten, oder sie im Internet auszutauschen. Eine – wenn nicht die wesentlichste – Eigenschaft von XML ist dabei die Unabhängigkeit von einzelner Hard- und Software. Möglich ist das, weil XML komplexe Inhalte beschreibt, ohne festzulegen, in welcher Form und mit welchen Computerprogrammen die Daten weiterverarbeitet werden sollen. Das bedeutet, es handelt sich um eine sogenannte Deskriptive und keine Processing Markup Language. XML ist so konzipiert, dass es von vielen unterschiedlichen Programmen gelesen werden kann, was eine enorme Freiheit gegenüber herstellergebundenen Formaten wie Microsoft Word, das ohne die entsprechende Software lange Zeit nicht verarbeitet werden konnte. Diese Eigenschaft war zugleich die wichtigste Voraussetzung für einen problemlosen und weltweiten Datenaustausch.
-
-Die Bezeichnung von XML als Markup Language ist leider nicht sehr präzise gewählt, wenn nicht sogar irreführend. Denn XML  definiert keine Elemente. Es stellt vielmehr ein Regelwerk für den Entwurf von konkreten Auszeichnungssprachen und ihren Anwendungen dar und wird deshalb auch als Metasprache bezeichnet, die unbegrenzt erweiterbar ist. Das bedeutet, dass sich mit XML beliebig viele unterschiedliche Markup-Sprachen definieren lassen, die jeweils ganz unterschiedliche Zwecke verfolgen können. XML selbst ist leicht verständlich, da es nicht aus abstrakten Codes, sondern aus Text besteht, was den Vorteil hat, dass sie von Mensch und Maschine gelesen werden kann. Dies ist neben der Plattformunabhängigkeit und der Erweiterbarkeit mit ein Grund für die weite Verbreitung und den Erfolg von XML.
-
-Verantwortlich für die Entwicklung von XML ist das 1994 gegründete [World Wide Web Consortium](https://www.w3.org/) unter der Leitung von Tim Berners-Lee, dem Erfinder der Hypertext Markup Language und des World Wide Web. Dieses internationale Gremium bemüht sich darum, Web-Standards zu entwickeln und Richtlinien zu den einzelnen Spezifikationen herauszugeben mit dem Ziel, das Potential und die Reichweite des Web zu vergrößern, es langfristig zu sichern und von einzelnen Herstellern unabhängig zu erhalten.
-
 ### XML Syntax
 
 Auszeichnungselemente sind die wichtigste Struktureinheit von XML und bestehen aus mehreren Teilen. Um einen Inhalt zu beschreiben, bedient man sich sogenannter Tags – das sind Etiketten, die eigentlich nur aus spitzen Klammern und Text bestehen. Man unterscheidet öffnende und schließende Tags, wobei die schließenden einen Schrägstrich vor dem Text besitzen. Diese Tags umgeben den Inhalt, den sie beschreiben sollen. Der Text ist im Normalfall ein sinnvoller Elementname wie z.B. `<placeName>` für eine Ortsbezeichnung oder `<date>` für ein Datum. Zunächst sollen einige abstrakte Beispiele die Grundprinzipien erläutern.
@@ -141,13 +186,13 @@ Die wichtigste davon ist die Einhaltung der **Wohlgeformtheit** oder **well-form
 
 Sollten **Elemente verschachtelt** sein, so müssen sie **in der richtigen Reihenfolge geöffnet und geschlossen werden**. Dies gilt auch für den Fall, dass mehrere Phänomene einander überlappen. 
 
-*Falsch:*
+_Falsch:_
 
 ```xml
 <a>Inhalt <b>Inhalt</a> Inhalt</b>
 ```
 
-*Richtig:*
+_Richtig:_
 
 ```xml
 <a>Inhalt <b>Inhalt</b></a> <b>Inhalt</b>
@@ -227,7 +272,7 @@ Ein XML-Dokument ist eine hierarchische Strukturierung und Anordnung von Inhalte
 **Das Schema schreibt vor, welche Elemente es gibt, wo sie anzutreffen sein dürfen und wo nicht.** So kann beispielsweise im Schema definiert werden, dass ein Element nur ein bestimmtes Elternelement haben kann.
 
 - Ein Vorname darf nur das Kind eines Personennamens sein.
-- Ein Personenname kann nur *innerhalb* einer Überschrift, eines Paragraphen oder einer Verszeile vorkommen, aber niemals außerhalb.
+- Ein Personenname kann nur _innerhalb_ einer Überschrift, eines Paragraphen oder einer Verszeile vorkommen, aber niemals außerhalb.
 
 Neben den Beziehungen regelt ein Schema auch, **wie oft ein Element oder Attributwert vorkommen darf**. 
 
