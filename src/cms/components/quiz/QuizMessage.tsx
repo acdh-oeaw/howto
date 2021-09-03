@@ -23,11 +23,13 @@ export function QuizMessage(props: QuizMessageProps): JSX.Element | null {
   const icon = icons[props.type]
 
   return (
-    <div className="flex items-center space-x-1.5 text-neutral-500">
+    <div className="flex items-start space-x-2 border-t border-neutral-200 text-neutral-500">
       {icon != null ? (
-        <Icon icon={icon} className="flex-shrink-0 w-6 h-6" />
+        <Icon icon={icon} className="flex-shrink-0 w-6 h-6 mt-2" />
       ) : null}
-      <div className="flex flex-col space-y-2 text-sm">{props.children}</div>
+      <div className="flex flex-col mt-2.5 space-y-2 text-sm">
+        {props.children}
+      </div>
     </div>
   )
 }

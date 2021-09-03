@@ -58,6 +58,16 @@ const config = {
               strong: {
                 color: 'inherit',
               },
+              '.quiz-card p': {
+                margin: 0,
+              },
+              '.quiz-multiple-choice li': {
+                margin: 0,
+                padding: 0,
+              },
+              '.quiz-multiple-choice li::before': {
+                display: 'none',
+              },
             },
           },
         }
