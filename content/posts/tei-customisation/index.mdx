@@ -233,8 +233,28 @@ Im folgenden Codeblock sehen Sie ein Beispiel einer Auszeichnung eines Elements.
 Wenn Sie für Ihr Projekt ein für Ihre Bedürfnisse angepasstes Schema (_customization_) erstellen, können Sie dies in einer [TEI ODD-Datei](https://tei-c.org/guidelines/customization/getting-started-with-p5-odds/) tun. Diese Datei beeinflusst die Anpassungsregeln, an denen sich Ihr TEI Textdokument orientiert. TEI ODD steht für "TEI- One Document Does it all". Diese Datei muss in der Datei-Endung **.odd** enden und `<namespace>` **http://www.tei-c.org/ns/1.0** enthalten. Es wird in der TEI ODD Auszeichnungssprache in einem XML-Dokument geschrieben und enthält die Dokumentation von Schemafragmenten, aber auch von ausgeschriebenen Verweisen und weiteren Referenzen. ODD  nützt das **tagdocs**-Modul, mit dem sich TEI-Richtlinien anpassen lassen.
 
 Das Schema wir durch die `<schemaSpec>`definiert, die wiederum Definitionen und Verweise auf Elemente `<elementSpec>`, Klassen `<classSpec>`, Makrospefizikationen `<makroSpec>` oder Module `<moduleRef>` enthält.
-`<moduleRef>` nimmt eine Sonderstelluung ein, weil hier entweder durch _url_ auf ein externes Schema in der RelaxNG Sprache verwiesen wird (so kann auf Schemata, die nicht aus TEI stammen, verwiesen werden), oder durch _key_ auf bereits vorhandene TEI Module.
+`<moduleRef>` nimmt eine Sonderstelluung ein, weil hier entweder durch _url_ auf ein externes Schema in der RelaxNG Sprache verwiesen wird (so kann auf Schemata, die nicht aus TEI stammen, verwiesen werden), oder durch _key_ auf bereits vorhandene TEI Module. Nach der Definition des Schemas können auch die Elemente in ihrer Benennung, Funktion o.Ä. verändert und angepasst werden.
 
+#### Praktische Anwendung
+
+Im Rahmen der ODD-Anpassung werden auch bestehende Elemente den eigenen Bedürfnissen angepasst. Im folgenden ersten Beispiel wird im Element`<elementSpec>` eine Reihe von Attributen für die Zwecke der Auszeichnung des Beispieltextes definiert. Die Ausdrücken `<mode="change">` und `<mode="replace">` zeigen klar an, dass hier Veränderungen und Ersetzungen vorgenommen werden. Außerdem wird genau beschrieben, für welche Textteile die Attribute "article", "movieSchedule", "poem", "reviews", "review" und "other" angewendet werden sollen. Wenn Sie diese Liste `<attList>` mit der Auszeichnung der Abschnitte unseres Beispieltextes vergleichen, werden Sie feststellen, dass die im ODD-Dokument festgeschriebenen Definitionen angewandt wurden.
+
+```xml
+<elementSpec ident="div" mode="change">
+  <attList>
+    <attDef ident="type" mode="replace" usage="req">
+      <valList type="closed" mode="replace">
+        <valltem ident="article"><desc>Ein Artikel</desc></valltem>
+        <valltem ident="movieSchedule"><desc>Spielplan</desc></valltem>
+        <valltem ident="poem"><desc>Ein Gedicht</desc></valltem>
+        <valltem ident="reviews"><desc>Abschnitt mit Filmkritiken</desc></valltem>
+        <valltem ident="review"><desc>Eine Filmkritik</desc></valltem>
+        <valltem ident="other"><desc>Andere Arten von Beiträgen</desc></valltem>
+      </valList>
+    </attDef>
+  </attList>
+</elementSpec>
+```
 
 /_ ![TEI Klassen](images/Folie92.png)_ /
 
