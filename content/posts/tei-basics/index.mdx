@@ -1,5 +1,5 @@
 ---
-title: 3. TEI Makrostruktur
+title: 3. TEI-Makrostruktur
 lang: de
 date: 2021-07-12T07:08:23.146Z
 version: 1.0.0
@@ -51,13 +51,13 @@ Ein Text kann entweder 'unitary' - also ein organisches Ganzes – oder 'composi
 Ein Text kann optional einen **'front matter'** `<front>` oder auf Deutsch **Titelei** enthalten, die beispielsweise die Inhalte der **Titelseite** `<titlePage>` enthalten kann, wie auch die Position einer automatisch generierten Gliederung wie einem Index, einem Inhaltsverzeichnis o.ä.. Für Letzteres kommt das Element **'text division'** `<divGen>` mit einer der folgenden type-Attribute zum Einsatz:
 
 - `index`: hier soll ein automatisch generierter Index eingesetzt werden.
-- `toc`: Inhaltsverzeichnis
-- `figlist`: Abbildungsliste
-- `tablist`: Tabellenliste
+- `toc`: Position, an der ein automatisch generiertes Inhaltsverzeichnis eingefügt werden soll
+- `figlist`: Abbildungsverzeichnis
+- `tablist`: Tabellenverzeichnis
 
-Der erforderliche **'text body'** `<body>` umschließt den Hauptext eines einzelnen 'unitary' Dokuments.
+Der Haupttext ist im **obligatorischen** `<body>`-Element enthalten.
 
-Nach dem Body folgt optional der Nachspann, das sogenannte **'back matter'**. Dieser wird mit dem Element **'back matter'** `<back>`  ausgezeichnet und kann z.B. das Register eines gedruckten Werks oder **Index-Einträge** `<index>` enthalten.
+Nach dem Body-Text folgt **optional** der Nachspann `<back>` (back matter), der z.B. verschiedene Register `<index>` der gedruckten Vorlage oder ein Impressum enthalten kann.
 
 In der folgenden Abbildung eines Code-Beispiels sieht man die Makrostruktur eines 'unitary'-Textes, z.B. einer Monografie oder eines Dramas, das eine Titelseite und ein Inhaltsverzeichnis enthält, und zudem einen Index am Ende des Buches besitzt.
 
@@ -112,7 +112,7 @@ Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metad
 ```xml
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
 	<teiHeader>
-			<!-- Metadaten für das Corpus-->
+			<!-- Metadaten für das Korpus-->
 	</teiHeader>
 	<TEI xml:id="t001">
 		<teiHeader>
@@ -161,17 +161,17 @@ Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metad
       </Quiz.MultipleChoice.Option>
 
       <Quiz.Message type="correct">
-        Richtig! Ein valides TEI-Dokument muss vom Tag `<TEI>` umschlossen sein. Ebenso benötigt jeder TEI-konforme Text ein Set an Meta-Beschreibungen, die im `<teiHeader>` angegeben werden, sowie den annotierten Text `<text>`mit einem Text-Body `<body>`.
+        Richtig! Ein valides TEI-Dokument hat das Wurzelelement `<TEI>`. Ebenso benötigt jede TEI-konforme Datei ein Set an Metadaten, das im `<teiHeader>` angegeben wird, sowie den annotierten Text `<text>` mit einem Text-Body `<body>`.
 
-        Die Gruppierung von Texten oder aber die Eingliederung in einem Korpus sind optional.
+        Die Gruppierung mehrerer Einzeltexte oder ihre Modellierung als Korpus sind optional.
       </Quiz.Message>
 
       <Quiz.Message type="incorrect">
         Leider nicht ganz richtig.
 
-        Ein valides TEI-Dokument muss vom Tag `<TEI>` umschlossen sein. Ebenso benötigt jeder TEI-konforme Text ein Set an Meta-Beschreibungen, die im `<teiHeader>` angegeben werden, sowie den annotierten Text `<text>`mit einem Text-Body `<body>`.
+        Ein valides TEI-Dokument hat das Wurzelelement `<TEI>`. Ebenso benötigt jede TEI-konforme Datei ein Set an Metadaten, das im `<teiHeader>` angegeben wird, sowie den annotierten Text `<text>` mit einem Text-Body `<body>`.
 
-        Die Gruppierung von Texten oder aber die Eingliederung in einem Korpus sind hingegen optional.
+        Die Gruppierung mehrerer Einzeltexte oder ihre Modellierung als Korpus sind optional.
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
@@ -179,15 +179,15 @@ Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metad
 
 
 <SideNote type="note" title="Merke">
-Es gibt häufig mehrere Möglichkeiten , einzelne Aspekte in TEI zu kodieren. Wie ein Dokument im Verhältnis zur Vorlage strukturiert werden soll, gibt nicht die TEI vor, sondern ist Ihre Entscheidung.
+Häufig gibt es mehrere Möglichkeiten, einzelne Aspekte in TEI zu kodieren. Wie ein Dokument im Verhältnis zur Vorlage strukturiert werden soll, gibt nicht die TEI vor, sondern ist Ihre Entscheidung.
 </SideNote>
 
-In einer Briefedition können beispielsweise Regest und editorische Notiz im Vorspann (`<front>)`, der edierte Brief im Textkörper (`<body>`) und der Stellenkommentar im Nachspann (`<back>`) kodiert sein. Damit bildet die Grobstruktur des TEI-Dokuments die Struktur der modernen Edition ab, aber nicht die Grobstruktur der Quelle.
+In einer Briefedition können beispielsweise Regest und editorische Notiz im Vorspann `<front>`, der edierte Brief im Textkörper `<body>` und der Stellenkommentar im Nachspann `<back>` kodiert sein. Damit bildet die Grobstruktur des TEI-Dokuments die Struktur der modernen Edition ab, aber nicht die Grobstruktur der Quelle.
 
 Genauso gut ist es möglich, dass ein vollständig kodiertes historisches Buch aus dem 18. Jahrhundert eine sehr reiche Titelei mit mehreren Titelseiten, Widmungen und Vorworten und ein mehrteiliges Register im Anhang aufweist, und dass diese Struktur auch im `<front>` bzw. `<back>` abgebildet ist. Der moderne Kommentar könnte dann z.B. überhaupt in ein eigenständiges TEI-Dokument ausgelagert werden, damit der Primärtext und der editorische Text klar voneinander getrennt sind.
 
 Das bedeutet auch: Was Sie als ein TEI-Dokument modellieren, ist Ihnen überlassen:
 
-- ein Brief, ein Buch, einen Aufsatz
+- einen Brief, einen Aufsatz, ein Buch
 - einen Band mit allen Ausgaben einer Zeitschrift aus einem Jahr
-- einen Korpus von mehreren Texten
+- ein Korpus aus mehreren Texten
