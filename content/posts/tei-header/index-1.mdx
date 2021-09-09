@@ -27,7 +27,12 @@ uuid: j51QIatS7jhSnysibO4Cs
 
 Im `<teiHeader>`-Element, das an erster Stelle innerhalb des Wurzelelements `<TEI>` positioniert ist, werden die Metadaten _über_ ein TEI-Dokument erfasst. Für die detaillierte Beschreibung der für den Datenaustausch und die -publikation relevanten Informationen steht eine Vielzahl an Elementen zur Verfügung. 
 
-Ein TEI-Header ist für jedes TEI-Dokument obligatorisch. Er kann nur einige wesentliche Elemente enthalten, kann aber auch sehr detailliert sein, wenn es nötig ist. Die Metadaten können u.a. folgende Informationen enthalten:
+Der TEI-Header ist in jedem TEI-Dokument **obligatorisch** zu verwenden. Er kann nur einige wesentliche Metadaten enthalten, bei Bedarf jedoch sehr detailreich sein. Seine fünf Hauptkomponenten sind:
+- `<fileDesc>` ('file description'): beschreibt das elektronische Dokument
+- `<encodingDesc>` ('encoding description'): beschreibt Editionsrichtlinien
+- `<profileDesc>` ('text-profile description'): gibt Kontextinformationen zum Text wie die Entstehungszeit, Sprache oder Textsorte
+- `<xenoData>` ('non-TEI metadata'): nimmt Metadaten in nicht-TEI-Formaten wie z.B. [Dublin Core](https://dublincore.org/) auf.
+- `<revisionDesc>` ('revision description'): fasst die Revisionsgeschichte eines TEI-Dokuments zusammen
 
 - **Identifikation** ("Was ist das?") `<titleStmt>`
 - **Angabe der Quelle** ("Woraus wurde es abgeleitet?") `<sourceDesc>`
