@@ -12,14 +12,15 @@ editors:
 tags:
   - tei
   - xml
-abstract: Dieses Kapitel stellt den TEI-Header und seine Komponenten vor, die dazu dienen, ein kodiertes TEI-Dokument detailliert zu beschreiben.
+abstract: Dieses Kapitel stellt den TEI-Header und seine Komponenten vor, die
+  dazu dienen, ein kodiertes TEI-Dokument detailliert zu beschreiben.
 licence: ccby-4.0
 toc: false
 uuid: j51QIatS7jhSnysibO4Cs
 ---
 ## Lerninhalte
 
--  Metadaten für TEI-Dokumente
+- Metadaten für TEI-Dokumente
 - Komponenten und Strukturierung des TEI-Header
 
 ## Grundlagen
@@ -67,7 +68,7 @@ Als Ausgangspunkt für die weiteren Ausführungen dient diese Minimalversion ein
 
 Der TEI-Header besteht in unserem Fall aus der **'file description'**, die alle Informationen zum elektronischen Dokument enthält (Name des elektronischen Dokuments, Autor*in etc.). Nachdem wir in unserem Beispiel den Text nicht selbst verfassen, sondern einen Ausschnitt aus einer historischen Zeitschrift kodieren, ist darin auch eine Quellenangabe **'source description'** `<sourceDesc>` enthalten.
 
-Im Folgenden gehen wir auf die wichtigsten Metadaten-Informationen ein, die auch für unser Beispiel der *Filmwelt* relevant sind. In einer Übung werden dann die Informationen der zwei Seiten aus der *Filmwelt* entsprechend kodiert.
+Im Folgenden gehen wir auf die wichtigsten Metadaten-Informationen ein, die auch für unser Beispiel der _Filmwelt_ relevant sind. In einer Übung werden dann die Informationen der zwei Seiten aus der _Filmwelt_ entsprechend kodiert.
 
 ### Identifikation
 
@@ -178,7 +179,7 @@ Das obige Beispiel könnte in einer möglichen strukturierter Form wie folgt aus
 </biblStruct>
 ```
 
-Hierbei wird innerhalb der **'structured bibliographic citation'** ein Buch oder eine Zeitschrift mit dem Element **'monographic level'** `<monogr>` umschlossen und die Information so gruppiert. Innerhalb dessen können Autorinnen und Autoren *mit dem `<author>` sowie Editorinnen und Editoren* eines Buches oder einer Zeitschrift mit dem Element `<editor>` benannt werden.
+Hierbei wird innerhalb der **'structured bibliographic citation'** ein Buch oder eine Zeitschrift mit dem Element **'monographic level'** `<monogr>` umschlossen und die Information so gruppiert. Innerhalb dessen können Autorinnen und Autoren _mit dem `<author>` sowie Editorinnen und Editoren_ eines Buches oder einer Zeitschrift mit dem Element `<editor>` benannt werden.
 
 `<imprint>` gruppiert vorhandene Informationen zur Publikation und Distribution des Werks.
 
@@ -364,10 +365,14 @@ Die **'revision description'** `<revisionDesc>` fasst die Revisionsgeschichte ei
 
 Die im `<change>`-Element angegebenen Attribute und ihre Werte dienen der genaueren Spezifizierung einer Änderung: `@when` enthält das Datum der Änderung, `@who` nennt die für die Änderung verantwortliche Person. Die Raute vor dem Bezeichner im Attributwert verweist auf die Definition dieser Person, die sich meist im 'statement of responsibility' des TEI-Header befindet und dort mit dem entsprechenden Bezeichner im `@xml:id`-Attribut gekennzeichnet ist :
 
+```xml
 <!-- ... -->
+
 <persName xml:id="em">Erika Musterfrau</persName>
 <persName xml:id="mm">Max Mustermann</persName>
+
 <!-- ... -->
+```
 
 Die Werte Attributs `@status` geben, wie der Name vermuten lässt, den Status des Dokuments nach der Änderung an, ob es sich z.B. um einen Entwurf, eine fertige Korrektur oder bereits für die Veröffentlichung freigegebene Version handelt. Die Reihenfolge der Änderungen sollte chronologisch, wahlweise auf- oder absteigend sortiert sein.
 
