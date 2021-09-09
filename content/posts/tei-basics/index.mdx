@@ -12,22 +12,24 @@ editors:
 tags:
   - xml
   - tei
-abstract: No abstract provided.
+abstract: Dieser Abschnitt stellt die Grundstruktur von TEI-Dokumenten vor.
 licence: ccby-4.0
 toc: true
 uuid: uVi2FPFCIHCIVGr8Z36nP
 ---
-## TEI Makrostruktur
+## Die Struktur von TEI-Dokumenten
 
 ### Grundlagen
 
-Bevor wir uns an die Arbeit mit dem spezifischen Beispiel machen, gilt es den Aufbau eines validen TEI-Dokuments zu verstehen. Der erste Schritt ist hierbei das Verständnis der TEI-Makrostruktur, die die übergeordneten Strukturen eines TEI-konformen Dokuments bzw. eines TEI-Korpus beschreibt. Diese Struktur umfasst und gliedert sowohl die Metadaten über das Dokument wie auch die annotierten Inhalte.
+Bevor wir uns an die Annotation des Beispieltextes _Die Filmwelt_ machen, gilt es, den Aufbau eines validen TEI-Dokuments zu verstehen. Die Makrostruktur umfasst und gliedert sowohl die Metadaten über das Dokument als auch die annotierten Inhalte.
 
 ### Praktische Anwendung
 
-Ein **TEI-konformes Dokument** wird vom TEI-Element `<TEI>`  - dem Wurzelelement - umschlossen. Dass Attribut **'XML Namespace'** `xmlns`, in dem es auf eine eindeutige Definition der Elemente in einem XML-Schema referenziert wird, die innerhalb des spezifischen Dokuments verwendet wird. Dies ist für einen Prozessor wichtig um das XML-Dokument als TEI-Dokument zu erkennen.
+Das "Skelett" eines validen TEI-Dokuments besteht aus
+- dem Wurzelelement `<TEI>`, das das namespace-Attribut `@xmlns` und als Wert den Verweis auf die TEI enthält. Diese Angabe versetzt Prozessoren in die Lage, ein XML-Dokument als TEI-Dokument zu erkennen.
+- dem im Wurzelelement enthaltenen TEI-Header `<teiHeader>`, der die Metadaten zum elektronischen Dokument enthält. Und schließlich
+- dem ebenfalls im Wurzelelement enthaltenen Text-Element `<text>`, das den annotierten Text umschließt. 
 
-Das Wurzelelement enthält den **'TEI-Header'** `<teiHeader>` **(*Sprungmarke zu TEI Header Kapitel*)**, der die Metadaten zum elektronischen Dokument und seine Herkunft enthält, sowie den annotierten **Text**, der vom Element `<text>` umschlossen wird.
 
 ```xml
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
@@ -46,20 +48,18 @@ Das Wurzelelement enthält den **'TEI-Header'** `<teiHeader>` **(*Sprungmarke zu
 </TEI>
 ```
 
-Ein Text kann entweder 'unitary' - also ein organisches Ganzes – oder 'composite' sein – also aus mehreren, voneinander unabhängigen, Komponenten bestehen. 
 
-Ein Text kann optional einen **'front matter'** `<front>` oder auf Deutsch **Titelei** enthalten, die beispielsweise die Inhalte der **Titelseite** `<titlePage>` enthalten kann, wie auch die Position einer automatisch generierten Gliederung wie einem Index, einem Inhaltsverzeichnis o.ä.. Für Letzteres kommt das Element **'text division'** `<divGen>` mit einer der folgenden type-Attribute zum Einsatz:
+Ein Text kann **optional** einen Vorspann `<front>` ('front matter') mit beispielsweise einer oder mehreren Titelseiten `<titlePage>` enthalten. Darüber hinaus kann im Vorspann die Position angegeben werden, an der **automatisch generierte** Textgliederungen `<divGen>` wie z.B. Inhalts-, Tabellen- und Abbildungsverzeichnisse eingefügt werden sollen. Die Spezifizierung, worum es sich handelt, erfolgt im `@type`-Attribute mit unterschiedlichen Attributwerten:
 
-- `index`: hier soll ein automatisch generierter Index eingesetzt werden.
 - `toc`: Position, an der ein automatisch generiertes Inhaltsverzeichnis eingefügt werden soll
 - `figlist`: Abbildungsverzeichnis
 - `tablist`: Tabellenverzeichnis
 
 Der Haupttext ist im **obligatorischen** `<body>`-Element enthalten.
 
-Nach dem Body-Text folgt **optional** der Nachspann `<back>` (back matter), der z.B. verschiedene Register `<index>` der gedruckten Vorlage oder ein Impressum enthalten kann.
+Nach dem Body-Text folgt **optional** der Nachspann `<back>` ('back matter'), der z.B. verschiedene Register `<index>` der gedruckten Vorlage oder ein Impressum enthalten kann.
 
-In der folgenden Abbildung eines Code-Beispiels sieht man die Makrostruktur eines 'unitary'-Textes, z.B. einer Monografie oder eines Dramas, das eine Titelseite und ein Inhaltsverzeichnis enthält, und zudem einen Index am Ende des Buches besitzt.
+Die folgende Abbildung zeigt den Code-Ausschnitt eines Werks, z.B. einer Monografie, der im Vorspann eine Titelseite und ein Inhaltsverzeichnis und im Nachspann einen Index besitzt:
 
 ```xml
 …
@@ -78,9 +78,9 @@ In der folgenden Abbildung eines Code-Beispiels sieht man die Makrostruktur eine
 …
 ```
 
-Wurde im obenstehenden Beispiel ein 'unitary'-Text beschrieben, so zeigt das untenstehende Beispiel, wie man einen 'composite'-Text annotiert, beispielsweise einen Jahrgang einer Zeitschrift mit unterschiedlichen Ausgaben, wie es bei der Zeitschrift aus unserem Beispiel der Fall sein könnte. Hierfür kommt das `<group>`-Element zum Einsatz, das eine Reihe an zusammengehörigen Texten `<text>` beinhaltet.
+Haben die bisherigen Annotationsbeispiele ein Werk als einzelnes TEI-Dokument modelliert, so zeigt das folgende, wie mehrere `<text>`-Elemente – z.B. ein gesamter Jahrgang einer Zeitschrift mit mehreren Ausgaben wie etwa der Zeitschrift _Die Filmwelt_ aus unserer Vorlage –  mithilfe des Elements `<group>` in einem TEI-Dokument zusammengeführt werden können.
 
-Man sieht in diesem Beispiel, dass jeder Text in einer Gruppe mit dem Attribut `xml:id` eine im Gesamtdokument einzigartige Identifikation erhält. Wichtig ist, dass diese ID immer mit einem Buchstaben oder einem Unterstrich beginnen muss und nur Buchstaben, Zahlen, Bindestriche, Unterstriche, oder Punkte enthalten darf, um als valides XML zu gelten. [Mehr Informationen zu xml:id](https://teibyexample.org/tutorials/TBED01v00.htm?target=globalattributes#xmlid).
+Jedes Text-Element erhält im Attribut `@xml:id` einen im gesamten Dokument eindeutigen Bezeichner. Zu beachten ist, dass Identifikatoren immer mit einem Buchstaben oder einem Unterstrich beginnen müssen und nur Buchstaben, Zahlen, Bindestriche, Unterstriche, Punkte und bestimmte Erweiterungszeichen enthalten dürfen um als valides XML zu gelten. [Mehr Informationen zu `@xml:id`](https://teibyexample.org/tutorials/TBED01v00.htm?target=globalattributes#xmlid):
 
 ```xml
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
@@ -102,12 +102,12 @@ Man sieht in diesem Beispiel, dass jeder Text in einer Gruppe mit dem Attribut `
 ```
 
 <SideNote type="note" title="Merke">
-Die Grenze zwischen 'unitary'- und 'composite'-Text kann fließend sein. Eine Essay-Sammlung ist ein möglicher Grenzfall, bei dem je nach Fragestellung an den Text dieser als eine Einheit oder aber als eine Reihe von in sich geschlossenen Elementen betrachtet werden kann. Hier muss die Person, die die Texte kodiert, entscheiden, ob sie die Texte als 'unitary' oder 'composite' kodieren möchte.
+Bevor man die Entscheidung "Einzel- vs. Sammeldokument" trifft, sollte man die daraus resultierenden Konsequenzen bedenken. So steht bei der Gruppierung von mehreren Texten in **einem** TEI-Dokument nur jeweils **ein** `<teiHeader>`-, `<front>`- und `<back>`-Element für die Metadaten, Titelei und etwaige Register oder Anhänge zur Verfügung. Je nachdem um welche Texte es sich handelt, hängt es also davon ab, ob eine solche "Zusammenfassung" als ausreichend betrachtet wird und übersichtlich zu bewerkstelligen ist, oder die Möglichkeiten der granularen Beschreibung und Wiedergabe der Einzelteile zu sehr einschränkt.
 
 *Beispiel Fragestellungen für unitary oder composite ergänzen*
 </SideNote>
 
-Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metadaten zu einem einzelnen Dokument können zu einem **Korpus** `<teiCorpus>` mit einem eigenen Header und den zugehörigen Korpus-Metadaten zusammengefügt werden. Jedes TEI-Element könnte hierbei beispielsweise eine Sammlung an kodierten Texten, eine Version eines Textes, oder Samples eines Sprachkorpus enthalten.
+Eine Möglichkeit mehrere Texte mit jeweils eigenem `<teiHeader>-` und `<text>`-Element einschließlich der Elemente `<front>`, `<body>` und `<back>` in **einem** TEI-Dokument zusammenzuführen, bietet das Element `<teiCorpus>`. So lassen sich sowohl detaillierte Metadaten für das Korpus als Gesamtheit als auch seine Einzelteile unterbringen, seien es unterschiedliche Texte, wie die Ausgaben einer Zeitschrift eines Jahres, verschiedene Textversionen oder -varianten einer Vorlage, Samples eines Sprachkorpus etc.:
 
 ```xml
 <teiCorpus xmlns="http://www.tei-c.org/ns/1.0">
@@ -131,13 +131,13 @@ Eine Reihe von eigenständigen TEI-Elementen `<TEI>` mit jeweils Daten und Metad
 </teiCorpus>
 ```
 
-#### Übung
+#### Quiz
 
 <Quiz>
   <Quiz.Card>
     <Quiz.MultipleChoice>
       <Quiz.Question>
-        **Welche Elemente sind für eine valide Makrostruktur eines TEI-Dokuments mindestens notwendig?** (mehrere Antworten möglich)
+        **Welche Elemente sind für ein valides TEI-Dokument mindestens erforderlich?** (mehrere Antworten möglich)
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option isCorrect>
@@ -186,7 +186,7 @@ In einer Briefedition können beispielsweise Regest und editorische Notiz im Vor
 
 Genauso gut ist es möglich, dass ein vollständig kodiertes historisches Buch aus dem 18. Jahrhundert eine sehr reiche Titelei mit mehreren Titelseiten, Widmungen und Vorworten und ein mehrteiliges Register im Anhang aufweist, und dass diese Struktur auch im `<front>` bzw. `<back>` abgebildet ist. Der moderne Kommentar könnte dann z.B. überhaupt in ein eigenständiges TEI-Dokument ausgelagert werden, damit der Primärtext und der editorische Text klar voneinander getrennt sind.
 
-Das bedeutet auch: Was Sie als ein TEI-Dokument modellieren, ist Ihnen überlassen:
+Das bedeutet auch: Was Sie als **ein** TEI-Dokument modellieren, ist Ihnen überlassen:
 
 - einen Brief, einen Aufsatz, ein Buch
 - einen Band mit allen Ausgaben einer Zeitschrift aus einem Jahr
