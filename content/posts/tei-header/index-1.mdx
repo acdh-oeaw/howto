@@ -364,7 +364,12 @@ Die **'revision description'** `<revisionDesc>` fasst die Revisionsgeschichte ei
 
 Die im `<change>`-Element angegebenen Attribute und ihre Werte dienen der genaueren Spezifizierung einer Änderung: `@when` enthält das Datum der Änderung, `@who` nennt die für die Änderung verantwortliche Person. Die Raute vor dem Bezeichner im Attributwert verweist auf die Definition dieser Person, die sich meist im 'statement of responsibility' des TEI-Header befindet und dort mit dem entsprechenden Bezeichner im `@xml:id`-Attribut gekennzeichnet ist :
 
-Die neueste Veränderung am Dokument sollte hierbei zuerst aufgeführt werden.
+<!-- ... -->
+<persName xml:id="em">Erika Musterfrau</persName>
+<persName xml:id="mm">Max Mustermann</persName>
+<!-- ... -->
+
+Die Werte Attributs `@status` geben, wie der Name vermuten lässt, den Status des Dokuments nach der Änderung an, ob es sich z.B. um einen Entwurf, eine fertige Korrektur oder bereits für die Veröffentlichung freigegebene Version handelt. Die Reihenfolge der Änderungen sollte chronologisch, wahlweise auf- oder absteigend sortiert sein.
 
 #### Übung
 
