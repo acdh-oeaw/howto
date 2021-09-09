@@ -362,7 +362,7 @@ Die **'revision description'** `<revisionDesc>` fasst die Revisionsgeschichte ei
 </revisionDesc>
 ```
 
-Das Attribut `when` im change-Statement enhält das Datum der Änderung, der `status` den Status des Dokuments (also Entwurf, Revision, publiziert), `who` verweist auf eine Person, die an der Änderung beteiligt oder für diese verantwortlich ist, und die für gewöhnlich im 'responsibility statement' oder in einem `<person>`-Element an anderer Stelle im Dokument näher bezeichnet wird.
+Die im `<change>`-Element angegebenen Attribute und ihre Werte dienen der genaueren Spezifizierung einer Änderung: `@when` enthält das Datum der Änderung, `@who` nennt die für die Änderung verantwortliche Person. Die Raute vor dem Bezeichner im Attributwert verweist auf die Definition dieser Person, die sich meist im 'statement of responsibility' des TEI-Header befindet und dort mit dem entsprechenden Bezeichner im `@xml:id`-Attribut gekennzeichnet ist :
 
 Die neueste Veränderung am Dokument sollte hierbei zuerst aufgeführt werden.
 
