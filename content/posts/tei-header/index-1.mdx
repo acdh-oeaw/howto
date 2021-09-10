@@ -249,7 +249,16 @@ Der in diesen Übungen entstandene TEI-Header umfasst nur einige wesentliche Ele
 
 Für unseren Beispieltext enthält das `<encodingDesc>`-Element eine beispielhafte **'editorial declaration'** `<editorialDecl>` mit folgenden Unterelementen:
 
-- **editorische Angaben:** beschreibt die angewandten Richtlinien und Prinzipien für die Annotation `<editorialDecl>`.
+- `<p>` enthält die allgemeine Information, dass nach den TEI-Richtlinien in der Version P5 annotiert wurde.
+- `<hyphenation>`: beschreibt den Umgang mit Worttrennungen am Zeilenende.
+- `<normalization>`: beschreibt, inwieweit Typo- und Orthografie normalisiert wurden.
+- `<correction>`: gibt an, ob Korrekturen stillschweigend vorgenommen, oder als solche annotiert wurden.
+- `<interpretation>`: listet auf, welche semantischen Aspekte annotiert wurden, d.h. welche analytischen oder interpretierenden Informationen dem Text **zusätzlich** zur Transkription hinzugefügt wurden.
+ 
+Die oben erwähnten, jedoch im Beispiel aus Gründen der Übersichtlichkeit nicht enthaltenen weiteren Unterelemente, sind:
+ - `<projectDesc>` ('project description'): beschreibt das Projekt, in dessen Rahmen die Quelle(n) digitalisiert und annotiert wurde(n).
+ - `<tagsDecl>` ('tagging declaration'): beschreibt die angewendete Tagging-Technik.
+ - `<samplingDecl>` ('sampling declaration'): beschreibt die Gründe für die Textauswahl und die dabei angewandten Methoden. 
 
   Wie in obenstehendem Beispiel können u.a. der Umgang mit Silbentrennung `<hyphenation>`, Normalisierung und Regulierung der originalen Quelle `<normalization>`, Korrekturen `<correction>` oder das Ausmaß an analytischer und interpretativer Information, die dem Text in der Transkription hinzugefügt wurde `<interpretation>`.
 - **Projektbeschreibung:** beschreibt das Ziel für das die Quelle kodiert wurde `<projectDesc>`
