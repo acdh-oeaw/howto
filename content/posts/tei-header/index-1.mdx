@@ -219,7 +219,9 @@ In dieser Übung soll die Literaturangabe unserer Quelle als strukturierte Bibli
   </Quiz.Card>
 </Quiz>
 
+
 Der Vollständigkeit halber sei an dieser Stelle noch erwähnt, dass für die bibliografische Strukturierung von Handschriften und frühen Drucken das Element **'manuscript description'** `<msDesc>` für die ausführliche Beschreibung im TEI-Header zur Verfügung steht.
+
 ### Kodierung
 
 Der in diesen Übungen entstandene TEI-Header umfasst nur einige wesentliche Elemente, er kann im Bedarfsfall weitaus detaillierter ausfallen. Ergänzend können auch Informationen zur Kodierung in einer **'encoding description'** `<encodingDesc>` enthalten sein, die Auskunft über den Zusammenhang zwischen der Quelle und dem daraus abgeleiteten elektronischen Text geben wie z.B. Redaktionsprinzipien, Projektbeschreibungen, Angaben zur Verwendung von Tags, der zugrundeliegenden Textauswahl usw.:
@@ -254,12 +256,12 @@ Für unseren Beispieltext enthält das `<encodingDesc>`-Element eine beispielhaf
 - `<normalization>`: beschreibt, inwieweit Typo- und Orthografie normalisiert wurden.
 - `<correction>`: gibt an, ob Korrekturen stillschweigend vorgenommen, oder als solche annotiert wurden.
 - `<interpretation>`: listet auf, welche semantischen Aspekte annotiert wurden, d.h. welche analytischen oder interpretierenden Informationen dem Text **zusätzlich** zur Transkription hinzugefügt wurden.
- 
-Die oben erwähnten, jedoch im Beispiel aus Gründen der Übersichtlichkeit nicht enthaltenen weiteren Unterelemente, sind:
- - `<projectDesc>` ('project description'): beschreibt das Projekt, in dessen Rahmen die Quelle(n) digitalisiert und annotiert wurde(n).
- - `<tagsDecl>` ('tagging declaration'): beschreibt die angewendete Tagging-Technik.
- - `<samplingDecl>` ('sampling declaration'): beschreibt die Gründe für die Textauswahl und die dabei angewandten Methoden. 
 
+Die oben erwähnten, jedoch im Beispiel aus Gründen der Übersichtlichkeit nicht enthaltenen weiteren Unterelemente, sind:
+
+- `<projectDesc>` ('project description'): beschreibt das Projekt, in dessen Rahmen die Quelle(n) digitalisiert und annotiert wurde(n).
+- `<tagsDecl>` ('tagging declaration'): beschreibt die angewendete Tagging-Technik.
+- `<samplingDecl>` ('sampling declaration'): beschreibt die Gründe für die Textauswahl und die dabei angewandten Methoden. 
 
 #### Quiz
 
@@ -376,7 +378,7 @@ Die **'revision description'** `<revisionDesc>` fasst die Revisionsgeschichte ei
 </revisionDesc>
 ```
 
-Die im `<change>`-Element angegebenen Attribute und ihre Werte dienen der genaueren Spezifizierung einer Änderung: `@when` enthält das Datum der Änderung, `@who` nennt die für die Änderung verantwortliche Person. Die Raute vor dem Bezeichner im Attributwert verweist auf die Definition dieser Person, die sich meist im 'statement of responsibility' des TEI-Header befindet und dort mit dem entsprechenden Bezeichner im `@xml:id`-Attribut gekennzeichnet ist :
+Die im `<change>`-Element angegebenen Attribute und ihre Werte dienen der genaueren Spezifizierung einer Änderung: `@when` enthält das Datum der Änderung, `@who` nennt die für die Änderung verantwortliche Person. Die Raute vor dem Bezeichner im Attributwert verweist auf die Definition dieser Person, die sich meist im 'statement of responsibility' des TEI-Header befindet und dort mit dem entsprechenden Bezeichner im `@xml:id`-Attribut gekennzeichnet ist:
 
 ```xml
 <!-- ... -->
