@@ -328,12 +328,13 @@ Es könnte sich z.B. um ein unveröffentlichtes Arbeitsdokument handeln, das gar
 Wie ersichtlich, würde ein einfacher Absatz ausreichen um Angaben über Veröffentlichungsbedingungen zu zu machen. Es empfiehlt sich jedoch auch hier, für ausführliche Informationen eine komplexere semantische Strukturierung vorzunehmen. Einige Elemente wie `<publisher>`, `<orgName>`, `<pubPlace>` oder `<date>` sind bereits aus der Quellenbeschreibung bekannt.
 
 Als weitere Elemente stehen in diesem Zusammenhang u.a. das `<email>`-Element **'electronic mail address'** für eine Emailadresse sowie das Element **'identifier'** `<idno>` zur Verfügung, das einen Bezeichner für die standardisierte Identifikation eines Objekts enthält. In diesem Fall ist das bezeichnete Objekt das Institut, das als 'publisher' auftritt. Das Attribut `@type` spezifiziert die Art der Identifikation und verweist auf den Eintrag für das **ACDH-CH** im [Virtual Authority File](https://viaf.org/viaf/6515148451584915970000/).
+Andere Identifikatoren wären etwa:
 
-- **ISBN**: "International Standard Book Number" (ISBN-Nummer), die Bücher international eindeutig identifiziert.
-- **ISSN:** "International Standard Serial Number" (ISSN-Nummer), eine international einheitliche Indentifikationsnummer für serielle Publikationen, wie z.B. Zeitschriften.
-- **DOI:** "Digital Object Identifier", eine einmalige Zeichenfolge (aus Nummern und Buchstaben) die ein elektronisches Dokument identifiziert.
-- **URI:** Uniform Resource Identifier, eine eindeutige Identifikation einer Ressource (von physischen Objekte bis hin zu digitalen Ressourcen wie Webseiten), die gleichzeitig Hinweise auf den Zugriff der Ressource gibt.
-- **VIAF:** Eine Normdatennummer im Virtual International Authority File (VIAF), einer virtuellen internationalen Normdatei als Verknüpfung nationaler Normdateien z.B. der gemeinsamen Normdatei. Diese wird als Uniform Resource Identifier für Linked-Open-Data Anwendungen genutzt.
+- **ISBN**: 'International Standard Book Number' (Internationale Standardbuchnummer) für die eindeutige Identifikation von Büchern.
+- **ISSN:** 'International Standard Serial Number' (Internationale Standardnummer für fortlaufende Sammelwerke) für die Identifikation von Zeitschriften und Schriftenreihen.
+- **DOI:** 'Digital Object Identifier' für die Identifikation digitaler Objekte.
+- **URI:** 'Uniform Resource Identifier' für Ressourcen im Internet. Das können einzelne Dokumente, aber auch Webseiten, Webservices und weiteres sein.
+- **VIAF:** 'Virtual International Authority File' ist eine virtuelle internationale Normdatei, die nationale Normdateien zusammenführt und identische Normdatensätze verlinkt. VIAF-Identifikatoren kommen nicht nur bei der Katalogisierung von Bibliotheks- und Archivbeständen zum Einsatz, sondern werden auch von Museen, Projekten und Web-Anwendungen genutzt.
 
 Das Element `<availability>` gibt Informationen zur Verfügbarkeit des Textes sowie Einschränkungen zur Nutzbarkeit, der Verbreitung, dem Copyright Status, oder der Lizenzierung. Die **Lizenzinformation** wird innerhalb des **availability-Elements** mittels des Elements `<licence>` angegeben. Das Attribut `target` wird hierbei zur Referenzierung des Volltextes der Lizenz verwendet.
 
