@@ -403,7 +403,7 @@ Die Werte Attributs `@status` geben, wie der Name vermuten lässt, den Status de
       <Quiz.Question>
         Fügen Sie hier einen ersten Eintrag der Revisionsgeschichte mit dem Datum 21.04.2021 und dem Namenskürzel von Max Mustermann "mm" als den Urheber dieser Änderung hinzu.
 
-        Markieren Sie das Dokument als Entwurf `<draft>` und beschreiben Sie den Status als "Erster Entwurf abgeschlossen".
+        Setzen Sie im `@status`-Attribut den Wert **`draft`** und als Beschreibungstext **"Erster Entwurf abgeschlossen."** ein
       </Quiz.Question>
     </Quiz.XmlCodeEditor>
   </Quiz.Card>
@@ -412,9 +412,9 @@ Die Werte Attributs `@status` geben, wie der Name vermuten lässt, den Status de
 
 ### Inhalt & Kontext
 
-Auch Informationen zum Inhalt des elektronischen Dokuments und seinem Kontext können bereits im Header erfasst werden. Hierfür kommt die **'text-profile description'** `<profileDesc>` zum Einsatz, die nicht-bibliographische Aspekte des Textes wie Sprachen, Produktionskontext oder die vorkommenden Personen / Stimmen erfasst.
+Eine letzte der eingangs erwähnten fünf Hauptkomponenten des TEI-Header, die hier näher erläutert werden soll, ist die **'text-profile description'** `<profileDesc>`, die zum Einsatz kommt um nicht-bibliografische Aspekte von Texten wie z.B. die verwendeten Sprachen, den Produktionskontext, die daran Beteiligten und ihren Hintergrund zu beschreiben, oder im Text vorkommende Personen zu erfassen.
 
-Innerhalb der 'text-profile description' können beispielsweise folgende Aspekte mit dem jeweils nachstehenden Element erfasst werden:
+Im Element `<profileDesc>` stehen u.a. diese Unterelemente zur Verfügung:
 
 - Sprachen im Text `<langUsage>`
 - Verschlagwortung `<textClass>`
