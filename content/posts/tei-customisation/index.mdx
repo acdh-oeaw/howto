@@ -319,6 +319,19 @@ Im `<back>` zu _Die Filmwelt_ werden zwei Personenregister festgelegt; ein histo
 
 Im Folgenden sehen Sie, wie diese Annahme im .odd-Dokument ausgezeichnet wird:
 
+```xml
+<rule context="tei:persName[count(parent::tei:person/tei:persName) gt 1]"
+  xmlns="http://purl.oclc.org/dsdl/schematron">
+    <assert test="@type=('artistName','birthName')">Mehrere Personennamen im Personenregister müssen durch die Typen "artistName" oder "birthName" unterschieden werden.
+    </assert>
+</rule>
+<rule context="tei:persName[count(parent::tei:person/tei:persName)=1]"
+  xmlns="http://purl.oclc.org/dsdl/schematron">
+    <assert test="not(@type)">Hat eine Person im Personenregister nur einen Namen, darf dieser nicht typisiert sein (Geburtsname wird angenommen).
+    </assert>
+</rule>
+```
+
 /_ ![TEI Klassen](images/Folie92.png)_ /
 
 /_ ![ODD-Anpassung (1)](images/Folie93.png)_ /
