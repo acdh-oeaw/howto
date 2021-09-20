@@ -37,6 +37,8 @@ Textkritik ist daher eine Methode um alle Einflüsse der Entstehung und Überlie
 
 Das Ziel der Textkritik ist die Konstruktion des Archetyps des Textes. In der digitalen Edition ist es möglich, den Prozess der Textkritik übersichtlich zu veranschaulichen.
 
+Die TEI bevorzugt keine bestimmte Erstellungsweis des textkritischen Apparats. Es ist den Editor*innen überlassen, wie viele Textzeugen angegeben werden, ob am Ende eine Edition eines einziges Textes erstellt sein soll, ob ein positiver oder negativer Apparat geführt wird. Durch die vielfältigen Markup-Optionen stehen Ihnen alle Varianten offen.
+
 ## Praktische Anwendung
 
 /// Die Inhalte kommen vor allem aus der TEI Dokumentation. Wollen wir dafür direkt auf die TEI Dokumentation verweisen oder sie anhand eines eigenen Beispiels erläutern?
@@ -47,23 +49,31 @@ Das Ziel der Textkritik ist die Konstruktion des Archetyps des Textes. In der di
 
 ### Praktische Anwendung: Textkritisches Markup
 
-Bei der Auszeichnung des textkritischen Markups wird der editierte Text sowie die Veränderungen durch die textkritischen Methoden dargestellt. So kann auch die Textgenese an des [kritischen Apparates](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html) nachvollzogen werden, der Platz für Variationen und Anmerkungen bietet.
+Bei der Auszeichnung des textkritischen Markups wird der editierte Text sowie die Veränderungen durch die textkritischen Methoden dargestellt. So kann auch die Textgenese an des [kritischen Apparates](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html) nachvollzogen werden, der Platz für Variationen und Anmerkungen bietet. Im Folgenden finden Sie mehrere Beispiele für die Anwendung des textkritischen Markups.
 
-### Verbindung von Text und Apparat
+#### Korrektur offensichtlicher Fehler
 
-Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html)
+![Textkritisches Markup, Tippfehler und ](images/Folie70.png "Textkritisches Markup (1)")
 
-![Textkritisches Markup (1)](images/Folie70.png)
+Im Beispiel wird ein Tippfehler im Text als auch dessen Korrektur ausgezeichnet. Einerseits können sie beide Schritte - das Erkennen des Fehlers [`<sic>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sic.html)und die entsprechende Korrektur [`<corr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-corr.html) - separat auszeichnen, andererseits können Sie sich des [Elements `<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html) bedienen, um die richtige Lesart und den Fehler darzustellen. Dieses Element verbindet mehrere Kodierungsmöglichkeiten an derselben Textstelle, `<sic>`und  `<corr>` sind Kindselemente, die einander ausschließen. Beachten Sie, dass mit dem Attribut `cert="high"` festgehalten wird, dass die vorgenommene Korrektur sehr wahrscheinlich richtig ist.
 
-![Textkritisches Markup (2)](images/Folie71.png)
+#### Normalisierung, Abkürzung
 
-![Textkritisches Markup (3): Umstellungen](images/Folie72.png)
+Nicht jeder wahrgenommen Fehler, so wie der Tippfehler im obigen Beispiel, ist ein Fehler im eigentlichen Sinn, der korrigiert werden sollte. Beispiele sind geänderte Rechtschreibungen, die dazu führen, dass Schreibweisen normalisiert, also der Norm angepasst, werden. Zudem können Abkürzungen durch zusätzliche Ausschreibung im textkritischen Markup erklärt werden. 
+
+![Textkritisches Markup (2)](images/Folie71.png "Textkritisches Markup (2)")
+
+![Textkritisches Markup (3): Umstellungen](images/Folie72.png "Textkritisches Markup (3): Umstellungen")
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#transpo)
 
 ![Text-Orientiertes Markup](images/Folie73.png)
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
+
+### Verbindung von Text und Apparat
+
+Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html)
 
 ![Dokument-orientiertes Markup](images/Folie74.png)
 
