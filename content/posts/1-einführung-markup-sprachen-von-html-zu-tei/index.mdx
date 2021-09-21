@@ -101,7 +101,7 @@ Die Bezeichnung von XML als "Markup Language" ist leider nicht sehr präzise gew
 
 Verantwortlich für die Entwicklung von XML ist das 1994 gegründete [World Wide Web Consortium](https://www.w3.org/) unter der Leitung von Tim Berners-Lee, dem Erfinder der Hypertext Markup Language und des World Wide Web. Dieses internationale Gremium bemüht sich darum, Web-Standards zu entwickeln und Richtlinien zu den einzelnen Spezifikationen herauszugeben mit dem Ziel, das Potential und die Reichweite des Web zu vergrößern, es langfristig zu sichern und von einzelnen Herstellern unabhängig zu erhalten.
 
-Das Konsortium besteht aus einem fixen Team mit mehr als 60 Personen. Die vier Gastgeberorganisationen sind das MIT Computer Science and Artificial Intelligence Laboratory (MIT/CSAIL) in den USA, das European Research Consortium for Informatics and Mathematics (ERCIM) in Frankreich, die KEIO University in Japan und die Beihang University in China. Dazu kommen über 400 Mitgliederorganisationen aus mehr als 30 Ländern. Ergänzt wird die Arbeit dieser beiden Gruppen durch Beiträge aus der interessierten Web-Community, die an den Entwicklungs- und Diskussionsprozessen maßgeblich beteiligt ist. Ihre Mitarbeit ist ein Garant dafür, dass die Empfehlungen nicht nur sehr praxisorientiert und erprobt sind, sondern den Nutzer\*innen z.B. Übersetzungen der Empfehlungen in über 40 Sprachen und einzelne Implementierungen als Open Source zur Verfügung stehen.
+Das Konsortium besteht aus einem fixen Team mit mehr als 60 Personen. Die vier Gastgeberorganisationen sind das MIT Computer Science and Artificial Intelligence Laboratory (MIT/CSAIL) in den USA, das European Research Consortium for Informatics and Mathematics (ERCIM) in Frankreich, die KEIO University in Japan und die Beihang University in China. Dazu kommen über 400 Mitgliederorganisationen aus mehr als 30 Ländern. Ergänzt wird die Arbeit dieser beiden Gruppen durch Beiträge aus der interessierten Web-Community, die an den Entwicklungs- und Diskussionsprozessen maßgeblich beteiligt ist. Ihre Mitarbeit ist ein Garant dafür, dass die Empfehlungen nicht nur sehr praxisorientiert und erprobt sind, sondern den Nutzer*innen z.B. Übersetzungen der Empfehlungen in über 40 Sprachen und einzelne Implementierungen als Open Source zur Verfügung stehen.
 
 Erstmals als Empfehlung veröffentlicht wurde XML 1998, die derzeit aktuelle [5. Ausgabe](w3.org/TR/xml/) stammt vom November 2008.
 
@@ -222,7 +222,7 @@ Wie schon erwähnt, kann im Grunde jeder mit XML seine eigene Markup-Sprache fü
 Obwohl diese Regel optional ist, empfiehlt es sich, sie einzuhalten – aus mehreren Gründen: 
 
 - Ein Schema ist zum einen nützlich, damit man selbst überprüfen kann, ob man mehrere Dokumente desselben Typs einheitlich annotiert hat. 
-- Zum anderen dokumentiert es die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder Daten von anderen Wissenschaftler\*innen nachnutzen und weiterverarbeiten wollen.
+- Zum anderen dokumentiert es die vorhandene Struktur und macht sie für Dritte nachvollziehbar, die u.U. gleichartige Dokumente auf dieselbe Weise annotieren möchten, oder Daten von anderen Wissenschaftler*innen nachnutzen und weiterverarbeiten wollen.
 
 Es gibt mehrere Möglichkeiten, ein Schema zu schreiben. Am Beginn der Entwicklung stand **['Document Type Definition'](https://www.w3schools.com/xml/xml_dtd.asp) (DTD)**. DTD wurden vom XML-Vorgängerstandard [Standard Generalized Markup Language (SGML)](https://www.w3.org/History/19921103-hypertext/hypertext/WWW/MarkUp/SGML.html) übernommen, ist allerdings in einer Sprache geschrieben, die selbst kein XML ist. Dies bedeutet einen Zusatzaufwand, da man diese Sprache erst erlernen muss. 
 
@@ -295,7 +295,7 @@ Innerhalb des Wurzelelements befindet sich ein div-Element ("div" steht für 'di
 
 ### Aufbau von XML-Dokumenten
 
-![Aufbau XML Dokument](images/xml-dokument.png "Aufbau eines XML-Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
+![Aufbau XML Dokument](images/xml-dokument_neu.png "Aufbau eines XML-Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
 
 Die obenstehende Grafik zeigt den Aufbau eines XML-Dokuments. Jedes XML-Dokument beginnt mit einem **Prolog**, der zumindest die **XML-Deklaration** ('XML declaration') enthält, die angibt, um welche XML-Version es sich handelt. Die Tags des Prologs zeichnen sich durch eine besondere Schreibweise aus: sie sind einteilig und an den Fragezeichen vorne und hinten zu erkennen. 
 
@@ -309,13 +309,13 @@ Im Wurzelelement befindet sich ein Attribut mit der Bezeichnung **Namensraum** (
 
 Handelt es sich z.B. um ein **Dokument**, das **nach den Richtlinien der TEI** erstellt wurde, ist der **Name des Wurzelelements TEI**. Der Attributwert von `@xmlns` verweist darauf, dass ausschließlich von der TEI definierte Elemente und Attribute verwendet wurden. 
 
-![TEI Namensraum](images/tei-namensraum.png "TEI-Namensraum. Bild: Ulrike Czeitschner, ACDH-CH")
+![TEI Namensraum](images/tei-namensraum_neu.png "TEI-Namensraum. Bild: Ulrike Czeitschner, ACDH-CH")
 
 Möchte man Komponenten aus verschiedenen Namensräumen mischen, müssen zwei Namensraum-Deklarationen angegeben werden, die jeweils unterschiedliche Präfixe definieren, z.B. ein Attribut `@xmlns:tei` und ein Attribut `@xmlns:xyz`. 
 
 Im Dokument selbst müssen diese Präfixe, gefolgt von einem Doppelpunkt, den betreffenden Elementnamen vorangestellt werden um deren Schema-Zugehörigkeit anzuzeigen:
 
-![mehrere Namensraeume](images/mehrerenamensraeumexml.png "Mehrere Namensräume. Bild: Ulrike Czeitschner, ACDH-CH")
+![mehrere Namensraeume](images/mehrerenamensraeumexml_neu.png "Mehrere Namensräume. Bild: Ulrike Czeitschner, ACDH-CH")
 
 <SideNote type="note" title="Hinweis">
 Kommentare sind außerhalb von einführenden oder schließenden Tags überall erlaubt. Sie werden eingeleitet von einer Spitzklammer, einem Rufzeichen, sowie zwei Minuszeichen. Dann folgt der Kommentartext, danach zwei Minuszeichen und eine schließende Spitzklammer:
@@ -386,10 +386,10 @@ Im Gegensatz dazu, geht es im TEI-Dokumentenformat dezidiert darum, **Texte kodi
 
 Mit TEI lassen sich unterschiedlichste **Aspekte von Texten kodieren**. Relevante Fragen in diesem Zusammenhang wären z.B.:
 
-- Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.? \> **Strukturelles Markup**
-- Über welche "Dinge" spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte etc.), aber auch Konzepte, Ideen, andere Texte usw. \> **Semantisches Markup**
-- Wie spricht der Text? Mit welchen linguistischen, rhetorischen oder narratologischen Mitteln arbeitet er – Aspekte, die nicht an der Textoberfläche manifest sind, sondern erst durch Analyseschritte erfassbar werden. \> **Analytisches Markup**
-- Und schließlich: Wie sieht der Text aus? \> **Repräsentationales Markup**
+- Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.? > **Strukturelles Markup**
+- Über welche "Dinge" spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte etc.), aber auch Konzepte, Ideen, andere Texte usw. > **Semantisches Markup**
+- Wie spricht der Text? Mit welchen linguistischen, rhetorischen oder narratologischen Mitteln arbeitet er – Aspekte, die nicht an der Textoberfläche manifest sind, sondern erst durch Analyseschritte erfassbar werden. > **Analytisches Markup**
+- Und schließlich: Wie sieht der Text aus? > **Repräsentationales Markup**
 
 <SideNote type="note" title="Merke">
 **Repräsentationales Markup** oder 'renditional markup' ist nicht dasselbe wie **Präsentationales Markup** 'presentational markup'! 
