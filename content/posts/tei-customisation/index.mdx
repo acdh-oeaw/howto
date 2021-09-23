@@ -51,11 +51,11 @@ Folgenden Grundaktionen zur Anpassung stehen Ihnen zur Verfügung.
 - Attribute und Werte für Elemente und Klassen verändern
 - Klassenzugehörigkeit modifizieren
 - neue Elemente (zu bestehenden Klassen) hinzufügen
-Achten Sie darauf, dass Ihr Schema auch nach den Anpassungen nach TEI_all gültig bleibt:
+  Achten Sie darauf, dass Ihr Schema auch nach den Anpassungen nach TEI_all gültig bleibt:
 
 #### Praktische Anwendung
 
-Sehen Sie sich bitte das folgende Beispiel für ein Schema an, das zur Validierung der Annotation des Beispieltextes benutzt wurde:
+Sehen Sie sich im folgenden Beispiel die ersten Zeilen aus dem Schema an, das zur Validierung der Annotation unseres Beispieltextes **Die Filmwelt** benutzt wurde:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -64,15 +64,13 @@ Sehen Sie sich bitte das folgende Beispiel für ein Schema an, das zur Validieru
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 ```
 
-Im oben gezeigten Beispiel sehen Sie die ersten Zeilen der Auszeichnung unserer Beispielzeitschrift. Neben der Angabe der Kodierung der genutzten Zeichen `UTF-8`, finden Sie hier auch die Angabe zum verwendeten Schema. Die Auszeichnung mit Referenz-URI, `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"` zeigt, dass diese Auszeichnung gegen das `relaxng`- Schema validiert wird. Das bedeutet, dass alle Elemente, Klassen und Attribute, die in diesem Schema verfügbar sind, als gültig akzeptiert werden. Entsprechende Referenzen finden Sie auf der TEI-Website, sofern Sie sich auf ein bereits vorhandenes Schema beziehen.
-
-Die Auszeichnung des Schemas finden Sie zu Beginn einer Auszeichnung Ihres Dokumentes im folgenden Ausdruck: `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"`.
+Neben der Angabe der Kodierung der genutzten Zeichen `UTF-8`, finden Sie hier auch die Angabe zum verwendeten Schema. Die Auszeichnung mit Referenz-URI, `?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"` zeigt, dass diese Auszeichnung in [`relaxng`](https://relaxng.org/compact-tutorial-20030326.html) validiert wird. **Relax NG** ist eine Schema-Sprache für XML und ein Standard für Datenvalidierung. Das Relax NG-Schema definiert das Modell für die Struktur und den Inhalt der XML-Dokumente.  Alle Elemente, Klassen und Attribute, die in diesem Schema verfügbar sind, werden als gültig akzeptiert. Entsprechende Referenzen finden Sie auf der TEI-Website, sofern Sie sich auf ein bereits vorhandenes Schema beziehen.
 
 Insgesamt gibt es derzeit 23 Module, in denen die Deklarationen der verfügbaren Elemente festgehalten werden. Aus ihnen können Sie beliebig viele für Ihr Schema wählen. Die TEI empfiehlt, dass die Module **core**  (Elemente, die in jedem TEI Dokument vorkommen), **header** (gemeinsame Metadaten), **textstructure** (grundlegende Textstruktur) und **TEI** (TEI Infrastruktur) immer vorkommen sollten. Eine Auflistung der Module finden Sie [hier](https://tei-c.org/release/doc/tei-p5-doc/en/html/ST.html). 
 
 Eine Auflistung der Schema, die von der TEI zur Verfügung gestellt werden und auch in Roma bzw im Editor Oxygen verfügbar sind, finden Sie [hier](https://tei-c.org/guidelines/customization/).
 
-##### Übung 1a: Schema erkennen
+##### Quiz 1a: Schema erkennen
 
 Sie möchten ein Schema nutzen, um Ihre Auszeichnung von Friedrich Zelniks Gedicht "Der Filmstar" zu validieren.
 
@@ -118,11 +116,11 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von Friedrich Zelniks Gedic
   <Quiz.Card validateButtonLabel="Überprüfen">
     <Quiz.MultipleChoice>
       <Quiz.Question>
-        Wie können Sie vorgehen?
+        Wie können Sie vorgehen? Wählen Sie alle richtigen Antworten aus.
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option>
-        a) Ich nutze das Schema _'All'_, da ich noch nicht sicher bin, was ich auszeichnen möchte und mir alle Freiheiten offen halten möchte.
+        a) Ich nutze das Schema _'Speech'_, da der Text auch in gesprochener Sprache präsentiert werden könnte, und ich so phonetische Phänomene hervorheben kann.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
@@ -138,11 +136,11 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von Friedrich Zelniks Gedic
       </Quiz.MultipleChoice.Option>
 
       <Quiz.Message type="correct">
-        Sehr gut!
+        Sehr gut! _TEI-Lite_ bietet genug Auswahl, um diesen kurzen Text auszuzeichnen. Wenn Sie das Modul _verse_ nutzen, können Sie die Struktur eines Gedichts auszeichnen.
       </Quiz.Message>
 
       <Quiz.Message type="incorrect">
-        Überlegen Sie nochmal!
+        Leider falsch, überlegen Sie nochmal!
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
@@ -188,10 +186,18 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von Friedrich Zelniks Gedic
 
       <Quiz.Message type="correct">
         Richtig! Die Möglichkeit der alphabetischen Sortierung ist für die Definition dessen, worauf Elemente, Klassen, Attribute im Text verweisen, irrelevant.
+        Möglich sind:
+
+        - Elemente entfernen
+        - Elemente umbenennen
+        - Die sogenannten "content models" von Elementen und Klassen verändern
+        - Attribute und Werte für Elemente und Klassen verändern
+        - Klassenzugehörigkeit modifizieren
+        - neue Elemente (zu bestehenden Klassen) hinzufügen
       </Quiz.Message>
 
       <Quiz.Message type="incorrect">
-        Überlegen Sie nochmal!
+        Leider falsch, überlegen Sie nochmal!
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
@@ -200,10 +206,10 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von Friedrich Zelniks Gedic
 
 ### TEI-Klassen
 
-In TEI finden sich über 500 Elemente. Wie Sie inzwischen wissen, finden sich diese Elemente (und ihre Attribute) in den TEI-Modulen. Doch auch wenn die Elemente einem Modul zugeordnet sind, haben viele Elemente und Attribute Gemeinsamkeiten, die über die Grenzen der Module hinausgehen. Zur besseren Übersicht und Verständlichkeit dieser Gemeinsamkeiten wurden die Elemente in Klassen eingeteilt. Bevor man sich näher mit den Klassen einzelner Elemente beschäftigt, muss angemerkt werden, dass zwei unterschiedliche Möglichkeiten des Ausdrucks von Gemeinsamkeiten gibt: wenn man Elemente danach einteilt, dass sie Attribute teilen, werden sie über Attributsklassen klassizifiert. Werden Elemente danach klassifiziert, dass sie im 'content model' am selben Ort in der Texthierarchie vorkommen, spricht man von Model-Klassen.
+In TEI finden sich über 500 Elemente. Wie Sie inzwischen wissen, finden sich diese Elemente (und ihre Attribute) in den TEI-Modulen. Doch auch wenn die Elemente einem Modul zugeordnet sind, haben viele Elemente und Attribute Gemeinsamkeiten, die über die Grenzen der Module hinausgehen. Zur besseren Übersicht und Verständlichkeit dieser Gemeinsamkeiten wurden die Elemente in Klassen eingeteilt. Bevor man sich näher mit den Klassen einzelner Elemente beschäftigt, muss angemerkt werden, dass zwei unterschiedliche Möglichkeiten des Ausdrucks von Gemeinsamkeiten gibt: wenn man Elemente danach einteilt, dass sie dieselben Attribute verwenden können, werden sie über **Attributsklassen** klassizifiert. Werden Elemente danach klassifiziert, dass sie im 'content model_'_ am selben Ort in der Texthierarchie vorkommen, spricht man von **Model-Klassen**.
 
 <SideNote type="note" title="Ererbte Eigenschaften">
-Die Mitglieder einer Klasse teilen bestimmte Eigenschaften miteinander. Diese Eigenschaften werden kaum im Element selbst definiert, sondern ergeben sich aus der Mitgliedschaft in einer Klasse. Ebenso werden Eigenschaften "vererbt", wenn die Klasse eines Elements oder Attributs einer Über- oder Unterklasse zugeordnet ist.
+Die Mitglieder einer Klasse teilen bestimmte Eigenschaften miteinander. Diese Eigenschaften werden selten im Element selbst definiert, sondern in einem [classSpec](https://tei-c.org/release/doc/tei-p5-doc/de/html/TD.html#TDCLA) - Element, das Referenzinformation über die Elemente in derselben Attributs- oder Model-Klasse enthält. Man kann zu jedem Element oder Attribut, das man nutzt, in der Dokumentation nachlesen, welchen Klassen es angehört und welche Eigenschaften damit verbunden sind. Ebenso werden Eigenschaften "vererbt", wenn die Klasse eines Elements oder Attributs einer Über- oder Unterklasse zugeordnet ist. Wenn Sie also ein Element [mit einem bisher dort nicht genutzten Attribut verknüpfen](https://tei-c.org/release/doc/tei-p5-doc/de/html/USE.html#MDMDAL) wollen, so müssen Sie das Element der entsprechenden Attributsklasse hinzufügen.
 </SideNote>
 
 **Attributklassen** (_[attribute class](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ST.html#STECAT)_): Gruppierung ähnlicher Attribute (z.B. `<att.typed>`)
