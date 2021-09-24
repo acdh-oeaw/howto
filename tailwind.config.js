@@ -121,6 +121,7 @@ const config = {
   ],
 }
 
+/** @type {(num: number) => string} */
 function round(num) {
   return num
     .toFixed(7)
@@ -128,6 +129,7 @@ function round(num) {
     .replace(/\.0$/, '')
 }
 
+/** @type {(px: number, base: number) => string} */
 function em(px, base) {
   return `${round(px / base)}em`
 }
