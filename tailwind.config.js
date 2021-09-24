@@ -55,6 +55,20 @@ const config = {
                   )} 0px 0px 0px 5px`,
                 },
               },
+              h5: {
+                color: theme('colors.gray.900'),
+                fontWeight: '500',
+                fontStyle: 'italic',
+                marginTop: em(24, 16),
+                marginBottom: em(8, 16),
+                lineHeight: round(24 / 16),
+              },
+              'h5 strong': {
+                fontWeight: '700',
+              },
+              'h5 + *': {
+                marginTop: '0',
+              },
               strong: {
                 color: 'inherit',
               },
@@ -67,6 +81,15 @@ const config = {
               },
               '.quiz-multiple-choice li::before': {
                 display: 'none',
+              },
+            },
+          },
+          sm: {
+            css: {
+              h5: {
+                marginTop: em(20, 14),
+                marginBottom: em(8, 14),
+                lineHeight: round(20 / 14),
               },
             },
           },
@@ -96,6 +119,17 @@ const config = {
     /** @ts-expect-error Missing module declaration. */
     require('@tailwindcss/aspect-ratio'),
   ],
+}
+
+function round(num) {
+  return num
+    .toFixed(7)
+    .replace(/(\.[0-9]+?)0+$/, '$1')
+    .replace(/\.0$/, '')
+}
+
+function em(px, base) {
+  return `${round(px / base)}em`
 }
 
 module.exports = config
