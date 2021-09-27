@@ -1,7 +1,7 @@
 import type { Root } from 'mdast'
 import { toString } from 'mdast-util-to-string'
 import type { Transformer } from 'unified'
-import { visit } from 'unist-util-visit'
+import { visit, SKIP } from 'unist-util-visit'
 
 export interface Chunk {
   title: string | null
@@ -27,8 +27,8 @@ export default function attacher(): Transformer<Root> {
       },
     ]
 
-    visit(tree, function onHeading(node) {
-      if (node.type === 'root') return
+    visit(tree, function onNode(node) {
+      if (node.type === 'root') return undefined
 
       if (node.type === 'heading') {
         const chunk: Chunk = {
@@ -44,6 +44,8 @@ export default function attacher(): Transformer<Root> {
           last.content.children.push(node)
         }
       }
+
+      return SKIP
     })
 
     file.data.chunks = chunks
