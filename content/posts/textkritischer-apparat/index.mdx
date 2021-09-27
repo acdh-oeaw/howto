@@ -59,9 +59,13 @@ Im Beispiel wird ein Tippfehler im Text als auch dessen Korrektur ausgezeichnet.
 
 #### Normalisierung, Abkürzung
 
-Nicht jeder wahrgenommen Fehler, so wie der Tippfehler im obigen Beispiel, ist ein Fehler im eigentlichen Sinn, der korrigiert werden sollte. Beispiele sind geänderte Rechtschreibungen, die dazu führen, dass Schreibweisen normalisiert, also der Norm angepasst, werden. Zudem können Abkürzungen durch zusätzliche Ausschreibung im textkritischen Markup erklärt werden. 
+Nicht jeder wahrgenommen Fehler, so wie der Tippfehler im obigen Beispiel, ist ein Fehler, der korrigiert werden sollte. Beispiele für Textelemente, die als Fehler wahrgenommen werden können, sind beispielsweise Änderungen in der Rechtschreibung, die dazu führen, dass Schreibweisen normalisiert, also der Norm angepasst, werden. Das textkritische Markup kann solche Veränderungen dokumentieren. Ein weiteres Beispiel sind Abkürzungen, die durch zusätzliche Ausschreibung im textkritischen Markup erklärt werden können. Unten sehen Sie wie Auszeichnungsmöglichkeiten kombiniert werden können. Ähnlich wie oben wird wieder das Elemente `<choice>` genutzt.
 
 ![Textkritisches Markup (2)](images/Folie71.png "Textkritisches Markup (2)")
+
+#### Umstellungen
+
+Eine [Umstellung im Text](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#transpo) wird häufig durch Metazeichen im Text angezeigt. Im Beispiel unten wurden Zahlen über die entsprechenden Textbausteine geschrieben, um deren richtige Reihenfolge anzuzeigen. Die Kodierung beschreibt auch nicht das beabsichtigte Ergebnis in einer Reinschrift oder dem Druck, sondern sie dokumentiert die Darstellung im Text. In der hier gezeigten Auszeichnung wird gezeigt, dass die Umstellung in einer Zeile `<line>` passiert, die Umstellungsfunktion `transposition` wird angegeben, sowie Information zum Metazeichen `<metamark>` selbst, das unterstrichen `rend="underline"` über dem Text `place="above"` steht. Zusätzlich werden die Umstellungen im Text in einer Liste `<listTranspose>` dokumentiert, hier wird durch die individuelle `id` auch auf einen ganz bestimmten Eintrag verwiesen.
 
 ![Textkritisches Markup (3): Umstellungen](images/Folie72.png "Textkritisches Markup (3): Umstellungen")
 
@@ -106,4 +110,4 @@ Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=one
 ![Verbindung von Text & Apparat (5)](images/Folie83.png)
 
 Weiterführende Links:
---. Textkritischer Apparat, Kapitel 12 der TEI. ![https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html]
+--. Textkritischer Apparat, Kapitel 12 der TEI. !\[https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html]
