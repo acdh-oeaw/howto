@@ -53,7 +53,7 @@ Folgenden Grundaktionen zur Anpassung stehen Ihnen zur Verfügung.
 - neue Elemente (zu bestehenden Klassen) hinzufügen
   Achten Sie darauf, dass Ihr Schema auch nach den Anpassungen nach TEI_all gültig bleibt:
 
-#### Praktische Anwendung
+### Praktische Anwendung
 
 Sehen Sie sich im folgenden Beispiel die ersten Zeilen aus dem Schema an, das zur Validierung der Annotation unseres Beispieltextes **Die Filmwelt** benutzt wurde:
 
@@ -70,7 +70,7 @@ Insgesamt gibt es derzeit 23 Module, in denen die Deklarationen der verfügbaren
 
 Eine Auflistung der Schema, die von der TEI zur Verfügung gestellt werden und auch in Roma bzw im Editor Oxygen verfügbar sind, finden Sie [hier](https://tei-c.org/guidelines/customization/).
 
-##### Quiz 1a: Schema erkennen
+#### Quiz 1a: Schema erkennen
 
 Sie möchten ein Schema nutzen, um Ihre Auszeichnung von Friedrich Zelniks Gedicht "Der Filmstar" zu validieren.
 
@@ -143,7 +143,7 @@ Sie möchten ein Schema nutzen, um Ihre Auszeichnung von Friedrich Zelniks Gedic
 </Quiz>
 
 
-##### Quiz 1b: Schema erkennen
+#### Quiz 1b: Schema erkennen
 
 <Quiz>
   <Quiz.Card>
@@ -218,7 +218,7 @@ Achtung: Die Attributsklasse `<att.global>` der globalen Attribute ist in jedem 
 
 **Beispiel:**  Die Model-Klasse [`<model.pLike>`](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-model.pLike.html) umfasst Elemente, die Absatz `<p>` (paragraph)-ähnliche Strukturen auszeichnen. Durch die Zugehörigkeit zur Model-Klasse `<model.pLike>` wird festgelegt, dass sowohl das Element `<p>` (Absatz), als auch `<ab>` (ein unbestimmtes, absatzartiges Element, das nicht dieselbe semantische Konnotation wie ein Absatz hat) eine absatzähnliche Struktur aufweisen. Jede Model-Klasse startet mit "model.", danach folgt eine Bezeichnung der nachfolgenden Elemente.
 
-#### Praktische Anwendung
+### Praktische Anwendung
 
 Im folgenden Codeblock sehen Sie ein Beispiel einer Auszeichnung eines Elements. Das Element [`<elementSpec>`](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-elementSpec.html) zeichnet die Struktur, den Inhalt und die Verwendung eines bestimmten Elements aus. In diesem Fall geht es um das Element `<div>`, außerdem wird hier eine Veränderung `<change>` angezeigt. Des weiteren sehen Sie hier, welchen Klassen das Element angehört, nämlich einerseits der Attributsklasse `<att.typed>`, andererseits oder Model-Klasse `<model.inter>`.  Über diese Klassen sind nun bestimmte Eigenschaften und Ähnlichkeiten zu anderen Elementen festgelegt. 
 
@@ -238,7 +238,7 @@ Wenn Sie für Ihr Projekt ein für Ihre Bedürfnisse angepasstes Schema (_custom
 Das Schema wir durch die `<schemaSpec>` definiert, die wiederum Definitionen und Verweise auf Elemente `<elementSpec>`, Klassen `<classSpec>`, Makrospezifikationen `<makroSpec>` oder Module `<moduleRef>` enthält.
 `<moduleRef>` nimmt eine Sonderstelluung ein, weil hier entweder durch _url_ auf ein externes Schema in der RelaxNG Sprache verwiesen wird (so kann auf Schemata, die nicht aus TEI stammen, verwiesen werden), oder durch _key_ auf bereits vorhandene TEI-Module. Nach der Definition des Schemas können auch die Elemente in ihrer Benennung, Funktion o.Ä. verändert und angepasst werden.
 
-#### Praktische Anwendung
+### Praktische Anwendung
 
 Im Rahmen der ODD-Anpassung werden auch bestehende Elemente den eigenen Bedürfnissen angepasst. Im folgenden ersten Beispiel wird im Element `<elementSpec>` eine Reihe von Attributen für die Zwecke der Auszeichnung des Beispieltextes definiert. Die Ausdrücke `<mode="change">` und `<mode="replace">` zeigen klar an, dass hier Veränderungen und Ersetzungen vorgenommen werden. Außerdem wird genau beschrieben, für welche Textteile die Attribute "article", "movieSchedule", "poem", "reviews", "review" und "other" angewendet werden sollen. Wenn Sie diese Liste `<attList>` mit der Auszeichnung der Abschnitte unseres Beispieltextes vergleichen, werden Sie feststellen, dass die im ODD-Dokument festgeschriebenen Definitionen angewandt wurden.
 
@@ -259,7 +259,7 @@ Im Rahmen der ODD-Anpassung werden auch bestehende Elemente den eigenen Bedürfn
 </elementSpec>
 ```
 
-##### Quiz
+#### Quiz
 
 <Quiz>
   <Quiz.Card>
@@ -320,7 +320,7 @@ Im Rahmen der ODD-Anpassung werden auch bestehende Elemente den eigenen Bedürfn
 </Quiz>
 
 
-#### Praktische Anwendung
+### Praktische Anwendung
 
 Ein .odd-Dokument nutzt die "wenn-dann"-Logik einer Programmiersprache, indem bestimmte Regeln definiert werden, die sich als richtig oder falsch erweisen. Treten richtige Annahmen ein, folgen festgelegte Aktionen.
 
