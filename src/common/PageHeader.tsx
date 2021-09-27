@@ -294,7 +294,7 @@ function Search() {
                   )
                 })}
               </ul>
-            ) : status !== 'idle' ? (
+            ) : status === 'success' ? (
               <div className="py-4 text-center text-neutral-500">
                 {t('common.noResultsFound')}
               </div>

@@ -56,6 +56,7 @@ export function useSearch(searchTerm: string): {
           }
           return searchResults
         })
+        setStatus('idle')
         return
       }
 
