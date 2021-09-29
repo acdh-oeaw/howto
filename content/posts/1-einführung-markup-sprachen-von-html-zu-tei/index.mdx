@@ -273,25 +273,7 @@ Sie ermöglicht die Überprüfung der **Einheitlichkeit von Annotationen** über
 </Quiz>
 
 
-### XML-Hierarchie
 
-Ein XML-Dokument ist eine hierarchische Anordnung von Inhalten. Diese ist jedoch nicht beliebig, sondern wird im XML-Schema festgelegt. Und da Dokumente gültig sein sollen, kann man sich die Strukturierung nicht willkürlich aussuchen.
-
-**Das Schema schreibt vor, welche Elemente es gibt, wo sie anzutreffen sein dürfen und wo nicht.** Es legt beispielsweise fest, dass ein Element nur ein bestimmtes Elternelement haben kann:
-
-- So darf etwa ein Vorname nur das Kind eines Personennamens sein.
-- Oder es darf ein Personenname nur _innerhalb_ einer Überschrift, eines Paragrafen oder einer Verszeile vorkommen, jedoch niemals außerhalb.
-
-Neben den Beziehungen regelt ein Schema auch, **wie oft ein Element oder Attributwert vorkommen darf**. 
-
-- Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. 
-- Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
-
-Die Struktur eines Buches könnte in XML etwa wie folgt abgebildet werden: 
-
-![XML Hierarchie eines Buches](images/xml-hierarchie_neu.png "XML-Struktur eines Buches. Bild: Ulrike Czeitschner, ACDH-CH")
-
-Innerhalb des Wurzelelements befindet sich ein div-Element ("div" steht für 'division', d.h. Textabschnitt) mit dem Attribut `@type=book` für das Buch, das die Kindelemente Vorwort und mehrere Kapitel enthält, vielleicht gefolgt von einem Nachwort, eventuell einem Register und einem Impressum. Diese Kindelemente verhalten sich zueinander alle wie Geschwister und sind selbst Eltern der Titel-, Paragrafen- und Verszeilen-Elemente, die ebenfalls Geschwister sind und selbstverständlich auch wieder Kinder haben können. Die so strukturierten Inhalte spiegeln den Aufbau des Buches wider.
 
 ### Aufbau von XML-Dokumenten
 
@@ -371,6 +353,25 @@ Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen u
   </Quiz.Card>
 </Quiz>
 
+### XML-Hierarchie
+
+Ein XML-Dokument ist eine hierarchische Anordnung von Inhalten. Diese ist jedoch nicht beliebig, sondern wird im XML-Schema festgelegt. Und da Dokumente gültig sein sollen, kann man sich die Strukturierung nicht willkürlich aussuchen.
+
+**Das Schema schreibt vor, welche Elemente es gibt, wo sie anzutreffen sein dürfen und wo nicht.** Es legt beispielsweise fest, dass ein Element nur ein bestimmtes Elternelement haben kann:
+
+- So darf etwa ein Vorname nur das Kind eines Personennamens sein.
+- Oder es darf ein Personenname nur _innerhalb_ einer Überschrift, eines Paragrafen oder einer Verszeile vorkommen, jedoch niemals außerhalb.
+
+Neben den Beziehungen regelt ein Schema auch, **wie oft ein Element oder Attributwert vorkommen darf**. 
+
+- Eindeutige ID-Nummern dürfen sinnvollerweise nur einmal vergeben werden. 
+- Ebenso sollte in einem Geburtsregister jede Person nur ein Geburtsdatum haben.
+
+Die Struktur eines Buches könnte in XML etwa wie folgt abgebildet werden: 
+
+![XML Hierarchie eines Buches](images/xml-hierarchie_neu.png "XML-Struktur eines Buches. Bild: Ulrike Czeitschner, ACDH-CH")
+
+Innerhalb des Wurzelelements befindet sich ein div-Element ("div" steht für 'division', d.h. Textabschnitt) mit dem Attribut `@type=book` für das Buch, das die Kindelemente Vorwort und mehrere Kapitel enthält, vielleicht gefolgt von einem Nachwort, eventuell einem Register und einem Impressum. Diese Kindelemente verhalten sich zueinander alle wie Geschwister und sind selbst Eltern der Titel-, Paragrafen- und Verszeilen-Elemente, die ebenfalls Geschwister sind und selbstverständlich auch wieder Kinder haben können. Die so strukturierten Inhalte spiegeln den Aufbau des Buches wider.
 
 ## Von XML zu TEI
 
@@ -396,8 +397,6 @@ Mit TEI lassen sich unterschiedlichste **Aspekte von Texten kodieren**. Relevant
 
 Zwar werden TEI-Elemente auch für die quellennahe Textrepräsentation genutzt, die konkreten Darstellungsregeln sind in TEI jedoch nicht festgelegt, sondern müssen in eigenen Verarbeitungsanweisungen, den schon erwähnten Stylesheets, definiert werden.
 </SideNote>
-
-Die folgenden Kapitel geben einen kurzen Überblick über die Struktur von TEI-Dokumenten und stellen einige sehr häufig verwendete Elemente vor.
 
 ### Quiz
 
@@ -434,3 +433,6 @@ Die folgenden Kapitel geben einen kurzen Überblick über die Struktur von TEI-D
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
+
+
+Die folgenden Kapitel geben einen kurzen Überblick über die Struktur von TEI-Dokumenten und stellen einige sehr häufig verwendete Elemente vor.
