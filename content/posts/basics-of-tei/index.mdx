@@ -25,7 +25,7 @@ uuid: KekCIIoGVVJb_wDu5cYBU
 
 ### Lernziele
 
-- Unterscheidung der TEI-Dokumentteile header und text
+- 1) Unterscheidung der TEI-Dokumentteile header und text
 - Auszeichnung strukturelle Element des Fließtextes
 - Nutzung von Attributen und Werten zur genaueren Auszeichnung im Fließtext
 
@@ -36,13 +36,13 @@ Innerhalb des `<text>` kann weiter unterteilt werden. Häufig gibt zu Beginn den
  dann folgt der Haupt- oder `<body>`-Text, zumeist der Fließtext; 
 und schließlich folgt nach dem `<body>` der Nachspann, das sogenannte "back matter" `<back>`. Hier könnte sich z.B. das Register eines gedruckten Werkes befinden.
 Zu beachten ist, dass es häufig mehrere Möglichkeiten gibt, einzelne Aspekte zu kodieren. Wie ein Dokument im Verhältnis zur Vorlage strukturiert werden soll, gibt nicht die TEI vor, sondern ist Ihre Entscheidung.
-Im Folgenden geht es vor allem um die *strukturelle Auszeichnung des Fließtextes*. Im  `<body>`-Element zu einem Roman werden Sie z.B. die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und genauso Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
+Im Folgenden geht es vor allem um die _strukturelle Auszeichnung des Fließtextes_. Im  `<body>`-Element zu einem Roman werden Sie z.B. die Kapitel als aufeinander folgende Abschnitte auszeichnen. Erst durch Ihre Auszeichnung kann der Computer die Abschnitte, und genauso Überschriften, Strophen, Absätze, usw., als solche erkennen. Später können annotierte Elemente gefunden werden und aus Ihrer Struktur ergibt sich eine Hierarchie der Textteile, die für die Maschine lesbar ist. 
 
-Der gesamte Fließtext ist vom Element `<body>` umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des `<body>` zunächst die einzelnen Abschnitte als `<div>`-Elemente ausgezeichnet. Diese `<div>`-Elemente, für *division*, sind sehr allgemeine Auszeichnungen für irgendeine Art von Abschnitt, der (noch) nicht näher bestimmt ist. Sie können beliebig ineinander verschachtelt werden. In den Beispielen werden Sie sehen, dass die neutralen `<div>`-Elemente näher bestimmt werden und innerhalb dieser Elemente bestimmte Fließtextteile mit Überschriften `<head>` und Absätzen `<p>` bzw. Strophen `<lg>` und Verse mit `<l>` ausgezeichnet werden.
+Der gesamte Fließtext ist vom Element `<body>` umschlossen, das die höchste Ebene Ihrer Hierarchie bildet. Um die Struktur des Fließtexts zu erfassen, werden innerhalb des `<body>` zunächst die einzelnen Abschnitte als `<div>`-Elemente ausgezeichnet. Diese `<div>`-Elemente, für _division_, sind sehr allgemeine Auszeichnungen für irgendeine Art von Abschnitt, der (noch) nicht näher bestimmt ist. Sie können beliebig ineinander verschachtelt werden. In den Beispielen werden Sie sehen, dass die neutralen `<div>`-Elemente näher bestimmt werden und innerhalb dieser Elemente bestimmte Fließtextteile mit Überschriften `<head>` und Absätzen `<p>` bzw. Strophen `<lg>` und Verse mit `<l>` ausgezeichnet werden.
 
 Im Folgenden werden Sie erste Schritte kennenlernen, was und wie Sie einen Fließtext auszeichnen können.
 
-*Die wichtigsten Auszeichnungen sind:*
+_Die wichtigsten Auszeichnungen sind:_
 
 - **Abschnitte**, größere Textteile`<div>`
 - **Überschriften**, `<head>`
