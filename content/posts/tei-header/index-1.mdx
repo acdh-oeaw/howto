@@ -76,7 +76,6 @@ Als Ausgangspunkt für die weiteren Ausführungen dient diese Minimalversion ein
 
 Da die Metadaten im TEI-Header ein elektronisches Dokument so ausführlich wie möglich beschreiben sollen, empfiehlt es sich, neben den hier angeführten Pflichtangaben auch einige der zur Verfügung stehenden optionalen Elemente zu verwenden. Als Vorlage für die konkreten Übungen dieses Abschnitts dient der in Kapitel 2 **\[Link zu Kapitel 2]** vorgestellte Beispieltext _Die Filmwelt_. Die für die Befüllung der Elemente notwendigen Informationen sind bei der jeweiligen Übung angegeben.
 
-
 ### Identifikation
 
 Im **obligatorischen 'title statement'** `<titleStmt>` stehen für den Titel eines TEI-Dokuments das ebenso **obligatorische** `<title>`-Element und **optional** u.a. die Elemente `<author>` und `<editor>` für Autor\*innen und Herausgeber\*innen sowie das **'statement of responsibility'** `<respStmt>` zur Verfügung:
@@ -131,7 +130,7 @@ In dieser Übung sollen erste Metadaten für die digitale Version des Beispielte
   <Quiz.Card>
     <Quiz.XmlCodeEditor
       code={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title type=\"main\">Die Filmwelt – ein Ausschnitt</title>\n        <title type=\"sub\">Digitale Version</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Informationen zur Publikation</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Informationen über die Quelle</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p>Text.</p>\n    </body>\n  </text>\n</TEI>"}
-      solution={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title type=\"main\">Die Filmwelt – ein Ausschnitt</title>\n        <title type=\"sub\">Digitale Version</title>\n        <respStmt>\n          <resp>TEI-Kodierung</resp>\n          <persName>Erika Musterfrau</persName>\n        </respStmt>\n      </titleStmt>\n      <publicationStmt>\n        <p>Informationen zur Veröffentlichung</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Informationen über die Quelle</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p>Text.</p>\n    </body>\n  </text>\n</TEI>"}
+      solution={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title type=\"main\">Die Filmwelt – ein Ausschnitt</title>\n        <title type=\"sub\">Digitale Version</title>\n        <respStmt>\n          <resp>TEI-Kodierung</resp>\n          <persName>Erika Musterfrau</persName>\n        </respStmt>\n      </titleStmt>\n      <publicationStmt>\n        <p>Informationen zur Publikation</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Informationen über die Quelle</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p>Text.</p>\n    </body>\n  </text>\n</TEI>"}
       validate="input"
     >
       <Quiz.Question>
@@ -220,7 +219,6 @@ In dieser Übung soll die Literaturangabe unserer Quelle als strukturierte Bibli
 
 
 Der Vollständigkeit halber sei an dieser Stelle noch erwähnt, dass für die bibliografische Strukturierung von Handschriften und frühen Drucken das Element **'manuscript description'** `<msDesc>` für die ausführliche Beschreibung im TEI-Header zur Verfügung steht (mehr Informationen hierzu in der [TEI-Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html#msov).
-
 
 ### Kodierung
 
@@ -422,7 +420,6 @@ Im Element `<profileDesc>` stehen u.a. diese Unterelemente zur Verfügung:
 - `<langUsage>` ('language usage'): beschreibt Sprachen, Varietäten, Dialekte usw.
 - `<particDesc>` ('participation description'): beschreibt sowohl im Text als auch den Metadaten vorkommende Sprecher, "Stimmen" und Teilnehmer.
 - `<textClass>` ('text classification'): ermöglicht eine standardisierte thematische Verschlagwortung.
-
 
 #### Übung
 
