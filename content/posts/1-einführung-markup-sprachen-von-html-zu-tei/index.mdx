@@ -217,7 +217,7 @@ Die Regel der 'well-formedness' ist zwingend, d.h. **alle XML-Dokumente müssen 
 
 Darüber hinaus kann ein XML-Dokument auch valide oder gültig sein. Was bedeutet das? 
 
-Wie schon erwähnt, kann im Grunde jede\*r mit XML seine eigene Markup-Sprache für bestimmte Zwecke definieren. Gleichzeitig ist es mit Blick auf kollaborative Arbeitsweisen und Open Science unerlässlich, die erzeugten Dokumente weitergeben und mehrfach nachnutzen zu können. **Wer also eine Sprache "erfindet", sollte nicht nur das Vokabular, sprich die Elemente, Attribute und Werte festlegen, sondern auch eine "Grammatik" – Schema genannt – schreiben**, in der definiert ist, was die Elemente bedeuten, in welcher Beziehung sie zueinander stehen, wo und wie sie verwendet werden dürfen. 
+Wie schon erwähnt, kann im Grunde jede*r mit XML seine eigene Markup-Sprache für bestimmte Zwecke definieren. Gleichzeitig ist es mit Blick auf kollaborative Arbeitsweisen und Open Science unerlässlich, die erzeugten Dokumente weitergeben und mehrfach nachnutzen zu können. **Wer also eine Sprache "erfindet", sollte nicht nur das Vokabular, sprich die Elemente, Attribute und Werte festlegen, sondern auch eine "Grammatik" – Schema genannt – schreiben**, in der definiert ist, was die Elemente bedeuten, in welcher Beziehung sie zueinander stehen, wo und wie sie verwendet werden dürfen. 
 
 Obwohl diese Regel optional ist, empfiehlt es sich, sie einzuhalten – aus mehreren Gründen: 
 
@@ -273,8 +273,6 @@ Sie ermöglicht die Überprüfung der **Einheitlichkeit von Annotationen** über
 </Quiz>
 
 
-
-
 ### Aufbau von XML-Dokumenten
 
 ![Aufbau XML Dokument](images/xml-dokument_neu.png "Aufbau eines XML-Dokuments. Bild: Ulrike Czeitschner, ACDH-CH")
@@ -299,7 +297,7 @@ Im Dokument selbst müssen diese Präfixe, gefolgt von einem Doppelpunkt, den be
 
 ![mehrere Namensraeume](images/mehrerenamensraeumexml_neu.png "Mehrere Namensräume. Bild: Ulrike Czeitschner, ACDH-CH")
 
-<SideNote type="note" title="Hinweis">
+<SideNote type="tip" title="Hinweis">
 Kommentare sind außerhalb von einführenden oder schließenden Tags überall erlaubt. Sie werden eingeleitet von einer Spitzklammer, einem Rufzeichen, sowie zwei Minuszeichen. Dann folgt der Kommentartext, danach zwei Minuszeichen und eine schließende Spitzklammer:
 
 ```xml
@@ -353,6 +351,7 @@ Auf diese Weise eingefügte Inhalte werden von der Software nicht wahrgenommen u
   </Quiz.Card>
 </Quiz>
 
+
 ### XML-Hierarchie
 
 Ein XML-Dokument ist eine hierarchische Anordnung von Inhalten. Diese ist jedoch nicht beliebig, sondern wird im XML-Schema festgelegt. Und da Dokumente gültig sein sollen, kann man sich die Strukturierung nicht willkürlich aussuchen.
@@ -387,10 +386,10 @@ Im Gegensatz dazu, geht es im TEI-Dokumentenformat dezidiert darum, **Texte kodi
 
 Mit TEI lassen sich unterschiedlichste **Aspekte von Texten kodieren**. Relevante Fragen in diesem Zusammenhang wären z.B.:
 
-- Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.? **> Strukturelles Markup**
-- Über welche "Dinge" spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte etc.), aber auch Konzepte, Ideen, andere Texte usw. **> Semantisches Markup**
-- Wie spricht der Text? Mit welchen linguistischen, rhetorischen oder narratologischen Mitteln arbeitet er – Aspekte, die nicht an der Textoberfläche manifest sind, sondern erst durch Analyseschritte erfassbar werden. **> Analytisches Markup**
-- Und schließlich: Wie sieht der Text aus? **> Repräsentationales Markup**
+- Wie ist der Text formal und logisch aufgebaut? Aus welchen Einheiten und Untereinheiten, Abschnitten, Gliederungsebenen etc. besteht er? Gibt es Überschriften, Zitate, Fußnoten, Anmerkungen usw.? **\> Strukturelles Markup**
+- Über welche "Dinge" spricht der Text? Das können reale und fiktionale Entitäten sein (Personen, Orte etc.), aber auch Konzepte, Ideen, andere Texte usw. **\> Semantisches Markup**
+- Wie spricht der Text? Mit welchen linguistischen, rhetorischen oder narratologischen Mitteln arbeitet er – Aspekte, die nicht an der Textoberfläche manifest sind, sondern erst durch Analyseschritte erfassbar werden. **\> Analytisches Markup**
+- Und schließlich: Wie sieht der Text aus? **\> Repräsentationales Markup**
 
 <SideNote type="note" title="Merke">
 **Repräsentationales Markup** oder 'renditional markup' ist nicht dasselbe wie **Präsentationales Markup** 'presentational markup'! 
