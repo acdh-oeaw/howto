@@ -26,10 +26,10 @@ Vor Beginn der Annotation des Beispieltextes _Die Filmwelt_  gilt es, den Aufbau
 ### Praktische Anwendung
 
 Das "Skelett" eines validen TEI-Dokuments besteht aus
+
 - dem Wurzelelement `<TEI>`, das das namespace-Attribut `@xmlns` und als Wert den Verweis auf die TEI enthält. Diese Angabe versetzt Prozessoren in die Lage, ein XML-Dokument als TEI-Dokument zu erkennen.
 - dem im Wurzelelement enthaltenen TEI-Header `<teiHeader>`, der die Metadaten zum elektronischen Dokument enthält. Und schließlich
 - dem ebenfalls im Wurzelelement enthaltenen Element `<text>`, das den annotierten Text umschließt. 
-
 
 ```xml
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
@@ -47,7 +47,6 @@ Das "Skelett" eines validen TEI-Dokuments besteht aus
 	</text>
 </TEI>
 ```
-
 
 Ein Text kann **optional** einen Vorspann `<front>` ('front matter') mit beispielsweise einer oder mehreren Titelseiten `<titlePage>` enthalten. Darüber hinaus kann im Vorspann die Position angegeben werden, an der **automatisch generierte** Textgliederungen `<divGen>` wie z.B. Inhalts-, Tabellen- und Abbildungsverzeichnisse eingefügt werden sollen. Die Spezifizierung, worum es sich handelt, erfolgt im `@type`-Attribute mit unterschiedlichen Attributwerten:
 
@@ -161,13 +160,15 @@ Eine Möglichkeit mehrere Texte mit jeweils eigenem `<teiHeader>-` und `<text>`-
       </Quiz.MultipleChoice.Option>
 
       <Quiz.Message type="correct">
-        Richtig! Ein valides TEI-Dokument hat das Wurzelelement `<TEI>`. Ebenso benötigt jede TEI-konforme Datei ein Set an Metadaten, das im `<teiHeader>` angegeben wird, sowie den annotierten Text `<text>` mit einem Text-Body `<body>`.
+        **Richtig!**
+
+        Ein valides TEI-Dokument hat das Wurzelelement `<TEI>`. Ebenso benötigt jede TEI-konforme Datei ein Set an Metadaten, das im `<teiHeader>` angegeben wird, sowie den annotierten Text `<text>` mit einem Text-Body `<body>`.
 
         Die Gruppierung mehrerer Einzeltexte oder ihre Modellierung als Korpus sind optional.
       </Quiz.Message>
 
       <Quiz.Message type="incorrect">
-        Leider nicht ganz richtig.
+        **Leider nicht ganz richtig.**
 
         Ein valides TEI-Dokument hat das Wurzelelement `<TEI>`. Ebenso benötigt jede TEI-konforme Datei ein Set an Metadaten, das im `<teiHeader>` angegeben wird, sowie den annotierten Text `<text>` mit einem Text-Body `<body>`.
 
