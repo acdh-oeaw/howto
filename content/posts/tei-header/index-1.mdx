@@ -186,7 +186,7 @@ Für eine vollständige Strukturierung aller Teile wie sie im TEI-Header wünsch
 </biblStruct>
 ```
 
-Hierbei wird innerhalb der **'structured bibliographic citation'** ein Buch oder eine Zeitschrift mit dem Element **'monographic level'** `<monogr>` umschlossen und die Information so gruppiert. Innerhalb dessen können Autorinnen und Autoren _mit dem `<author>` sowie Editorinnen und Editoren_ eines Buches oder einer Zeitschrift mit dem Element `<editor>` benannt werden.
+Im `<biblStruct>`-Element gruppiert das Element **'monographic level'** `<monogr>` alle bibliografischen Angaben zu einem einzelnen Werk wie einem Buch oder der Ausgabe einer Zeitschrift. Autor\*innen und Herausgeber\*innen werden mit den Elementen `<author>` bzw. `<editor>` annotiert. Dabei könnten zusätzlich die Elemente `<persName>`, `<forename>`, `<surname>` etc. zum Einsatz kommen. Letztere wurden hier aus Gründen der Übersichtlichkeit nicht verwendet. Es folgt der Titel und daran anschließend das `<imprint>`-Element, das Informationen zur Veröffentlichung und Verbreitung wie z.B. Verlag, Publikationsort und -datum zusammenfasst.
 
 Nach dem Impressum kann bei Bedarf mit **'scope of bibliographic reference'** `<biblScope>` angegeben werden, auf welchen Ausschnitt eines Werks sich die bibliografische Referenz bezieht. Im Attribut `@unit` können Seiten- oder Jahrgangsangaben mit den Werten `page` und `volume` spezifiziert werden.
 
