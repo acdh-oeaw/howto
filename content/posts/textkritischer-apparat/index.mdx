@@ -47,33 +47,37 @@ Die TEI bevorzugt keine bestimmte Erstellungsweis des textkritischen Apparats. E
 
 ### Textgenetisches Dossier
 
-### Praktische Anwendung: Textkritisches Markup
+## Praktische Anwendung: Textkritisches Markup
 
 Bei der Auszeichnung des textkritischen Markups wird der editierte Text sowie die Veränderungen durch die textkritischen Methoden dargestellt. So kann auch die Textgenese an des [kritischen Apparates](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html) nachvollzogen werden, der Platz für Variationen und Anmerkungen bietet. Im Folgenden finden Sie mehrere Beispiele für die Anwendung des textkritischen Markups.
 
-#### Korrektur offensichtlicher Fehler
+### Korrektur offensichtlicher Fehler
 
 ![Textkritisches Markup, Tippfehler und ](images/Folie70.png "Textkritisches Markup (1)")
 
 Im Beispiel wird ein Tippfehler im Text als auch dessen Korrektur ausgezeichnet. Einerseits können sie beide Schritte - das Erkennen des Fehlers [`<sic>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sic.html)und die entsprechende Korrektur [`<corr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-corr.html) - separat auszeichnen, andererseits können Sie sich des [Elements `<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html) bedienen, um die richtige Lesart und den Fehler darzustellen. Dieses Element verbindet mehrere Kodierungsmöglichkeiten an derselben Textstelle, `<sic>`und  `<corr>` sind Kindselemente, die einander ausschließen. Beachten Sie, dass mit dem Attribut `cert="high"` festgehalten wird, dass die vorgenommene Korrektur sehr wahrscheinlich richtig ist.
 
-#### Normalisierung, Abkürzung
+### Normalisierung, Abkürzung
 
 Nicht jeder wahrgenommen Fehler, so wie der Tippfehler im obigen Beispiel, ist ein Fehler, der korrigiert werden sollte. Beispiele für Textelemente, die als Fehler wahrgenommen werden können, sind beispielsweise Änderungen in der Rechtschreibung, die dazu führen, dass Schreibweisen normalisiert, also der Norm angepasst, werden. Das textkritische Markup kann solche Veränderungen dokumentieren. Ein weiteres Beispiel sind Abkürzungen, die durch zusätzliche Ausschreibung im textkritischen Markup erklärt werden können. Unten sehen Sie wie Auszeichnungsmöglichkeiten kombiniert werden können. Ähnlich wie oben wird wieder das Elemente `<choice>` genutzt.
 
 ![Textkritisches Markup (2)](images/Folie71.png "Textkritisches Markup (2)")
 
-#### Umstellungen
+### Umstellungen
 
 Eine [Umstellung im Text](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#transpo) wird häufig durch Metazeichen im Text angezeigt. Im Beispiel unten wurden Zahlen über die entsprechenden Textbausteine geschrieben, um deren richtige Reihenfolge anzuzeigen. Die Kodierung beschreibt auch nicht das beabsichtigte Ergebnis in einer Reinschrift oder dem Druck, sondern sie dokumentiert die Darstellung im Text. In der hier gezeigten Auszeichnung wird gezeigt, dass die Umstellung in einer Zeile `<line>` passiert, die Umstellungsfunktion `transposition` wird angegeben, sowie Information zum Metazeichen `<metamark>` selbst, das unterstrichen `rend="underline"` über dem Text `place="above"` steht. Zusätzlich werden die Umstellungen im Text in einer Liste `<listTranspose>` dokumentiert, hier wird durch die individuelle `id` auch auf einen ganz bestimmten Eintrag verwiesen.
 
 ![Textkritisches Markup (3): Umstellungen](images/Folie72.png "Textkritisches Markup (3): Umstellungen")
 
-Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#transpo)
+### Text-orientierte und dokument-orientierte Markup
+
+Je nachdem, was sie mit der Auszeichnung ihres Textes beabsichtigen, können Sie unterschiedliche Schwerpunkte setzen. Im Folgenden sehen Sie dieselbe Textpassage, die auf zwei unterschiedlichen Weisen ausgezeichnet wurde.  Bei der ersten Auszeichnung liegt der Fokus des **text-orientierten Markups** auf Veränderungen im Text, angezeigt durch das Löschen `<del>` und Hinzufügen `<add>` von Textbausteinen. Diese Veränderungen werden an der entsprechenden Stelle im Text (hier Anfang einer Zeile und Ende der Folgezeile) angezeigt. Diese Textänderungen treffen auch eine Aussagen über die chronologische Entstehung des Textes: was gelöscht wird, muss schon vor der Hinzufügung im Text vorhanden gewesen sein. Zudem werden einmalige Identifikationen vergeben, die später nachverfolgt werden können.
 
 ![Text-Orientiertes Markup](images/Folie73.png)
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
+
+In der folgenden zweiten Auszeichnungsweise 
 
 ### Verbindung von Text und Apparat
 
