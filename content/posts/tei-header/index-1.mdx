@@ -129,8 +129,8 @@ In dieser Übung sollen erste Metadaten für die digitale Version des Beispielte
 
   <Quiz.Card>
     <Quiz.XmlCodeEditor
-      code={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title type=\"main\">Die Filmwelt – ein Ausschnitt</title>\n        <title type=\"sub\">Digitale Version</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Informationen zur Publikation</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Informationen über die Quelle</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p>Text.</p>\n    </body>\n  </text>\n</TEI>"}
-      solution={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title type=\"main\">Die Filmwelt – ein Ausschnitt</title>\n        <title type=\"sub\">Digitale Version</title>\n        <respStmt>\n          <resp>TEI-Kodierung</resp>\n          <persName>Erika Musterfrau</persName>\n        </respStmt>\n      </titleStmt>\n      <publicationStmt>\n        <p>Informationen zur Publikation</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Informationen über die Quelle</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p>Text.</p>\n    </body>\n  </text>\n</TEI>"}
+      code={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title type=\"main\">Die Filmwelt – ein Ausschnitt</title>\n        <title type=\"sub\">Digitale Version</title>\n      </titleStmt>\n      <publicationStmt>\n        <p>Informationen zur Veröffentlichung</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Informationen über die Quelle</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p>Text.</p>\n    </body>\n  </text>\n</TEI>"}
+      solution={"<TEI xmlns=\"http://www.tei-c.org/ns/1.0\">\n  <teiHeader>\n    <fileDesc>\n      <titleStmt>\n        <title type=\"main\">Die Filmwelt – ein Ausschnitt</title>\n        <title type=\"sub\">Digitale Version</title>\n        <respStmt>\n          <resp>TEI-Kodierung</resp>\n          <persName>Erika Musterfrau</persName>\n        </respStmt>\n      </titleStmt>\n      <publicationStmt>\n        <p>Informationen zur Veröffentlichung</p>\n      </publicationStmt>\n      <sourceDesc>\n        <p>Informationen über die Quelle</p>\n      </sourceDesc>\n    </fileDesc>\n  </teiHeader>\n  <text>\n    <body>\n      <p>Text.</p>\n    </body>\n  </text>\n</TEI>"}
       validate="input"
     >
       <Quiz.Question>
@@ -146,7 +146,7 @@ In dieser Übung sollen erste Metadaten für die digitale Version des Beispielte
 
 ### Quellenbeschreibung
 
-Die **'source description'** `<sourceDesc>` gibt Auskunft darüber, ob es sich um ein 'born-digital'-Dokument handelt oder ein Dokument, das auf anderen Quellen basiert – seien diese analog oder digital macht hier keinen Unterschied. Eine Beschreibung der Quellen kann als einfaches bibliografisches Zitat im Element **'bibliographic citation'** `<bibl>` erfolgen oder in vollständig strukturierter Form in **'structured bibliographic citation'** `<biblStruct>` vorgenommen werden. Für einen digital erstellten Text ohne physischen Quellen genügt eine kurze Angabe, die in einem `<p>`-Element ('paragraph') innerhalb der 'source description' einzufügen ist:
+Die **'source description'** `<sourceDesc>` gibt Auskunft darüber, ob es sich um ein 'born-digital'-Dokument handelt oder ein Dokument, das auf anderen Quellen basiert – seien diese analog oder digital macht hier keinen Unterschied. Eine Beschreibung der Quellen kann als einfaches bibliografisches Zitat im Element **'bibliographic citation'** `<bibl>` erfolgen oder in vollständig strukturierter Form in **'structured bibliographic citation'** `<biblStruct>` vorgenommen werden. Für einen digital erstellten Text ohne physische Quellen genügt eine kurze Angabe, die in einem `<p>`-Element ('paragraph') innerhalb der 'source description' einzufügen ist:
 
 ```xml
 <sourceDesc>
@@ -168,7 +168,7 @@ Darüber hinaus könnte man in diesem Literaturzitat **optional** einzelne Kompo
 <bibl><editor>Matthew K. Gold</editor>, ed., <date>2012</date>. <title>Debates in the Digital Humanities.</title> <pubPlace>Minneapolis</pubPlace>, <pubPlace>London</pubPlace>: <publisher>University of Minnesota Press</publisher>.</bibl>
 ```
 
-Diese Auszeichnungsvariante ist nicht auf den TEI-Header beschränkt, sondern kann auch außerhalb verwendet werden. Sie eignet sich z.B. besonders für die Annotation von Bibliografien mit vielen Literaturzitaten, deren "Satzstruktur" der Textvorlage entsprechend abgebildet werden soll.
+Diese Auszeichnungsvariante ist nicht auf den TEI-Header beschränkt, sondern kann auch außerhalb verwendet werden. Sie eignet sich z.B. besonders für die Annotation von Bibliografien mit vielen Literaturzitaten, deren Satzstruktur der Textvorlage entsprechend abgebildet werden soll.
 
 Für eine vollständige Strukturierung aller Teile wie sie im TEI-Header wünschenswert ist, empfiehlt sich die Verwendung von **'structured bibliographic citation'** `<biblStruct>`, dessen Unterelemente allerdings nicht der Satzstruktur einer Vorlage folgen, sondern in einer bestimmten Reihenfolge angeordnet sind:
 
@@ -209,7 +209,7 @@ In dieser Übung soll die Literaturangabe unserer Quelle als strukturierte Bibli
         1. Geben Sie Haupt- und Untertitel der Zeitschrift an `<title>` + `@type=main/sub`.
         2. Benennen Sie den Herausgeber der Zeitschrift `<editor>`.
         3. Ergänzen Sie im Impressum `<imprint>` den Verlag `<publisher>` mit allen zur Verfügung stehenden Angaben: neben dem Namen der Organisation `<orgName>` sollte auch die Adresse `<address>`, bestehend aus einer Adresszeile `<addrLine>`, enthalten sein.
-        4. Weisen Sie die Firma "L. Beck und Sohn" in einem 'statement of responsibility' mit den Elementen `<resp>` und `<orgName>` als Druckerei aus.
+        4. Weisen Sie die Firma "L. Beck und Sohn" in einem `<respStmt>` mit den Elementen `<resp>` und `<orgName>` als Druckerei aus.
         5. Geben Sie "Wien" als Publikationsort und "1924" als Erscheinungsjahr mit den Elementen `<pubPlace>` und `<date>` an.
         6. Kodieren Sie, dass der gewählte Textausschnitt aus der Nr. "31, 1924" stammt und spezifizieren Sie den Ausschnitt Seite "11-12" in zwei `<biblScope>`-Elementen mit dem `@unit`-Attribut und dem Wert `volume` bzw. `page`.
       </Quiz.Question>
@@ -218,7 +218,7 @@ In dieser Übung soll die Literaturangabe unserer Quelle als strukturierte Bibli
 </Quiz>
 
 
-Der Vollständigkeit halber sei an dieser Stelle noch erwähnt, dass für die bibliografische Strukturierung von Handschriften und frühen Drucken das Element **'manuscript description'** `<msDesc>` für die ausführliche Beschreibung im TEI-Header zur Verfügung steht (> Mehr Informationen hierzu in der [TEI-Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html#msov)).
+Der Vollständigkeit halber sei an dieser Stelle noch erwähnt, dass für die bibliografische Strukturierung von Handschriften und frühen Drucken das Element **'manuscript description'** `<msDesc>` für die ausführliche Beschreibung im TEI-Header zur Verfügung steht (**\> Mehr Informationen hierzu in der [TEI-Dokumentation](https://tei-c.org/release/doc/tei-p5-doc/en/html/MS.html#msov))**.
 
 ### Kodierung
 
@@ -307,7 +307,7 @@ Es könnte sich z.B. um ein unveröffentlichtes Arbeitsdokument handeln, das gar
 </publicationStmt>
 ```
 
-... oder es könnte sich um ein Dokument mit einer bestimmten Lizenzierung handeln wie z.B. "CC-BY 4.0" (Namensnennung 4.0 International). Sie erlaubt Dritten, das TEI-Dokument beliebig weiterzuverwenden, unter der Bedingung, bei erneuter Veröffentlichung die Urheber\*innen und Rechteinhaber\*innen des Ursprungsdokuments zu nennen. Eine andere Lizenz wäre z.B. "CC-BY-SA 4.0" (Namensnennung – Weitergabe unter gleichen Bedingungen 4.0 International). An diese Lizenz wäre neben der Namensnennung die Bedingung geknüpft, dass ein weiterverarbeitetes Dokument nur unter der gleichen Lizenz zu identen Bedingungen erneut publiziert werden dürfte. Die genannten und viele weitere Lizenzen für die Publikation digitaler Daten finden Sie auf den Webseiten der Organisation [Creative Commons](https://creativecommons.org/). Zu beachten ist jedenfalls, dass Sie ausschließlich Texte veröffentlichen und nur dann als Lizenzgeber*in auftreten sowie eine bestimmte Lizenz auswählen dürfen, wenn Sie dazu die Rechte besitzen.
+... oder es könnte sich um ein Dokument mit einer bestimmten Lizenzierung handeln wie z.B. "CC-BY 4.0" (Namensnennung 4.0 International). Sie erlaubt Dritten, das TEI-Dokument beliebig weiterzuverwenden, unter der Bedingung, bei erneuter Veröffentlichung die Urheber\*innen und Rechteinhaber\*innen des Ursprungsdokuments zu nennen. Eine andere Lizenz wäre z.B. "CC-BY-SA 4.0" (Namensnennung – Weitergabe unter gleichen Bedingungen 4.0 International). An diese Lizenz wäre neben der Namensnennung die Bedingung geknüpft, dass ein weiterverarbeitetes Dokument nur unter der gleichen Lizenz zu identen Bedingungen erneut publiziert werden dürfte. Die genannten und viele weitere Lizenzen für die Publikation digitaler Daten finden Sie auf den Webseiten der Organisation ['Creative Commons'](https://creativecommons.org/). Zu beachten ist jedenfalls, dass Sie ausschließlich Texte veröffentlichen und nur dann als Lizenzgeber*in auftreten sowie eine bestimmte Lizenz auswählen dürfen, wenn Sie dazu die Rechte besitzen.
 
 ```xml
 <publicationStmt>
@@ -328,7 +328,7 @@ Es könnte sich z.B. um ein unveröffentlichtes Arbeitsdokument handeln, das gar
 
 Wie ersichtlich, würde ein einfacher Absatz ausreichen um Angaben über Veröffentlichungsbedingungen zu zu machen. Es empfiehlt sich jedoch auch hier, für ausführliche Informationen eine komplexere semantische Strukturierung vorzunehmen. Einige Elemente wie `<publisher>`, `<orgName>`, `<pubPlace>` oder `<date>` sind bereits aus der Quellenbeschreibung bekannt.
 
-Als weitere Elemente stehen in diesem Zusammenhang u.a. das `<email>`-Element **'electronic mail address'** für eine Emailadresse sowie das Element **'identifier'** `<idno>` zur Verfügung, das einen Bezeichner für die standardisierte Identifikation eines Objekts enthält. In diesem Fall ist das bezeichnete Objekt das Institut, das als 'publisher' auftritt. Das Attribut `@type` spezifiziert die Art der Identifikation und verweist auf den Eintrag für das **ACDH-CH** im [Virtual Authority File](https://viaf.org/viaf/6515148451584915970000/).
+Als weitere Elemente stehen in diesem Zusammenhang u.a. das `<email>`-Element **'electronic mail address'** für eine Emailadresse sowie das Element **'identifier'** `<idno>` zur Verfügung, das einen Bezeichner für die standardisierte Identifikation eines Objekts enthält. In diesem Fall ist das bezeichnete Objekt das Institut, das als 'publisher' auftritt. Das Attribut `@type` spezifiziert die Art der Identifikation und verweist auf den Eintrag für das **ACDH-CH** im ['Virtual Authority File'](https://viaf.org/viaf/6515148451584915970000/).
 Andere Identifikatoren wären etwa:
 
 - **ISBN**: 'International Standard Book Number' (Internationale Standardbuchnummer) für die eindeutige Identifikation von Büchern.
