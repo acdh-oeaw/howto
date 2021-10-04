@@ -71,13 +71,15 @@ Eine [Umstellung im Text](https://tei-c.org/release/doc/tei-p5-doc/en/html/PH.ht
 
 ### Text-orientierte und dokument-orientierte Markup
 
-Je nachdem, was sie mit der Auszeichnung ihres Textes beabsichtigen, können Sie unterschiedliche Schwerpunkte setzen. Im Folgenden sehen Sie dieselbe Textpassage, die auf zwei unterschiedlichen Weisen ausgezeichnet wurde.  Bei der ersten Auszeichnung liegt der Fokus des **text-orientierten Markups** auf Veränderungen im Text, angezeigt durch das Löschen `<del>` und Hinzufügen `<add>` von Textbausteinen. Diese Veränderungen werden an der entsprechenden Stelle im Text (hier Anfang einer Zeile und Ende der Folgezeile) angezeigt. Diese Textänderungen treffen auch eine Aussagen über die chronologische Entstehung des Textes: was gelöscht wird, muss schon vor der Hinzufügung im Text vorhanden gewesen sein. Zudem werden einmalige Identifikationen vergeben, die später nachverfolgt werden können.
+Je nachdem, was sie mit der Auszeichnung ihres Textes beabsichtigen, können Sie unterschiedliche Schwerpunkte setzen. Im Folgenden sehen Sie dieselbe Textpassage, die auf zwei unterschiedlichen Weisen ausgezeichnet wurde.  Bei der ersten Auszeichnung liegt der Fokus des **text-orientierten Markups** auf Veränderungen im Text, angezeigt durch das Löschen `<del>` und Hinzufügen `<add>` von Textbausteinen. Diese Veränderungen werden an der entsprechenden Stelle im Text (hier Anfang einer Zeile und Ende der Folgezeile) angezeigt. Ebenso implizieren diese Textänderungen eine Aussagen über die chronologische Entstehung des Textes: was gelöscht wird, muss schon vor der Hinzufügung im Text vorhanden gewesen sein. Zudem werden einmalige Identifikationen vergeben, die später nachverfolgt werden können. [Hier](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#PH-meta) können Sie näheres über Streichungen und Ergänzungen nachlesen.
 
 ![Text-Orientiertes Markup](images/Folie73.png)
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442)
 
-In der folgenden zweiten Auszeichnungsweise 
+In der folgenden zweiten dokument-orientierten Auszeichnungsweise liegt der Fokus auf anderen Aspekten der Textgenese: Hier wird auf Information, die genauer im Apparat nachzulesen ist, verwiesen. Es werden hier nicht nur die Änderungen im Text ausgezeichnet, zudem liefert das Markup auch Informationen über die verschiedenen Personen, die in den Text eingegriffen haben.  Das Element `<handShift>` ist mit einer Identifikation versehen, das Attribut `new` deutet an, wessen Hand die Veränderung vorgenommen hat.  Die Änderungen selbst werden ebenfalls wieder durch Identifikationen ausgewiesen, `<retrace>`. Beachten Sie bitte, dass die Änderungen auch genau im Text verortet werden und die beiden Änderungen in unterschiedlichen Zeilen `<line>` stattgefunden haben.
+
+Über die Darstellung von Primärquellen wie Autographen können Sie [hier](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442) mehr nachlesen.
 
 ### Verbindung von Text und Apparat
 
