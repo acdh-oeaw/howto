@@ -53,7 +53,7 @@ Bei der Auszeichnung des textkritischen Markups wird der editierte Text sowie di
 
 ### Korrektur offensichtlicher Fehler
 
-![Textkritisches Markup, Tippfehler und ](images/Folie70.png "Textkritisches Markup (1)")
+![Textkritisches Markup, Tippfehler und ](images/textkrit_fehler.png "Textkritisches Markup (1)")
 
 Im Beispiel wird ein Tippfehler im Text als auch dessen Korrektur ausgezeichnet. Einerseits können sie beide Schritte - das Erkennen des Fehlers [`<sic>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sic.html)und die entsprechende Korrektur [`<corr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-corr.html) - separat auszeichnen, andererseits können Sie sich des [Elements `<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html) bedienen, um die richtige Lesart und den Fehler darzustellen. Dieses Element verbindet mehrere Kodierungsmöglichkeiten an derselben Textstelle, `<sic>`und  `<corr>` sind Kindselemente, die einander ausschließen. Beachten Sie, dass mit dem Attribut `cert="high"` festgehalten wird, dass die vorgenommene Korrektur sehr wahrscheinlich richtig ist.
 
@@ -61,7 +61,7 @@ Im Beispiel wird ein Tippfehler im Text als auch dessen Korrektur ausgezeichnet.
 
 Nicht jeder wahrgenommen Fehler, so wie der Tippfehler im obigen Beispiel, ist ein Fehler, der korrigiert werden sollte. Beispiele für Textelemente, die als Fehler wahrgenommen werden können, sind beispielsweise Änderungen in der Rechtschreibung, die dazu führen, dass Schreibweisen normalisiert, also der Norm angepasst, werden. Das textkritische Markup kann solche Veränderungen dokumentieren. Ein weiteres Beispiel sind Abkürzungen, die durch zusätzliche Ausschreibung im textkritischen Markup erklärt werden können. Unten sehen Sie wie Auszeichnungsmöglichkeiten kombiniert werden können. Ähnlich wie oben wird wieder das Elemente `<choice>` genutzt.
 
-![Textkritisches Markup (2)](images/Folie71.png "Textkritisches Markup (2)")
+![Textkritisches Markup (2)](images/textkrit_normalisierung.png "Textkritisches Markup (2)")
 
 ### Umstellungen
 
@@ -93,13 +93,13 @@ Im Apparat werden die Identifikationen genau beschrieben, sodass sie für weiter
 
 ## Praktische Anwendung: Textkritische Apparat
 
+Die Erstellung textkritischer Apparate mit dem Ziel der Konstruktion des Archetypen eines Textes gehört zu den zentralen Aufgabengebieten der Philologie. Der textkritische Apparat bezeugt die Dokumente, in denen der Text überliefert wurde (**Heuristik**), er bietet die Möglichkeit die Textzeugen und Varianten zu vergleichen (**Kollation**), er dolumentiert die Analyse der Varianten (**Recensio**) und ein so entstehendes **Stemma** des Textes. Natürlich kann das Ziel des textkritischen Apparats die Wahl der Editionsmethoden und die Auszeichnung beeinflussen. EInen näheren Einblick in die verschiedenen Möglichkeiten, die TEI bietet, finden Sie [hier](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html). Im folgenden Beispiel wird [Karl Lachmann und Moriz Haupts Ausgabe _Des Minnesangs Frühling_](https://books.google.at/books?id=FNAMAQAAIAAJ&pg=PR6&focus=viewport&hl=de&output=html) aus dem Jahr 1857 und ihr textkritischer Apparat in TEI beschrieben.
 
+### Beschreibung der Textzeugen
+
+Im vorliegenden Dokument nennen die Herausgeber die Textzeugen, die für diese Ausgabe verwendet wurden. Diese Benennung folgt einer bereits von Lachmann im seinem Werk über Walther von der Vogelweide etablierten Bezeichnung. Um nun auf diese Textzeugen in TEI referenzieren zu können, wird jedem Textzeugen eine Identifikation zugewiesen `<witness xml:id="A">`, die in in einer [Liste der Textzeugen](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html#TCAPWL) `<listWit>` dokumentiert ist. Diese Liste sollte entweder im **Front Matter** oder im `<sourceDesc>`-Element im **Header** festgehalten werden.
 
 - - -
-
-
-
-![Kapitel 12: Textkritischer Apparat](images/Folie76.png)
 
 ![Textzeugen](images/Folie77.png)
 
