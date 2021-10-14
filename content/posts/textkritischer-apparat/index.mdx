@@ -84,11 +84,11 @@ In der folgenden zweiten **dokument-orientierten** Auszeichnungsweise liegt der 
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html)
 
-![Dokument-orientiertes Markup](images/textkrit_dokorientiert.png)
+![Dokument-orientiertes Markup](images/textkrit_dokorientiert.png "Dokument-orientiertes Markup")
 
 Im Apparat werden die Identifikationen genau beschrieben, sodass sie für weitere Auszeichnungen und Verwendung klar verständlich sind. Hier werden durch das globale [Element `<change>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.change.html)  eine oder mehrere Veränderungen spezifiziert. Was im Text durch die Auszeichnung angedeutet wurde, wird nun genauer erklärt: Ein Schreiber hielt Goethes Werk fest, der Autor fügte dann Veränderungen hinzu. Die Veränderungen werden im [Element `<profileDesc>`](https://www.tei-c.org/release/doc/tei-p5-doc/de/html/ref-profileDesc.html) zusammengefasst, das wiederum die Entstehungsgeschichte eines Textes dokumentieren kann.
 
-![Textgenetisches Dossier](images/textkrit_textgenetdossier.png)
+![Textgenetisches Dossier](images/textkrit_textgenetdossier.png "Textgenetisches Dossier")
 
 Über die Darstellung von Primärquellen wie Autographen können Sie [hier](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-egXML-d53e97442) mehr nachlesen.
 
@@ -110,7 +110,7 @@ Im [Digitalisat](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#
 
 Den Zeilen sind die Lesarten im Apparat gegenüber gestellt. Unter dem Element `<app>` findet sich der [Eintrag im kritischen Apparat](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-app.html), in den das [Lemma](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lem.html) `<lem>` bzw. die Lemmata und verschiedene [Lesarten](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rdg.html) `<rdg>` der Textzeugen, auf die mit dem Attribut `wit` und der zugeordneten Identifikation hingewiesen wird, eingebettet sind. In unserem Beispiel wird ersichtlich, dass der Textzeuge _C_ an drei Stellen eine andere Lesart aufweist. Die Information ist - obwohl in anderer Darstellung - auch im physischen Apparat vorhanden.
 
-![Apparat](images/textkrit_apparat.png)
+![Apparat und Quelltext zu II.der von Kürenberg](images/textkrit_apparat.png "Apparat und Quelltext zu II.der von Kürenberg")
 
 ## Verbindung von Text und Apparat
 
@@ -120,11 +120,9 @@ Hier die drei Möglichkeiten:
 
 ### 1a) Location-Referenced Extern
 
-Bei dieser Variante sind Text (im `<body>`) und Apparat (im `<back>`) voneinander getrennt, aber im selben Dokument. Diese Variante wird mit dem Attribut `method="location-referenced" location="external"/\` im Element `<variantEncoding>`, das in das Element `<encodingDesc>` eingebettet ist,  im Header ausgewiesen. Um im Apparat verweisen zu können, muss die Textstelle im Text klar ausgewiesen sein. Die Referenz im Apparat erfolgt durch `<app loc=>`, und die entsprechende Identifikation. Im Beispiel weist die Identifikation den Seitenanfang der Seite 7 `<pb n=7>` und die erste Zeile `<l n=1>` aus.
+Bei dieser Variante sind Text (im `<body>`) und Apparat (im `<back>`) voneinander getrennt, aber im selben Dokument. Diese Variante wird mit dem Attribut `method="location-referenced" location="external/"` im Element `<variantEncoding>`, das in das Element `<encodingDesc>` eingebettet ist,  im Header ausgewiesen. Um im Apparat verweisen zu können, muss die Textstelle im Text klar ausgewiesen sein. Die Referenz im Apparat erfolgt durch `<app loc=>`, also einen physisch räumliche Angabe im Text, und die entsprechende Identifikation. Im Beispiel weist die Identifikation den Seitenanfang der Seite 7 `<pb n=7>` und die erste Zeile `<l n=1>` aus.
 
-Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=onepage&q&f=false)
-
-![Verbindung von Text & Apparat (1)](images/Folie79.png)
+![Verbindung von Text & Apparat, location-referenced-extern](images/textkrit_verbindung_loc_ext.png "Verbindung von Text & Apparat, location-referenced-extern")
 
 ![Verbindung von Text & Apparat (2)](images/Folie80.png)
 
