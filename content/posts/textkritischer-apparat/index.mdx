@@ -22,6 +22,7 @@ uuid: T8AfexDoWKPJ3JPBpiJ58
 - Textkritisches Markup
 - Dokument-orientiertes Markup
 - Textkritischer Apparat
+- Verbindungsmethoden von Text und Apparat
 
 ## Grundlagen
 
@@ -113,11 +114,13 @@ Den Zeilen sind die Lesarten im Apparat gegenüber gestellt. Unter dem Element `
 
 ## Verbindung von Text und Apparat
 
-TEI beweist seine große Stärke gegenüber anderen Möglichkeiten darin, dass sich Text und Apparat auf unterschiedliche Weise miteinander verknüpfen lassen, sodass ein Dokument besser erfassbar wird. Um nun diese Verbindung herzustellen, gibt es drei Möglichkeiten, von denen zwei sowohl interne (innerhalb des Dokuments) als auch externe (Verweise auf andere Quellen) Referenzen ermöglichen.
+TEI beweist seine große Stärke gegenüber anderen Möglichkeiten darin, dass sich Text und Apparat auf unterschiedliche Weise miteinander verknüpfen lassen, sodass ein Dokument besser erfassbar wird. Um nun diese Verbindung herzustellen, gibt es drei Möglichkeiten, von denen zwei sowohl intern (innerhalb des Dokuments) als auch extern (Verweise auf andere Quellen) kodiert werden können. Alle drei Methoden müssen im **Header** im Element `<encodingDesc>` des Dokuments ausgewiesen werden.
 
-### Location-Referenced Extern
+Hier die drei Möglichkeiten:
 
+### 1a) Location-Referenced Extern
 
+Bei dieser Variante sind Text und Apparat voneinander getrennt, aber im selben Dokument. Diese Variante wird mit dem Attribut `method="location-referenced" location="external"/\` im Element `<variantEncoding>`, das in das Element `<encodingDesc>` eingebettet ist,  im Header ausgewiesen.
 
 Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=onepage&q&f=false)
 
