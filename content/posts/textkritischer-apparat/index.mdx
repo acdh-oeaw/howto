@@ -53,7 +53,7 @@ Bei der Auszeichnung des textkritischen Markups wird der editierte Text sowie di
 
 ### Korrektur offensichtlicher Fehler
 
-![Textkritisches Markup, Tippfehler und ](images/textkrit_fehler.png "Textkritisches Markup (1)")
+![Textkritisches Markup, Tippfehler und Kombination beider Merkmale](images/textkrit_fehler.png "Textkritisches Markup (1)")
 
 Im Beispiel wird ein Tippfehler im Text als auch dessen Korrektur ausgezeichnet. Einerseits können sie beide Schritte - das Erkennen des Fehlers [`<sic>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-sic.html)und die entsprechende Korrektur [`<corr>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-corr.html) - separat auszeichnen, andererseits können Sie sich des [Elements `<choice>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-choice.html) bedienen, um die richtige Lesart und den Fehler darzustellen. Dieses Element verbindet mehrere Kodierungsmöglichkeiten an derselben Textstelle, `<sic>`und  `<corr>` sind Kindselemente, die einander ausschließen. Beachten Sie, dass mit dem Attribut `cert="high"` festgehalten wird, dass die vorgenommene Korrektur sehr wahrscheinlich richtig ist.
 
@@ -107,11 +107,17 @@ Im vorliegenden Dokument nennen die Herausgeber die Textzeugen, die für diese A
 
 Im [Digitalisat](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=onepage&q&f=false), ebenso wie in der physischen Ausgabe, sind Text und Apparat des Textes _II. Der von Kürenberc_ räumlich getrennt. Wird der Text nun in TEI ausgezeichnet und später ausgegeben, kann diese räumliche Trennung überwunden werden. Sie sehen hier das Digitalisat neben der Auszeichnung der Zeilen `<l>`, in der in dieser Ausgabe vorhandene Text wiedergegeben wird.
 
-Den Zeilen sind die Lesarten im Apparat gegenüber gestellt. Unter dem Element `<app>`, findet sich der [Eintrag im kritischen Apparat](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-app.html), in den das [Lemma](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lem.html) `<lem>` bzw. die Lemmata und verschiedene [Lesarten](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rdg.html) `<rdg>` der Textzeugen, auf die mit dem Attribut `wit` und der zugeordneten Identifikation hingewiesen wird, eingebettet sind. In unserem Beispiel wird ersichtlich, dass der Textzeuge _C_ an drei Stellen ein andere Lesart aufweist. Die Information ist in anderer Darstellung auch im physischen Apparat vorhanden.
+Den Zeilen sind die Lesarten im Apparat gegenüber gestellt. Unter dem Element `<app>` findet sich der [Eintrag im kritischen Apparat](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-app.html), in den das [Lemma](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-lem.html) `<lem>` bzw. die Lemmata und verschiedene [Lesarten](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-rdg.html) `<rdg>` der Textzeugen, auf die mit dem Attribut `wit` und der zugeordneten Identifikation hingewiesen wird, eingebettet sind. In unserem Beispiel wird ersichtlich, dass der Textzeuge _C_ an drei Stellen eine andere Lesart aufweist. Die Information ist - obwohl in anderer Darstellung - auch im physischen Apparat vorhanden.
 
 ![Apparat](images/textkrit_apparat.png)
 
 ## Verbindung von Text und Apparat
+
+TEI beweist seine große Stärke gegenüber anderen Möglichkeiten darin, dass sich Text und Apparat auf unterschiedliche Weise miteinander verknüpfen lassen, sodass ein Dokument besser erfassbar wird. Um nun diese Verbindung herzustellen, gibt es drei Möglichkeiten, von denen zwei sowohl interne (innerhalb des Dokuments) als auch externe (Verweise auf andere Quellen) Referenzen ermöglichen.
+
+### Location-Referenced Extern
+
+
 
 Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=onepage&q&f=false)
 
@@ -125,5 +131,10 @@ Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=one
 
 ![Verbindung von Text & Apparat (5)](images/Folie83.png)
 
-Weiterführende Links:
---. Textkritischer Apparat, Kapitel 12 der TEI. !\[https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html]
+## Weiterführende Links:
+
+\--. Textkritischer Apparat, Kapitel 12 der TEI. https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html
+
+Fischer, Franz. Critical apparatus .TEI guidelines,chapter 12. 2015. IDE Spring School. https://www.i-d-e.de/wp-content/uploads/2015/04/critical-apparatus-Graz-2015.pdf
+
+Schwentner, Isabella. 2021. Textkritik in Digitalen Editionen. In: KONDE Weißbuch, Hrsg. Walter Klug, http://www.digitale-edition.at/archive/objects/o:konde.192/methods/sdef:TEI/getLaTeXPDF
