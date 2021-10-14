@@ -120,7 +120,7 @@ Hier die drei Möglichkeiten:
 
 ### 1a) Location-Referenced Extern
 
-Bei dieser Variante sind Text und Apparat voneinander getrennt, aber im selben Dokument. Diese Variante wird mit dem Attribut `method="location-referenced" location="external"/\` im Element `<variantEncoding>`, das in das Element `<encodingDesc>` eingebettet ist,  im Header ausgewiesen.
+Bei dieser Variante sind Text (im `<body>`) und Apparat (im `<back>`) voneinander getrennt, aber im selben Dokument. Diese Variante wird mit dem Attribut `method="location-referenced" location="external"/\` im Element `<variantEncoding>`, das in das Element `<encodingDesc>` eingebettet ist,  im Header ausgewiesen. Um im Apparat verweisen zu können, muss die Textstelle im Text klar ausgewiesen sein. Die Referenz im Apparat erfolgt durch `<app loc=>`, und die entsprechende Identifikation. Im Beispiel weist die Identifikation den Seitenanfang der Seite 7 `<pb n=7>` und die erste Zeile `<l n=1>` aus.
 
 Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=onepage&q&f=false)
 
@@ -140,4 +140,4 @@ Verweis [I](https://books.google.at/books?id=FNAMAQAAIAAJ&hl=de&pg=RA1-PR2#v=one
 
 Fischer, Franz. Critical apparatus .TEI guidelines,chapter 12. 2015. IDE Spring School. https://www.i-d-e.de/wp-content/uploads/2015/04/critical-apparatus-Graz-2015.pdf
 
-Schwentner, Isabella. 2021. Textkritik in Digitalen Editionen. In: KONDE Weißbuch, Hrsg. Walter Klug, http://www.digitale-edition.at/archive/objects/o:konde.192/methods/sdef:TEI/getLaTeXPDF
+Schwentner, Isabella. 2021. Textkritik in Digitalen Editionen. In: KONDE Weißbuch, Hrsg. Walter Klug. http://www.digitale-edition.at/archive/objects/o:konde.192/methods/sdef:TEI/getLaTeXPDF
