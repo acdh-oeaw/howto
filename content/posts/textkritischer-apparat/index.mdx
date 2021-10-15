@@ -80,11 +80,11 @@ Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/PH.html#index-e
 
 In der folgenden zweiten **dokument-orientierten** Auszeichnungsweise liegt der Fokus auf anderen Aspekten der Textgenese:  Es werden hier nicht nur die Änderungen im Text ausgezeichnet, zudem liefert das Markup auch Informationen über die verschiedenen Personen, die in den Text eingegriffen haben. Individuelle Identifikationen verweisen auf Information, die genauer im Apparat nachzulesen ist. Das Element `<handShift>` ist mit einer Identifikation versehen, das Attribut `new` deutet an, wessen Hand die Veränderung vorgenommen hat.  Die Änderungen selbst werden ebenfalls wieder durch Identifikationen ausgewiesen, `<retrace>`. Beachten Sie bitte, dass die Änderungen auch genau im Text verortet werden und die beiden Änderungen in unterschiedlichen Zeilen `<line>` stattgefunden haben. Hinzu kommt hier die Auszeichnung [`<zone>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-zone.html): mit diesem Element wird ein bestimmter physisch vorhandener Bereich einer schriftsprachlichen Quelle ausgewiesen. In diesem Bereich der Textvorlage finden sich wiederum die beiden vorhin genannten Zeilen `<line>`.  
 
-### Verbindung von Text und Apparat
+![Dokument-orientiertes Markup](images/textkrit_dokorientiert.png "Dokument-orientiertes Markup")
+
+### Textgenetisches Dossier
 
 Verweis [I](https://www.tei-c.org/release/doc/tei-p5-doc/en/html/ref-metamark.html)
-
-![Dokument-orientiertes Markup](images/textkrit_dokorientiert.png "Dokument-orientiertes Markup")
 
 Im Apparat werden die Identifikationen genau beschrieben, sodass sie für weitere Auszeichnungen und Verwendung klar verständlich sind. Hier werden durch das globale [Element `<change>`](https://tei-c.org/release/doc/tei-p5-doc/en/html/ref-att.global.change.html)  eine oder mehrere Veränderungen spezifiziert. Was im Text durch die Auszeichnung angedeutet wurde, wird nun genauer erklärt: Ein Schreiber hielt Goethes Werk fest, der Autor fügte dann Veränderungen hinzu. Die Veränderungen werden im [Element `<profileDesc>`](https://www.tei-c.org/release/doc/tei-p5-doc/de/html/ref-profileDesc.html) zusammengefasst, das wiederum die Entstehungsgeschichte eines Textes dokumentieren kann.
 
@@ -94,7 +94,14 @@ Im Apparat werden die Identifikationen genau beschrieben, sodass sie für weiter
 
 ## Praktische Anwendung: Textkritische Apparat
 
-Die Erstellung textkritischer Apparate mit dem Ziel der Konstruktion des Archetypen eines Textes gehört zu den zentralen Aufgabengebieten der Philologie. Der textkritische Apparat bezeugt die Dokumente, in denen der Text überliefert wurde (**Heuristik**), er bietet die Möglichkeit die Textzeugen und Varianten zu vergleichen (**Kollation**), er dolumentiert die Analyse der Varianten (**Recensio**) und ein so entstehendes **Stemma** des Textes. Natürlich kann das Ziel des textkritischen Apparats die Wahl der Editionsmethoden und die Auszeichnung beeinflussen. EInen näheren Einblick in die verschiedenen Möglichkeiten, die TEI bietet, finden Sie [hier](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html). Im folgenden Beispiel wird [Karl Lachmann und Moriz Haupts Ausgabe _Des Minnesangs Frühling_](https://books.google.at/books?id=FNAMAQAAIAAJ&pg=PR6&focus=viewport&hl=de&output=html) aus dem Jahr 1857 und ihr textkritischer Apparat in TEI beschrieben.
+Die Erstellung textkritischer Apparate mit dem Ziel der Konstruktion des Archetypen eines Textes gehört zu den zentralen Aufgabengebieten der Philologie, wenn eine [historisch-kritische Ausgabe](https://www.historicum-estudies.net/etutorials/tutorium-quelleneditionen/definition/editionstypen) erstellt wird. Der textkritische Apparat bezeugt die Textzeugen, in denen der Text überliefert wurde (**Heuristik**), er bietet die Möglichkeit die  Varianten zu vergleichen (**Kollation**), er dokumentiert die Analyse der Varianten (**Recensio**) und ein so entstehendes **Stemma** des Textes. Natürlich kann das Ziel des textkritischen Apparats die Wahl der Editionsmethoden und die Auszeichnung beeinflussen, und TEI ist offen für unterschiedliche Diskurse in der Editionsphilologie. Die folgenden Angaben finden Sie in historisch-kritischen Apparaten:
+
+- Verweis auf die Textstelle
+- Verweis auf das betroffene Lemma / die betroffenen Lemmata
+- Aufzählung der Varianten
+- Angaben, woher die Lesarten der Edition stammen
+
+Einen näheren Einblick in die verschiedenen Möglichkeiten, die TEI bietet, finden Sie [hier](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html). Im folgenden Beispiel wird [Karl Lachmann und Moriz Haupts Ausgabe _Des Minnesangs Frühling_](https://books.google.at/books?id=FNAMAQAAIAAJ&pg=PR6&focus=viewport&hl=de&output=html) aus dem Jahr 1857 und ihr historisch-textkritischer Apparat in TEI beschrieben.
 
 ### Beschreibung der Textzeugen
 
@@ -126,7 +133,7 @@ Bei dieser Variante sind Text (im `<body>`) und Apparat (im `<back>`) voneinande
 
 ### 1a) Location-Referenced Intern
 
-Im Vergleich zur Option **1a** wird in der Variante `method="location-referenced" location="internal/"` der Apparat direkt im Textkörper wiedergegeben. Wie Sie im Beispiel sehen, wird im Element `<app>` direkt an dem Ort, wo sich die unterschiedliche Lesart `<rdg>`in einem der Textzeugen befindet, angegeben.
+Im Vergleich zur Option **1a** wird in der Variante `method="location-referenced" location="internal/"` der Apparat direkt im Textkörper wiedergegeben. Wie Sie im Beispiel sehen, wird im Element `<app>` direkt an dem Ort, wo sich die unterschiedliche Lesart `<rdg>`in einem anderen Textzeugen `wit="#C"` findet, angegeben.
 
 ![Verbindung von Text & Apparat (2), location-referenced-intern](images/textkrit_verbindung_loc_int.png "Verbindung von Text & Apparat (2), location-referenced-intern")
 
@@ -143,3 +150,5 @@ Im Vergleich zur Option **1a** wird in der Variante `method="location-referenced
 Fischer, Franz. Critical apparatus .TEI guidelines,chapter 12. 2015. IDE Spring School. https://www.i-d-e.de/wp-content/uploads/2015/04/critical-apparatus-Graz-2015.pdf
 
 Schwentner, Isabella. 2021. Textkritik in Digitalen Editionen. In: KONDE Weißbuch, Hrsg. Walter Klug. http://www.digitale-edition.at/archive/objects/o:konde.192/methods/sdef:TEI/getLaTeXPDF
+
+Turska, Magdalena. 2014. An introduction to critical apparatus in TEI. http://dixit.uni-koeln.de/wp-content/uploads/2015/04/Camp2-7-Magdalena_Turska_-_An_introduction_to_Critical_Apparatus_in_the_TEI__talk.pdf
