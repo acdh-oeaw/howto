@@ -125,21 +125,37 @@ TEI beweist seine große Stärke gegenüber anderen Möglichkeiten darin, dass s
 
 Hier die drei Möglichkeiten:
 
+- [location-referenced](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html#TCAPLO)
+- [double end-point](https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html#TCAPDE)
+  parallel segmentation
+
 ### 1a) Location-Referenced Extern
 
 Bei dieser Variante sind Text (im `<body>`) und Apparat (im `<back>`) voneinander getrennt, aber im selben Dokument. Diese Variante wird mit dem Attribut `method="location-referenced" location="external/"` im Element `<variantEncoding>`, das in das Element `<encodingDesc>` eingebettet ist,  im Header ausgewiesen. Um im Apparat verweisen zu können, muss die Textstelle im Text klar ausgewiesen sein. Die Referenz im Apparat erfolgt durch `<app loc=>`, also einen physisch räumliche Angabe im Text, und die entsprechende Identifikation. Im Beispiel weist die Identifikation den Seitenanfang der Seite 7 `<pb n=7>` und die erste Zeile `<l n=1>` aus.
 
 ![Verbindung von Text & Apparat, location-referenced-extern](images/textkrit_verbindung_loc_ext.png "Verbindung von Text & Apparat (1), location-referenced-extern")
 
-### 1a) Location-Referenced Intern
+### 1b) Location-Referenced Intern
 
-Im Vergleich zur Option **1a** wird in der Variante `method="location-referenced" location="internal/"` der Apparat direkt im Textkörper wiedergegeben. Wie Sie im Beispiel sehen, wird im Element `<app>` direkt an dem Ort, wo sich die unterschiedliche Lesart `<rdg>`in einem anderen Textzeugen `wit="#C"` findet, angegeben.
+Im Vergleich zur Option **1a** wird in der Variante `method="location-referenced" location="internal/"` der Apparat direkt im Textkörper wiedergegeben. Wie Sie im Beispiel sehen, wird das Element `<app>` direkt dort angegeben, wo sich die unterschiedliche Lesart `<rdg>` der Lemmata in einem anderen Textzeugen `wit="#C"` findet.
 
 ![Verbindung von Text & Apparat (2), location-referenced-intern](images/textkrit_verbindung_loc_int.png "Verbindung von Text & Apparat (2), location-referenced-intern")
 
-![Verbindung von Text & Apparat (3)](images/Folie81.png)
+### 2a) Double End-Point Attachment: Extern
 
-![Verbindung von Text & Apparat (4)](images/Folie82.png)
+Wird der Textapparat als **Double End-Point Attachment: Extern** Variante eingearbeitet, so geben Sie genau den Anfangs- und Endpunkt des Lemmas an, wo eine Variante ausgezeichnet wird. So werden zwei Ankerpunkte `<anchor>` festgelegt, zwischen denen sich die Textunterschiede finden. Im `<back>` Ihres TEI-Dokuments können Sie auf die Ankerelemente verweisen und so die verschiedenen Lesarten genau auszeichnen. Hier nutzen sie die Attribute  `from` und `to`, um die Ankerpunkte als Anfang und Ende der Lesart auszuzeichnen.
+
+<SideNote type="note">
+In dieser Variante der Verknüpfung wird das Lemma, für das sich eine andere Lesart findet, nicht nochmals explizit im Apparat erwähnt, da es verlässlich dem`<body>` entnommen werden kann.
+</SideNote>
+
+![Verbindung von Text & Apparat (3), double end-point attachment: extern](images/textkrit_doubleendpoint_ext.png "Verbindung von Text & Apparat (3), double end-point attachment: extern")
+
+### 2b) Double End-Point Attachment: Intern
+
+Bei der internen Variate wird der Apparat nicht vom Text getrennt, sondern ebenfalls im `<body>` dargestellt.
+
+![Verbindung von Text & Apparat (4), double end-point attachment: intern](images/textkrit_doubleendpoint_int.png "Verbindung von Text & Apparat (4), double end-point attachment: intern")
 
 ![Verbindung von Text & Apparat (5)](images/Folie83.png)
 
