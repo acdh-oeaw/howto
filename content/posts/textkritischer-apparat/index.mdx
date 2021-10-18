@@ -176,6 +176,9 @@ Je nach Ziel Ihrer Auszeichnung sollten Sie die Variante wählen, die für Ihr A
 Sehen Sie sich bitte folgenden Codeblock an und wählen Sie aus, um welche Variante es sich handelt.
 
 ```xml
+<encodingDesc>
+  ...
+</encodingDesc>
 <body>
   <lg>
     <l n="1"> Do ich dich loben horte,</l>
@@ -201,17 +204,25 @@ Sehen Sie sich bitte folgenden Codeblock an und wählen Sie aus, um welche Varia
         Was sollte im Header als Auszeichnung stehen?
       </Quiz.Question>
 
-      <Quiz.MultipleChoice.Option>
-        `method="location-referenced" location="internal/"`
+      <Quiz.MultipleChoice.Option isCorrect>
+        `<variantEncoding method="location-referenced" location="internal/">`
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-
+        `<variantEncoding method="parallel-segmentation" location="internal/">`
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-
+        `<variantEncoding method="double-end-point" location="internal/">`
       </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Genau! Hier handelt es sich um eine Location-Referenced Auszeichnung.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Leider falsch. Hier handelt es sich um eine Location-Referenced Auszeichnung.
+      </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
