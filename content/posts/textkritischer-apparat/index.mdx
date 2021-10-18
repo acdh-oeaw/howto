@@ -161,7 +161,7 @@ Bei der internen Variate wird der Apparat nicht vom Text getrennt, sondern ebenf
 
 Diese letzte Variante lässt sich nur innerhalb desselben Textbereichs (`<body>`) referenzieren. Wie in allen anderen Variaten geben Sie im `<encodingDisc>`-Element an, welche Methode Sie anwenden. In unserem Beispiel werden die zwei Optionen aus Textzeuge #A und Textzeuge #C wiedergegeben, umgeben vom Apparat-Element `<app>`. Bitte beachten Sie, dass diese Wiedergabe nicht wertend zu verstehen ist. Sie können das Apparat-Element auch für größere Textbausteine wie Abschnitte `<div>` oder Absätze `<p>` verwenden.
 
-![Verbindung von Text & Apparat (5)](images/Folie83.png)
+![Verbindung von Text & Apparat (5),  Parallel Segmentation](images/textkrit_parallel_segmentation.png "Verbindung von Text & Apparat (5),  Parallel Segmentation")
 
 ### Vor- und Nachteile der Auszeichnungsvarianten
 
@@ -171,11 +171,61 @@ Diese letzte Variante lässt sich nur innerhalb desselben Textbereichs (`<body>`
 
 Je nach Ziel Ihrer Auszeichnung sollten Sie die Variante wählen, die für Ihr Anliegen am erfolgreichsten ist.
 
+#### Quiz
+
+Sehen Sie sich bitte folgenden Codeblock an und wählen Sie aus, um welche Variante es sich handelt.
+
+```xml
+<body>
+  <lg>
+    <l n="1"> Do ich dich loben horte,</l>
+    <l n="2"> do hete ich dich gern erkant.</l>
+    <l n="3"> durch dine tugende manige</l>
+    <l n="4"> fuor ich ie welnde, unz ich dich vant</l>
+      <app>
+        <lem>welnde</lem>
+        <rdg wit="#B">welende</rdg>
+        <rdg wit="#C">wallende</rdg>
+      </app>
+    <l n="5">daz ich dich nu gesehen han,</l>
+    <l n="6">daz enwirret dir niet.</l>
+  ...
+  </lg>
+</body>
+```
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice>
+      <Quiz.Question>
+        Was sollte im Header als Auszeichnung stehen?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        `method="location-referenced" location="internal/"`
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
+
 ## Weiterführende Links:
 
 \--. Textkritischer Apparat, Kapitel 12 der TEI. https://tei-c.org/release/doc/tei-p5-doc/en/html/TC.html
 
-Fischer, Franz. Critical apparatus .TEI guidelines,chapter 12. 2015. IDE Spring School. https://www.i-d-e.de/wp-content/uploads/2015/04/critical-apparatus-Graz-2015.pdf
+\---. 2014. Tutorium Quellenedition analog und digital, Editionstypen. Universität zu Köln. https://www.historicum-estudies.net/etutorials/tutorium-quelleneditionen/definition/editionstypen
+
+Fischer, Franz. 2015. Critical apparatus .TEI guidelines,chapter 12. 2015. IDE Spring School. https://www.i-d-e.de/wp-content/uploads/2015/04/critical-apparatus-Graz-2015.pdf
+
+Lachmann, Karl, Haupt, Moriz. 1857. Des Minnesangs Frühling. Leipzig: Verlag S. Hirzel. https://books.google.at/books?id=FNAMAQAAIAAJ&pg=PP5&focus=viewport&hl=de&output=html
 
 Schwentner, Isabella. 2021. Textkritik in Digitalen Editionen. In: KONDE Weißbuch, Hrsg. Walter Klug. http://www.digitale-edition.at/archive/objects/o:konde.192/methods/sdef:TEI/getLaTeXPDF
 
