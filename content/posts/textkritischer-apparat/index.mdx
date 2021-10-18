@@ -146,18 +146,30 @@ Im Vergleich zur Option **1a** wird in der Variante `method="location-referenced
 Wird der Textapparat als **Double End-Point Attachment: Extern** Variante eingearbeitet, so geben Sie genau den Anfangs- und Endpunkt des Lemmas an, wo eine Variante ausgezeichnet wird. So werden zwei Ankerpunkte `<anchor>` festgelegt, zwischen denen sich die Textunterschiede finden. Im `<back>` Ihres TEI-Dokuments können Sie auf die Ankerelemente verweisen und so die verschiedenen Lesarten genau auszeichnen. Hier nutzen sie die Attribute  `from` und `to`, um die Ankerpunkte als Anfang und Ende der Lesart auszuzeichnen.
 
 <SideNote type="note">
-In dieser Variante der Verknüpfung wird das Lemma, für das sich eine andere Lesart findet, nicht nochmals explizit im Apparat erwähnt, da es verlässlich dem`<body>` entnommen werden kann.
+In dieser Variante der Verknüpfung wird das Lemma, für das sich eine andere Lesart findet, nicht nochmals explizit im Apparat erwähnt, da es verlässlich dem `<body>` entnommen werden kann.
 </SideNote>
 
 ![Verbindung von Text & Apparat (3), double end-point attachment: extern](images/textkrit_doubleendpoint_ext.png "Verbindung von Text & Apparat (3), double end-point attachment: extern")
 
 ### 2b) Double End-Point Attachment: Intern
 
-Bei der internen Variate wird der Apparat nicht vom Text getrennt, sondern ebenfalls im `<body>` dargestellt.
+Bei der internen Variate wird der Apparat nicht vom Text getrennt, sondern ebenfalls im `<body>` dargestellt. Die alternative Lesart `<rdg wit="#C">` frunt `</rdg>` wird dem Ankerelement folgend in das Apparat-Element `<app>` eingebettet. Dann nutzen Sie das Apparat-Element `<app>` an der Stelle, wo Sie verschiedene Lesarten ausweisen möchten. Obwohl die Darstellungsform anders ist, wird derselbe Inhalt wie in Variante 2a wiedergegeben.
 
-![Verbindung von Text & Apparat (4), double end-point attachment: intern](images/textkrit_doubleendpoint_int.png "Verbindung von Text & Apparat (4), double end-point attachment: intern")
+![Verbindung von Text & Apparat (4), double end-point attachment: intern](images/textkrit_doubleendpoint_int.png "Verbindung von Text & Apparat (4), double end-point attachment: intern").
+
+### 3) Parallel Segmentation
+
+Diese letzte Variante lässt sich nur innerhalb desselben Textbereichs (`<body>`) referenzieren. Wie in allen anderen Variaten geben Sie im `<encodingDisc>`-Element an, welche Methode Sie anwenden. In unserem Beispiel werden die zwei Optionen aus Textzeuge #A und Textzeuge #C wiedergegeben, umgeben vom Apparat-Element `<app>`. Bitte beachten Sie, dass diese Wiedergabe nicht wertend zu verstehen ist. Sie können das Apparat-Element auch für größere Textbausteine wie Abschnitte `<div>` oder Absätze `<p>` verwenden.
 
 ![Verbindung von Text & Apparat (5)](images/Folie83.png)
+
+### Vor- und Nachteile der Auszeichnungsvarianten
+
+**Location-Referenced** ist jene Variante, die der traditionellen historisch-kritischen Textedition am nächsten kommt. Sie ist einfach verständlich und nutzbar; gleichzeitig ist sie aber weniger genau als die anderen Varianten.
+**Double-End-Point** ist wesentlich komplexer zu schreiben als Location-Referenced, aber eine sehr genaue Auszeichnung ist möglich. Außerdem können einander überlagernde Strukturen auch ausgezeichnet werden.
+**Parallel Segmentation** wird von XSLT am besten unterstützt und von Kollationierungswerkzeugen (collation tools) genutzt, z.B. [Juxta Web Service.](https://wiki.tei-c.org/index.php/JuxtaWS) Dadurch erleichtert sich die spätere Handhabe und Nachnutzung. Allerdings kann die Auszeichnung von Überlappungen schwierig sein.
+
+Je nach Ziel Ihrer Auszeichnung sollten Sie die Variante wählen, die für Ihr Anliegen am erfolgreichsten ist.
 
 ## Weiterführende Links:
 
