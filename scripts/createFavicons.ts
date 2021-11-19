@@ -14,7 +14,8 @@ import { siteMetadata } from '~/config/siteMetadata.config'
 Promise.all(
   Object.entries(siteMetadata).map(
     ([locale, { favicon, shortTitle, title, image }]) => {
-      const outputFolder = locale === defaultLocale ? 'public' : ['public', locale].join('/')
+      const outputFolder =
+        locale === defaultLocale ? 'public' : ['public', locale].join('/')
 
       return generate({
         inputFilePath: favicon.src,
