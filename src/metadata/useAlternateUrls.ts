@@ -4,7 +4,6 @@ import { useMemo } from 'react'
 
 import type { Locale } from '@/i18n/i18n.config'
 import { useLocale } from '@/i18n/useLocale'
-import { useSiteMetadata } from '@/metadata/useSiteMetadata'
 import { createUrl } from '@/utils/createUrl'
 import { url as baseUrl } from '~/config/site.config'
 
