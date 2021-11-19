@@ -24,7 +24,7 @@ import { NavLink } from '@/navigation/NavLink'
 import { routes } from '@/navigation/routes.config'
 import type { SearchStatus } from '@/search/useSearch'
 import { useSearch } from '@/search/useSearch'
-import Logo from '~/public/assets/images/logo-tinted.svg'
+import Logo from '~/public/assets/images/logo.svg'
 
 /**
  * Page header.
