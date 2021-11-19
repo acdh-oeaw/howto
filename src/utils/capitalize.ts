@@ -1,6 +1,10 @@
 /**
- * Capitalizes a string.
+ * Capitalizes a unicode string.
  */
 export function capitalize(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1)
+  if (str === '') return str
+  const first = String.fromCodePoint(
+    str.codePointAt(0)
+  )
+  return first.toUpperCase() + str.slice(first.length)
 }
