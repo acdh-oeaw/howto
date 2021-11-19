@@ -52,8 +52,8 @@ export const siteMetadata: Record<Locale, SiteMetadata> = {
       maskable: true,
     },
     image: {
-      src: 'public/android-chrome-512x512.png',
-      publicPath: '/android-chrome-512x512.png',
+      src: 'public/assets/images/logo-with-text.svg',
+      publicPath: '/open-graph.webp',
       alt: '',
     },
     twitter: 'ACDH_OeAW',
@@ -73,8 +73,8 @@ export const siteMetadata: Record<Locale, SiteMetadata> = {
       maskable: true,
     },
     image: {
-      src: 'public/android-chrome-512x512.png',
-      publicPath: '/android-chrome-512x512.png',
+      src: 'public/assets/images/logo-with-text.svg',
+      publicPath: '/de/open-graph.webp',
       alt: '',
     },
     twitter: 'ACDH_OeAW',
