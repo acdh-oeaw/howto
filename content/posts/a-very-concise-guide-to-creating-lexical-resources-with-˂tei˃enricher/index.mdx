@@ -42,34 +42,70 @@ In the TEI world, lexical resources are viewed as special types of text. Enhanci
 
 A final word of caution: bear in mind that both the program and its documentation are work in progress and as such are incomplete and prone to change. To keep things simple, we only deal with the single-user version of _˂TEI˃Enricher_. While setting-up the XML database BaseX and configuring it is also pretty straightforward, it still adds some complexity to the issue which is not needed when only wanting to look at the basic workings of digital dictionary writing.
 
-
-
 ## Creating a Lex-0 dictionary
 
 The following paragraphs will walk you through the process of creating a bilingual dictionary with _˂TEI˃Enricher_. We will focus on the procedure rather than the involved encoding as there already exists excellent material (https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html). As an example we furnish a few sample entries that might be seen as the start of a Latin-English dictionary.
-
-
 
 ### STEP 1: Obtaining and setting-up the program
 
 Like VLE, _˂TEI˃Enricher_ is a standalone Windows application. You can download it from the [VICAV project website](https://www.oeaw.ac.at/acdh/projects/vicav) of the ACDH-CH. There is no need to install anything, just unpack the zip file in a folder where you have reading and writing rights.
 
-
-
 ### STEP 2: Starting the program
 
-Having unpacked the programme to a directory of your choice, you can start it by double-clicking on the executable (file with exe extension): tei_enricher.exe. You might consider putting a link on the desktop if you intend to make use of it regularly.
-
-
+Having unpacked the programme to a directory of your choice, you can start it by double-clicking on the executable (file with exe extension): _tei_enricher.exe_. You might consider putting a link on the desktop if you intend to make use of it regularly.
 
 ### STEP 3: Creating a dictionary set-up
 
-To create a dictionary, go to the New dictionary tabsheet by pushing the Create new dictionary button. This will take you to a tabsheet where you have to fill in some basic information about the dictionary you intend to create. The form helps you to fill in the information the program uses for the set-up of a working environment. Most of the data you are expected to enter is self-explanatory. The following image (Fig. 1) shows the example we will work with in the following chapters.
+To create a dictionary, go to the _New dictionary_ tabsheet by pushing the _Create new dictionary_ button. This will take you to a tabsheet where you have to fill in some basic information about the dictionary you intend to create. The form helps you to fill in the information the program uses for the set-up of a working environment. Most of the data you are expected to enter is self-explanatory. The following image (Fig. 1) shows the example we will work with in the following chapters.
 
 ![](images/new_dict__001.png "Figure 1: Create new dictionary")
 
 In the TEI world, languages are identified with language ‘tags’ that follow the [IETF BCP 47 specification](https://tools.ietf.org/rfc/bcp/bcp47.txt). To ease finding the right one, the program provides several lists containing the ISO-639 language codes. To switch between the lists, simply choose a list from the combobox on the right side of source and target language.
 
-Then, push the  three buttons on the bottom of the form from left to right (see figure 2). Unless there is a need to change the templates, you don't need to do anything. The program has just set up the environment for you, copying the dictionary template, the transformation styles (xsl), the schema files (xsd) and an XML file ending in _xprofile.xml into the target directory.
+Then, push the  three buttons on the bottom of the form from left to right (see figure 2). Unless there is a need to change the templates, you don't need to do anything. The program has just set up the environment for you, copying the dictionary template, the transformation styles (xsl), the schema files (xsd) and an XML file ending in __xprofile.xml_ into the target directory.
 
 ![](images/create_dictionary_001.png "Figure 2: Creating dict. environment")
+
+## Creating dictionary entries
+
+### STEP 1: Open the new dictionary
+
+Having created the document into which the dictionary data is going to be stored, we can proceed to create entries for the dictionary. Once you have pushed the _Save new dict._ button, the program takes you to the file explorer. You will see a directory with two XML files in it (Fig. 3): the dictionary and the dictionary profile. 
+
+![](images/dict_fileexplorer_001.png "Figure 3: Opening new dictionary")
+
+To open the dictionary, click the file ending in __xprofile_. This is the file that gives the program all the information it needs, enabling you to work on the dictionary. The profile is also a TEI encoded document containing configuration data needed by the editor. You could also open the dictionary file as a text, which, however, would make working on it much more cumbersome.
+
+
+
+### STEP 2: Find the entry templates ...
+
+When the profile is loaded, the editor appears displaying a three-way structure (Fig. 4): the left side (1) is the XML editor,    the central part (2) is used to navigate the dictionary data    and the right side (3) is used for editing any meta-data and    visualising the entries.
+
+When opening the editor for the first time, you might not see all the components. You may have to enlarge the window and there    are splitters inside the window to adjust the width of the three    areas. The program will remember the size of the window when you    open it in following sessions.
+
+Figure 4: Editor structure
+
+Now, we are going to create our first dictionary entry. Everything in the program is based on templates. Of course, you can    also type in whatever you need manually. However, simply copying    predefined code snippets is a much easier and safer approach.    The entry templates are to be found in the right-side section (3).    Click on the tabsheet Dict. and    then on Entry templates.
+
+What you see here, is a list of TEI code snippets representing prototypical entries from with which dictionary entries can be created.    These templates are stored in the profile. The list will have    to be adapted to the particularities of your needs.    Each template has a name attribute displayed in the listbox    on the left side, which is used to insert a template into the    dictionary (Fig. 5).
+
+Figure 5: Entry templates
+
+### STEP 3: ... and insert the first entry
+
+Let us now create a new entry. For the sake of practice, let's take the simplest template with the name generic, which    has almost no content. Double-click on the line in the listbox    on the left side. The next image (Fig. 6) displays what you    should see now.
+
+Figure 6: New lemma template
+
+Now you can start to work on the lexical data. Insert the lemma inside of the ˂orth˃ element (Fig. 7).
+
+Figure 7: New lemma
+
+After this, you might want to create a more meaningful ID for the entry. Push the button Entry ID (Fig 8.) to create a new ID
+
+Figure 8: New lemma ID
+
+This ID is made up of an identifier of the dictionary (LETD=Latin English Trial Dictionary), which is based on the template defined in the configuration tabsheet of the profile: right editor side, Dict. tabsheet, Dict. Config. (Fig. 9).
+
+Figure 9: Configuration
