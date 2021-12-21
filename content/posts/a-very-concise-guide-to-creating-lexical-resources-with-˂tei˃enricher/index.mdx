@@ -118,19 +118,13 @@ In TEI Lex-0, word class is encoded in gramGrp/gram\[@type="pos"]. The word _ros
 
 ![](images/step_04_1__001.png "Figure 10: Dict. snippets")
 
-
-
 The snippets have two attributes that are relevant for the functioning of the program (Fig. 11). The n attribute (arrow 1) contains an abbreviation that can be used with hashes on  the left and right side to avoid navigating to go       the _Dict. snippets_ tabsheet. When typing the string  (n=noun) in the XML editor, the program attempts to substitute this string with the template carrying the attribute n="n". Consequently, typing v with  hashes around would insert the snippet for the word class verb. Alternatively, you can also double-click in the listbox on the left side of the snippets list (arrow 2) or click on the button that pops up when you navigate in the templates (arrow 3).
 
 ![](images/step_04_2__001.png "Figure 11: Dict. snippets tabsheet")
 
-
-
 Consequently, we receive the following result (Fig. 12).
 
 ![](images/step_04_3__001.png "Figure 12: Encoding word class")
-
-
 
 Mind the string in the templates which indicates where the program will put the cursor after the insertion.       _˂TEI˃Enricher_ is performing some rudimentary formatting. Mind that this often is far from perfect and might differ from what you would like to see.
 
@@ -138,13 +132,9 @@ Inserting the genus of the noun works along the same lines: Simply put the curso
 
 ![](images/step_04_4__001.png "Figure 13: Adding gender (part 1)")
 
-
-
 This will result in the substitution the result of which is displayed in the next illustration (Fig. 14).
 
 ![](images/step_04_5__001.png "Figure 14: Adding gender (part 2)")
-
-
 
 #### Inserting a plural form
 
@@ -154,15 +144,11 @@ Plural forms are indicated in ˂form˃ elements (Fig. 15).
 
 ![](images/step_04_6__001.png "Figure 15: Adding plural forms")
 
-
-
 #### Inserting senses
 
 An indispensable part of bilingual lexicography are translation equivalents. These are put in ˂sense˃ elements (Fig. 16). Mind the _Sense IDs_ button on top of the editor. Senses must have unique IDs.
 
 ![](images/step_04_7__001.png "Figure 16: Adding senses")
-
-
 
 #### Inserting an etymology
 
@@ -170,19 +156,13 @@ Let us finish with the etymology snippet. To demonstrate this, a second entry is
 
 ![](images/step_04_8__001.png "FIgure 17: Etymology")
 
-
-
 #### Viewing the data
 
 One of the important features of _˂TEI˃Enricher_ is that it allows to instantly visualise the XML (Fig. 18). This is achieved by means of XSLT styles that convert the TEI encoded text into HTML and display it in the browser of the editor. To trigger this transformation the function _browseDictEntry_ is used (per default F8 key).
 
 ![](images/step_04_9__001.png "Figure 18: Visualising")
 
-
-
 The XSLT can easily be adjusted to various purposes. The tabsheet on the left side of the _Browser_ tabsheet contains the data which can be edited. Any changes are applied immediately to the data. How to edit the XSLT language is however beyond the scope of this tutorial.
-
-
 
 ### STEP 5: Inserting examples
 
@@ -190,25 +170,17 @@ In the dictionaries of the VICAV family, examples constitute a case in its own r
 
 ![](images/macro_structure_001.png "Figure 19: Macro structure")
 
-
-
 We first create an example (Fig. 20).
 
 ![](images/step_05_1__001.png "Figure 20: Example sentences")
-
-
 
 To copy this reference into the respective entry, we use the function _createExamplePointer_ (F11 key) to get the data into the clipboard. Then we go to the entry _loquor_ ‘to speak’, find the right position to insert and paste it there using CTRL+V. In the VICAV dictionaries, these references are usually inserted at the end of a ˂sense˃ element (Fig. 21).
 
 ![](images/step_05_2__001.png "Figure 21: Linking example sentences")
 
-
-
 _˂TEI˃Enricher_ automatically inserts the example in the output stream when browsing the entry _loquor_ (Fig. 22).
 
 ![](images/step_05_3__001.png "Figure 22: Viewing example sentences")
-
-
 
 ### STEP 6: Saving the data
 
@@ -222,13 +194,9 @@ The navigation within the dictionary is accomplished via the middle section of t
 
 ![](images/step_07_1__001.png "Figure 23: Querying")
 
-
-
 Where to look for particular strings in the dictionary is defined in the list of query templates. These are simple xPath expressions into which the string from the query control is inserted. The templates are selected via the label.
 
 ![](images/step_07_2__001.png "Figure 24: Query templates")
-
-
 
 ## Some details on the editor
 
@@ -238,13 +206,9 @@ The tool does not come with much sophisticated XML editing functionality. It is 
 
 ![](images/selecting_element.png "FIgure 25: Selecting an element")
 
-
-
 CTRL+F9 will select only the contents of the element (Fig. 26).
 
 ![](images/selecting_element_contents.png "Figure 26: Selecting the contents of an element")
-
-
 
 ### Checking well-formedness (CTRL+W)
 
@@ -254,20 +218,15 @@ When working on any XML document, it is very important to ensure that the docume
 - Every start tag is followed by an end tag.
 - All the elements in the document are properly nested.
 
-
 ‘Properly nested’ means that elements must not overlap, a start- and end-tag must be inside the ‘parent’ element. As with many functions in _˂TEI˃Enricher_, you can either use the button in the top bar of the editor, use a keyboard shortcut (per default CTRL+W) or right click in the editor to select the respective item in the pop-up menu to start the check on the structural integrity of the document you are working on.
 
 To try this functionality, simply remove a single tag from your try-out text and press CTRL+W. You will receive an error message and a position in the text; the latter information is not always helpful, as this is the position where the error shows, not necessarily where the problem started.
-
-
 
 ### Validation (ALT + V)
 
 When discussing which formats to use in data processing, validation has often been named as one of the strong arguments in favour of XML solutions. While the well-formedness test only checks the three basic XML rules (one root, every start tag has to be followed by an end tag and elements must be properly nested), validation also checks the vocabulary used. It makes sure that only permissible elements are used in the document and that they are in the right place. The validation check is performed against a so-called schema, a document that contains the specifications which define a particular type of document.
 
-_˂TEI˃Enricher_ can currently only deal with XML Schema files, it does not support Relax NG. This has got to do with the availability of tools and time constraints in programming the tool. The XML Schema file against which the validation is performed has to be indicated in the _Config._ tabsheet of the main form. There are two options: either you have a local schema on your computer or you get it from the Internet, ideally via [https://tei-c.org](https://tei-c.org). When making use of this functionality, it is recommended to use slimmed-down schemas that only contain the elements necessary for the particular task. _TEI-all.xsd_ will make the process slow and cumbersome.
-
-
+_˂TEI˃Enricher_ can currently only deal with XML Schema files, it does not support Relax NG. This has got to do with the availability of tools and time constraints in programming the tool. The XML Schema file against which the validation is performed has to be indicated in the _Config._ tabsheet of the main form. There are two options: either you have a local schema on your computer or you get it from the Internet, ideally via the _[Text Encoding Initiative](https://tei-c.org/)_. When making use of this functionality, it is recommended to use slimmed-down schemas that only contain the elements necessary for the particular task. _TEI-all.xsd_ will make the process slow and cumbersome.
 
 ### Other checks
 
