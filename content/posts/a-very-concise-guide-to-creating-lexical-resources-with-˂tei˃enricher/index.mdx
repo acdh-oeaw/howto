@@ -236,26 +236,30 @@ Where to look for particular strings in the dictionary is defined in the list of
 
 The tool does not come with much sophisticated XML editing functionality. It is therefore important to avoid much typing which is per    se very error prone. Define what you need in the templates    section and insert elements from there.    Having inserted a start tag, the shortcut keys CTRL+F5 add    the end tag. To select an element simply press the F9 key    in the element (Fig. 25).
 
-Figure 25: Selecting an element
+![](images/selecting_element.png "FIgure 25: Selecting an element")
+
+
 
 CTRL+F9 will select only the contents of the element (Fig. 26).
 
-Figure 26: Selecting the contents of an element
+![](images/selecting_element_contents.png "Figure 26: Selecting the contents of an element")
+
+
 
 ### Checking well-formedness (CTRL+W)
 
-When working on any XML document, it is very important to ensure that the document complies with the underlying specifications.    The most fundamental degree of compliance within the    basic rules of XML is called well-formedness. A well-formed    document fulfils three conditions:           
+When working on any XML document, it is very important to ensure that the document complies with the underlying specifications. The most fundamental degree of compliance within the basic rules of XML is called well-formedness. A well-formed document fulfils three conditions:           
 
 - It has a single root.
-       
 - Every start tag is followed by an end tag.
-       
 - All the elements in the document are properly nested.
-     
 
-‘Properly nested’ means that elements must not overlap, a start- and end-tag must be inside the ‘parent’ element. As with many functions in ˂TEI˃Enricher, you can either use the button in the top bar of the editor, use a keyboard shortcut (per default CTRL+W) or right click in the editor to select the respective item in the pop-up menu to start the check on the structural integrity of the document you are working on.
+
+‘Properly nested’ means that elements must not overlap, a start- and end-tag must be inside the ‘parent’ element. As with many functions in _˂TEI˃Enricher_, you can either use the button in the top bar of the editor, use a keyboard shortcut (per default CTRL+W) or right click in the editor to select the respective item in the pop-up menu to start the check on the structural integrity of the document you are working on.
 
 To try this functionality, simply remove a single tag from your try-out text and press CTRL+W. You will receive an error message and a position in the text; the latter information is not always helpful, as this is the position where the error shows, not necessarily where the problem started.
+
+
 
 ### Validation (ALT + V)
 
