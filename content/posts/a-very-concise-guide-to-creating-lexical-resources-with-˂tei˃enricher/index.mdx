@@ -20,37 +20,24 @@ uuid: iKLhV-LgCuc9klNoniRCh
 ---
 ## Introduction
 
-
-               
 This tutorial is supposed to teach interested novices how to quickly create a dictionary in accordance with the Guidelines of the Text Encoding Initiative (TEI), ideally in the Lex-0 flavour. It makes use of a tool that was created in the framework of the VICAV project at the Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH). The intention was to work with examples conformant to TEI Lex-0. However, this tutorial is not meant as an instruction to the encoding but to the usage of the described tool. Furthermore, it is not a complete documentation of the software but will concentrate on the key features needed to understand the basic functionalities in writing a digital dictionary.
 
-
-                
 ### Institutional framework
- 
+
 The Viennese Corpus of Arabic Varieties (VICAV) is a project cluster collecting and creating digital language resources for Arabic dialectology. It is an initiative of the ACDH-CH of the Austrian Academy of Sciences (OeAW) and the Institute for Near Eastern Studies of the University of Vienna. Contrary to its name, the endeavour has over time developed a focus on lexical resources.
 
-               
-
-                
 ### The ˂TEI˃Enricher tool
- 
+
 The tool that has been used for many years to create lexical resources in the VICAV projects is the Viennese Lexicographical Editor (VLE), an XML editor providing specialised functionalities to compile digital dictionaries and to streamline the lexicographic editing process. It is a standalone Windows application that allows lexicographers to work collaboratively on the Internet. It is built on XML and cognate technologies such as XPath, XQuery, XSLT and XML Schema. While, in principle, it can process any XML-based format, it has a number of features that are geared towards the use of lexical data which are encoded according to the Guidelines of the Text Encoding Initiative.
 
- 
-VLE incorporates several specialised modules which have emerged from particular needs in various projects. One of these is the integrated ‘book reader’, allowing to efficiently work with books in the form of scanned images and thus to easily navigate    sources used during the dictionary compilation. This is also quite useful in retro-digitising historical dictionaries. Another built-in tool that is used to access external data, is the integrated Internet browser which allows to directly work with corpora, other dictionaries etc. available through web applications. This module has also been used in integrating example sentences in the various dictionaries. VLE visualises all lexicographic data making use of freely configurable XSLT styles. It can check the integrity of the XML data (well-formedness) and also verify the validity of the input against XML schemas. It performs versioning on the entry level, storing a time-stamped copy on the server every time a record is saved. VLE works as part of a client-server architecture which in recent versions was built with the free and easy-to-use XML database BaseX as backend. It has been freely available and can be downloaded from the ACDH-CH website (https://www.oeaw.ac.at/acdh/projects/vicav). 
+VLE incorporates several specialised modules which have emerged from particular needs in various projects. One of these is the integrated ‘book reader’, allowing to efficiently work with books in the form of scanned images and thus to easily navigate    sources used during the dictionary compilation. This is also quite useful in retro-digitising historical dictionaries. Another built-in tool that is used to access external data, is the integrated Internet browser which allows to directly work with corpora, other dictionaries etc. available through web applications. This module has also been used in integrating example sentences in the various dictionaries. VLE visualises all lexicographic data making use of freely configurable XSLT styles. It can check the integrity of the XML data (well-formedness) and also verify the validity of the input against XML schemas. It performs versioning on the entry level, storing a time-stamped copy on the server every time a record is saved. VLE works as part of a client-server architecture which in recent versions was built with the free and easy-to-use XML database BaseX as backend. It has been freely available and can be downloaded from the [ACDH-CH website](https://www.oeaw.ac.at/acdh/projects/vicav). 
 
- 
 In recent months, we have started to integrate important parts of VLE's functionality into another XML editor which by contrast to VLE has been programmed making use of    the freely available compiler LAZARUS. This was meant as a step to make the development more sustainable. The XML editor has so far been called ˂TEI˃Enricher.
 
- 
 ˂TEI˃Enricher is a so-far experimental XML editor geared towards the easy production of TEI documents. It has not only been used to create but also enrich TEI documents.    It helps to work on standoff annotations, provides functions to chunk and tokenise texts and has built-in functions to work with geo locations. It was first developed    in a project creating linguistic teaching resources written in TEI.
 
- 
 A focus of the work on this tool has also been the teaching of XML and TEI. It has been designed to make particular steps of text production as transparent as possible. By contrast to other tools, XSLT is pre-configured so that students can easily start to transform what they code right from the beginning. It can be used to train a wide range of text-technological skills such as XML, XSLT, HTML, CSS, etc.
 
- 
 In the TEI world, lexical resources are viewed as special types of text. Enhancing the tool with functionalities from the dedicated dictionary writing application can therefore be seen as a natural next step in the development of the ˂TEI˃Enricher.
 
- 
 A final word of caution: bear in mind that both the program and its documentation are work in progress and as such are incomplete and prone to change. To keep things simple, we only deal with the single-user version of ˂TEI˃Enricher. While setting-up the XML database BaseX and configuring it is also pretty straightforward, it still adds some complexity to the issue which is not needed when only wanting to look at the basic workings of digital dictionary writing.
