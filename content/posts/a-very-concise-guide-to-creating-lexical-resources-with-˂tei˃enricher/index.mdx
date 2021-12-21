@@ -188,19 +188,27 @@ The XSLT can easily be adjusted to various purposes. The tabsheet on the left si
 
 In the dictionaries of the VICAV family, examples constitute a case in its own right. They are usually not inserted directly into the ˂entry˃ elements but referenced via pointer elements that contain IDs to address them. To make this clear, a short notice on the macro structure of the VICAV dictionaries: they are made up of two divisions inside the body element of the dictionary, the first division div\[type="entries"] contains all entries irrespective of being single or multiword entries and the second division div\[type="examples"] contains all the examples. The rationale behind keeping example sentences apart from the entries is to allow the reuse of the examples in different parts of the dictionary, thus creating a more flexible structure. The macro structure of the dictionaries looks like this (Fig. 19).
 
-Figure 19: Macro structure
+![](images/macro_structure_001.png "Figure 19: Macro structure")
+
+
 
 We first create an example (Fig. 20).
 
-Figure 20: Example sentences
+![](images/step_05_1__001.png "Figure 20: Example sentences")
 
-To copy this reference into the respective entry, we use the function createExamplePointer (F11 key) to get the data into the clipboard. Then we go to the entry loquor ‘to speak’, find the right position to insert and paste it there using CTRL+V. In the VICAV dictionaries, these references are usually inserted at the end of a ˂sense˃ element (Fig. 21).
 
-Figure 21: Linking example sentences
 
-˂TEI˃Enricher automatically    inserts the example in the output stream when browsing the entry loquor (Fig. 22).
+To copy this reference into the respective entry, we use the function _createExamplePointer_ (F11 key) to get the data into the clipboard. Then we go to the entry _loquor_ ‘to speak’, find the right position to insert and paste it there using CTRL+V. In the VICAV dictionaries, these references are usually inserted at the end of a ˂sense˃ element (Fig. 21).
 
-Figure 22: Viewing example sentences
+![](images/step_05_2__001.png "Figure 21: Linking example sentences")
+
+
+
+_˂TEI˃Enricher_ automatically inserts the example in the output stream when browsing the entry _loquor_ (Fig. 22).
+
+![](images/step_05_3__001.png "Figure 22: Viewing example sentences")
+
+
 
 ### STEP 6: Saving the data
 
