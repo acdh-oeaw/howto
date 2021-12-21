@@ -26,18 +26,50 @@ This tutorial is supposed to teach interested novices how to quickly create a di
 
 The Viennese Corpus of Arabic Varieties (VICAV) is a project cluster collecting and creating digital language resources for Arabic dialectology. It is an initiative of the ACDH-CH of the Austrian Academy of Sciences (OeAW) and the Institute for Near Eastern Studies of the University of Vienna. Contrary to its name, the endeavour has over time developed a focus on lexical resources.
 
-### The ˂TEI˃Enricher tool
+### The _˂TEI˃Enricher_ tool
 
 The tool that has been used for many years to create lexical resources in the VICAV projects is the Viennese Lexicographical Editor (VLE), an XML editor providing specialised functionalities to compile digital dictionaries and to streamline the lexicographic editing process. It is a standalone Windows application that allows lexicographers to work collaboratively on the Internet. It is built on XML and cognate technologies such as XPath, XQuery, XSLT and XML Schema. While, in principle, it can process any XML-based format, it has a number of features that are geared towards the use of lexical data which are encoded according to the Guidelines of the Text Encoding Initiative.
 
 VLE incorporates several specialised modules which have emerged from particular needs in various projects. One of these is the integrated ‘book reader’, allowing to efficiently work with books in the form of scanned images and thus to easily navigate    sources used during the dictionary compilation. This is also quite useful in retro-digitising historical dictionaries. Another built-in tool that is used to access external data, is the integrated Internet browser which allows to directly work with corpora, other dictionaries etc. available through web applications. This module has also been used in integrating example sentences in the various dictionaries. VLE visualises all lexicographic data making use of freely configurable XSLT styles. It can check the integrity of the XML data (well-formedness) and also verify the validity of the input against XML schemas. It performs versioning on the entry level, storing a time-stamped copy on the server every time a record is saved. VLE works as part of a client-server architecture which in recent versions was built with the free and easy-to-use XML database BaseX as backend. It has been freely available and can be downloaded from the [ACDH-CH website](https://www.oeaw.ac.at/acdh/projects/vicav). 
 
-In recent months, we have started to integrate important parts of VLE's functionality into another XML editor which by contrast to VLE has been programmed making use of    the freely available compiler LAZARUS. This was meant as a step to make the development more sustainable. The XML editor has so far been called ˂TEI˃Enricher.
+In recent months, we have started to integrate important parts of VLE's functionality into another XML editor which by contrast to VLE has been programmed making use of    the freely available compiler LAZARUS. This was meant as a step to make the development more sustainable. The XML editor has so far been called _˂TEI˃Enricher_.
 
-˂TEI˃Enricher is a so-far experimental XML editor geared towards the easy production of TEI documents. It has not only been used to create but also enrich TEI documents.    It helps to work on standoff annotations, provides functions to chunk and tokenise texts and has built-in functions to work with geo locations. It was first developed    in a project creating linguistic teaching resources written in TEI.
+_˂TEI˃Enricher_ is a so-far experimental XML editor geared towards the easy production of TEI documents. It has not only been used to create but also enrich TEI documents.    It helps to work on standoff annotations, provides functions to chunk and tokenise texts and has built-in functions to work with geo locations. It was first developed    in a project creating linguistic teaching resources written in TEI.
 
 A focus of the work on this tool has also been the teaching of XML and TEI. It has been designed to make particular steps of text production as transparent as possible. By contrast to other tools, XSLT is pre-configured so that students can easily start to transform what they code right from the beginning. It can be used to train a wide range of text-technological skills such as XML, XSLT, HTML, CSS, etc.
 
-In the TEI world, lexical resources are viewed as special types of text. Enhancing the tool with functionalities from the dedicated dictionary writing application can therefore be seen as a natural next step in the development of the ˂TEI˃Enricher.
+In the TEI world, lexical resources are viewed as special types of text. Enhancing the tool with functionalities from the dedicated dictionary writing application can therefore be seen as a natural next step in the development of the _˂TEI˃Enricher_.
 
-A final word of caution: bear in mind that both the program and its documentation are work in progress and as such are incomplete and prone to change. To keep things simple, we only deal with the single-user version of ˂TEI˃Enricher. While setting-up the XML database BaseX and configuring it is also pretty straightforward, it still adds some complexity to the issue which is not needed when only wanting to look at the basic workings of digital dictionary writing.
+A final word of caution: bear in mind that both the program and its documentation are work in progress and as such are incomplete and prone to change. To keep things simple, we only deal with the single-user version of _˂TEI˃Enricher_. While setting-up the XML database BaseX and configuring it is also pretty straightforward, it still adds some complexity to the issue which is not needed when only wanting to look at the basic workings of digital dictionary writing.
+
+
+
+## Creating a Lex-0 dictionary
+
+The following paragraphs will walk you through the process of creating a bilingual dictionary with _˂TEI˃Enricher_. We will focus on the procedure rather than the involved encoding as there already exists excellent material (https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html). As an example we furnish a few sample entries that might be seen as the start of a Latin-English dictionary.
+
+
+
+### STEP 1: Obtaining and setting-up the program
+
+Like VLE, _˂TEI˃Enricher_ is a standalone Windows application. You can download it from the [VICAV project website](https://www.oeaw.ac.at/acdh/projects/vicav) of the ACDH-CH. There is no need to install anything, just unpack the zip file in a folder where you have reading and writing rights.
+
+
+
+### STEP 2: Starting the program
+
+Having unpacked the programme to a directory of your choice, you can start it by double-clicking on the executable (file with exe extension): tei_enricher.exe. You might consider putting a link on the desktop if you intend to make use of it regularly.
+
+
+
+### STEP 3: Creating a dictionary set-up
+
+To create a dictionary, go to the New dictionary tabsheet by pushing the Create new dictionary button. This will take you to a tabsheet where you have to fill in some basic information about the dictionary you intend to create. The form helps you to fill in the information the program uses for the set-up of a working environment. Most of the data you are expected to enter is self-explanatory. The following image (Fig. 1) shows the example we will work with in the following chapters.
+
+![](images/new_dict__001.png "Figure 1: Create new dictionary")
+
+In the TEI world, languages are identified with language ‘tags’ that follow the [IETF BCP 47 specification](https://tools.ietf.org/rfc/bcp/bcp47.txt). To ease finding the right one, the program provides several lists containing the ISO-639 language codes. To switch between the lists, simply choose a list from the combobox on the right side of source and target language.
+
+Then, push the  three buttons on the bottom of the form from left to right (see figure 2). Unless there is a need to change the templates, you don't need to do anything. The program has just set up the environment for you, copying the dictionary template, the transformation styles (xsl), the schema files (xsd) and an XML file ending in _xprofile.xml into the target directory.
+
+![](images/create_dictionary_001.png "Figure 2: Creating dict. environment")
