@@ -178,8 +178,6 @@ Im nächsten Abschnitt wollen wir einige grundlegende und einfach anwendbare Pri
 - Trognitz, Martina. "[Der Lebenszyklus von Forschungsdaten](https://ianus-fdz.de/lebenszyklus)." _IANUS_. 7. August 2017.
 - UK Data Service. "[The importance of managing and sharing data](https://ukdataservice.ac.uk/learning-hub/research-data-management)." _University of Essex_. 2012-2022.
 
-
-
 ## C. Eine Einführung in das Datenmanagement
 
 ### C.1. Schritt 1: Die Planung - Gut vorbereitet in ein erfolgreiches Datenmanagement starten
@@ -205,7 +203,7 @@ Bei Förderanträgen im wissenschaftlichen Bereich wird vermehrt die Vorlage ein
 
 Diese knappe, aber treffende Definition hebt zwei zentrale Bereiche des Datenmanagements hervor: die Frage nach dem Urheberrecht bzw. der Lizenzierung und die Veröffentlichung bzw. Langzeitarchivierung von Daten nach Projektende. Beim Urheberrecht bzw. der Nutzung von lizenzierten Daten ist vorab zu klären, unter welchen Bedingungen die Daten Dritter im eigenen Projekt verwendet werden dürfen. Beim Aspekt der Veröffentlichung und Archivierung geht es um die im Rahmen des Forschungsprojekts neu gewonnenen Daten und Ergebnisse. Hier sollten Sie sich Gedanken darüber machen, in welcher Form eine Veröffentlichung der Daten geplant ist und in welcher Form eine Langzeitarchivierung (und somit Zugänglichkeit) Ihrer Daten gewährleistet werden kann. Dies bezieht ebenfalls die Frage nach der Vergabe einer geeigneten Lizenz mit ein.
 
-<SideNote type="tip">
+<SideNote type="tip" title="Tipp:">
 Vertiefende Informationen zu gesetzlichen Vorgaben und Richtlinien gibt Vanessa Hannesschläger im Video „[Lizenzen, Urheberrecht und der Umgang mit sensiblen Daten](https://www.youtube.com/watch?v=Xq9z0gKXRZc)“ (Vortrag Tool Gallery 7.2. Datenmanagement, 16. November 2021).[](https://www.fwf.ac.at/de/forschungsfoerderung/open-access-policy/forschungsdatenmanagement/)
 </SideNote>
 
@@ -221,19 +219,40 @@ Für weiterführende Informationen, Richtlinien und Beispiele für Datenmanageme
 - [OpenAIRE und EUDAT: ARGOS](https://argos.openaire.eu/splash/)
 - [DMPonline](https://dmponline.dcc.ac.uk/)
 
-
-
 ### C.2. Schritt 2: Daten effizient organisieren und strukturieren
 
 Ein sicherer Ort für die Datenablage ist gefunden, doch dieser allein reicht noch nicht aus. Damit man sich an diesem Ort nicht verläuft und anderen (und auch sich selbst) dabei hilft, bestimmte Daten schnell und auch nach einer (kürzeren oder längeren) Pause die Inhalte rasch und effizient zu finden, verstehen und nutzen zu können, ist es sinnvoll, sich vorab klare Regeln für die Benennung von Dateien und Ordnern und geeignete Ordnerstrukturen zu überlegen. Wir wollen uns in diesem Kapitel einige leicht umzusetzende Best-Practice Beispiele ansehen. Diese können an unserem Übungsbeispiel am Ende des Kapitels ausprobiert und dann auf eigene Forschungsprojekte angewendet werden.
 
-![](https://imgs.xkcd.com/comics/documents.png "\"Protip: Never look in someone else's document folder\", von Randall Munroe, https://xkcd.com/1459, ist lizenziert unter CC-BY-NC 2.5.")
+![](https://imgs.xkcd.com/comics/documents.png "\\"Protip: Never look in someone else's document folder\\", von Randall Munroe, https://xkcd.com/1459, ist lizenziert unter CC-BY-NC 2.5.")
 
 Viele kennen das Problem einer inkonsistenten Ordner- und Dateibenennung aus dem eigenen Privatleben. Bei der Arbeit und vor allem in einem Team kann dies noch schneller zu Problemen führen. Schon ein paar einfache Maßnahmen können hier zur besseren Strukturierung beitragen.
 
-Gute Datei- und Ordnernamenskonventionen:
+**Gute Datei- und Ordnernamenskonventionen:**
 
 - Verwenden Sie **eindeutige** Namen, die sich **klar voneinander unterscheiden** (vermeiden Sie z.B. Namen, die sich nur in der Groß- und Kleinschreibung voneinander unterscheiden).
 - Verwenden Sie **beschreibende** Namen, die einen Hinweis auf den Inhalt der Datei, bzw. des Ordners geben.
 - Seien Sie bei der Benennung **konsistent** (ändern Sie Ihr Vorgehen nicht mitten im Projekt).
 - Datei- und Ordnernamen sollten **so lang wie nötig**, aber **so kurz wie möglich** gehalten werden.
+
+**Eine noch bessere Dateibenennung wird ermöglicht durch:**
+
+- Angabe des **[Datums im ISO-Format](https://de.wikipedia.org/wiki/ISO_8601#Datum)**: 2021-11-01_presentation_datamanagement.pdf
+
+<SideNote type="info" title="Hinweis:">
+Das (Speicher-)Datum wird zwar auch von Rechnern in den Details einer Datei angezeigt, allerdings entspricht das angezeigte Datum nicht immer dem Datum der letzten Bearbeitung. Es kann auch das Kopierdatum von Speicherort A nach Speicherort B darstellen, ohne das eine Änderung an der Datei vorgenommen wurde.
+</SideNote>
+
+- Angabe einer **Versionsnummer**: DMP_v1-0.docx; DMP_v2-0.docx; DMP_v2-1.docx
+- Verwendung einer **führenden Null**: Die führende Null ist für die automatische Sortierung wichtig. Ohne die führende Null würde auf die 11 die 2 folgen. Zusätzlich hat dies den Effekt, dass Dateinamen auch optisch die gleiche Länge bei allen Bestandsteilen haben. Verwenden Sie **keine Punkte** in Dateinamen – der Punkt ist reserviert für die Trennung des Dateinamens von der Dateiendung: .docx; .pdf.
+
+**Die besten Dateibenennungen können erzielt werden durch die Einhaltung der folgender Regeln:**
+
+- Benutzen Sie **keine Leerzeichen**, sondern einen Trennstrich (hypen: data-management) oder einen Unterstrich (underscore: data_management), um Wörter voneinander abzutrennen. Alternativ kann man Wörter auch zusammenschreiben, wofür es mehrere Methoden gibt:
+
+  - **ohne** dabei auf **Groß- und Kleinschreibung** zu achten (datamanagement)
+  - oder einen sogenannten **„Binnenmajuskel“**, also einen Großbuchstaben für jedes neue Wort benutzen (camelCase: dataManagement). Die Nutzung eines Binnenmajuskels erzielt auch eine für den menschlichen Nutzer optisch erkennbare Trennung.
+- Benutzen Sie **nur alphanumerische Zeichen**, d.h. Zeichen aus dem lateinischen Alphabet und Zahlen. Verzichten Sie auf jegliche Sonderzeichen oder Akzente. Beispiel: Uebergroesse statt Übergröße
+- Verwenden Sie **Binde- und Unterstriche**, um **Elemente** im Dateinamen **voneinander abzutrennen**. Im Datum kann zum Beispiel der Bindestrich für die Trennung von Tag, Monat und Jahr genutzt werden, während der Unterstrich genutzt werden kann, um eine neue Informationseinheit im Dateinamen anzuzeigen: 2021-11-01_presentation_datamanagement.pdf
+- Halten Sie die **Benennungsregeln** für Dateien und Ordner für Ihr Projekt **schriftlich fest**. Somit haben sowohl Sie selbst als auch Ihr Team diese Regeln immer griffbereit und können diese konsequent und effizient anwenden.
+
+**Quiz: Jetzt sind Sie an der Reihe!**
