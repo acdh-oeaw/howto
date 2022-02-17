@@ -223,7 +223,7 @@ Für weiterführende Informationen, Richtlinien und Beispiele für Datenmanageme
 
 Ein sicherer Ort für die Datenablage ist gefunden, doch dieser allein reicht noch nicht aus. Damit man sich an diesem Ort nicht verläuft und anderen (und auch sich selbst) dabei hilft, bestimmte Daten schnell und auch nach einer (kürzeren oder längeren) Pause die Inhalte rasch und effizient zu finden, verstehen und nutzen zu können, ist es sinnvoll, sich vorab klare Regeln für die Benennung von Dateien und Ordnern und geeignete Ordnerstrukturen zu überlegen. Wir wollen uns in diesem Kapitel einige leicht umzusetzende Best-Practice Beispiele ansehen. Diese können an unserem Übungsbeispiel am Ende des Kapitels ausprobiert und dann auf eigene Forschungsprojekte angewendet werden.
 
-![](images/protip_never_look_into_someone_elses_documents_folder.png "\"Protip: Never look in someone else's document folder\", von Randall Munroe, xkcd.com, ist lizenziert unter CC-BY-NC 2.5.")
+![](images/protip_never_look_into_someone_elses_documents_folder.png "\\"Protip: Never look in someone else's document folder\\", von Randall Munroe, xkcd.com, ist lizenziert unter CC-BY-NC 2.5.")
 
 Viele kennen das Problem einer inkonsistenten Ordner- und Dateibenennung aus dem eigenen Privatleben. Bei der Arbeit und vor allem in einem Team kann dies noch schneller zu Problemen führen. Schon ein paar einfache Maßnahmen können hier zur besseren Strukturierung beitragen.
 
@@ -324,6 +324,67 @@ Das (Speicher-)Datum wird zwar auch von Rechnern in den Details einer Datei ange
 </Quiz>
 
 
-
-
 #### Strukturierung und Aufbau von Ordnern:
+
+Sobald geeignete Dateibenennungskonventionen für das Projekt festgelegt wurden, folgt im nächsten Schritt die Überlegung, wie die eindeutig und konsequent benannten Dateien nun in Ordner strukturiert werden. Die 5S-Methode (siehe Fuchs, "[How do I use 5S method](https://blogs.helsinki.fi/thinkopen/5s-method/)") bietet sich hierfür an. Die 5 S stehen hierbei für:
+
+- **Sort** – zuerst die Ordner und Dateien **sichten**: alle Dateien darauf kontrollieren, ob überflüssige (doppelte) Dateien entfernt werden können. Falls man sich nicht sicher ist, ob eine Löschung wirklich durchgeführt werden sollte, kann ein Ordner „vorgesehenZurLoeschung“ oder einen „Dachboden“ (Attic) für diese Dateien anlegen. In diesem Ordner sollte dann nicht mehr produktiv gearbeitet werden, er dient lediglich der Aufbewahrung vor einer möglichen Löschung. Wenn darin enthaltene Dateien doch noch bearbeitet werden sollen, müssen sie in einen anderen Ordner verschoben werden.
+- **Set in Order** – die gesichteten Ordner und Dateien in eine **sinnvolle** und für die Arbeit **nützliche Reihenfolge bringen**. Hierbei ist, wie bei Einzeldateien, wieder auf eine eindeutige und beschreibende Benennung und einheitliche Konventionen zu achten.
+- **Shine** – die Ordner regelmäßig **kontrollieren** und ggf. **aufräumen** (also auf Hochglanz polieren, damit sie immer glänzen).
+- **Standardise** – die **Regeln** für die Strukturierung **schriftlich festhalten** und die Teammitglieder bzw. Arbeitsgruppe darüber informieren. Es ist wichtig, dass sich bei einer Projektarbeit alle an das festgelegte Regelwerk halten – hierbei hilft eine schriftliche Version enorm (konkrete Hinweise hierzu finden Sie im Abschnitt C.5).
+- **Sustain** – die Ordner- und Datei-Strukturierung **pflegen** und die Regeln **konsequent anwenden**. Neue Teammitglieder möglichst rasch mit dem Regelwerk vertraut machen und einschulen. Falls Änderungen notwendig werden, diese immer protokollieren, damit diese nachvollziehbar sind.
+
+<SideNote type="info" title="Noch ein letzter Hinweis:">
+Bei der Arbeit mit digitalen Daten ergeben sich manchmal Änderungen in den Anforderungen an die Benennung oder Ordnerstruktur. Solange die Änderungen schriftlich festgehalten, im Team besprochen und danach wieder konsequent umgesetzt werden, ist dies kein Problem.
+</SideNote>
+
+Die Wahl der Strukturierung von Ordnern hängt von verschiedenen Faktoren ab und wird von Projekt zu Projekt auch unterschiedlich sein. Einige wichtige Punkte, die hierbei als Strukturierungskriterien herangezogen werden können, sind die folgenden:
+
+- **Projekt:** um welche Art von Projekt handelt es sich, wie groß ist der Umfang, wie viele Mitglieder gibt es, welche Arbeitspakete gibt es?
+- **Daten:** mit welchen Arten und Typen von Daten wird im Projekt gearbeitet? Welchen Status der Prozessierung von Daten gibt es – hat man zum Beispiel sowohl rohe Messdaten als auch bereinigte Messdaten? Sowohl Datentyp als auch Datenverarbeitungszustand können als Strukturierungselemente verwendet werden.
+- **Aktivitäten:** können Arbeitspakete als Strukturierungselemente dienen oder wird mit unterschiedlichen Methoden an den Daten gearbeitet, die man voneinander trennen kann oder sogar sollte?
+- **Dokumentation und administrative Dateien:** diese Dateien sind wichtig, um Regeln, Richtlinien und administrative Abläufe festzuhalten und sollten getrennt aufbewahrt werden.
+- **Externe Richtlinien:** gibt es für die Forschungsrichtung oder das Projekt spezielle Richtlinien, die befolgt werden müssen und daher zum Nachschlagen verfügbar sein sollten? Für ein Forschungsprojekt in der Archäologie ist in Österreich zum Beispiel die Vorgabe des Bundesdenkmalamts relevant.
+
+Außerdem sollte man beim Festlegen der Ordnerstruktur vorab überlegen, wie die **Hierarchie** der Ordner aufgebaut sein soll: Eignen sich eher eine flache oder eine tiefe Ordnerstruktur? Wie bei der Dateibenennung sollten für die Ordner **aussagekräftige, verständliche Namen** gewählt werden und die oben bereits erläuterten Best-Practice Techniken eingehalten werden. Auch die Ordnerstruktur selbst sollte möglichst logisch und selbsterklärend gewählt werden.
+
+Wichtig ist es auch, eine **Duplizierung** von Dateien zu **vermeiden**, da bei eventuell notwendigen Änderungen die Gefahr von Inkonsistenzen besteht. Ebenso sollten **Verknüpfungen** von einer Datei oder Ordner auf eine(n) andere(n) **vermieden** werden. Denn sollte sich der Speicherort der verknüpften Datei oder des Ordners ändern, so wird auch die Verlinkung ins Leere führen.
+
+**Weiteführende Literatur und Links:**
+
+Für ausführlichere Informationen zur Benennung und Strukturierung von Dateien und Ordnern sowie zur Versionierung empfehlen wir folgenden Seiten:
+
+- [CESSDA Training: Data Management Expert Guide](https://www.cessda.eu/Training/Training-Resources/Library/Data-Management-Expert-Guide)
+- Fuchs, Siiri: "[How do I use 5S method for organizing data files?](https://blogs.helsinki.fi/thinkopen/5s-method/)"
+- [IANUS: Dateiverwaltung](https://ianus-fdz.de/it-empfehlungen/dateiverwaltung)
+- [Stanford Libraries: Data Best Practices and Case Studies](https://guides.library.stanford.edu/data-best-practices/version-files)
+
+
+
+### C.3. Schritt 3: Arbeiten mit Versionierung
+
+Gerade beim gemeinschaftlichen Arbeiten ist die Versionierung von Dateien und Ordnern relevant. Durch die Speicherung und Kennzeichnung von Versionen können Änderungen einfach nachverfolgt werden und man kann leicht zu früheren Bearbeitungsstufen von Daten und Dateien zurückkehren. Um einen manuellen Abgleich der Dokumente auf die konkreten Unterschiede zu vermeiden, ist es ratsam, die Versionsänderungen in einem eigenen Protokoll oder Textdokument zu dokumentieren. Bei umfangreichen Projekten bietet sich die Nutzung dedizierter Versionierungssoftware an.
+
+**Wie kann Versionierung durchgeführt und verwaltet werden?**
+
+Eine manuelle Versionierung bietet sich vor allem an, wenn Sie alleine an einem Projekt und dessen Dateien und Ordnern arbeiten. Bei einer manuellen Durchführung der Versionierung kann die Version im Dateinamen mit folgenden Elementen festgehalten werden: Datum, Versionsnummer oder beschreibende Hinweise („Marker“) wie „Draft“ oder „Final“. Eine Kombination der Elemente kann ebenfalls sinnvoll sein.
+
+Zusätzlich zur Dateibenennung sollte entweder in der Datei selbst festgehalten werden, wann und von wem welche Änderung durchgeführt wurde. Diese Änderungen können aber auch in einer separaten gespeicherten Datei (dem Protokoll oder changelog) dokumentiert werden.
+
+Wenn mehrere Personen an einem Projekt mit vielen Daten arbeiten, kann eine Software für die Versionierung genutzt werden. Diese zeichnet automatisch Änderungen nach und speichert die unterschiedlichen Dateiversionen ab. Einfache Versionierungen sind zum Beispiel mit Google Drive oder ownCloud möglich; für komplexere Projekte bieten sich Dienste wie Git oder Subversion an.
+
+Was macht eine neue Version aus? Hier bietet sich die semantische Versionierung als Methode an, welche aus dem Bereich der Softwareprogrammierung kommt. Es gibt eine Adaption für die Arbeit an Textdokumenten (siehe: Semverdoc). Sie beschreibt, wie Versionsnummern und -benennung sinnvoll gewählt und angewendet werden:
+
+Eine semantische Versionierung würde zum Beispiel so aussehen:
+
+![](images/versionierungselemente.png "\"Versionierungselemente\", von Martina Trognitz, ist lizenziert unter CC-BY 4.0.")
+
+- **Major:** wird für signifikante Änderungen vergeben
+- **Minor:** wenige Informationen verändert oder hinzugefügt
+- **Patch:** kleinere Fehlerkorrektur, zum Beispiel Ausbesserung eines Tippfehlers
+
+<SideNote type="tip" title="Tipp:">
+Auf der Seite [semverdoc](https://semverdoc.org/) (_Semantic Versioning for Documents_ _and Meaningful Manual Version Control_) erhalten Sie mehr Informationen zur Versionierung von Textdokumenten.
+</SideNote>
+
+**Quiz:**
