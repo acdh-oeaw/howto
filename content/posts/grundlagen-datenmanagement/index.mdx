@@ -359,8 +359,6 @@ Für ausführlichere Informationen zur Benennung und Strukturierung von Dateien 
 - [IANUS: Dateiverwaltung](https://ianus-fdz.de/it-empfehlungen/dateiverwaltung)
 - [Stanford Libraries: Data Best Practices and Case Studies](https://guides.library.stanford.edu/data-best-practices)
 
-
-
 ### C.3. Schritt 3: Arbeiten mit Versionierung
 
 Gerade beim gemeinschaftlichen Arbeiten ist die Versionierung von Dateien und Ordnern relevant. Durch die Speicherung und Kennzeichnung von Versionen können Änderungen einfach nachverfolgt werden und man kann leicht zu früheren Bearbeitungsstufen von Daten und Dateien zurückkehren. Um einen manuellen Abgleich der Dokumente auf die konkreten Unterschiede zu vermeiden, ist es ratsam, die Versionsänderungen in einem eigenen Protokoll oder Textdokument zu dokumentieren. Bei umfangreichen Projekten bietet sich die Nutzung dedizierter Versionierungssoftware an.
@@ -433,3 +431,55 @@ Auf der Seite [semverdoc](https://semverdoc.org/) (_Semantic Versioning for Docu
 - [Google Drive](https://drive.google.com/drive)
 - [Git](https://git-sm.com)
 - [Subversion](http://subversion.apache.org)
+
+### C.4. Schritt 4: Die Wahl des richtigen Dateiformats
+
+Bei der Arbeit mit Forschungspartnern von anderen Institutionen oder aus anderen Ländern und auch im Hinblick auf eine spätere Langzeitarchivierung ist es notwendig, sich vorab zu einigen, welche Dateiformate für die Speicherung sinnvoll sind und genutzt werden sollen. Ein paar einfache Prinzipien helfen bei der Auswahl des Dateiformats.
+
+Die wichtigste Regel ist, dass das Dateiformat möglichst breit in Verwendung sein sollte. Man wählt am besten ein Format, das nicht proprietär ist. Bei Textdateien würde man daher dem OpenDocument-Dateien (odt) Vorrang vor Word-Dokumenten (docx) geben, denn während das OpenDocument-Format sowohl von Word als auch von OpenSource-Software lesbar ist, können einige Word-Features nicht von anderen Textverarbeitungsprogrammen dargestellt werden.
+
+Wenn möglich, sollte Dateiformate mit offenen Standards (Open Standard) genutzt werden. Hierbei sind die Formatspezifikationen einsehbar und Programmierer können bei Bedarf einen Code entwickeln, um damit formatierte Dateien einzusehen.
+
+Dateien sollten auch nicht komprimiert (zum Beispiel .zip oder .jpeg) werden oder nur eine verlustfreie Kompression verwenden.  Dateien sind auch unverschlüsselt, also ohne Passwortschutz zu speichern, da sie sonst nicht von anderen geöffnet werden können.
+
+Sie sollten sich auch vorab mit den Standards und Anforderungen in Ihrem Fachbereich auseinandersetzen. Bringen Sie bereits zu Beginn des Projekts in Erfahrung, welche Vorgaben Ihr_e Fördergeber_in und die gängigen Archive in Ihrem Forschungsgebiet für die Langzeitarchivierung machen und halten Sie sich an diese Richtlinien.
+
+[ARCHE (A Resource Centre for the Humanities)](https://arche.acdh.oeaw.ac.at/browser/), ein Service des [ACDH-CH (Austrian Centre for Digital Humanities and Cultural Heritage)](https://www.oeaw.ac.at/acdh/) für die Langzeitarchivierung digitaler Forschungsdaten und -services bevorzugt beispielsweise folgende Dateiformate:
+
+- **Formatierter Text: PDF/A-1, PDF/A-2**;  anstatt von: PDF, docx, doc
+- **Strukturierter Text: xml, html, txt, md, text (UTF-8, no BOM)**; anstatt von: PDF, docx, doc, odt, indd
+- **Plain (reiner) Text: txt (UTF-8, no BOM)**; anstatt von: PDF, docx, odt
+- **Bilder: tiff, dng**; anstatt von: jpeg, psd, gif
+- **Vektorgrafiken:** **svg**; anstatt von: ai, indd, ps, dwg, dxf
+- **Tabellen:** **csv (UTF-8, no BOM)**; anstatt von: xlsx, xls, ods
+
+**Weitere Hinweise zu Textdokumenten und deren möglichen Formaten:**
+
+Wenn die langfristige Erhaltung der optischen Darstellung eines Textdokumentes im Vordergrund steht, sollte ein geeignetes Format für formatierten Text, wie PDF/A gewählt werden. Steht jedoch die Bearbeitbarkeit und vor allem die Erhaltung der Strukturierung im Vordergrund, sollte ein entsprechend geeignetes Format, wie etwa TEI/XML verwendet werden. 
+
+Wann immer eine [Zeichenkodierung](https://ianus-fdz.de/it-empfehlungen/textdokumente#text-kodierung) für ein Format wählbar ist, sollte UTF-8 ohne BOM ([Unicode](https://home.unicode.org/)) gewählt werden. Unicode ist ein Standard, der zum einen beschreibt, wie Schrift elektronisch gespeichert wird und zum anderen einen umfangreichen Zeichensatz zur Darstellung von Schriftzeichen aus über 150 Sprachen bereitstellt. Im Gegensatz dazu kann ASCII lediglich 256 Zeichen kodieren, was bei Texten mit Umlauten oder Zeichen aus anderen Sprachen schon nicht mehr ausreicht. Üblicherweise kann die Zeichenkodierung für alle rein textbasierten Formate wie csv, txt, oder auch xml gewählt werden.
+
+**Literatur und Links:**
+
+- [ARCHE - A Resource Centre for the Digital Humanities](https://arche.acdh.oeaw.ac.at/browser/)
+- [IANUS: Textdokumente](https://ianus-fdz.de/it-empfehlungen/textdokumente#text-kodierung)
+- [Unicode](https://home.unicode.org)
+
+### C.5. Schritt 5: Die schriftliche Dokumentation
+
+Für ein konsistentes Datenmanagement ist eine schriftliche Dokumentation von zentraler Bedeutung. Dies gilt insbesondere für der Zusammenarbeit mit anderen Personen, Forschungseinrichtungen und externen Dienstleistern. Auch mit Hinblick auf Vorgaben von Fördergebern und Archiven ist eine schriftliche Dokumentation hilfreich und erleichtert die Arbeit enorm. 
+
+Die schriftliche Dokumentation Aufschluss darüber geben, wie gearbeitet wird, bzw. wurde und in welchen Schritten die Bearbeitung der Daten erfolgte (wer, wann und was wurde geändert). Folgende Fragen sollte die Dokumentation daher klar beantworten können:
+
+- Wie sind die Daten strukturiert?
+- Wer ist wofür zuständig?
+- Welche Dateibenennungsregeln und Vorgehen zur Ordnerstruktur wurden im Projekt angewendet?
+- Wie wurde die Versionierung vorgenommen?
+
+Am einfachsten ist es, die Dokumentation in einer Readme-Datei festzuhalten. Dies kann in einer einfachen Textdatei (txt) oder im Markdown-Format (md) erfolgen. [Markdown](https://commonmark.org/) hat den Vorteil, dass die spezielle Syntax eine Strukturierung erlaubt, die mit entsprechenden Programmen auch optisch dargestellt werden kann, dazu gehören z.B. Überschriften, Links oder auch Listen. (siehe: [CommonMark](https://commonmark.org/), [GitHub: Flavored Markdown Spec](https://github.github.com/gfm/).
+
+Ein strukturierterer Weg, der auch eine maschinelle Lesbarkeit ermöglicht, um Daten zu beschreiben sind Metadaten. Hierbei können verschiedene Metadatenschemata, wie etwa [Dublin Core](https://www.dublincore.org/) zur Anwendung kommen.
+
+<SideNote type="info" title="Hinweis:">
+Mehr zur Nutzung von Metadaten erfahren Sie im HowTo Kapitel "Metadaten und Dokumentation" von Daniel Schopper. Hier auch verfügbar als [Videoaufzeichnung](https://www.youtube.com/watch?v=gSpzRK7ujp0) (Vortrag Tool Gallery 7.2., November 2021).
+</SideNote>
