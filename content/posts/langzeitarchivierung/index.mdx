@@ -183,4 +183,118 @@ Es gibt einen Zitierhinweis, und unter “Child Resources” wird aufgelistet, w
 
 ![ARCHE - Metadaten einer Datei (Basic-View)](images/arche_traveldigital_metadatendatei.png "Überblick über Metadaten einer Datei der Sammlung ”travel!digital” auf ARCHE im “Basic-View”.")
 
-Wenn man dann auf eine Datei klickt wird man – anders als in DANS – nicht gleich zum Download weitergeleitet, sondern bekommt zunächst eine Ansicht der Metadaten der ausgewählten Datei. Der Download ist von dieser Überblicksseite über den Download-Button als einer von vielen Dissemination Services möglich.
+Wenn man dann auf eine Datei klickt wird man – anders als in DANS – nicht gleich zum Download weitergeleitet, sondern bekommt zunächst eine Ansicht der Metadaten der ausgewählten Datei. Der Download ist von dieser Überblicksseite über den Download-Button als einer von vielen Dissemination Services möglich. 
+
+
+
+### SND – Climate history database for Sweden 1500-1870
+
+URL: [https://snd.gu.se/en/catalogue/study/snd1216/1/1#dataset](https://snd.gu.se/en/catalogue/study/snd1216/1/1#dataset)  
+
+![SND - Data and Documentation](images/snd_klimahistoriskdatabas_dokumentation-und-daten_2_en.png "Data and Documentation-Ansicht der ”Climate history database for Sweden 1500-1870” des SND.")
+
+Das Beispiel des Swedish National Dataservice (SND) beinhaltet eine Datenbank mit aus historischen Dokumenten extrahierten Klimadaten. Es gibt die Reiter für eine Beschreibung (Description) und die Daten und ihre Dokumentation (Data and documentation). Letzterer wird zuerst angezeigt und beinhaltet einen Zitierhinweis mit der Option, sich das Zitat in bestimmten Zitierstilen oder Formaten (z.B. Harvard, BibTex oder RIS) herunterzuladen. Zudem findet sich weitere Eckdaten, wie Information zu Personen, die an der Erstellung der Datensammlung beteiligt waren oder der Lizenzhinweis. 
+
+![SND - Beschreibung der Datenquelle](images/snd_klimahistoriskdatabas_beschreibung_en.png "Beschreibung der ”Climate history database for Sweden 1500-1870” des SND.")
+
+Im Reiter _Description_ findet sich die Beschreibung der Ressourcen inklusive Metadaten zum Projekt wie etwa die genaue Zeitspanne, die mit den Daten abgedeckt wird, der Projektförderung, der beteiligten Wissenschaftler*innen sowie zu Publikationen, die mit der Ressource zusammenhängen. 
+
+
+
+### Zenodo - Official GO FAIR Foundation icons for the Three-Point FAIRification Framework
+
+URL: [https://zenodo.org/record/4678333#.Yfp1YurMKPo](https://zenodo.org/record/4678333#.Yfp1YurMKPo)  
+
+![Zenodo - Übersicht über die Sammlung](images/zenodo_recordoverview.png "Übersicht über die Sammlung ”Official GO FAIR Foundation Icons for the Three-Point FAIRification Frameowork” auf ZENODO.")
+
+Auch auf Zenodo werden Name, Titel, die Bestandteile der Datensammlung, sowie Metadaten angezeigt. Letztere sind bei Zenodo allerdings nicht ganz so umfänglich wie bei den bisherigen Beispielen.  
+
+ 
+
+Die fünf angeführten Beispiele machen deutlich, dass es einige grundlegenden Elemente gibt, die sich innerhalb aller Repositorien wiederfinden:  
+
+- Eine Sammlung von Dateien (Datensammlung) 
+- Metadaten für die Datensammlung und teilweise für einzelne Dateien 
+- Ein Link, meist in Form eines persistenten Identifikators wie DOI oder Handle 
+- Hinweise und Funktionalitäten für die Nutzung der Dateien 
+
+  - Ein Zitierhinweis 
+  - Eine Lizenz 
+  - Eine Download-Funktion 
+
+
+
+## Praxishinweise für Langzeitarchivierung 
+
+Diese grundlegenden Gemeinsamkeiten der Repositorien bilden eine gute Basis für einige Praxishinweise. Aus den im vorherigen Abschnitt präsentierten sichtbaren Elementen lassen sich aus Sicht des Archivs folgende zentrale Komponenten der Langzeitarchivierung einer Datensammlung auflisten: 
+
+<SideNote type="note" title="Zentrale Komponenten der Langzeitarchivierung einer Datensammlung">
+- Eine Datensammlung enthält zumeist eine **Reihe an Dateien**, die in **bestimmten Formaten** vorliegen. 
+- Die Dateien werden mit **Metadaten** näher beschrieben – je nach Archiv mit verschiedenen Attributen und zumeist ist eine Lizenzangabe enthalten. 
+- Es gibt eine **[persistente URI](https://ianus-fdz.de/sites/default/files/ianusredfiles/pdf/PID-TestbedErgebnisse.pdf)** – z.B. in Form eines DOI, Handle, URI, ARK o.ä.  
+
+Zwei weitere, meist nicht sehr sichtbare, jedoch wichtige Komponenten aus Sicht des Archivs sind folgende: 
+
+- Im Hintergrund besteht meist eine **redundante Datenspeicherung**. 
+- Es gibt in den meisten Fällen einen definierten **Workflow zur Vorbereitung der Daten**, welcher der Einspeisung ins Archiv vorausgeht.
+</SideNote>
+
+
+
+Für den **Datengeber** resultieren daraus folgende Aufgaben: 
+
+- Die Beschäftigung mit **Formatvorgaben der Ziel-Archive**. [DANS](https://dans.mijnonlinedevelopment.nl/en/file-formats/), [GAMS](http://gams.uni-graz.at/archive/objects/context:gams/methods/sdef:Context/get?mode=about&locale=de), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata) (vgl. [IANUS](https://www.ianus-fdz.de/it-empfehlungen/dateiformate)), oder [SND](https://snd.gu.se/en/manage-data/organise/file-format) haben Vorgaben zu Dateiformaten. ZENODO hat keine spezifischen Vorgaben zu Dateiformaten. Allerdings garantiert ZENODO im Gegensatz zu den genannten Archiven auch nicht, dass die Dateien immer zu öffnen sind sondern lediglich, dass die Dateien so wie sie abgelegt sind nicht kaputt gehen, also eine sog. data degradation oder bit rot vermieden wird.  
+- Die Archive haben unterschiedliche **Metadatenschemata** (dazu mehr in Kapitel 3) in Verwendung. Beispiele sind [Dublin Core](https://www.dublincore.org/), [DataCite](https://schema.datacite.org/), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata#metadata), etc.  
+- Zudem ist eine **Lizenz** für die Daten auszuwählen. Gut geeignet sind meist [Creative Commons](https://creativecommons.org/)-Lizenzen. Der [Licence Selector](https://ufal.github.io/public-license-selector/) ein sehr empfehlenswertes Tool, das Unterstützung bei der Entscheidung für eine bestimmte Lizenz bieten kann. 
+- Die oben genannten Aufgaben kann man als Datengeber bereits im **Datenmanagementplan** vorsehen, um so die Vorbereitung der Daten zur Langzeitarchivierung bereits von Anfang des Projektes an zu berücksichtigen und die nötigen Arbeitsschritte einzuplanen (siehe nächster Abschnitt). 
+
+Um eine persistente URI und den redundanten Speicher kümmert sich das Archiv. 
+
+ 
+
+## Planung der Langzeitarchivierung im Datenmanagementplan 
+
+Um die Archivierung schon vor dem Start des Projekts oder bei Projektstart im **Datenmanagementplan** einzuplanen, sollte man folgende Überlegungen anstellen: 
+
+![ARCHE - Deposition Process](images/arche_depositionprocess-crop.png "ARCHE - Deposition Process, CC-BY-4.0")
+
+
+
+- **Welches Archiv** möchte man zur Archivierung seiner Daten verwenden? (siehe oben) 
+
+  - Welche Vorgaben macht das Zielarchiv? 
+  - Welche Vorlaufzeiten sind einzuplanen und welche Kosten fallen an? 
+  - Es empfiehlt sich, frühzeitig Kontakt mit dem Zielarchiv im Hinblick auf eine geplante Archivierung und deren Planung aufzunehmen. 
+- Bereits im Laufe des Projektes – z.B. am Ende eines Arbeitspakets – sollte man die **Daten auswählen, die aus dem entsprechenden Arbeitsschritt archiviert werden sollen**. Am Ende des Projekts erfolgt dann noch einmal ein Review und eine Zusammenstellung aller zu archivierenden Daten. 
+- Anhand der Informationen des Archivs zur Datenvorbereitung kann man planen, wie die Daten vorbereitet werden müssen. 
+
+  - Welche **Dateiformate** müssen am Ende vorliegen? 
+  - Welche **Metadaten** muss ich am Ende bereitstellen? 
+- Bereits am Anfang des Projekts sollte man sich über die anzuwendende **Lizenz** Gedanken machen. 
+
+  - ARCHE und auch [DARIAH Open](https://dariahopen.hypotheses.org/495) empfehlen die [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) Lizenz. Diese kommt den Praktiken einer klassischen wissenschaftlichen Arbeit mit Zitation und Nachnutzung von Information sowie Daten am Nächsten. 
+- Zudem muss man sich überlegen, **wann** man die **Daten ans Archiv übergeben** möchte. 
+
+Wenn man diese Überlegungen von Anfang an mit ins Datenmanagement einbezieht, minimiert das den Arbeitsaufwand am Ende des Projekts. 
+
+### Auswahlkriterien für die zu archivierenden Daten
+
+Um Daten für die Archivierung auszuwählen gibt es eine Reihe von sinnvollen **Auswahlkriterien**. 
+
+- Relevanz wie z. B. der wissenschaftliche oder historische Wert der Daten. 
+- Sind die Daten einzigartig oder leicht replizierbar? 
+
+  - Wenn die Daten bereits an anderer Stelle archiviert sind, müssen sie nicht ein zweites Mal archiviert werden. 
+  - Wenn Daten leicht replizierbar sind, ist eine Archivierung ggf. nicht unbedingt notwendig. Jedoch sollten die Schritte zur Replikation dokumentiert und ggf. archiviert werden. 
+- Wie ist das Disseminationspotential der Daten? 
+
+  - Kann ich die Daten gut teilen? 
+  - Sind die Daten gut nachnutzbar? 
+- Gibt es rechtliche Vorgaben die eine Archivierung verhindern oder einschränken? 
+- Die Qualität der Daten ist relevant für die Archivierung.  
+
+  - Verwackelte Fotos muss man nicht unbedingt archivieren, es sei denn es ist z.B. das einzige verbleibende Foto eines wichtigen historischen Objekts, das zerstört wurde. 
+- Wie hoch sind die Kosten für die Datenerstellung? 
+
+  - In der Herstellung sehr zeit- oder kostenintensive Daten sollten eher archiviert werden. 
+  - Liegt eine ausreichende Dokumentation vor, die insbesondere eine Nachnutzung der Daten ermöglicht?
