@@ -515,7 +515,7 @@ Für den **Datengeber** resultieren daraus folgende Aufgaben: 
 
 - Die Beschäftigung mit **Formatvorgaben der Ziel-Archive**. [DANS](https://dans.mijnonlinedevelopment.nl/en/file-formats/), [GAMS](http://gams.uni-graz.at/archive/objects/context:gams/methods/sdef:Context/get?mode=about&locale=de), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata) (vgl. [IANUS](https://www.ianus-fdz.de/it-empfehlungen/dateiformate)), oder [SND](https://snd.gu.se/en/manage-data/organise/file-format) haben Vorgaben zu Dateiformaten. Zenodo hat keine spezifischen Vorgaben zu Dateiformaten. Allerdings garantiert Zenodo im Gegensatz zu den genannten Archiven auch nicht, dass die Dateien immer zu öffnen sind sondern lediglich, dass die Dateien so wie sie abgelegt sind nicht kaputt gehen, also eine sog. _data degradation_ oder _bit rot_ vermieden wird.  
 - Die Archive haben unterschiedliche **Metadatenschemata** (dazu mehr in Kapitel Metadaten) in Verwendung. Beispiele sind [Dublin Core](https://www.dublincore.org/), [DataCite](https://schema.datacite.org/), [ARCHE](https://arche.acdh.oeaw.ac.at/browser/formats-filenames-and-metadata#metadata), etc.  
-- Zudem ist eine **Lizenz** für die Daten auszuwählen. Gut geeignet sind meist [Creative Commons](https://creativecommons.org/)-Lizenzen. Der [Licence Selector](https://ufal.github.io/public-license-selector/) ein sehr empfehlenswertes Tool, das Unterstützung bei der Entscheidung für eine bestimmte Lizenz bieten kann. 
+- Zudem ist eine **Lizenz** für die Daten auszuwählen. Gut geeignet sind meist [Creative Commons](https://creativecommons.org/)-Lizenzen. Der [Licence Selector](https://ufal.github.io/public-license-selector/) ist ein sehr empfehlenswertes Tool, das Unterstützung bei der Entscheidung für eine bestimmte Lizenz bieten kann. 
 - Die oben genannten Aufgaben kann man als Datengeber bereits im **Datenmanagementplan** vorsehen, um so die Vorbereitung der Daten zur Langzeitarchivierung bereits von Anfang des Projektes an zu berücksichtigen und die nötigen Arbeitsschritte einzuplanen (siehe nächster Abschnitt). 
 
 Um eine persistente URI und den redundanten Speicher kümmert sich das Archiv. 
@@ -571,19 +571,19 @@ Um Daten für die Archivierung auszuwählen gibt es eine Reihe von sinnvollen **
   <Quiz.Card>
     <Quiz.MultipleChoice>
       <Quiz.Question>
-        Für Ihr Forschungsprojekt über die eierlegende Wollmilchsau und verschiedene Enten (siehe das Übungsbeispiel zu "Grundlagen des Datenmanagements") haben Sie eine Reihe von historischen Bildern digitalisiert. Sie wollen diese Bildersammlung nun in einem Archiv sichern. Sie haben sich für das Archiv SND entschieden. In welchem Dateiformat sollten Sie die Bilder präferiert abspeichern, damit diese dort archiviert werden?
+        Um welche der folgenden Aspekte können Sie sich schon während des Projekts kümmern, um eine effiziente Übergabe Ihrer Forschungsdaten an ein Archiv zu gewährleisten? (Mehrfachantwort)
       </Quiz.Question>
 
-      <Quiz.MultipleChoice.Option>
-        als .jpeg-Dateien
+      <Quiz.MultipleChoice.Option isCorrect>
+        Ich kann mich vorab informieren, welche Dateiformate vom gewünschten Archiv präferiert werden und Daten in dieser Form abspeichern.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option isCorrect>
-        als .tiff-Dateien
+        Ich kann eine geeignete Lizenz für meine Daten auswählen.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-        als .pos-Dateien
+        Ich kann vorab eine URI für meine Daten beantragen und an das Archiv übermitteln.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.Message type="correct">
@@ -591,35 +591,7 @@ Um Daten für die Archivierung auszuwählen gibt es eine Reihe von sinnvollen **
       </Quiz.Message>
 
       <Quiz.Message type="incorrect">
-        Das stimmt nicht ganz. Auch wenn mehrere Formate akzeptiert werden, gibt es nur ein präferiertes Format bei SND. Schauen Sie noch einmal auf der Website des Archivs nach.
-      </Quiz.Message>
-    </Quiz.MultipleChoice>
-  </Quiz.Card>
-
-  <Quiz.Card>
-    <Quiz.MultipleChoice>
-      <Quiz.Question>
-        Sie müssen für die Archivierung Ihrer Bildersammlung noch eine Lizenz vergeben. Sie wollen sicherstellen, dass bei einer Weiternutzung der Bilder der_die Urheber_in genannt wird. Welche Lizenz(en) können Sie dafür wählen?
-      </Quiz.Question>
-
-      <Quiz.MultipleChoice.Option>
-        CC0
-      </Quiz.MultipleChoice.Option>
-
-      <Quiz.MultipleChoice.Option isCorrect>
-        CC-BY
-      </Quiz.MultipleChoice.Option>
-
-      <Quiz.MultipleChoice.Option isCorrect>
-        CC-BY-SA
-      </Quiz.MultipleChoice.Option>
-
-      <Quiz.Message type="correct">
-        Das ist richtig!
-      </Quiz.Message>
-
-      <Quiz.Message type="incorrect">
-        Schauen Sie sich die Bedingungen der Creative Commons Lizenzen noch einmal genau an ([https://creativecommons.org](https://creativecommons.org)).
+        Das stimmt nicht. Die persistente URI wird immer vom Archiv bei der Einreichung erstellt.
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
