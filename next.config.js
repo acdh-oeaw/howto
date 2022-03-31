@@ -2,6 +2,9 @@
 /** @typedef {import('next').NextConfig & {i18n?: {locales: Array<Locale>; defaultLocale: Locale}}} NextConfig */
 /** @typedef {import('webpack').Configuration} WebpackConfig */
 
+const isProductionDeploy =
+  process.env['NEXT_PUBLIC_BASE_URL'] === 'https://howto.acdh.oeaw.ac.at'
+
 /** @type {NextConfig} */
 const config = {
   eslint: {
@@ -22,17 +25,7 @@ const config = {
   pageExtensions: ['page.tsx', 'api.ts'],
   poweredByHeader: false,
   async headers() {
-    return [
-      /** Disallow indexing by search engines. */
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow',
-          },
-        ],
-      },
+    const headers = [
       {
         source: '/assets/fonts/:path*',
         headers: [
@@ -43,6 +36,21 @@ const config = {
         ],
       },
     ]
+
+    /** Disallow indexing by search engines. */
+    if (!isProductionDeploy) {
+      headers.push({
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      })
+    }
+
+    return headers
   },
   async redirects() {
     const { promises: fs } = require('fs')
