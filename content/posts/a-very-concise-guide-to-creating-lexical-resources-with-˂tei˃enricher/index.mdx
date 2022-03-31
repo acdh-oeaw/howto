@@ -1,5 +1,5 @@
 ---
-title: " Creating Lexical Resources with the ˂TEI˃Enricher"
+title: "Creating Lexical Resources with the ˂TEI˃Enricher"
 lang: en
 date: 2021-12-21T09:38:00.456Z
 version: 1.0.0
@@ -9,15 +9,12 @@ editors:
   - zhanial-susanne
 tags:
   - tei
-abstract: This tutorial is supposed to teach interested novices how to quickly
-  create a dictionary in accordance with the Guidelines of the Text Encoding
-  Initiative (TEI), ideally in the Lex-0 flavour. It makes use of a tool that
-  was created               in the framework of the VICAV project at the
-  Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH).
+abstract: This tutorial is supposed to teach interested novices how to quickly create a dictionary in accordance with the Guidelines of the Text Encoding Initiative (TEI), ideally in the Lex-0 flavour. It makes use of a tool that was created               in the framework of the VICAV project at the Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH).
 licence: ccby-4.0
 toc: false
 uuid: iKLhV-LgCuc9klNoniRCh
 ---
+
 ## Introduction
 
 This tutorial is supposed to teach interested novices how to quickly create a dictionary in accordance with the Guidelines of the Text Encoding Initiative (TEI), ideally in the Lex-0 flavour. It makes use of a tool that was created in the framework of the [VICAV project](https://www.oeaw.ac.at/acdh/projects/vicav) at the [Austrian Centre for Digital Humanities and Cultural Heritage](https://www.oeaw.ac.at/acdh/) (ACDH-CH). The intention was to work with examples conformant to TEI Lex-0. However, this tutorial is not meant as an instruction to the encoding but to the usage of the described tool. Furthermore, it is not a complete documentation of the software but will concentrate on the key features needed to understand the basic functionalities in writing a digital dictionary.
@@ -30,18 +27,23 @@ The [Viennese Corpus of Arabic Varieties](https://www.oeaw.ac.at/acdh/projects/v
 
 The tool that has been used for many years to create lexical resources in the VICAV projects is the **Viennese Lexicographical Editor (VLE)**, an XML editor providing specialised functionalities to compile digital dictionaries and to streamline the lexicographic editing process. It is a standalone Windows application that allows lexicographers to work collaboratively on the Internet. It is built on XML and cognate technologies such as XPath, XQuery, XSLT and XML Schema. While, in principle, it can process any XML-based format, it has a number of features that are geared towards the use of lexical data which are encoded according to the Guidelines of the Text Encoding Initiative.
 
-VLE incorporates several specialised modules which have emerged from particular needs in various projects. One of these is the integrated ‘book reader’, allowing to efficiently work with books in the form of scanned images and thus to easily navigate    sources used during the dictionary compilation. This is also quite useful in retro-digitising historical dictionaries. Another built-in tool that is used to access external data, is the integrated Internet browser which allows to directly work with corpora, other dictionaries etc. available through web applications. This module has also been used in integrating example sentences in the various dictionaries. VLE visualises all lexicographic data making use of freely configurable XSLT styles. It can check the integrity of the XML data (well-formedness) and also verify the validity of the input against XML schemas. It performs versioning on the entry level, storing a time-stamped copy on the server every time a record is saved. VLE works as part of a client-server architecture which in recent versions was built with the free and easy-to-use XML database BaseX as backend. It has been freely available and can be [downloaded from the ACDH-CH website](https://www.oeaw.ac.at/acdh/projects/vicav).
+VLE incorporates several specialised modules which have emerged from particular needs in various projects. One of these is the integrated ‘book reader’, allowing to efficiently work with books in the form of scanned images and thus to easily navigate sources used during the dictionary compilation. This is also quite useful in retro-digitising historical dictionaries. Another built-in tool that is used to access external data, is the integrated Internet browser which allows to directly work with corpora, other dictionaries etc. available through web applications. This module has also been used in integrating example sentences in the various dictionaries. VLE visualises all lexicographic data making use of freely configurable XSLT styles. It can check the integrity of the XML data (well-formedness) and also verify the validity of the input against XML schemas. It performs versioning on the entry level, storing a time-stamped copy on the server every time a record is saved. VLE works as part of a client-server architecture which in recent versions was built with the free and easy-to-use XML database BaseX as backend. It has been freely available and can be [downloaded from the ACDH-CH website](https://www.oeaw.ac.at/acdh/projects/vicav).
 
-In recent months, we have started to integrate important parts of VLE's functionality into another XML editor which by contrast to VLE has been programmed making use of    the freely available compiler LAZARUS. This was meant as a step to make the development more sustainable. The XML editor has so far been called _˂TEI˃Enricher_.
+In recent months, we have started to integrate important parts of VLE's functionality into another XML editor which by contrast to VLE has been programmed making use of the freely available compiler LAZARUS. This was meant as a step to make the development more sustainable. The XML editor has so far been called _˂TEI˃Enricher_.
 
-_˂TEI˃Enricher_ is a so-far experimental XML editor geared towards the easy production of TEI documents. It has not only been used to create but also enrich TEI documents.    It helps to work on standoff annotations, provides functions to chunk and tokenise texts and has built-in functions to work with geo locations. It was first developed    in a project creating linguistic teaching resources written in TEI.
+_˂TEI˃Enricher_ is a so-far experimental XML editor geared towards the easy production of TEI documents. It has not only been used to create but also enrich TEI documents. It helps to work on standoff annotations, provides functions to chunk and tokenise texts and has built-in functions to work with geo locations. It was first developed in a project creating linguistic teaching resources written in TEI.
 
 A focus of the work on this tool has also been the teaching of XML and TEI. It has been designed to make particular steps of text production as transparent as possible. By contrast to other tools, XSLT is pre-configured so that students can easily start to transform what they code right from the beginning. It can be used to train a wide range of text-technological skills such as XML, XSLT, HTML, CSS, etc.
 
 In the TEI world, lexical resources are viewed as special types of text. Enhancing the tool with functionalities from the dedicated dictionary writing application can therefore be seen as a natural next step in the development of the _˂TEI˃Enricher_.
 
 <SideNote type="note" title="A final word of caution:">
-Bear in mind that both the program and its documentation are work in progress and as such are incomplete and prone to change. To keep things simple, we only deal with the single-user version of _˂TEI˃Enricher_. While setting-up the XML database BaseX and configuring it is also pretty straightforward, it still adds some complexity to the issue which is not needed when only wanting to look at the basic workings of digital dictionary writing.
+  Bear in mind that both the program and its documentation are work in progress
+  and as such are incomplete and prone to change. To keep things simple, we only
+  deal with the single-user version of _˂TEI˃Enricher_. While setting-up the XML
+  database BaseX and configuring it is also pretty straightforward, it still
+  adds some complexity to the issue which is not needed when only wanting to
+  look at the basic workings of digital dictionary writing.
 </SideNote>
 
 ## Creating a Lex-0 dictionary
@@ -62,9 +64,9 @@ To create a dictionary, go to the _New dictionary_ tabsheet by pushing the _Crea
 
 ![](images/new_dict__001.png "Figure 1: Create new dictionary")
 
-In the TEI world, languages are identified with language ‘tags’ that follow the [IETF BCP 47 specification](https://tools.ietf.org/rfc/bcp/bcp47.txt). To ease finding the right one, the program provides several lists containing the ISO-639 language codes. To switch between the lists, simply choose a list from the combobox on the right side of source and target language.
+In the TEI world, languages are identified with language 'tags' that follow the [IETF BCP 47 specification](https://tools.ietf.org/rfc/bcp/bcp47.txt). To ease finding the right one, the program provides several lists containing the ISO-639 language codes. To switch between the lists, simply choose a list from the combobox on the right side of source and target language.
 
-Then, push the  three buttons on the bottom of the form from left to right (see figure 2). Unless there is a need to change the templates, you don't need to do anything. The program has just set up the environment for you, copying the dictionary template, the transformation styles (xsl), the schema files (xsd) and an XML file ending in __xprofile.xml_ into the target directory.
+Then, push the three buttons on the bottom of the form from left to right (see figure 2). Unless there is a need to change the templates, you don't need to do anything. The program has just set up the environment for you, copying the dictionary template, the transformation styles (xsl), the schema files (xsd) and an XML file ending in \__xprofile.xml_ into the target directory.
 
 ![](images/create_dictionary_001.png "Figure 2: Creating dict. environment")
 
@@ -72,21 +74,21 @@ Then, push the  three buttons on the bottom of the form from left to right (see 
 
 ### STEP 1: Open the new dictionary
 
-Having created the document into which the dictionary data is going to be stored, we can proceed to create entries for the dictionary. Once you have pushed the _Save new dict._ button, the program takes you to the file explorer. You will see a directory with two XML files in it (Fig. 3): the dictionary and the dictionary profile. 
+Having created the document into which the dictionary data is going to be stored, we can proceed to create entries for the dictionary. Once you have pushed the _Save new dict._ button, the program takes you to the file explorer. You will see a directory with two XML files in it (Fig. 3): the dictionary and the dictionary profile.
 
 ![](images/dict_fileexplorer_001.png "Figure 3: Opening new dictionary")
 
-To open the dictionary, click the file ending in __xprofile_. This is the file that gives the program all the information it needs, enabling you to work on the dictionary. The profile is also a TEI encoded document containing configuration data needed by the editor. You could also open the dictionary file as a text, which, however, would make working on it much more cumbersome.
+To open the dictionary, click the file ending in \__xprofile_. This is the file that gives the program all the information it needs, enabling you to work on the dictionary. The profile is also a TEI encoded document containing configuration data needed by the editor. You could also open the dictionary file as a text, which, however, would make working on it much more cumbersome.
 
 ### STEP 2: Find the entry templates ...
 
 When the profile is loaded, the editor appears displaying a three-way structure (Fig. 4): the left side (1) is the XML editor, the central part (2) is used to navigate the dictionary data and the right side (3) is used for editing any meta-data and visualising the entries.
 
-When opening the editor for the first time, you might not see all the components. You may have to enlarge the window and there    are splitters inside the window to adjust the width of the three    areas. The program will remember the size of the window when you    open it in following sessions.
+When opening the editor for the first time, you might not see all the components. You may have to enlarge the window and there are splitters inside the window to adjust the width of the three areas. The program will remember the size of the window when you open it in following sessions.
 
 ![](images/enricher_struct_001.png "Figure 4: Editor structure")
 
-Now, we are going to create our first dictionary entry. Everything in the program is based on templates. Of course, you can    also type in whatever you need manually. However, simply copying predefined code snippets is a much easier and safer approach. The entry templates are to be found in the right-side section (3). Click on the tabsheet _Dict._ and then on _Entry templates_.
+Now, we are going to create our first dictionary entry. Everything in the program is based on templates. Of course, you can also type in whatever you need manually. However, simply copying predefined code snippets is a much easier and safer approach. The entry templates are to be found in the right-side section (3). Click on the tabsheet _Dict._ and then on _Entry templates_.
 
 What you see here, is a list of TEI code snippets representing prototypical entries from with which dictionary entries can be created. These templates are stored in the profile. The list will have to be adapted to the particularities of your needs. Each template has a name attribute displayed in the listbox on the left side, which is used to insert a template into the dictionary (Fig. 5).
 
@@ -116,11 +118,11 @@ Next, we need to add more information to the entry: we avoid typing but insert p
 
 #### Dealing with grammatical information
 
-In TEI Lex-0, word class is encoded in gramGrp/gram\[@type="pos"]. The word _rosa_ is a noun and  it is feminine. To find an appropriate snippet, let’s look at the list of code snippets which can be found on the _Dict. snippets_ tabsheet (Fig. 10). To get there, simply click on the _Dict. snippets_ button or trigger the _goToDictSnippets_ function (per       default F6 key).
+In TEI Lex-0, word class is encoded in gramGrp/gram\[@type="pos"]. The word _rosa_ is a noun and it is feminine. To find an appropriate snippet, let's look at the list of code snippets which can be found on the _Dict. snippets_ tabsheet (Fig. 10). To get there, simply click on the _Dict. snippets_ button or trigger the _goToDictSnippets_ function (per default F6 key).
 
 ![](images/step_04_1__001.png "Figure 10: Dict. snippets")
 
-The snippets have two attributes that are relevant for the functioning of the program (Fig. 11). The n attribute (arrow 1) contains an abbreviation that can be used with hashes on  the left and right side to avoid navigating to go       the _Dict. snippets_ tabsheet. When typing the string  (n=noun) in the XML editor, the program attempts to substitute this string with the template carrying the attribute n="n". Consequently, typing v with  hashes around would insert the snippet for the word class verb. Alternatively, you can also double-click in the listbox on the left side of the snippets list (arrow 2) or click on the button that pops up when you navigate in the templates (arrow 3).
+The snippets have two attributes that are relevant for the functioning of the program (Fig. 11). The n attribute (arrow 1) contains an abbreviation that can be used with hashes on the left and right side to avoid navigating to go the _Dict. snippets_ tabsheet. When typing the string (n=noun) in the XML editor, the program attempts to substitute this string with the template carrying the attribute n="n". Consequently, typing v with hashes around would insert the snippet for the word class verb. Alternatively, you can also double-click in the listbox on the left side of the snippets list (arrow 2) or click on the button that pops up when you navigate in the templates (arrow 3).
 
 ![](images/step_04_2__001.png "Figure 11: Dict. snippets tabsheet")
 
@@ -128,7 +130,7 @@ Consequently, we receive the following result (Fig. 12).
 
 ![](images/step_04_3__001.png "Figure 12: Encoding word class")
 
-Mind the string in the templates which indicates where the program will put the cursor after the insertion.       _˂TEI˃Enricher_ is performing some rudimentary formatting. Mind that this often is far from perfect and might differ from what you would like to see.
+Mind the string in the templates which indicates where the program will put the cursor after the insertion. _˂TEI˃Enricher_ is performing some rudimentary formatting. Mind that this often is far from perfect and might differ from what you would like to see.
 
 Inserting the genus of the noun works along the same lines: Simply put the cursor in the line after the word class information and type gf encircled by hashes (Fig. 13).
 
@@ -140,9 +142,9 @@ This will result in the substitution the result of which is displayed in the nex
 
 #### Inserting a plural form
 
-We do not attempt to discuss the TEI Lex-0 system as there is very good [documentation](https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html) available already. However, to proceed with complete entries, we give examples of the most important constituents of dictionary entries in TEI Lex-0. 
+We do not attempt to discuss the TEI Lex-0 system as there is very good [documentation](https://dariah-eric.github.io/lexicalresources/pages/TEILex0/TEILex0.html) available already. However, to proceed with complete entries, we give examples of the most important constituents of dictionary entries in TEI Lex-0.
 
-Plural forms are indicated in ˂form˃ elements (Fig. 15). 
+Plural forms are indicated in ˂form˃ elements (Fig. 15).
 
 ![](images/step_04_6__001.png "Figure 15: Adding plural forms")
 
@@ -176,7 +178,7 @@ We first create an example (Fig. 20).
 
 ![](images/step_05_1__001.png "Figure 20: Example sentences")
 
-To copy this reference into the respective entry, we use the function _createExamplePointer_ (F11 key) to get the data into the clipboard. Then we go to the entry _loquor_ ‘to speak’, find the right position to insert and paste it there using CTRL+V. In the VICAV dictionaries, these references are usually inserted at the end of a ˂sense˃ element (Fig. 21).
+To copy this reference into the respective entry, we use the function _createExamplePointer_ (F11 key) to get the data into the clipboard. Then we go to the entry _loquor_ 'to speak', find the right position to insert and paste it there using CTRL+V. In the VICAV dictionaries, these references are usually inserted at the end of a ˂sense˃ element (Fig. 21).
 
 ![](images/step_05_2__001.png "Figure 21: Linking example sentences")
 
@@ -186,11 +188,11 @@ _˂TEI˃Enricher_ automatically inserts the example in the output stream when br
 
 ### STEP 6: Saving the data
 
-You can save the dictionary with the function _saveDocument_ which is called per default pressing the shortcut keys CTRL+S. Whenever the file is saved, the program creates a backup that is located in a subdirectory backup of the current directory. 
+You can save the dictionary with the function _saveDocument_ which is called per default pressing the shortcut keys CTRL+S. Whenever the file is saved, the program creates a backup that is located in a subdirectory backup of the current directory.
 
 ### STEP 7: Accessing existing data
 
-The functionality to work on local data instead of in the client-server architecture has actually been one of the latest enhancements of the tool. Except for ease of use and therefore being well-suited for teaching purposes, it is also a    useful scenario when there is a need to speed-up processes.    The capability to work on a local XML file, and not on data    in a remote database, comes in very handy when one wants to    edit larger amounts of data. Accessing the data directly in    the DOM tree on your machine is much faster than any data    transfer via HTTP or other such mechanisms.
+The functionality to work on local data instead of in the client-server architecture has actually been one of the latest enhancements of the tool. Except for ease of use and therefore being well-suited for teaching purposes, it is also a useful scenario when there is a need to speed-up processes. The capability to work on a local XML file, and not on data in a remote database, comes in very handy when one wants to edit larger amounts of data. Accessing the data directly in the DOM tree on your machine is much faster than any data transfer via HTTP or other such mechanisms.
 
 The navigation within the dictionary is accomplished via the middle section of the editor (Fig. 23). There are two controls: a selector for the scope (arrow 1) and a query control for text (arrow 2). To get all entries, simply put the cursor in the query control and push the Enter key. For our small example dictionary the result looks like this.
 
@@ -204,7 +206,7 @@ Where to look for particular strings in the dictionary is defined in the list of
 
 ### Working with the text
 
-The tool does not come with much sophisticated XML editing functionality. It is therefore important to avoid much typing which is per    se very error prone. Define what you need in the templates    section and insert elements from there.    Having inserted a start tag, the shortcut keys CTRL+F5 add    the end tag. To select an element simply press the F9 key    in the element (Fig. 25).
+The tool does not come with much sophisticated XML editing functionality. It is therefore important to avoid much typing which is per se very error prone. Define what you need in the templates section and insert elements from there. Having inserted a start tag, the shortcut keys CTRL+F5 add the end tag. To select an element simply press the F9 key in the element (Fig. 25).
 
 ![](images/selecting_element.png "FIgure 25: Selecting an element")
 
@@ -214,13 +216,13 @@ CTRL+F9 will select only the contents of the element (Fig. 26).
 
 ### Checking well-formedness (CTRL+W)
 
-When working on any XML document, it is very important to ensure that the document complies with the underlying specifications. The most fundamental degree of compliance within the basic rules of XML is called well-formedness. A well-formed document fulfils three conditions:           
+When working on any XML document, it is very important to ensure that the document complies with the underlying specifications. The most fundamental degree of compliance within the basic rules of XML is called well-formedness. A well-formed document fulfils three conditions:
 
 - It has a single root.
 - Every start tag is followed by an end tag.
 - All the elements in the document are properly nested.
 
-‘Properly nested’ means that elements must not overlap, a start- and end-tag must be inside the ‘parent’ element. As with many functions in _˂TEI˃Enricher_, you can either use the button in the top bar of the editor, use a keyboard shortcut (per default CTRL+W) or right click in the editor to select the respective item in the pop-up menu to start the check on the structural integrity of the document you are working on.
+'Properly nested' means that elements must not overlap, a start- and end-tag must be inside the 'parent' element. As with many functions in _˂TEI˃Enricher_, you can either use the button in the top bar of the editor, use a keyboard shortcut (per default CTRL+W) or right click in the editor to select the respective item in the pop-up menu to start the check on the structural integrity of the document you are working on.
 
 To try this functionality, simply remove a single tag from your try-out text and press CTRL+W. You will receive an error message and a position in the text; the latter information is not always helpful, as this is the position where the error shows, not necessarily where the problem started.
 
@@ -232,7 +234,7 @@ _˂TEI˃Enricher_ can currently only deal with XML Schema files, it does not sup
 
 ### Other checks
 
-There are two more checks that can be applied to ensure the integrity of the dictionary data: the function _Check for duplicate IDs_ makes sure that every ID is used only once in the dictionary. _Check integrity of example ref’s_ looks for references of examples that cannot be resolved. Both functions can be called by right-clicking in the editor and selecting the respective menu item.
+There are two more checks that can be applied to ensure the integrity of the dictionary data: the function _Check for duplicate IDs_ makes sure that every ID is used only once in the dictionary. _Check integrity of example ref's_ looks for references of examples that cannot be resolved. Both functions can be called by right-clicking in the editor and selecting the respective menu item.
 
 ### Bibliography
 
