@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Svg as ClockIcon } from '@/assets/icons/clock.svg'
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
 import type { Post as PostData } from '@/cms/api/posts.api'
+import { Figure } from '@/cms/components/Figure'
 import { Quiz } from '@/cms/components/quiz/Quiz'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
@@ -132,7 +133,7 @@ export function Resource(props: ResourceProps): JSX.Element {
         ) : null}
         <Mdx
           code={resource.code}
-          components={{ Image: ResponsiveImage, Quiz }}
+          components={{ Figure, Image: ResponsiveImage, Quiz }}
         />
       </div>
       <footer>

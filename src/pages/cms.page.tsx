@@ -24,6 +24,7 @@ const Cms = dynamic(
     const { ResourcePreview } = await import('@/cms/previews/ResourcePreview')
     const { CoursePreview } = await import('@/cms/previews/CoursePreview')
     const { downloadWidget } = await import('@/cms/widgets/Download')
+    const { figureEditorWidget } = await import('@/cms/widgets/Figure')
     const { sideNoteEditorWidget } = await import('@/cms/widgets/SideNote')
     const { videoEditorWidget } = await import('@/cms/widgets/Video')
     const { quizEditorWidget } = await import('@/cms/widgets/Quiz')
@@ -73,6 +74,7 @@ const Cms = dynamic(
      * Register richtext editor widgets.
      */
     Cms.registerEditorComponent(downloadWidget)
+    Cms.registerEditorComponent(figureEditorWidget)
     Cms.registerEditorComponent(sideNoteEditorWidget)
     Cms.registerEditorComponent(videoEditorWidget)
     Cms.registerEditorComponent(quizEditorWidget)

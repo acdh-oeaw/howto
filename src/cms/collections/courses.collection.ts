@@ -139,6 +139,7 @@ export const collection: CmsCollection = {
         'Download',
         'Video',
         'SideNote',
+        'Figure',
       ],
     },
   ],

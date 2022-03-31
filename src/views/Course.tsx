@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
 import type { Course as CourseData } from '@/cms/api/courses.api'
+import { Figure } from '@/cms/components/Figure'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
 import { PageTitle } from '@/common/PageTitle'
@@ -116,7 +117,10 @@ export function Course(props: CourseProps): JSX.Element {
         </dl>
       </header>
       <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
-        <Mdx code={course.code} components={{ Image: ResponsiveImage }} />
+        <Mdx
+          code={course.code}
+          components={{ Figure, Image: ResponsiveImage }}
+        />
       </div>
       {resources.length > 0 ? (
         <div className="flex flex-col space-y-2">
