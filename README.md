@@ -5,14 +5,14 @@
 ## View content
 
 Visit the website at
-[https://howto.acdh-dev.oeaw.ac.at](https://howto.acdh-dev.oeaw.ac.at).
+[https://howto.acdh.oeaw.ac.at](https://howto.acdh.oeaw.ac.at).
 
 ## Contribute content
 
 ### Contribute or edit content via CMS
 
-Sign-in to the CMS via [https://howto.acdh-dev.oeaw.ac.at/cms]. You'll need a
-GitHub account and be a member of the
+Sign-in to the CMS via [https://howto.acdh.oeaw.ac.at/cms]. You'll need a GitHub
+account and be a member of the
 [ACDH-CH GitHub organization](https://github.com/acdh-oeaw/).
 
 For edits to articles you can also directly click the "Suggest changes to this
