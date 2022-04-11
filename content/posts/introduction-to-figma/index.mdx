@@ -138,17 +138,23 @@ We can now create two different variants of our "ImprintText" component that cor
 
 Keep the "ImprintText" component selected. In the right-hand `Design` area, click `Variants`. Our component has now automatically been duplicated. The lower twin of the component should be highlighted (if not, select it); in the `Variants` section, rename that variant (from "Variant2") to "Hover" to designate `Property 1`. When you highlight the upper variant of our component, its name should be "Default". Leave it like that.
 
+<Figure src="images/howto_figma_08.png">
 Figure 8: Renaming the second variant of your "ImprintText" component.
+</Figure>
 
 Now, we can design what it should look like when a cursor hovers over the "ImprintText". Twice double-click on the lower variant to highlight the text and style it bold. You could also change the text color, or add a drop shadow in the `Effects` segment.
 
 The next step is to define the interaction that triggers that "Hover" variant. To that end, select the (upper) "Default" variant. In the top of the right-hand control area, switch from the `Design` to the `Prototype` tab. Next to `Interactions`, click the `+`. In the `Interaction details` window that now pops up, choose `While hovering` - `Change to` - "Hover". Close the window. As long as the `Prototype` tab is active, the "Default" variant is now visually connected to the "Hover" variant through a purple arrow, indicating that the former will change to the latter when an event (a hover event, in this case) takes place.
 
+<Figure src="images/howto_figma_09.png">
 Figure 9: Interaction details of the "ImprintText" component.
+</Figure>
 
 However, we also want the "ImprintText" component to link to the "ImprintPage" when clicked. For this, highlight the lower ("Hover") variant of the "ImprintText" component. In the `Prototype` section, click `+` and then select `On click` - `Navigate to` - "ImprintPage". A blue arrow will now visualize the linking to the "ImprintPage".
 
-Figure 10: Interaction as well as navigation details.
+<Figure src="images/howto_figma_10.png">
+Figure 10: Interaction as well as navigation details
+</Figure>
 
 The "ImprintText" component is now fully configured, and an instance of it can be implemented in the design of the "StartPage". From the left-hand `Assets` area, beneath `Local components`, drag-and-drop the "ImprintText" component to the "ImprintFrame" of your "StartPage". Switch to `Present` mode and try out the hover event and linking.
 
@@ -156,7 +162,9 @@ The "ImprintText" component is now fully configured, and an instance of it can b
 
 There is an empty dropdown button in your "NavBar" that we can now prototype as well. Proceed as before: create a component out of the "DropDown" group, and drag-and-drop it into the gray area outside your pages (leave more space around it than before). Create a "Hover" variant, which you can style by inverting its colors ("EditionBlue" text and border colors, "EditionWhite" fill color). Add an interaction that is triggered by a `Hover` event.
 
+<Figure src="images/howto_figma_11.png">
 Figure 11: Interaction details for two variants of your "DropDown" component.
+</Figure>
 
 We can now design three distinct states of the dropdown list to represent three different types of user interaction once a user's cursor hovers above the dropdown button:
 
@@ -166,15 +174,21 @@ We can now design three distinct states of the dropdown list to represent three 
 
 In the gray area of the central window, somewhere outside the purple dashed-line rectangle that marks the area of the "DropDown" component, design those three states. For this, you can copy-paste the "DropDownText" and "DropDownShape" objects from the "DropDown" component in the `Layers` area, and combine and style them to design the three states described above. All of these versions should have three segments: a button ("Drop-down") and two fields representing links to other pages (say, "Somewhere" and "Nowhere"). Group the objects that belong together and rename the groups "DropDownOpen", "DropDownOpenHover1", and "DropDownOpenHover2".
 
+<Figure src="images/howto_figma_12.png">
 Figure 12: Creating groups to represent the different states of an opened dropdown list.
+</Figure>
 
 Now, those groups that represent the three different states of the opened dropdown list can be used as different variants of the "DropDown" component. To do that, first select the "Hover" variant of the "DropDown" component and click on the purple `+` icon that will appear next to it; rename "Variant3" to "Click". Enlarge the purple dashed-line rectangle that delimits the component variants. In the left-hand `Layers` area, select and copy all objects of the "DropDownOpen" group.
 
+<Figure src="images/howto_figma_13.png">
 Figure 13: Copying the first group's objects ...
+</Figure>
 
 Further below in the `Layers` area, now, highlight the "Click" variant and paste the objects from the clipboard (use a keyboard shortcut to paste). The copied objects will now be shown in the `Layers` area as part of the "Click" variant. (You might also see here the "DropDownText" and "DropDownShape" of the original variant, which has been overwritten, being still around as part of the "Click" variant; you can delete them.)
 
+<Figure src="images/howto_figma_14.png">
 Figure 14: ... and pasting them into the "Click" variant.
+</Figure>
 
 In the `Prototype` area, create an interaction that links the "Hover" variant to the "Click" variant (`On click` - `Change to` - "Click").
 
@@ -184,21 +198,29 @@ Now, add two more variants, overwrite them with the two other groups designed be
 - when a user's cursor hovers over the "Somewhere" field of the "Click" variant, change to the "Hover1" variant (`While hovering` - `Change to` - "Hover1"),
 - when a user's cursor hovers over the "Nowhere" field of the "Click" variant, change to "Hover2" (`While hovering` - `Change to` - "Hover2").
 
+<Figure src="images/howto_figma_15.png">
 Figure 15: Interaction details for all five variants of your "DropDown" component.
+</Figure>
 
 Finally, create another page ("SomePage") and make Figma navigate to it when a user clicks on the "Somewhere" field of the "Hover1" variant (`On click`- `Navigate to` - "SomePage").
 
 The "DropDown" component is now fairly well configured (fittingly, the "Nowhere" link links nowhere). From the `Assets` area, drag-and-drop it to the "NavBar" of your "StartPage". However, it is necessary to move that instance of our "DropDown" component, in the `Layers` area, from the "NavBar" sub-frame up to the "StartPage" top-frame (as its appearance will otherwise be limited to the slim space of the "NavBar" sub-frame).
 
+<Figure src="images/howto_figma_16.png">
 Figure 16: Inserting an instance of the "DropDown" component into your start page.
+</Figure>
 
 As long as the `Prototype` view is active, you will see a fairly complex network of interrelations between component variants (purple arrows) as well as links between variants and pages (blue arrows).
 
+<Figure src="images/howto_figma_17.png">
 Figure 17: Full interaction and navigation details of the "DropDown" component.
+</Figure>
 
 In the presentation mode, try out the user interactivity added to your website prototype.
 
+<Figure src="images/howto_figma_18.png">
 Figure 18: Previewing your prototype.
+</Figure>
 
 ## Outlook
 
