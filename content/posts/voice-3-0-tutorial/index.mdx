@@ -97,9 +97,9 @@ In order to adjust the search results to the needs of your research question, th
 - **(…) Brackets:** these can be used to group characters (and even regular expressions) to form new elements. In addition, we can combine them with the quantifiers ?, +, and * and let them operate on specified groups. Example: _(wo)?man - man, woman_
 
 <SideNote type="tip" title="Tip">
-You might be familiar with the usage of wildcards, i.e. plain ?, +, or * from other tools. In wildcard syntax, the asterisk, for example denotes “zero or more characters”. VOICE 3.0, however, uses regex. Here, the symbols works as quantifiers which operate on the preceding element. Therefore, the wildcard _house__ in regex quantifies the final “e” and will only match hous, house, housee, houseeee, etc.
+You might be familiar with the usage of wildcards, i.e. plain ?, +, or * from other tools. In wildcard syntax, the asterisk, for example denotes “zero or more characters”. VOICE 3.0 Online, however, uses regex (regular expressions). Here, the symbols work as quantifiers which operate on the preceding element. Therefore, the wildcard _\_house\__ in regex quantifies the final “e” and will only match _hous, house, housee, houseeee_, etc.
 
-If you want to use the **symbols as wildcards**, you have to place the **placeholder character** “.” (full stop) in front of them. Thus, searching for “_house.__” will result in house, houses, household, housewives, etc., or ._ize in organize, apologize, harmonize, etc.
+If you want to use the **symbols as wildcards**, you have to place the **placeholder character** “.” (full stop) in front of them. Thus, searching for __house.+_ will result in _house, houses, household, housewives_, etc., or _.+ize_ in _organize, apologize, harmonize,_ etc.
 </SideNote>
 
 To gain even more precise control over the number of allowed and necessary character repetitions, you can use curly brackets with min,max. Leaving the max empty means there is no upper limit (see section 3.2 of the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf)).
