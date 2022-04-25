@@ -88,13 +88,13 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
 
 In order to adjust the search results to the needs of your research question, the following **placeholders** might be useful:
 
-- **. Full stop:** matches any single character. You can perceive this as a kind of universal joker. Example: _hi._ results in: him, his, hit, etc.
+- **. Full stop:** matches any single character. You can perceive this as a kind of universal joker. Example: Searching for _hi._ results in: _him, his, hit_, etc.
 - **\[…]** **Character class:** matches any character contained in the brackets, e.g. _h\[ai]t_ – hat, hit
-- **[^…] Inverted character class:** matches any character not contained in the bracket, e.g. _h[^ai]_ – hot, hut
-- **? Question mark:** the preceding element can appear 0 or 1 times, i.e. is optional. Example: _houses?_ – house, houses
-- **+ Plus:** the preceding element must appear 1 or more times, i.e. it is not optional and might be repeated. Example: house.+ results in houses, household, housewives, i.e. all words that start with house plus at least one more character.
-- **\* Asterisk:** the preceding element can appear 0 or more times, i.e. it is optional and might be repeated.
-- **(…) Brackets:** these can be used to group characters (and even regular expressions) to form new elements. In addition, we can combine them with the quantifiers ?, +, and * and let them operate on specified groups. Example: _(wo)?man_ -> man, woman
+- **[^…] Inverted character class:** matches any character not contained in the bracket, e.g. _h[^ai] – hot, hut_
+- **? Question mark:** the preceding element can appear 0 or 1 times, i.e. it is optional. Example: _houses?_ – _house, houses_
+- **+ Plus:** the preceding element must appear 1 or more times, i.e. it is not optional and might be repeated. Example: _house.+_ results in _houses, household, housewives_, i.e. all words that start with house plus at least one more character.
+- **\* Asterisk:** particularly useful, since the preceding element can appear 0 or more times, i.e. it is optional and might be repeated.
+- **(…) Brackets:** these can be used to group characters (and even regular expressions) to form new elements. In addition, we can combine them with the quantifiers ?, +, and * and let them operate on specified groups. Example: _(wo)?man - man, woman_
 
 <SideNote type="tip" title="Tip">
 You might be familiar with the usage of wildcards, i.e. plain ?, +, or * from other tools. In wildcard syntax, the asterisk, for example denotes “zero or more characters”. VOICE 3.0, however, uses regex. Here, the symbols works as quantifiers which operate on the preceding element. Therefore, the wildcard _house__ in regex quantifies the final “e” and will only match hous, house, housee, houseeee, etc.
