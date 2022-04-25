@@ -102,12 +102,12 @@ You might be familiar with the usage of wildcards, i.e. plain ?, +, or * from ot
 If you want to use the **symbols as wildcards**, you have to place the **placeholder character** “.” (full stop) in front of them. Thus, searching for __house.+_ will result in _house, houses, household, housewives_, etc., or _.+ize_ in _organize, apologize, harmonize,_ etc.
 </SideNote>
 
-To gain even more precise control over the number of allowed and necessary character repetitions, you can use curly brackets with min,max. Leaving the max empty means there is no upper limit (see section 3.2 of the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf)).
+To gain even more precise control over the number of allowed and necessary character repetitions, you can use curly brackets with _min,max_. Leaving the max empty means there is no upper limit (see section 3.2 of the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf)).
 
 #### Boolean Operators in VOICE 3.0
 
-- **AND** is represented by a **comma**. Note that there is no space between the conditions. Thus, entering condition1,condition2 will yield results which matches both conditions. Any sequence of items before and after the comma is possible, e.g.: _walk,NN_ - finds token walk as noun, as in "a five minute walk".
-- **OR** is represented by a **vertical line**. It finds any options to the left or the right of the vertical line. It can be used for any sequence of tokens, lemmas or POS tags before and after the line, and more than two options can be specified. For example: _mean | say_ that - finds: mean that; say that.
+- **AND** is represented by a **comma**. Note that there is no space between the conditions. Thus, entering condition1,condition2 will yield results which matches both conditions. Any sequence of items before and after the comma is possible, e.g.: _walk,NN_ - finds tokens of _walk_ tagged as noun, as in "a five minute walk".
+- **OR** is represented by a **vertical line** . It finds any options to the left or the right of the vertical line. It can be used for any sequence of tokens, lemmas or POS tags before and after the line, and more than two options can be specified. For example: _mean | say_ that - finds: mean that; say that.
 
 More details on searches with wildcards and placeholders can be found in the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf).
 
