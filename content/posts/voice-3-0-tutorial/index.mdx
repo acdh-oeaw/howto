@@ -50,7 +50,7 @@ The new VOICE 3.0 Online interface provides many integrated tool tips, pop-ups a
 
 ## Searches in VOICE 3.0
 
-Searches can be easily carried out with the help of the **search field** at the top left corner of the middle area. Once a search has been run, all search results will be displayed in this area. You can then adjust the display of your results by switching between the different styles offered (i.e. **VOICE, PLAIN, POS,** and **XML**). For VOICE, PLAIN and POS, you can additionally choose to display results in **KWIC** (KeyWord In Context) view. When you choose VOICE or POS style, further modifications are possible by using the options offered at the bottom. These allow you to selectively display - or hide - different mark-up categories according to your research needs or to change the representation of POS (part-of-speech) tags.
+Searches can be easily carried out with the help of the **search field** at the top left corner of the middle area. Once a search has been run, all search results will be displayed in this area. You can then adjust the display of your results by switching between the different **styles** offered (i.e. **VOICE, PLAIN, POS,** and **XML**). For VOICE, PLAIN and POS, you can additionally choose to display results in **KWIC** (KeyWord In Context) view. When you choose VOICE or POS style, further modifications are possible by using the options offered at the bottom. These allow you to selectively display - or hide - different mark-up categories according to your research needs or to change the representation of POS (part-of-speech) tags.
 
 ### Simple Searches
 
@@ -62,7 +62,7 @@ If you want to search for contracted forms, like _wanna, gonna, don’t,_ etc., 
 
 #### Lemma search
 
-A lemma is the basic form of a word, which represents all declensions and inflected forms of a word, e.g. _walk_ is the lemma of _walk, walks, walking_. To search for all tokens of a lemma, use the form “l:lemma”, e.g. _l: walk_.
+A lemma is the basic form of a word, which represents all declensions and inflected forms of a word, e.g. _walk_ is the lemma of _walk, walks, walking_. To search for all tokens of a lemma, use the form “l:lemma”, e.g. _l:walk_.
 
 #### POS search
 
@@ -96,10 +96,10 @@ In order to adjust the search results to the needs of your research question, th
 - **\* Asterisk:** particularly useful, since the preceding element can appear 0 or more times, i.e. it is optional and might be repeated.
 - **(…) Brackets:** these can be used to group characters (and even regular expressions) to form new elements. In addition, we can combine them with the quantifiers ?, +, and * and let them operate on specified groups. Example: _(wo)?man - man, woman_
 
-<SideNote type="tip" title="Tip">
-You might be familiar with the usage of wildcards, i.e. plain ?, +, or * from other tools. In wildcard syntax, the asterisk, for example denotes “zero or more characters”. VOICE 3.0 Online, however, uses regex (regular expressions). Here, the symbols work as quantifiers which operate on the preceding element. Therefore, the wildcard _\_house\__ in regex quantifies the final “e” and will only match _hous, house, housee, houseeee_, etc.
+<SideNote type="info" title="Info:">
+You might be familiar with the usage of wildcards, i.e. plain ?, +, or * from other tools. In wildcard syntax, the asterisk, for example denotes “zero or more characters”. **VOICE 3.0 Online**, however, **uses regex** (regular expressions). Here, the symbols work as quantifiers which operate on the preceding element. In regex, the use of _house*_ will only quantify the final “e” and thus will only match _hous, house, housee, houseeee_, etc.
 
-If you want to use the **symbols as wildcards**, you have to place the **placeholder character** “.” (full stop) in front of them. Thus, searching for __house.+_ will result in _house, houses, household, housewives_, etc., or _.+ize_ in _organize, apologize, harmonize,_ etc.
+If you want to use the **symbols as wildcards**, you have to place the **placeholder character** “.” (full stop) in front of them. Thus, searching for _house.*_ will result in _house, houses, household, housewives_, etc., or _.+ize_ in _organize, apologize, harmonize,_ etc.
 </SideNote>
 
 To gain even more precise control over the number of allowed and necessary character repetitions, you can use curly brackets with _min,max_. Leaving the max empty means there is no upper limit (see section 3.2 of the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf)).
