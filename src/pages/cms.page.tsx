@@ -28,6 +28,7 @@ const Cms = dynamic(
     const { sideNoteEditorWidget } = await import('@/cms/widgets/SideNote')
     const { videoEditorWidget } = await import('@/cms/widgets/Video')
     const { quizEditorWidget } = await import('@/cms/widgets/Quiz')
+    const { tabsEditorWidget } = await import('@/cms/widgets/Tabs')
     const { default: withResourceLinks } = await import(
       '@stefanprobst/remark-resource-links'
     )
@@ -78,6 +79,7 @@ const Cms = dynamic(
     Cms.registerEditorComponent(sideNoteEditorWidget)
     Cms.registerEditorComponent(videoEditorWidget)
     Cms.registerEditorComponent(quizEditorWidget)
+    Cms.registerEditorComponent(tabsEditorWidget)
 
     /**
      * Register plugins to the richtext editor widget to (i) avoid saving

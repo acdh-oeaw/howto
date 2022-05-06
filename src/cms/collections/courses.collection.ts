@@ -140,6 +140,7 @@ export const collection: CmsCollection = {
         'Video',
         'SideNote',
         'Figure',
+        'Tabs',
       ],
     },
   ],

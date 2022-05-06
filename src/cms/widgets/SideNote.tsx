@@ -23,7 +23,7 @@ export const sideNoteEditorWidget: EditorComponentOptions = {
       label: 'Content',
       widget: 'markdown',
       /* @ts-expect-error Missing in upstream types. */
-      editor_components: ['image', 'code-block'],
+      editor_components: ['image', 'code-block', 'Figure', 'Tabs'],
       // modes: ['raw'],
     },
   ],

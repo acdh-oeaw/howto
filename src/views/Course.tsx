@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
 import type { Course as CourseData } from '@/cms/api/courses.api'
 import { Figure } from '@/cms/components/Figure'
+import { Tabs } from '@/cms/components/Tabs'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
 import { PageTitle } from '@/common/PageTitle'
@@ -119,7 +120,7 @@ export function Course(props: CourseProps): JSX.Element {
       <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
         <Mdx
           code={course.code}
-          components={{ Figure, Image: ResponsiveImage }}
+          components={{ Figure, Image: ResponsiveImage, Tabs }}
         />
       </div>
       {resources.length > 0 ? (

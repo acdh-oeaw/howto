@@ -82,6 +82,16 @@ const config = {
               '.quiz-multiple-choice li::before': {
                 display: 'none',
               },
+              'li.tab-button': {
+                margin: 0,
+                padding: 0,
+              },
+              'li.tab-button::before': {
+                display: 'none',
+              },
+              '.tabpanel a': {
+                color: 'inherit',
+              },
             },
           },
           sm: {
