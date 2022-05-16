@@ -92,6 +92,10 @@ const config = {
               '.tabpanel a': {
                 color: 'inherit',
               },
+              'td > strong': {
+                display: 'block',
+                'margin-block': '1.25rem',
+              },
             },
           },
           sm: {
