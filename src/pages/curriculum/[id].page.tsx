@@ -137,11 +137,13 @@ export default function CoursePage(props: CoursePageProps): JSX.Element {
           type: 'article',
         }}
       />
-      <PageContent className="grid w-full max-w-screen-lg px-10 py-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
-        <aside />
-        <div className="min-w-0">
-          <Course course={course} lastUpdatedAt={lastUpdatedAt} />
-          <RelatedCourses courses={related} />
+      <PageContent className="text-white bg-brand-black">
+        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+          <aside />
+          <div className="min-w-0">
+            <Course course={course} lastUpdatedAt={lastUpdatedAt} />
+            <RelatedCourses courses={related} />
+          </div>
         </div>
       </PageContent>
     </Fragment>

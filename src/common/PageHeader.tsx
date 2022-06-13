@@ -37,7 +37,7 @@ export function PageHeader(): JSX.Element {
       <Link href={navigation.home.href}>
         <a
           aria-label={t('common.page.home')}
-          className="inline-flex transition rounded focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+          className="inline-flex transition rounded focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
         >
           <Image
             src={Logo}
@@ -68,7 +68,7 @@ function PageNavigation() {
           return (
             <li key={route}>
               <NavLink href={href}>
-                <a className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+                <a className="transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue">
                   {t(`common.page.${route}`)}
                 </a>
               </NavLink>
@@ -117,7 +117,7 @@ function MobilePageNavigation() {
       <button
         {...openButtonProps}
         ref={openButtonRef}
-        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+        className="transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
       >
         <Icon icon={MenuIcon} className="flex-shrink-0 w-10 h-10 p-2" />
       </button>
@@ -135,7 +135,7 @@ function MobilePageNavigation() {
                 return (
                   <li key={route} className="flex px-2 py-2">
                     <NavLink href={href}>
-                      <a className="flex items-center justify-center flex-1 py-2 transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+                      <a className="flex items-center justify-center flex-1 py-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue">
                         {t(`common.page.${route}`)}
                       </a>
                     </NavLink>
@@ -166,7 +166,7 @@ function LanguageSwitcher() {
   return (
     <button
       onClick={toggleLocale}
-      className="w-10 h-10 text-xs font-medium transition rounded text-neutral-100 focus:outline-none bg-neutral-800 hover:bg-primary-600 focus-visible:ring focus-visible:ring-primary-600"
+      className="w-10 h-10 text-xs font-medium transition rounded text-neutral-100 focus:outline-none bg-neutral-800 hover:bg-brand-blue focus-visible:ring focus-visible:ring-brand-blue"
     >
       <span className="sr-only">
         {t('common.switchLanguage', {
@@ -217,7 +217,7 @@ function Search() {
       <button
         {...openButtonProps}
         ref={openButtonRef}
-        className="transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+        className="transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
       >
         <Icon icon={SearchIcon} className="flex-shrink-0 w-10 h-10 p-2" />
       </button>
@@ -278,7 +278,7 @@ function Search() {
                                     return (
                                       <li
                                         key={tag.id}
-                                        className="mb-1 mr-4 text-xs font-bold tracking-wide uppercase text-primary-600"
+                                        className="mb-1 mr-4 text-xs font-bold tracking-wide uppercase text-brand-blue"
                                       >
                                         {tag.name}
                                       </li>
@@ -330,9 +330,9 @@ function SearchField(props: SearchFieldProps) {
   return (
     <label {...labelProps} className="flex flex-col space-y-1.5">
       <span className="text-sm font-medium">{label}</span>
-      <div className="flex px-4 py-2 space-x-4 border rounded border-neutral-200 focus-within:ring-primary-600 focus-within:ring">
+      <div className="flex px-4 py-2 space-x-4 border rounded border-neutral-200 focus-within:ring-brand-blue focus-within:ring">
         {loadingState === 'loading' ? (
-          <Spinner className="flex-shrink-0 w-5 h-5 text-primary-600" />
+          <Spinner className="flex-shrink-0 w-5 h-5 text-brand-blue" />
         ) : loadingState === 'error' ? (
           <Icon
             icon={LightningBoltIcon}

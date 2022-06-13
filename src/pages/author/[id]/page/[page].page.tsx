@@ -27,7 +27,7 @@ import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
 import { Pagination } from '@/views/Pagination'
-import { ResourcesList as PostsList } from '@/views/ResourcesList'
+import { ResourcesList } from '@/views/ResourcesList'
 
 const pageSize = 12
 
@@ -132,20 +132,22 @@ export default function AuthorPage(props: AuthorPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <PageTitle>{fullName}</PageTitle>
-        <LeadIn>{author.description}</LeadIn>
-        <section className="space-y-5">
-          <h2 className="sr-only">{t('common.resources')}</h2>
-          <PostsList resources={posts.items} />
-          <Pagination
-            page={posts.page}
-            pages={posts.pages}
-            href={(page) => {
-              return routes.author({ id: author.id, resourcePage: page })
-            }}
-          />
-        </section>
+      <PageContent className="text-white bg-brand-black">
+        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+          <PageTitle>{fullName}</PageTitle>
+          <LeadIn>{author.description}</LeadIn>
+          <section className="space-y-5">
+            <h2 className="sr-only">{t('common.resources')}</h2>
+            <ResourcesList posts={posts.items} />
+            <Pagination
+              page={posts.page}
+              pages={posts.pages}
+              href={(page) => {
+                return routes.author({ id: author.id, resourcePage: page })
+              }}
+            />
+          </section>
+        </div>
       </PageContent>
     </Fragment>
   )

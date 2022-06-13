@@ -1,7 +1,7 @@
 @import 'nprogress/nprogress.css';
 
 #nprogress {
-  --color-nprogress: #2563eb; /* primary-600 */
+  --color-nprogress: #88dbdf; /* acdh-ch-primary */
 }
 
 #nprogress .bar {

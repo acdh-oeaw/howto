@@ -53,7 +53,7 @@ export function FloatingTableOfContents(
       <button
         {...openButtonProps}
         ref={openButtonRef}
-        className="fixed flex items-center justify-center w-12 h-12 text-white rounded-full bg-primary-600 right-6 bottom-6"
+        className="fixed flex items-center justify-center w-12 h-12 text-white rounded-full bg-brand-blue right-6 bottom-16 hover:bg-brand-light-blue transition"
       >
         <Icon icon={TocIcon} className="flex-shrink-0 w-10 h-10 p-2" />
       </button>

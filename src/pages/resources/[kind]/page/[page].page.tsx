@@ -117,16 +117,18 @@ export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <PageTitle>{t('common.posts')}</PageTitle>
-        <ResourcesList resources={resources.items} />
-        <Pagination
-          page={resources.page}
-          pages={resources.pages}
-          href={(page) => {
-            return routes.resources({ kind, page })
-          }}
-        />
+      <PageContent className="text-white bg-brand-black">
+        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+          <PageTitle>{t('common.posts')}</PageTitle>
+          <ResourcesList posts={resources.items} />
+          <Pagination
+            page={resources.page}
+            pages={resources.pages}
+            href={(page) => {
+              return routes.resources({ kind, page })
+            }}
+          />
+        </div>
       </PageContent>
     </Fragment>
   )

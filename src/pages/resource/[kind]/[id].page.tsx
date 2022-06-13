@@ -37,7 +37,7 @@ import { routes } from '@/navigation/routes.config'
 import { createUrl } from '@/utils/createUrl'
 import type { IsoDateString } from '@/utils/ts/aliases'
 import { FloatingTableOfContents } from '@/views/FloatingTableOfContents'
-import { Resource } from '@/views/Resource'
+import { Resource, ResourceHeader } from '@/views/Resource'
 import { TableOfContents } from '@/views/TableOfContents'
 
 const RELATED_RESOURCES_COUNT = 4
@@ -240,36 +240,41 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         })}
         siteTitle={siteMetadata.title}
       />
-      <PageContent className="grid w-full max-w-screen-lg px-10 py-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
-        <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col justify-self-end">
-          <CourseLinks courses={courses} />
-        </aside>
-        <div className="min-w-0">
-          <Resource resource={resource} lastUpdatedAt={lastUpdatedAt} />
-          <RelatedResources resources={related} />
+      <PageContent>
+        <div className="grid text-white bg-gradient-to-r from-brand-blue to-brand-turquoise">
+          <ResourceHeader resource={resource} lastUpdatedAt={lastUpdatedAt} />
         </div>
-        {metadata.toc === true && toc.length > 0 ? (
-          <Fragment>
-            <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col">
-              <TableOfContents
-                toc={toc}
-                aria-labelledby="table-of-contents"
-                title={
-                  <h2
-                    id="table-of-contents"
-                    className="text-xs font-bold tracking-wide uppercase text-neutral-600"
-                  >
-                    {t('common.tableOfContents')}
-                  </h2>
-                }
-                className="w-full space-y-2"
-              />
-            </aside>
-            <aside className="2xl:hidden">
-              <FloatingTableOfContents toc={toc} />
-            </aside>
-          </Fragment>
-        ) : null}
+        <div className="grid w-full max-w-screen-lg px-10 pt-12 pb-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
+          <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col justify-self-end">
+            <CourseLinks courses={courses} />
+          </aside>
+          <div className="min-w-0">
+            <Resource resource={resource} lastUpdatedAt={lastUpdatedAt} />
+            <RelatedResources resources={related} />
+          </div>
+          {metadata.toc === true && toc.length > 0 ? (
+            <Fragment>
+              <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col">
+                <TableOfContents
+                  toc={toc}
+                  aria-labelledby="table-of-contents"
+                  title={
+                    <h2
+                      id="table-of-contents"
+                      className="text-xs font-bold tracking-wide uppercase text-neutral-600"
+                    >
+                      {t('common.tableOfContents')}
+                    </h2>
+                  }
+                  className="w-full space-y-2"
+                />
+              </aside>
+              <aside className="2xl:hidden">
+                <FloatingTableOfContents toc={toc} />
+              </aside>
+            </Fragment>
+          ) : null}
+        </div>
       </PageContent>
     </Fragment>
   )
@@ -299,7 +304,7 @@ function CourseLinks(props: CourseLinksProps) {
           return (
             <li key={course.id}>
               <Link href={routes.course({ id: course.id })}>
-                <a className="flex items-center text-sm space-x-1.5 transition hover:text-primary-600 relative focus:outline-none rounded focus-visible:ring focus-visible:ring-primary-600">
+                <a className="flex items-center text-sm space-x-1.5 transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue">
                   <Icon
                     icon={AcademicCapIcon}
                     className="flex-shrink-0 w-4 h-4"

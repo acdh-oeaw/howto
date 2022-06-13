@@ -10,5 +10,9 @@ export interface PageTitleProps {
 export function PageTitle(props: PageTitleProps): JSX.Element {
   const { children } = props
 
-  return <h1 className="mb-4 text-4xl font-extrabold leading-10">{children}</h1>
+  return (
+    <h1 className="text-5xl font-black tracking-tighter 2xs:text-6xl xs:text-7xl">
+      {children}
+    </h1>
+  )
 }

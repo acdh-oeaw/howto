@@ -10,5 +10,5 @@ export interface LeadInProps {
 export function LeadIn(props: LeadInProps): JSX.Element {
   const { children } = props
 
-  return <div className="text-lg text-neutral-500">{children}</div>
+  return <div className="text-lg text-neutral-100">{children}</div>
 }

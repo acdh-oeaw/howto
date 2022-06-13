@@ -29,7 +29,7 @@ export function Pagination(props: PaginationProps): JSX.Element | null {
         {hasPrevPage ? (
           <Link href={href(page - 1)}>
             <a
-              className="p-2 transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+              className="p-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
               rel="prev"
             >
               &larr; {t('common.previousPage')}
@@ -41,7 +41,7 @@ export function Pagination(props: PaginationProps): JSX.Element | null {
         {hasNextPage ? (
           <Link href={href(page + 1)}>
             <a
-              className="p-2 transition rounded hover:text-primary-600 focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+              className="p-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
               rel="next"
             >
               {t('common.nextPage')} &rarr;

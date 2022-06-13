@@ -2,6 +2,8 @@ import type { GetStaticPropsContext, GetStaticPropsResult } from 'next'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
+import type { PostPreview } from '@/cms/api/posts.api'
+import { getPostPreviews } from '@/cms/api/posts.api'
 import { PageContent } from '@/common/PageContent'
 import { getLocale } from '@/i18n/getLocale'
 import type { Dictionary } from '@/i18n/loadDictionary'
@@ -11,7 +13,12 @@ import { Metadata } from '@/metadata/Metadata'
 import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
-import Mdx, { metadata } from '~/content/pages/home.mdx'
+import { ResourcesList } from '@/views/ResourcesList'
+
+const texts = {
+  en: 'Welcome to ACDH-CH Learning Resources. This website gathers interactive learning material, practical HowTo articles and best practices on a wide range of Digital Humanities topics, methododologies and infrastructures. These resources can be used for self-guided learning as well as for teaching in higher education. It is part of our mission to actively transfer knowledge from ongoing research into the wider Digital Humanities Community as well as to educate a new generation of humanities researchers with digital methods.',
+  de: 'Willkommen bei den ACDH-CH Lernressourcen. Hier finden Sie interaktives Lernmaterial, praktische HowTo-Artikel und Best Practices Beispiele zu einem breiten Spektrum von Themen, Methoden und Infrastrukturen aus den Digital Humanities. Diese Ressourcen können sowohl für das selbstgesteuerte Lernen als auch für die Lehre im Hochschulbereich genutzt werden. Es ist Teil unserer Mission, Wissen aus der laufenden Forschung aktiv in die breitere Digital Humanities Community zu transferieren und damit eine neue Generation von Geisteswissenschaftlern in der Nutzung von digitalen Methoden auszubilden.',
+}
 
 export interface HomePageMetadata extends Record<string, unknown> {
   title: string
@@ -20,6 +27,9 @@ export interface HomePageMetadata extends Record<string, unknown> {
 
 export interface HomePageProps {
   dictionary: Dictionary
+  locale: 'en' | 'de'
+  posts: Array<PostPreview>
+  text: string
 }
 
 /**
@@ -31,10 +41,15 @@ export async function getStaticProps(
   const { locale } = getLocale(context)
 
   const dictionary = await loadDictionary(locale, ['common'])
+  const posts = (await getPostPreviews(locale)).slice(0, 4)
+  const text = texts[locale]
 
   return {
     props: {
       dictionary,
+      locale,
+      posts,
+      text,
     },
   }
 }
@@ -42,8 +57,8 @@ export async function getStaticProps(
 /**
  * Home page.
  */
-export default function HomePage(_props: HomePageProps): JSX.Element {
-  const { title } = metadata as HomePageMetadata
+export default function HomePage(props: HomePageProps): JSX.Element {
+  const { locale, posts, text } = props
 
   const { t } = useI18n()
   const canonicalUrl = useCanonicalUrl()
@@ -56,29 +71,49 @@ export default function HomePage(_props: HomePageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="text-neutral-100 bg-gradient-to-br from-neutral-800 to-neutral-900">
-        <div className="flex flex-col max-w-6xl gap-16 p-8 py-24 mx-auto xs:py-48">
+      <PageContent className="text-white bg-brand-black">
+        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
           <div className="flex flex-col-reverse">
-            <h1 className="text-5xl font-black tracking-tighter 2xs:text-6xl xs:text-7xl md:text-8xl">
-              {title}
+            <h1 className="text-5xl font-black tracking-tighter 2xs:text-6xl xs:text-7xl">
+              {locale === 'de' ? (
+                <Fragment>
+                  <span className="text-brand-light-blue">Teilen</span> und{' '}
+                  <span className="text-brand-light-blue">erweitern</span> Sie
+                  Ihr Wissen im Bereich{' '}
+                  <span className="text-brand-turquoise">
+                    Digital Humanities
+                  </span>
+                </Fragment>
+              ) : (
+                <Fragment>
+                  <span className="text-brand-light-blue">Share</span> and{' '}
+                  <span className="text-brand-light-blue">expand</span> your
+                  knowledge in{' '}
+                  <span className="text-brand-turquoise">
+                    Digital Humanities
+                  </span>
+                </Fragment>
+              )}
             </h1>
-
-            {/* <h2 className="mb-4 text-sm font-semibold tracking-tight uppercase xs:text-lg text-neutral-400">
-              {subtitle}
-            </h2> */}
           </div>
 
-          <div className="grid flex-1 gap-4 text-2xl font-medium text-neutral-400">
-            <Mdx />
+          <div className="grid flex-1 gap-4 text-xl font-medium text-neutral-300 leading-relaxed">
+            {text}
           </div>
 
-          <div className="">
-            <Link href={routes.resources({ kind: 'posts' })}>
-              <a className="inline-flex px-12 py-4 text-base font-medium tracking-wide text-white uppercase transition rounded xs:text-lg bg-primary-600 hover:bg-primary-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
-                {t('common.browse')}
-              </a>
-            </Link>
-          </div>
+          <section className="my-12 grid gap-12">
+            <div className="flex border-b items-center py-3 justify-between">
+              <h2 className="text-2xl font-bold text-neutral-100">
+                {t(['common', 'new-posts'])}
+              </h2>
+              <Link href={routes.resources({ kind: 'posts' })}>
+                <a className="px-6 py-2 bg-brand-blue inline-flex items-center font-medium rounded text-brand-black hover:bg-brand-light-blue focus:bg-brand-light-blue transition">
+                  {t(['common', 'see-all-posts'])}
+                </a>
+              </Link>
+            </div>
+            <ResourcesList posts={posts} />
+          </section>
         </div>
       </PageContent>
     </Fragment>

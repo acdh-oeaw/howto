@@ -36,19 +36,19 @@ export function Course(props: CourseProps): JSX.Element {
   const { t, formatDate } = useI18n()
 
   return (
-    <article className="w-full mx-auto space-y-16 max-w-80ch">
+    <article className="grid gap-12">
       <header className="space-y-10">
         <dl>
           {tags.length > 0 ? (
             <div className="">
               <dt className="inline sr-only">{t('common.tags')}:</dt>
               <dd className="inline">
-                <ul className="inline text-xs font-bold tracking-wide uppercase text-primary-600">
+                <ul className="inline text-xs font-bold tracking-wide uppercase text-brand-light-blue">
                   {tags.map((tag, index) => {
                     return (
                       <li key={tag.id} className="inline">
                         <Link href={routes.tag({ id: tag.id })}>
-                          <a className="transition hover:text-primary-700 focus:outline-none focus-visible:ring focus-visible:ring-primary-600">
+                          <a className="transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-brand-light-blue">
                             <span className={index !== 0 ? 'ml-1' : undefined}>
                               {tag.name}
                             </span>
@@ -64,7 +64,7 @@ export function Course(props: CourseProps): JSX.Element {
           ) : null}
         </dl>
         <PageTitle>{title}</PageTitle>
-        <dl className="grid items-center grid-cols-2 py-4 text-sm border-t border-b text-neutral-500 border-neutral-200">
+        <dl className="grid items-center grid-cols-2 py-4 text-sm border-t border-b text-neutral-100 border-neutral-200">
           <div className="space-y-1">
             {authors.length > 0 ? (
               <div>
@@ -117,21 +117,21 @@ export function Course(props: CourseProps): JSX.Element {
           </div>
         </dl>
       </header>
-      <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
+      <div className="prose-invert max-w-none">
         <Mdx
           code={course.code}
           components={{ Figure, Image: ResponsiveImage, Tabs }}
         />
       </div>
       {resources.length > 0 ? (
-        <div className="flex flex-col space-y-2">
-          <h2 className="text-2xl font-bold">{t('common.resources')}</h2>
-          <ResourcesList resources={resources} />
+        <div className="grid gap-4">
+          <h2 className="text-2xl font-bold">{t('common.lessons')}</h2>
+          <ResourcesList posts={resources} />
         </div>
       ) : null}
       <footer>
         {lastUpdatedAt != null ? (
-          <p className="text-sm text-right text-neutral-500">
+          <p className="text-sm text-right text-neutral-300">
             <span>{t('common.lastUpdated')}: </span>
             <time dateTime={lastUpdatedAt}>
               {formatDate(new Date(lastUpdatedAt), undefined, {
@@ -144,7 +144,7 @@ export function Course(props: CourseProps): JSX.Element {
           <EditLink
             collection="courses"
             id={course.id}
-            className="text-sm flex justify-end items-center space-x-1.5 text-neutral-500"
+            className="text-sm flex justify-end items-center space-x-1.5 text-neutral-300"
           >
             <span className="text-right">
               {t('common.suggestChangesToCourse')}

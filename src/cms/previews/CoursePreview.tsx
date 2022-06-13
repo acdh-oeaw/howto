@@ -192,7 +192,7 @@ export function CoursePreview(
       ) : (
         <div className="flex items-center space-x-2">
           <Spinner
-            className="w-6 h-6 text-primary-600"
+            className="w-6 h-6 text-brand-blue"
             aria-label="Loading..."
           />
           <p>Trying to render preview...</p>

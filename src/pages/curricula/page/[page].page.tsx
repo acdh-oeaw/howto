@@ -112,16 +112,18 @@ export default function CoursesPage(props: CoursesPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
-        <PageTitle>{t('common.courses')}</PageTitle>
-        <CoursesList courses={courses.items} />
-        <Pagination
-          page={courses.page}
-          pages={courses.pages}
-          href={(page) => {
-            return routes.courses({ page })
-          }}
-        />
+      <PageContent className="text-white bg-brand-black">
+        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+          <PageTitle>{t('common.courses')}</PageTitle>
+          <CoursesList courses={courses.items} />
+          <Pagination
+            page={courses.page}
+            pages={courses.pages}
+            href={(page) => {
+              return routes.courses({ page })
+            }}
+          />
+        </div>
       </PageContent>
     </Fragment>
   )

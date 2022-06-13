@@ -10,6 +10,8 @@
     "notFound": "Page not found",
     "error": "Error"
   },
+  "new-posts": "New posts",
+  "see-all-posts": "See all posts",
   "loading": "Loading",
   "skipToMainContent": "Skip to main content",
   "browse": "Browse",
@@ -33,6 +35,7 @@
   "nextPage": "Next page",
   "relatedResources": "Related resources",
   "courses": "Curricula",
+  "lessons": "Lessons",
   "containedIn": "Contained in",
   "tags": "Tags",
   "authors": "Authors",

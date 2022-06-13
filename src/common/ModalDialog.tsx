@@ -37,7 +37,7 @@ export function ModalDialog(props: ModalDialogProps): JSX.Element {
       >
         <FocusScope contain restoreFocus autoFocus>
           <div
-            className="flex flex-col w-full max-w-screen-md p-8 overflow-hidden bg-white rounded shadow-md focus:outline-none focus-visible:ring focus-visible:ring-primary-600"
+            className="flex flex-col w-full max-w-screen-md p-8 overflow-hidden bg-white rounded shadow-md focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
             {...overlayProps}
             {...dialogProps}
             {...modalProps}
