@@ -2,6 +2,8 @@ import { createHash } from 'crypto'
 import * as fs from 'fs'
 import * as path from 'path'
 
+import { isAbsoluteUrl } from '@stefanprobst/is-absolute-url'
+
 export function copyAsset(
   href: unknown,
   vfilePath: string | undefined,
@@ -26,6 +28,7 @@ export function copyAsset(
   if (href.startsWith('data:')) return
   if (href.startsWith('blob:')) return
   if (href.startsWith('mailto:')) return
+  if (isAbsoluteUrl(href)) return
   if (vfilePath == null) return
 
   const srcFilePath = path.join(path.dirname(vfilePath), href)

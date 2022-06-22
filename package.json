@@ -52,6 +52,7 @@
     "@react-aria/utils": "^3.8.2",
     "@react-stately/overlays": "^3.1.2",
     "@react-stately/searchfield": "^3.1.2",
+    "@stefanprobst/is-absolute-url": "^1.0.2",
     "@stefanprobst/next-error-boundary": "^1.0.8",
     "@stefanprobst/next-mdx": "^2.0.3",
     "@stefanprobst/next-page-metadata": "^1.0.10",
