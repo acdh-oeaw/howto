@@ -83,7 +83,7 @@ export function ResourceHeader(props: ResourceHeaderProps): JSX.Element {
 
   return (
     <header className="max-w-6xl mx-auto grid gap-8 py-12 px-8">
-      <dl>
+      <dl className="min-w-0">
         {tags.length > 0 ? (
           <div className="">
             <dt className="inline sr-only">{t('common.tags')}:</dt>
@@ -109,8 +109,8 @@ export function ResourceHeader(props: ResourceHeaderProps): JSX.Element {
         ) : null}
       </dl>
       <PageTitle>{title}</PageTitle>
-      <dl className="grid items-center font-medium grid-cols-2 py-4 text-sm border-t border-b text-neutral-100 border-neutral-200">
-        <div className="space-y-1">
+      <dl className="grid min-w-0 items-center font-medium grid-cols-2 py-4 text-sm border-t border-b text-neutral-100 border-neutral-200">
+        <div className="space-y-1 min-w-0">
           {authors.length > 0 ? (
             <div>
               <dt className="sr-only">{t('common.authors')}</dt>

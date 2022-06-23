@@ -11,7 +11,7 @@ export function PageTitle(props: PageTitleProps): JSX.Element {
   const { children } = props
 
   return (
-    <h1 className="text-5xl font-black tracking-tighter 2xs:text-6xl xs:text-7xl">
+    <h1 className="min-w-0 text-5xl font-black tracking-tighter 2xs:text-6xl xs:text-7xl break-words">
       {children}
     </h1>
   )
