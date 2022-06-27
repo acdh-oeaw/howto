@@ -71,6 +71,10 @@ function withQuizCards() {
           last.type = 'MultipleChoice'
           last.question = ''
           last.options = []
+          const variantAttribute = node.attributes.find((attribute: any) => {
+            return attribute.name === 'variant'
+          })
+          last.variant = variantAttribute?.value ?? 'multiple'
           break
         }
         case 'Quiz.MultipleChoice.Option': {
@@ -228,6 +232,14 @@ const quizControls = {
   ],
 }
 
+const quizChoiceVariant = {
+  name: 'variant',
+  label: 'Variant',
+  widget: 'select',
+  options: ['mulitiple', 'single'],
+  default: 'multiple',
+}
+
 /**
  * Netlify CMS richtext editor widget for Quiz component.
  */
@@ -272,6 +284,7 @@ export const quizEditorWidget: EditorComponentOptions = {
             },
             quizMessages,
             quizControls,
+            quizChoiceVariant,
           ],
         },
         {
@@ -385,6 +398,13 @@ export const quizEditorWidget: EditorComponentOptions = {
                 children.push({
                   type: 'mdxJsxFlowElement',
                   name: `Quiz.${card.type}`,
+                  attributes: [
+                    {
+                      type: 'mdxJsxAttribute',
+                      name: 'variant',
+                      value: card.variant,
+                    },
+                  ],
                   children: [
                     quizQuestion,
                     ...(card.options?.map((option: any) => {
