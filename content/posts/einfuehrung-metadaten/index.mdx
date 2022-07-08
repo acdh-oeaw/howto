@@ -293,4 +293,35 @@ Hier ein Beispiel der Kodierung der bei XML eingeführten Absatzstruktur in JSON
 
 Der dritte wichtige Standard in dem Zusammenhang ist [RDF (Resource Description Framework](https://www.w3schools.com/xml/xml_rdf.asp), W3C Consortium). RDF ist die Grundsäulen des Semantic Web sowie Linked Open Data und ist von der Datenstruktur her vielleicht sogar die intuitivste Form. Die Datenstruktur basiert auf sogenannten Triples. Diese sind wie Aussagesätze mit einem Subjekt, einem Prädikat und einem Objekt strukturiert. Jede Entität innerhalb dieser Aussagen ist über eine URI (Unified Resource Identifier, also eine Art Webadresse) eindeutig identifiziert, sodass immer klar ist, worüber eine Aussage getroffen wird.  
 
-Mittels dieser sehr einfachen Aussagen-Struktur kann man dann immer weitere Kreise an Aussagen ziehen. Letztendlich stellen diese Aussagen gerichtete Grafen dar, die bestimmte Entitäten miteinander in Beziehung setzen.
+Mittels dieser sehr einfachen Aussagen-Struktur kann man dann immer weitere Kreise an Aussagen ziehen. Letztendlich stellen diese Aussagen gerichtete Grafen dar, die bestimmte Entitäten miteinander in Beziehung setzen. 
+
+![Aufbau von RDF](images/tg7-2_03_metadaten_schopper.png "Abbildung 9: Aufbau und Beispiel von RDF in den ARCHE Metadaten. Bild: Daniel Schopper, CC-BY-4.0 ")
+
+Das in Abbildung 9 gezeigte kurze Beispiel aus den [ARCHE](https://arche.acdh.oeaw.ac.at/)-Metadaten zeigt die Struktur sehr schön: 
+
+Wir haben zum einen ein Objekt aus der Arche mit einer bestimmten Nummer (111841) als Subjekt. `arche:` ist der Platzhalter für einen Identifikator, der im Präfix genauer definiert wird. Dieses Objekt hat mehrere Eigenschaften, die in den Prädikaten definiert werden: 
+
+- Einen Titel (`hasTitle`) 
+- Einen Typ (`type`) 
+- Eine bestimmte Anzahl an Objekten (`hasNumberOfItems`) 
+- Einen bestimmten Identifikator (`hasIdentifier`) 
+
+Als Objekt wird entweder ein String-Wert – also eine Zeichenfolge – zugewiesen oder ein Verweis auf das nächste Objekt, wodurch Objektverkettungen oder -bezüge hergestellt werden. 
+
+Für die Ausformung dieser Aussagen in RDF gibt es unterschiedliche Syntax-Formen: [XML](https://www.w3schools.com/xml/xml_rdf.asp), [JSONLD](https://json-ld.org/) oder [TTL (Turtle)](https://www.w3.org/TR/turtle/) - eine menschenlesbare, kurze Form, die auch im obigen Beispiel verwendet wurde. 
+
+<SideNote type="tip" title="Tipp - Praktischer Umgang mit RDF Daten">
+Was kann man mit RDF-Daten in der Praxis "tun"? 
+
+Im Kapitel "Prosopographic Modeling - Introduction" gibt es eine [Einführung zu SPARQL](https://howto.acdh.oeaw.ac.at/de/resource/posts/prosopographic-modelling-introduction#sparql-basics) - eine Such-Sprache die auf RDF-Daten operiert.
+</SideNote>
+
+<SideNote type="tip" title="Tipp - Weitere Literatur">
+Ein Vergleich der drei RDF-Formate findet sich bei [Angus Addlesee 2018.](https://medium.com/wallscope/understanding-linked-data-formats-rdf-xml-vs-turtle-vs-n-triples-eb931dbe9827)
+</SideNote>
+
+![Schematische Beschreibung eines Persistent Identifiers](images/metadata_pid.png "Abbildung 10: Schematische Beschreibung eines Persistent Identifiers. Bild: Daniel Schopper, CC-BY-4.0 ")
+
+Der dritte Bereich sind die Persistent Identifier. Diese sind entsprechend also auf der infrastrukturellen Seite angesiedelt.   
+
+In vielen Fällen sind Adressen im Netz instabil und nicht dauerhaft. Das heißt Adressen können sich ändern oder umziehen, Institutionen können aufgelöst werden etc. Metadaten sollten aber stabil referenziert werden. Um dieser Flüchtigkeit der Adressen entgegenzuwirken, gibt es unterschiedliche Arten von persistenten Identifikatoren, die im Prinzip alle über eine Art von indirekter Adressierung funktionieren. In dem Falle bleibt der persistente Identifikator stabil, aber es wird ein Service zwischengeschaltet, der über eine Adressdatenbank die aktuelle “flüchtige” Adressierung des Objekts im Web auflöst (Resolving Service). Ein Beispiel ist [DOI](https://www.doi.org/), das aus dem Bereich des Bibliothekswesens und der Publikationen bekannt sein dürfte. Es gibt aber noch andere Systeme wie [handle.net](https://handle.net/), [URN](https://www.dnb.de/EN/Professionell/Services/URN-Service/urn-service_node.html), [ARK](https://arks.org/), [PURL](http://www.purlz.org/).
