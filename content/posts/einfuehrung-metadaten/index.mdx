@@ -132,24 +132,24 @@ Am Beispiel von digitalen Objekten aus dem Bereich des Kulturerbes wird das ganz
 **Merke:** Bei digitalen Objekten kann man grundsätzlich drei Ebenen unterscheiden: 
 
 - **Physische Ebene:** Digitale Objekte bestehen aus Bytes, die auf einem Datenträger “abgelegt sind”, haben also eine physische Komponente: Das können Dateien auf einem USB-Stick oder einer Festplatte sein, aber genauso Datenströme, die über ein Netzwerk zwischen Geräten ausgetauscht werden. Auf dieser Ebene werden die Eigenschaften der Objekte (und daher die „Werte“ der Metadaten, die sie beschreiben) über die physische Ablage der Dateien bestimmt. 
-- **Logische Ebene:** Diese Ebene bezieht sich auf den inneren Aufbau der Daten, der es ermöglicht, dass sie von einer Software gelesen, angezeigt und manipuliert werden können. Beispiel: Damit mehrere Textverarbeitungsprogramme das selbe Dokument öffnen können, muss ein gemeinsames Format definiert sein: ein Regelwerk, das Funktionsbereiche definiert und sie auf entsprechende Datenstrukturen abbildet. Dieses Regelwerk muss allen Programmen „bekannt“ sein, die dieses Format lesen oder schreiben können sollen. 
+- **Logische Ebene:** Diese Ebene bezieht sich auf den inneren Aufbau der Daten, der es ermöglicht, dass sie von einer Software gelesen, angezeigt und manipuliert werden können. Beispiel: Damit verschiedene Textverarbeitungsprogramme das selbe Dokument öffnen können, muss ein gemeinsames Format definiert sein: ein Regelwerk, das Funktionsbereiche definiert und sie auf entsprechende Datenstrukturen abbildet. Dieses Regelwerk muss allen Programmen „bekannt“ sein, die dieses Format lesen oder schreiben können sollen. 
 - **„Konzeptionelle“ oder „semantische“ Ebene:** Dies ist die abstrakte Ebene des Dateiinhalts, die zunächst nur von Menschen durch Interpretation und „Hintergrundwissen“ erschlossen werden kann: Was bildet ein Foto oder Scan ab? 
 
 ## Aufbau von Metadaten 
 
 Unabhängig vom technischen System oder Format, in welchem Metadaten gespeichert werden, ist der Aufbau von Metadaten stets derselbe. Um für die Nutzer und Ersteller verständlich und nützlich zu sein, müssen sich beide bei jedem Medatdatum auf folgende Informationen einigen: 
 
-- Welche **Bedeutung** hat das Metadatum? Welche Dimension (s.o.) bzw. welche Eigenschaft des beschriebenen Objektes deckt es ab? – Wie wir weiter unten sehen werden, kann die semantische Ebene einer Metadatumsdefintion mehr oder weniger eng gefasst sein. Außerdem bedarf es in aller Regel eine klaren Definition und Abgrenzung, denn  "Feldnamen" können leicht mehrdeutig sein    (Z.B.: Beschreibt das Metadatum “Titel” den Titel einer Publikation oder den (Adels-/Standes- etc.) Titel einer Person?) 
-- Hand in Hand mit der Frage der Beschreibungsdimension eines Metadatums geht die Definition, welche **Werte bzw. Wertebereiche** bei der Verwendung dieses Metadatums zulässig sein können. (z.B. Im Feld “Titel” dürfen nur Unicode-Zeichen stehen).  
+- Welche **Bedeutung** hat das Metadatum? Welche Dimension (s.o.) bzw. welche Eigenschaft des beschriebenen Objektes deckt es ab? – Wie wir weiter unten sehen werden, kann die semantische Ebene einer Metadatumsdefintion mehr oder weniger eng gefasst sein. Außerdem bedarf es einer klaren Definition, denn  "Feldnamen" allein können leicht mehrdeutig sein. (Z. B.: Beschreibt das Metadatum “Titel” den Titel einer Publikation oder den (Adels-/Standes- etc.) Titel einer Person?) 
+- Hand in Hand mit der Frage der Beschreibungsdimension eines Metadatums geht die Definition, welche **Werte bzw. Wertebereiche** bei der Verwendung dieses Metadatums zulässig sein können, zumal die Semantik eines Medadtums hier Einschränkungen bedingt. So wird beispielsweise ein Metadatum, das sich auf ein Datum bezieht, ein standardisierters Datumsformat wie [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) als Wertebereich festlegen.
 - Und nicht zuletzt müssen Metadaten in einem Computersystem gespeichert werden, um benützbar zu werden. Hier stellt sich die grundlegende Frage: Auf welche Art und Weise und unter Verwendung welcher **Zeichen** werden die Informationen des Metadatums in einem Computersystem repräsentiert? Sinnvollerweise ist die Definition eines Metadatums von der tatsächlichen Art, der Speicherung – der **syntaktischen Ebene** – unabhängig. Dementsprechend gibt es oftmals mehrere syntaktische Varianten eines und desselben Metadatums, die sich nicht in ihrer Semantik, aber sehr wohl in ihrem Basisdatenmodell (z.B. RDF oder XML, s.u.) und den durch sie bedingten syntaktischen Regeln unterscheiden.  
 
-Um ein digitales Objekt beschreiben zu können, kann ein einzelnes Metadatum allein nicht ausreichen. Daher bewegen sich die Definitionen von Metadaten-Elementen eines gemeinsamen Metadatenschemas immer auch im Rahmen eines gemeinsamen **abstrakten Modells**, das die verschiedenen Metadaten-Elemente zu einem homogenen Ganzen verbindet. 
+Um ein digitales Objekt beschreiben zu können, benötigt man mehr als ein einzelnes Metadatum, sondern ein ganzes _Metadaten-Schema_ oder _\-Vokabular._ In diesem bewegen sich die Definitionen von Metadaten-Elementen innerhalb eines gemeinsamen Metadatenschemas immer auch im Rahmen eines gemeinsamen **abstrakten Modells**, das die verschiedenen Metadaten-Elemente zu einem homogenen Ganzen verbindet. 
 
 ![Struktur von Metadaten](images/metadata_structure2.png "Abbildung 4: Struktur von Metadaten. Grafik: Daniel Schopper, CC-0 ")
 
 Anhand der sukzessiven Entwicklung des [„Dublin Core“-Standards](https://www.dublincore.org/resources/metadata-basics/) lassen sich diese drei Ebenen gut illustrieren: 
 
-### Exkurs: Struktur von Metadaten anhand von Dublin Core ([vgl. Pollin 2021](http://gams.uni-graz.at/o:konde.128)) 
+### Exkurs: Struktur von Metadaten anhand von Dublin Core ([vgl. Pollin 2021](http://gams.uni-graz.at/o:konde.128) ) 
 
 Als in den frühen 1990er Jahren deutlich wurde, dass dem massiven Zuwachs an Informationen im noch vergleichsweise jungen Internet mit den traditionellen Strategien von Katalogisierung und Informationsgewinnung an Bibliotheken nicht beizkommen war, wurde 1995 nach einem Workshop am _Online Computer Library Center_ (OCLC) in Dublin (Ohio) das _Dublin Core Metadata Element Set_ (DCMES) präsentiert und in einer Reihe von offiziellen Standards publiziert: Dabei handelte es sich um eine Sammlung der 15 am weitesten verbreiten Eingeschalten von Ressourcen, die so allgemein gehalten waren, dass sie für die Beschreibung von vielerlei digitalen und analogen Objekten (Webseiten, Büchern, Liedern, Bildern etc.) gleichermaßen nützlich sein würden. Ziel war eine abstrakte Definition der Eigenschaften ohne Vorgabe, wie diese in einem technischen System repräsentiert werden sollten: Die _syntaktische Ebene_ wurde bewusst offen gelassen. 
 
@@ -287,7 +287,9 @@ Mittels dieser sehr einfachen Aussagen-Struktur kann man dann immer weitere Krei
 
 Das in Abbildung 9 gezeigte kurze Beispiel aus den [ARCHE](https://arche.acdh.oeaw.ac.at/)-Metadaten zeigt die Struktur sehr schön: 
 
-Wir haben zum einen ein Objekt aus der Arche mit einer bestimmten Nummer (111841) als Subjekt. `arche:` ist der Platzhalter für einen Identifikator, der im Präfix genauer definiert wird. Dieses Objekt hat mehrere Eigenschaften, die in den Prädikaten definiert werden: 
+Wir haben zum einen ein Objekt aus der Arche mit einer bestimmten Nummer (111841) als Subjekt. `arche:` ist einsog. _Präfix_, also ein Platzhalter für einen Identifikator, der durch die Abkürzung besser lesbar wird. 
+
+Dieses Objekt hat mehrere Eigenschaften, die in den Prädikaten definiert werden: 
 
 - Einen Titel (`hasTitle`) 
 - Einen Typ (`type`) 
@@ -296,7 +298,7 @@ Wir haben zum einen ein Objekt aus der Arche mit einer bestimmten Nummer (111841
 
 Als Objekt wird entweder ein String-Wert – also eine Zeichenfolge – zugewiesen oder ein Verweis auf das nächste Objekt, wodurch Objektverkettungen oder -bezüge hergestellt werden. 
 
-Für die Ausformung dieser Aussagen in RDF gibt es unterschiedliche Syntax-Formen: [XML](https://www.w3schools.com/xml/xml_rdf.asp), [JSONLD](https://json-ld.org/) oder [TTL (Turtle)](https://www.w3.org/TR/turtle/) - eine menschenlesbare, kurze Form, die auch im obigen Beispiel verwendet wurde. 
+Für die Ausformung dieser Aussagen in RDF gibt es unterschiedliche Syntax-Formen: [XML](https://www.w3schools.com/xml/xml_rdf.asp), [JSONLD](https://json-ld.org/) oder [TTL (Turtle)](https://www.w3.org/TR/turtle/) - letztere ist jene auch für Menschen gut lesbare konzise Schreibweise, die auch im obigen Beispiel verwendet wurde. 
 
 <SideNote type="tip" title="Tipp - Praktischer Umgang mit RDF Daten">
 Was kann man mit RDF-Daten in der Praxis "tun"? 
