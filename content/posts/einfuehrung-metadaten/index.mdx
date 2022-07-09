@@ -23,8 +23,6 @@ uuid: nzAdyNVz9UUJommNOOtat
 - Bestandteile von Metadaten unterscheiden können
 - Metadaten auf Verlässlichkeit überprüfen können
 
-
-
 <SideNote type="tip" title="Tipp: ">
 Die Inhalte des Kapitels beruhen auf dem Impulsvortrag „Dokumentation und Metadaten“ der Tool Gallery 7.2. (17. November 2021) des ACDH-CH, dessen Aufzeichnung (Deutsch) auf Youtube verfügbar ist.
 </SideNote>
@@ -81,8 +79,6 @@ Diese und ähnliche basalen Informationen den potentiellen Nutzer*innen zur Verf
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
-
-
 
 
 Unsere Forscherin hat ihren Antrag schließlich abgeschlossen und mit Erfolg bei einem Fördergeber eingereicht: Das Projekt kann starten! Ihr Textcorpus nimmt Gestalt an und rasch finden sich andere Forscher*innen, die ihre Arbeit wiederverwenden möchten: Nun findet sie sich selbst in der Position, Metadaten zu ihrem Corpus erstellen zu müssen. Außerdem möchte der Fördergeber in einem Data Management Plan Auskunft darüber erhalten, wo die durch seine Mittel finanzierten Ergebnisse archiviert werden: Unsere Forscherin muss sich nun für ein mögliches Forschungsdatenrepositorium entscheiden und darüber informieren, welche Informationen in welchem Format das Respositorium für die Archivierung benötigt. 
@@ -165,21 +161,25 @@ Parallel dazu wurden **Werte bzw. -Wertebereiche** definiert, die für die versc
 
 ### Vokabularien und Normdaten
 
+Wenn Metadaten von Suchmaschinen aggregiert oder zwischen Systemen bzw. Benutzern ausgetauscht werden sollen bzw. große Datenmengen anhand bestimmter Kriterien gefiltert werden sollen, sind in aller Regel kontrollierte Vokabularien im Spiel. Als ein augenscheinliches Beispiel kann der Bibliothekskatalog der ÖAW herangezogen werden: In diesem werden verschiedene Beständen (Bibliotheksbestand, Datenbanken, elektronische Ressourcen) in einem gemeinsamen Suchinterface zusammengefasst. Jeder Datenbestand folgt einem eigenen Metadatenschema mit eigenen Wertebereichen (s.o.). Um es zu ermöglichen, dass eine Menge von Suchresultaten anhand des Metadatums „Format“ gefiltert werden kann, müssen die verschiedene Werte auf eine gemeinsame Liste von möglichen Werten homogenisiert (sog. „gemappt“) werden, deren Bedeutung in etwa gleich ist.  
+
 <Figure src="images/metadaten_oeawacademycat.png" alt="ÖAW Academy-CATalogPlus - Suche nach Wasserfall">
 Abbildung 5: [Katalog von Bibliothek und Archiv der ÖAW](https://www.oeaw.ac.at/resources). Bild: Daniel Schopper, CC-BY-4.0
 </Figure>
 
-![Varianten in der Schreibweise von Arthur Schnitzler in der DNB](images/dnb-schnitzler.png "Abbildung 6: Varianten in der Schreibweise von Arthur Schnitzler in der DNB. Bild: Daniel Schopper, CC-BY-4.0")
-
-Die Identifikation von Einzelpersonen oder einzelnen Arbeiten durch eine ein-eindeutige Schreibweise und/oder einen alphanumerischen Identifikator ist bei Metadaten ein wichtiger Aspekt, zu dem das Bibliothekswesen bereits viel “Vorarbeit” geleistet hat. Hervorzuheben sind hier beispielsweise die **Normdaten**, auf Englisch “authority control files”. Beispiele sind hier [Gemeinsame Normdatei](https://gnd.network/) ([GND)](https://gnd.network/), [Library of Congress Subject Headings (LCSH)](https://www.loc.gov/aba/cataloging/subject/), oder [Virtual International Authority File (VIAF)](http://viaf.org/). Diese kommen aus dem Bereich der Bibliothekskatalog, aber finden zunehmend auch im semantischen Web Anwendung. In Bibliothekskatalogen finden sich unterschiedlichste Namensschreibungen, Fehlschreibungen, Pseudonyme, unterschiedliche Sprachen. Um diese Ansetzungsformen alle auf eine einzige Identität zusammenzubringen, wird eine autoritative Form als Normdatum angesetzt.  Dies kann in Form einer eindeutigen Namensansetzung sein, in Form einer innerhalb eines Normdatensatzes eindeutigen Nummer, oder – wie es nun im Semantic Web der Fall ist, in Form einer URI-Adresse. Dies gibt es für Personen, aber auch in generalisierter Form für Orte, Themengebiete oder aber generelle Terminologien, die auch aus dem Bibliotheksbereich hinaus gehen. Beispiele für generische Ressourcen sind z.B. [GeoNames](http://www.geonames.org/) (Ortsnamen) oder auch [Wikidata](https://www.wikidata.org/), welche Identifikatoren für die unterschiedlichsten Dinge, Konzepte, zeitlichen Ereignisse etc. vergibt.
+Zu diesem Zweck wird ein Vokabular erstellt, dessen einzelne Einträge (Terme) klar definiert sind und dessen Einträge untereinander bzw. zu anderen Vokabularien in Verbindung gesetzt werden können. 
 
 <Figure src="images/metadata_vokabularien.png">
 Abbildung 7: Screenshot des Konzepts [“Aussageobjekte” aus dem DARIAH BBT](https://vocabs.dariah.eu/bbt/en/page/?clang=de&uri=https%3A%2F%2Fvocabs.dariah.eu%2Fbbt%2FConcept%2F000022). Bild: Daniel Schopper, CC-BY-4.0
 </Figure>
 
-Der zweite große Bereich, wie man Werte in Datenfeldern einschränken bzw. vordefinieren kann, sind kontrollierte Vokabularien. Bekannte Beispiele sind [Getty AAT](https://www.getty.edu/research/tools/vocabularies/aat/) (Art & Architecture Thesaurus) oder [DARIAH BBT](https://vocabs.dariah.eu/bbt/en/) (Backbone Thesaurus). Diese Vokabularien sind hierarchisch oder orthogonal organisiert und definieren die Bedeutung von Begriffen. Denn um klar zu definieren was mit einem bestimmten Wert gemeint ist, muss dieser kontrolliert verwendet werden. Zu diesem Zweck gibt es im Bereich der Metadaten das System [SKOS - Simple Knowledge Organization](https://www.w3.org/2004/02/skos/) - mit dem man solche Thesauri – also kontrollierte Vokabularien - aufbauen und miteinander in Verbindung setzen kann. Verbindungen können beispielsweise über das Mapping von gleichen oder ähnlichen Begriffen in Konzept-Schemata erfolgen. Die Syntax hierfür ist: 
+Häufig werden Vokabularien im Bereich der Metadaten mit [SKOS - Simple Knowledge Organization](https://www.w3.org/2004/02/skos/) – erstellt, das die wichtigsten semanitschen Verbindungen zwischen Termen bereitstellt. So werden ähnliche Terme mit der Relation `skos:closeMatch` verbunden; gleiche Terme mit `skos:exactMatch. `
 
-`skos:closeMatch ` bzw.  `skos:exactMatch`
+Werden Vokabularien publiziert können andere Personen und Projekte die dort verwendeten Definitionen aufgreifen und so ihre Daten auf einer konzeptionellen Ebene mit einander kompatibel machen. Bekannte Beispiele für häufig genutzte Vokabularien sind beispielsweise der [Getty AAT](https://www.getty.edu/research/tools/vocabularies/aat/) (Art & Architecture Thesaurus) oder [DARIAH BBT](https://vocabs.dariah.eu/bbt/en/) (Backbone Thesaurus).  
+
+![Varianten in der Schreibweise von Arthur Schnitzler in der DNB](images/dnb-schnitzler.png "Abbildung 6: Varianten in der Schreibweise von Arthur Schnitzler in der DNB. Bild: Daniel Schopper, CC-BY-4.0")
+
+Ähnlich wie Konzepte können auch die Namen von Personen, Orten und Körperschaften ambig, also mehrdeutig sein. Gerade bei der Aggregation (Sammlung) von Metadaten – wie etwa im oben genannten Bibliothekskatalog – ist die Identifikation von Einzelpersonen oder einzelnen Arbeiten durch eine ein-eindeutige Schreibweise und/oder einen alphanumerischen Identifikator zentral. Auch hier hat das Bibliothekswesen bereits viel “Vorarbeit” geleistet. Hervorzuheben sind hier beispielsweise die **Normdaten**, auf Englisch “authority control files”. Beispiele sind hier [Gemeinsame Normdatei](https://gnd.network/) ([GND)](https://gnd.network/), [Library of Congress Subject Headings (LCSH)](https://www.loc.gov/aba/cataloging/subject/), oder [Virtual International Authority File (VIAF)](http://viaf.org/). Diese kommen aus dem Bereich der Bibliothekskatalog, aber finden zunehmend auch im semantischen Web Anwendung. In Bibliothekskatalogen finden sich unterschiedlichste Namensschreibungen, Fehlschreibungen, Pseudonyme, unterschiedliche Sprachen. Um diese Ansetzungsformen alle auf eine einzige Identität zusammenzubringen, wird eine autoritative Form als Normdatum angesetzt.  Dies kann in Form einer eindeutigen Namensansetzung sein, in Form einer innerhalb eines Normdatensatzes eindeutigen Nummer, oder – wie es nun im Semantic Web der Fall ist, in Form einer URI-Adresse. Dies gibt es für Personen, aber auch in generalisierter Form für Orte, Themengebiete oder aber generelle Terminologien, die auch aus dem Bibliotheksbereich hinaus gehen. Beispiele für generische Ressourcen sind z.B. [GeoNames](http://www.geonames.org/) (Ortsnamen) oder auch [Wikidata](https://www.wikidata.org/), welche Identifikatoren für die unterschiedlichsten Dinge, Konzepte, zeitlichen Ereignisse etc. vergibt. 
 
 ## Typen von Metadaten
 
@@ -196,8 +196,6 @@ Zusätzlich könnte man als fünfte Dimension die Archivmetadaten unterscheiden,
 
 Diese vier Gruppen wollen wir uns nun genauer ansehen. Welche Fragen über die Daten werden dort beantwortet? 
 
-
-
 **Deskriptive Metadaten** umfassen vereinfacht gesagt das, was wir oft mit bibliographischen Metadaten ausdrücken. Diese sind letztendlich eine Identifikation und Beschreibung dessen, was wir sehen. Sie beschreiben also, um was es sich bei den spezifischen Daten handelt. Dies umfasst beispielsweise: 
 
 - Wie wird das Objekt / Datum genannt? 
@@ -205,8 +203,6 @@ Diese vier Gruppen wollen wir uns nun genauer ansehen. Welche Fragen über die D
 - Wann wurde es publiziert? 
 - Worum geht es? - Dies umfasst inhaltliche Aspekte wie Themen, Schlagwörter etc. 
 - Wie ist die Erscheinungsform? - Diese kann abhängig vom Objekt sehr unterschiedlich sein. Beispiele sind Sprache, Farbe, Seitenzahlen (bei Printprodukten), etc. 
-
-
 
 **Administrative Metadaten** beschreiben die Einbettung in prozedurale und organisatorische Aspekte. Letztendlich geht es darum, wie die Daten behandelt werden.  
 
@@ -222,14 +218,10 @@ Diese vier Gruppen wollen wir uns nun genauer ansehen. Welche Fragen über die D
   - Welche Bearbeitungs/Verarbeitungsschritte wurden vor der Aufnahme in ein Archiv vorgenommen (Wichtig bei Archivmetadaten)? 
 - Wo ist die Quelle der Daten (wo kommen sie her)? (Provenienz) - Daten werden wiederverwendet und nachgenutzt. Gerade dafür ist es wichtig die Herkunft der Daten klar zu dokumentieren. 
 
-
-
 **Strukturelle Metadaten** beschreiben wie Daten sich zusammensetzen. 
 
 - Wie sind Objekte intern strukturiert? -  Wenn wir das Beispiel eines Buches hernehmen, so könnte man sagen, das Buch besteht aus einer Anzahl von Seiten oder aus Kapiteln. Die interne Struktur ist hier eine physischen Datenstruktur die sich dann beispielsweise in einer Ordnerstruktur abbildet. 
 - In welcher Beziehung stehen die Daten oder Objekte zu anderen Daten? - Sind sie beispielsweise Teil einer Kollektion oder eines größeren Zusammenhangs? Gibt es andere Versionen oder Vorversionen dieser Daten oder dieses Objekts an einem anderen Speicherort? 
-
- 
 
 **Technische Metadaten** beschreiben wie ein Objekt aus technischer Sicht beschaffen ist, damit ein Computer dieses lesen kann. Dazu gehören beispielsweise 
 
@@ -250,8 +242,6 @@ Metadaten können entweder in die Daten oder digitalen Objekte, die sie beschrei
 
 Im Folgenden werden kurz die unterschiedlichen syntaktischen Varianten beleuchtet, um Einsteiger*innen in die Materie einen grundlegenden Einblick in das Thema zu geben. 
 
-
-
 #### XML
 
 Eines der wichtigsten Datenformate in der (kurzen) Geschichte der Metadaten im informationstechnischen Sinne ist sicherlich [XML](https://www.w3schools.com/xml/xml_whatis.asp). Viele Metadatenschemata bauen auf dieses grundlegende Format auf. XML steht für eXtensible Markup Language – ein Webstandard, der vom World Wide Web Consortium entwickelt und 1998 erstmals als Empfehlung veröffentlicht wurde. Es ist ein Regelwerk wie man Vokabularien oder Schemata beschreiben kann. Es definiert eine Reihe von syntaktischen Regeln an anhand derer man reine Textdokumente strukturieren kann, um sie danach menschen- und maschinenlesbar verwenden zu können. 
@@ -265,8 +255,6 @@ Ein einfaches, fiktives Beispiel: 
 ```
 
  Wenn wir einen Absatz in XML kodieren wollen, so können wir dies mit sogenannten Tags machen. Die grundsätzliche Regel ist, dass es immer einen Start- und einen End-Tag gibt, die den Inhalt umschließen. Spitzklammern markieren einen Tag, z.B. <paragraph> in diesem Fall. Der End-Tag wird mit einem Schrägstrich vor dem Tag-Namen markiert - </paragraph>. Durch die Start- und End-Tags werden Informationseinheiten klar abgegrenzt und diese sind zudem streng hierarchisch ineinander verschachtelt. XML zeichnet sich gegenüber anderen technischen Datenmodellen dadurch aus, dass es sowohl dokumentenorientiert als auch datenorientiert verwendet werden kann. Ein Dokument hat eine Reihenfolge von oben nach unten, was bei anderen Datenstrukturen nicht der Fall ist. Zudem ist XML eine Markup-Sprache, was es ermöglicht Text um zusätzliche Informationen anzureichern.   
-
-
 
 #### JSON
 
@@ -320,8 +308,10 @@ Im Kapitel "Prosopographic Modeling - Introduction" gibt es eine [Einführung zu
 Ein Vergleich der drei RDF-Formate findet sich bei [Angus Addlesee 2018.](https://medium.com/wallscope/understanding-linked-data-formats-rdf-xml-vs-turtle-vs-n-triples-eb931dbe9827)
 </SideNote>
 
+## Persistente Identifikatoren
+
 ![Schematische Beschreibung eines Persistent Identifiers](images/metadata_pid.png "Abbildung 10: Schematische Beschreibung eines Persistent Identifiers. Bild: Daniel Schopper, CC-BY-4.0 ")
 
-Der dritte Bereich sind die Persistent Identifier. Diese sind entsprechend also auf der infrastrukturellen Seite angesiedelt.   
+Im Hinblick auf die technische Infrastruktur ist die Verwendung von Persistenten Identifkatoren zentral für stabile Metadaten und die langfristige Auffindbarkeit von Ressourcen.  
 
 In vielen Fällen sind Adressen im Netz instabil und nicht dauerhaft. Das heißt Adressen können sich ändern oder umziehen, Institutionen können aufgelöst werden etc. Metadaten sollten aber stabil referenziert werden. Um dieser Flüchtigkeit der Adressen entgegenzuwirken, gibt es unterschiedliche Arten von persistenten Identifikatoren, die im Prinzip alle über eine Art von indirekter Adressierung funktionieren. In dem Falle bleibt der persistente Identifikator stabil, aber es wird ein Service zwischengeschaltet, der über eine Adressdatenbank die aktuelle “flüchtige” Adressierung des Objekts im Web auflöst (Resolving Service). Ein Beispiel ist [DOI](https://www.doi.org/), das aus dem Bereich des Bibliothekswesens und der Publikationen bekannt sein dürfte. Es gibt aber noch andere Systeme wie [handle.net](https://handle.net/), [URN](https://www.dnb.de/EN/Professionell/Services/URN-Service/urn-service_node.html), [ARK](https://arks.org/), [PURL](http://www.purlz.org/).
