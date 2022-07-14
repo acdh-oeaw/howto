@@ -236,7 +236,7 @@ const quizChoiceVariant = {
   name: 'variant',
   label: 'Variant',
   widget: 'select',
-  options: ['mulitiple', 'single'],
+  options: ['multiple', 'single'],
   default: 'multiple',
 }
 
