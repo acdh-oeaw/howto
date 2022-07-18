@@ -372,4 +372,36 @@ In the following video clip, VOICE project member Ruth Osimk-Teasdale demonstrat
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        You want to find out how state verbs are used in VOICE. Search for all verb forms of _taste_. What does your query look like?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        tast.\*,VVP
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        taste,VV
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        tast._,V._
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        taste
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct - this yields 24 hits in 23 utterances
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Consult the POS tagset in the Corpus information and check! VVP searches for present tense verb taste, B searches for taste as base form and D serches for the token “taste”, including taste as noun, but not the verb forms tasting, tasted, etc.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
 </Quiz>
