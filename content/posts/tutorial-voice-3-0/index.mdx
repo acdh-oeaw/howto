@@ -168,7 +168,7 @@ VOICE POS tagging - spoken features
 
 Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.0 Online [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf).
 
-**Quiz - It's your turn again**
+**Quiz - It's your turn again!**
 
 **Simple Searches in VOICE 3.0 Online**
 
@@ -202,6 +202,30 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
       <Quiz.Message type="incorrect">
         Sorry! Try again and check how you need to search for a token in VOICE 3.0 Online.
       </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Humour and laughter are important topics in ELF research. VOICE 3.0 Online allows you to search for laughter in VOICE data in various forms. Which of these queries gives you stretches of laughingly spoken sequences?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        \_@+
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        \<@/>
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \_@
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Q
+      </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
