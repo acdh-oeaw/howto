@@ -24,11 +24,11 @@ export function Figure(props: FigureProps): JSX.Element {
   } = props
 
   return (
-    <figure className="flex flex-col">
+    <figure>
       {width == null || height == null ? (
         /** CMS preview cannot provide width/height for images which have not been saved yet. */
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={alt} className="w-full" />
+        <img src={src} alt={alt} className="w-full block" />
       ) : (
         <ResponsiveImage
           src={{ src, width, height, blurDataURL }}
