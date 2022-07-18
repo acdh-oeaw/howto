@@ -301,3 +301,40 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
+
+### Fine-tuning your searches:
+
+#### Placeholders
+
+In order to adjust the search results to the needs of your research question, the following **placeholders** might be useful:
+
+- **. Full stop:** matches any single character. You can perceive this as a kind of universal joker. Example: Searching for _hi._ results in: _him, his, hit_, etc.
+- **\[…]** **Character class:** matches any character contained in the brackets, e.g. _h\[ai]t_ – _hat, hit_
+- **[^…] Inverted character class:** matches any character not contained in the bracket, e.g. _h[^ai] – hot, hut_
+- **? Question mark:** the preceding element can appear 0 or 1 times, i.e. it is optional. Example: _houses?_ – _house, houses_
+- **+ Plus:** the preceding element must appear 1 or more times, i.e. it is not optional and might be repeated. Example: _house.+_ results in _houses, household, housewives_, i.e. all words that start with house plus at least one more character.
+- **\* Asterisk:** particularly useful, since the preceding element can appear 0 or more times, i.e. it is optional and might be repeated.
+- **(…) Brackets:** these can be used to group characters (and even regular expressions) to form new elements. In addition, we can combine them with the quantifiers ?, +, and * and let them operate on specified groups. Example: _(wo)?man - man, woman_
+
+<SideNote type="info" title="Info:">
+You might be familiar with the usage of wildcards, i.e. plain ?, +, or * from other tools. In wildcard syntax, the asterisk, for example denotes “zero or more characters”. **VOICE 3.0 Online**, however, **uses regex** (regular expressions). Here, the symbols work as quantifiers which operate on the preceding element. In regex, the use of the asterisk in _hous*_ will only quantify the final “e” and thus will only match _hous, house, housee, houseeee_, etc.
+
+If you want to use the **symbols as wildcards**, you have to place the **placeholder character** “.” (full stop) in front of them. Thus, searching for _house.+_ will result in _house, houses, household, housewives_, etc., or _.+ize_ in _organize, apologize, harmonize,_ etc.
+</SideNote>
+
+To gain even more precise control over the number of allowed and necessary character repetitions, you can use curly brackets with _min,max_. Leaving the max empty means there is no upper limit (see section 3.2 of the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf)).
+
+#### Boolean Operators in VOICE 3.0
+
+- **AND** is represented by a **comma**. Note that there is no space between the conditions. Thus, entering condition1,condition2 will yield results which matches both conditions. Any sequence of items before and after the comma is possible, e.g.: _walk,NN_ - finds tokens of _walk_ tagged as noun, as in "a five minute walk".
+- **OR** is represented by a **vertical line |**. It finds any options to the left or the right of the vertical line. It can be used for any sequence of tokens, lemmas or POS tags before and after the line, and more than two options can be specified. For example: _mean | say_ that - finds: _mean that, say that_.
+
+More details on searches with wildcards and placeholders can be found in the [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf).
+
+In the following video clip, VOICE project member Ruth Osimk-Teasdale demonstrates the combinations of tokens, lemma, and POS tags in a number of searches, and shows how to display your search results in the different style options (VOICE, plain, POS, XML, and KWIC) available in VOICE 3.0.
+
+<Video provider="youtube" id="CBtvJQxYxiw" caption="VOICE 3.0 Online -Searches" />
+
+
+
+
