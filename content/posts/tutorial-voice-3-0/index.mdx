@@ -236,4 +236,36 @@ Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="single">
+      <Quiz.Question>
+        You want to find out if word coinages are frequently uttered softly or whispered. Which of the options below will not yield meaning results for this search? Tip: consult the POS tagging and search manual!
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        PVC within \<soft/>
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        PVC \<soft/>
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \<soft/> containing PVC
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        PVC within \<whispering/>
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct. This query searches for a string of PVC (pronunciation variation and coinage) followed by a softly spoken sequence.
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Check your results and try out the other stated options in the VOICE 3.0 Online interface – which of them provides the correct answer to your search for softly or whispered word coinages.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
 </Quiz>
