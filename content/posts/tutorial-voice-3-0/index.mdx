@@ -123,3 +123,39 @@ The following clip offers an introductory tour of the VOICE 3.0 Online interface
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
+
+
+## Searches in VOICE 3.0
+
+Searches can be easily carried out with the help of the **search field** at the top left corner of the middle area. Once a search has been run, all search results will be displayed in this area. You can then adjust the display of your results by switching between the different **styles** offered (i.e. **VOICE, PLAIN, POS,** and **XML**). For VOICE, PLAIN and POS, you can additionally choose to display results in **KWIC** (KeyWord In Context) view. When you choose VOICE or POS style, further modifications are possible by using the options offered at the bottom. These allow you to selectively display - or hide - different mark-up categories according to your research needs or to change the representation of POS (part-of-speech) tags.
+
+### Simple Searches
+
+#### Token search (word form)
+
+In order to search for a word or word form (i.e. token queries), enter the word using lower-case characters, e.g. _speak_. Please note that all queries are case-sensitive and tokens are searched for with lower case characters, e.g. _i speak french,_ as this is how they are represented in VOICE transcripts. You can, of course, search for phrases (i.e. token token) as well.
+
+If you want to search for contracted forms, like _wanna, gonna, don’t,_ etc., you need to insert a space before the contracted part in your query in VOICE 3.0 Online, i.e.: _wan na, gon na, do n’t, it ‘s_.
+
+#### Lemma search
+
+A lemma is the basic form of a word, which represents all declensions and inflected forms of a word, e.g. _walk_ is the lemma of _walk, walks, walking_. To search for all tokens of a lemma, use the form “l:lemma”, e.g. _l:walk_.
+
+#### POS search
+
+POS, or **P**art-**o**f **S**peech annotations, allow searching for the morphosyntactic categories of tokens. Each token in VOICE has been annotated with an individual POS tag for morphological form, and, in parentheses, for syntactic function. Often, these are identical, as in _professional_JJ(JJ)_, but they may also diverge.
+
+If a POS tag is searched for without further specification in VOICE 3.0 Online, both positions (i.e. form and function) are searched. If you want to search them separately, use _p:POS_ for form position or _f:POS_ for function position.
+
+For POS searches, enter the POS tag in capital letters. For further details, please go to the [POS tagging manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/POS-tagging-and-lemmatization-manual.pdf) and consult the [VOICE Tagset](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/04/Short-POS-tagset.pdf).
+
+#### Mark-up search
+
+As an entirely novel feature of VOICE 3.0 Online, conversational mark-up can now be searched for and retrieved in different ways in the new interface. Users can:
+
+- search for **tokenized mark-up**, such as **pauses** (e.g.: _1, _2, etc.) or **laughter** (e.g.:_ @, @@). The numbers 1, 2, etc. or number of symbols indicate the length of pauses or laughter represented in the transcripts.
+- or search for **POS tags** **indicating mark-up**, such as **PVC** (pronunciation variations & coinages), **ONO** (onomatopoeic noises), etc.
+- In addition, VOICE 3.0 Online offers the **possibility to search for** words, POS and lemmas that occur within and between **stretches of conversational mark-up** in the corpus, such as stretches of s**peaking modes, non-English speech,** or **overlapping speech**, by using pointed brackets, e.g. `<soft/>, <L1ita/>, or <ol/>.`
+- Furthermore, to search within mark-up, the search-words “within” or “containing” can be used to search for tokens, POS or lemma. For example, the search phrase _really within `<ol/>`_ gives you all results of the word really within overlapping speech.
+
+Detailed examples for mark-up searches are provided in section 6 of the VOICE 3.0 Online [search manual](https://voice.acdh.oeaw.ac.at/wp-content/uploads/2021/09/Search-manual-VOICE-3.0-Online.pdf).
