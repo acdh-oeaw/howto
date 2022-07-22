@@ -9,6 +9,7 @@ import { Quiz } from '@/cms/components/quiz/Quiz'
 import { Tabs } from '@/cms/components/Tabs'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
+import { ImageLink } from '@/common/ImageLink'
 import { PageTitle } from '@/common/PageTitle'
 import { ResponsiveImage } from '@/common/ResponsiveImage'
 import { useI18n } from '@/i18n/useI18n'
@@ -38,7 +39,13 @@ export function Resource(props: ResourceProps): JSX.Element {
         ) : null}
         <Mdx
           code={resource.code}
-          components={{ Figure, Image: ResponsiveImage, Quiz, Tabs }}
+          components={{
+            Figure,
+            img: ImageLink,
+            Image: ResponsiveImage,
+            Quiz,
+            Tabs,
+          }}
         />
       </div>
       <footer>

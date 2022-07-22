@@ -109,8 +109,8 @@ const config = {
                 'margin-block': '1.25rem',
               },
               'aside a': {
-                color: 'currentColor'
-              }
+                color: 'currentColor',
+              },
             },
           },
           sm: {
