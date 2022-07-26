@@ -89,7 +89,7 @@ export function ResourceHeader(props: ResourceHeaderProps): JSX.Element {
   const { t, formatDate, pluralize } = useI18n()
 
   return (
-    <header className="max-w-6xl mx-auto grid gap-8 py-12 px-8">
+    <header className="max-w-6xl w-full mx-auto grid gap-8 py-12 px-8">
       <dl className="min-w-0">
         {tags.length > 0 ? (
           <div className="">
