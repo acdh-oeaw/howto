@@ -9,12 +9,14 @@ editors:
   - wiencek-florian
 tags:
   - datenmanagement
-abstract: Anschließend an die "Grundlagen des Datenmanagements" bietet dieses Kapitel eine Einführung in das Thema Metadaten. Was sind Metadaten? Aus welchen Komponenten bestehen sie? Und welche Typen von Metadaten können wir unterscheiden?
+abstract: Anschließend an die "Grundlagen des Datenmanagements" bietet dieses
+  Kapitel eine Einführung in das Thema Metadaten. Was sind Metadaten? Aus
+  welchen Komponenten bestehen sie? Und welche Typen von Metadaten können wir
+  unterscheiden?
 licence: ccby-4.0
 toc: true
 uuid: nzAdyNVz9UUJommNOOtat
 ---
-
 ## Lernziele
 
 - Den Nutzen und die Bedeutung von (guten) Metadaten für den Forschungsalltag erkennen
@@ -25,17 +27,15 @@ uuid: nzAdyNVz9UUJommNOOtat
   Die Inhalte des Kapitels beruhen auf dem Impulsvortrag "Dokumentation und Metadaten" der Tool Gallery 7.2. (17. November 2021) des ACDH-CH, dessen Aufzeichnung (Deutsch) auf Youtube verfügbar ist.
 </SideNote>
 
-<Video
-  provider="youtube"
-  id="gSpzRK7ujp0"
-  caption="Aufzeichnung des Impulsvortrags von Daniel Schopper zu Dokumentation und Metadaten bei der Tool Gallery 7.2. am 17. November 2021"
-/>
+<Video provider="youtube" id="gSpzRK7ujp0" caption="Aufzeichnung des Impulsvortrags von Daniel Schopper zu Dokumentation und Metadaten bei der Tool Gallery 7.2. am 17. November 2021" />
 
 ## Warum brauchen wir Metadaten?
 
-_Man stelle sich vor: Eine Forscherin arbeitet an einem Projektantrag zu einem Aspekt der lateinischen Grammatik. Als Arbeitsgrundlage benötigt sie ein digitales Corpus von Texten. Naheliegenderweise möchte sie sich nicht die Mühe machen und ein solches Corpus selbst aufbauen, sondern bestehende Texte wiederverwenden. Sie macht sich daher auf die Suche nach digitalen Ressourcen, die sie für ihr Textcorpus heranziehen kann. Ihre Recherche im Internet ist erfolgreich und sie stößt auf eine interessante Textsammlung, aber beim Versuch, auf den Datensatz zuzugreifen, scheitert sie an einem Login-Formular. Bei einer anderen Ressource hat sie etwas mehr Glück hat und kann den Datensatz herunterladen. Aber welches Format hat nun diese Datei, die sie auf ihrem Rechner hat, und wie kann sie sie öffnen? In einem dritten Fall kann sie den Datensatz herunterladen und öffnen - aber dann stellt sich die Frage: wie wurden die Daten produziert? Sind sie vollständig? Nach welchen Richtlinien ist die Digitalisierung erfolgt und sind die Daten daher für ihre Forschung überhaupt aussagekräftig? Und nicht zuletzt: Bei der Veröffentlichung der Texte wurde keine Lizenz angegeben – darf sie den Datensatz also überhaupt für ihre Forschung und ggf. Publikation verwenden?_
+_Man stelle sich vor: Eine Forscherin arbeitet an einem Projektantrag zu einem Aspekt der lateinischen Grammatik. Als Arbeitsgrundlage benötigt sie ein digitales Corpus von Texten. Naheliegenderweise möchte sie sich nicht die Mühe machen und ein solches Corpus selbst aufbauen, sondern bestehende Texte wiederverwenden._ 
 
-Diese und ähnliche basale Informationen den potentiellen Nutzer\*innen zur Verfügung zu stellen ist eine von vielen Aufgaben von Metadaten. Eine vollständige Metadatenbeschreibung eines Datensatzes erlaubt die schnelle Beantwortung von Fragen wie z.B.:
+_Sie macht sich daher auf die Suche nach digitalen Ressourcen, die sie für ihr Textcorpus heranziehen kann. Ihre Recherche im Internet ist erfolgreich und sie stößt auf eine interessante Textsammlung, aber beim Versuch, auf den Datensatz zuzugreifen, scheitert sie an einem Login-Formular. Bei einer anderen Ressource hat sie etwas mehr Glück und kann den Datensatz herunterladen. Aber welches Format hat nun diese Datei, die sie auf ihrem Rechner hat, und wie kann sie sie öffnen? In einem dritten Fall kann sie den Datensatz herunterladen und öffnen - aber dann stellt sich die Frage: wie wurden die Daten produziert? Sind sie vollständig? Nach welchen Richtlinien ist die Digitalisierung erfolgt und sind die Daten daher für ihre Forschung überhaupt aussagekräftig? Und nicht zuletzt: Bei der Veröffentlichung der Texte wurde keine Lizenz angegeben – darf sie den Datensatz also überhaupt für ihre Forschung und ggf. Publikation verwenden?_
+
+Diese und ähnliche basale Informationen den potentiellen Nutzer*innen zur Verfügung zu stellen ist eine von vielen Aufgaben von Metadaten. Eine vollständige Metadatenbeschreibung eines Datensatzes erlaubt die schnelle Beantwortung von Fragen wie z.B.:
 
 - Sind die Daten für mich relevant?
 - Darf ich die Daten überhaupt verwenden? Und wenn ja, unter welchen Bedingungen bzw. Einschränkungen?
@@ -79,15 +79,15 @@ Diese und ähnliche basale Informationen den potentiellen Nutzer\*innen zur Verf
         Auf der Übersichtsseite der Texte des Autors ([https://latin.packhum.org/author/899](https://latin.packhum.org/author/899)) findet sich versteckt als "Pop-Up" zumindest die Angabe der Edition, von der der Volltext stammt – das Datum legt nahe, dass die ursprüngliche Edition noch vom Urheberrecht geschützt ist und der Text daher nicht verwendet werden kann. Über etwaige Eingriffe oder Kürzungen, die der digitale Volltext in den Text der Ursprungsedition ausweist, ist auf der Seite nichts zu finden.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 </Quiz>
 
-_Unsere Forscherin hat ihren Antrag schließlich abgeschlossen und mit Erfolg bei einem Fördergeber eingereicht: Das Projekt kann starten! Ihr Textcorpus nimmt Gestalt an und rasch finden sich andere Forscher\*innen, die ihre Arbeit wiederverwenden möchten: Nun findet sie sich selbst in der Position, Metadaten zu ihrem Corpus erstellen zu müssen. Außerdem möchte der Fördergeber in einem Data Management Plan Auskunft darüber erhalten, wo die durch seine Mittel finanzierten Ergebnisse archiviert werden: Unsere Forscherin muss sich nun für ein mögliches Forschungsdatenrepositorium entscheiden und darüber informieren, welche Informationen in welchem Format das Respositorium für die Archivierung benötigt._
 
-**Fazit:** Wir alle sind sowohl _Nutzer\*innen_ als auch _Produzent\*innen_ von Metadaten und brauchen für alle Schritte im [Datenlebenszyklus](https://howto.acdh.oeaw.ac.at/resource/posts/grundlagen-datenmanagement#b-datenlebenszyklus--datenmanagement) grundlegende Kenntnisse, um Daten von anderen Projekten oder anderen Wissenschaftler\*innen für unsere Forschung nachnutzen zu können bzw. mit anderen Personen an geteilten Daten zusammenarbeiten zu können.
+_Unsere Forscherin hat ihren Antrag schließlich abgeschlossen und mit Erfolg bei einem Fördergeber eingereicht: Das Projekt kann starten! Ihr Textcorpus nimmt Gestalt an und rasch finden sich andere Forscher*innen, die ihre Arbeit wiederverwenden möchten: Nun findet sie sich selbst in der Position, Metadaten zu ihrem Corpus erstellen zu müssen. Außerdem möchte der Fördergeber in einem Data Management Plan Auskunft darüber erhalten, wo die durch seine Mittel finanzierten Ergebnisse archiviert werden: Unsere Forscherin muss sich nun für ein mögliches Forschungsdatenrepositorium entscheiden und darüber informieren, welche Informationen in welchem Format das Respositorium für die Archivierung benötigt._
 
-Selbst zwischen Mitarbeiter\*innen ein und desselben Projekts entfalten sich E-Mail-Unterhaltungen mit Fragen wie: "Wo liegt die letzte Version von Datei X und welche Software brauche ich, um sie öffnen zu können?" oder "Darf ich Datei Y aus dem Internet für ... verwenden?" Auch die [Übung zu den Grundlagen des Datenmanagements](https://howto.acdh.oeaw.ac.at/resource/posts/datenmanagement-%C3%BCbung)hat bereits deutlich gezeigt, weshalb Metadaten wichtig sind: Nur mit Metadaten sind die Daten, die wir in unseren Projekten herstellen, überhaupt verständlich und im Verlauf bzw. am Ende des Projekts auffindbar und wieder- / weiterverwendbar.
+**Fazit:** Wir alle sind sowohl _Nutzer*innen_ als auch _Produzent*innen_ von Metadaten und brauchen für alle Schritte im [Datenlebenszyklus](https://howto.acdh.oeaw.ac.at/resource/posts/grundlagen-datenmanagement#b-datenlebenszyklus--datenmanagement) grundlegende Kenntnisse, um Daten von anderen Projekten oder anderen Wissenschaftler*innen für unsere Forschung nachnutzen zu können bzw. mit anderen Personen an geteilten Daten zusammenarbeiten zu können.
+
+Selbst zwischen Mitarbeiter*innen ein und desselben Projekts entfalten sich E-Mail-Unterhaltungen mit Fragen wie: "Wo liegt die letzte Version von Datei X und welche Software brauche ich, um sie öffnen zu können?" oder "Darf ich Datei Y aus dem Internet für ... verwenden?" Auch die [Übung zu den Grundlagen des Datenmanagements](https://howto.acdh.oeaw.ac.at/resource/posts/datenmanagement-%C3%BCbung)hat bereits deutlich gezeigt, weshalb Metadaten wichtig sind: Nur mit Metadaten sind die Daten, die wir in unseren Projekten herstellen, überhaupt verständlich und im Verlauf bzw. am Ende des Projekts auffindbar und wieder- / weiterverwendbar.
 
 ## Was sind Metadaten? Eine Bestandsaufnahme
 
@@ -104,7 +104,7 @@ Das ist prinzipiell nicht falsch. Es stellt sich allerdings die Frage, ob diese 
   Abbildung 1: Metadaten über Dateien in den Eigenschaften einer Datei unter Windows. Bild: Daniel Schopper, CC-BY-4.0
 </Figure>
 
-Metadaten gibt es beispielsweise über die Daten auf unserem Computer. Hier haben wir es mit Dateien in einem Dateisystem zu tun. Diese Dateien liegen in bestimmten Ordnern, auf festgelegten physischen Laufwerken. Sie haben eine Größe, verschiedene Datumsangaben, Angaben zu Autor\*innen, und sogar beschreibende Angaben wie den Titel, Thema usw. In der Regel beschreiben die Metadaten in unseren Dateisystemen _Eigenschaften der physischen Datei_ und ihrer Entstehung bzw. Bearbeitung. Schlagwörter, Inhaltsangaben etc. beziehen sich hingegen auf den Inhalt, die semantische Ebene einer Datei wie z.B. eines Word-Dokuments.
+Metadaten gibt es beispielsweise über die Daten auf unserem Computer. Hier haben wir es mit Dateien in einem Dateisystem zu tun. Diese Dateien liegen in bestimmten Ordnern, auf festgelegten physischen Laufwerken. Sie haben eine Größe, verschiedene Datumsangaben, Angaben zu Autor*innen, und sogar beschreibende Angaben wie den Titel, Thema usw. In der Regel beschreiben die Metadaten in unseren Dateisystemen _Eigenschaften der physischen Datei_ und ihrer Entstehung bzw. Bearbeitung. Schlagwörter, Inhaltsangaben etc. beziehen sich hingegen auf den Inhalt, die semantische Ebene einer Datei wie z.B. eines Word-Dokuments.
 
 Klar ersichtlich wird auch am obigen Beispiel: Metadaten in Computersystemen sind in aller Regel in "Feldern" aufgebaut, die einen Wert besitzen, der aus einem möglichen Wertebereich stammt: Im Feld "Created" darf nur eine Datums- und Zeitangabe stehen, in "Size" nur eine ganze Zahl, die – je nach Größenordnung – z.B. als Kilobyte, Megabyte oder Gigabyte angezeigt wird.
 
@@ -115,9 +115,9 @@ Klar ersichtlich wird auch am obigen Beispiel: Metadaten in Computersystemen sin
   Abbildung 2: Metadaten in einem Digitalisat des retrodigitalisierten Nominalkatalogs der Universitätsbibliothek Wien. Bild: Daniel Schopper, CC-BY-4.0
 </Figure>
 
-Metadaten begegnen uns aber auch in ganz anderer Form, wie Abbildung 2 zeigt. Hierbei handelt es sich um ein Digitalisat des historischen Nominalkatalogs der Universitätsbibliothek Wien: Bibliotheken gehören zu jenen Institutionen, die sich am längsten mit der Organisation von Metadaten befassen. Einerseits beziehen sich die Angaben darin auf die einzelnen _Exemplare_ eines Buches, um sie mithilfe ihrer Signaturen im Speicher auffindbar zu machen. Anderseits aber enthält das Katalogisat auch implizit Informationen über alle gleichartigen Exemplare dieser Publikation: Autor\*in, Titel und Publikationsdatum sind keine Eigenschaften eines physischen Objekts, sondern der Abstraktion davon. Darüber hinaus finden wir in der Abbildung auch Informationen, die dabei unterstützen, sich im Metadatensatz selbst zurechtzufinden, z.B. Seitenzahlen oder der Kolumnentitel.
+Metadaten begegnen uns aber auch in ganz anderer Form, wie Abbildung 2 zeigt. Hierbei handelt es sich um ein Digitalisat des historischen Nominalkatalogs der Universitätsbibliothek Wien: Bibliotheken gehören zu jenen Institutionen, die sich am längsten mit der Organisation von Metadaten befassen. Einerseits beziehen sich die Angaben darin auf die einzelnen _Exemplare_ eines Buches, um sie mithilfe ihrer Signaturen im Speicher auffindbar zu machen. Anderseits aber enthält das Katalogisat auch implizit Informationen über alle gleichartigen Exemplare dieser Publikation: Autor*in, Titel und Publikationsdatum sind keine Eigenschaften eines physischen Objekts, sondern der Abstraktion davon. Darüber hinaus finden wir in der Abbildung auch Informationen, die dabei unterstützen, sich im Metadatensatz selbst zurechtzufinden, z.B. Seitenzahlen oder der Kolumnentitel.
 
-<Figure alt="Metadaten in Google Bildersuche" src="images/metadata_katzen.png">
+<Figure src="images/metadata_katzen.png" alt="Metadaten in Google Bildersuche">
   Abbildung 3: Metadaten in einer Bildersuche. Bild: Daniel Schopper, CC-BY-4.0
 </Figure>
 
@@ -164,7 +164,7 @@ Unabhängig vom technischen System oder Format, in welchem Metadaten gespeichert
 
 Um ein digitales Objekt beschreiben zu können, benötigt man mehr als ein einzelnes Metadatum, sondern ein ganzes _Metadaten-Schema_ oder _Metadaten-Vokabular._ In diesem bewegen sich die Definitionen von Metadaten-Elementen innerhalb eines gemeinsamen Metadatenschemas immer auch im Rahmen eines gemeinsamen **abstrakten Modells**, das die verschiedenen Metadaten-Elemente zu einem homogenen Ganzen verbindet.
 
-<Figure alt="Struktur von Metadaten" src="images/metadata_structure2.png">
+<Figure src="images/metadata_structure2.png" alt="Struktur von Metadaten">
   Abbildung 4: Struktur von Metadaten. Grafik: Daniel Schopper, CC-0
 </Figure>
 
@@ -188,7 +188,7 @@ Wenn Metadaten von Suchmaschinen aggregiert oder zwischen Systemen bzw. Benutzer
   src="images/metadaten_oeawacademycat.png"
   alt="ÖAW Academy-CATalogPlus - Suche nach Wasserfall"
 >
-  Abbildung 5: [Katalog von Bibliothek und Archiv der ÖAW](https://www.oeaw.ac.at/resources). Bild: Daniel Schopper, CC-BY-4.0
+  Abbildung 5: \[Katalog von Bibliothek und Archiv der ÖAW](https://www.oeaw.ac.at/resources). Bild: Daniel Schopper, CC-BY-4.0
 </Figure>
 
 Zu diesem Zweck wird ein Vokabular erstellt, dessen einzelne Einträge (Terme) klar definiert sind und dessen Einträge untereinander bzw. zu anderen Vokabularien in Verbindung gesetzt werden können.
@@ -212,7 +212,7 @@ Werden Vokabularien publiziert können andere Personen und Projekte die dort ver
 
 ## Typen von Metadaten
 
-<Figure alt="Metadatentypen" src="images/metadata_metadatatypes.png">
+<Figure src="images/metadata_metadatatypes.png" alt="Metadatentypen">
   Abbildung 8: Metadatentypen. Grafik von Daniel Schopper, CC-BY-4.0
 </Figure>
 
@@ -241,14 +241,12 @@ Diese vier Gruppen wollen wir uns nun genauer ansehen. Welche Fragen über die D
 - Wer darf die Daten unter welchen Konditionen verwenden?
 
   - Wer hat z.B. in einem größeren Projekt, in dem jeder nur bestimmte Teilbereiche eines Datenbestands bearbeiten darf und soll, die Bearbeitungsrechte?
-
 - Was ist der Status der Daten innerhalb ihres Lebenszyklus?
 - Wie wurden die Daten bisher verarbeitet?
 
   - Was ist die Geschichte des Datenobjekts?
   - Wurde es in ein Repositorium aufgenommen?
   - Welche Bearbeitungs/Verarbeitungsschritte wurden vor der Aufnahme in ein Archiv vorgenommen (wichtig bei Archivmetadaten)?
-
 - Wo ist die Quelle der Daten (wo kommen sie her)? (Provenienz) - Daten werden wiederverwendet und nachgenutzt. Gerade dafür ist es wichtig die Herkunft der Daten klar zu dokumentieren.
 
 **Strukturelle Metadaten** beschreiben wie Daten sich zusammensetzen.
@@ -273,7 +271,7 @@ Im Hinblick auf die Syntax von Metadaten gibt es unterschiedliche Varianten, wie
 
 Metadaten können entweder in die Daten oder digitalen Objekte, die sie beschreiben, eingebettet oder eigenständig (self-contained) sein, also in einer separaten Datei abgespeichert werden die neben den jeweiligen digitalen Objekten existiert. Beide Varianten haben ihre Vor- und Nachteile. Eingebettete Metadaten können - banal gesagt – nicht verloren gehen. Wenn sie in einer separaten Datei abgespeichert werden, sind sie ggf. leichter bearbeitbar und leichter zugänglich.
 
-Im Folgenden werden kurz die unterschiedlichen syntaktischen Varianten beleuchtet, um Einsteiger\*innen in die Materie einen grundlegenden Einblick in das Thema zu geben.
+Im Folgenden werden kurz die unterschiedlichen syntaktischen Varianten beleuchtet, um Einsteiger*innen in die Materie einen grundlegenden Einblick in das Thema zu geben.
 
 #### XML
 
@@ -316,7 +314,7 @@ Der dritte wichtige Standard in dem Zusammenhang ist [RDF (Resource Description 
 
 Mittels dieser sehr einfachen Aussagen-Struktur kann man dann immer weitere Kreise an Aussagen ziehen. Letztendlich stellen diese Aussagen gerichtete Graphen dar, die bestimmte Entitäten miteinander in Beziehung setzen.
 
-<Figure alt="Aufbau von RDF" src="images/tg7-2_03_metadaten_schopper.png">
+<Figure src="images/tg7-2_03_metadaten_schopper.png" alt="Aufbau von RDF">
   Abbildung 9: Aufbau und Beispiel von RDF in den ARCHE Metadaten. Bild: Daniel Schopper, CC-BY-4.0
 </Figure>
 
