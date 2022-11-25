@@ -54,3 +54,7 @@ In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeit
 Wenn Sie mit einer Corpus-Suchmaschine arbeiten, gibt es einige Grundbegriffe, mit denen Sie sich vertraut machen sollten. Prinzipiell wird in der SKE und der CQL zwischen **Token** und **Strukturen** unterschieden.
 
 ### Token
+
+Token sind das Ergebnis des sogenannten Tokenisierungsprozesses – d.h. der Zerlegung des Eingangstexts in linguistisch sinnvolle Einheiten. Das klingt nun komplizierter als es ist: in der Regel entspricht ein Token einem orthographischen Wort. Die simpelste Tokenisierungsstrategie wäre: alles was zwischen 2 Leerzeichen steht, ist ein Token.
+
+Diese vereinfachte Darstellung muss freilich um die Berücksichtigung von Satzzeichen ergänzt werden: Satzzeichen sollen vom vorangehenden Wort abgetrennt werden und bilden separate Token. Abkürzen verkomplizieren die Tokenisierung: Beispiel sind die Punkte in z.B. natürlich keine Satzzeichen, dürfen daher nicht abgetrennt werden, denn z.B. sollte als ein Token behandelt werden.
