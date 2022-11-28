@@ -88,3 +88,37 @@ Die Liste aller Attribute eines Korpus lässt sich immer einfach unter dem Info-
 </SideNote>
 
 ### Strukturen
+
+Die Token sind in **hierarchische Strukturen** eingebettet.
+Zum besseren Verständnis dieses Konzepts hier ein Beispiel, wie für den Import in die SKE vorbereitete Textdaten aufgebaut sind.
+
+```
+<doc id="APA_20170101_APA0001" datum_full="2017-01-01T00:11:16Z" 
+     datum="2017-01-01" bibl="APA-Meldungen digital  vom 2017-01-01" 
+     docsrc_name="APA-Meldungen digital" 
+     region="agesamt" 
+     mediatype="print" 
+     Tokens="180" 
+     ressort2="chronik ausland unzuordenbar" 
+     autor="fre" 
+  >
+<p>
+<s>
+Maschine    N.Reg.Nom.Sg.Fem        NN     Maschine-n
+mit         APPR.Dat                APPR   mit-i
+mehr        PRO.Indef.Attr.-.*.*.*  ADV    mehr-r
+als         CONJ.Comp.-             KOKOM  als-c
+hundert     CARD                    CARD   hundert-m
+Menschen    N.Reg.Dat.Pl.Masc       NN     Mensch-n
+an          APPR.An                 APPR   an-i
+Bord        N.Reg.Dat.Sg.Neut       NN     Bord-n
+sollte      VFIN.Mod.3.Sg.Past.Subj VMFIN  sollen-v
+nach        APPR.Dat                APPR   nach-i
+Mexiko      N.Name.Dat.Sg.Neut      NE     Mexiko-n
+fliegen     VINF.Full.-             VVFIN  fliegen-v
+...
+</s>
+</p>
+...
+</doc>
+```
