@@ -171,3 +171,8 @@ In der Simple query ist die Verwendung des Wildcards (Jokerzeichen, Asterisk) `*
 Ein weiteres Beispiel für den case-insensitiven Charakter der Simple query: _deutsch*_ findet: _deutsch_, _deutsche_, _deutsches_ … aber auch: _Deutschlands_, _Deutschmatura_,...
 
 ## „Vollsuche“ mit der Corpus Query Language (CQL)
+
+Wie wir gesehen haben, kann in der Simple query nur nach Token und dabei auch nur nach Wortformen gesucht werden, oder exakter ausgedrückt: es kann nach Werten im Attribut _word_ gesucht werden (wobei implizit intern zusätzlich die Attribute _lc_ und _lemma_ zur Suche herangezogen werden).
+
+
+Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: Die Suche in beliebigen Attributen, die Suche in Strukturen, die Suche mit regulären Ausdrücken, etc.
