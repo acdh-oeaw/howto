@@ -166,6 +166,30 @@ An Metadaten sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _src_, 
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Welche Informationen kann aus Token-Attributen nicht erlesen?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Angaben zum Autor/ zur Autorin des Textes
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Angaben zur Morphologie eines Tokens
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Angaben zu synonymer Verwendung des Tokens
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Angaben zum Lemma des Tokens
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
 </Quiz>
 
 
@@ -195,7 +219,7 @@ Das Lemma für **definite Artikel** ist übrigens _die_, für **indefinite** ist
 
 ### Wildcards
 
-In der Simple query ist die Verwendung des Wildcards (Jokerzeichen, Asterisk) `*`möglich: es steht für beliebig viele (oder auch null) beliebige Zeichen.
+In der Simple query ist die Verwendung des Wildcards (Jokerzeichen, Asterisk) `*` möglich: es steht für beliebig viele (oder auch null) beliebige Zeichen.
 
 #### Beispiele:
 
@@ -208,6 +232,5 @@ Ein weiteres Beispiel für den case-insensitiven Charakter der Simple query: _de
 ## „Vollsuche“ mit der Corpus Query Language (CQL)
 
 Wie wir gesehen haben, kann in der Simple query nur nach Token und dabei auch nur nach Wortformen gesucht werden, oder exakter ausgedrückt: es kann nach Werten im Attribut _word_ gesucht werden (wobei implizit intern zusätzlich die Attribute _lc_ und _lemma_ zur Suche herangezogen werden).
-
 
 Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: Die Suche in beliebigen Attributen, die Suche in Strukturen, die Suche mit regulären Ausdrücken, etc.
