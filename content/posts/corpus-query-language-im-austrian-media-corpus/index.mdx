@@ -77,7 +77,7 @@ Einige der Token-Attribute im amc wären
 - _posTT_ : part-of-Speech tags nach dem STTS-Tagset, wie sie vom PoS tagger TreeTagger vergeben wurden.
 - _pos_ : part-of-Speech tags, wie sie vom PoS tagger RFTagger vergeben wurden: zusätzlich zur Wortart werden auch morphologische Informationen angegeben.
 
-  ![Einfache Suche im amc, Spalten mit Suche nach "ciao" als Lemma, Part of Speech type noun, im Bereich token](images/amc3.2_concordance_lemma_noun_token_ciao.png 'In der einfachen Suche in der Konkordanz wird nach dem Lemma "ciao" gesucht (linke Spalte), das als PoS Nomen in den Token gefunden werden soll.')
+  ![Einfache Suche im amc, Spalten mit Suche nach "ciao" als Lemma, Part of Speech type noun, im Bereich token](images/amc3.2_concordance_lemma_noun_token_ciao.png)
 
   ![Zwei Spalten im View Options zur Auswahl von Token Attributen und Strukturen](images/amc3.2_concordance_lemma_noun_ciao_viewoptions.png "In den View Options kann man die Attribute, die den Token im Korpus zugeordnet sind, auswählen.")
 
@@ -133,6 +133,41 @@ Typische Strukturen sind Dokumente, Paragraphen (Absätze) und Sätze, die im am
 Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten zum entsprechenden Dokument.
 Im amc entspricht der Inhalt eines`<doc>`-Elements einem Zeitungsartikel.
 An Metadaten sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _src_, _ressort2_, etc.
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Welche der Aussagen trifft auf den Begriff "Token" zu?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Einem Token können zusätzliche Informationen in Form von Attributen zugeordnet werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Ein Token ist eine linguistisch sinnvolle Einheit.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Abkürzungen enthalten als Token auch Satzzeichen und dürfen nicht von diesen getrennt werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Satzzeichen bilden eigene Token.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Ein Token ist ein orthographisches Wort.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Richtig! Meistens sind orthographische Worte auch Token, aber auch Satzzeichen und Abkürzungen werden zu Token.
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
+
 
 ## Schnelleinstieg: Suche mit „Simple query“
 
