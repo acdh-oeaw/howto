@@ -55,13 +55,13 @@ Wenn Sie mit einer Corpus-Suchmaschine arbeiten, gibt es einige Grundbegriffe, m
 
 Token sind das Ergebnis des sogenannten Tokenisierungsprozesses – d.h. der Zerlegung des Eingangstexts in linguistisch sinnvolle Einheiten. In der Regel entspricht ein Token einem orthographischen Wort. Die simpelste Tokenisierungsstrategie wäre: alles was zwischen zwei Leerzeichen steht, ist ein Token.
 
-<SideNote type="note" title="Vereinfacht gefasst: Token sind die einzelnen Wörter, Satzzeichen oder Zahlen im Text">
+<SideNote type="info" title="Vereinfacht gefasst: Token sind die einzelnen Wörter, Satzzeichen oder Zahlen im Text">
 
 </SideNote>
 
 Diese vereinfachte Darstellung muss freilich um die Berücksichtigung von Satzzeichen ergänzt werden: Satzzeichen sollen vom vorangehenden Wort abgetrennt werden und bilden separate Token. Abkürzen verkomplizieren die Tokenisierung: zum Beispiel sind die Punkte in _z.B._ natürlich keine Satzzeichen, dürfen daher nicht abgetrennt werden, denn _z.B._ sollte als ein einziges Token behandelt werden.
 
-<SideNote type="info" title="Fehleranfälligkeit: Sonderzeichen in Token">
+<SideNote type="warning" title="Fehleranfälligkeit: Sonderzeichen in Token">
 Wie bei allen automatisierten Verarbeitungsschritten erfolgt die Tokenisierung bisweilen nicht fehlerfrei. So ist bei der Suche nach Token, die Satz- oder Sonderzeichen enthalten, zu berücksichtigen, dass evtl. die Tokenisierung diese Zeichen miss-interpretiert hat und daher das Wort fälschlicherweise in mehrere Token aufgeteilt wurde.
 </SideNote>
 
@@ -160,9 +160,12 @@ Das Lemma für **definite Artikel** ist übrigens _die_, für **indefinite** ist
 
 ### Wildcards
 
-In der Simple query ist die Verwendung des Wildcards (Jokerzeichen, Asterisk) `*`möglich: es steht für beliebig viele (auch 0!) beliebige Zeichen.
-z.B.:
-Haus_: alle Wörter, die mit der Buchstabenfolge Haus beginnen: Haus, Hauses, Hausmaus, Haussa, Hausbesorgerin … aber auch alle Wortformen von Lemmata die mit Haus beginnen. Es wird also z.B. auch Häusern gefunden.
-_aus : alle Wörter, die mit der Buchstabenfolge aus enden: aus, Maus, Haus, Schildlaus …
-Ha_s: alle Wörter, die mit Ha beginnen, und mit s enden: Has, Haus, Hass, Handelsabschluss, Hafenmeistergattinenpendlerbus etc. Wegen der beiden speziellen Eigenschaften case-insensitiv und Lemma-Suche wird aber auch z.B. haltlos (case-insensitv) und haltlose gefunden (Ergebnis einer Lemma-Suche, obwohl die Wortform gar nicht auf s endet!)
+In der Simple query ist die Verwendung des Wildcards (Jokerzeichen, Asterisk) `*`möglich: es steht für beliebig viele (oder auch null) beliebige Zeichen.
+
+#### Beispiele:
+
+- Haus`*`: alle Wörter, die mit der Buchstabenfolge _Haus_ beginnen: _Haus_, _Hauses_, _Hausmaus_, _Haussa_, _Hausbesorgerin_ … aber auch alle Wortformen von Lemmata, die mit _Haus_ beginnen. Es wird also z.B. auch _Häusern_ gefunden.
+- `*`aus : alle Wörter, die mit der Buchstabenfolge _aus_ enden: aus, Maus, Haus, Schildlaus …
+- Ha`*`s: alle Wörter, die mit Ha beginnen, und mit _s_ enden: _Has_, _Haus_, _Hass_, _Handelsabschluss_, _Hafenmeistergattinenpendlerbus_, etc. Wegen der beiden speziellen Eigenschaften case-insensitiv und Lemma-Suche wird aber auch z.B. _haltlos_ (case-insensitive) und _haltlose_ gefunden (Ergebnis einer Lemma-Suche, obwohl die Wortform gar nicht auf _s_ endet!)
+
 Ein weiteres Beispiel für den case-insensitiven Charakter der Simple query: deutsch* findet: deutsch, deutsche, deutsches … aber auch: Deutschlands, Deutschmatura,...
