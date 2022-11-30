@@ -27,7 +27,7 @@ uuid: Yi-WVelcC_d0_xUF2aJfn
 
 Das Austrian Media Corpus (amc) ist eines der größten Textkorpora in deutscher Sprache. In ihm sind Text der österreichischen Printmedienlandschaftder letzten Jahrezehnte versammelt. Der Inhalt des amc kann mit dem Schlagwort „journalistische Prosa“ zusammengefasst werden: er umfasst Komplettausgaben von Zeitungen und Zeitschriften, Agenturmeldungen der Austria Presse Agentur (APA) sowie Transkripte von TV-Produktionen (vorwiegend von Nachrichtensendungen).
 
-Das amc kann auf Anfrage genutzt werden, allerdings ausschließlich für Zwecke der wissenschaftlichen Forschung und Lehre und nur für die Untersuchung sprachwissenschaftlicher Fragestellungen.Ermöglicht wird das amc durch eine Kooperation zwischen der Austria Presse Agentur (APA) und der Österreichischen Akademie der Wissenschaften (ÖAW), konkret dem Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH).
+Das amc kann auf Anfrage genutzt werden, allerdings ausschließlich für Zwecke der wissenschaftlichen Forschung und Lehre und nur für die Untersuchung sprachwissenschaftlicher Fragestellungen. Ermöglicht wird das amc durch eine Kooperation zwischen der Austria Presse Agentur (APA) und der Österreichischen Akademie der Wissenschaften (ÖAW), konkret dem Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH).
 Die APA sammelt die Textproduktion der Printmedien und stellt diese dem ACDH-CH zur Verfügung.
 
 Das amc wird jährlich am Jahresanfang um die Publikationen des soeben abgelaufenen Jahres aktualisiert, d.h. der aktuelle Datenbestand des amc reicht jeweils bis zum Ende des Vorjahrs.
@@ -198,6 +198,30 @@ An Metadaten sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _src_, 
       <Quiz.Message type="correct">
         Richtig!
       </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Wählen Sie bitte die richtige Antwort aus.
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        Das amc beinhaltet Zeitungsartikel aus Printmedien.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Das amc ist eine Kooperation des ACDH-CH und der APA, die Texte für sprachwissenschaftliche Fragestellungen zur Verfügung stellt.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Das amc ist ein Textcorpus, das aufgrund der linguistischen Annotation mithilfe der NoSketch-Engine und der Corpus Query Language durchsucht werden kann.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Alle genannten Antworten sind richtig.
+      </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
