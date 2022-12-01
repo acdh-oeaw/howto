@@ -268,3 +268,9 @@ Ein weiteres Beispiel für den case-insensitiven Charakter der Simple query: _de
 Wie wir gesehen haben, kann in der Simple query nur nach Token und dabei auch nur nach Wortformen gesucht werden, oder exakter ausgedrückt: es kann nach Werten im Attribut _word_ gesucht werden (wobei implizit intern zusätzlich die Attribute _lc_ und _lemma_ zur Suche herangezogen werden).
 
 Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: Die Suche in beliebigen Attributen, die Suche in Strukturen, die Suche mit regulären Ausdrücken, etc.
+
+### Suche auf der TOKENEBENE in CQL
+
+Suchanfragen mit der CQL werden unter dem Menüpunkt Search im Feld CQL eingegeben. (Sollte nach Auswahl von Search ausnahmsweise einmal nur das Suchfeld für Simple query aufscheinen, kann durch Auswahl des Links Query type die volle Liste der Query-Möglichkeiten aufgeklappt werden.)
+In der Suche mit CQL wird jedes Token durch eckige Klammern bezeichnet.
+Innerhalb dieser Klammern können die Bedingungen angegeben werden, welche die Attribute dieses Token erfüllen müssen:
