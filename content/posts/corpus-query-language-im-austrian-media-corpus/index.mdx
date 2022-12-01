@@ -273,6 +273,13 @@ Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: Die Suche in be
 
 ### Suche auf der TOKENEBENE in CQL
 
-Suchanfragen mit der CQL werden unter dem Menüpunkt **Search** im Feld **CQL** eingegeben. (Sollte nach Auswahl von Search ausnahmsweise einmal nur das Suchfeld für Simple query aufscheinen, kann durch Auswahl des Links Query type die volle Liste der Query-Möglichkeiten aufgeklappt werden.)
+Suchanfragen mit der CQL werden im Bereich **Advanced** unter Auswahl des **Query type** **CQL** eingegeben. 
 In der Suche mit CQL wird jedes Token durch eckige Klammern bezeichnet.
 Innerhalb dieser Klammern können die Bedingungen angegeben werden, welche die Attribute dieses Token erfüllen müssen:
+
+- [ word="Haus" ] Alle Einträge mit der Buchstabenfolge „Haus“
+- [ lemma="Haus" ] Alle Einträge mit dem Lemma „Haus“ – also „Haus“ „Hauses“ … „Häusern“
+- [ posTT="NN" ] Alle Nomen
+- [] (KEINE Bedingungen) : diese Suche findet ALLE Token
+
+Diese
