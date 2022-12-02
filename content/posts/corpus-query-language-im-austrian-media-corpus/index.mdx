@@ -307,9 +307,7 @@ In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn : di
 Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: \`\[word="Haus.*"]\`
 </SideNote>
 
-Anmerkung: Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht `*` schon für 0, 1, oder beliebig viele beliebige Zeichen.
-In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn : die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen s, da sich der `*` in der CQL auf das vorhergehende Element – hier ein „s“ – bezieht.
-Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: \[word="Haus.*"]
+### Quiz
 
 <Quiz>
   <Quiz.Card>
