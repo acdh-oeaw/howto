@@ -294,3 +294,11 @@ Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Untersc
 Anmerkung zu Leerzeichen: Leerzeichen werden in CQL Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man \[ posTT="ADJA" ] \[ lemma="Haus" ] oder \[posTT="ADJA"] \[lemma="Haus"] schreibt.
 
 ![](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz zu CQL Abfrage \[ posTT=\"ADJA\" ] \[ lemma=\"Haus\" ].Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \"Haus\". Sie sehen in rot die Form im Text, in Grau darunter das jeweilige Lemma.")
+
+### Reguläre Ausdrücke
+In der CQL können sogenannte **reguläre Ausdrücke (regular expressions, Regex)** verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche stark erhöht wird.
+Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks sind:
+
+- „.“ : Ein Punkt steht für jedes beliebige Zeichen, z.B. [word="Ha.s"] findet „Haus“ „Hass“ „Hals“ …
+
+- „*“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks.
