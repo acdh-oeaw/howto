@@ -287,13 +287,11 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 - `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
 
-![](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\"ADJA\\\" ] \[ lemma=\\\"Haus\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\"Haus\\\". Sie sehen in rot die Form im Text, in Grau darunter das jeweilige Lemma.")
+![](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\"ADJA\\\\" ] \[ lemma=\\\\"Haus\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\"Haus\\\\". Sie sehen in rot die Form im Text, in Grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
 </SideNote>
-
-Anmerkung zu Leerzeichen: Leerzeichen werden in CQL Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man \[ posTT="ADJA" ] \[ lemma="Haus" ] oder \[posTT="ADJA"] \[lemma="Haus"] schreibt.
 
 ### Reguläre Ausdrücke
 
@@ -303,9 +301,15 @@ Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdru
 - „.“ : Ein Punkt steht für jedes beliebige Zeichen, z.B. `[word="Ha.s"]` findet „Haus“ „Hass“ „Hals“ …
 - „*“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks.
 
-Anmerkung: Beachten Sie den Unterschied zur Wirkungsweise des * in der Simple query: dort steht * schon für 0, 1, oder beliebig viele beliebige Zeichen.
-In einem regulären Ausdruck bezieht sich * immer auf den linken Nachbarn : die Suchanfrage Haus* liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen s, da sich der „*“ in der CQL auf das vorhergehende Element – hier ein „s“ – bezieht.
-Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: [word="Haus.*"]
+<SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in Simple Query und CQL">
+Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht `*` schon für 0, 1, oder beliebig viele beliebige Zeichen.
+In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn : die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen s, da sich der `*` in der CQL auf das vorhergehende Element – hier ein „s“ – bezieht.
+Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: \`\[word="Haus.*"]\`
+</SideNote>
+
+Anmerkung: Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht `*` schon für 0, 1, oder beliebig viele beliebige Zeichen.
+In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn : die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen s, da sich der `*` in der CQL auf das vorhergehende Element – hier ein „s“ – bezieht.
+Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: \[word="Haus.*"]
 
 <Quiz>
   <Quiz.Card>
@@ -392,4 +396,3 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
-
