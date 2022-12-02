@@ -373,4 +373,20 @@ Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdru
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Wie kann die CQL-Abfrage aussehen, um sowohl zu Token in Texten mit dem Ausdruck "sie sind wie Katz und Maus", "die Katze ist aus dem Sack", "eine Katze wartet im Tierheim", oder auch zum "Nobelpreisträger Bernhard Katz" zu finden
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        \[lemma="Katze\*"]
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        \[word="Katze\*"]
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
 </Quiz>
