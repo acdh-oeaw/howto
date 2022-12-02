@@ -341,8 +341,28 @@ Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdru
       </Quiz.Message>
 
       <Quiz.Message type="incorrect">
-        Achtung! Es sollen auch flektierte Formen gefunden werden. Nur der erste Buchstabe des Ausdrucks ändert sich.
+        Achtung! Es sollen auch flektierte Formen gefunden werden. Nur das erste Zeichen des Ausdrucks ändert sich.
       </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Warum können mit der Suche `[word=".anze"]`die Begriffe "Schanze", "Romanze" oder "Pflanze" nicht gefunden werden?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        "." ersetzt nur 1 Zeichen.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \[word=".anze"] sucht nur nach flektierten Verben
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Mit \[word=".anze"] können nur klein geschriebene Worte in den Texten gefunden werden.
+      </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
