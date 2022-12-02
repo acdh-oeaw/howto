@@ -277,15 +277,17 @@ Suchanfragen mit der CQL werden im Bereich **Advanced** unter Auswahl des **Quer
 In der Suche mit CQL wird jedes Token durch eckige Klammern bezeichnet.
 Innerhalb dieser Klammern können die Bedingungen angegeben werden, welche die Attribute dieses Token erfüllen müssen:
 
-- [ _word="Haus"_ ] Alle Einträge mit der Buchstabenfolge „Haus“
-- [ _lemma="Haus"_ ] Alle Einträge mit dem Lemma „Haus“ – also „Haus“ „Hauses“ … „Häusern“
-- [ _posTT="NN"_ ] Alle Nomen
+- `[ _word="Haus"_ ]` Alle Einträge mit der Buchstabenfolge „Haus“
+- `[ _lemma="Haus"_ ]` Alle Einträge mit dem Lemma „Haus“ – also „Haus“ „Hauses“ … „Häusern“
+- `[ _posTT="NN"_ ]` Alle Nomen
 - `[]` (KEINE Bedingungen) : diese Suche findet ALLE Token
 
 Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 
-- [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] : alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
+- `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
+
+![](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\"ADJA\\\" ] \[ lemma=\\\"Haus\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\"Haus\\\". Sie sehen in rot die Form im Text, in Grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
@@ -293,12 +295,46 @@ Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Untersc
 
 Anmerkung zu Leerzeichen: Leerzeichen werden in CQL Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man \[ posTT="ADJA" ] \[ lemma="Haus" ] oder \[posTT="ADJA"] \[lemma="Haus"] schreibt.
 
-![](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz zu CQL Abfrage \[ posTT=\"ADJA\" ] \[ lemma=\"Haus\" ].Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \"Haus\". Sie sehen in rot die Form im Text, in Grau darunter das jeweilige Lemma.")
-
 ### Reguläre Ausdrücke
+
 In der CQL können sogenannte **reguläre Ausdrücke (regular expressions, Regex)** verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche stark erhöht wird.
 Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks sind:
 
-- „.“ : Ein Punkt steht für jedes beliebige Zeichen, z.B. [word="Ha.s"] findet „Haus“ „Hass“ „Hals“ …
-
+- „.“ : Ein Punkt steht für jedes beliebige Zeichen, z.B. `[word="Ha.s"]` findet „Haus“ „Hass“ „Hals“ …
 - „*“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks.
+
+
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Mit welcher CQL-Abfrage könnten Sie im amc die Token "Wanze", "ganze", Lanze", "tanze" finden?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        \[lemma="\*anze"]
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \[word=".anze"]
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \[word="\*anze."]
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \[lemma=".\*anze"]
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \[lemma=".anze"]
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \[word="\*anze"]
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
