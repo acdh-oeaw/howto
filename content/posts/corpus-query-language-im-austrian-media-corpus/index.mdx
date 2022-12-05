@@ -307,6 +307,10 @@ In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn : di
 Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: \`\[word="Haus.*"]\`
 </SideNote>
 
+- „+“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks, z.B. [word="Hurra+"] findet „Hurra“ „Hurraa“ … „Huraaaaaaaaaaa“ … aber nicht „Hurr“. D.h., ein Zeichen vor ‚*‘ ist optional, ein Zeichen vor ‚+‘ hingegen ist obligat!
+
+- „?“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, d.h. es steht für Optionalität, aber nicht für Wiederholungen.
+
 ### Quiz
 
 <Quiz>
@@ -401,4 +405,14 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Welche Bedeutung hat '\*' in der
+      </Quiz.Question>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
 </Quiz>
+
+## Next heading
