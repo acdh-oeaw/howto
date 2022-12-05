@@ -420,13 +420,25 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
         "+" findet immer das vorangehende Zeichen, zumindest einmal.
       </Quiz.MultipleChoice.Option>
 
-      <Quiz.MultipleChoice.Option>
-        "."
+      <Quiz.MultipleChoice.Option isCorrect>
+        ".+" findet alle Ausdrücke, in denen sich ein beliebiges Zeichen beliebig oft, aber mindestens einmal wiederholt.
       </Quiz.MultipleChoice.Option>
 
       <Quiz.MultipleChoice.Option>
-
+        "+" findet Wiederholungen, die zumindest so lang sind wie der vorangehene Ausdruck.
       </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        "." findet ein beliebiges Zeichen
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Richtig!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        "." steht für zumindest ein Zeichen.
+      </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
