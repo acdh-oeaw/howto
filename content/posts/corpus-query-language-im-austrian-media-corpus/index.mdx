@@ -305,6 +305,11 @@ Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdru
 
 - „?“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, d.h. es steht für Optionalität, aber nicht für Wiederholungen.
 
+Kombination mit .: Üblich ist es, *, +, ? mit . (dem beliebigen Zeichen) zu kombinieren.
+- [word=".?und"] findet und, Mund, Hund, wund, rund, …
+- [word="Hunde.+"] findet Hundehütte, Hundkuchen, Hundefriseur aber natürlich auch Hunderttausend …
+- [pos="N.Reg.*Pl.*"] findet alle Nomen im Plural
+
 <SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in Simple Query und CQL">
 Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht `*` schon für 0, 1, oder beliebig viele beliebige Zeichen.
 In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn : die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen s, da sich der `*` in der CQL auf das vorhergehende Element – hier ein „s“ – bezieht.
