@@ -441,6 +441,26 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
       </Quiz.Message>
     </Quiz.MultipleChoice>
   </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Wie kann die CQL-Abfrage lauten, um "Pflanze", "Sprungschanze", "Wanze", "ganze", "Romanze" und "Landpomeranze" zu finden?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        \[word=".+anze"]
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        \[word=".?anze"]
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        \[word=".\*anze"]
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
 </Quiz>
 
 
