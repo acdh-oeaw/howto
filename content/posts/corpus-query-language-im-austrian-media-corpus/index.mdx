@@ -466,7 +466,7 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
 
 ### Wiederholungen
 
-Alternativ zu `*`, +, ? kann mit dem ranges Operator nicht nur festgelegt werden, ob ein Ausdruck 0, 1 oder „öfter“ wiederholt werden soll, sondern es kann eine genaue Mindest- und Maximalzahl spezifiziert werden.
+Alternativ zu `*`, `+`, `?` kann mit dem ranges Operator nicht nur festgelegt werden, ob ein Ausdruck 0, 1 oder „öfter“ wiederholt werden soll, sondern es kann eine genaue Mindest- und Maximalzahl spezifiziert werden.
 Die Syntax dafür ist:
 \{minimal number, maximal number\}
 \{0,1\} minimal 0 maximal 1 (entspricht ?)
@@ -475,3 +475,14 @@ z.B.
 - [word=".\{10,\}"] mindestens 10 Wiederholungen von "." , keine Angabe der Maximalzahl: also alle Wörter oder Zahlen mit Mindestlänge 10
 - [word=".\{10,15\}"] mindestens 10, maximal 15 Wiederholungen
 - [posTT="ADJ."]\{2,\} Abfolge von mindestens 2 Adjektiven (ADJ. findet sowohl ADJA als auch ADJD, d.h. attributive und prädikative/adverbiale Adjektive)
+
+### Logische Verknüpfungen
+
+Es stehen die logischen Operatoren **& (logisches UND)** und **| (logisches ODER)** zur Verfügung.
+
+**A | B logisches oder** : es muss zumindest Bedingung A oder Bedingung B erfüllt sein.
+- [word="Das|das"] finde alle Das oder das Token
+- [pos="ADJA|ADJD|ADV"] finde alle Ajdektive oder Adverben
+
+**A & B logisches und**: es muss sowohl Bedingung A als auch Bedingung B erfüllt sein.
+- [word="schön" & posTT="ADV" & pos="ADV.*"] finde „schön“, wenn sowohl der **TreeTagger (posTT)** als auch der **RFTagger (pos)** es als Adverb markiert haben.
