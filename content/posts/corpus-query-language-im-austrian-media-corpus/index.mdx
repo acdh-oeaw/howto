@@ -486,3 +486,10 @@ Es stehen die logischen Operatoren **& (logisches UND)** und **| (logisches ODER
 
 **A & B logisches und**: es muss sowohl Bedingung A als auch Bedingung B erfüllt sein.
 - [word="schön" & posTT="ADV" & pos="ADV.*"] finde „schön“, wenn sowohl der **TreeTagger (posTT)** als auch der **RFTagger (pos)** es als Adverb markiert haben.
+
+### Gruppierung mit ( )
+
+In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdrücken zusammengefasst werden, die dann wiederum mit "`*` ? + | &" kombiniert werden können.
+- [word="(Das|das)"] finde alle _Das_ oder _das_ Token
+- [word="(D|d)as"] finde alle _Das_ oder _das_ Token
+- [word="(Das|das)+"] finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
