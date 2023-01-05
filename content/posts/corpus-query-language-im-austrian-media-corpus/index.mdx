@@ -259,7 +259,7 @@ In der Simple query ist die Verwendung des Wildcards (Jokerzeichen, Asterisk) `*
 
 - Haus`*`: alle Wörter, die mit der Buchstabenfolge _Haus_ beginnen: _Haus_, _Hauses_, _Hausmaus_, _Haussa_, _Hausbesorgerin_ … aber auch alle Wortformen von Lemmata, die mit _Haus_ beginnen. Es wird also z.B. auch _Häusern_ gefunden.
 - `*`aus : alle Wörter, die mit der Buchstabenfolge _aus_ enden: aus, Maus, Haus, Schildlaus …
-- Ha`*`s: alle Wörter, die mit Ha beginnen, und mit _s_ enden: _Has_, _Haus_, _Hass_, _Handelsabschluss_, _Hafenmeistergattinenpendlerbus_, etc. Wegen der beiden speziellen Eigenschaften case-insensitiv und Lemma-Suche wird aber auch z.B. _haltlos_ (case-insensitive) und _haltlose_ gefunden (Ergebnis einer Lemma-Suche, obwohl die Wortform gar nicht auf _s_ endet!)
+- Ha`*`s: alle Wörter, die mit Ha beginnen, und mit _s_ enden: _Has_, _Haus_, _Hass_, _Handelsabschluss_, _Hafenmeistergattinnenpendlerbus_, etc. Wegen der beiden speziellen Eigenschaften case-insensitiv und Lemma-Suche wird aber auch z.B. _haltlos_ (case-insensitive) und _haltlose_ gefunden (Ergebnis einer Lemma-Suche, obwohl die Wortform gar nicht auf _s_ endet!)
 
 Ein weiteres Beispiel für den case-insensitiven Charakter der Simple query: _deutsch*_ findet: _deutsch_, _deutsche_, _deutsches_ … aber auch: _Deutschlands_, _Deutschmatura_,...
 
@@ -287,7 +287,7 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 - `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
 
-![](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\"Haus\\\\\\\\\". Sie sehen in rot die Form im Text, in Grau darunter das jeweilige Lemma.")
+![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\"ADJA\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\"Haus\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \"Haus\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
@@ -511,7 +511,7 @@ Die Operatoren für reguläre Ausdrücke können nicht nur auf den Inhalt von To
 ### Gleichzeitiges Suchen im linken und rechten Kontext: meet und union
 
 Bisher konnten wir nur entweder **im linken oder im rechten Kontext suchen**. Mit `meet` kann in beiden Kontexten gesucht werden:
-(meet [TokenA] [TokenB] -linker_context rechter_context) 
-Sucht nach [TokenA] in deren linken oder rechten Nachbarschaft ein [TokenB] zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in -linker_context und rechter_context bestimmt.
+(meet \[TokenA] \[TokenB]\ -linker_context rechter_context) 
+Sucht nach \[TokenA]\ in deren linken oder rechten Nachbarschaft ein \[TokenB]\ zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in -linker_context und rechter_context bestimmt.
 z.B.: Suche nach dem Lemma „Hund“ in dessen linken oder rechter Umgebung — im maximalen Abstand von 5 Token, die Lemmas „beißen“ oder „bissig“ stehen.
-(meet [lemma="Hund"] [lemma="(beißen|bissig)"] -5 5)
+(meet \[lemma="Hund"]\ \[lemma="(beißen|bissig)"]\ -5 5)
