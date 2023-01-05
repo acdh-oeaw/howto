@@ -597,6 +597,6 @@ Die Operatoren für reguläre Ausdrücke können nicht nur auf den Inhalt von To
 Bisher konnten wir nur entweder **im linken oder im rechten Kontext suchen**. Mit `meet` kann in beiden Kontexten gesucht werden:
 
 - (meet \[TokenA] \[TokenB] -linker_context rechter_context) 
-  Sucht nach \[TokenA] in deren linken oder rechten Nachbarschaft ein \[TokenB] zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in -linker_context und rechter_context bestimmt.
+Sucht nach \[TokenA] in deren linken _oder_ rechten Nachbarschaft ein \[TokenB] zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in -linker_context und rechter_context bestimmt.
   z.B.: Suche nach dem Lemma „Hund“ in dessen linken oder rechter Umgebung — im maximalen Abstand von 5 Token, die Lemmas „beißen“ oder „bissig“ stehen.
   (meet \[lemma="Hund"] \[lemma="(beißen|bissig)"] -5 5)
