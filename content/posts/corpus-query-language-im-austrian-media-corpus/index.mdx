@@ -287,7 +287,7 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 - `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
 
-![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\"Haus\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
+![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\"Haus\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
@@ -498,6 +498,8 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 - \[word="(Das|das)"] finde alle _Das_ oder _das_ Token
 - \[word="(D|d)as"] finde alle _Das_ oder _das_ Token
 - \[word="(Das|das)+"] finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
+
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \"klimafreundlichesMobilitätskonzept\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Quiz
 
