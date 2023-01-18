@@ -293,7 +293,7 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
 </SideNote>
 
-### Reguläre Ausdrücke
+## Reguläre Ausdrücke
 
 In der CQL können sogenannte **[reguläre Ausdrücke (regular expressions, Regex)](https://www.sketchengine.eu/guide/regular-expressions/)** verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche stark erhöht wird.
 Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks sind:
@@ -586,7 +586,7 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 </Quiz>
 
 
-### Regex auch auf Token-Ebene
+## Regex auch auf Token-Ebene
 
 Die Operatoren für reguläre Ausdrücke können nicht nur auf den Inhalt von Token-Attributen angewendet werden, sondern auch auf ganze Token oder Abfolgen von Token:
 
@@ -672,6 +672,16 @@ z.B.: Suche nach dem Lemma „Hund“ in dessen linken oder rechter Umgebung —
   </Quiz.Card>
 </Quiz>
 
+
+## Suche auf Strukturebene in CQL
+
+Sowohl bei der **Simple query** als auch bei den bisherigen Beispielen der CQL blieben Informationen auf der Strukturebene (Dokumente, Absätze, Sätze) unberücksichtigt. Hier wird nun gezeigt, wie _auf_ und _mit_ **Strukturinformationen** gesucht werden kann.
+Wie oben gezeigt, werden Struktur-Informationen in den Input-Daten für die SKE mithilfe von XML-Elementen kodiert.
+In HTML und XML gelten die folgenden Notationskonventionen:
+
+- `<s> Beginn-tag einer Struktur „s“ (also eines Satzes)`
+- `</s> End-tag einer Struktur`
+- `<s/> Die gesamte Stuktur von Beginn bis Ende.`
 
 ## Weiterführende Videos und Links
 
