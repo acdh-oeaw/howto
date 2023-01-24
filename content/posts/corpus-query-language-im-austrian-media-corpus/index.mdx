@@ -765,6 +765,25 @@ Abhilfe schafft hier nur die Verwendung von `within` :
 
 - `[posTT="ADJ.*"] [posTT="NN] within <s/>` beschränkt die Suche auf Fundstellen, die sich innerhalb ein- und desselben `<s/>`, also innerhalb eines Satzes, befinden, was in den meisten Fällen wohl das erwünschte und sinnvolle Suchverhalten sein sollte.
 
+### Attribute mit MULTIVALUE
+
+In der SKE können Attribute als `MULTIVALUE` definiert werden. Das bedeutet, das Attribut enthält potenziell mehrere Werte, die durch ein Trennzeichen (`MULTISEP`) voneinander abgegrenzt werden. Das ist im amc bei vielen Attributen des `<doc>`-Elements der Fall. So könnte z.B. kann das Attribut **mutation** eine Wert `"Länder,Abend,Morgen"` aufweisen: es ist ein `MULTIVALUE`-Attribut, das Kommas (`,`) als `MULTISEP` verwendet.
+
+Für die Suche hat das die Konsequenz, dass der Inhalt des Attributs automatisch in seine Einzelwerte aufgegliedert und einfach nach den Einzelwerten gesucht werden kann, es bleibt aber auch der unveränderte Originalinhalt durchsuchbar.
+Um beim Beispiel zu bleiben: ein `<doc mutation="Wien,Abend,Morgen" .../>` würde mit jeder der folgenden Suchanfragen gefunden werden:
+
+- `mutation="Wien"`
+- `mutation="Abend"`
+- `mutation="Morgen"`
+- `mutation="Wien,Abend,Morgen"`
+- `mutation=".+Abend..+"`
+
+<SideNote type="note">
+  Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu Mehrfachzuordnungen kommt.
+</SideNote>
+
+
+
 ## Weiterführende Videos und Links
 
 Video: [Einfache Suche in der Konkordanz](https://www.youtube.com/watch?v=FzI6tbO5EvQ)
