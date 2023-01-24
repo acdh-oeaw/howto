@@ -287,7 +287,7 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 - `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
 
-![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
+![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
@@ -499,7 +499,7 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 - \[word="(D|d)as"] finde alle _Das_ oder _das_ Token
 - \[word="(Das|das)+"] finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Quiz
 
@@ -814,7 +814,6 @@ Wir haben gesehen, dass in der CQL oft Strukturelemente einbezogen werden, um di
 
 z.B. `[word="Haus"] within <s docsrc="STANDARD|PRESSE" year>="2010"/>` („Haus“ in STANDARD- oder PRESSE-Artikeln, die 2010 oder später erschienen sind.)
 
-
 Alternativ können einfache Einschränkungen auf Basis der Metadaten (also auf Basis der Strukturattribute des `<doc>`-Elements) auch im SKE _user-interface_ vorgenommen werden.
 Dazu dient in der Suchmaske der Unterpunkt Text Types, wo die Suche auf `<doc>` mit spezifischen Attributwerten eingeschränkt werden kann.
 
@@ -834,7 +833,27 @@ Abgesehen davon, ist die dortige Auflistung der Attribute und ihrer möglichen W
 
 - Video: [Einfache Suche in der Konkordanz](https://www.youtube.com/watch?v=FzI6tbO5EvQ)
 - Video: [Fortgeschrittene Suche in der Konkordanz](https://www.youtube.com/watch?v=lhRNwhwG-V0)
+
 ### Tagsets im amc
-*Kompakte Übersicht*
+
+_Kompakte Übersicht_
+
+- Stuttgart-Tübingen-PoS-Tagset (STTS) wie es im PoS-attribut posTT verwendet wird: https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/germantagsets
+  (dieser Link findet sich auch in der SKE selbst unter Corpus info -> Tagset Description)
+- Tagset des RFTaggers wie es im PoS-attribut pos verwendet wird: https://www.sketchengine.eu/german-rftagger-part-of-speech-tagset
+
+_Detailierte Beschreibungen_
+
+De-facto wurden alle für das amc verwendeten PoS-Tagger auf dem [TIGER Korpus](https://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/tiger/) trainiert.
+Ausführliche Dokumentationen der Annotations-Konventionen für das TIGER Korpus finden sich hier:
+[http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation](http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation)
+Insbesondere relevant für das amc sind:
+[„A Brief Introduction to the TIGER Treebank“ ](http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation/tiger_introduction.pdf)
+
+<SideNote type="note">
+Die minimalen Adaptionen des STTS Tagsets finden sich im Appendix Appendix A2 A.2 Deviation from STTS in the TIGER Treebank
+</SideNote>
 
 
+„TIGER Morphologie-Annotationsschema“ : Beschreibung der kombinierten PoS plus Morphoplogie-tags in `pos`: 
+http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation/tiger_scheme-morph.pdf
