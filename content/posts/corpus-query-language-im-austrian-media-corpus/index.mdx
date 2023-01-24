@@ -812,10 +812,29 @@ Bei der Analyse größerer Treffermengen kann es auch hilfreich sein, eine Frequ
 
 Wir haben gesehen, dass in der CQL oft Strukturelemente einbezogen werden, um die Suche nach bestimmten Kriterien in den Metadaten einzuschränken.
 
+z.B. `[word="Haus"] within <s docsrc="STANDARD|PRESSE" year>="2010"/>` („Haus“ in STANDARD- oder PRESSE-Artikeln, die 2010 oder später erschienen sind.)
+
+
+Alternativ können einfache Einschränkungen auf Basis der Metadaten (also auf Basis der Strukturattribute des `<doc>`-Elements) auch im SKE _user-interface_ vorgenommen werden.
+Dazu dient in der Suchmaske der Unterpunkt Text Types, wo die Suche auf `<doc>` mit spezifischen Attributwerten eingeschränkt werden kann.
+
+Abgesehen davon, ist die dortige Auflistung der Attribute und ihrer möglichen Werte auch bei der Formulierung von CQL-Anfragen durchaus hilfreich, wenn man gerade wieder einmal nicht weiß, wie die Attributnamen genau lauten und welche Werte sie annehmen können.
+
 ## Weiterführende Videos und Links
 
-Video: [Einfache Suche in der Konkordanz](https://www.youtube.com/watch?v=FzI6tbO5EvQ)
+### Allgemein zu SKE und Suche
 
-Video: [Fortgeschrittene Suche in der Konkordanz](https://www.youtube.com/watch?v=lhRNwhwG-V0)
+- Concordance Introduction https://www.sketchengine.co.uk/user-guide/user-manual/concordance-introduction/
+- Regular Expressions https://www.sketchengine.co.uk/user-guide/user-manual/concordance-introduction/regular-expression 
+- Corpus Querying https://www.sketchengine.co.uk/documentation/corpus-querying/
+- CQL Basics https://www.sketchengine.co.uk/documentation/cql-basics/
+- Link: [Regular expressions Cheatsheet](https://www.sketchengine.eu/guide/regular-expressions/)
 
-Link: [Regular expressions Cheatsheet](https://www.sketchengine.eu/guide/regular-expressions/)
+### Videos
+
+- Video: [Einfache Suche in der Konkordanz](https://www.youtube.com/watch?v=FzI6tbO5EvQ)
+- Video: [Fortgeschrittene Suche in der Konkordanz](https://www.youtube.com/watch?v=lhRNwhwG-V0)
+### Tagsets im amc
+*Kompakte Übersicht*
+
+
