@@ -287,7 +287,7 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 - `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
 
-![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
+![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
@@ -499,7 +499,7 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 - \[word="(D|d)as"] finde alle _Das_ oder _das_ Token
 - \[word="(Das|das)+"] finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Quiz
 
@@ -744,7 +744,6 @@ Unter dem Eingabefeld für CQL findet sich auch ein Link namens **CQL builder** 
 Da die Zeichen `. + * & | ( ) \[ ]` in den CQL Abfragen eine Sonderbedeutung als Bestandteile regulärer Ausdrücke haben, müssen sie speziell gekennzeichnet werden, wenn man _buchstäblich_ nach ihnen suchen will.
 Dieses _Aufheben der Sonderbedeutung_ nennt man _escapen_ eines Zeichens, und passiert durch Voranstellen eines `\ (backslash)`.
 
-
 Das heißt
 
 - `[word="etc."]` hier steht `.` für jedes beliebige Zeichen
@@ -758,7 +757,7 @@ Standardmäßig werden Strukturgrenzen in der Suchanfrage _vollständig_ ignorie
 
 Das heißt
 
-- `[] [] `findet alle benachbarten Token, selbst wenn dazwischen eine Strukturgrenze liegt. 
+- `[] []`findet alle benachbarten Token, selbst wenn dazwischen eine Strukturgrenze liegt. 
 - `[posTT="ADJ.*"] [posTT="NN]` würde also alle Adjekiv-Nomen-Kombinationen finden, auch über Satz-, Paragraphen- und sogar über Dokumentgrenzen hinweg!
 
 Abhilfe schafft hier nur die Verwendung von `within` :
@@ -781,13 +780,37 @@ Um beim Beispiel zu bleiben: ein `<doc mutation="Wien,Abend,Morgen" .../>` würd
 <SideNote type="note">
   Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu Mehrfachzuordnungen kommt.
 </SideNote>
+
 Eine Auswertung der Anzahl der `<doc>` pro mutation liefert in unserem Beispiel:
+
 - Wien : 1
 - Abend : 1
 - Morgen : 1
 - Wien,Abend,Morgen : 1
 
+### Übersicht über die vorhandenen Attribute
 
+Um sich einen Überblick über den Namen und den Inhalt der vorhandenen Attribute zu machen ist z.B.
+der Menüpunkt _Corpus info_ hilfreich. Hier werden nicht nur statistische Daten über das Korpus angezeigt, sondern auch die Namen der verfügbaren Token-Attribute, Strukturen und Struktur-Attribute.
+
+Um zu den Struktur-Attributen zu gelangen, einfach auf den Namen der entsprechenden Struktur klicken.
+
+### Anzeige anpassen
+
+_Nach_ einer Suche kann im Punkt **View Options** die Anzeige angepasst werden. Hilfreich ist, dass hier die Anzeige einzelner Attribute oder Strukturen ein- oder ausgeblendet werden kann. So kann man z.B., um sich wieder einmal zu erinnern, wie die Werte des pos-Attributs bei Nomen aufgebaut sind, nach einem Nomen suchen, und dann in den View Options das Attribut pos auf _sichtbar_ schalten. So kann man sich ein Attribut anhand exemplarischer Beispiele erschließen.
+In **View Options** kann auch angegeben werden, ob die ausgewählten Attribute nur für den eigentlichen _Treffer_ (meist die beste Wahl) oder für _alle_ Wörter der KWIC-Liste angezeigt werden sollen.
+Weiters besteht die Option, die ausgewählten Attribute as _tooltips_, d.h. nur bei _mouse over_ anzuzeigen.
+
+![View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png "Für View Options muss das Augen-Symbol ausgewählt werden. Die Funktionsmaske View Options mit Auswahl Lemma und posTI, und der entsprechenden Anzeige bei KWIC im Suchergebnis.")
+
+### Frequency lists
+
+_Nach_ einer erfolgten Suche können die Suchergebnisse unter dem Menüpunkt _Frequency List_ übersichtlich(er) zusammengefasst werden. Das ist oft auch hilfreich, um die Korrektheit einer Suchanfrage zu überprüfen.
+Bei der Analyse größerer Treffermengen kann es auch hilfreich sein, eine Frequenzliste des _linken_ oder _rechten_ _Nachbarn_ des Suchworts erstellen zu lassen (Auswahl von _1L_ bzw. _1R_). So lassen sich sehr oft „auffällige“ Muster gut isolieren. Zum Beispiel liefert eine Suchanfrage nach der informellen Grußform „baba“ (`[lc="baba"]`) ca. 10.000 Treffer. Erstellt man eine Frequenzliste der linken Nachbarn von „baba“, so sticht an erster Stelle das Wort „Ali“ mit ca. 1.800 Ergebnissen hervor, weil eben „Ali Baba“ eine hochfrequente Wortfolge ist, die so einfach aus dem Gesamtzählergebnis exkludiert werden, oder bei der Verfeinerung der Suchanfrage berücksichtigt werden kann.
+
+### Einschränkungen der Metadaten _ohne_ CQL Struktursuche
+
+Wir haben gesehen, dass in der CQL oft Strukturelemente einbezogen werden, um die Suche nach bestimmten Kriterien in den Metadaten einzuschränken.
 
 ## Weiterführende Videos und Links
 
