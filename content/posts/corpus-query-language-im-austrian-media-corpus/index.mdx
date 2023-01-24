@@ -287,7 +287,7 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 - `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
 
-![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
+![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
@@ -499,7 +499,7 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 - \[word="(D|d)as"] finde alle _Das_ oder _das_ Token
 - \[word="(Das|das)+"] finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Quiz
 
@@ -723,7 +723,7 @@ z.B. alle Fundstellen für „Haus“, aber nur, wenn sie in einem Artikel des �
 
 ## Tipps & Tricks
 
-![Abbildung der Advanced Suchmaske mit gekennzeichneten Bereichen für Default attribute und CQL Builder](images/amc_4.1_concordance_cql_defaultattribute_cqlbuilder.png "In der Advanced-Suchmaske sehen Sie in gelb die Schaltfläche für den CQL-Builder und das Default attribute markiert. Beide Funktionen erleichtern die Abfragen.")
+![Abbildung der Advanced Suchmaske mit gekennzeichneten Bereichen für Default attribute und CQL Builder](images/amc_4.1_concordance_cql_defaultattribute_cqlbuilder.png "In der Advanced-Suchmaske sehen Sie in gelb die Schaltfläche für den CQL-Builder und das Default attribute markiert. Beide Funktionen erleichtern die Erstellung von Abfragen.")
 
 ### Vereinfachte Schreibweise
 
@@ -739,9 +739,31 @@ In der Suchmaske steht neben dem Feld CQL die Angabe eines **Default attribute**
 
 Unter dem Eingabefeld für CQL findet sich auch ein Link namens **CQL builder** – ein Tool, das bei der Formulierung von CQL-Anfragen helfen kann. Es kann durchaus sinnvoll sein, mit diesem Tool mit dem bisher erworbenen Wissen zu experimentieren, auch um weitere Funktionen zu entdecken. Genauere Erläuterungen finden sich in der [Beschreibung des CQL Builders bei Sketch Engine](https://www.sketchengine.eu/news/cql-builder/).
 
-### Escaping von Sonderzeichen
+### _Escaping_ von Sonderzeichen
 
-Da die Zeichen
+Da die Zeichen `. + * & | ( ) \[ ]` in den CQL Abfragen eine Sonderbedeutung als Bestandteile regulärer Ausdrücke haben, müssen sie speziell gekennzeichnet werden, wenn man _buchstäblich_ nach ihnen suchen will.
+Dieses _Aufheben der Sonderbedeutung_ nennt man _escapen_ eines Zeichens, und passiert durch Voranstellen eines `\ (backslash)`.
+
+
+Das heißt
+
+- `[word="etc."]` hier steht `.` für jedes beliebige Zeichen
+- `[word="etc\."]` hier steht `.` tatsächlich für einen Punkt `(.)`
+- `[word="..."]` findet daher _alle_ Token mit 3 Zeichen
+- `[word="\.\.\."]` findet _punktipunktipunkti_ (3 Punkte)
+
+### Tokensuche _ignoriert_ Strukturgrenzen
+
+Standardmäßig werden Strukturgrenzen in der Suchanfrage _vollständig_ ignoriert! Wenn sie nicht explizit angegeben werden, bleiben Strukturen für die CQL also quasi unsichtbar.
+
+Das heißt
+
+- `[] [] `findet alle benachbarten Token, selbst wenn dazwischen eine Strukturgrenze liegt. 
+- `[posTT="ADJ.*"] [posTT="NN]` würde also alle Adjekiv-Nomen-Kombinationen finden, auch über Satz-, Paragraphen- und sogar über Dokumentgrenzen hinweg!
+
+Abhilfe schafft hier nur die Verwendung von `within` :
+
+- `[posTT="ADJ.*"] [posTT="NN] within <s/>` beschränkt die Suche auf Fundstellen, die sich innerhalb ein- und desselben `<s/>`, also innerhalb eines Satzes, befinden, was in den meisten Fällen wohl das erwünschte und sinnvolle Suchverhalten sein sollte.
 
 ## Weiterführende Videos und Links
 
