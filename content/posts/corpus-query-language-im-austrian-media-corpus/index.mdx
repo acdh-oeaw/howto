@@ -42,7 +42,7 @@ Um das [amc nutzen](https://amc.acdh.oeaw.ac.at/access-conditions/) zu können, 
 
 Sollten Sie an einem geförderten Projekt arbeiten, wird von der APA eine Nutzungsgebühr erhoben. In diesem Fall nehmen Sie bitte mit dem amc Kontakt auf. Ansonsten ist der Zugang nach [Registrierung](https://amc.acdh.oeaw.ac.at/registrierung/) und Akzeptieren der [Nutzungsbedingungen](https://amc.acdh.oeaw.ac.at/nutzungsbedingungen/) kostenfrei. 
 
-Zu Übungszwecken finden sie auf der amc-Website Zugang zu einer [Demo-Version](https://demo-amc.acdh.oeaw.ac.at/crystal/#open), für die Sie keinen Zugang benötigen.
+Zu Übungszwecken finden Sie auf der amc-Website Zugang zu einer [Demo-Version](https://demo-amc.acdh.oeaw.ac.at/crystal/#open), für die Sie keinen Zugang benötigen.
 </SideNote>
 
 In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeiten sowie der Arbeit mit der NoSketch Engine und der Corpus Query Language (CQL) vertraut.
@@ -287,7 +287,7 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 - `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
 
-![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
+![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
 Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
@@ -499,7 +499,7 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 - \[word="(D|d)as"] finde alle _Das_ oder _das_ Token
 - \[word="(Das|das)+"] finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Quiz
 
@@ -853,7 +853,6 @@ Insbesondere relevant für das amc sind:
 <SideNote type="note">
 Die minimalen Adaptionen des STTS Tagsets finden sich im Appendix Appendix A2 A.2 Deviation from STTS in the TIGER Treebank
 </SideNote>
-
 
 „TIGER Morphologie-Annotationsschema“ : Beschreibung der kombinierten PoS plus Morphoplogie-tags in `pos`: 
 http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation/tiger_scheme-morph.pdf
