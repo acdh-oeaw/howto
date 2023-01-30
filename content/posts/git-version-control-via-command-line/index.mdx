@@ -18,19 +18,25 @@ toc: false
 uuid: SBjyyMxmwXB0wOftI0qIk
 ---
 In this resource you will learn
+
 - essential git commands
 - how to use git commands in the terminal
 - how to get and install the software you need
 
 ## Version control and tracking changes
 
-Git's main purpose is to track changes in your projects, either for yourself or to keep a team updated. It works best when used with plaintext file formats such as source code, XML/TEI documents or Markdown content. While Git will happily store _images_, _audio files_, or `.doc` and `.pdf` documents. However, it was not designed to help you with changes in those kinds of documents and cannot its full diffing/merging capacities with them. 
+**Git**'s main purpose is to track changes in your projects, either for yourself or to keep a team updated. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store _images_, _audio files_, or `.doc` and `.pdf` documents. However, it was not designed to help you with changes in those kinds of documents and cannot its full diffing/merging capacities with them. 
 
-Git
--  solves the problem of keeping versions of text documents in sync among sometimes thousands of collaborators working on a software product.
+**Git**
+
+- solves the problem of keeping versions of text documents in sync among sometimes thousands of collaborators working on a software product.
 - It helps integrate changes by multiple collaborators and also solve situations where two people edit the same part of a document.
 
+### Official terminology: Working Area, Staging Area, Repository
 
+So far, we have been using rather loose terminology. This diagram is a great summary of how content moves in Git, between the “working area”, which is simply the files and folders in a project as they exist on your computer, the “staging area”, which we can call a “holding zone”, and the “repository”, which are the permanently recorded commit snapshots.
+
+![A figure showing the different areas of the git workflow, working area, stating area, repository](images/stefan_git_terminology.png "Git workflow by Stefan Probst")
 
 Let’s look at how change tracking with Git works in practice, in a local project on your computer (no network connection required). We’ll walk through how to work with Git in the terminal, because that is where Git was originally meant to be used, and because it helps to understand what is actually going on. This involves learning a handful of Git commands, and while that might seem intimidating at first, you’ll see that it becomes second-nature with a bit of practice very quickly. 
 
@@ -42,8 +48,23 @@ The commands you learn for working in a local project also apply for working col
 
 ## Installing git
 
-Windows
+### Windows
 
-If you haven’t yet installed Git on your Windows computer, follow the instructions on https://git-scm.com/downloads.
+If you haven’t yet installed Git on your Windows computer, follow the instructions on https://git-scm.com/downloads, or https://gitforwindows.org/.
 
 You should also provide some initial configuration.
+The setup program runs as administrator as well as normal user. In general hit next and don’t change anything as most options are only relevant for advanced usage.
+
+[One exception might be the editor](https://git-intro-wboe.acdh-dev.oeaw.ac.at/simple_windows_editors). But if you follow this howto, its use is not essential.
+
+### Editors with git-support
+
+To have an editor that supports us when working with git version control we suggest you use [Visual Studio Code.](https://code.visualstudio.com/) Just download the suggested stable build and install it.
+
+See here why you might want to use VSCodium instead.
+
+We suggest you let the setup program add an icon on your desktop. You can of course just search the start menu for VS(Codium) or (Visual Studio)Code.
+
+Note that other specialized editors also support managing git repositories themselves. One notable example would be OxygenXML.
+
+### add Mac and Linux
