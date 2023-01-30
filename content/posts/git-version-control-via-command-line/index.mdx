@@ -87,4 +87,69 @@ Note that other specialized editors also support managing git repositories thems
 
 First, we need to tell Git that it should start to manage a project directory and keep an eye on changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on **Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data you want to version (usually done by typing `cd {folder-name}`, e.g. _cd Documents_), and afterwards type:
 
-![git init](images/git_init.png "git init")
+```bash
+git init
+```
+
+This will initially set up Git’s internal bookkeeping metadata, which is stored in a hidden .git folder. Git will respond with:
+
+![initialise an empty Git repository on your local machine](images/git_initialise_empty_gitrepo.png "initialise an empty Git repository on your local machine")
+
+Let’s also create some new content. In a real research project this would mean editing or adding an XML/TEI document or similar. To demonstrate the mechanics we’ll keep it basic here and use the terminal to create a simple text file. When you want to  create a text file via the command line: The text in "", following _echo_, is the content of the text file which you specify with "filename.txt", txt being a text file extension
+
+```bash
+echo "This is my text document." > my-document.txt
+```
+
+### Check status
+
+We can always check what Git knows about the state of our project with:
+
+```bash
+git status
+```
+
+Note that Git informs us that changes have been made to a file called `my-document.txt`, but that file is currently "untracked", which means it is not currently managed by Git's versioning. Git also tells us that in order to tell it to keep track of changes to that file, we should "use `git add` to track". Generally, if you find yourself in situations where you're unsure how to proceed, `git status` will most of the time show helpful hints. It's probably the Git command you'll be using most often.
+
+![A picture of a code block. In the image you can see that a text file was created and that the status was checked. There are no commits yet, but some changes are already staged, others yet untracked.](images/add_file_status.png "In the image you can see that a text file was created and that the status was checked. There are no commits yet, but some changes are already staged, others yet untracked.")
+
+### Mark content changes to be included in the version history
+
+Let’s follow the advice and use `git add` to tell Git to keep an eye on changes to the newly created document `my-document.txt`:
+
+```bash
+git add my-document.txt
+```
+
+<SideNote type="info" title="Adding multiple files">
+To add multiple files, it is possible to list them individually:
+```bash
+git add first-document.txt second-document.txt
+```
+Or, to include _all_ changes to the project:
+```bash
+git add -A
+```
+</SideNote>
+
+Note that `git add` does not automatically **commit** the changes, but places them in the **staging area**.
+
+### Bundle changes into meaningful chunks
+
+Including content changes in Git’s version history involves a two-step process. First, we put changes in the “holding zone” or **“staging area”**. We can continue adding related changes to other documents, or additional newly created documents. This allows **creating semantically meaningful units of changes**.
+
+When all related changes have been added to the “holding area”, we can save them together as a version history snapshot, with a message that briefly describes the changes so it is easy to find them later when viewing the version history.
+
+These units are called **“commits”**, and **“committing”** means permanently recording a snapshot of contents at a specific point in time, with a message describing the change:
+```bash
+git commit -m "Add test document"
+```
+
+<SideNote type="info" title="Commit messages">
+
+Commit messages are usually written in imperative language. For example it is customary to say “Change document title”, not “Changed document title”. Nevertheless, it’s perfectly fine to agree on different project-specific conventions, just try to be consistent.
+
+When in a hurry, it’s tempting to write non-descriptive commit messages like “Added changes”. Try to come up with something that describes the change, you’ll thank yourself later!
+</SideNote>
+
+Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. `git add` allows to granularly choose which changes, to which files should be part of the next snapshot, while `git commit` will label that set of changes, and actually save a new snapshot.
