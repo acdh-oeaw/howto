@@ -32,11 +32,21 @@ In this resource you will learn
 - solves the problem of keeping versions of text documents in sync among sometimes thousands of collaborators working on a software product.
 - It helps integrate changes by multiple collaborators and also solve situations where two people edit the same part of a document.
 
+Git can record which changes, to which documents, have been made when, and by whom. It allows to keep a detailed revision history of a project, because it can save snapshots of a project at specific points in time, thus being open to review any time in the future.
+
+Version control allows to save versions of content, restore previous versions, and compare different versions. This is especially beneficial when working with multiple documents, and when working in teams of more than one (potentially working on the same document).
+
+
+
 ### Official terminology: Working Area, Staging Area, Repository
 
 So far, we have been using rather loose terminology. This diagram is a great summary of how content moves in Git, between the “working area”, which is simply the files and folders in a project as they exist on your computer, the “staging area”, which we can call a “holding zone”, and the “repository”, which are the permanently recorded commit snapshots.
 
 ![A figure showing the different areas of the git workflow, working area, stating area, repository](images/stefan_git_terminology.png "Git workflow by Stefan Probst")
+
+- **Working area:** This is where you manipulate your files. For example, you can make change to the text in an MDX document. The working area usually resides on your local machine.
+- **Staging area:** This "holding zone" allows to **stage** changes in your documents, and **commit** those changes once you are comfortable, and **push** these changes to your repository.
+- **Repository:** A repository is a central location where the data, files and documents are stored and managed. You can be the sole user of a repository or you can be a collaborator in a team.
 
 Let’s look at how change tracking with Git works in practice, in a local project on your computer (no network connection required). We’ll walk through how to work with Git in the terminal, because that is where Git was originally meant to be used, and because it helps to understand what is actually going on. This involves learning a handful of Git commands, and while that might seem intimidating at first, you’ll see that it becomes second-nature with a bit of practice very quickly. 
 
