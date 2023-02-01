@@ -23,8 +23,6 @@ In this resource you will learn
 - how to use git commands in the terminal
 - how to get and install the software you need
 
-
-
 ## Version control and tracking changes
 
 **Git**'s main purpose is to track changes in your projects, either for yourself or to keep a team updated. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store _images_, _audio files_, or `.doc` and `.pdf` documents. However, it was not designed to help you with changes in those kinds of documents and cannot its full diffing/merging capacities with them. 
@@ -63,7 +61,14 @@ The commands you learn for working in a local project also apply for working col
 </SideNote>
 
 ## Installing git
-<SideNote type="info" title="Adding multiple files">
+
+<SideNote type="tip" title="Don't be afraid of the command line interface (CLI)">
+Many users, particularly Windows users, depend on using Graphical User Interfaces (GUI) in their daily lives and work schedules. GUIs have tabs, menus and windows that you can click on. GUIs are perceived as more user-friendly because they graphically represent the actions you take. 
+
+The CLI relies on text input.
+</SideNote>
+
+<SideNote type="info" title="Git for Windows, Mac, Linux">
 ### Windows
 
 If you haven’t yet installed Git on your Windows computer, follow the instructions on https://git-scm.com/downloads, or https://gitforwindows.org/.
@@ -85,6 +90,7 @@ Note that other specialized editors also support managing git repositories thems
 
 ### add Mac and Linux
 </SideNote>
+
 ## Initialise a Git project in your terminal
 
 First, we need to tell Git that it should start to manage a project directory and keep an eye on changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on **Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data you want to version (usually done by typing `cd {folder-name}`, e.g. _cd Documents_), and afterwards type:
@@ -143,6 +149,7 @@ Including content changes in Git’s version history involves a two-step process
 When all related changes have been added to the “holding area”, we can save them together as a version history snapshot, with a message that briefly describes the changes so it is easy to find them later when viewing the version history.
 
 These units are called **“commits”**, and **“committing”** means permanently recording a snapshot of contents at a specific point in time, with a message describing the change:
+
 ```bash
 git commit -m "Add test document"
 ```
@@ -157,6 +164,7 @@ When in a hurry, it’s tempting to write non-descriptive commit messages like �
 Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. `git add` allows to granularly choose which changes, to which files should be part of the next snapshot, while `git commit` will label that set of changes, and actually save a new snapshot.
 
 ## History log, snapshots, revert, reverse
+
 ### View history of changes
 
 Getting into the habit of assigning descriptive commit messages is especially helpful when viewing the history of changes. Git will print a changelog with:
@@ -227,7 +235,7 @@ Once you're done looking around, don't forget to return to the present! The easi
 git checkout main
 ```
 
-The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default *branch* of the timeline, because there can be multiple parallel timelines 🤯, we'll have a look at these branches in the second part of this introduction).
+The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default _branch_ of the timeline, because there can be multiple parallel timelines 🤯, we'll have a look at these branches in the second part of this introduction).
 
 ### Undo changes
 
@@ -239,7 +247,7 @@ There are three possible ways to do this.
 git revert ab9b27f
 ```
 
-Reverting a commit will keep that snapshot in the version history, and create a *new* snapshot with the changes removed. This is useful when you want to keep a record of the initial changes, and the fact that they have been reverted.
+Reverting a commit will keep that snapshot in the version history, and create a _new_ snapshot with the changes removed. This is useful when you want to keep a record of the initial changes, and the fact that they have been reverted.
 
 ```bash
 git reset 7f733ac
@@ -253,14 +261,16 @@ git reset --hard 7f733ac
 
 The most brute-force way to undo changes is with a "hard reset". Be aware that this will not only "rewind the clock" to a specific commit, but nuke any changes that have been make in the project since that point in time. Those changes will be lost.
 
-Lastly, if you only want to quickly change the *message* of the last commit, for example because you made a typo, you can:
+Lastly, if you only want to quickly change the _message_ of the last commit, for example because you made a typo, you can:
 
 ```bash
 git commit --amend
 ```
 
 ## Links
+
 ### Cheatsheets
+
 Git commands Github: https://education.github.com/git-cheat-sheet-education.pdf 
 
 Git commands Gitlab: https://about.gitlab.com/images/press/git-cheat-sheet.pdf
