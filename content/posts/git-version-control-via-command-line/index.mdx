@@ -155,6 +155,108 @@ When in a hurry, it’s tempting to write non-descriptive commit messages like �
 Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. `git add` allows to granularly choose which changes, to which files should be part of the next snapshot, while `git commit` will label that set of changes, and actually save a new snapshot.
 
 ## History log, snapshots, revert, reverse
+### View history of changes
+
+Getting into the habit of assigning descriptive commit messages is especially helpful when viewing the history of changes. Git will print a changelog with:
+
+```bash
+git log --oneline
+```
+
+Note that we have one entry in our version history, and that Git has assigned the commit message we have provided, as well as an internal identifier to that entry. That identifier consists of 40 alphanumeric characters, but usually the first few characters are enough to uniquely address a commit in a project.
+
+### View individual snapshot
+
+Git will display the exact changes which were made in a commit snapshot with:
+
+```bash
+git show 7f733ac
+```
+
+That last bit is the unique identifier which is assigned to every commit in Git's version history. We've seen above how we can figure out these ids from inspecting the changelog displayed with `git log`. Note that when you have followed the steps in this introduction on your own computer, the unique identifier you see will be different from the one above. This is because identifiers are calculated from filename and content, author, commit message, and commit date.
+
+### Compare two snapshots
+
+It is also possible to show changes between two specific commit snapshots. Let's first add another change, so there are actually two separate entries in our commit history (again, how creating and editing a document on the terminal works is unimportant here, but the two-step process of creating a snapshot with `git add` and `git commit` should already be familiar):
+
+```bash
+echo "This is another document." > another-document.txt # creates a new document
+sed -i s/text/test/ my-document.txt # changes "text" to "test" in `my-document.txt`
+git add -A
+git commit -m "Add new document and change initial document"
+```
+
+To list the difference between two commit snapshots we'll first find out their respective unique identifiers, and then tell Git to compare those:
+
+```bash
+git log --oneline
+git diff 7f733ac ab9b27f
+```
+
+<SideNote type="info" title="Diffing not-yet-committed work">
+
+To compare working directory to staging area:
+
+```bash
+git diff
+```
+
+To compare staging are to repository, i.e. last commit to next commit:
+
+```bash
+git diff --staged
+```
+
+</SideNote>
+
+The format in which the changes are displayed can be a bit hard to read in the terminal, especially for larger changesets, so it's best to view them in a real text editor.
+
+### Time travel
+
+Alternatively, Git allows to "time travel" to a specific point in a project's history. You can inspect how each document looked like at that point in time, without losing any subsequent changes:
+
+```bash
+git checkout 7f733ac
+```
+
+Once you're done looking around, don't forget to return to the present! The easiest way is with:
+
+```bash
+git checkout main
+```
+
+The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default *branch* of the timeline, because there can be multiple parallel timelines 🤯, we'll have a look at these branches in the second part of this introduction).
+
+### Undo changes
+
+Finally, Git also allows to undo changes. Even though Git forces us to be very intentional about which changes end up in the changelog (we needed to go through the two-step `git add` and `git commit` process after all), sometimes you'll still want to discard some of them.
+
+There are three possible ways to do this.
+
+```bash
+git revert ab9b27f
+```
+
+Reverting a commit will keep that snapshot in the version history, and create a *new* snapshot with the changes removed. This is useful when you want to keep a record of the initial changes, and the fact that they have been reverted.
+
+```bash
+git reset 7f733ac
+```
+
+Reseting history allows to "rewind the clock" to a specific point im time (addressed via unique identifier), without losing the changes that have been made to documents in subsequent changes. It's mostly useful as a way to "rewrite" history.
+
+```bash
+git reset --hard 7f733ac
+```
+
+The most brute-force way to undo changes is with a "hard reset". Be aware that this will not only "rewind the clock" to a specific commit, but nuke any changes that have been make in the project since that point in time. Those changes will be lost.
+
+Lastly, if you only want to quickly change the *message* of the last commit, for example because you made a typo, you can:
+
+```bash
+git commit --amend
+```
+
 
 ## Links
 ### Cheatsheets
