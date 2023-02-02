@@ -83,7 +83,7 @@ There are multifple tutorials available that help you to familiarise with the co
 </SideNote>
 
 <SideNote type="info" title="Git for Windows, Mac, Linux">
-### Windows
+## Windows
 
 If you haven’t yet installed Git on your Windows computer, follow the instructions on https://git-scm.com/downloads, or https://gitforwindows.org/.
 
@@ -102,7 +102,97 @@ We suggest you let the setup program add an icon on your desktop. You can of cou
 
 Note that other specialized editors also support managing git repositories themselves. One notable example would be OxygenXML.
 
-### add Mac and Linux
+## Mac
+
+There are several ways to install git on MacOS. Depending on your needs and your familiarity with the command line we suggest one of the following two ways:
+
+### 1. Using the Git bundled with XCode Command Line Tools
+
+Apple ships an older version of git with some add on tools for their MacOS. To get this git you only
+have to
+* Open a "terminal" (type "terminal" in Spotlight search, start the respective app)
+* type `git` and press enter. So try run git.
+
+Doing this will tell MacOS to get a view more programs from the internet. The bundle is called
+"Xcode Command Line Tools". So if this already happened for some other reason you are ready.
+If not you have to go through a few dialogs and after about 10 minutes everything is installed.
+
+### 2. Using an installation package
+
+The easiest way to install git on a Mac is to use an installer-package provided by Tim Harper.
+However
+* it will not give you the latest version of Git
+* it will be harder to update
+* it will complain that the software might be risky (which is highly unlikely)
+
+If these three downsides do not matter to your workflow, here is a step by step guide:
+
+1. Download the installer package at [https://sourceforge.net/projects/git-osx-installer/](https://sourceforge.net/projects/git-osx-installer/).
+2. Open the downloaded *.dmg file and run the file with the ending *.pkg.
+![Overview over *.dmg content](/assets/images/macOS_installerPackage.jpg)
+3. MacOS is likely to give you a warning, because it does not initially trust sourceforge.com as a source, as it is not a "verfied developer". 
+![Warning in MacOS - developer not verified.](/assets/images/macOS-warning.png)
+If this happens, please press ok and go to your "System Settings" - Security - General. 
+![Security settings in MacOS](/assets/images/macOS-securitySettings.jpg)
+There you will see at the bottom of the window a button that should prompt "open anyways" to be able to open and run the *.pkg. Also prompt "open" at the following warning and the installer-package will start.
+4.  Please follow the instructions in the standard installation dialogue to install Git.
+![Installation dialogue for Git.](/assets/images/macOS_installationDialogue.png)
+
+### 3. Using Homebrew
+
+If you are not afraid of the command line, you can use the package manager "Homebrew" to install
+the latest version of Git.
+
+#### Installing Homebrew
+
+If you do not have Homebrew installed yet, please paste the following line into your MacOS Terminal:
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+By pressing enter and starting the script the installation procedure will run in the terminal. At each step the installer will pause and let you confirm, before it continues.
+
+#### Installing git using Homebrew
+
+After having installed Homebrew following the instructions above or if you already have Homebrew installed, please paste the following into your MacOS terminal: `$ brew install git`. This prompt will run the git-installation.
+
+### Editors with git-support
+
+To have an editor that supports us when working with git version control we suggest you use
+[Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and install it.
+
+[See here why you might want to use VSCodium instead.](vscode_vscodium)
+
+Note that other specialized editors also support managing git repositories themselves.
+One notable example would be OxygenXML.
+
+## Linux
+### Getting Git
+
+If you haven't yet installed Git on your computer, follow the instructions on [https://git-scm.com/ Download for Linux and Unix](https://git-scm.com/download/linux).
+
+git is part of every Linux Distribution nowadays and you install it using the usual package management tools (like `apt`, `dnf`, `pacman`, `yum`, `zypper` etc.)
+
+### Editors with git-support
+
+To have an editor that supports us when working with git version control we suggest you use
+[Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and install it.
+
+[See here why you might want to use VSCodium instead.](vscode_vscodium)
+
+Note that other specialized editors also support managing git repositories themselves.
+One notable example would be OxygenXML.
+
+## Save your username and password, so type it only once
+
+You also should make sure the `git-credential-libsecret` package is installed. This package exists on fedora based distributions.
+On Ubuntu and debian you need to execute these commands in a terminal
+```
+sudo apt-get install build-essential libsecret-1-0 libsecret-1-dev
+cd /usr/share/doc/git/contrib/credential/libsecret
+sudo make
+sudo git config --system credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+```
+
+
 </SideNote>
 
 ## Initialise a Git project in your terminal
