@@ -15,6 +15,7 @@ toc: true
 uuid: reTNfSzPsMSGzkm36BPu9
 ---
 ### Learning outcomes
+
 - work collaboratively with git
 
 ## Using Git for collaborative team work
@@ -34,11 +35,26 @@ software developers often ask you to use Git instead of any "drive" service.
 If you get into the Git workflow you may want to use it also locally for any kind of documents
 (remember Git is best at text documents, but not limited to them).
 
-If you have not done so we recommend you read the [paragraph on Git terminology](terminology#official-git-terminology-working-area-staging-area-repository) in the terminology text.
+Most imporantly however, everything we have learned in the first part is still valid: in Git everybody always works on a local copy of a project, and Git helps to keep local project copies in sync. This is why Git is sometimes called a distributed version control system.
 
-### Starting
+## Remote repositories
 
+Working with remote repositories can tell git that multiple people are working on the same documents, keep track of changing documents and synchronise changes. Depending on the nature of you project, you might need to set up a remote repository or clone an already existing remote repository. In the following, we will take a closer look at both options.
 
-![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \"merge pull request\". There are alternative views available. Comments can be added.")
+### Creating a remote repository
+
+When collaborators work on their shared project on their own computers, - how can they tell Git about their respective local project copies? By configuring a so-called “remote repository” which points to the URL of that copy:
+
+```bash
+git remote add my-colleagues-version-of-the-project htts://example.com/our-project.git
+```
+
+Now, while this could work in principle, it would require a bit of server configuration on your part, and it would get pretty complicated very quickly with teams of more than two members. This is why we will usually use a Git hosting provider like GitHub or GitLab to store a primary copy of our project, with which all team members can synchronize their local project copies. These Git hosting providers take care of all the complicated server-side stuff involved.
+
+<SideNote type="info" title="Git hosting providers">
+There are various git hosting providers out there, some of the most prominent ones being GitHUb and GitLab. For this tutorial, working with GitHub is recommended.
+</SideNote>
+
+![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\"merge pull request\\". There are alternative views available. Comments can be added.")
 
 Merge in github
