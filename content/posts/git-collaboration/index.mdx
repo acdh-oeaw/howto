@@ -17,6 +17,7 @@ uuid: reTNfSzPsMSGzkm36BPu9
 ### Learning outcomes
 
 - work collaboratively with git
+- create and clone a remote repository
 
 ## Using Git for collaborative team work
 
@@ -79,10 +80,18 @@ By convention, the remote repository which holds the primary copy of a project i
 
 In many research projects, setting up a remote repository will be one of the initial steps, so there is no need to connect a pre-existing local project with a remote repository which simplifies things a lot. Instead we can clone a remote repository, which will take care of initialising the project locally, connecting it with the remote, and synchronising the local project with the current state of the remote.
 
+If we want to **clone** a local repository from a remote repository that we found on GitHub, we can copy it's URL and create a local copy on our machine in a directory of our choosing, using the command `git clone <url>`. 
 HTTPS or SSH?
 ```bash
 git clone https://github.com/my-git-username/my-test-project
 ```
+The above will create a local directory for the git repository that has the same name as the remote repo, "my-test-project". If you would like to change the local directory's name to something else, you can do so:
+```bash
+git clone https://github.com/my-git-username/my-test-project the_new_project
+```
+Now, our local git repo sits in a directory called "the_new_project".
+
+Alternatively to the `https://`protocol, you can also use the SSH transfer protocol. Check the git documentation for further information.
 
 ![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\"merge pull request\\". There are alternative views available. Comments can be added.")
 
