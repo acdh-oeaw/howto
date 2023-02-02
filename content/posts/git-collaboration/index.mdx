@@ -52,8 +52,30 @@ git remote add my-colleagues-version-of-the-project htts://example.com/our-proje
 Now, while this could work in principle, it would require a bit of server configuration on your part, and it would get pretty complicated very quickly with teams of more than two members. This is why we will usually use a Git hosting provider like GitHub or GitLab to store a primary copy of our project, with which all team members can synchronize their local project copies. These Git hosting providers take care of all the complicated server-side stuff involved.
 
 <SideNote type="info" title="Git hosting providers">
-There are various git hosting providers out there, some of the most prominent ones being GitHub and GitLab. For this tutorial, working with GitHub is recommended.
+There are various git hosting providers out there, some of the most prominent ones being GitHub and GitLab.
+
+We are going to use **GitHub** in this section, but other services like GitLab work very similarly. Although **GitHub** has a nice **browser-based graphical user interface at [https://github.com](**https://github.com**)**, and also provides a **Desktop client** for all operating systems, we are going to keep using the terminal to communicate with GitHub first.
+
+If you want to follow along, please download and install the GitHub CLI and **create a GitHub user** account if you don’t have one already.
+
+CLI INSTRUCTION!
 </SideNote>
+
+First, let’s create a new empty remote repository called my-test-project on GitHub’s servers:
+
+
+```bash
+gh repo create my-test-project
+```
+
+To connect a local Git project with the newly created remote repository, type:
+
+```bash
+git remote add origin https://github.com/my-git-username/my-test-project
+```
+By convention, the remote repository which holds the primary copy of a project is called “origin”.
+
+
 
 ![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\"merge pull request\\". There are alternative views available. Comments can be added.")
 
