@@ -222,7 +222,7 @@ Note that Git informs us that changes have been made to a file called `my-docume
 
 ![A picture of a code block. In the image you can see that a text file was created and that the status was checked. There are no commits yet, but some changes are already staged, others yet untracked.](images/add_file_status.png "In the image you can see that a text file was created and that the status was checked. There are no commits yet, but some changes are already staged, others yet untracked.")
 
-### Mark content changes to be included in the version history
+## Mark content changes to be included in the version history
 
 Let’s follow the advice and use `git add` to tell Git to keep an eye on changes to the newly created document `my-document.txt`:
 
@@ -254,6 +254,7 @@ These units are called **“commits”**, and **“committing”** means permane
 ```bash
 git commit -m "Add test document"
 ```
+Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. `git add` allows to granularly choose which changes, to which files should be part of the next snapshot, while `git commit` will label that set of changes, and actually save a new snapshot.
 
 <SideNote type="info" title="Commit messages">
 
@@ -261,10 +262,6 @@ Commit messages are usually written in imperative language. For example it is cu
 
 When in a hurry, it’s tempting to write non-descriptive commit messages like “Added changes”. Try to come up with something that describes the change, you’ll thank yourself later!
 </SideNote>
-
-Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. `git add` allows to granularly choose which changes, to which files should be part of the next snapshot, while `git commit` will label that set of changes, and actually save a new snapshot.
-
-## History log, snapshots, revert, reverse
 
 ### View history of changes
 
@@ -274,7 +271,14 @@ Getting into the habit of assigning descriptive commit messages is especially he
 git log --oneline
 ```
 
-Note that we have one entry in our version history, and that Git has assigned the commit message we have provided, as well as an internal identifier to that entry. That identifier consists of 40 alphanumeric characters, but usually the first few characters are enough to uniquely address a commit in a project.
+Note that we have one entry in our version history, and that Git has assigned the commit message we have provided, as well as an **internal identifier** to that entry. That identifier consists of 40 alphanumeric characters, but usually the first few characters are enough to uniquely address a commit in a project.
+
+Below, you see a sample information message that your terminal returns. It includes the identifier, shows where the changes happened and the commit message:
+
+```bash
+7f733ac (HEAD -> main) Add test document
+```
+If you type `git log` instead, more detailed information will be displayed, including the individual add that are bundled in your commit (if you have any) and the longer internal identifier.
 
 ### View individual snapshot
 
