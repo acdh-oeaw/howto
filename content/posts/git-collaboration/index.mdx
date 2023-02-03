@@ -106,14 +106,15 @@ These three commands are essential to keep your local version in sync with the r
 ```bash
 git fetch
 ```
-`git fetch` fetches any changes that have been made to the remote repository while you were working on your own local repository. 
+`git fetch` fetches any changes that have been made to the remote repository while you were working on your own local repository. The command will show changes that are not in your local version yet.They need to be integrated before you can push your version back into the remote repository. You can specify which branch you want to fetch by adding its name. Using `git log`in the terminal will give you further information on the changes. Use `git merge` to integrate the changes.
 ```bash
 git pull
 ```
+`git pull`is similar to `git fetch`. However, when you use this command, the change in the remote repository or remote branch are merged into your local copy straight away. While `git fetch` gives you more control, `git pull` is faster when you want to perform multiple actions.
 ```bash
 git push
 ```
-
+`git push` is the opposite action of `git fetch`and `git pull`. You _push back_ your local branch or repository into the remote repository. 
 
 ![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\\"merge pull request\\\". There are alternative views available. Comments can be added.")
 
