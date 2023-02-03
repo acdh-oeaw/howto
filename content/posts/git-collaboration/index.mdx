@@ -64,7 +64,6 @@ CLI INSTRUCTION!
 
 First, let’s create a new empty remote repository called my-test-project on GitHub’s servers:
 
-
 ```bash
 gh repo create my-test-project
 ```
@@ -74,6 +73,7 @@ To connect a local Git project with the newly created remote repository, type:
 ```bash
 git remote add origin https://github.com/my-git-username/my-test-project
 ```
+
 By convention, the remote repository which holds the primary copy of a project is called “origin”.
 
 ## Cloning a remote repository
@@ -82,17 +82,36 @@ In many research projects, setting up a remote repository will be one of the ini
 
 If we want to **clone** a local repository from a remote repository that we found on GitHub, we can copy it's URL and create a local copy on our machine in a directory of our choosing, using the command `git clone <url>`. 
 HTTPS or SSH?
+
 ```bash
 git clone https://github.com/my-git-username/my-test-project
 ```
+
 The above will create a local directory for the git repository that has the same name as the remote repo, "my-test-project". If you would like to change the local directory's name to something else, you can do so:
+
 ```bash
 git clone https://github.com/my-git-username/my-test-project the_new_project
 ```
+
 Now, our local git repo sits in a directory called "the_new_project".
 
-Alternatively to the `https://`protocol, you can also use the SSH transfer protocol. Check the git documentation for further information.
+Alternatively to the `https://`protocol, you can also use the SSH transfer protocol. Check the [git documentation](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) for further information.
 
-![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\"merge pull request\\". There are alternative views available. Comments can be added.")
+
+
+### Keeping repositories in sync: fetch, pull, push
+
+Working collaboratively also means keeping in sync with changes that have been created as well as bringing your own work back into the remote repository. 
+
+These three commands are essential to keep your local version in sync with the remote repository:
+```bash
+```
+```bash
+```
+```bash
+```
+
+
+![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\\"merge pull request\\\". There are alternative views available. Comments can be added.")
 
 Merge in github
