@@ -96,26 +96,34 @@ Now, our local git repo sits in a directory called "the_new_project".
 
 Alternatively to the `https://`protocol, you can also use the SSH transfer protocol. Check the [git documentation](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) for further information.
 
-
-
 ### Keeping repositories in sync: fetch, pull, push
 
 Working collaboratively also means keeping in sync with changes that have been created as well as bringing your own work back into the remote repository. 
 
 These three commands are essential to keep your local version in sync with the remote repository:
+
 ```bash
 git fetch
 ```
+
 `git fetch` fetches any changes that have been made to the remote repository while you were working on your own local repository. The command will show changes that are not in your local version yet.They need to be integrated before you can push your version back into the remote repository. You can specify which branch you want to fetch by adding its name. Using `git log` in the terminal will give you further information on the changes. Use `git commit` and `git merge` to integrate the changes.
+
 ```bash
 git pull
 ```
+
 `git pull` is similar to `git fetch`. However, when you use this command, the change in the remote repository or remote branch are merged into your local copy straight away. While `git fetch` gives you more control, `git pull` is faster when you want to perform multiple actions.
+
 ```bash
 git push
 ```
-`git push` is the opposite action of `git fetch`and `git pull`. You _push back_ your local branch or repository into the remote repository. If you have already an upstream remote for your local branch, `git push` can push to that branch as a default. In case you want to push your changes to a different branch, 
 
-![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\\"merge pull request\\\". There are alternative views available. Comments can be added.")
+`git push` is the opposite action of `git fetch`and `git pull`. You _push back_ your local branch or repository into the remote repository. If you have already an upstream remote for your local branch, `git push` can push to that branch as a default. In case you don't want to use the default branch, you can specify the branch every time you push: `git push <remote> <branch-name>`.
+
+<SideNote type="tip" title="Good practice when collaborating">
+When you collaborate with others, it is considered good practice to `git pull` before you `git push` to the remote. This way, you can resolve conflicts locally and avoid conflicts in the remote. These so-called *merge conflicts* are sometimes difficult to entangle, so take your time when pushing your work. Code editors clearly visualise conflicts and help you with a clean work flow.
+</SideNote>
+
+![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\\\"merge pull request\\\\". There are alternative views available. Comments can be added.")
 
 Merge in github
