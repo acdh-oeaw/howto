@@ -64,4 +64,4 @@ jobs:
           curl \
             -X POST \
             -H "Authorization: Bearer ${{ secrets.RANCHER_API_TOKEN }}" \
-            'https://rancher.acdh-dev.oeaw.ac.at/v3/project/c-zdbh8:p-6vb45/workloads/deployment:howto:howto?action=redeploy'
+            'https://rancher.acdh-dev.oeaw.ac.at/v3/project/c-m-6hwgqq2g:p-d2jmv/workloads/deployment:howto:howto?action=redeploy'
