@@ -11,7 +11,7 @@ export function createImprintUrl(locale: Locale): URL {
     baseUrl: 'https://shared.acdh.oeaw.ac.at',
     pathname: '/acdh-common-assets/api/imprint.php',
     query: {
-      serviceID: 6848,
+      serviceID: 19273,
       outputLang: locale,
     },
   })
