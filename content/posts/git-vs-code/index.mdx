@@ -1,0 +1,47 @@
+---
+title: "Git: VS Code"
+lang: en
+date: 2023-02-06T00:00:00.000Z
+version: 1.0.0
+authors:
+  - siam-omar-1
+tags:
+  - datenmanagement
+abstract: Getting access to the data on gitlab.oeaw.ac.at is different on all three OS.
+licence: ccby-4.0
+toc: false
+uuid: F_2JAdc0Na6JA5dxAM6Rg
+---
+<SideNote type="info" title="Getting access to the data on gitlab.oeaw.ac.at is different on all three OS">
+  <Tabs>
+    <Tab title="Windows">
+      You can paste the `https://...` of any git repository from a server in the text field that appears
+      when we click `Clone Git repository...` on the start screen of VSCodium or Visual Studio Code
+      ![clone workshop](/assets/images/clone_workshop.png "clone workshop")
+      After you hit enter a dialog appears asking you where to store the contents of the repository
+      locally:
+      ![select repository location Windows](/assets/images/select_repository_location_Windows.png "select repository location Windows")
+      The very first time for each web site like gitlab.oeaw.ac.at in Windows a dialog will open that asks
+      us for user name and password.
+      ![credentials dialog Windows](/assets/images/credentials_dialog_Windows.png "credentials dialog Windows")
+    </Tab>
+    <Tab title="MacOS">
+      You can paste the `https://...` of any git repository from a server in the text field that appears
+      when we click `Clone Git repository...` on the start screen of VSCodium or Visual Studio Code
+      ![clone workshop](/assets/images/clone_workshop.png "clone workshop")
+      On MacOS Visual Studio Code asks us for our username and password when we try to clone the
+      repository the first time.
+      ![username password MacOS](/assets/images/username_password_MacOS.png "username password MacOS")
+      These are passed to Git and Git saves them in the "keychain" which also for example Safari
+      uses to save credentials.
+    </Tab>
+    <Tab title="Linux">
+      On Linux Visual Studio Code asks us for our username and password when we try to clone the
+      repository the first time.
+
+      If git-credential-libsecret is installed the username and password will be stored and Visual
+      Studio Code will not ask us in the future. If it is not installed we have to type the password
+      again next time we interact with the repository on the gilab server.
+    </Tab>
+  </Tabs>
+</SideNote>
