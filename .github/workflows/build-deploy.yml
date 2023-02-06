@@ -60,8 +60,8 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Deploy to Rancher
-        run: |
-          curl \
-            -X POST \
-            -H "Authorization: Bearer ${{ secrets.RANCHER_API_TOKEN }}" \
-            'https://rancher.acdh-dev.oeaw.ac.at/v3/project/c-m-6hwgqq2g:p-d2jmv/workloads/deployment:howto:howto?action=redeploy'
+        uses: acdh-oeaw/deploy-action@v1
+        with:
+          token: ${{ secrets.RANCHER_API_TOKEN }}
+          project: c-m-6hwgqq2g:p-d2jmv
+          deployment: howto:howto
