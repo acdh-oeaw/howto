@@ -47,10 +47,6 @@ Working with remote repositories can tell git that multiple people are working o
 
 When collaborators work on their shared project on their own computers, - how can they tell Git about their respective local project copies? By configuring a so-called “remote repository” which points to the URL of that copy:
 
-```bash
-git remote add my-colleagues-version-of-the-project htts://example.com/our-project.git
-```
-
 Now, while this could work in principle, it would require a bit of server configuration on your part, and it would get pretty complicated very quickly with teams of more than two members. This is why we will usually use a Git hosting provider like GitHub or GitLab to store a primary copy of our project, with which all team members can synchronize their local project copies. These Git hosting providers take care of all the complicated server-side stuff involved.
 
 <SideNote type="info" title="Git hosting providers">
@@ -171,9 +167,7 @@ If we ever forget what the prupose of a token was or if we don't use it anymore 
 by name and `Revoke` it, we delete it.
 ![gitlab.oeaw.ac.at revoke access token](/assets/images/gitlab_com_access_token_revoke.png "gitlab.oeaw.ac.at revoke access token")
 
-
-
-![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\\\\\\\"merge pull request\\\\\\\\". There are alternative views available. Comments can be added.")
+![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\\\\\\\\"merge pull request\\\\\\\\\". There are alternative views available. Comments can be added.")
 
 ADD further details - set up a remote repo for this?
 
