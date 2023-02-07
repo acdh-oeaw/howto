@@ -106,11 +106,9 @@ At the end there is a little dialog in the bottom right corner, click open there
 
 ![](images/open_cloned_project.png "open cloned project")
 
-
 Because Visual Studio Code is a development environment where developers can execute code they just downloaded from somewhere on the internet, Visual Studio Code asks if we trust the current repository. Therefore, choose to "trust" the repository that you downloaded from a team you know.
 
 ![](images/you_trust_the_people_you_collaborate_with.png "trust your team")
-
 
 [](command_line#cloning-a-remote-repository)
 
@@ -122,10 +120,7 @@ Git can record which changes, to which documents, have been made when, and by wh
 
 Version control allows to save versions of content, restore previous versions, and compare different versions. This is especially beneficial when working with multiple documents, and when working in teams of more than one (potentially working on the same document).
 
-Let's look at how change tracking with Git works in practice, locally in the project on your computer,
-which is always the first step when trying to upload a change to the server.
-
-Lets open the `README.md` in Visual Studio Code. This is done while the uppermost mode on the left is selected (the two sheets, files)
+Before uploading any changes, you want to track them locally. After cloning the wboe-repo, let's open the `README.md` in Visual Studio Code. This is done while the uppermost mode on the left is selected (the two sheets, files)
 
 We want to change something so we replace the text about adding a good description with `Done.`
 
@@ -134,21 +129,21 @@ Now we can select the third mode from the top (three connected circles, the grap
 This only lists those files that we change since we last made our changes permanent, committed (to) them.
 The README.md is listed. If we double click it we get the following view:
 
-![review changes](/assets/images/review_changes.png "review changes")
+![review changes](images/review_changes.png "review changes")
 
-If we are not 100% sure about the changes we will now "stage", that is prepare to be "commited", we
+If we are not 100% sure about the changes we will now **stage**, that is prepare to be **commited**, we
 can open each file and see the differences per line. This might also give us a hint what we did if the
-last commit was a while back and we don't remember exactly what we did.
+last commit was a while back and we don't remember exactly what happened.
 
 ### Mark content changes to be included in the version history
 
 Let's tell Git to keep an eye on changes to the newly created document `README.md`:
 
-![stage change](/assets/images/stage_change.png "stage change")
+![stage change](images/stage_change.png "stage change")
 
-We put changes in a "holding zone" or "staging area"
+We put changes in the **staging area**, before we commit.
 
-![staged change](/assets/images/staged_change.png "staged change")
+![staged change](images/staged_change.png "staged change")
 
 <SideNote type="info" title="Adding multiple files">
 
@@ -157,29 +152,40 @@ and than hit the `+`.
 
 </SideNote>
 
-[See here for the command line.](command_line#tracking-changes)
+The above action is the same as 
+
+```bash
+git add -A
+```
+
+on the command line.
 
 ### Bundle changes into meaningful chunks and commit to them
 
-Including content changes in Git's version history involves a two-step process. First, we put changes in to the "staging area" (this is what we did with `git add`). We can continue adding related changes to other documents, or additional newly created documents. This allows creating semantically meaningful units of changes. But the changing a staged document will **not** propagate these changes in the next step. Keep that in mind.
+Including content changes in Git's version history involves a two-step process. First, related changes are added to create semantically meaningful units of changes. But the changing a staged document will **not** propagate these changes in the next step. Keep that in mind.
 
-When all related changes have been added to the "staging area", we can save them together as a version history snapshot, with a message that briefly describes **why** we did the changes so it is easy to understand them later when viewing the version history.
+When all related changes have been added to the "staging area", we can save them together as a version history snapshot, a **commit**, with a **commit message** that briefly describes _why_ changes were made. This makes it easier to understand them later when viewing the version history. **Committing** means permanently recording a snapshot of contents at a specific point in time. In VS Code, you do not need to type the command but use the commit button.
 
-These units are called "commits", and "committing" means permanently recording a snapshot of contents at a specific point in time, with a message describing the change:
-![commit message and commit button](/assets/images/commit_message_and_commit_button.png "commit message and commit button")
+![](images/commit_message_and_commit_button.png "commit mesasge and commit button")
 
-Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. Visual Studio Code allows us to granularly choose with the `+` which changes, to which files should be part of the next snapshot, while "commit" will label that set of changes, and actually save a new snapshot.
+
 
 <SideNote type="info" title="Commit messages">
-Also, when in a hurry, it's tempting to write non-descriptive commit messages like "Added changes". Try to come up with something that describes the change, you'll thank yourself later!
+Whether on the command lineor in an editor, choose to write meaningful commit messages. This help your work process when revisiting your changes.
 </SideNote>
 
 #### The very first commit error
 
 If you are on a new machine and/or just installed Git you will get an error. Here is how it looks in
 MacOS:
-![very first git use error](/assets/images/very_first_git_use_error_MacOS.png "very first git use error")
+
+![](images/very_first_git_use_error_macos.png "very first git use error in MacOS")
+
 or Windows:
+
+![](images/missing_name_error.png "very first gut use error")
+
+
 ![very first git use error](/assets/images/missing_name_error.png "very first git use error")
 Whether you use `Learn More` or `Open Git log` you will eventually see that Git just wants to know
 who committs here. We suggest to use `Open Git log` which shows a new set of controls at the bottom right.
@@ -221,15 +227,15 @@ provides one. So click on "Terminal" at the bottom right.
 <SideNote type="info" title="Unfortunately this differs again between the three OSes">
   <Tabs>
     <Tab title="Windows">
-      Unfortunately when you click on "Terminal" now you get a terminal that does not knwo \`git\` (yet).
-      If you want to set your e-mail and name you need to click on the \`V\` next to the\`+\`
-      next to \`powershell\`. This will open a \`Git bash\`.
-      !\[Open Git Bash Windows](/assets/images/windows_open_git_bash.png "Open Git Bash Windows")
+      Unfortunately when you click on "Terminal" now you get a terminal that does not knwo \\`git\\` (yet).
+      If you want to set your e-mail and name you need to click on the \\`V\\` next to the\\`+\\`
+      next to \\`powershell\\`. This will open a \\`Git bash\\`.
+      !\\[Open Git Bash Windows](/assets/images/windows_open_git_bash.png "Open Git Bash Windows")
     </Tab>
     <Tab title="MacOS">
       Only on MacOS as a first time user you are asked to configure your shell a little. You can either
       skip that or maybe look at the defaults and use them. The keys you need to type are listed.
-      !\[first time terminal MacOS](/assets/images/first_time_terminal_MacOS.png "first time terminal MacOS")
+      !\\[first time terminal MacOS](/assets/images/first_time_terminal_MacOS.png "first time terminal MacOS")
     </Tab>
     <Tab title="Linux">
       This is the only OS where you can just type the two commands.
