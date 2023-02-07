@@ -44,11 +44,30 @@ You can either read and follow the tips and customize the appearance or click on
 
 Open the start menu or the application drawer of your desktop environment and search for Code or VSCodium.
 
-## Cloning a remote repository
+### Working with git in the editor
+
+#### Access token
 
 Follow the steps that are explained in getting an access token, so that you can link your editor to your Git account.
 
+#### Cloning a repository and getting data
+
+For example we want to clone `wboe-artikel` from https://gitlab.oeaw.ac.at/acdh-ch/wboe.
+The data at this location, in this repository, is marked as private. So you need to log into gitlab.oeaw.ac.at with the account you set up to see the contents.
+
+On the top right there is a `Clone` button which, when clicked, gives you two options `Clone with SSH`
+and `Clone with HTTPS`. We need the HTTPS option. On the right there is a copy to clipboard button we can use.
+
+If you installed Visual Studio Code there is a special kind of link that will open Visual Studio Code
+if you allow it and start the cloning process with the right settings.
+
+![](images/clonebutton_in_gitlab.png)
+
+<SideNote type="note">
 Getting access to the data on gitlab.oeaw.ac.at is different on all three OS
+</SideNote>
+
+
 
 #### Windows
 
@@ -59,12 +78,14 @@ After you hit enter a dialog appears asking you where to store the contents of t
 
 ![](images/select_repository_location_windows.png "select repository location Windows")
 
-  !\[select repository location Windows](/assets/images/select_repository_location_Windows.png "select repository location Windows")
+  
   The very first time for each web site like gitlab.oeaw.ac.at in Windows a dialog will open that asks
   us for user name and password.
-  !\[credentials dialog Windows](/assets/images/credentials_dialog_Windows.png "credentials dialog Windows")
 
-#### MacOS
+![](images/credentials_dialog_windows.png "credentials dialogue Windows")
+
+#### 
+MacOS
 
 You can paste the \`https://...\` of any git repository from a server in the text field that appears when we click \`Clone Git repository...\` on the start screen of VSCodium or Visual Studio Code:
 
