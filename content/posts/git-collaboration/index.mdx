@@ -17,8 +17,8 @@ uuid: reTNfSzPsMSGzkm36BPu9
 ### Learning outcomes
 
 - work collaboratively with git
-- create and clone a remote repository
-- understand git fetch, git push and git pull
+- create, clone and change a remote repository
+- understand the commands git fetch, git push and git pull
 - create a personal access token to use in a code editor
 
 ## Using Git for collaborative team work
@@ -30,25 +30,25 @@ This involves synchronizing changes across computer networks, and resolving conf
 
 Many **"drive" services in the cloud** like https://ucloud.univie.ac.at, https://www.dropbox.com,
 https://onedrive.live.com/ or https://drive.google.com" provide
-such mechanisms in their Web interface as well. Git however is often more fine grained and stricter.
+such mechanisms in their Web interface as well. Git however offers more fine grained tracking of changes, as well as more control over the handling of changes, versions and conflicts.
 
-It is often easier for programs to interact with Git services then with "drive" services. That's why
+It is also easier for applications to interact with Git services then with "drive" services. That's why
 software developers often ask you to use Git instead of any "drive" service.
 
 If you get into the Git workflow you may want to use it also locally for any kind of documents
 (remember Git is best at text documents, but not limited to them).
 
-Most imporantly however, everything we have learned in the first part is still valid: in Git everybody always works on a local copy of a project, and Git helps to keep local project copies in sync. This is why Git is sometimes called a distributed version control system.
+Most importantly however, everything we have learned in the first part is still valid: in Git everybody always works on a local copy of a project, and Git helps to keep local project copies in sync. This is why Git is sometimes called a distributed version control system.
 
 ## Remote repositories
 
-Working with remote repositories can tell git that multiple people are working on the same documents, keep track of changing documents and synchronise changes. Depending on the nature of you project, you might need to set up a remote repository or clone an already existing remote repository. In the following, we will take a closer look at both options.
+Remote repositories are versions of your project that are hosted "elsewhere", usually somwehere on the internet. There can be multiple such remote versions. Remote repositories are the principle mechanism that allows to synchronise changes between collaborators in a team. While it would be in principle possible to set up the local repository of a colleague as a remote repository and synchronize directly between individual colleagues, this would become complicated very quickly with teams of more than two members. Therefore almost invariably a dedicated Git hosting provider like GitHub or GitLab is used to store a primary copy of our project, with which all team members can synchronize their local project copies. 
+
+In the following, we will learn a few new git commands needed to work with remote repositories.
 
 ### Creating a remote repository
 
-When collaborators work on their shared project on their own computers, - how can they tell Git about their respective local project copies? By configuring a so-called “remote repository” which points to the URL of that copy:
-
-Now, while this could work in principle, it would require a bit of server configuration on your part, and it would get pretty complicated very quickly with teams of more than two members. This is why we will usually use a Git hosting provider like GitHub or GitLab to store a primary copy of our project, with which all team members can synchronize their local project copies. These Git hosting providers take care of all the complicated server-side stuff involved.
+If no remote repository for a project has been established yet, you need to create a new one.
 
 <SideNote type="info" title="Git hosting providers">
 There are various git hosting providers out there, some of the most prominent ones being GitHub and GitLab.
@@ -76,21 +76,21 @@ By convention, the remote repository which holds the primary copy of a project i
 
 ### Cloning a remote repository
 
-In many research projects, setting up a remote repository will be one of the initial steps, so there is no need to connect a pre-existing local project with a remote repository which simplifies things a lot. Instead we can **clone** a remote repository, which will take care of initialising the project locally, connecting it with the remote, and synchronising the local project with the current state of the remote.
+In a collaborative setup, there is a good chance that a remote repository has already been set up and we  just need to "connect" to it, that is, create a local copy, or **clone** a remote repository, which will take care of initialising the project locally, connecting it with the remote, and synchronising the local project with the current state of the remote.
 
-To **clone** a local repository from a remote repository, we can copy it's URL and create a local copy on our machine in a directory of our choosing, using the command `git clone <url>`.
+To **clone** a local repository from a remote repository, we just need to specfiy its URL and create a local copy on our machine in a directory of our choosing, using the command `git clone <url>`.
 
 ```bash
 git clone https://github.com/my-git-username/my-test-project
 ```
 
-The above will create a local directory for the git repository that has the same name as the remote repo, "my-test-project". If you would like to change the local directory's name to something else, you can do so:
+The above will create a local directory for the git repository that has the same name as the remote repo, "my-test-project". You are free to choose the local directory's name to your liking:
 
 ```bash
 git clone https://github.com/my-git-username/my-test-project the_new_project
 ```
 
-Now, our local git repo sits in a directory called "the_new_project".
+Now, our local git repo sits in a directory called `the_new_project`.
 
 Alternatively to the `https://`protocol, you can also use the SSH transfer protocol. Check the [git documentation](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) for further information.
 
@@ -168,7 +168,7 @@ If we ever forget what the prupose of a token was or if we don't use it anymore 
 by name and `Revoke` it, we delete it.
 ![gitlab.oeaw.ac.at revoke access token](/assets/images/gitlab_com_access_token_revoke.png "gitlab.oeaw.ac.at revoke access token")
 
-![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\\\\\\\\\\"merge pull request\\\\\\\\\\\". There are alternative views available. Comments can be added.")
+![](images/merge-pull-request-online-github.png "Previously commited changes can be merged back into the main branch by clicking \\\\\\\\\\\\"merge pull request\\\\\\\\\\\\". There are alternative views available. Comments can be added.")
 
 Similiar to GitLab, an access token can be created in GitHub too:
 
