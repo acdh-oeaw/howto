@@ -224,7 +224,6 @@ If you want to set your e-mail and name you need to click on the `V` next to the
 
 ![](images/windows_open_git_bash.png)
 
-Now replace you@example.com and Your Name with your name and execute two commands to configure Git. You can copy the commands from above. 
 
 ### MacOS
 
@@ -239,28 +238,23 @@ Only on MacOS as a first time user you are asked to configure your shell a littl
 
 </SideNote>
 
+Now replace `you@example.com` and `Your Name` with your name and execute two commands to configure Git. You can copy the commands from above.
 
+![](images/execute_suggested_in_terminal_macos.png "execute suggested in MacOS terminal")
 
-
-
-Now replace `you@example.com` and `Your Name` with your name and execute two commands to configure Git.
-You can copy the commands from above.
-![execute suggested in terminal MacOS](/assets/images/execute_suggested_in_terminal_MacOS.png "execute suggested in terminal MacOS")
-[See here for the command line.](command_line#bundle-changes-into-meaningful-chunks-and-commit-to-them)
+[](command_line#bundle-changes-into-meaningful-chunks-and-commit-to-them)
 
 ### Keeping repositories in sync: fetch, pull, push
 
 To get our changes to the server so other people in our team can fetch them to review them for example
 we now `push` what we `committed` on our machine to the server.
 
-![push](/assets/images/push.png "push")
+![push](images/push.png "push")
 
 The opposite action is to `pull` from the server. This means getting all the changes accumulated there
 and integrating them (merging them with our local changes if any) in the files we see locally.
 
 If we just want to download all change not integrating them at the same time we `fetch` from the server.
-
-[See here for the command line.](command_line#keeping-repositories-in-sync-fetch-pull-push)
 
 ### Merging and conflict resolution
 
@@ -282,15 +276,15 @@ The other change
 
 Note that Visual Studio Code provides us with a few controls we can click to resolve the conflict.
 
-![conflicting edits](/assets/images/conflicting_edits.png "conflicting edits")
+![conflicting edits](images/conflicting_edits.png "conflicting edits")
 
 We now can decide which is the better change (or use both if applicable):
 
-![accept current change](/assets/images/accept_current_change.png "accept current change")
+![accept current change](images/accept_current_change.png "accept current change")
 
 And after resolving **all** the conflicts we do a `merge commit` (the text is there automatically)
 
-![commit merge to resolve](/assets/images/commit_merge_to_resolve.png "commit merge to resolve")
+![commit merge to resolve](images/commit_merge_to_resolve.png "commit merge to resolve")
 
 _Note_: **Never** commit before resolving all conflicts, removing all conflict markers.
 You will make the maker lines permanent and They are made like this to break any programming
