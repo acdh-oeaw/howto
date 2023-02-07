@@ -18,11 +18,13 @@ licence: ccby-4.0
 toc: false
 uuid: SBjyyMxmwXB0wOftI0qIk
 ---
-In this resource you will learn
+### Learning outcomes
 
-- essential git commands
-- how to use git commands in the terminal
-- how to get and install the software you need
+- be familiar with git terminology
+- be familiar with the git workflow
+- install git
+- understand essential git commands
+- use git commands in the terminal / command line
 
 ## Version control and tracking changes
 
@@ -192,7 +194,6 @@ sudo git config --system credential.helper /usr/share/doc/git/contrib/credential
 
 </SideNote>
 
-
 ## Initialise a Git project in your terminal
 
 First, we need to tell Git that it should start to manage a project directory and keep an eye on changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on **Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data you want to version (usually done by typing `cd {folder-name}`, e.g. _cd Documents_), and afterwards type:
@@ -255,6 +256,7 @@ These units are called **“commits”**, and **“committing”** means permane
 ```bash
 git commit -m "Add test document"
 ```
+
 Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. `git add` allows to granularly choose which changes, to which files should be part of the next snapshot, while `git commit` will label that set of changes, and actually save a new snapshot.
 
 <SideNote type="info" title="Commit messages">
@@ -279,6 +281,7 @@ Below, you see a sample information message that your terminal returns. It inclu
 ```bash
 7f733ac (HEAD -> main) Add test document
 ```
+
 If you type `git log` instead, more detailed information will be displayed, including the individual add that are bundled in your commit (if you have any) and the longer internal identifier.
 
 ### View individual snapshot
@@ -341,7 +344,7 @@ Once you're done looking around, don't forget to return to the present! The easi
 git checkout main
 ```
 
-The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default _branch_ of the timeline, because there can be multiple parallel timelines 🤯. Branches were mentioned in the beginning and we'll have a look at these branches in the second post, **[Link]**).
+The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default _branch_ of the timeline, because there can be multiple parallel timelines 🤯. Branches were mentioned in the beginning and we'll have a look at these branches in the second post, **\[Link]**).
 
 ### Undo changes
 
