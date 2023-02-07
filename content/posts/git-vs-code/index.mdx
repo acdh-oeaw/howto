@@ -168,10 +168,8 @@ When all related changes have been added to the "staging area", we can save them
 
 ![](images/commit_message_and_commit_button.png "commit mesasge and commit button")
 
-
-
 <SideNote type="info" title="Commit messages">
-Whether on the command lineor in an editor, choose to write meaningful commit messages. This help your work process when revisiting your changes.
+Whether on the command line or in an editor, choose to write meaningful commit messages. This help your work process when revisiting your changes.
 </SideNote>
 
 #### The very first commit error
@@ -185,18 +183,17 @@ or Windows:
 
 ![](images/missing_name_error.png "very first gut use error")
 
+Whether you use `Learn More` or `Open Git log`, you will eventually see that Git just wants to know who commits here. We suggest to use `Open Git log` which shows a new set of controls at the bottom right.
+Alternatively you can select "Terminal" and "New Terminal" from the menu bar
 
-![very first git use error](/assets/images/missing_name_error.png "very first git use error")
-Whether you use `Learn More` or `Open Git log` you will eventually see that Git just wants to know
-who committs here. We suggest to use `Open Git log` which shows a new set of controls at the bottom right.
-Alternativly you can select "Terminal" and "New Terminal" from the menu bar
-![Terminal menu](/assets/images/menu_bar_terminal.png "Terminal menu")
-<SideNote type="info" title="Here is the &quot;Please tell me who you are&quot; message">
-  <Tabs>
-    <Tab title="Screenshot">
-      ![scroll up to see tip](/assets/images/scroll_up_to_see_tip.png "scroll up to see tip")
-    </Tab>
-    <Tab title="Text for copying">
+![](images/menu_bar_terminal.png "terminal menu")
+
+<SideNote type="info" title="The tell me who you are - message">
+![](images/scroll_up_to_see_tip.png "Screenshot of \"Please tell me who you are\", \"scroll up to see tip\"")
+</SideNote>
+
+<SideNote type="info" title="Text for copying">
+
 
 ```
 > git -c user.useConfigOnly=true commit --quiet --allow-empty-message --file -
@@ -214,28 +211,22 @@ Omit --global to set the identity only in this repository.
 
 fatal: no email was given and auto-detection is disabled
 ```
-
-```
-</Tab>
-```
-
-  </Tabs>
 </SideNote>
+
 There is no graphical interface for this most often one time configuration.
-You need to copy the two suggested commands and execute them in a terminal. Visual Studio Code
-provides one. So click on "Terminal" at the bottom right.
+You need to copy the two suggested commands and execute them in a terminal. Visual Studio Code provides one. So click on "Terminal" at the bottom right.
+
 <SideNote type="info" title="Unfortunately this differs again between the three OSes">
-  <Tabs>
-    <Tab title="Windows">
-      Unfortunately when you click on "Terminal" now you get a terminal that does not knwo \\`git\\` (yet).
-      If you want to set your e-mail and name you need to click on the \\`V\\` next to the\\`+\\`
-      next to \\`powershell\\`. This will open a \\`Git bash\\`.
-      !\\[Open Git Bash Windows](/assets/images/windows_open_git_bash.png "Open Git Bash Windows")
+### Windows
+
+Unfortunately when you click on "Terminal" now you get a terminal that does not know `git` (yet).
+If you want to set your e-mail and name you need to click on the `V` next to the `+` next to `powershell`. This will open a `Git bash`.
+      !\\\[Open Git Bash Windows](/assets/images/windows_open_git_bash.png "Open Git Bash Windows")
     </Tab>
     <Tab title="MacOS">
       Only on MacOS as a first time user you are asked to configure your shell a little. You can either
       skip that or maybe look at the defaults and use them. The keys you need to type are listed.
-      !\\[first time terminal MacOS](/assets/images/first_time_terminal_MacOS.png "first time terminal MacOS")
+      !\\\[first time terminal MacOS](/assets/images/first_time_terminal_MacOS.png "first time terminal MacOS")
     </Tab>
     <Tab title="Linux">
       This is the only OS where you can just type the two commands.
