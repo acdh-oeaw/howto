@@ -67,6 +67,7 @@ if you allow it and start the cloning process with the right settings.
 Getting access to the data on gitlab.oeaw.ac.at is different on all three OS
 </SideNote>
 
+<SideNote type="info">
 #### Windows
 
 You can paste the \`https://...\` of any git repository from a server in the text field that appears when we click \`Clone Git repository...\` on the start screen of VSCodium or Visual Studio Code.
@@ -99,3 +100,194 @@ These are passed to Git and Git saves them in the "keychain" which also for exam
 On Linux Visual Studio Code asks us for our username and password when we try to clone the repository for the first time.
 
 If git-credential-libsecret is installed the username and password will be stored and Visual Studio Code will not ask us in the future. If it is not installed we have to type the password again next time we interact with the repository on the gilab server.
+</SideNote>
+
+At the end there is a little dialog in the bottom right corner, click open there:
+
+![](images/open_cloned_project.png "open cloned project")
+
+
+Because Visual Studio Code is a development environment where developers can execute code they just downloaded from somewhere on the internet, Visual Studio Code asks if we trust the current repository. Therefore, choose to "trust" the repository that you downloaded from a team you know.
+
+![](images/you_trust_the_people_you_collaborate_with.png "trust your team")
+
+
+[](command_line#cloning-a-remote-repository)
+
+### Tracking changes
+
+Let's start by looking at how Git can help with tracking changes in a project.
+
+Most of us will have encountered, and used, _some_ kind of version control: either some custom file naming convention to mark versions of a document, change tracking functionality built into word processors, or the history view of document edits on Wikipedia.
+
+Git can record which changes, to which documents, have been made when, and by whom. It allows to keep a detailed revision history of a project, because it can save snapshots of a project at specific points in time, thus being open to review any time in the future.
+
+Version control allows to save versions of content, restore previous versions, and compare different versions. This is especially beneficial when working with multiple documents, and when working in teams of more than one (potentially working on the same document).
+
+Let's look at how change tracking with Git works in practice, locally in the project on your computer,
+which is always the first step when trying to upload a change to the server.
+
+Lets open the `README.md` in Visual Studio Code. This is done while the uppermost mode on the left is selected (the two sheets, files)
+
+We want to change something so we replace the text about adding a good description with `Done.`
+
+Now we can select the third mode from the top (three connected circles, the graph changes and branches make up in version control)
+
+This only lists those files that we change since we last made our changes permanent, committed (to) them.
+The README.md is listed. If we double click it we get the following view:
+
+![review changes](/assets/images/review_changes.png "review changes")
+
+If we are not 100% sure about the changes we will now "stage", that is prepare to be "commited", we
+can open each file and see the differences per line. This might also give us a hint what we did if the
+last commit was a while back and we don't remember exactly what we did.
+
+### Mark content changes to be included in the version history
+
+Let's tell Git to keep an eye on changes to the newly created document `README.md`:
+
+![stage change](/assets/images/stage_change.png "stage change")
+
+We put changes in a "holding zone" or "staging area"
+
+![staged change](/assets/images/staged_change.png "staged change")
+
+<SideNote type="info" title="Adding multiple files">
+
+We can add multiple files by selecting the names as usual using shift or ctrl or command
+and than hit the `+`.
+
+</SideNote>
+
+[See here for the command line.](command_line#tracking-changes)
+
+### Bundle changes into meaningful chunks and commit to them
+
+Including content changes in Git's version history involves a two-step process. First, we put changes in to the "staging area" (this is what we did with `git add`). We can continue adding related changes to other documents, or additional newly created documents. This allows creating semantically meaningful units of changes. But the changing a staged document will **not** propagate these changes in the next step. Keep that in mind.
+
+When all related changes have been added to the "staging area", we can save them together as a version history snapshot, with a message that briefly describes **why** we did the changes so it is easy to understand them later when viewing the version history.
+
+These units are called "commits", and "committing" means permanently recording a snapshot of contents at a specific point in time, with a message describing the change:
+![commit message and commit button](/assets/images/commit_message_and_commit_button.png "commit message and commit button")
+
+Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. Visual Studio Code allows us to granularly choose with the `+` which changes, to which files should be part of the next snapshot, while "commit" will label that set of changes, and actually save a new snapshot.
+
+<SideNote type="info" title="Commit messages">
+Also, when in a hurry, it's tempting to write non-descriptive commit messages like "Added changes". Try to come up with something that describes the change, you'll thank yourself later!
+</SideNote>
+
+#### The very first commit error
+
+If you are on a new machine and/or just installed Git you will get an error. Here is how it looks in
+MacOS:
+![very first git use error](/assets/images/very_first_git_use_error_MacOS.png "very first git use error")
+or Windows:
+![very first git use error](/assets/images/missing_name_error.png "very first git use error")
+Whether you use `Learn More` or `Open Git log` you will eventually see that Git just wants to know
+who committs here. We suggest to use `Open Git log` which shows a new set of controls at the bottom right.
+Alternativly you can select "Terminal" and "New Terminal" from the menu bar
+![Terminal menu](/assets/images/menu_bar_terminal.png "Terminal menu")
+<SideNote type="info" title="Here is the &quot;Please tell me who you are&quot; message">
+  <Tabs>
+    <Tab title="Screenshot">
+      ![scroll up to see tip](/assets/images/scroll_up_to_see_tip.png "scroll up to see tip")
+    </Tab>
+    <Tab title="Text for copying">
+
+```
+> git -c user.useConfigOnly=true commit --quiet --allow-empty-message --file -
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: no email was given and auto-detection is disabled
+```
+
+```
+</Tab>
+```
+
+  </Tabs>
+</SideNote>
+There is no graphical interface for this most often one time configuration.
+You need to copy the two suggested commands and execute them in a terminal. Visual Studio Code
+provides one. So click on "Terminal" at the bottom right.
+<SideNote type="info" title="Unfortunately this differs again between the three OSes">
+  <Tabs>
+    <Tab title="Windows">
+      Unfortunately when you click on "Terminal" now you get a terminal that does not knwo \`git\` (yet).
+      If you want to set your e-mail and name you need to click on the \`V\` next to the\`+\`
+      next to \`powershell\`. This will open a \`Git bash\`.
+      !\[Open Git Bash Windows](/assets/images/windows_open_git_bash.png "Open Git Bash Windows")
+    </Tab>
+    <Tab title="MacOS">
+      Only on MacOS as a first time user you are asked to configure your shell a little. You can either
+      skip that or maybe look at the defaults and use them. The keys you need to type are listed.
+      !\[first time terminal MacOS](/assets/images/first_time_terminal_MacOS.png "first time terminal MacOS")
+    </Tab>
+    <Tab title="Linux">
+      This is the only OS where you can just type the two commands.
+    </Tab>
+  </Tabs>
+</SideNote>
+
+Now replace `you@example.com` and `Your Name` with your name and execute two commands to configure Git.
+You can copy the commands from above.
+![execute suggested in terminal MacOS](/assets/images/execute_suggested_in_terminal_MacOS.png "execute suggested in terminal MacOS")
+[See here for the command line.](command_line#bundle-changes-into-meaningful-chunks-and-commit-to-them)
+
+### Keeping repositories in sync: fetch, pull, push
+
+To get our changes to the server so other people in our team can fetch them to review them for example
+we now `push` what we `committed` on our machine to the server.
+
+![push](/assets/images/push.png "push")
+
+The opposite action is to `pull` from the server. This means getting all the changes accumulated there
+and integrating them (merging them with our local changes if any) in the files we see locally.
+
+If we just want to download all change not integrating them at the same time we `fetch` from the server.
+
+[See here for the command line.](command_line#keeping-repositories-in-sync-fetch-pull-push)
+
+### Merging and conflict resolution
+
+What happens if two people edit the same file? Well it depends:
+
+1. If the two edit different lines in the file then the changes can be `merged` automatically
+   That is a good solution in the majority of cases and it saves a lot of time.
+2. I two people edit the same line then there is a `conflict` that needs to be `resolved`
+
+Conflicts are marked with these distinct lines
+
+```bash
+<<<<<<<< ...
+One change
+--------
+The other change
+>>>>>>>> ...
+```
+
+Note that Visual Studio Code provides us with a few controls we can click to resolve the conflict.
+
+![conflicting edits](/assets/images/conflicting_edits.png "conflicting edits")
+
+We now can decide which is the better change (or use both if applicable):
+
+![accept current change](/assets/images/accept_current_change.png "accept current change")
+
+And after resolving **all** the conflicts we do a `merge commit` (the text is there automatically)
+
+![commit merge to resolve](/assets/images/commit_merge_to_resolve.png "commit merge to resolve")
+
+_Note_: **Never** commit before resolving all conflicts, removing all conflict markers.
+You will make the maker lines permanent and They are made like this to break any programming
+language and XML.
