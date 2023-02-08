@@ -4,7 +4,6 @@ lang: en
 date: 2023-01-31T00:00:00.000Z
 version: 1.0.0
 authors:
-  - probst-stefan
   - siam-omar
 editors:
   - königshofer-elisabeth
@@ -28,7 +27,7 @@ uuid: SBjyyMxmwXB0wOftI0qIk
 
 ## Version control and tracking changes
 
-**Git**'s main purpose is to track changes in files and folders of a project, either for yourself or when working collaboratively in a team. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store _images_, _audio files_, or `.doc` and `.pdf` documents, it is not able to help you withe changes in documents in so-called binary formats . 
+**Git**'s main purpose is to track changes in files and folders of a project, either for yourself or when working collaboratively in a team. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store _images_, _audio files_, or `.doc` and `.pdf` documents, it is not able to help you withe changes in documents in so-called binary formats .
 
 **Git**
 
@@ -55,7 +54,7 @@ This diagram is a great summary of how content moves in Git, between the “work
 - **Staging area:** This "holding zone" allows to **stage** changes in your documents, and **commit** those changes once you are comfortable, and **push** these changes to your repository.
 - **Repository:** A repository is a central location where the data, files and documents are stored and managed. You can be the sole user of a repository or you can be a collaborator in a team.
 
-Let’s look at how change tracking with Git works in practice, in a local project on your computer (no network connection required). We’ll walk through how to work with Git in the terminal, because that is where Git was originally meant to be used, and because it helps to understand what is actually going on. This involves learning a handful of Git commands, and while that might seem intimidating at first, you’ll see that it becomes second-nature with a bit of practice very quickly. 
+Let’s look at how change tracking with Git works in practice, in a local project on your computer (no network connection required). We’ll walk through how to work with Git in the terminal, because that is where Git was originally meant to be used, and because it helps to understand what is actually going on. This involves learning a handful of Git commands, and while that might seem intimidating at first, you’ll see that it becomes second-nature with a bit of practice very quickly.
 
 However, if you prefer to work with Git via a **graphical user interface (GUI)**, take a look at the bonus section at the end of this introduction, which lists some popular editor or operating system integrations.
 
@@ -72,7 +71,7 @@ The command line interface (CLI) relies on text input. The user needs to know sy
 ```bash
 C:\Users\user_name>path_to_your_directory
 ```
-When using a Mac, you will see the **$** character instead of **>**. 
+When using a Mac, you will see the **$** character instead of **>**.
 
 Here's an example for a basic command to use in your CLI: to navigate to a directory, type **cd** and the directory name. Now you can navigate down the directory hierarchy. To go back up, type **cd ..**
 ```bash
@@ -82,7 +81,7 @@ C:\Users\user_name\path_to_your_directory\a_small_folder> cd ..
 C:\Users\user_name\path_to_your directory> cd ..
 C:\Users\user_name>
 ```
-There are multifple tutorials available that help you to familiarise with the command line. 
+There are multifple tutorials available that help you to familiarise with the command line.
 </SideNote>
 
 <SideNote type="info" title="Git for Windows, Mac, Linux">
@@ -133,9 +132,9 @@ If these three downsides do not matter to your workflow, here is a step by step 
 1. Download the installer package at [https://sourceforge.net/projects/git-osx-installer/](https://sourceforge.net/projects/git-osx-installer/).
 2. Open the downloaded *.dmg file and run the file with the ending *.pkg.
 ![](images/macos_installerpackage.jpg)
-3. MacOS is likely to give you a warning, because it does not initially trust sourceforge.com as a source, as it is not a "verfied developer". 
+3. MacOS is likely to give you a warning, because it does not initially trust sourceforge.com as a source, as it is not a "verfied developer".
 ![](images/macos-warning.png)
-If this happens, please press ok and go to your "System Settings" - Security - General. 
+If this happens, please press ok and go to your "System Settings" - Security - General.
 ![](images/macos-securitysettings.jpg)
 There you will see at the bottom of the window a button that should prompt "open anyways" to be able to open and run the *.pkg. Also prompt "open" at the following warning and the installer-package will start.
 4.  Please follow the instructions in the standard installation dialogue to install Git.
@@ -447,7 +446,7 @@ Use the terminal or the git shell and navigate to this directory on the command 
 
 Run the \`git init\`command.
 
-Create a new document called "teapot.txt" with this text (you could also do this outside the command line): 
+Create a new document called "teapot.txt" with this text (you could also do this outside the command line):
 
 - I’m a little teapot
   Short and stout
@@ -471,7 +470,7 @@ Add the "teapot.txt" document.
 
 Commit both documents with the following commit-message: "add teapot lyrics".
 
-Run \`git status\` to check if your commit has worked. 
+Run \`git status\` to check if your commit has worked.
 
 Run \`git log\` to see the identifier and the commit message.
 
@@ -481,6 +480,6 @@ Run \`git log\` to see the identifier and the commit message.
 
 ### Cheatsheets
 
-Git commands Github: https://education.github.com/git-cheat-sheet-education.pdf 
+Git commands Github: https://education.github.com/git-cheat-sheet-education.pdf
 
 Git commands Gitlab: https://about.gitlab.com/images/press/git-cheat-sheet.pdf
