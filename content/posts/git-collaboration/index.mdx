@@ -167,7 +167,6 @@ just created somewhere. We might need it later for enabling an add-on.
 If we ever forget what the prupose of a token was or if we don't use it anymore we find the token
 by name and `Revoke` it, we delete it.
 
-
 Similiar to GitLab, an access token can be created in GitHub too:
 
 [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
@@ -194,3 +193,53 @@ Then, check the local repo's status.
 Before you push your repo, perfom \`git fetch\`(if you think others are working in the same remote repo), or \`git pull\`(if you think you are the only person working on it).
 
 Perform \`git push\`.
+
+<Quiz>
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        What are GitHub, GitLab and Bitbucket?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        Version control systems
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        hosting providers
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        code editors
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.Message type="correct">
+        Correct!
+      </Quiz.Message>
+
+      <Quiz.Message type="incorrect">
+        Try again
+      </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        What is the difference between `git fetch`and `git pull`?
+      </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option>
+        They are the same.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        `Git fetch` allows to integrate all the changes that have been made to the remote repository into your local repo at the same time.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        `Git pull` allows to integrate all the changes that have been made to the remote repository into your local repo at the same time.
+      </Quiz.MultipleChoice.Option>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+</Quiz>
