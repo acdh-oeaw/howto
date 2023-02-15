@@ -1,8 +1,8 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "EditorConfig.EditorConfig",
+    "editorConfig.editorConfig",
     "esbenp.prettier-vscode",
-    "JounQin.vscode-mdx"
+    "unifiedjs.vscode-mdx"
   ]
 }

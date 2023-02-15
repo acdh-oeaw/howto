@@ -195,5 +195,8 @@
     "commit-msg": "yarn commitlint --edit",
     "pre-commit": "yarn lint-staged",
     "pre-push": "yarn run validate"
+  },
+  "volta": {
+    "node": "16.19.0"
   }
 }
