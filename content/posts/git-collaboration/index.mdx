@@ -5,7 +5,7 @@ date: 2023-01-31T00:00:00.000Z
 version: 1.0.0
 authors:
   - probst-stefan
-  - siam-omar-1
+  - siam-omar
 tags:
   - datenmanagement
 abstract: This post will help you understand how to work with git in a
@@ -42,7 +42,7 @@ Most importantly however, everything we have learned in the first part is still 
 
 ## Remote repositories
 
-Remote repositories are versions of your project that are hosted "elsewhere", usually somwehere on the internet. There can be multiple such remote versions. Remote repositories are the principle mechanism that allows to synchronise changes between collaborators in a team. While it would be in principle possible to set up the local repository of a colleague as a remote repository and synchronize directly between individual colleagues, this would become complicated very quickly with teams of more than two members. Therefore almost invariably a dedicated Git hosting provider like GitHub or GitLab is used to store a primary copy of our project, with which all team members can synchronize their local project copies. 
+Remote repositories are versions of your project that are hosted "elsewhere", usually somwehere on the internet. There can be multiple such remote versions. Remote repositories are the principle mechanism that allows to synchronise changes between collaborators in a team. While it would be in principle possible to set up the local repository of a colleague as a remote repository and synchronize directly between individual colleagues, this would become complicated very quickly with teams of more than two members. Therefore almost invariably a dedicated Git hosting provider like GitHub or GitLab is used to store a primary copy of our project, with which all team members can synchronize their local project copies.
 
 In the following, we will learn a few new git commands needed to work with remote repositories.
 
@@ -55,12 +55,12 @@ There are various git hosting providers out there, some of the most prominent on
 
 We are going to use **GitHub** in this section, but other services like GitLab work very similarly. Although **GitHub** has a nice **browser-based graphical user interface at [https://github.com](https://github.com)**, and also provides a **Desktop client** for all operating systems, we are going to keep using the terminal to communicate with GitHub first.
 
-If you want to follow along, please download and install the GitHub CLI and **create a GitHub user** account if you don’t have one already.
+If you want to follow along, please download and install the GitHub CLI and **create a GitHub user** account if you don't have one already.
 
 CLI INSTRUCTION!
 </SideNote>
 
-First, let’s create a new empty remote repository called my-test-project on GitHub’s servers:
+First, let's create a new empty remote repository called my-test-project on GitHub's servers:
 
 ```bash
 gh repo create my-test-project
@@ -96,7 +96,7 @@ Alternatively to the `https://`protocol, you can also use the SSH transfer proto
 
 ### Keeping repositories in sync: fetch, pull, push
 
-Working collaboratively also means keeping in sync with changes that have been created as well as bringing your own work back into the remote repository. 
+Working collaboratively also means keeping in sync with changes that have been created as well as bringing your own work back into the remote repository.
 
 These three commands are essential to keep your local version in sync with the remote repository:
 
@@ -124,7 +124,7 @@ When you collaborate with others, it is considered good practice to `git pull` b
 
 ## Working collaboratively in code editors
 
-Alternatively to working on the command line, some hosting providers like GitHub offer a desktop client or a browser based interface. In addition, there are various code editors available that provide a graphical user interface that support working with your team fast, diligently and easily. Some of the more well-known ones are [VS Codium](https://vscodium.com/), [Visual Studio Code](https://code.visualstudio.com/), and [Git Kraken](https://www.gitkraken.com/). 
+Alternatively to working on the command line, some hosting providers like GitHub offer a desktop client or a browser based interface. In addition, there are various code editors available that provide a graphical user interface that support working with your team fast, diligently and easily. Some of the more well-known ones are [VS Codium](https://vscodium.com/), [Visual Studio Code](https://code.visualstudio.com/), and [Git Kraken](https://www.gitkraken.com/).
 
 In order to work with your team but use a code editor, you need to link the code editor and your respective GitHub, GitLab, Bitbucket etc account. This way, the code editor can access the remote repository and you can set up your local version and/or bring locally created files into the remote repo.
 Follow the installation instructions for your favourite code editor and come back for information on linking the editor with your hosting provider.
@@ -137,7 +137,7 @@ In the Git: VS Code resource, you can find more details on who to use a code edi
 
 Security experts will tell you that you should never save a password on a computer. Write it down on a peace of paper and put it into a locked drawer maybe but never save it to a computer in a readable way. This of course can mean that you need to type a password again and again and again when working with some data and that is tiresome.
 
-So the solution are throw away passwords no one needs to remember and that have a scope, that is they can only be used to do certain things with a service. 
+So the solution are throw away passwords no one needs to remember and that have a scope, that is they can only be used to do certain things with a service.
 
 Besides gitlab.oeaw.ac.at allows you to use a number of other services (like Google, GitHub, etc) you already might have an account for to log into gitlab.oeaw.ac.at. If you use that, and that is in general a good idea, gitlab.oeaw.ac.at has no idea what your password is. It just trusts the other services to check your password and tell it that you are who you claim to be.
 
@@ -247,7 +247,7 @@ And put it in her tea\
 The flea died and Granny cried.\
 A, B, C.
 
-Add the file to the repo, and commit the file with  commit message. 
+Add the file to the repo, and commit the file with  commit message.
 
 Then, check the local repo's status.
 
