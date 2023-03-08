@@ -73,7 +73,7 @@ Einige der Token-Attribute im amc wären
 
 - `word` : Das einfachste Attribut beinhaltet die orthographische Form des Wortes.
 - `lemma` : hier steht die Grundform des Wortes (wie es von einem Lemmatisierungsprogramm ermitteln wurde).
-- `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist case sensitiv, lc kann verwendet werden, um case insensitiv zu suchen. D.h. eine Suche \[word="Ciao"] findet nur genau „Ciao“. Die Suche \[lc="ciao"] findet ciao, Ciao, CIAO, CiAo etc.     
+- `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist _case sensitiv_, `lc` kann verwendet werden, um case _insensitiv_ -- also unter Großkleinschreibung ignorierend -- zu suchen. D.h. eine Suche \[word="Ciao"] findet nur genau „Ciao“. Die Suche \[lc="ciao"] findet ciao, Ciao, CIAO, CiAo etc.     
 - `posTT` : part-of-Speech tags nach dem STTS-Tagset, wie sie vom PoS tagger TreeTagger vergeben wurden.
 - `pos` : part-of-Speech tags, wie sie vom PoS tagger RFTagger vergeben wurden: zusätzlich zur Wortart werden auch morphologische Informationen angegeben.
 
@@ -84,13 +84,13 @@ Einige der Token-Attribute im amc wären
   ![](images/amc3.2_concordance_lemma_noun_ciao_random_result_postt-annotation.png "Suchergebnis für Token ciao. Es wurden die Attribute word, lemma, posTT, und pos ausgewählt. Die Information ist unter dem Token sichtbar.")
 
 <SideNote type="tip" title="Tipp: Attribute eines Korpus">
-Die Liste aller Attribute eines Korpus lässt sich immer einfach unter dem Info-Zeichen im Overflow-Menü oder — völlig äquivalent — in der  _Corpus info_ im Dashboard des jeweiligen Corpus anzeigen.
+Die Liste aller Attribute eines Korpus lässt sich immer einfach unter dem Info-Zeichen im Overflow-Menü oder — völlig äquivalent — in der _CORPUS INFO_ im Dashboard des jeweiligen Corpus anzeigen.
 </SideNote>
 
 ### Strukturen
 
-Die Token sind in **hierarchische Strukturen** eingebettet.
-Zum besseren Verständnis dieses Konzepts hier ein Beispiel, wie für den Import in die SKE vorbereitete Textdaten aufgebaut sind.
+Die Token sind typischerweise in **hierarchische Strukturen** eingebettet.
+Zum besseren Verständnis dieses Konzepts hier ein Beispiel, das zeigt, wie Textdaten aussehen, die zum Export in die SKE vorbereitet wurden.  
 
 ```
 <doc id="APA_20170101_APA0001" datum_full="2017-01-01T00:11:16Z" 
@@ -122,17 +122,19 @@ fliegen     VINF.Full.-             VVFIN  fliegen-v
 ...
 </doc>
 ```
+Dieses Datenformat nennt sich (in der SKE-Terminologie) „Vertikale“. 
 
-Dieses Datenformat nennt sich (in der SKE-Terminologie) „Vertikale“: 
+Wie Sie sehen können, ist der Text tokenisiert. Jedes Token steht in einer separaten Zeile und diese Zeilen enthalten, in Spalten organisiert, die Wortform (also formal gesprochen das Token-Attribute `word`) gefolgt von den anderen Token-Attributen - in diesem Fall `pos`, `posTT` und `lempos` (eine Kombination aus Lemma und PoS) 
 
-Strukturen sind mithilfe von Spitzklammern ausgezeichnet (wie aus XML bekannt), dazwischen finden sich in je einer separaten Zeile die schon bekannten Token mit ihren in Spalten organisierten Attributen wie z.B. Lemma- und Part-of-Speech-Informationen.
-In diesem Beispiel ist zu erkennen, dass die Strukturen als XML-artige Annotationen die Token ergänzen.
+Und diese tokenisierten Texte können nun durch Struktur-Elemente, nun ja, strukturiert werden.  
+Im Beispiel ist zu erkennen, dass die Strukturen als XML-artige Spitzklammer-Annotationen die Token ergänzen.
 
-Typische Strukturen sind Dokumente, Paragraphen (Absätze) und Sätze, die im amc als `<doc>` `<p>` und `<s>` ausgezeichnet werden. Die Strukturen können Zusatzinformationen in Form von Attributen enthalten.
+Typische Strukturen sind Dokumente, Paragraphen (Absätze) und Sätze, die im amc als `<doc>` `<p>` und `<s>` ausgezeichnet werden. 
+Die Strukturen können Zusatzinformationen in Form von (Struktur-)Attributen enthalten.
 
 Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten zum entsprechenden Dokument.
-Im amc entspricht der Inhalt eines`<doc>`-Elements einem Zeitungsartikel.
-An Metadaten sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _src_, _ressort2_, etc.
+Im amc entspricht der Inhalt eines `<doc>`-Elements einem Zeitungsartikel.
+An Metadaten sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _docsrc_, _ressort2_, etc.
 
 ### Quiz
 
@@ -267,7 +269,8 @@ Ein weiteres Beispiel für den case-insensitiven Charakter der Simple query: _de
 
 Wie wir gesehen haben, kann in der Simple query nur nach Token und dabei auch nur nach Wortformen gesucht werden, oder exakter ausgedrückt: es kann nach Werten im Attribut _word_ gesucht werden (wobei implizit intern zusätzlich die Attribute _lc_ und _lemma_ zur Suche herangezogen werden).
 
-Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: Die Suche in beliebigen Attributen, die Suche in Strukturen, die Suche mit regulären Ausdrücken, etc.
+Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: Die Suche in beliebigen (Token-)Attributen, die Suche unter Berücksichtigung von Strukturen und deren Attribute, die Suche mit regulären Ausdrücken,
+ etc.
 
 <Video provider="youtube" id="nOMr_D6ISRM" startTime="1" />
 
@@ -499,11 +502,17 @@ Es stehen die logischen Operatoren **& (logisches UND)** und **\| (logisches ODE
 
 ### Gruppierung mit ( )
 
-In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdrücken zusammengefasst werden, die dann wiederum mit den schon bekannten Operatoren "`*` ? + | &" kombiniert werden können.
+In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdrücken zusammengefasst werden, die dann wiederum mit den schon bekannten Operatoren `* ? + | &` und `{min,max}` kombiniert werden können.
 
 - `[word="(Das|das)"]` finde alle _Das_ oder _das_ Token
 - `[word="(D|d)as"]` finde alle _Das_ oder _das_ Token
-- `[word="(Das|das)+"]` finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
+- `[lc="(ur|vor){2,}"]` findet alle Wortformen (unabhängig von der Groß-Kleinschreibung) die mit zumindest 2 "ur" oder "vor" beginnen, z.B. _vorvorgestern_ oder _Ururgroßvater_ (aber auch _Vorurteil_!)  
+- `[lc="(ha|he|hi|ho|hu){3,}"]` findet alle Wortformen (unabhängig von der Groß-Kleinschreibung) die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen - also _hahaha_ _hihihihihi_ etc. 
+
+Gruppierungen können auch innerhalb von anderen Gruppen platziert werden: 
+
+- `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleine Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
+
 
 ![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\"klimafreundlichesMobilitätskonzept\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
