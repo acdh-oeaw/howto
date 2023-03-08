@@ -731,6 +731,20 @@ Merken Sie sich am Besten einfach, dass **containing** und **within** sich exakt
 
 - `<s/> containing [word="Haus"]`: _search for any **structure**_ `<s>` _which is_ `containing` _a token_ `[word="Haus"]`
 - `[word="Haus"] within <doc docsrc="STANDARD"/>` _search for any **token**_ `[word="Haus"]` _which is located_ `within` a structure `<doc docsrc="STANDARD"/>`
+
+`containing` und `within` können auch miteinander kombiniert werden und es gibt sehr sinnvolle Anwendungen dafür!
+Typischerweise wird das eingesetzt um eine Kontexte zu filtern. 
+Beispielsweise könnte man auf der Suche nach Nennungen des Wortes Ball in der Bedeutung Tanzball auf Artikel einschränken, in denen typische Tanzballbegriffe vorkommen: 
+
+- `[lemma="Ball"] within ( <doc ressort2 != "sport"/> containing [lemma="(Walzer|Polonaise|Champagner|Mitternachtseinlage)"] ) `
+
+Also: suche nach "Ball" innerhalb von Artikeln die nicht aus dem Sportressort stammen, und in denen auch Walzer, Polonaise, Champagner oder Mitternachtseinlage vorkommen. 
+Damit schränkt sich die Trefferanzahl für "Ball" im amc von ca. 800.000 auf "nur noch" ca. 50.000 ein. (Aber freilich gibt es darunter immer noch Artikel über Fußball, die _nicht_ korrekt mit Sportressort markiert wurden und in denen Siege mit Champagner gefeiert werden, oder Spieler mit dem Eigennamen "Walzer" vorkommen) 
+
+<SideNote type="tip">
+  Für solche kombinierten Filterungen sind in der NoSKE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann auf das eben erstelle Subkorpus angewandt werden, und damit stufenweise verfeinert werden. 
+So kann z.B. das Ergebnis der obigen Abfrage als "Ball"-Subkorpus gespeichert werden. In weiteren Abfragen könnte man z.B. Artikel aus diesem Subkorpus ausschließen in den sportspezifische Wörter wie "Tor", "Elfmeter", "Torhüter", "Stürmer" etc. vorkommen.  
+</SideNote>
  
 
 ### Quiz
@@ -741,29 +755,29 @@ Merken Sie sich am Besten einfach, dass **containing** und **within** sich exakt
 
 ### Vereinfachte Schreibweise
 
-In der Suchmaske steht neben dem Feld CQL die Angabe eines **Default attribute**. Bei Abfragen auf dieses Attribut kann die Schreibweise `[attribut="value"]` vereinfacht werden. Dabei ist **word** quasi der Default des Default. Es gilt also:
+In der ADVANCED Suchmaske befindet sich unter dem Feld CQL ein Auswahlfeld für ein **Default attribute**, das mit dem Wert _lemma_ vorausgefüllt ist. Bei Abfragen auf dieses Attribut kann D.h. **lemma** ist quasi der Default des Default. Es gilt also:
 
-- statt `[ word="Paradeiser" ]` gilt vereinfacht: `"Paradeiser"` (die doppelten Anführungszeichen verpflichtend!)
+- statt `[ lemma="Paradeiser" ]` kann (bei einem _default attribute_ "lemma") vereinfacht  `"Paradeiser"` geschrieben werden (die doppelten Anführungszeichen bleiben aber verpflichtend!)
 
 <SideNote type="info">
-  Bei einfachen Abfragen ist das **Default attribute** eine willkommene Schreiberleichterung. Bei **komplexeren Suchen**, bei denen auf **mehr als nur ein Attribut** getestet werden soll, muss dann aber wieder auf die Langform zurückgegriffen werden.
+  Bei einfachen Abfragen ist das **Default attribute** eine willkommene Schreiberleichterung. Bei **komplexeren Suchen**, bei denen auf **mehr als nur ein Attribut** getestet werden soll, muss dann aber wieder auf die Langform zurückgegriffen werden. 
 </SideNote>
 
 ### CQL Builder
 
-Unter dem Eingabefeld für CQL findet sich auch ein Link namens **CQL builder** – ein Tool, das bei der Formulierung von CQL-Anfragen helfen kann. Es kann durchaus sinnvoll sein, mit diesem Tool mit dem bisher erworbenen Wissen zu experimentieren, auch um weitere Funktionen zu entdecken. Genauere Erläuterungen finden sich in der [Beschreibung des CQL Builders bei Sketch Engine](https://www.sketchengine.eu/news/cql-builder/).
+Direkt unter dem Eingabefeld für CQL findet sich auch ein Schaltknopf namens **CQL BUILDER** – ein Tool, das bei der Formulierung von CQL-Anfragen helfen kann. Es kann durchaus sinnvoll sein, mit diesem Tool mit dem bisher erworbenen Wissen zu experimentieren, auch um weitere Funktionen zu entdecken. Genauere Erläuterungen finden sich in der [Beschreibung des CQL Builders bei Sketch Engine](https://www.sketchengine.eu/news/cql-builder/).
 
 ### _Escaping_ von Sonderzeichen
 
-Da die Zeichen `. + * & | ( ) \[ ]` in den CQL Abfragen eine Sonderbedeutung als Bestandteile regulärer Ausdrücke haben, müssen sie speziell gekennzeichnet werden, wenn man _buchstäblich_ nach ihnen suchen will.
+Da die Zeichen `. + * & | ( ) [ ]` in den CQL Abfragen eine Sonderbedeutung als Bestandteile regulärer Ausdrücke haben, müssen sie speziell gekennzeichnet werden, wenn man _buchstäblich_ nach ihnen suchen will.
 Dieses _Aufheben der Sonderbedeutung_ nennt man _escapen_ eines Zeichens, und passiert durch Voranstellen eines `\ (backslash)`.
 
 Das heißt
 
-- `[word="etc."]` hier steht `.` für jedes beliebige Zeichen
+- `[word="etc."]` hier steht `.` für jedes beliebige Zeichen (Note: die Suche nach "etc." wird genauso noch die Abkürzung "etc." finden, denn _regular expression_-Punkt "matcht" auch mit dem dem "buchstäblichen" Punkt wie eben jedes andere beliebige Zeichen)  
 - `[word="etc\."]` hier steht `.` tatsächlich für einen Punkt `(.)`
 - `[word="..."]` findet daher _alle_ Token mit 3 Zeichen
-- `[word="\.\.\."]` findet _punktipunktipunkti_ (3 Punkte)
+- `[word="\.\.\."]` findet genau _punktipunktipunkti_ (3 Punkte)
 
 ### Tokensuche _ignoriert_ Strukturgrenzen
 
@@ -771,56 +785,60 @@ Standardmäßig werden Strukturgrenzen in der Suchanfrage _vollständig_ ignorie
 
 Das heißt
 
-- `[] []`findet alle benachbarten Token, selbst wenn dazwischen eine Strukturgrenze liegt. 
-- `[posTT="ADJ.*"] [posTT="NN]` würde also alle Adjekiv-Nomen-Kombinationen finden, auch über Satz-, Paragraphen- und sogar über Dokumentgrenzen hinweg!
+- `[] []` findet _alle_ benachbarten Token, selbst wenn dazwischen eine Strukturgrenze liegt. 
+- `[posTT="ADJ.*"] [posTT="NN]` findet also alle Adjekiv-Nomen-Kombinationen finden, auch über Satz-, Paragraphen- und sogar über Dokumentgrenzen hinweg!
 
-Abhilfe schafft hier nur die Verwendung von `within` :
+Abhilfe schafft hier nur die Verwendung von `within`:
 
 - `[posTT="ADJ.*"] [posTT="NN] within <s/>` beschränkt die Suche auf Fundstellen, die sich innerhalb ein- und desselben `<s/>`, also innerhalb eines Satzes, befinden, was in den meisten Fällen wohl das erwünschte und sinnvolle Suchverhalten sein sollte.
 
 ### Attribute mit MULTIVALUE
 
-In der SKE können Attribute als `MULTIVALUE` definiert werden. Das bedeutet, das Attribut enthält potenziell mehrere Werte, die durch ein Trennzeichen (`MULTISEP`) voneinander abgegrenzt werden. Das ist im amc bei vielen Attributen des `<doc>`-Elements der Fall. So könnte z.B. kann das Attribut **mutation** eine Wert `"Länder,Abend,Morgen"` aufweisen: es ist ein `MULTIVALUE`-Attribut, das Kommas (`,`) als `MULTISEP` verwendet.
+In der SKE können Attribute als `MULTIVALUE` definiert werden. Das bedeutet, solche Attribute enthalten potenziell mehrere unterschiedliche Werte, die durch ein Trennzeichen (`MULTISEP`) voneinander abgegrenzt werden. Das ist im amc bei vielen Attributen des `<doc>`-Elements der Fall. So könnte z.B. kann das Attribut **mutation** eine Wert `"Länder,Abend,Morgen"` aufweisen: es ist als `MULTIVALUE`-Attribut definiert, das Kommas (`,`) als `MULTISEP` verwendet.
 
-Für die Suche hat das die Konsequenz, dass der Inhalt des Attributs automatisch in seine Einzelwerte aufgegliedert und einfach nach den Einzelwerten gesucht werden kann, es bleibt aber auch der unveränderte Originalinhalt durchsuchbar.
+Für die Suche hat das die Konsequenz, dass der Inhalt des Attributs automatisch in seine Einzelwerte aufgegliedert wird und einfach nach den Einzelwerten gesucht werden kann, es bleibt aber auch der unveränderte Originalinhalt durchsuchbar.
 Um beim Beispiel zu bleiben: ein `<doc mutation="Wien,Abend,Morgen" .../>` würde mit jeder der folgenden Suchanfragen gefunden werden:
 
 - `mutation="Wien"`
 - `mutation="Abend"`
 - `mutation="Morgen"`
 - `mutation="Wien,Abend,Morgen"`
-- `mutation=".+Abend..+"`
+- `mutation=".+Abend.+"`
 
 <SideNote type="note">
-  Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu Mehrfachzuordnungen kommt.
-</SideNote>
-
-Eine Auswertung der Anzahl der `<doc>` pro mutation liefert in unserem Beispiel:
+  Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu verzerrenden Mehrfachzuordnungen kommt.
+  Eine Frequenzanalyse der Anzahl der `<doc>` pro mutation lieferte in unserem Beispiel, für ein _einziges_ `<doc mutation="Wien,Abend,Morgen" .../>` gibt, folgende 4 Ergebnisse. 
 
 - Wien : 1
 - Abend : 1
 - Morgen : 1
 - Wien,Abend,Morgen : 1
 
+</SideNote>
+
 ### Übersicht über die vorhandenen Attribute
 
 Um sich einen Überblick über den Namen und den Inhalt der vorhandenen Attribute zu machen ist z.B.
 der Menüpunkt _Corpus info_ hilfreich. Hier werden nicht nur statistische Daten über das Korpus angezeigt, sondern auch die Namen der verfügbaren Token-Attribute, Strukturen und Struktur-Attribute.
 
-Um zu den Struktur-Attributen zu gelangen, einfach auf den Namen der entsprechenden Struktur klicken.
+Informationen zu den Strukuren finden sich dabei unter dem Titel "TEXT TYPES". Informationen zu den jeweiligen Struktur-Attributen werden durch einfaches Klicken auf einen Strukrturnamen ausgeklappt.   
 
 ### Anzeige anpassen
 
-_Nach_ einer Suche kann im Punkt **View Options** die Anzeige angepasst werden. Hilfreich ist, dass hier die Anzeige einzelner Attribute oder Strukturen ein- oder ausgeblendet werden kann. So kann man z.B., um sich wieder einmal zu erinnern, wie die Werte des pos-Attributs bei Nomen aufgebaut sind, nach einem Nomen suchen, und dann in den View Options das Attribut pos auf _sichtbar_ schalten. So kann man sich ein Attribut anhand exemplarischer Beispiele erschließen.
+_Nach_ einer Suche kann über Auswahl der **View options** ( das Augen-Symbol in der Werkzeugleiste) die Anzeige angepasst werden. Hilfreich ist, dass hier die Anzeige einzelner Attribute oder Strukturen ein- oder ausgeblendet werden kann. So kann man z.B., um sich wieder einmal zu erinnern, wie die Werte des pos-Attributs bei Nomen aufgebaut sind, nach einem Nomen suchen, und dann in den View Options das Attribut pos auf _sichtbar_ schalten. So kann man sich ein Attribut anhand exemplarischer Beispiele erschließen.
 In **View Options** kann auch angegeben werden, ob die ausgewählten Attribute nur für den eigentlichen _Treffer_ (meist die beste Wahl) oder für _alle_ Wörter der KWIC-Liste angezeigt werden sollen.
 Weiters besteht die Option, die ausgewählten Attribute as _tooltips_, d.h. nur bei _mouse over_ anzuzeigen.
 
-![View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png "Für View Options muss das Augen-Symbol ausgewählt werden. Die Funktionsmaske View Options mit Auswahl Lemma und posTI, und der entsprechenden Anzeige bei KWIC im Suchergebnis.")
+![View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png "Für View Options muss das Augen-Symbol ausgewählt werden. Die Funktionsmaske _View options_ mit Auswahl lemma und posTI, und der entsprechenden Anzeige bei KWIC im Suchergebnis.")
 
-### Frequency lists
+### Frequency
 
-_Nach_ einer erfolgten Suche können die Suchergebnisse unter dem Menüpunkt _Frequency List_ übersichtlich(er) zusammengefasst werden. Das ist oft auch hilfreich, um die Korrektheit einer Suchanfrage zu überprüfen.
+_Nach_ einer erfolgten Suche können die Suchergebnisse mit der Option  _Frequency_ aus der Werkzeugleiste übersichtlich(er) zusammengefasst werden. Das ist oft auch hilfreich, um die Korrektheit einer Suchanfrage zu überprüfen.
 Bei der Analyse größerer Treffermengen kann es auch hilfreich sein, eine Frequenzliste des _linken_ oder _rechten_ _Nachbarn_ des Suchworts erstellen zu lassen (Auswahl von _1L_ bzw. _1R_). So lassen sich sehr oft „auffällige“ Muster gut isolieren. Zum Beispiel liefert eine Suchanfrage nach der informellen Grußform „baba“ (`[lc="baba"]`) ca. 10.000 Treffer. Erstellt man eine Frequenzliste der linken Nachbarn von „baba“, so sticht an erster Stelle das Wort „Ali“ mit ca. 1.800 Ergebnissen hervor, weil eben „Ali Baba“ eine hochfrequente Wortfolge ist, die so einfach aus dem Gesamtzählergebnis exkludiert werden, oder bei der Verfeinerung der Suchanfrage berücksichtigt werden kann.
+
+<SideNote type="note">
+Die _Frequency_ Auswertung ist natürlich auch _das_ essentielle Werkzeug für alle quantitativen Untersuchungen. Typischerweise werden damit die Ergebnisse einer CQL-Abfrage nach Metadaten-Fakoren wie `doc.region` (Region) oder `doc.year` (Erscheinungsjahr) ausgezählt. Die Ergebnisse können dann in unterschiedlichen Formaten (`txt xls xml csv`)  heruntergeladen und für die   Weiterverarbeitung am lokalen Rechner gespeichert werden.
+</SideNote>
 
 ### Einschränkungen der Metadaten _ohne_ CQL Struktursuche
 
