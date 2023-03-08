@@ -245,7 +245,7 @@ Gibt man hier ein Wort ein, so sucht die SKE
 
 Es kann auch eine Abfolge mehrerer Wörter angegeben werden, die SKE sucht dann nach genau dieser Abfolge, z.B. _ein schönes Haus_.
 
-Da bei der **Simple query** wie erwähnt auch nach den **Wortformen eines Lemmas** gesucht wird, findet eine Suchanfrage _schön Haus_ auch alle Paarungen der Wortformen des Lemmas _schön_ und der Wortformen des Lemmas _Haus_, also z.B. _schönes Haus_, _schönsten Hauses_, _Schöneren Häusern_ etc.
+Da bei der **Simple query** wie erwähnt auch nach den **Wortformen eines Lemmas** gesucht wird, findet eine Suchanfrage _schön Haus_ auch alle Paarungen der Wortformen des Lemmas _schön_ und der Wortformen des Lemmas _Haus_ und das unabhängig von Groß- oder Kleinschreibung. Somit erscheinen im Ergebnis z.B. _schönes Haus_, _schönsten Hauses_, _Schöneren Häusern_ etc.
 
 <SideNote type="info" title="Definite und indefinite Artikel in der Simple query">
 Das Lemma für **definite Artikel** ist übrigens _die_, für **indefinite** ist es _eine_. Das heißt, die Abfrage _die schön Haus_ oder _eine schön Haus_ liefert die entsprechenden Kombinationen in allen Kasus und Numeri.
@@ -290,7 +290,7 @@ Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 ![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
-Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man `[ posTT="ADJA" ] [ lemma="Haus" ]` oder [posTT="ADJA"][lemma="Haus"] schreibt.
+Außerhalb der Anführungszeichen werden Leerzeichen in CQL-Abfragen völlig ignoriert. Es macht also nur einen Unterschied in der _Lesbarkeit_ und nicht im Suchergebnis ob man `[ posTT = "ADJA" ] [ lemma = "Haus" ]` oder `[posTT="ADJA"][lemma="Haus"]` schreibt.
 </SideNote>
 
 ## Reguläre Ausdrücke
@@ -299,10 +299,10 @@ In der CQL können sogenannte **[reguläre Ausdrücke (regular expressions, Rege
 Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks sind:
 
 - „.“ : Ein Punkt steht für jedes beliebige Zeichen, z.B. `[word="Ha.s"]` findet „Haus“ „Hass“ „Hals“ …
-- „*“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks. z.B. \[word="Hallo*"] findet „Hall“ „Hallo“ „Halloo“ etc.
-- „+“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks, z.B. \[word="Hallo+"] findet „Hallo“ „Halloo“ etc. … aber _nicht_ „Hall“.
+- „\*“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks. z.B. `[word="Hallo*"]` findet „Hall“ „Hallo“ „Halloo“ etc.
+- „+“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo+"]` findet „Hallo“ „Halloo“ etc. … aber _nicht_ „Hall“.
  D.h., das Zeichen vor ‚*‘ ist _optional_, das Zeichen vor ‚+‘ hingegen ist _obligat_!
-- „?“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B. \[word="Hallo?"] findet genau „Hall“ und „Hallo“ etc. D.h. das ‚?‘ steht für Optionalität, aber nicht für Wiederholbarkeit. 
+- „?“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo?"]` findet genau die beiden Formen „Hall“ und „Hallo“. D.h. das ‚?‘ steht für Optionalität, aber nicht für Wiederholbarkeit. 
 
 **Kombination mit .: Üblich ist es, `*`, +, ? mit . (dem Platzhalter für jedes beliebige Zeichen) zu kombinieren.**
 
@@ -311,9 +311,9 @@ Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdru
 - [pos="N.Reg.`*`Pl.`*`"] findet alle Nomen im Plural
 
 <SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in Simple Query und CQL">
-Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht `*` schon für 0, 1, oder beliebig viele beliebige Zeichen.
-In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn: die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen s, da sich der `*` in der CQL auf das vorhergehende Element – hier ein „s“ – bezieht.
-Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: `\[word="Haus.*"]`
+Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht alleine `*` schon für 0, 1, oder beliebig viele beliebige Zeichen.
+In einem regulären Ausdruck bezieht sich hingegen ein `*` immer auf den _linken Nachbarn_: die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen „s“, da sich der `*` in der CQL immer auf das vorhergehende Element – hier eben das „s“ – bezieht.
+Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL also wie folgt lauten: `[word="Haus.*"]`
 </SideNote>
 
 ### Quiz
@@ -607,7 +607,7 @@ Bisher konnten wir nur entweder **im linken oder im rechten Kontext suchen**. Mi
 
 sucht nach \[TokenA] in deren linken _oder_ rechten Nachbarschaft ein \[TokenB] zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in **\-linker_context** und **rechter_context** bestimmt.
 
-z.B.: Suche nach dem Lemma „Hund“ in dessen linken oder rechter Umgebung im maximalen Abstand von 5 Token, die Lemmas „beißen“ oder „bissig“ stehen.
+z.B.: Suche nach dem Lemma „Hund“ in dessen linker oder rechter Umgebung im maximalen Abstand von 5 Token, die Lemmas „beißen“ oder „bissig“ stehen.
 
 - `(meet [lemma="Hund"] [lemma="(beißen|bissig)"] -5 5)`
 
@@ -684,8 +684,8 @@ Sowohl bei der **Simple query** als auch bei den bisherigen Beispielen der CQL b
 Wie oben gezeigt, werden Struktur-Informationen in den Input-Daten für die SKE mithilfe von XML-Elementen kodiert.
 In HTML und XML gelten die folgenden Notationskonventionen:
 
-- `<S> Beginn-tag einer Struktur „S“`
-- `</S> End-tag einer Struktur „S“ `
+- `<S> Beginn-tag einer Struktur namens „S“`
+- `</S> End-tag einer Struktur namens „S“ `
 - `<S/> Die gesamte Stuktur von Beginn bis Ende.`
 
 Mit dieser Kodierung arbeiten wir auch in der Suchabfragesprache CQL. 
@@ -697,13 +697,13 @@ In amc steht die Struktur „doc“ (Dokument) für einen Zeitungsartikel, d.h.
 - `<doc> [] Findet das _erste_ Token jedes Artikels`
 - `[] </doc> Findet das _letzte_ Token jedes Artikels`
 
-Strukturen haben bekanntlich möglicherweise ihre eigenen Attribute, und nach diesen kann wie folgt gesucht werden:
+Strukturen können bekanntlich ihre eigenen Attribute aufweisen, und nach diesen kann wie folgt gesucht werden:
 
 - `<doc id="xyz"/> Artikel mit der id „xyz“`
 - `<doc docsrc="STANDARD" & year="2017"/> Artikel aus der Zeitung „Der Standard“ aus dem Jahr 2017`
   (beachten Sie, dass ein **logisches &** verwendet werden muss: Sie suchen nach Artikeln, die aus dem "STANDARD" stammen UND die im Jahr 2017 veröffentlicht wurden)
 
-Für die Spezifikation der Werte der Strukturattribute können genauso reguläre Ausdrücke verwendet werden, wie es oben bereits für den Inhalt von Token-Attributen demonstriert wurde:
+Für die Spezifikation der Werte der Strukturattribute können reguläre Ausdrücke genauso verwendet werden, wie es oben bereits für den Inhalt von Token-Attributen demonstriert wurde:
 
 - `<doc year="199."/> alle Artikel aus den 1990ern`
 - `<doc year="199(8|9)"/> alle Artikel aus 1998 oder 1999`
@@ -712,16 +712,16 @@ Für die Spezifikation der Werte der Strukturattribute können genauso reguläre
 
 Mit **containing** und **within** können Bedingungen auf Strukturen und auf Token miteinander kombiniert werden:
 
-**containing**: wird verwendet um Einschränkungen auf Strukturen auszudrücken: es wird nach Strukturen gesucht, die bestimmte „Dinge“ enthalten. z.B. alle Sätze, aber nur, wenn sie das Wort „Haus“ beinhalten:
+**containing**: wird verwendet um Einschränkungen auf _Strukturen_ auszudrücken: es wird nach Strukturen gesucht, die bestimmte „Dinge“ enthalten. z.B. alle Sätze die das Wort „Haus“ beinhalten:
 
 - `<s/> containing [word="Haus"]`
 
-**within**: wird verwendet um Einschränkungen auf Token auszudrücken: es wird nach Token gesucht, die sich in bestimmten Strukturen finden.
+**within**: wird verwendet um Einschränkungen auf _Token_ auszudrücken: es wird nach Token gesucht, die sich in bestimmten Strukturen befinden.
 z.B. alle Fundstellen für „Haus“, aber nur, wenn sie in einem Artikel des „STANDARD“ stehen, der 2010 oder später erschienen ist.
 
 - `[word="Haus"] within <doc docsrc="STANDARD" & year>="2010"/>`
 
-- Aber auch die Verwendung von Negation (not) ist möglich:
+- Auch die Verwendung von Negation (`not`) ist im Zusammenhang von `within` und `containing` möglich:
   z.B. suche nach ‚Ball‘ -- aber _nicht_ im Sportressort (ein Versuch, Beispiele mit der Bedeutung Tanz-Ball zu finden)  
 - `[word="Ball"] not within <doc ressort2="sport"/>`
 
@@ -733,7 +733,7 @@ Merken Sie sich am Besten einfach, dass **containing** und **within** sich exakt
 - `[word="Haus"] within <doc docsrc="STANDARD"/>` _search for any **token**_ `[word="Haus"]` _which is located_ `within` a structure `<doc docsrc="STANDARD"/>`
 
 `containing` und `within` können auch miteinander kombiniert werden und es gibt sehr sinnvolle Anwendungen dafür!
-Typischerweise wird das eingesetzt um eine Kontexte zu filtern. 
+Typischerweise wird das eingesetzt um Kontexte zu filtern. 
 Beispielsweise könnte man auf der Suche nach Nennungen des Wortes Ball in der Bedeutung Tanzball auf Artikel einschränken, in denen typische Tanzballbegriffe vorkommen: 
 
 - `[lemma="Ball"] within ( <doc ressort2 != "sport"/> containing [lemma="(Walzer|Polonaise|Champagner|Mitternachtseinlage)"] ) `
@@ -742,8 +742,8 @@ Also: suche nach "Ball" innerhalb von Artikeln die nicht aus dem Sportressort st
 Damit schränkt sich die Trefferanzahl für "Ball" im amc von ca. 800.000 auf "nur noch" ca. 50.000 ein. (Aber freilich gibt es darunter immer noch Artikel über Fußball, die _nicht_ korrekt mit Sportressort markiert wurden und in denen Siege mit Champagner gefeiert werden, oder Spieler mit dem Eigennamen "Walzer" vorkommen) 
 
 <SideNote type="tip">
-  Für solche kombinierten Filterungen sind in der NoSKE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann auf das eben erstelle Subkorpus angewandt werden, und damit stufenweise verfeinert werden. 
-So kann z.B. das Ergebnis der obigen Abfrage als "Ball"-Subkorpus gespeichert werden. In weiteren Abfragen könnte man z.B. Artikel aus diesem Subkorpus ausschließen in den sportspezifische Wörter wie "Tor", "Elfmeter", "Torhüter", "Stürmer" etc. vorkommen.  
+  Für solche kombinierten Filterungen sind in der NoSKE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann auf das eben erstelle Subkorpus angewandt und damit stufenweise verfeinert werden. 
+So könnte z.B. das Ergebnis der obigen Abfrage als "tanzball01"-Subkorpus gespeichert werden. In weiteren Abfragen könnte man z.B. jene Artikel aus diesem Subkorpus ausschließen, in denen  sportspezifische Wörter wie "Tor", "Elfmeter", "Torhüter", "Stürmer" etc. vorkommen und das Ergebnis in einem neuen, verfeinertes Subkorpus "tanzball02" speichern.  
 </SideNote>
  
 
@@ -757,7 +757,7 @@ So kann z.B. das Ergebnis der obigen Abfrage als "Ball"-Subkorpus gespeichert we
 
 In der ADVANCED Suchmaske befindet sich unter dem Feld CQL ein Auswahlfeld für ein **Default attribute**, das mit dem Wert _lemma_ vorausgefüllt ist. Bei Abfragen auf dieses Attribut kann D.h. **lemma** ist quasi der Default des Default. Es gilt also:
 
-- statt `[ lemma="Paradeiser" ]` kann (bei einem _default attribute_ "lemma") vereinfacht  `"Paradeiser"` geschrieben werden (die doppelten Anführungszeichen bleiben aber verpflichtend!)
+- statt `[ lemma="Paradeiser" ]` kann (bei einem _default attribute_ "lemma") vereinfacht  `"Paradeiser"` geschrieben werden (die doppelten Anführungszeichen bleiben aber weiterhin verpflichtend!)
 
 <SideNote type="info">
   Bei einfachen Abfragen ist das **Default attribute** eine willkommene Schreiberleichterung. Bei **komplexeren Suchen**, bei denen auf **mehr als nur ein Attribut** getestet werden soll, muss dann aber wieder auf die Langform zurückgegriffen werden. 
@@ -786,7 +786,7 @@ Standardmäßig werden Strukturgrenzen in der Suchanfrage _vollständig_ ignorie
 Das heißt
 
 - `[] []` findet _alle_ benachbarten Token, selbst wenn dazwischen eine Strukturgrenze liegt. 
-- `[posTT="ADJ.*"] [posTT="NN]` findet also alle Adjekiv-Nomen-Kombinationen finden, auch über Satz-, Paragraphen- und sogar über Dokumentgrenzen hinweg!
+- `[posTT="ADJ.*"] [posTT="NN]` findet also alle Adjekiv-Nomen-Kombinationen finden, auch über Satz-, Absatz- und sogar über Artikelgrenzen hinweg!
 
 Abhilfe schafft hier nur die Verwendung von `within`:
 
@@ -794,7 +794,7 @@ Abhilfe schafft hier nur die Verwendung von `within`:
 
 ### Attribute mit MULTIVALUE
 
-In der SKE können Attribute als `MULTIVALUE` definiert werden. Das bedeutet, solche Attribute enthalten potenziell mehrere unterschiedliche Werte, die durch ein Trennzeichen (`MULTISEP`) voneinander abgegrenzt werden. Das ist im amc bei vielen Attributen des `<doc>`-Elements der Fall. So könnte z.B. kann das Attribut **mutation** eine Wert `"Länder,Abend,Morgen"` aufweisen: es ist als `MULTIVALUE`-Attribut definiert, das Kommas (`,`) als `MULTISEP` verwendet.
+In der SKE können Attribute als `MULTIVALUE` definiert werden. Das bedeutet, solche Attribute enthalten potenziell mehrere unterschiedliche Werte, die durch ein Trennzeichen (`MULTISEP`) voneinander abgegrenzt werden. Das ist im amc bei vielen Attributen des `<doc>`-Elements der Fall. So könnte z.B. kann das Attribut **mutation** eine Wert `"Länder,Abend,Morgen"` aufweisen: es ist also als `MULTIVALUE`-Attribut definiert, das Kommas (`,`) als Trennzeichen verwendet.
 
 Für die Suche hat das die Konsequenz, dass der Inhalt des Attributs automatisch in seine Einzelwerte aufgegliedert wird und einfach nach den Einzelwerten gesucht werden kann, es bleibt aber auch der unveränderte Originalinhalt durchsuchbar.
 Um beim Beispiel zu bleiben: ein `<doc mutation="Wien,Abend,Morgen" .../>` würde mit jeder der folgenden Suchanfragen gefunden werden:
@@ -807,37 +807,36 @@ Um beim Beispiel zu bleiben: ein `<doc mutation="Wien,Abend,Morgen" .../>` würd
 
 <SideNote type="note">
   Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu verzerrenden Mehrfachzuordnungen kommt.
-  Eine Frequenzanalyse der Anzahl der `<doc>` pro mutation lieferte in unserem Beispiel, für ein _einziges_ `<doc mutation="Wien,Abend,Morgen" .../>` gibt, folgende 4 Ergebnisse. 
+  Eine Frequenzanalyse der Anzahl der `<doc>` pro mutation lieferte in unserem Beispiel, für ein _einziges_ `<doc mutation="Wien,Abend,Morgen" .../>` folgende 4(!) Ergebnisse. 
 
 - Wien : 1
 - Abend : 1
 - Morgen : 1
 - Wien,Abend,Morgen : 1
-
 </SideNote>
 
 ### Übersicht über die vorhandenen Attribute
 
-Um sich einen Überblick über den Namen und den Inhalt der vorhandenen Attribute zu machen ist z.B.
-der Menüpunkt _Corpus info_ hilfreich. Hier werden nicht nur statistische Daten über das Korpus angezeigt, sondern auch die Namen der verfügbaren Token-Attribute, Strukturen und Struktur-Attribute.
+Um sich einen Überblick über den Namen und den Inhalt der vorhandenen Attribute zu machen ist die "CORPUS INFO" sehr hifreich.
+Zu dieser gelangt man alternativ über die gleichnamige Schaltfläche im Dashboard oder -- meist bequemer -- über das Informations-Ikon neben dem Korpusnamen, der in der NoSKE am oberen Rand jeder einzelnen Seite eingeblendet wird.  In der CORPUS INFO werden nicht nur statistische Daten über das Korpus angezeigt, sondern auch die Namen aller verfügbaren Token-Attribute, Strukturen und Struktur-Attribute.
 
-Informationen zu den Strukuren finden sich dabei unter dem Titel "TEXT TYPES". Informationen zu den jeweiligen Struktur-Attributen werden durch einfaches Klicken auf einen Strukrturnamen ausgeklappt.   
+Informationen zu den Strukuren finden sich dabei unter dem Titel "TEXT TYPES". Informationen zu den jeweiligen Struktur-Attributen werden durch einfaches Klicken auf einen konkreten Strukturnamen ausgeklappt.   
 
 ### Anzeige anpassen
 
-_Nach_ einer Suche kann über Auswahl der **View options** ( das Augen-Symbol in der Werkzeugleiste) die Anzeige angepasst werden. Hilfreich ist, dass hier die Anzeige einzelner Attribute oder Strukturen ein- oder ausgeblendet werden kann. So kann man z.B., um sich wieder einmal zu erinnern, wie die Werte des pos-Attributs bei Nomen aufgebaut sind, nach einem Nomen suchen, und dann in den View Options das Attribut pos auf _sichtbar_ schalten. So kann man sich ein Attribut anhand exemplarischer Beispiele erschließen.
+Nach einer erfolgten Suche kann über Auswahl der **View options** (dem Auge-Symbol in der Werkzeugleiste) die Anzeige angepasst werden. Hilfreich ist, dass hier die Anzeige einzelner Attribute oder Strukturen ein- oder ausgeblendet werden kann. So kann man z.B., um sich wieder einmal zu erinnern, wie die Werte des pos-Attributs bei Nomen aufgebaut sind, nach einem Nomen suchen, und dann in den View Options das Attribut pos auf _sichtbar_ schalten. So kann man sich ein Attribut anhand exemplarischer Beispiele erschließen.
 In **View Options** kann auch angegeben werden, ob die ausgewählten Attribute nur für den eigentlichen _Treffer_ (meist die beste Wahl) oder für _alle_ Wörter der KWIC-Liste angezeigt werden sollen.
 Weiters besteht die Option, die ausgewählten Attribute as _tooltips_, d.h. nur bei _mouse over_ anzuzeigen.
 
-![View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png "Für View Options muss das Augen-Symbol ausgewählt werden. Die Funktionsmaske _View options_ mit Auswahl lemma und posTI, und der entsprechenden Anzeige bei KWIC im Suchergebnis.")
+![View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png "Für View Options muss das Auge-Symbol ausgewählt werden. Die Funktionsmaske _View options_ mit Auswahl lemma und posTI, und der entsprechenden Anzeige bei KWIC im Suchergebnis.")
 
 ### Frequency
 
-_Nach_ einer erfolgten Suche können die Suchergebnisse mit der Option  _Frequency_ aus der Werkzeugleiste übersichtlich(er) zusammengefasst werden. Das ist oft auch hilfreich, um die Korrektheit einer Suchanfrage zu überprüfen.
+Suchergebnisse können mit der Option  _Frequency_ aus der Werkzeugleiste übersichtlich(er) zusammengefasst werden. Das ist oft auch hilfreich, um die Korrektheit einer Suchanfrage zu überprüfen.
 Bei der Analyse größerer Treffermengen kann es auch hilfreich sein, eine Frequenzliste des _linken_ oder _rechten_ _Nachbarn_ des Suchworts erstellen zu lassen (Auswahl von _1L_ bzw. _1R_). So lassen sich sehr oft „auffällige“ Muster gut isolieren. Zum Beispiel liefert eine Suchanfrage nach der informellen Grußform „baba“ (`[lc="baba"]`) ca. 10.000 Treffer. Erstellt man eine Frequenzliste der linken Nachbarn von „baba“, so sticht an erster Stelle das Wort „Ali“ mit ca. 1.800 Ergebnissen hervor, weil eben „Ali Baba“ eine hochfrequente Wortfolge ist, die so einfach aus dem Gesamtzählergebnis exkludiert werden, oder bei der Verfeinerung der Suchanfrage berücksichtigt werden kann.
 
 <SideNote type="note">
-Die _Frequency_ Auswertung ist natürlich auch _das_ essentielle Werkzeug für alle quantitativen Untersuchungen. Typischerweise werden damit die Ergebnisse einer CQL-Abfrage nach Metadaten-Fakoren wie `doc.region` (Region) oder `doc.year` (Erscheinungsjahr) ausgezählt. Die Ergebnisse können dann in unterschiedlichen Formaten (`txt xls xml csv`)  heruntergeladen und für die   Weiterverarbeitung am lokalen Rechner gespeichert werden.
+Die _Frequency_ Auswertung ist natürlich auch _das_ essentielle Werkzeug für alle quantitativen Untersuchungen. Typischerweise werden damit die Ergebnisse einer CQL-Abfrage nach Metadaten-Faktoren wie `doc.region` (Region) oder `doc.year` (Erscheinungsjahr) ausgezählt. Die Ergebnisse können dann in unterschiedlichen Formaten (`txt xls xml csv`)  heruntergeladen und für die   Weiterverarbeitung am lokalen Rechner gespeichert werden.
 </SideNote>
 
 ### Einschränkungen der Metadaten _ohne_ CQL Struktursuche
@@ -846,7 +845,7 @@ Wir haben gesehen, dass in der CQL oft Strukturelemente einbezogen werden, um di
 
 z.B. `[word="Haus"] within <s docsrc="STANDARD|PRESSE" year>="2010"/>` („Haus“ in STANDARD- oder PRESSE-Artikeln, die 2010 oder später erschienen sind.)
 
-Alternativ können einfache Einschränkungen auf Basis der Metadaten (also auf Basis der Strukturattribute des `<doc>`-Elements) auch im SKE _user-interface_ vorgenommen werden.
+Alternativ können einfache Einschränkungen auf Basis der Metadaten auch im SKE _user-interface_ vorgenommen werden.
 Dazu dient in der Suchmaske der Unterpunkt Text Types, wo die Suche auf `<doc>` mit spezifischen Attributwerten eingeschränkt werden kann.
 
 Abgesehen davon, ist die dortige Auflistung der Attribute und ihrer möglichen Werte auch bei der Formulierung von CQL-Anfragen durchaus hilfreich, wenn man gerade wieder einmal nicht weiß, wie die Attributnamen genau lauten und welche Werte sie annehmen können.
