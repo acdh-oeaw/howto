@@ -25,7 +25,7 @@ uuid: Yi-WVelcC_d0_xUF2aJfn
 
 ### Das Austrian Media Corpus (amc)
 
-Das Austrian Media Corpus (amc) ist eines der größten Textkorpora in deutscher Sprache. In ihm sind Text der österreichischen Printmedienlandschaftder letzten Jahrezehnte versammelt. Der Inhalt des amc kann mit dem Schlagwort „journalistische Prosa“ zusammengefasst werden: er umfasst Komplettausgaben von Zeitungen und Zeitschriften, Agenturmeldungen der Austria Presse Agentur (APA) sowie Transkripte von TV-Produktionen (vorwiegend von Nachrichtensendungen).
+Das Austrian Media Corpus (amc) ist eines der größten Textkorpora in deutscher Sprache. In ihm sind Text der österreichischen Printmedienlandschaft der letzten Jahrezehnte versammelt. Der Inhalt des amc kann mit dem Schlagwort „journalistische Prosa“ zusammengefasst werden: er umfasst Komplettausgaben von Zeitungen und Zeitschriften, Agenturmeldungen der Austria Presse Agentur (APA) sowie Transkripte von TV-Produktionen (vorwiegend von Nachrichtensendungen).
 
 Das amc kann auf Anfrage genutzt werden, allerdings ausschließlich für Zwecke der wissenschaftlichen Forschung und Lehre und nur für die Untersuchung sprachwissenschaftlicher Fragestellungen. Ermöglicht wird das amc durch eine Kooperation zwischen der Austria Presse Agentur (APA) und der Österreichischen Akademie der Wissenschaften (ÖAW), konkret dem Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH).
 Die APA sammelt die Textproduktion der Printmedien und stellt diese dem ACDH-CH zur Verfügung.
@@ -42,7 +42,7 @@ Um das [amc nutzen](https://amc.acdh.oeaw.ac.at/access-conditions/) zu können, 
 
 Sollten Sie an einem geförderten Projekt arbeiten, wird von der APA eine Nutzungsgebühr erhoben. In diesem Fall nehmen Sie bitte mit dem amc Kontakt auf. Ansonsten ist der Zugang nach [Registrierung](https://amc.acdh.oeaw.ac.at/registrierung/) und Akzeptieren der [Nutzungsbedingungen](https://amc.acdh.oeaw.ac.at/nutzungsbedingungen/) kostenfrei. 
 
-Zu Übungszwecken finden Sie auf der amc-Website Zugang zu einer [Demo-Version](https://demo-amc.acdh.oeaw.ac.at/crystal/#open), für die Sie keinen Zugang benötigen.
+Zu Übungszwecken finden Sie auf der amc-Website Zugang zu einer [Demo-Version](https://demo-amc.acdh.oeaw.ac.at/crystal/#open), für die Sie keine Registrierung benötigen.
 </SideNote>
 
 In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeiten sowie der Arbeit mit der **NoSketch Engine (SKE / NoSKE)** und der **Corpus Query Language (CQL)** vertraut.
@@ -59,7 +59,7 @@ Token sind das Ergebnis des sogenannten Tokenisierungsprozesses – d.h. der Zer
 
 </SideNote>
 
-Diese vereinfachte Darstellung muss freilich um die Berücksichtigung von Satzzeichen ergänzt werden: Satzzeichen sollen vom vorangehenden Wort abgetrennt werden und bilden separate Token. Abkürzen verkomplizieren die Tokenisierung: zum Beispiel sind die Punkte in _z.B._ natürlich keine Satzzeichen, dürfen daher nicht abgetrennt werden, denn _z.B._ sollte als ein einziges Token behandelt werden.
+Diese vereinfachte Darstellung muss freilich um die Berücksichtigung von Satzzeichen ergänzt werden: Satzzeichen sollen vom vorangehenden Wort abgetrennt werden und bilden separate Token. Die Existenz von Abkürzungen  verkomplizieren die Tokenisierung: zum Beispiel sind die Punkte in _z.B._ natürlich keine Satzzeichen, dürfen daher nicht abgetrennt werden, denn _z.B._ sollte als ein einziges Token behandelt werden.
 
 <SideNote type="warning" title="Fehleranfälligkeit: Sonderzeichen in Token">
 Wie bei allen automatisierten Verarbeitungsschritten erfolgt die Tokenisierung bisweilen nicht fehlerfrei. So ist bei der Suche nach Token, die Satz- oder Sonderzeichen enthalten, zu berücksichtigen, dass evtl. die Tokenisierung diese Zeichen miss-interpretiert hat und daher das Wort fälschlicherweise in mehrere Token aufgeteilt wurde.
@@ -277,20 +277,20 @@ Suchanfragen mit der CQL werden im Bereich **Advanced** unter Auswahl des **Quer
 In der Suche mit CQL wird jedes Token durch eckige Klammern bezeichnet.
 Innerhalb dieser Klammern können die Bedingungen angegeben werden, welche die Attribute dieses Token erfüllen müssen:
 
-- `[ _word="Haus"_ ]` Alle Einträge mit der Buchstabenfolge „Haus“
-- `[ _lemma="Haus"_ ]` Alle Einträge mit dem Lemma „Haus“ – also „Haus“ „Hauses“ … „Häusern“
-- `[ _posTT="NN"_ ]` Alle Nomen
+- `[ word="Haus" ]` Alle Einträge mit der Buchstabenfolge „Haus“
+- `[ lemma="Haus" ]` Alle Einträge mit dem Lemma „Haus“ – also „Haus“ „Hauses“ … „Häusern“
+- `[ posTT="NN" ]` Alle Nomen
 - `[]` (KEINE Bedingungen) : diese Suche findet ALLE Token
 
 Diese Bedingungen können auf mehrere Worte ausgedehnt werden:
 
-- `[ _posTT="ADJA"_ ]` `[ _lemma="Haus"_ ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
+- `[ posTT="ADJA" ]` `[ lemma="Haus" ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern…
 
 ![Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\"ADJA\\\\\\\\\" ] \[ lemma=\\\\\\\\\"Haus\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma "Haus". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis aus AMC 3.1 Konkordanz, zur CQL Abfrage \[ posTT=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"ADJA\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ] \[ lemma=\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" ]. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse mit Angabe der Adjektive und das Lemma \\\\\\\\\\\\\\\\\\\\\\\\"Haus\\\\\\\\\\\\\\\\\\\\\\\\". Sie sehen in rot die Form im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
-Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur in einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man [ _posTT="ADJA"_ ] [ _lemma="Haus"_ ] oder [_posTT="ADJA"_] [_lemma="Haus"_] schreibt.
+Leerzeichen werden in CQL-Abfragen ignoriert, es macht also nur einen Unterschied in der Lesbarkeit und nicht im Suchergebnis ob man `[ posTT="ADJA" ] [ lemma="Haus" ]` oder [posTT="ADJA"][lemma="Haus"] schreibt.
 </SideNote>
 
 ## Reguläre Ausdrücke
@@ -299,11 +299,12 @@ In der CQL können sogenannte **[reguläre Ausdrücke (regular expressions, Rege
 Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks sind:
 
 - „.“ : Ein Punkt steht für jedes beliebige Zeichen, z.B. `[word="Ha.s"]` findet „Haus“ „Hass“ „Hals“ …
-- „*“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks.
-- „+“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks, z.B. \[word="Hurra+"] findet „Hurra“ „Hurraa“ … „Huraaaaaaaaaaa“ … aber nicht „Hurr“. D.h., ein Zeichen vor ‚*‘ ist optional, ein Zeichen vor ‚+‘ hingegen ist obligat!
-- „?“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, d.h. es steht für Optionalität, aber nicht für Wiederholungen.
+- „*“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks. z.B. \[word="Hallo*"] findet „Hall“ „Hallo“ „Halloo“ etc.
+- „+“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks, z.B. \[word="Hallo+"] findet „Hallo“ „Halloo“ etc. … aber _nicht_ „Hall“.
+ D.h., das Zeichen vor ‚*‘ ist _optional_, das Zeichen vor ‚+‘ hingegen ist _obligat_!
+- „?“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B. \[word="Hallo?"] findet genau „Hall“ und „Hallo“ etc. D.h. das ‚?‘ steht für Optionalität, aber nicht für Wiederholbarkeit. 
 
-**Kombination mit .: Üblich ist es, `*`, +, ? mit . (dem beliebigen Zeichen) zu kombinieren.**
+**Kombination mit .: Üblich ist es, `*`, +, ? mit . (dem Platzhalter für jedes beliebige Zeichen) zu kombinieren.**
 
 - \[word=".?und"] findet und, Mund, Hund, wund, rund, …
 - \[word="Hunde.+"] findet Hundehütte, Hundekuchen, Hundefriseur aber natürlich auch Hunderttausend …
@@ -311,8 +312,8 @@ Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdru
 
 <SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in Simple Query und CQL">
 Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht `*` schon für 0, 1, oder beliebig viele beliebige Zeichen.
-In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn : die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen s, da sich der `*` in der CQL auf das vorhergehende Element – hier ein „s“ – bezieht.
-Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: \`\[word="Haus.*"]\`
+In einem regulären Ausdruck bezieht sich `*` immer auf den linken Nachbarn: die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen s, da sich der `*` in der CQL auf das vorhergehende Element – hier ein „s“ – bezieht.
+Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL wie folgt lauten: `\[word="Haus.*"]`
 </SideNote>
 
 ### Quiz
@@ -321,7 +322,7 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
   <Quiz.Card>
     <Quiz.MultipleChoice variant="multiple">
       <Quiz.Question>
-        Mit welcher CQL-Abfrage könnten Sie im amc die Token "Wanze", "ganze", Lanze", "tanze" finden?
+        Mit welcher CQL-Abfrage könnten Sie im amc die Token "Wanze", "ganze", "Lanze", "tanze" finden?
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option>
@@ -466,40 +467,44 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
 
 ### Wiederholungen
 
-Alternativ zu `*`, `+`, `?` kann mit dem **ranges Operator** nicht nur festgelegt werden, ob ein Ausdruck 0, 1 oder „öfter“ wiederholt werden soll, sondern es kann eine genaue Mindest- und Maximalzahl spezifiziert werden.
+Alternativ zu `*`, `+`, `?` kann man mit dem **ranges Operator** nicht nur festlegen, ob ein Ausdruck 0, 1 oder „öfter“ wiederholt werden soll, sondern es kann die _exakte_ Mindest- und Maximalzahl an Wiederholungen spezifiziert werden.
 
-Die Syntax dafür ist:
-`{minimal number, maximal number}`
+Die abstracte Syntax für diesen Operator lautet:
+`{minimale Anzahl, maximale Anzahl}`
 
-`{0,1}` minimal 0 maximal 1 (entspricht ?), z.B.
+Damit gilt: 
+`x{0,1}` bedeutet minimal 0 und maximal 1 Wiederholungen von `x` (und entspricht damit `x?`)  
+`x{1,}`  bedeutet minimal 1 und eine uneingeschränkte maximale Anzahl an Wiederholungen von `x` (und entspricht damit `x+`)  
+`x{0,}`  bedeutet minimal 0 und eine uneingeschränkte maximale Anzahl an Wiederholungen von `x` (und entspricht damit `x*`)  
 
-- `[word=".{10}"]` genau 10 Wiederholungen von "." – also alle Wörter oder Zahlen mit Länge 10
-- `[word=".{10,}"]` mindestens 10 Wiederholungen von "." , keine Angabe der Maximalzahl: also alle Wörter oder Zahlen mit Mindestlänge 10
-- `[word=".{10,15}"]` mindestens 10, maximal 15 Wiederholungen
+Beispile:
+- `[word=".{10}"]` genau 10 Wiederholungen von "." – also alle Wörter oder Zahlen mit einer Länge von 10 Zeichen
+- `[word=".{10,}"]` mindestens 10 Wiederholungen von "." , keine Angabe der Maximalzahl: also alle Wörter oder Zahlen mit einer _Mindestlänge_ von 10 Zeichen
+- `[word=".{10,15}"]` Wörter mit mindestens 10 und maximal 15 Zeichen
 - `[posTT="ADJ."]{2,}` Abfolge von mindestens 2 Adjektiven (ADJ. findet sowohl ADJA als auch ADJD, d.h. attributive und prädikative/adverbiale Adjektive)
 
 ### Logische Verknüpfungen
 
 Es stehen die logischen Operatoren **& (logisches UND)** und **\| (logisches ODER)** zur Verfügung. 
 
-**A | B logisches oder** : es muss zumindest Bedingung A oder Bedingung B erfüllt sein.
+**A | B logisches oder** : es muss zumindest _eine_ der beiden Bedingungen A oder B erfüllt sein.
 
-- \[word="Das|das"] finde alle Das oder das Token
-- \[pos="ADJA|ADJD|ADV"] finde alle Ajdektive oder Adverben
+- `[word="Das|das"]` suche alle "Das" oder "das"
+- `[pos="ADJA|ADJD|ADV"]` suche alle Ajdektive oder Adverben
 
 **A & B logisches und**: es muss sowohl Bedingung A als auch Bedingung B erfüllt sein.
 
-- \[word="schön" & posTT="ADV" & pos="ADV.*"] finde „schön“, wenn sowohl der **TreeTagger (posTT)** als auch der **RFTagger (pos)** es als Adverb markiert haben.
+- `[word="schön" & posTT="ADV" & pos="ADV.*"]` finde „schön“, wenn sowohl der **TreeTagger (posTT)** als auch der **RFTagger (pos)** es als Adverb markiert haben.
 
 ### Gruppierung mit ( )
 
-In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdrücken zusammengefasst werden, die dann wiederum mit "`*` ? + | &" kombiniert werden können.
+In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdrücken zusammengefasst werden, die dann wiederum mit den schon bekannten Operatoren "`*` ? + | &" kombiniert werden können.
 
-- \[word="(Das|das)"] finde alle _Das_ oder _das_ Token
-- \[word="(D|d)as"] finde alle _Das_ oder _das_ Token
-- \[word="(Das|das)+"] finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
+- `[word="(Das|das)"]` finde alle _Das_ oder _das_ Token
+- `[word="(D|d)as"]` finde alle _Das_ oder _das_ Token
+- `[word="(Das|das)+"]` finde alle Wiederholungen von _Das_ oder _das_ Token: _Das_, _das_, _DasDas_, _dasdas_, …
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler \\\\\\\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \"klimafreundlichesMobilitätskonzept\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Quiz
 
@@ -591,18 +596,18 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 Die Operatoren für reguläre Ausdrücke können nicht nur auf den Inhalt von Token-Attributen angewendet werden, sondern auch auf ganze Token oder Abfolgen von Token:
 
 - `[word="ein"] [pos="ADJ.*"]* [word="Haus"]` findet „ein“ und „Haus“ mit _beliebig vielen optionalen_ Adjektiven dazwischen: _ein Haus_, _ein schönes Haus_, _ein schönes großes Haus_, …
-- `[lemma="schön"] [ ]{0,4} [word="Haus"]` findet „schön“ gefolgt von Haus – in einem Abstand von maximal 4 Token. (Zur Erinnerung: ein `[ ]` passt auf _jedes beliebige_ Token.)
+- `[lemma="schön"] []{0,4} [word="Haus"]` findet „schön“ gefolgt von Haus – in einem Abstand von maximal 4 Token. (Zur Erinnerung: ein `[]` passt auf _jedes beliebige_ Token.)
 - `([lemma="schön"]|[lemma="groß"]) [lemma="Haus"]` findet „schön“ _oder_ „groß“ + „Haus“. (und ist äquivalent zur Anfrage `[lemma="schön|groß"] [lemma="Haus"]`)
 
 ### Gleichzeitiges Suchen im linken und rechten Kontext: meet und union
 
 Bisher konnten wir nur entweder **im linken oder im rechten Kontext suchen**. Mit `meet` kann in beiden Kontexten gesucht werden:
 
-- `(meet \[TokenA] \[TokenB] -linker_context rechter_context)` 
+- `(meet [TokenA] [TokenB] -linker_context rechter_context)` 
 
 sucht nach \[TokenA] in deren linken _oder_ rechten Nachbarschaft ein \[TokenB] zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in **\-linker_context** und **rechter_context** bestimmt.
 
-z.B.: Suche nach dem Lemma „Hund“ in dessen linken oder rechter Umgebung — im maximalen Abstand von 5 Token, die Lemmas „beißen“ oder „bissig“ stehen.
+z.B.: Suche nach dem Lemma „Hund“ in dessen linken oder rechter Umgebung im maximalen Abstand von 5 Token, die Lemmas „beißen“ oder „bissig“ stehen.
 
 - `(meet [lemma="Hund"] [lemma="(beißen|bissig)"] -5 5)`
 
@@ -679,24 +684,26 @@ Sowohl bei der **Simple query** als auch bei den bisherigen Beispielen der CQL b
 Wie oben gezeigt, werden Struktur-Informationen in den Input-Daten für die SKE mithilfe von XML-Elementen kodiert.
 In HTML und XML gelten die folgenden Notationskonventionen:
 
-- `<s> Beginn-tag einer Struktur „s“ (also eines Satzes)`
-- `</s> End-tag einer Struktur`
-- `<s/> Die gesamte Stuktur von Beginn bis Ende.`
+- `<S> Beginn-tag einer Struktur „S“`
+- `</S> End-tag einer Struktur „S“ `
+- `<S/> Die gesamte Stuktur von Beginn bis Ende.`
 
-Mit dieser Kodierung arbeiten wir auch in der Suchabfragesprache CQL.
+Mit dieser Kodierung arbeiten wir auch in der Suchabfragesprache CQL. 
+
+In amc steht die Struktur „doc“ (Dokument) für einen Zeitungsartikel, d.h.  
 
 - `<doc /> Findet alle (Zeitungs)Artikel`
 - `<doc> Findet alle Artikelanfänge`
-- `<doc> [] Findet das erste Token jedes Artikels`
-- `[] </doc> Findet das letzte Token jedes Artikels`
+- `<doc> [] Findet das _erste_ Token jedes Artikels`
+- `[] </doc> Findet das _letzte_ Token jedes Artikels`
 
-Strukturen können wie folgt nach Attributwerten gefiltert werden:
+Strukturen haben bekanntlich möglicherweise ihre eigenen Attribute, und nach diesen kann wie folgt gesucht werden:
 
-- `<doc id="xxx"/> Artikel mit der id „xxx“`
+- `<doc id="xyz"/> Artikel mit der id „xyz“`
 - `<doc docsrc="STANDARD" & year="2017"/> Artikel aus der Zeitung „Der Standard“ aus dem Jahr 2017`
-  (beachten Sie, dass ein **logisches &** verwendet werden muss)
+  (beachten Sie, dass ein **logisches &** verwendet werden muss: Sie suchen nach Artikeln, die aus dem "STANDARD" stammen UND die im Jahr 2017 veröffentlicht wurden)
 
-Auch hier können in den Abfragen wiederum reguläre Ausdrücke verwendet werden, auf gleiche Weise wie es oben für den Inhalt von Token-Attributen demonstriert wurde:
+Für die Spezifikation der Werte der Strukturattribute können genauso reguläre Ausdrücke verwendet werden, wie es oben bereits für den Inhalt von Token-Attributen demonstriert wurde:
 
 - `<doc year="199."/> alle Artikel aus den 1990ern`
 - `<doc year="199(8|9)"/> alle Artikel aus 1998 oder 1999`
@@ -707,17 +714,24 @@ Mit **containing** und **within** können Bedingungen auf Strukturen und auf Tok
 
 **containing**: wird verwendet um Einschränkungen auf Strukturen auszudrücken: es wird nach Strukturen gesucht, die bestimmte „Dinge“ enthalten. z.B. alle Sätze, aber nur, wenn sie das Wort „Haus“ beinhalten:
 
-- `< s/> containing [word="Haus"]`
+- `<s/> containing [word="Haus"]`
 
 **within**: wird verwendet um Einschränkungen auf Token auszudrücken: es wird nach Token gesucht, die sich in bestimmten Strukturen finden.
 z.B. alle Fundstellen für „Haus“, aber nur, wenn sie in einem Artikel des „STANDARD“ stehen, der 2010 oder später erschienen ist.
 
-- `[word="Haus"] within <s docsrc="STANDARD" year>="2010"/>`
-  Aber auch die Verwendung von Negation (not) ist möglich:
-  z.B. finde ‚Haus‘ aber nicht im STANDARD des Jahres 2017:
-- `[word="Haus"] not within <s docsrc="STANDARD" year="2017"/>`
+- `[word="Haus"] within <doc docsrc="STANDARD" & year>="2010"/>`
+
+- Aber auch die Verwendung von Negation (not) ist möglich:
+  z.B. suche nach ‚Ball‘ -- aber _nicht_ im Sportressort (ein Versuch, Beispiele mit der Bedeutung Tanz-Ball zu finden)  
+- `[word="Ball"] not within <doc ressort2="sport"/>`
 
 <Video provider="youtube" id="watch?v=g7IwzWNzhAI&list=PLPVgp0Xm6hWBLZzD7haCVbhC9pSfWZk1S&index=3" />
+
+Merken Sie sich am Besten einfach, dass **containing** und **within** sich exakt so verhalten, wie Sie es von ihrer Wortbedeutung in Englischen erwarten würden! 
+
+- `<s/> containing [word="Haus"]`: _search for any **structure**_ `<s>` _which is_ `containing` _a token_ `[word="Haus"]`
+- `[word="Haus"] within <doc docsrc="STANDARD"/>` _search for any **token**_ `[word="Haus"]` _which is located_ `within` a structure `<doc docsrc="STANDARD"/>`
+ 
 
 ### Quiz
 
