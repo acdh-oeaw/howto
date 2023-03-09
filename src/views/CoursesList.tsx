@@ -30,8 +30,7 @@ export function CoursesList(props: CoursesListProps): JSX.Element {
           <li key={course.id}>
             <article className="grid gap-6">
               <div className="rounded bg-gradient-to-r from-brand-blue to-brand-turquoise h-36 relative">
-                {typeof course.featuredImage === 'string' &&
-                course.featuredImage.length > 0 ? (
+                {typeof course.featuredImage === 'string' && course.featuredImage.length > 0 ? (
                   <img src={course.featuredImage} alt="" />
                 ) : null}
               </div>
@@ -40,9 +39,7 @@ export function CoursesList(props: CoursesListProps): JSX.Element {
                   <a>{course.title}</a>
                 </Link>
               </h3>
-              <p className="text-neutral-300 text-base leading-relaxed">
-                {course.abstract}
-              </p>
+              <p className="text-neutral-300 text-base leading-relaxed">{course.abstract}</p>
               <footer className="flex items-center justify-between">
                 <dl>
                   {Array.isArray(authors) && authors.length > 0 ? (

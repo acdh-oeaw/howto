@@ -11,10 +11,7 @@ export function useSiteMetadata(): SiteMetadata {
   const metadata = useContext(SiteMetadataContext)
 
   if (metadata === null) {
-    throw new MissingContextProviderError(
-      'useSiteMetadata',
-      'SiteMetadataProvider',
-    )
+    throw new MissingContextProviderError('useSiteMetadata', 'SiteMetadataProvider')
   }
 
   return metadata

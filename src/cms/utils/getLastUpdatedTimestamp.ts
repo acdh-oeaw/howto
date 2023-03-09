@@ -21,10 +21,7 @@ export async function getLastUpdatedTimestamp(
     return String(new Date(Number(timestamp) * 1000))
   } catch {
     log.warn(
-      `Failed to fetch last updated timestamp for ${relative(
-        process.cwd(),
-        absoluteFilePath,
-      )}.`,
+      `Failed to fetch last updated timestamp for ${relative(process.cwd(), absoluteFilePath)}.`,
     )
 
     return null

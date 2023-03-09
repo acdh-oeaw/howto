@@ -26,9 +26,7 @@ export function getAlgoliaSearchIndex(): SearchIndex | null {
     process.env.NEXT_PUBLIC_ALGOLIA_API_KEY,
   )
 
-  const searchIndex = searchClient.initIndex(
-    process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
-  )
+  const searchIndex = searchClient.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME)
 
   return searchIndex
 }

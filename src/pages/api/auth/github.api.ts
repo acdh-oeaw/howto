@@ -23,10 +23,7 @@ export default async function handler(
     return response.status(400).json({ message: 'Invalid CMS configuration.' })
   }
 
-  if (
-    process.env.GITHUB_ID === undefined ||
-    process.env.GITHUB_ID.length === 0
-  ) {
+  if (process.env.GITHUB_ID === undefined || process.env.GITHUB_ID.length === 0) {
     return response.status(400).json({ message: 'No GitHub ID provided.' })
   }
 

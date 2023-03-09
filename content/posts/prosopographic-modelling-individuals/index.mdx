@@ -11,7 +11,13 @@ editors:
 tags:
   - prosopographic-data
   - semantic-web
-abstract: This resource gives an introduction to the possibilities of prosopographic data modelling of individuals in the Semantic Web (i.e. ascribing events, relations, or dates to individuals using semantic technologies). You will gain an understanding of how information can be recorded about individuals. After a general introduction to the main concepts such as class vs. instance/individual and external reference resources, you can explore exercises taken from the NAMPI and VieCPro projects.
+abstract:
+  This resource gives an introduction to the possibilities of prosopographic data modelling of
+  individuals in the Semantic Web (i.e. ascribing events, relations, or dates to individuals using
+  semantic technologies). You will gain an understanding of how information can be recorded about
+  individuals. After a general introduction to the main concepts such as class vs.
+  instance/individual and external reference resources, you can explore exercises taken from the
+  NAMPI and VieCPro projects.
 licence: ccby-4.0
 toc: true
 uuid: -2cbKyWFR7wo_SW3ZTRqG
@@ -19,7 +25,19 @@ uuid: -2cbKyWFR7wo_SW3ZTRqG
 
 ## Prosopographic Modelling - Individuals
 
-In the context of this course on prosopographic modelling using semantic technologies, individuals are part of the projects _NAMPI_ or _VieCPro_ that can be described by using semantic technologies. In _NAMPI_, individuals are based on specific events that are connected to individuals persons. So, if various people attend the same event, this event will have a different connotation for each of them. For example, if somebody receives the title of _abbot_, during this event the change of their title is important for this individual clergyman. Other people might participate as witnesses, the bishop awards the title, etc. Semantic technology is used to express these relationships. In _VieCPro_, information about members of the Viennese Court, entities, is recorded. This information can come from various sources, but it is connected through semantic technologies, so that statements about these people can be made. For example, you have information in three different records and you can note down that somebody whom you have found is a person, this person works at the Court and has left their post at a specific date. All this will be information that can be accessed about an individual in _VieCPro_.
+In the context of this course on prosopographic modelling using semantic technologies, individuals
+are part of the projects _NAMPI_ or _VieCPro_ that can be described by using semantic technologies.
+In _NAMPI_, individuals are based on specific events that are connected to individuals persons. So,
+if various people attend the same event, this event will have a different connotation for each of
+them. For example, if somebody receives the title of _abbot_, during this event the change of their
+title is important for this individual clergyman. Other people might participate as witnesses, the
+bishop awards the title, etc. Semantic technology is used to express these relationships. In
+_VieCPro_, information about members of the Viennese Court, entities, is recorded. This information
+can come from various sources, but it is connected through semantic technologies, so that statements
+about these people can be made. For example, you have information in three different records and you
+can note down that somebody whom you have found is a person, this person works at the Court and has
+left their post at a specific date. All this will be information that can be accessed about an
+individual in _VieCPro_.
 
 ### Main concepts
 
@@ -30,7 +48,10 @@ In the context of this course on prosopographic modelling using semantic technol
 
 #### _Class_ vs. instance/individual
 
-A simple fact about an entity that is identified by the URI `<https://viecpro.acdh.oeaw.ac.at/entity/140450/>` could be: "The thing with the number 140450 is a person." To express this information that the **individual** is of a certain _type_, the _VieCPro-Project_ re-uses the **Class** "Person" `E21_Person` taken from the _CIDOC-CRM Ontology_:
+A simple fact about an entity that is identified by the URI
+`<https://viecpro.acdh.oeaw.ac.at/entity/140450/>` could be: "The thing with the number 140450 is a
+person." To express this information that the **individual** is of a certain _type_, the
+_VieCPro-Project_ re-uses the **Class** "Person" `E21_Person` taken from the _CIDOC-CRM Ontology_:
 
 In RDF Turtle notation the information is recorded as follows:
 
@@ -39,7 +60,9 @@ In RDF Turtle notation the information is recorded as follows:
 
 ```
 
-In an abbreviated form, the RDF turtle notation uses `a` as a shorthand for `rdf:type` and also defines the prefix `crm:` for abbreviating the URIs of the classes and properties of the CIDOC ontology. the same information can be expressed as follows:
+In an abbreviated form, the RDF turtle notation uses `a` as a shorthand for `rdf:type` and also
+defines the prefix `crm:` for abbreviating the URIs of the classes and properties of the CIDOC
+ontology. the same information can be expressed as follows:
 
 ```turtle
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
@@ -47,24 +70,44 @@ In an abbreviated form, the RDF turtle notation uses `a` as a shorthand for `rdf
 <https://viecpro.acdh.oeaw.ac.at/entity/140450/> a crm:E21_Person .
 ```
 
-This states that the individual identified by `<https://viecpro.acdh.oeaw.ac.at/entity/140450/>` is of the class E21_Person.
+This states that the individual identified by `<https://viecpro.acdh.oeaw.ac.at/entity/140450/>` is
+of the class E21_Person.
 
 #### External reference resources
 
-The datasets contain a lot of triples stating information about the individuals of certain classes, e.g. that our individual `<https://viecpro.acdh.oeaw.ac.at/entity/140450/>` is called "August Sinzendorf" and that he died on December 31th of 1677. But, in general, the information on this entity in rather scarce, and it contains only the most basic information. In an ideal digital world not every and each project should research these basic facts, e.g. date and place of birth of a person, but should rely on already available information on the web. There are some good sources of these kind of data, to which we refer as **external reference resources**. Examples are the [GND](https://www.dnb.de/DE/Professionell/Standardisierung/GND/gnd_node.html) (Gemeinsame Normdatei) or [Wikidata](https://www.wikidata.org/), which provides it's data as _Linked Data_ and also has a _SPARQL Endpoint_ with a relatively comfortable [Query Interface](https://query.wikidata.org/).
+The datasets contain a lot of triples stating information about the individuals of certain classes,
+e.g. that our individual `<https://viecpro.acdh.oeaw.ac.at/entity/140450/>` is called "August
+Sinzendorf" and that he died on December 31th of 1677. But, in general, the information on this
+entity in rather scarce, and it contains only the most basic information. In an ideal digital world
+not every and each project should research these basic facts, e.g. date and place of birth of a
+person, but should rely on already available information on the web. There are some good sources of
+these kind of data, to which we refer as **external reference resources**. Examples are the
+[GND](https://www.dnb.de/DE/Professionell/Standardisierung/GND/gnd_node.html) (Gemeinsame Normdatei)
+or [Wikidata](https://www.wikidata.org/), which provides it's data as _Linked Data_ and also has a
+_SPARQL Endpoint_ with a relatively comfortable [Query Interface](https://query.wikidata.org/).
 
-To give an example: There is an article in Wikipedia on the Bavarian-Austrian noble family Sinzendorf: https://de.wikipedia.org/wiki/Sinzendorf_(Adelsgeschlecht). The corresponding item on Wikidata can be accessed via the menu item `Wikidata Item` (Wikidata Datenobject) – https://www.wikidata.org/wiki/Q325728 . Please bear in mind, that this is the web representation of the item only and should not be mistaken for the actually URI: http://www.wikidata.org/entity/Q325728 (`http://` instead of `https://` and `/entity/` instead of `/wiki/`).
+To give an example: There is an article in Wikipedia on the Bavarian-Austrian noble family
+Sinzendorf: https://de.wikipedia.org/wiki/Sinzendorf_(Adelsgeschlecht). The corresponding item on
+Wikidata can be accessed via the menu item `Wikidata Item` (Wikidata Datenobject) –
+https://www.wikidata.org/wiki/Q325728 . Please bear in mind, that this is the web representation of
+the item only and should not be mistaken for the actually URI:
+http://www.wikidata.org/entity/Q325728 (`http://` instead of `https://` and `/entity/` instead of
+`/wiki/`).
 
-The Data can be queried via _SPARQL_ directly, e.g. [Coat of Arms of the Sinzendorf Family](https://w.wiki/3Sxs).
+The Data can be queried via _SPARQL_ directly, e.g.
+[Coat of Arms of the Sinzendorf Family](https://w.wiki/3Sxs).
 
 #### `owl:sameAs`
 
-OWL is used to express description logic. We use `owl:sameAs` to express that two individuals are actually the same thing. This implies, that every statement that is true about one thing identified by an URI, is also true about the other.
+OWL is used to express description logic. We use `owl:sameAs` to express that two individuals are
+actually the same thing. This implies, that every statement that is true about one thing identified
+by an URI, is also true about the other.
 
 ### Recommended reading
 
 - [DBpedia Association. "DBpedia".](https://www.dbpedia.org/)
-- Haslhofer, Bernhard, Antoine Isaac, and Rainer Simon. "Knowledge Graphs in the Libraries and Digital Humanities Domain", 8 March 2018.
+- Haslhofer, Bernhard, Antoine Isaac, and Rainer Simon. "Knowledge Graphs in the Libraries and
+  Digital Humanities Domain", 8 March 2018.
 - [Hitzler, Pascal. "A review of the semantic web field". Communications of the ACM 64, Nr. 2 (25. Januar 2021): 76–83.](https://doi.org/10.1145/3397512)
 - [Hyvönen, Eero. "Using the Semantic Web in Digital Humanities: Shift from Data Publishing to Data-Analysis and Serendipitous Knowledge Discovery". Semantic Web 11, Nr. 1 (1. Januar 2020): 187–93.](https://doi.org/10.3233/SW-190386)
 - [Linked Open Data-cloud](https://lod-cloud.net/)
@@ -72,11 +115,14 @@ OWL is used to express description logic. We use `owl:sameAs` to express that tw
 
 ### Sample datasets
 
-The datasets used for the following exercises are taken from the projects _NAMPI_ and _VieCPro_. They can be queried in the [Research Space-Instance](https://lod-playground.acdh-dev.oeaw.ac.at/). The URIs of the relevant named graphs are:
+The datasets used for the following exercises are taken from the projects _NAMPI_ and _VieCPro_.
+They can be queried in the [Research Space-Instance](https://lod-playground.acdh-dev.oeaw.ac.at/).
+The URIs of the relevant named graphs are:
 
 - Entities of the _NAMPI_-Project: `<https://nampi.org/entities>`
 - Entities of the _VieCPro_-Project: `<https://viecpro.acdh-dev.oeaw.ac.at/entities#>`
-- Deduplicated/Unique Persons of the VieCPro-Project: `<https://deduplication.in.viecpro.acdh-dev.oeaw.ac.at/>`
+- Deduplicated/Unique Persons of the VieCPro-Project:
+  `<https://deduplication.in.viecpro.acdh-dev.oeaw.ac.at/>`
 - Candidates for Linking to Wikidata: `<https://matchingcandidates.viecpro.acdh-dev.oeaw.ac.at/>`
 
 ### Exercise
@@ -85,7 +131,9 @@ The datasets used for the following exercises are taken from the projects _NAMPI
 
 - How many individuals are there of which class/type?
 
-The projects _NAMPI_ and _ViecPro_ use different ontologies to model their data. The individual entities (persons, places, ...) are instances of different classes. You can list the classes and count the individuals with the following SPARQL query:
+The projects _NAMPI_ and _ViecPro_ use different ontologies to model their data. The individual
+entities (persons, places, ...) are instances of different classes. You can list the classes and
+count the individuals with the following SPARQL query:
 
 ```sparql
 SELECT ?class (COUNT(?entity) AS ?cnt) (SAMPLE(?entity) AS ?example) (SAMPLE(?label) AS ?exampleLabel) FROM <https://nampi.org/entities> WHERE {
@@ -96,13 +144,23 @@ GROUP BY ?class
 ORDER BY DESC(?cnt)
 ```
 
-This selects all classes in the named graph of the _NAMPI_-Project (... `FROM <https://nampi.org/entities>`...). We want to include the URI of each class that is bound to the variable `?class`. By using the function `COUNT` we count all individuals per class, that are grouped in the lower part of the query by `GROUP BY`. Per grouped `?class` we include a sample individual in our output: The individual's URI is bound to the variable `?example` and its label to `?label`.
+This selects all classes in the named graph of the _NAMPI_-Project (...
+`FROM <https://nampi.org/entities>`...). We want to include the URI of each class that is bound to
+the variable `?class`. By using the function `COUNT` we count all individuals per class, that are
+grouped in the lower part of the query by `GROUP BY`. Per grouped `?class` we include a sample
+individual in our output: The individual's URI is bound to the variable `?example` and its label to
+`?label`.
 
-In the `WHERE` clause we specify that we want to query each entity `?entity` that is `rdf:type` (in the query we use the short notation `a`) of any class `?class`. If the entity has an optional (`OPTIONAL`) `rdf:label` attached, we assign it to the variable `?label`. We are grouping everything by `?class` and sort the results in descending order it by the number of individuals `?cnt` per class.
+In the `WHERE` clause we specify that we want to query each entity `?entity` that is `rdf:type` (in
+the query we use the short notation `a`) of any class `?class`. If the entity has an optional
+(`OPTIONAL`) `rdf:label` attached, we assign it to the variable `?label`. We are grouping everything
+by `?class` and sort the results in descending order it by the number of individuals `?cnt` per
+class.
 
 - What are the most frequent classes in _NAMPI_?
 
-To get an overview of the _VieCPro_ dataset adapt the query to list classes and count the individuals. Hint: You only have to replace the URI of the named graph in the `FROM` statement.
+To get an overview of the _VieCPro_ dataset adapt the query to list classes and count the
+individuals. Hint: You only have to replace the URI of the named graph in the `FROM` statement.
 
 **Solution:**
 
@@ -117,9 +175,13 @@ ORDER BY DESC(?cnt)
 
 - Do we have `owl:sameAs` properties?
 
-We normally use the property `owl:sameAs` to create links between entities and external data sets or reference resources. The property implies that two entities are exactly the same. To check if our data sets include links to external resources, we can look for this property by the following SPARQL queries:
+We normally use the property `owl:sameAs` to create links between entities and external data sets or
+reference resources. The property implies that two entities are exactly the same. To check if our
+data sets include links to external resources, we can look for this property by the following SPARQL
+queries:
 
-We can simply list all entites that are in the subject-position of a triple containing `owl:sameAs` as the predicate:
+We can simply list all entites that are in the subject-position of a triple containing `owl:sameAs`
+as the predicate:
 
 ```sparql
 SELECT ?entity (?o AS ?sameAs) WHERE {
@@ -127,9 +189,11 @@ SELECT ?entity (?o AS ?sameAs) WHERE {
 }
 ```
 
-Normally it's a good idea to include a `LIMIT` statement at the end of the query to prevent the system of returning all results and eventually crashing something.
+Normally it's a good idea to include a `LIMIT` statement at the end of the query to prevent the
+system of returning all results and eventually crashing something.
 
-We can also group the results by the named graph they are contained in and count the individuals having these links:
+We can also group the results by the named graph they are contained in and count the individuals
+having these links:
 
 ```sparql
 SELECT (SAMPLE(?g) AS ?dataset) (COUNT(?entity) AS ?cntEntity)  WHERE {
@@ -140,11 +204,17 @@ GROUP BY ?g
 
 - Are the references to external reference resources maybe available under another property?
 
-The property `owl:sameAs` is not the only that is used to express the notion of something being equivalent to an entity in an external resource. _NAMPI_ uses a different property. Can you find out which one it is? It's helpful to look into one entity and explore it in the _Ontodia view_ in Research Space. For example look for the entity called "Hieronymus (Übelbacher) von Dürnstein" (`<https://purl.org/nampi/data/person/2a06e212-8567-4fe2-9547-79d9b3cd462a>`).
+The property `owl:sameAs` is not the only that is used to express the notion of something being
+equivalent to an entity in an external resource. _NAMPI_ uses a different property. Can you find out
+which one it is? It's helpful to look into one entity and explore it in the _Ontodia view_ in
+Research Space. For example look for the entity called "Hieronymus (Übelbacher) von Dürnstein"
+(`<https://purl.org/nampi/data/person/2a06e212-8567-4fe2-9547-79d9b3cd462a>`).
 
 **Solution:**
 
-_NAMPI_ also uses a property called "sameAs" but not from the OWL Ontology but from schema.org. In the dataset `schema:sameAs` connects entites to several external reference resources. To find out which ones the project uses, we can list them:
+_NAMPI_ also uses a property called "sameAs" but not from the OWL Ontology but from schema.org. In
+the dataset `schema:sameAs` connects entites to several external reference resources. To find out
+which ones the project uses, we can list them:
 
 ```sparql
 SELECT (SAMPLE(?baseuri) AS ?externalReferenceResource) (COUNT(?entity) AS ?cnt) FROM <https://nampi.org/entities> WHERE {
@@ -156,25 +226,44 @@ GROUP BY ?baseuri
 ORDER BY DESC(?cnt)
 ```
 
-In the query we `BIND` a part of the URI of each external URI to a variable `?uri`, convert it to a string and use the function `REPLACE` to remove the individual ID of the URI using a so called regular expression. The results are then grouped by the resulting variable `?baseuri`. You will receive a list of external resources and the count of individuals.
+In the query we `BIND` a part of the URI of each external URI to a variable `?uri`, convert it to a
+string and use the function `REPLACE` to remove the individual ID of the URI using a so called
+regular expression. The results are then grouped by the resulting variable `?baseuri`. You will
+receive a list of external resources and the count of individuals.
 
 - Which external reference resources are used in _NAMPI_?
 
 **Solution:**
 
-[GeoNames geographical database](https://sws.geonames.org/), [Wikidata](https://www.wikidata.org/) and [GND](https://d-nb.info/standards/elementset/gnd)
+[GeoNames geographical database](https://sws.geonames.org/), [Wikidata](https://www.wikidata.org/)
+and [GND](https://d-nb.info/standards/elementset/gnd)
 
 #### **Task 2:** Investigate possible links to external reference resources
 
-As we found out _NAMPI_ uses `schema:sameAs` to connect its dataset to the linked data cloud. In _VieCPro_ there are no explicit connections. Furthermore, the same individuals are included in the dataset multiple times. We created a named graph `<https://deduplication.in.viecpro.acdh-dev.oeaw.ac.at/>` in which we used `owl:sameAs` to link the individual items together.
+As we found out _NAMPI_ uses `schema:sameAs` to connect its dataset to the linked data cloud. In
+_VieCPro_ there are no explicit connections. Furthermore, the same individuals are included in the
+dataset multiple times. We created a named graph
+`<https://deduplication.in.viecpro.acdh-dev.oeaw.ac.at/>` in which we used `owl:sameAs` to link the
+individual items together.
 
-Query this graph and look at one entity to understand how the linking is done. Hint: use the triple `?entity owl:sameAs ?item` to get relevant results from the named graph!
+Query this graph and look at one entity to understand how the linking is done. Hint: use the triple
+`?entity owl:sameAs ?item` to get relevant results from the named graph!
 
-Linking the entities together already simplifies working with the _VieCPro_ data set, but so far we only have internal connections.
+Linking the entities together already simplifies working with the _VieCPro_ data set, but so far we
+only have internal connections.
 
-It would be nice to connect some of the included entities to external reference resources. Finding the right candidate can't often be done automatically.
+It would be nice to connect some of the included entities to external reference resources. Finding
+the right candidate can't often be done automatically.
 
-In the beginning, we looked at the external reference resource Wikidata and investigated the entity representing the noble familiy of Sinzendorf, see: https://www.wikidata.org/wiki/Q325728. If you look at the item in Wikidata again, you see that there is the information, and that this entity is described by a certain reference resource which could be of use for the project: "Biographisches Lexikon des Kaiserthums Oesterreich" (biographical lexicon of the Austrian Empire) (https://www.wikidata.org/wiki/Q665807). Persons included in this 60-volume biographical work by Constant von Wurzbach have been put into Wikidata and thus can be queried by using SPARQL in [wikidata's query interface](https://query.wikidata.org/) – just follow [this link](https://w.wiki/3RiA) to view the results of the following query:
+In the beginning, we looked at the external reference resource Wikidata and investigated the entity
+representing the noble familiy of Sinzendorf, see: https://www.wikidata.org/wiki/Q325728. If you
+look at the item in Wikidata again, you see that there is the information, and that this entity is
+described by a certain reference resource which could be of use for the project: "Biographisches
+Lexikon des Kaiserthums Oesterreich" (biographical lexicon of the Austrian Empire)
+(https://www.wikidata.org/wiki/Q665807). Persons included in this 60-volume biographical work by
+Constant von Wurzbach have been put into Wikidata and thus can be queried by using SPARQL in
+[wikidata's query interface](https://query.wikidata.org/) – just follow
+[this link](https://w.wiki/3RiA) to view the results of the following query:
 
 ```sparql
 SELECT DISTINCT ?item ?itemLabel ?itemDescription ?dateBirth ?dateDeath
@@ -192,9 +281,19 @@ WHERE
 LIMIT 500
 ```
 
-We downloaded the results and included them in a separate named graph in the Research Space instance `<https://wurzbach-wikidata.acdh-dev.oeaw.ac.at/>`. We then tried to match the individuals of the class Person in _VieCPro_ with these entities by comparing the labels only. The results have been included in a separate named graph `<https://matchingcandidates.viecpro.acdh-dev.oeaw.ac.at/>`. It contains triples stating that a person that is in "Wurzbach" and a deduplicated person have the same name. We therefore introduced a custom property "identicalName" `<https://summer2020.acdh-dev.oeaw.ac.at/custom_properties/identicalName>` because `owl:sameAs` would not have been semantically correct because we don't know if persons that have the same name are really the same entity.The graph contains some 30 candidates and you can investigate them and see if there are any true overlaps.
+We downloaded the results and included them in a separate named graph in the Research Space instance
+`<https://wurzbach-wikidata.acdh-dev.oeaw.ac.at/>`. We then tried to match the individuals of the
+class Person in _VieCPro_ with these entities by comparing the labels only. The results have been
+included in a separate named graph `<https://matchingcandidates.viecpro.acdh-dev.oeaw.ac.at/>`. It
+contains triples stating that a person that is in "Wurzbach" and a deduplicated person have the same
+name. We therefore introduced a custom property "identicalName"
+`<https://summer2020.acdh-dev.oeaw.ac.at/custom_properties/identicalName>` because `owl:sameAs`
+would not have been semantically correct because we don't know if persons that have the same name
+are really the same entity.The graph contains some 30 candidates and you can investigate them and
+see if there are any true overlaps.
 
-It's helpful to fetch some information from all the relevant graphs and include some information from Wikidata as well. We therefore prepared the following complex query:
+It's helpful to fetch some information from all the relevant graphs and include some information
+from Wikidata as well. We therefore prepared the following complex query:
 
 ```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -262,21 +361,37 @@ GRAPH <https://matchingcandidates.viecpro.acdh-dev.oeaw.ac.at/>
 }
 ```
 
-This part retrieves the Wikidata URIs from the matching candidates named graph and assigns them to the variable `?wd` (Wikidata).
+This part retrieves the Wikidata URIs from the matching candidates named graph and assigns them to
+the variable `?wd` (Wikidata).
 
-The next part retrieves the normalized name in `rdfs:label` and the connections to items that are linked together in the deduplication graph.
+The next part retrieves the normalized name in `rdfs:label` and the connections to items that are
+linked together in the deduplication graph.
 
-When we have all the linked items, we retrieve the date of death, split this information up in year of death, month of death and day of death, e.g. `BIND(YEAR(?deathDate) as ?deathYear)`. We assign this information to corresponding variables. We will later use these variables to compare the information gathered in _VieCPro_ with the possible matches in Wikidata.
+When we have all the linked items, we retrieve the date of death, split this information up in year
+of death, month of death and day of death, e.g. `BIND(YEAR(?deathDate) as ?deathYear)`. We assign
+this information to corresponding variables. We will later use these variables to compare the
+information gathered in _VieCPro_ with the possible matches in Wikidata.
 
-The part of the query following the clause `SERVICE <https://query.wikidata.org/sparql>` is a so called federated query. This actually retrieves additional information directly from Wikidata's SPARQL endpoint `https://query.wikidata.org/sparql`. From Wikidata we retrieve the birth- and death date of the entities which we can compare to _VieCPro's_ data.
+The part of the query following the clause `SERVICE <https://query.wikidata.org/sparql>` is a so
+called federated query. This actually retrieves additional information directly from Wikidata's
+SPARQL endpoint `https://query.wikidata.org/sparql`. From Wikidata we retrieve the birth- and death
+date of the entities which we can compare to _VieCPro's_ data.
 
-We also retrieve the relevant article from Wurzbach and can even include the first line of the entry or so.
+We also retrieve the relevant article from Wurzbach and can even include the first line of the entry
+or so.
 
-In the last part we filter entities where the death year of wikidata and _VieCPro_ match: `FILTER(?WikidataDeathYear = ?deathYear)` and finally group them by the URI of the `?entity` from our deduplication graph which we queried in the beginning.
+In the last part we filter entities where the death year of wikidata and _VieCPro_ match:
+`FILTER(?WikidataDeathYear = ?deathYear)` and finally group them by the URI of the `?entity` from
+our deduplication graph which we queried in the beginning.
 
-Because we have a lot of duplicates in the data and we are grouping the results, we need to include samples in the `SELECT` clause. We display the following variables: `?entity`, `?entityName`, `?wikidataUri`, URI of the article from Wurzbach in Wikidata `?BioArcticleURI` and the article's first line in `?WurzbachText`; and the years of death of the entity `?yearOfDeathWikidata` and `?yearOfDeathViecPro`.
+Because we have a lot of duplicates in the data and we are grouping the results, we need to include
+samples in the `SELECT` clause. We display the following variables: `?entity`, `?entityName`,
+`?wikidataUri`, URI of the article from Wurzbach in Wikidata `?BioArcticleURI` and the article's
+first line in `?WurzbachText`; and the years of death of the entity `?yearOfDeathWikidata` and
+`?yearOfDeathViecPro`.
 
-- Investigate the results of the query! Are there any true matches? How can these information be put back into the system?
+- Investigate the results of the query! Are there any true matches? How can these information be put
+  back into the system?
 
 #### Additional Task 3: Can we do dirty matching on strings (names)
 

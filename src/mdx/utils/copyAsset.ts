@@ -53,11 +53,7 @@ export function copyAsset(
     return newFileName
   }
 
-  const newPath = path.join(
-    'static',
-    folderName,
-    path.relative(process.cwd(), getNewFileName()),
-  )
+  const newPath = path.join('static', folderName, path.relative(process.cwd(), getNewFileName()))
 
   const publicPath = path.join('/_next', newPath)
   const destinationFilePath = path.join(process.cwd(), '.next', newPath)

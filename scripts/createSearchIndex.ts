@@ -31,9 +31,7 @@ function getAlgoliaSearchIndex(): SearchIndex | null {
     process.env.ALGOLIA_ADMIN_API_KEY == null ||
     process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME == null
   ) {
-    const error = new Error(
-      'Failed to update search index because no Algolia config was provided.',
-    )
+    const error = new Error('Failed to update search index because no Algolia config was provided.')
     delete error.stack
     throw error
   }
@@ -43,9 +41,7 @@ function getAlgoliaSearchIndex(): SearchIndex | null {
     process.env.ALGOLIA_ADMIN_API_KEY,
   )
 
-  const searchIndex = searchClient.initIndex(
-    process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
-  )
+  const searchIndex = searchClient.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME)
 
   return searchIndex
 }
@@ -95,9 +91,7 @@ async function createPlaintextProcessor() {
   return processor
 }
 
-async function getResourceObjects(
-  locale: Locale,
-): Promise<Array<IndexedResource>> {
+async function getResourceObjects(locale: Locale): Promise<Array<IndexedResource>> {
   const processor = await createProcessor()
   const plaintextProcessor = await createPlaintextProcessor()
 
@@ -232,17 +226,12 @@ async function generate() {
 
   /** Clear search index, to avoid stale resources, or stale resource chunks. */
   await searchIndex.clearObjects()
-  const { objectIDs } = await searchIndex.saveObjects([
-    ...resources,
-    ...courses,
-  ])
+  const { objectIDs } = await searchIndex.saveObjects([...resources, ...courses])
   return objectIDs.length
 }
 
 generate()
   .then((n) => {
-    log.success(
-      `Successfully updated Algolia search index with ${n ?? 0} objects.`,
-    )
+    log.success(`Successfully updated Algolia search index with ${n ?? 0} objects.`)
   })
   .catch(log.error)

@@ -23,8 +23,7 @@ const plugin: Pluggable<[Options]> = [
      */
     content(heading: Hast.Element): Array<Hast.Element> {
       heading.properties = heading.properties ?? {}
-      heading.properties.className = (heading.properties.className ??
-        []) as Array<string>
+      heading.properties.className = (heading.properties.className ?? []) as Array<string>
       heading.properties.className.push('relative')
       heading.properties.className.push('group')
       /** Allows identifying headings for table of contents highlighting. */

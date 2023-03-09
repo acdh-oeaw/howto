@@ -66,12 +66,7 @@ export interface PostFrontmatter {
 export interface PostMetadata
   extends Omit<
     PostFrontmatter,
-    | 'authors'
-    | 'editors'
-    | 'contributors'
-    | 'tags'
-    | 'licence'
-    | 'featuredImage'
+    'authors' | 'editors' | 'contributors' | 'tags' | 'licence' | 'featuredImage'
   > {
   authors: Array<Person>
   contributors?: Array<Person>
@@ -156,10 +151,7 @@ export async function getPosts(locale: Locale): Promise<Array<Post>> {
 /**
  * Returns metadata for post.
  */
-export async function getPostPreviewById(
-  id: ID,
-  locale: Locale,
-): Promise<PostPreview> {
+export async function getPostPreviewById(id: ID, locale: Locale): Promise<PostPreview> {
   const [, metadata] = await readFileAndGetPostMetadata(id, locale)
 
   return { id, kind, ...metadata }
@@ -168,9 +160,7 @@ export async function getPostPreviewById(
 /**
  * Returns metadata for all posts, sorted by date.
  */
-export async function getPostPreviews(
-  locale: Locale,
-): Promise<Array<PostPreview>> {
+export async function getPostPreviews(locale: Locale): Promise<Array<PostPreview>> {
   const ids = await getPostIds(locale)
 
   const metadata = await Promise.all(
@@ -208,10 +198,7 @@ export function getPostFilePath(id: ID, _locale: Locale): FilePath {
 /**
  * Extracts post metadata and resolves foreign-key relations.
  */
-async function getPostMetadata(
-  file: VFile,
-  locale: Locale,
-): Promise<PostMetadata> {
+async function getPostMetadata(file: VFile, locale: Locale): Promise<PostMetadata> {
   const matter = await getPostFrontmatter(file, locale)
 
   const metadata: PostMetadata = {
@@ -267,10 +254,7 @@ async function getPostMetadata(
 /**
  * Extracts post frontmatter.
  */
-async function getPostFrontmatter(
-  file: VFile,
-  _locale: Locale,
-): Promise<PostFrontmatter> {
+async function getPostFrontmatter(file: VFile, _locale: Locale): Promise<PostFrontmatter> {
   extractFrontmatter(file)
 
   const { matter } = file.data as { matter: PostFrontmatter }

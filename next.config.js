@@ -2,8 +2,7 @@
 /** @typedef {import('next').NextConfig & {i18n?: {locales: Array<Locale>; defaultLocale: Locale}}} NextConfig */
 /** @typedef {import('webpack').Configuration} WebpackConfig */
 
-const isProductionDeploy =
-  process.env['NEXT_PUBLIC_BASE_URL'] === 'https://howto.acdh.oeaw.ac.at'
+const isProductionDeploy = process.env['NEXT_PUBLIC_BASE_URL'] === 'https://howto.acdh.oeaw.ac.at'
 
 /** @type {NextConfig} */
 const config = {
@@ -58,18 +57,14 @@ const config = {
 
     try {
       const resourcesRedirects = JSON.parse(
-        await fs.readFile(
-          path.join(process.cwd(), './redirects.resources.json'),
-          { encoding: 'utf-8' },
-        ),
+        await fs.readFile(path.join(process.cwd(), './redirects.resources.json'), {
+          encoding: 'utf-8',
+        }),
       )
       const coursesRedirects = JSON.parse(
-        await fs.readFile(
-          path.join(process.cwd(), './redirects.courses.json'),
-          {
-            encoding: 'utf-8',
-          },
-        ),
+        await fs.readFile(path.join(process.cwd(), './redirects.courses.json'), {
+          encoding: 'utf-8',
+        }),
       )
 
       return [
@@ -134,11 +129,7 @@ const plugins = [
   /** @ts-expect-error Missing module declaration. */
   require('@stefanprobst/next-svg')({
     svgo: {
-      plugins: [
-        { prefixIds: true },
-        { removeDimensions: true },
-        { removeViewBox: false },
-      ],
+      plugins: [{ prefixIds: true }, { removeDimensions: true }, { removeViewBox: false }],
     },
     svgr: {
       titleProp: true,
@@ -156,10 +147,7 @@ const plugins = [
       remarkPlugins: [
         /** @ts-expect-error Missing module declaration. */
         ...require('@stefanprobst/next-mdx').defaults.remarkPlugins,
-        [
-          require('remark-mdx-frontmatter').remarkMdxFrontmatter,
-          { name: 'metadata' },
-        ],
+        [require('remark-mdx-frontmatter').remarkMdxFrontmatter, { name: 'metadata' }],
       ],
     },
   }),

@@ -56,9 +56,7 @@ export function MultipleChoice(props: MultipleChoiceProps): JSX.Element {
         return checked.has(index)
       })
 
-    quiz.setStatus(
-      isCorrect === true ? QuizCardStatus.CORRECT : QuizCardStatus.INCORRECT,
-    )
+    quiz.setStatus(isCorrect === true ? QuizCardStatus.CORRECT : QuizCardStatus.INCORRECT)
   }
 
   const name = /** TODO: unique name */ 'quiz'
@@ -103,9 +101,7 @@ export interface MultipleChoiceOptionProps {
 /**
  * Multiple choice option.
  */
-export function MultipleChoiceOption(
-  props: MultipleChoiceOptionProps,
-): JSX.Element {
+export function MultipleChoiceOption(props: MultipleChoiceOptionProps): JSX.Element {
   return <span>{props.children}</span>
 }
 

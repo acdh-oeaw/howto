@@ -10,7 +10,12 @@ editors:
 tags:
   - prosopographic-data
   - semantic-web
-abstract: "In the following HowTo, you will familiarise yourself with the basic terminology used in prosopographic data modelling and Semantic Web, in relation to the projects NAMPI and VieCPro. These main concepts are introduced: ontologies, vocabularies, RDF (Resource Description Framework), OWL (Web Ontology Language), SKOS (Simple Knowledge Organisation System), SPARQL (SPARQL Protocol and RDF Query Language), LOD (Linked Open Data) and LOD-cloud."
+abstract:
+  "In the following HowTo, you will familiarise yourself with the basic terminology used in
+  prosopographic data modelling and Semantic Web, in relation to the projects NAMPI and VieCPro.
+  These main concepts are introduced: ontologies, vocabularies, RDF (Resource Description
+  Framework), OWL (Web Ontology Language), SKOS (Simple Knowledge Organisation System), SPARQL
+  (SPARQL Protocol and RDF Query Language), LOD (Linked Open Data) and LOD-cloud."
 licence: ccby-4.0
 toc: true
 uuid: c_gKWDFNpMVYFftzxMTSG
@@ -24,10 +29,13 @@ In the following we introduce the basic terminology in relation to data modellin
 
 **Ontology**
 
-- In the context of Digital Humanities, an Ontology is mostly defined as _"a formal, explicit specification of a shared conceptualization."_ (Studer et al, 1998)
+- In the context of Digital Humanities, an Ontology is mostly defined as _"a formal, explicit
+  specification of a shared conceptualization."_ (Studer et al, 1998)
 - An ontology is an explicit model of concepts, which are defined with clear semantics.
-- It is important that users of an ontology understand the underlying assumptions about the chosen domain.
-- Normally an ontology is expressed as a set of classes and properties representing concepts and their relationships.
+- It is important that users of an ontology understand the underlying assumptions about the chosen
+  domain.
+- Normally an ontology is expressed as a set of classes and properties representing concepts and
+  their relationships.
 
 **RDF - Resource Description Framework**
 
@@ -35,7 +43,8 @@ In the following we introduce the basic terminology in relation to data modellin
 - abstract data model to state anything about anything by anybody
 - URIs to identify entities
 - triples: `<subject predicate object>` to form a graph
-- named graphs: allows to assign a fourth identifier to a group of triples (quad mode) and use that to further describe the "named graph".
+- named graphs: allows to assign a fourth identifier to a group of triples (quad mode) and use that
+  to further describe the "named graph".
 
   ```turtle
   @prefix cidoc: <http://www.cidoc-crm.org/cidoc-crm/> .
@@ -63,7 +72,8 @@ In the following we introduce the basic terminology in relation to data modellin
 **SKOS - Simple Knowledge Organisation System**
 
 - https://www.w3.org/TR/skos-reference/ (2009)
-- schema for modelling controlled vocabularies (such as taxonomies, thesauri, etc.) in a way that is compliant to Linked Open Data.
+- schema for modelling controlled vocabularies (such as taxonomies, thesauri, etc.) in a way that is
+  compliant to Linked Open Data.
 - is based on concepts (terms) which can be supplemented with labels, notes, comments, etc.
 - SKOS concepts can be linked to each other using hierarchical or associative relations
 - can also be linked to other vocabularies
@@ -78,7 +88,9 @@ In the following we introduce the basic terminology in relation to data modellin
 - https://www.w3.org/wiki/LinkedData, https://www.w3.org/DesignIssues/LinkedData
 - "set of best practices for publishing structured data on the Web"
 
-  _Use URIs as names for things Use HTTP URIs so that people can look up those names. When someone looks up a URI, provide useful information. Include links to other URIs. so that they can discover more things._
+  _Use URIs as names for things Use HTTP URIs so that people can look up those names. When someone
+  looks up a URI, provide useful information. Include links to other URIs. so that they can discover
+  more things._
 
 **LOD-cloud**
 
@@ -88,7 +100,8 @@ In the following we introduce the basic terminology in relation to data modellin
 
 ### Description of sample datasets
 
-See the [presentation slides](https://docs.google.com/presentation/d/1fZ8Oh3__fL8ZI3qka3LBomFoN8BvDAVW).
+See the
+[presentation slides](https://docs.google.com/presentation/d/1fZ8Oh3__fL8ZI3qka3LBomFoN8BvDAVW).
 
 #### VieCPro
 
@@ -126,12 +139,14 @@ See the [presentation slides](https://docs.google.com/presentation/d/1fZ8Oh3__fL
 
 - https://nampi.icar-us.eu/, https://data.nampi.icar-us.eu/
 - prosopographical database system based on RDF and the factoid model
-- Java-Application as backend + client accessing data via API, data stored in Apache Jena Fuseki Triplestore
+- Java-Application as backend + client accessing data via API, data stored in Apache Jena Fuseki
+  Triplestore
 
 **ResearchSpace** - https://www.researchspace.org/
 
 - semantic knowledge platform
-- Java application with predefined frontend-components and a flexible templating mechanism operating directly on SPARQL endpoint to retrieve and present data
+- Java application with predefined frontend-components and a flexible templating mechanism operating
+  directly on SPARQL endpoint to retrieve and present data
 
 ### SPARQL basics
 
@@ -145,11 +160,13 @@ Following illustration describes the different parts of a SPARQL query.
 
 ![The anatomy of a SPARQL query](images/sparql_anatomy.png)
 
-- **Prefixes:** optional, used to shorten URIs if they make query difficult to read if spelled out in full. Use prefix in query
+- **Prefixes:** optional, used to shorten URIs if they make query difficult to read if spelled out
+  in full. Use prefix in query
 - **Define dataset:** optionally restrict the graph from which to select
 - **Query result clause:** which variables should be returned in the result
 - **Query pattern:** formulate filtering conditions
-- **Query modifiers:** modify and specify your query further (eg. group results by a particular variable, limit query, etc.)
+- **Query modifiers:** modify and specify your query further (eg. group results by a particular
+  variable, limit query, etc.)
 - Variables are freely chosen names prefixed by `?`
 
 **Four types of SPARQL queries**
@@ -157,7 +174,8 @@ Following illustration describes the different parts of a SPARQL query.
 - **SELECT** : returns values based on some query pattern
 - **CONSTRUCT** : creates a new graph consisting of new triples
 - **ASK** : returns a yes/no answer, e.g. do any entities with given property exist
-- **DESCRIBE** : provides information about a resource, without explicitly stating the query pattern. The query processor determines the result set.
+- **DESCRIBE** : provides information about a resource, without explicitly stating the query
+  pattern. The query processor determines the result set.
 
 ![Four types of SPARQL queries](images/sparql_four_types.png)
 
@@ -187,4 +205,5 @@ Video resources:
 
 - ["Knowledge Engineering with Semantic Web Technologies by Dr. Harald Sack"](https://www.youtube.com/playlist?list=PLoOmvuyo5UAcBXlhTti7kzetSsi1PpJGR)
 
-- [OpenHPI Tutorials. 1.0 Overview, 2019](https://www.youtube.com/watch?v=eJ9H1SakPoA) "RDF 1.1 Turtle". https://www.w3.org/TR/turtle/.
+- [OpenHPI Tutorials. 1.0 Overview, 2019](https://www.youtube.com/watch?v=eJ9H1SakPoA) "RDF 1.1
+  Turtle". https://www.w3.org/TR/turtle/.

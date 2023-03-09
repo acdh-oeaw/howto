@@ -6,13 +6,9 @@ import type { ImageProps } from 'next/image'
  */
 export function ResponsiveImage(props: ImageProps): JSX.Element {
   const isUnoptimized =
-    typeof props.src === 'string' &&
-    (props.width == null || props.height == null)
+    typeof props.src === 'string' && (props.width == null || props.height == null)
 
-  const href =
-    typeof props.src === 'string'
-      ? props.src
-      : (props.src as StaticImageData).src
+  const href = typeof props.src === 'string' ? props.src : (props.src as StaticImageData).src
 
   return (
     <a href={href} target="_blank" rel="noreferrer">

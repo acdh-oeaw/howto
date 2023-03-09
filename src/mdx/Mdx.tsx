@@ -13,10 +13,5 @@ export interface MdxProps {
 export function Mdx(props: MdxProps): JSX.Element {
   const { MdxContent, metadata } = useMdx(props.code)
 
-  return (
-    <MdxContent
-      {...metadata}
-      components={{ ...components, ...props.components }}
-    />
-  )
+  return <MdxContent {...metadata} components={{ ...components, ...props.components }} />
 }

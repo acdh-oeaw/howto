@@ -83,10 +83,7 @@ export function getLicenceFilePath(id: ID, _locale: Locale): FilePath {
 /**
  * Returns licence data.
  */
-async function getLicenceData(
-  file: VFile,
-  _locale: Locale,
-): Promise<LicenceData> {
+async function getLicenceData(file: VFile, _locale: Locale): Promise<LicenceData> {
   const data = YAML.load(String(file), {
     schema: YAML.CORE_SCHEMA,
   }) as LicenceData

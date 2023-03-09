@@ -7,10 +7,7 @@ import { getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostPreviews } from '@/cms/api/posts.api'
 import { log } from '@/utils/log'
 
-function createRedirects(
-  resources: Array<{ uuid: string; id: string }>,
-  fileName: string,
-) {
+function createRedirects(resources: Array<{ uuid: string; id: string }>, fileName: string) {
   const redirects: Record<string, string> = {}
 
   resources.forEach((resource) => {

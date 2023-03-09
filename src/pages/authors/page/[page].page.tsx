@@ -89,10 +89,7 @@ export async function getStaticProps(
   const authorsWithPostCount = (
     await Promise.all(
       authors.items.map(async (author) => {
-        const postsWithAuthor = await getPostPreviewsByAuthorId(
-          author.id,
-          locale,
-        )
+        const postsWithAuthor = await getPostPreviewsByAuthorId(author.id, locale)
 
         return {
           ...author,

@@ -8,12 +8,6 @@
       "~/*": ["*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "app-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.config.js"
-  ],
+  "include": ["next-env.d.ts", "app-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.config.js"],
   "exclude": ["node_modules"]
 }

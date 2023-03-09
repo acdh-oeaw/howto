@@ -31,10 +31,7 @@ export function useCodeMirror(
     if (editor === null) return ''
 
     const selection = editor.state
-      .sliceDoc(
-        editor.state.selection.main.from,
-        editor.state.selection.main.to,
-      )
+      .sliceDoc(editor.state.selection.main.from, editor.state.selection.main.to)
       .toString()
 
     return selection
@@ -44,9 +41,7 @@ export function useCodeMirror(
     let view: EditorView | null = null
 
     async function setup() {
-      const { basicSetup, EditorState, EditorView } = await import(
-        '@codemirror/basic-setup'
-      )
+      const { basicSetup, EditorState, EditorView } = await import('@codemirror/basic-setup')
       const { xml } = await import('@codemirror/lang-xml')
 
       const styles = EditorView.theme({

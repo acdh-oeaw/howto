@@ -34,9 +34,7 @@ export function Resource(props: ResourceProps): JSX.Element {
   return (
     <div className="w-full mx-auto space-y-16 max-w-80ch">
       <div className="prose-sm prose max-w-none sm:prose sm:max-w-none">
-        {featuredImage != null ? (
-          <ResponsiveImage src={featuredImage} alt="" priority />
-        ) : null}
+        {featuredImage != null ? <ResponsiveImage src={featuredImage} alt="" priority /> : null}
         <Mdx
           code={resource.code}
           components={{
@@ -65,9 +63,7 @@ export function Resource(props: ResourceProps): JSX.Element {
             id={resource.id}
             className="text-sm flex justify-end items-center space-x-1.5 text-neutral-500"
           >
-            <span className="text-right">
-              {t('common.suggestChangesToResource')}
-            </span>
+            <span className="text-right">{t('common.suggestChangesToResource')}</span>
           </EditLink>
         ) : null}
       </footer>
@@ -101,9 +97,7 @@ export function ResourceHeader(props: ResourceHeaderProps): JSX.Element {
                     <li key={tag.id} className="inline">
                       <Link href={routes.tag({ id: tag.id })}>
                         <a className="transition hover:text-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-brand-light-blue">
-                          <span className={index !== 0 ? 'ml-1' : undefined}>
-                            {tag.name}
-                          </span>
+                          <span className={index !== 0 ? 'ml-1' : undefined}>{tag.name}</span>
                         </a>
                       </Link>
                       {index !== tags.length - 1 ? ', ' : null}
@@ -144,9 +138,7 @@ export function ResourceHeader(props: ResourceHeaderProps): JSX.Element {
                             />
                           )}
                           <Link href={routes.author({ id: author.id })}>
-                            <a className="hover:text-white transition">
-                              {getFullName(author)}
-                            </a>
+                            <a className="hover:text-white transition">{getFullName(author)}</a>
                           </Link>
                         </div>
                       </li>

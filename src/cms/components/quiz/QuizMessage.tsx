@@ -24,12 +24,8 @@ export function QuizMessage(props: QuizMessageProps): JSX.Element | null {
 
   return (
     <div className="flex items-start space-x-2 border-t border-neutral-200 text-neutral-500">
-      {icon != null ? (
-        <Icon icon={icon} className="flex-shrink-0 w-6 h-6 mt-2" />
-      ) : null}
-      <div className="flex flex-col mt-2.5 space-y-2 text-sm">
-        {props.children}
-      </div>
+      {icon != null ? <Icon icon={icon} className="flex-shrink-0 w-6 h-6 mt-2" /> : null}
+      <div className="flex flex-col mt-2.5 space-y-2 text-sm">{props.children}</div>
     </div>
   )
 }
@@ -37,8 +33,6 @@ export function QuizMessage(props: QuizMessageProps): JSX.Element | null {
 /**
  * Type guard for QuizMessage component.
  */
-export function isQuizMessage(
-  component: JSX.Element,
-): component is ReactElement<QuizMessageProps> {
+export function isQuizMessage(component: JSX.Element): component is ReactElement<QuizMessageProps> {
   return component.type === QuizMessage
 }

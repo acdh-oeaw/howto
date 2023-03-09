@@ -114,9 +114,7 @@ export async function getStaticProps(
 
   const courses = await getCoursePreviewsByResourceId(id, locale)
 
-  const lastUpdatedAt = await getLastUpdatedTimestamp(
-    getPostFilePath(id, locale),
-  )
+  const lastUpdatedAt = await getLastUpdatedTimestamp(getPostFilePath(id, locale))
 
   return {
     props: {
@@ -305,10 +303,7 @@ function CourseLinks(props: CourseLinksProps) {
             <li key={course.id}>
               <Link href={routes.course({ id: course.id })}>
                 <a className="flex items-center text-sm space-x-1.5 transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue">
-                  <Icon
-                    icon={AcademicCapIcon}
-                    className="flex-shrink-0 w-4 h-4"
-                  />
+                  <Icon icon={AcademicCapIcon} className="flex-shrink-0 w-4 h-4" />
                   <span>{course.title}</span>
                 </a>
               </Link>
@@ -344,9 +339,7 @@ function RelatedResources(props: RelatedResourcesProps) {
         {props.resources.map((resource) => {
           return (
             <li key={resource.id}>
-              <Link
-                href={routes.resource({ kind: resource.kind, id: resource.id })}
-              >
+              <Link href={routes.resource({ kind: resource.kind, id: resource.id })}>
                 <a className="underline flex items-center space-x-1.5">
                   <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
                   <span>{resource.title}</span>

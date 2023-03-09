@@ -78,20 +78,14 @@ export default function HomePage(props: HomePageProps): JSX.Element {
               {locale === 'de' ? (
                 <Fragment>
                   <span className="text-brand-light-blue">Teilen</span> und{' '}
-                  <span className="text-brand-light-blue">erweitern</span> Sie
-                  Ihr Wissen im Bereich{' '}
-                  <span className="text-brand-turquoise">
-                    Digital Humanities
-                  </span>
+                  <span className="text-brand-light-blue">erweitern</span> Sie Ihr Wissen im Bereich{' '}
+                  <span className="text-brand-turquoise">Digital Humanities</span>
                 </Fragment>
               ) : (
                 <Fragment>
                   <span className="text-brand-light-blue">Share</span> and{' '}
-                  <span className="text-brand-light-blue">expand</span> your
-                  knowledge in{' '}
-                  <span className="text-brand-turquoise">
-                    Digital Humanities
-                  </span>
+                  <span className="text-brand-light-blue">expand</span> your knowledge in{' '}
+                  <span className="text-brand-turquoise">Digital Humanities</span>
                 </Fragment>
               )}
             </h1>
@@ -103,9 +97,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
 
           <section className="my-12 grid gap-12">
             <div className="flex border-b items-center py-3 justify-between">
-              <h2 className="text-2xl font-bold text-neutral-100">
-                {t(['common', 'new-posts'])}
-              </h2>
+              <h2 className="text-2xl font-bold text-neutral-100">{t(['common', 'new-posts'])}</h2>
               <Link href={routes.resources({ kind: 'posts' })}>
                 <a className="px-6 py-2 bg-brand-blue inline-flex items-center font-medium rounded text-brand-black hover:bg-brand-light-blue focus:bg-brand-light-blue transition">
                   {t(['common', 'see-all-posts'])}

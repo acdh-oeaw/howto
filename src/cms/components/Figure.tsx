@@ -13,15 +13,7 @@ export interface FigureProps {
 }
 
 export function Figure(props: FigureProps): JSX.Element {
-  const {
-    src,
-    alt = '',
-    children: caption,
-    width,
-    height,
-    blurDataURL,
-    placeholder,
-  } = props
+  const { src, alt = '', children: caption, width, height, blurDataURL, placeholder } = props
 
   return (
     <figure>

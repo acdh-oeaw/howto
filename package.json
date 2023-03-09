@@ -99,7 +99,7 @@
     "@stefanprobst/favicons": "^1.0.9",
     "@stefanprobst/next-feed": "^1.0.0",
     "@stefanprobst/next-sitemap": "^1.0.6",
-    "@stefanprobst/prettier-config": "^1.0.5",
+    "@stefanprobst/prettier-config": "2.0.3",
     "@stefanprobst/remark-preset": "^2.0.1",
     "@stefanprobst/tsconfig": "^1.1.1",
     "@stefanprobst/xdm-cli": "^2.0.1",

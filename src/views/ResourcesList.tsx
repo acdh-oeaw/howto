@@ -30,8 +30,7 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
           <li key={post.id}>
             <article className="grid gap-6">
               <div className="rounded bg-gradient-to-r from-brand-blue to-brand-turquoise h-36 relative">
-                {typeof post.featuredImage === 'string' &&
-                post.featuredImage.length > 0 ? (
+                {typeof post.featuredImage === 'string' && post.featuredImage.length > 0 ? (
                   <img src={post.featuredImage} alt="" />
                 ) : null}
               </div>
@@ -40,9 +39,7 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
                   <a>{post.title}</a>
                 </Link>
               </h3>
-              <p className="text-neutral-300 text-base leading-relaxed">
-                {post.abstract}
-              </p>
+              <p className="text-neutral-300 text-base leading-relaxed">{post.abstract}</p>
               <footer className="flex items-center justify-between">
                 <dl>
                   {Array.isArray(authors) && authors.length > 0 ? (

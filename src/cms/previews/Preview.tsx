@@ -17,9 +17,9 @@ export interface PreviewProps extends PreviewTemplateComponentProps {
  */
 export function Preview(props: PreviewProps): JSX.Element {
   const locale = props.entry.getIn(['data', 'lang'], 'en')
-  const [dictionary, setDictionary] = useState<
-    { [namespace: string]: Dictionary } | undefined
-  >(undefined)
+  const [dictionary, setDictionary] = useState<{ [namespace: string]: Dictionary } | undefined>(
+    undefined,
+  )
 
   useEffect(() => {
     loadDictionary(locale, ['common']).then((dictionary) => {

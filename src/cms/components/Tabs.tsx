@@ -52,9 +52,7 @@ export function Tabs(props: TabsProps): JSX.Element {
                   aria-selected={activeTab === index}
                   className={cx(
                     'py-1',
-                    activeTab === index
-                      ? 'border-b border-current'
-                      : 'opacity-50',
+                    activeTab === index ? 'border-b border-current' : 'opacity-50',
                   )}
                   onClick={setTabAsActiveTab}
                 >

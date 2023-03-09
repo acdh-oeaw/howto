@@ -25,13 +25,7 @@ export interface CourseProps {
 export function Course(props: CourseProps): JSX.Element {
   const { course, lastUpdatedAt, isPreview } = props
   const { metadata } = course.data
-  const {
-    title,
-    date: publishDate,
-    editors: authors = [],
-    tags,
-    resources,
-  } = metadata
+  const { title, date: publishDate, editors: authors = [], tags, resources } = metadata
 
   const { t, formatDate } = useI18n()
 
@@ -49,9 +43,7 @@ export function Course(props: CourseProps): JSX.Element {
                       <li key={tag.id} className="inline">
                         <Link href={routes.tag({ id: tag.id })}>
                           <a className="transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-brand-light-blue">
-                            <span className={index !== 0 ? 'ml-1' : undefined}>
-                              {tag.name}
-                            </span>
+                            <span className={index !== 0 ? 'ml-1' : undefined}>{tag.name}</span>
                           </a>
                         </Link>
                         {index !== tags.length - 1 ? ', ' : null}
@@ -118,10 +110,7 @@ export function Course(props: CourseProps): JSX.Element {
         </dl>
       </header>
       <div className="prose-invert max-w-none">
-        <Mdx
-          code={course.code}
-          components={{ Figure, Image: ResponsiveImage, Tabs }}
-        />
+        <Mdx code={course.code} components={{ Figure, Image: ResponsiveImage, Tabs }} />
       </div>
       {resources.length > 0 ? (
         <div className="grid gap-4">
@@ -146,9 +135,7 @@ export function Course(props: CourseProps): JSX.Element {
             id={course.id}
             className="text-sm flex justify-end items-center space-x-1.5 text-neutral-300"
           >
-            <span className="text-right">
-              {t('common.suggestChangesToCourse')}
-            </span>
+            <span className="text-right">{t('common.suggestChangesToCourse')}</span>
           </EditLink>
         ) : null}
       </footer>

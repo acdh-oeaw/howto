@@ -10,11 +10,7 @@ import Link from 'next/link'
 import { Fragment } from 'react'
 
 import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
-import {
-  getCourseById,
-  getCourseFilePath,
-  getCourseIds,
-} from '@/cms/api/courses.api'
+import { getCourseById, getCourseFilePath, getCourseIds } from '@/cms/api/courses.api'
 import type { Course as CourseData, CoursePreview } from '@/cms/api/courses.api'
 import { getCoursePreviewsByTagId } from '@/cms/queries/courses.queries'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
@@ -102,9 +98,7 @@ export async function getStaticProps(
     })
   const related = pickRandom(coursesWithSharedTags, RELATED_COURSES_COUNT)
 
-  const lastUpdatedAt = await getLastUpdatedTimestamp(
-    getCourseFilePath(id, locale),
-  )
+  const lastUpdatedAt = await getLastUpdatedTimestamp(getCourseFilePath(id, locale))
 
   return {
     props: {

@@ -48,17 +48,11 @@ const icons: Record<SideNoteType, FC<SVGProps<SVGSVGElement>>> = {
  */
 export function SideNote(props: SideNoteProps): JSX.Element {
   /** In the CMS preview, props can be anything, so be extra careful. */
-  const type =
-    props.type !== undefined && types.includes(props.type) ? props.type : 'note'
+  const type = props.type !== undefined && types.includes(props.type) ? props.type : 'note'
   const title = props.title ?? capitalize(type)
 
   return (
-    <aside
-      className={cx(
-        'border-l-4 px-6 py-6 my-6 space-y-3 rounded',
-        styles[type],
-      )}
-    >
+    <aside className={cx('border-l-4 px-6 py-6 my-6 space-y-3 rounded', styles[type])}>
       <strong className="flex items-center space-x-2 font-bold">
         <Icon icon={icons[type]} className="flex-shrink-0" />
         <span>{title}</span>

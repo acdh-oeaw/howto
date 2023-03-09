@@ -34,9 +34,7 @@ const initialMetadata: PostMetadata = {
 /**
  * CMS preview for resource.
  */
-export function ResourcePreview(
-  props: PreviewTemplateComponentProps,
-): JSX.Element {
+export function ResourcePreview(props: PreviewTemplateComponentProps): JSX.Element {
   const entry = useDebouncedState(props.entry, 250)
   const { fieldsMetaData, getAsset } = props
 
@@ -211,10 +209,7 @@ export function ResourcePreview(
         </div>
       ) : (
         <div className="flex items-center space-x-2">
-          <Spinner
-            className="w-6 h-6 text-brand-blue"
-            aria-label="Loading..."
-          />
+          <Spinner className="w-6 h-6 text-brand-blue" aria-label="Loading..." />
           <p>Trying to render preview...</p>
         </div>
       )}

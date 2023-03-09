@@ -13,11 +13,7 @@ export default function attacher(): Transformer {
   function transformer(tree: Hast.Node) {
     visit(tree, 'element', visitor)
 
-    function visitor(
-      node: Hast.Element,
-      index: number | null,
-      parent: Unist.Parent | null,
-    ) {
+    function visitor(node: Hast.Element, index: number | null, parent: Unist.Parent | null) {
       if (node.tagName !== 'img') return
       if (node.properties?.title == null || parent == null) return
 

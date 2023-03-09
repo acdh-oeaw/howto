@@ -33,9 +33,7 @@ const initialMetadata: CourseMetadata = {
 /**
  * CMS preview for course.
  */
-export function CoursePreview(
-  props: PreviewTemplateComponentProps,
-): JSX.Element {
+export function CoursePreview(props: PreviewTemplateComponentProps): JSX.Element {
   const entry = useDebouncedState(props.entry, 250)
   const { fieldsMetaData, getAsset } = props
 
@@ -191,10 +189,7 @@ export function CoursePreview(
         </div>
       ) : (
         <div className="flex items-center space-x-2">
-          <Spinner
-            className="w-6 h-6 text-brand-blue"
-            aria-label="Loading..."
-          />
+          <Spinner className="w-6 h-6 text-brand-blue" aria-label="Loading..." />
           <p>Trying to render preview...</p>
         </div>
       )}

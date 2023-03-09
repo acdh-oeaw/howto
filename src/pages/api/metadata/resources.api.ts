@@ -16,10 +16,7 @@ export default async function handler(
   response: NextApiResponse,
 ): Promise<void> {
   try {
-    const filePath = path.join(
-      process.cwd(),
-      './public/metadata/resources.json',
-    )
+    const filePath = path.join(process.cwd(), './public/metadata/resources.json')
     const fileContent = await fs.readFile(filePath, { encoding: 'utf-8' })
 
     if (request.query.offset == null && request.query.limit == null) {

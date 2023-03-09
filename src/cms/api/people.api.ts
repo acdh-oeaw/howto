@@ -101,10 +101,7 @@ export function getPersonFilePath(id: ID, _locale: Locale): FilePath {
 /**
  * Returns person data.
  */
-async function getPersonData(
-  file: VFile,
-  _locale: Locale,
-): Promise<PersonData> {
+async function getPersonData(file: VFile, _locale: Locale): Promise<PersonData> {
   const data = YAML.load(String(file), {
     schema: YAML.CORE_SCHEMA,
   }) as PersonData

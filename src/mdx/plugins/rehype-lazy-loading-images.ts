@@ -22,11 +22,7 @@ export default function attacher(): Transformer {
 
     await Promise.all(imageBlurPromises)
 
-    function visitor(
-      node: Hast.Element,
-      index: number | null,
-      parent: Unist.Parent | null,
-    ) {
+    function visitor(node: Hast.Element, index: number | null, parent: Unist.Parent | null) {
       if (node.tagName !== 'img') return
 
       const paths = copyAsset(node.properties?.src, file.path)

@@ -33,9 +33,7 @@ export async function getStaticProps(
 /**
  * Internal error page.
  */
-export default function InternalErrorPage(
-  _props: InternalErrorPageProps,
-): JSX.Element {
+export default function InternalErrorPage(_props: InternalErrorPageProps): JSX.Element {
   const { t } = useI18n()
 
   return (

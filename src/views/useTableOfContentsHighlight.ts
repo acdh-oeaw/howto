@@ -12,9 +12,7 @@ export function useTableOfContentsHighlight(): string | undefined {
 
   useEffect(() => {
     function getFirstHeadingInViewport() {
-      const headings = Array.from(
-        document.getElementsByClassName(headingAnchorClassName),
-      )
+      const headings = Array.from(document.getElementsByClassName(headingAnchorClassName))
 
       const firstHeadingInViewport =
         headings.find((heading) => {

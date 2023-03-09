@@ -11,9 +11,7 @@ import { visit } from 'unist-util-visit'
  * When a resource is not yet saved, asset data is held in memory by the cms,
  * and needs to be resolved via `getAsset`.
  */
-export default function attacher(
-  getAsset: PreviewTemplateComponentProps['getAsset'],
-): Transformer {
+export default function attacher(getAsset: PreviewTemplateComponentProps['getAsset']): Transformer {
   return transformer
 
   function transformer(tree: Unist.Node) {

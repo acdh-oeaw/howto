@@ -14,9 +14,7 @@ export interface IndexedResource
   type: 'resources'
   kind: ResourceKind
   objectID: string
-  authors: Array<
-    Pick<PostPreview['authors'][number], 'id' | 'firstName' | 'lastName'>
-  >
+  authors: Array<Pick<PostPreview['authors'][number], 'id' | 'firstName' | 'lastName'>>
   tags: Array<Pick<PostPreview['tags'][number], 'id' | 'name'>>
   /** Either the `abstract`, or a chunk of the `body`. */
   content: string

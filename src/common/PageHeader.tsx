@@ -39,14 +39,7 @@ export function PageHeader(): JSX.Element {
           aria-label={t('common.page.home')}
           className="inline-flex transition rounded focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
         >
-          <Image
-            src={Logo}
-            alt=""
-            height="40"
-            width="36"
-            layout="fixed"
-            priority
-          />
+          <Image src={Logo} alt="" height="40" width="36" layout="fixed" priority />
         </a>
       </Link>
       <PageNavigation />
@@ -248,8 +241,7 @@ function Search() {
                       ? routes.course({ id: result.id })
                       : routes.resource({ kind: result.kind, id: result.id })
 
-                  const icon =
-                    result.type === 'courses' ? AcademicCapIcon : DocumentIcon
+                  const icon = result.type === 'courses' ? AcademicCapIcon : DocumentIcon
 
                   return (
                     <li key={result.id}>
@@ -257,10 +249,7 @@ function Search() {
                         <Link href={{ ...href, hash: result.heading?.id }}>
                           <a className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100">
                             <h3 className="flex items-center space-x-2 font-medium">
-                              <Icon
-                                icon={icon}
-                                className="flex-shrink-0 w-5 h-5"
-                              />
+                              <Icon icon={icon} className="flex-shrink-0 w-5 h-5" />
                               <span>{result.title}</span>
                             </h3>
                             {result._snippetResult?.content.value != null ? (
@@ -295,9 +284,7 @@ function Search() {
                 })}
               </ul>
             ) : status === 'success' ? (
-              <div className="py-4 text-center text-neutral-500">
-                {t('common.noResultsFound')}
-              </div>
+              <div className="py-4 text-center text-neutral-500">{t('common.noResultsFound')}</div>
             ) : null}
           </div>
         </ModalDialog>
@@ -319,11 +306,7 @@ function SearchField(props: SearchFieldProps) {
 
   const state = useSearchFieldState(props)
   const inputRef = useRef<HTMLInputElement>(null)
-  const { labelProps, inputProps, clearButtonProps } = useSearchField(
-    props,
-    state,
-    inputRef,
-  )
+  const { labelProps, inputProps, clearButtonProps } = useSearchField(props, state, inputRef)
   const buttonRef = useRef<HTMLButtonElement>(null)
   const { buttonProps } = useButton(clearButtonProps, buttonRef)
 
@@ -334,18 +317,11 @@ function SearchField(props: SearchFieldProps) {
         {loadingState === 'loading' ? (
           <Spinner className="flex-shrink-0 w-5 h-5 text-brand-blue" />
         ) : loadingState === 'error' ? (
-          <Icon
-            icon={LightningBoltIcon}
-            className="flex-shrink-0 w-5 h-5 text-error-600"
-          />
+          <Icon icon={LightningBoltIcon} className="flex-shrink-0 w-5 h-5 text-error-600" />
         ) : (
           <Icon icon={SearchIcon} className="flex-shrink-0 w-5 h-5" />
         )}
-        <input
-          {...inputProps}
-          ref={inputRef}
-          className="flex-1 min-w-0 focus:outline-none"
-        />
+        <input {...inputProps} ref={inputRef} className="flex-1 min-w-0 focus:outline-none" />
         {state.value !== '' ? (
           <button {...buttonProps} ref={buttonRef}>
             <Icon icon={ClearIcon} className="flex-shrink-0 w-5 h-5" />

@@ -30,8 +30,7 @@
     <dct:title xml:lang="en">SKOS Vocabulary</dct:title>
     <dct:contributor>Dave Beckett</dct:contributor>
     <dct:contributor>Nikki Rogers</dct:contributor>
-    <dct:contributor
-    >Participants in W3C's Semantic Web Deployment Working Group.</dct:contributor>
+    <dct:contributor>Participants in W3C's Semantic Web Deployment Working Group.</dct:contributor>
     <dct:description
       xml:lang="en"
     >An RDF vocabulary for describing the basic structure and content of concept schemes such as thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', other types of controlled vocabulary, and also concept schemes embedded in glossaries and terminologies.</dct:description>
@@ -42,9 +41,7 @@
   <rdf:Description rdf:about="#Concept">
     <rdfs:label xml:lang="en">Concept</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core" />
-    <skos:definition
-      xml:lang="en"
-    >An idea or notion; a unit of thought.</skos:definition>
+    <skos:definition xml:lang="en">An idea or notion; a unit of thought.</skos:definition>
     <!-- S1 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class" />
   </rdf:Description>
@@ -68,9 +65,7 @@
   <rdf:Description rdf:about="#Collection">
     <rdfs:label xml:lang="en">Collection</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core" />
-    <skos:definition
-      xml:lang="en"
-    >A meaningful collection of concepts.</skos:definition>
+    <skos:definition xml:lang="en">A meaningful collection of concepts.</skos:definition>
     <skos:scopeNote
       xml:lang="en"
     >Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy.</skos:scopeNote>
@@ -109,9 +104,7 @@
     <!-- S4 -->
     <rdfs:range rdf:resource="#ConceptScheme" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#hasTopConcept">
     <rdfs:label xml:lang="en">has top concept</rdfs:label>
@@ -128,9 +121,7 @@
     <!-- S8 -->
     <owl:inverseOf rdf:resource="#topConceptOf" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#topConceptOf">
     <rdfs:label xml:lang="en">is top concept in scheme</rdfs:label>
@@ -145,9 +136,7 @@
     <!-- S8 -->
     <owl:inverseOf rdf:resource="#hasTopConcept" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
     <rdfs:domain rdf:resource="#Concept" />
     <rdfs:range rdf:resource="#ConceptScheme" /> 
   </rdf:Description>
@@ -160,9 +149,7 @@
     <!-- S10 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty" />
     <!-- S11 -->
-    <rdfs:subPropertyOf
-      rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"
-    />
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label" />
     <!-- S14 (not formally stated) -->
     <rdfs:comment
       xml:lang="en"
@@ -172,30 +159,22 @@
       xml:lang="en"
     >The range of skos:prefLabel is the class of RDF plain literals.</rdfs:comment>
     <!-- S13 (not formally stated) -->
-    <rdfs:comment
-      xml:lang="en"
-    >skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise
+    <rdfs:comment xml:lang="en">skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise
       disjoint properties.</rdfs:comment>
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#altLabel">
     <rdfs:label xml:lang="en">alternative label</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core" />
-    <skos:definition
-      xml:lang="en"
-    >An alternative lexical label for a resource.</skos:definition>
+    <skos:definition xml:lang="en">An alternative lexical label for a resource.</skos:definition>
     <skos:example
       xml:lang="en"
     >Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel).</skos:example>
     <!-- S10 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty" />
     <!-- S11 -->
-    <rdfs:subPropertyOf
-      rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"
-    />
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label" />
     <!-- S12 (not formally stated) -->
     <rdfs:comment
       xml:lang="en"
@@ -205,9 +184,7 @@
       xml:lang="en"
     >skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties.</rdfs:comment>
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#hiddenLabel">
     <rdfs:label xml:lang="en">hidden label</rdfs:label>
@@ -218,9 +195,7 @@
     <!-- S10 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty" />
     <!-- S11 -->
-    <rdfs:subPropertyOf
-      rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"
-    />
+    <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label" />
     <!-- S12 (not formally stated) -->
     <rdfs:comment
       xml:lang="en"
@@ -230,9 +205,7 @@
       xml:lang="en"
     >skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties.</rdfs:comment>
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#notation">
     <rdfs:label xml:lang="en">notation</rdfs:label>
@@ -246,40 +219,30 @@
     <!-- S15 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#note">
     <rdfs:label xml:lang="en">note</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core" />
-    <skos:definition
-      xml:lang="en"
-    >A general note, for any purpose.</skos:definition>
+    <skos:definition xml:lang="en">A general note, for any purpose.</skos:definition>
     <skos:scopeNote
       xml:lang="en"
     >This property may be used directly, or as a super-property for more specific note types.</skos:scopeNote>
     <!-- S16 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#changeNote">
     <rdfs:label xml:lang="en">change note</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core" />
-    <skos:definition
-      xml:lang="en"
-    >A note about a modification to a concept.</skos:definition>
+    <skos:definition xml:lang="en">A note about a modification to a concept.</skos:definition>
     <!-- S16 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty" />
     <!-- S17 -->
     <rdfs:subPropertyOf rdf:resource="#note" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#definition">
     <rdfs:label xml:lang="en">definition</rdfs:label>
@@ -292,9 +255,7 @@
     <!-- S17 -->
     <rdfs:subPropertyOf rdf:resource="#note" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#editorialNote">
     <rdfs:label xml:lang="en">editorial note</rdfs:label>
@@ -307,24 +268,18 @@
     <!-- S17 -->
     <rdfs:subPropertyOf rdf:resource="#note" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#example">
     <rdfs:label xml:lang="en">example</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core" />
-    <skos:definition
-      xml:lang="en"
-    >An example of the use of a concept.</skos:definition>
+    <skos:definition xml:lang="en">An example of the use of a concept.</skos:definition>
     <!-- S16 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AnnotationProperty" />
     <!-- S17 -->
     <rdfs:subPropertyOf rdf:resource="#note" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#historyNote">
     <rdfs:label xml:lang="en">history note</rdfs:label>
@@ -337,9 +292,7 @@
     <!-- S17 -->
     <rdfs:subPropertyOf rdf:resource="#note" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#scopeNote">
     <rdfs:label xml:lang="en">scope note</rdfs:label>
@@ -352,9 +305,7 @@
     <!-- S17 -->
     <rdfs:subPropertyOf rdf:resource="#note" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#semanticRelation">
     <rdfs:label xml:lang="en">is in semantic relation with</rdfs:label>
@@ -372,9 +323,7 @@
     <!-- S20 -->
     <rdfs:range rdf:resource="#Concept" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#broader">
     <rdfs:label xml:lang="en">has broader</rdfs:label>
@@ -395,9 +344,7 @@
     <!-- S25 -->
     <owl:inverseOf rdf:resource="#narrower" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#narrower">
     <rdfs:label xml:lang="en">has narrower</rdfs:label>
@@ -418,9 +365,7 @@
     <!-- S25 -->
     <owl:inverseOf rdf:resource="#broader" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#related">
     <rdfs:label xml:lang="en">has related</rdfs:label>
@@ -435,13 +380,9 @@
     <!-- S23 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty" />
     <!-- S27 (not formally stated) -->
-    <rdfs:comment
-      xml:lang="en"
-    >skos:related is disjoint with skos:broaderTransitive</rdfs:comment>
+    <rdfs:comment xml:lang="en">skos:related is disjoint with skos:broaderTransitive</rdfs:comment>
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#broaderTransitive">
     <rdfs:label xml:lang="en">has broader transitive</rdfs:label>
@@ -460,9 +401,7 @@
     <!-- S26 -->
     <owl:inverseOf rdf:resource="#narrowerTransitive" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#narrowerTransitive">
     <rdfs:label xml:lang="en">has narrower transitive</rdfs:label>
@@ -481,16 +420,12 @@
     <!-- S26 -->
     <owl:inverseOf rdf:resource="#broaderTransitive" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#member">
     <rdfs:label xml:lang="en">has member</rdfs:label>
     <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2004/02/skos/core" />
-    <skos:definition
-      xml:lang="en"
-    >Relates a collection to one of its members.</skos:definition>
+    <skos:definition xml:lang="en">Relates a collection to one of its members.</skos:definition>
     <!-- S30 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty" />
     <!-- S31 -->
@@ -505,9 +440,7 @@
       </owl:Class>
     </rdfs:range>
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#memberList">
     <rdfs:label xml:lang="en">has member list</rdfs:label>
@@ -522,18 +455,12 @@
     <!-- S35 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty" />
     <!-- S34 -->
-    <rdfs:range
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
-    />
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List" />
     <!-- S36 (not formally stated) -->
-    <rdfs:comment
-      xml:lang="en"
-    >For any resource, every item in the list given as the value of the
+    <rdfs:comment xml:lang="en">For any resource, every item in the list given as the value of the
       skos:memberList property is also a value of the skos:member property.</rdfs:comment>
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#mappingRelation">
     <rdfs:label xml:lang="en">is in mapping relation with</rdfs:label>
@@ -549,9 +476,7 @@
     <!-- S39 -->
     <rdfs:subPropertyOf rdf:resource="#semanticRelation" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#broadMatch">
     <rdfs:label xml:lang="en">has broader match</rdfs:label>
@@ -568,9 +493,7 @@
     <!-- S43 -->
     <owl:inverseOf rdf:resource="#narrowMatch" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#narrowMatch">
     <rdfs:label xml:lang="en">has narrower match</rdfs:label>
@@ -587,9 +510,7 @@
     <!-- S43 -->
     <owl:inverseOf rdf:resource="#broadMatch" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#relatedMatch">
     <rdfs:label xml:lang="en">has related match</rdfs:label>
@@ -606,9 +527,7 @@
     <!-- S44 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#exactMatch">
     <rdfs:label xml:lang="en">has exact match</rdfs:label>
@@ -629,9 +548,7 @@
       xml:lang="en"
     >skos:exactMatch is disjoint with each of the properties skos:broadMatch and skos:relatedMatch.</rdfs:comment>
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
   <rdf:Description rdf:about="#closeMatch">
     <rdfs:label xml:lang="en">has close match</rdfs:label>
@@ -646,8 +563,6 @@
     <!-- S44 -->
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty" />
     <!-- For non-OWL aware applications -->
-    <rdf:type
-      rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property"
-    />
+    <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" />
   </rdf:Description>
 </rdf:RDF>

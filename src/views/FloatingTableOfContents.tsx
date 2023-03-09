@@ -17,9 +17,7 @@ export interface FloatingTableOfContentsProps {
 /**
  * Floating button which opens a table of contents dialog.
  */
-export function FloatingTableOfContents(
-  props: FloatingTableOfContentsProps,
-): JSX.Element {
+export function FloatingTableOfContents(props: FloatingTableOfContentsProps): JSX.Element {
   const { toc } = props
 
   const { t } = useI18n()
