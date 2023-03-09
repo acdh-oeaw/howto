@@ -1,3 +1,4 @@
+import { defaultLocale } from '@/i18n/i18n.config'
 import type { Locale } from '@/i18n/i18n.config'
 
 export type Dictionary = Record<string, unknown>
@@ -10,7 +11,7 @@ export type Dictionary = Record<string, unknown>
  * and provide them to child components via `I18nProvider`.
  */
 export async function loadDictionary(
-  locale: Locale,
+  locale: Locale | undefined,
   namespaces: Array<string>,
 ): Promise<{ [namespace: string]: Dictionary }> {
   const translations = await Promise.all(
@@ -20,8 +21,9 @@ export async function loadDictionary(
        *
        * @see https://webpack.js.org/api/module-methods/#dynamic-expressions-in-import
        */
+      const loc = locale || defaultLocale
       const dictionary = await import(
-        `~/public/locales/${locale}/${namespace}.json`
+        `~/public/locales/${loc}/${namespace}.json`
       ).then((module) => {
         return module.default
       })
