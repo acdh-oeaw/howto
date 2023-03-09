@@ -16,10 +16,11 @@ uuid: Yi-WVelcC_d0_xUF2aJfn
 ---
 ## Lernziele
 
-- den Austrian Media Corpus (amc) als Corpus-Tool einordnen
+- das Austrian Media Corpus (amc) kennenlernen 
+- einen Einblick in die Funktionalität der Korpussuchmaschine Sketch/NoSketch Engine erhalten
 - einfache Suchabfragen im amc durchführen
-- CQL-Grundbegriffe für Suchabfragen in SKE nutzen
-- Suchergebnisse aus dem amc vergleichen
+- mit der Corpus-Query-Language (CQL) komplexere Suchabfragen formulieren
+
 
 ## Einführung
 
@@ -45,11 +46,15 @@ Sollten Sie an einem geförderten Projekt arbeiten, wird von der APA eine Nutzun
 Zu Übungszwecken finden Sie auf der amc-Website Zugang zu einer [Demo-Version](https://demo-amc.acdh.oeaw.ac.at/crystal/#open), für die Sie keine Registrierung benötigen.
 </SideNote>
 
-In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeiten sowie der Arbeit mit der **NoSketch Engine (SKE / NoSKE)** und der **Corpus Query Language (CQL)** vertraut.
+In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeiten vertraut und erlernen das Formulieren von Suchanfragen in der **Sketch Engine/NoSketch Engine**. Insbesondere wird Ihnen die in dieser Korpussuchmaschine verwendete Abfragessprache **Corpus Query Language (CQL)** nähergebracht.
+
+<SideNote type="info" title="Sketch Engine und NoSketch Engine?">
+Die Bereitstellung des amc erfolgt über die webbasierte Korpussuchmaschine **[NoSketch Engine (NoSkE)](https://nlp.fi.muni.cz/trac/noske)**. Dabei handelt es sich um eine _open source_ Version der **[Sketch Engine (SkE)](https://https://www.sketchengine.eu)**. Der **[Vergleich von Sketch Engine und NoSketch Engine](https://www.sketchengine.eu/nosketch-engine/)** zeigt, wie sich die NoSkE von der kommerziellen SkE durch den Wegfall einiger Funktionalitäten unterscheidet. Von den zahlreichen Dokumentatioen und Benutzungshilfen die online zur Sketch Engine auffindbar sind, sind daher nicht alle für die NoSketch Engine relevant. Für die in dieser Lernunterlage vorgestellten Kernfunktionalitäten bestehen allerding _keine_ Unterschiede zwischen den beiden Varianten. Die verlinkten Informationen und Anleitungen zur Sketch Engine sind daher gleichermaßen für die NoSketch Engine gültig, im Kontext dieses Manuals werden daher in der Folge die Bezeichnungen SkE und NoSkE synonym verwendet. 
+</SideNote>
 
 ## Grundlagen: Token vs. Strukturen
 
-Wenn Sie mit einer Corpus-Suchmaschine arbeiten, gibt es einige Grundbegriffe, mit denen Sie sich vertraut machen sollten. Prinzipiell wird in der SKE und der CQL zwischen **Token** und **Strukturen** unterschieden.
+Bei der Suche mithilfe von SkE/NoSkE gibt es einige Grundbegriffe, mit denen Sie sich vertraut machen sollten. Prinzipiell wird in der Suchmaschine und ihrer Abfragesprache CQL zwischen **Token** und **Strukturen** unterschieden.
 
 ### Token
 
@@ -67,7 +72,7 @@ Wie bei allen automatisierten Verarbeitungsschritten erfolgt die Tokenisierung b
 
 ### Token-Attribute
 
-Die Informationen, die jedem Token zugeordnet werden, werden in der SKE **Attribute** genannt.
+Die Informationen, die jedem Token zugeordnet werden, werden in der SkE **Attribute** genannt.
 
 Einige der Token-Attribute im amc wären
 
@@ -90,7 +95,7 @@ Die Liste aller Attribute eines Korpus lässt sich immer einfach unter dem Info-
 ### Strukturen
 
 Die Token sind typischerweise in **hierarchische Strukturen** eingebettet.
-Zum besseren Verständnis dieses Konzepts hier ein Beispiel, das zeigt, wie Textdaten aussehen, die zum Export in die SKE vorbereitet wurden.  
+Zum besseren Verständnis dieses Konzepts hier ein Beispiel, das zeigt, wie Textdaten aussehen, die zum Export in die SkE vorbereitet wurden.  
 
 ```
 <doc id="APA_20170101_APA0001" datum_full="2017-01-01T00:11:16Z" 
@@ -122,7 +127,7 @@ fliegen     VINF.Full.-             VVFIN  fliegen-v
 ...
 </doc>
 ```
-Dieses Datenformat nennt sich (in der SKE-Terminologie) „Vertikale“. 
+Dieses Datenformat nennt sich (in der SkE-Terminologie) „Vertikale“. 
 
 Wie Sie sehen können, ist der Text tokenisiert. Jedes Token steht in einer separaten Zeile und diese Zeilen enthalten, in Spalten organisiert, die Wortform (also formal gesprochen das Token-Attribute `word`) gefolgt von den anderen Token-Attributen - in diesem Fall `pos`, `posTT` und `lempos` (eine Kombination aus Lemma und PoS) 
 
@@ -135,6 +140,10 @@ Die Strukturen können Zusatzinformationen in Form von (Struktur-)Attributen ent
 Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten zum entsprechenden Dokument.
 Im amc entspricht der Inhalt eines `<doc>`-Elements einem Zeitungsartikel.
 An Metadaten sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _docsrc_, _ressort2_, etc.
+
+<SideNote type="info" title="Info: Detailierte Dokumentation _aller_ Attribute im amc">
+Die oben angeführte Vertikale sowie die Beispiele in diesem Tutorial verwenden nur einen Auszug der tatsächlich im amc verfügbaren Informationen. Auf der amc-site findet sich die detaillierte **[Beschreibung aller im amc verwendeten Annotationen](https://amc.acdh.oeaw.ac.at/dokumentation/korpusinhalt-attribute/)**.  
+</SideNote>
 
 ### Quiz
 
@@ -233,19 +242,19 @@ An Metadaten sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _docsrc
 
 Die einfachste Form der Suche im amc ist die **Simple query**.
 
-Diese kann in der SKE im Menüfeld "Concordance" aufgerufen werden:
+Diese kann in der SkE im Menüfeld "Concordance" aufgerufen werden:
 
-- entweder durch Auswahl im linken Menü, und dann unter dem Reiter "basic" in der SKE Maske
+- entweder durch Auswahl im linken Menü, und dann unter dem Reiter "basic" in der SkE Maske
 - oder im Dashboard über den Auswahlpunkt "Concordance". Die **simple query** wird wieder unter dem Reiter "basic" angezeigt.
 
-Gibt man hier ein Wort ein, so sucht die SKE
+Gibt man hier ein Wort ein, so sucht die SkE
 
 - dieses Wort (und zwar case-insensitiv, d.h. ohne Berücksichtigung von Groß- und Kleinschreibung. Die Eingabe _SMS_ findet daher z.B. _SMS_, _sms_, _Sms_, etc.)
 - entspricht die Sucheingabe auch einem Lemma, dann auch alle Flexionsformen dieses Lemmas. (D.h. eine Suche nach _Haus_ findet daher _Haus_, _Hauses_, _Hause_, _Häuser_, _Häusern_.)
 
 ### Mehrwort-Suche
 
-Es kann auch eine Abfolge mehrerer Wörter angegeben werden, die SKE sucht dann nach genau dieser Abfolge, z.B. _ein schönes Haus_.
+Es kann auch eine Abfolge mehrerer Wörter angegeben werden, die SkE sucht dann nach genau dieser Abfolge, z.B. _ein schönes Haus_.
 
 Da bei der **Simple query** wie erwähnt auch nach den **Wortformen eines Lemmas** gesucht wird, findet eine Suchanfrage _schön Haus_ auch alle Paarungen der Wortformen des Lemmas _schön_ und der Wortformen des Lemmas _Haus_ und das unabhängig von Groß- oder Kleinschreibung. Somit erscheinen im Ergebnis z.B. _schönes Haus_, _schönsten Hauses_, _Schöneren Häusern_ etc.
 
@@ -691,7 +700,7 @@ z.B.: Suche nach dem Lemma „Hund“ in dessen linker oder rechter Umgebung im 
 ## Suche auf Strukturebene in CQL
 
 Sowohl bei der **Simple query** als auch bei den bisherigen Beispielen der CQL blieben Informationen auf der Strukturebene (Dokumente, Absätze, Sätze) unberücksichtigt. Hier wird nun gezeigt, wie _auf_ und _mit_ **Strukturinformationen** gesucht werden kann.
-Wie oben gezeigt, werden Struktur-Informationen in den Input-Daten für die SKE mithilfe von XML-Elementen kodiert.
+Wie oben gezeigt, werden Struktur-Informationen in den Input-Daten für die SkE mithilfe von XML-Elementen kodiert.
 In HTML und XML gelten die folgenden Notationskonventionen:
 
 - `<S> Beginn-tag einer Struktur namens „S“`
@@ -751,7 +760,7 @@ Also: suche nach "Ball" innerhalb von Artikeln die nicht aus dem Sportressort st
 Damit schränkt sich die Trefferanzahl für "Ball" im amc von ca. 800.000 auf "nur noch" ca. 50.000 ein. (Aber freilich gibt es darunter immer noch Artikel über Fußball, die _nicht_ korrekt mit Sportressort markiert wurden und in denen Siege mit Champagner gefeiert werden, oder Spieler mit dem Eigennamen "Walzer" vorkommen) 
 
 <SideNote type="tip">
-  Für solche kombinierten Filterungen sind in der NoSKE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann auf das eben erstelle Subkorpus angewandt und damit stufenweise verfeinert werden. 
+  Für solche kombinierten Filterungen sind in der NoSkE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann auf das eben erstelle Subkorpus angewandt und damit stufenweise verfeinert werden. 
 So könnte z.B. das Ergebnis der obigen Abfrage als "tanzball01"-Subkorpus gespeichert werden. In weiteren Abfragen könnte man z.B. jene Artikel aus diesem Subkorpus ausschließen, in denen  sportspezifische Wörter wie "Tor", "Elfmeter", "Torhüter", "Stürmer" etc. vorkommen und das Ergebnis in einem neuen, verfeinertes Subkorpus "tanzball02" speichern.  
 </SideNote>
 
@@ -802,7 +811,7 @@ Abhilfe schafft hier nur die Verwendung von `within`:
 
 ### Attribute mit MULTIVALUE
 
-In der SKE können Attribute als `MULTIVALUE` definiert werden. Das bedeutet, solche Attribute enthalten potenziell mehrere unterschiedliche Werte, die durch ein Trennzeichen (`MULTISEP`) voneinander abgegrenzt werden. Das ist im amc bei vielen Attributen des `<doc>`-Elements der Fall. So könnte z.B. kann das Attribut **mutation** eine Wert `"Länder,Abend,Morgen"` aufweisen: es ist also als `MULTIVALUE`-Attribut definiert, das Kommas (`,`) als Trennzeichen verwendet.
+In der SkE können Attribute als `MULTIVALUE` definiert werden. Das bedeutet, solche Attribute enthalten potenziell mehrere unterschiedliche Werte, die durch ein Trennzeichen (`MULTISEP`) voneinander abgegrenzt werden. Das ist im amc bei vielen Attributen des `<doc>`-Elements der Fall. So könnte z.B. kann das Attribut **mutation** eine Wert `"Länder,Abend,Morgen"` aufweisen: es ist also als `MULTIVALUE`-Attribut definiert, das Kommas (`,`) als Trennzeichen verwendet.
 
 Für die Suche hat das die Konsequenz, dass der Inhalt des Attributs automatisch in seine Einzelwerte aufgegliedert wird und einfach nach den Einzelwerten gesucht werden kann, es bleibt aber auch der unveränderte Originalinhalt durchsuchbar.
 Um beim Beispiel zu bleiben: ein `<doc mutation="Wien,Abend,Morgen" .../>` würde mit jeder der folgenden Suchanfragen gefunden werden:
@@ -826,7 +835,7 @@ Um beim Beispiel zu bleiben: ein `<doc mutation="Wien,Abend,Morgen" .../>` würd
 ### Übersicht über die vorhandenen Attribute
 
 Um sich einen Überblick über den Namen und den Inhalt der vorhandenen Attribute zu machen ist die "CORPUS INFO" sehr hifreich.
-Zu dieser gelangt man alternativ über die gleichnamige Schaltfläche im Dashboard oder -- meist bequemer -- über das Informations-Ikon neben dem Korpusnamen, der in der NoSKE am oberen Rand jeder einzelnen Seite eingeblendet wird.  In der CORPUS INFO werden nicht nur statistische Daten über das Korpus angezeigt, sondern auch die Namen aller verfügbaren Token-Attribute, Strukturen und Struktur-Attribute.
+Zu dieser gelangt man alternativ über die gleichnamige Schaltfläche im Dashboard oder -- meist bequemer -- über das Informations-Ikon neben dem Korpusnamen, der in der NoSkE am oberen Rand jeder einzelnen Seite eingeblendet wird.  In der CORPUS INFO werden nicht nur statistische Daten über das Korpus angezeigt, sondern auch die Namen aller verfügbaren Token-Attribute, Strukturen und Struktur-Attribute.
 
 Informationen zu den Strukuren finden sich dabei unter dem Titel "TEXT TYPES". Informationen zu den jeweiligen Struktur-Attributen werden durch einfaches Klicken auf einen konkreten Strukturnamen ausgeklappt.   
 
@@ -853,14 +862,14 @@ Wir haben gesehen, dass in der CQL oft Strukturelemente einbezogen werden, um di
 
 z.B. `[word="Haus"] within <s docsrc="STANDARD|PRESSE" year>="2010"/>` („Haus“ in STANDARD- oder PRESSE-Artikeln, die 2010 oder später erschienen sind.)
 
-Alternativ können einfache Einschränkungen auf Basis der Metadaten auch im SKE _user-interface_ vorgenommen werden.
+Alternativ können einfache Einschränkungen auf Basis der Metadaten auch im SkE _user-interface_ vorgenommen werden.
 Dazu dient in der Suchmaske der Unterpunkt Text Types, wo die Suche auf `<doc>` mit spezifischen Attributwerten eingeschränkt werden kann.
 
 Abgesehen davon, ist die dortige Auflistung der Attribute und ihrer möglichen Werte auch bei der Formulierung von CQL-Anfragen durchaus hilfreich, wenn man gerade wieder einmal nicht weiß, wie die Attributnamen genau lauten und welche Werte sie annehmen können.
 
 ## Weiterführende Videos und Links
 
-### Allgemein zu SKE und Suche
+### Allgemein zu SkE und Suche
 
 - Concordance Introduction https://www.sketchengine.co.uk/user-guide/user-manual/concordance-introduction/
 - Regular Expressions https://www.sketchengine.co.uk/user-guide/user-manual/concordance-introduction/regular-expression 
@@ -878,7 +887,7 @@ Abgesehen davon, ist die dortige Auflistung der Attribute und ihrer möglichen W
 _Kompakte Übersicht_
 
 - Stuttgart-Tübingen-PoS-Tagset (STTS) wie es im PoS-attribut posTT verwendet wird: https://www.ims.uni-stuttgart.de/forschung/ressourcen/lexika/germantagsets
-  (dieser Link findet sich auch in der SKE selbst unter Corpus info -> Tagset Description)
+  (dieser Link findet sich auch in der SkE selbst unter Corpus info -> Tagset Description)
 - Tagset des RFTaggers wie es im PoS-attribut pos verwendet wird: https://www.sketchengine.eu/german-rftagger-part-of-speech-tagset
 
 _Detailierte Beschreibungen_
