@@ -521,9 +521,31 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 Gruppierungen können auch innerhalb von anderen Gruppen platziert werden: 
 
 - `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleine Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
+- `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
 
 ![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\"klimafreundlichesMobilitätskonzept\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+
+### Zeichenklassen mit `[ ]`
+
+Wir haben bisher den Platzhalter "." verwendet, der für jedes beliebige Zeichen steht. Mit dem Operator `[ ]` steht eine Möglichkeit bereit, eine _Auswahl_ an Zeichen, also eine Zeichenklasse zu definieren:
+- `[abc]` steht für einen der Buchstaben `a` oder `b` oder `c` - ist also äquivalent zu `(a|b|c)`
+- `[word="H[oa]se"]` findet also Hose und Hase - ist also äquivalent zu `[word="H(o|a)se"]`
+- `[lc="[ptkbdg].+"] findet alle Wortformen, die mit einem Plosiv beginnen  - ist also äquivalent zu `[lc="(p|t|k|b|d|g).+"]`
+- `[lc="(h[aeiou]){3,}"]` Eine weitere alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen 
+
+Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gruppierung `( )` zusammen mit `|` formulieren. 
+Die Zeichenklassendefinitionen bieten aber noch Möglichkeiten die darüber hinausgehen: 
+_Bereiche_ mit "-" definieren:
+- `[a-z]` und `[0-9]` stehen für den _Buchstabenbereich von a bis z_ bzw. den _Zahlenbereich von 0 bis 9_
+- `[word="[0-9]+"]` findet alle Zahlen
+- `[word="[0-9]+([,.][0-9]+)+"]`  findet alle Zahlen - die auch `.` oder `,` enthalten können. Also z.B. _0815_ aber auch _19.500.123,00_
+- `<doc year="199[0-5]"/>` findet alle Artikel von 1990-1995.  
+
+_Negation_ mit `[^ ...]` definieren:
+- `[^abc]` ein "^" unmittelbar am Anfang der Zeichenklassendefinition bedeutet, dass die Zeichenklasse aus allen Zeichen _außer_ den angeführten besteht!
+- `[lc="[^ptkbdg].+"] findet alle Wortformen, die _nicht_ mit einem Plosiv beginnen. 
+
 
 ### Quiz
 
