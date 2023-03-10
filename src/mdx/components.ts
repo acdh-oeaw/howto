@@ -1,7 +1,9 @@
 import type { ComponentType } from 'react'
 
 import { Download } from '@/cms/components/Download'
+import { Figure } from '@/cms/components/Figure'
 import { SideNote } from '@/cms/components/SideNote'
+import { Tabs, Tab } from '@/cms/components/Tabs'
 import { Video } from '@/cms/components/Video'
 
 export type MdxComponentType =
@@ -47,4 +49,7 @@ export const components: MdxComponentMap = {
   Download,
   SideNote,
   Video,
+  Figure,
+  Tabs,
+  Tab,
 }
