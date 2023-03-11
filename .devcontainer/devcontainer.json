@@ -24,7 +24,7 @@
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "yarn install",
   // "postCreateCommand": "sudo chown node node_modules .next",
-  "postCreateCommand": "git clone https://github.com/acdh-oeaw/howto.git && sudo chown -R node .",
+  "postCreateCommand": "rm -rf howto && git clone https://github.com/acdh-oeaw/howto.git && sudo chown -R node . && echo Please execute \\\"code -r howto\\\"",
 
   // Configure tool-specific properties.
   // "customizations": {},
