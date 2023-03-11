@@ -83,7 +83,8 @@ Code if you allow it and start the cloning process with the right settings.
 </SideNote>
 
 <SideNote type="info">
-#### Windows
+<Tabs>
+<Tab title="Windows">
 
 You can paste the \`https://...\` of any git repository from a server in the text field that appears
 when we click \`Clone Git repository...\` on the start screen of VSCodium or Visual Studio Code.
@@ -99,7 +100,8 @@ us for user name and password.
 
 ![](images/credentials_dialog_windows.png "credentials dialogue Windows")
 
-#### MacOS
+</Tab>
+<Tab title="MacOS">
 
 You can paste the \`https://...\` of any git repository from a server in the text field that appears
 when we click \`Clone Git repository...\` on the start screen of VSCodium or Visual Studio Code:
@@ -114,7 +116,8 @@ repository the first time.
 These are passed to Git and Git saves them in the "keychain" which also for example _Safari_ uses to
 save credentials.
 
-#### Linux
+</Tab>
+<Tab title="Linux">
 
 On Linux Visual Studio Code asks us for our username and password when we try to clone the
 repository for the first time.
@@ -123,6 +126,8 @@ If git-credential-libsecret is installed the username and password will be store
 Code will not ask us in the future. If it is not installed we have to type the password again next
 time we interact with the repository on the gilab server.
 
+</Tab>
+</Tabs>
 </SideNote>
 
 At the end there is a little dialog in the bottom right corner, click open there:
