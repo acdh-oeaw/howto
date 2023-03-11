@@ -14,14 +14,17 @@
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [3000, 8081],
 
-  "mounts": [
-    "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
-    "source=${localWorkspaceFolderBasename}-next,target=${containerWorkspaceFolder}/.next,type=volume"
-  ],
+  //"mounts": [
+  //  "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
+  //  "source=${localWorkspaceFolderBasename}-next,target=${containerWorkspaceFolder}/.next,type=volume"
+  //],
+  "workspaceMount": "source=${localWorkspaceFolderBasename}-workspace,target=/workspace,type=volume",
+  "workspaceFolder": "/workspace",
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "yarn install",
-  "postCreateCommand": "sudo chown node node_modules .next",
+  // "postCreateCommand": "sudo chown node node_modules .next",
+  "postCreateCommand": "git clone https://github.com/acdh-oeaw/howto.git && sudo chown -R node .",
 
   // Configure tool-specific properties.
   // "customizations": {},
