@@ -8,6 +8,7 @@
     "build": "next build",
     "cms:dev": "netlify-cms-proxy-server",
     "cms:styles": "cross-env NODE_ENV='production' NODE_OPTIONS='-r tsconfig-paths/register' postcss --config src/cms/previews/postcss.config.js node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && prettier public/assets/css --write",
+    "cms:styles-win": "cross-env NODE_ENV='production' .\\node_modules\\.bin\\ts-node -r tsconfig-paths/register .\\node_modules\\postcss-cli\\bin\\postcss --config src/cms/previews/postcss.config.js node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && .\\node_modules\\.bin\\prettier public/assets/css --write",
     "create:favicons": "ts-node scripts/createFavicons",
     "create:feed": "node .next/server/createFeed",
     "create:metadata-dump": "node .next/server/dumpMetadata",
