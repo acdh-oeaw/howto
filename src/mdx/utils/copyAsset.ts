@@ -55,7 +55,7 @@ export function copyAsset(
 
   const newPath = path.join('static', folderName, path.relative(process.cwd(), getNewFileName()))
 
-  const publicPath = path.join('/_next', newPath)
+  const publicPath = path.posix.join('/_next', newPath)
   const destinationFilePath = path.join(process.cwd(), '.next', newPath)
 
   // TODO: make async
