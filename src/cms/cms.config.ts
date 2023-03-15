@@ -30,7 +30,13 @@ export const config: CmsConfig = {
   site_url: url,
   logo_url: '/assets/images/logo-with-text.svg',
   load_config_file: false,
-  local_backend: process.env.NEXT_PUBLIC_USE_LOCAL_CMS === 'true',
+  local_backend:
+    process.env.NEXT_PUBLIC_LOCAL_CMS_URL === undefined ||
+    process.env.NEXT_PUBLIC_LOCAL_CMS_URL === ''
+      ? false
+      : {
+          url: process.env.NEXT_PUBLIC_LOCAL_CMS_URL,
+        },
   backend: {
     name: 'github',
     repo: process.env.NEXT_PUBLIC_GIT_REPO ?? 'acdh-oeaw/howto',
