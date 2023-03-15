@@ -18,12 +18,30 @@ the bottom of each post.
 
 ### Run a local CMS backend
 
-You can run a local CMS backend which writes directly to the filesystem, and does not require
-authentication, with `yarn cms:dev`. Then run either a production build of the website with
-`NEXT_PUBLIC_USE_LOCAL_CMS='true' yarn build && yarn start` or a development build with `yarn dev`
-and visit [http://localhost:3000/cms](http://localhost:3000/cms). To apply the correct styles to the
-CMS preview, you will have to run `yarn cms:styles` once. Don't forget to commit and push changes
-via `git`.
+1. Clone this repository. See above (green Code button).
+   `git clone https://github.com/acdh-oeaw/howto`
+2. You of course need a nodejs setup. See nodejs.org about your options. Currently we use nodejs
+   16.x
+3. This project uses yarn. Yarn is part of any current nodejs distribution but has to be enabled
+   with `corepack enable`
+4. Install dependencies: `yarn install`.
+   - If you work with multiple copies/branches of howto, please remember you need to do this for
+     every directory you work in
+5. We recommend you run a local CMS backend which writes directly to the filesystem, and does not
+   require authentication.
+6. To apply the correct styles to the CMS preview, you will have to run `yarn cms:styles` once. On
+   Windows please run `yarn cms:styles-win`.
+7. Start the local cms with `yarn cms:dev`.
+8. You may be prompted to allow firewall access for node.exe on Windows. Please allow that on at
+   least private networks.
+9. Open a second terminal/command prompt.
+10. Then run either a production build of the website (does not work on Windows yet) with
+    `NEXT_PUBLIC_USE_LOCAL_CMS='true' yarn build && yarn start` or a development build with
+    `yarn dev` and visit [http://localhost:3000/cms](http://localhost:3000/cms).
+
+Please be patient starting the services will take a while.
+
+Don't forget to commit and push changes via `git`.
 
 ### Use your favorite text editor
 
