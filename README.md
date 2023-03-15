@@ -62,3 +62,30 @@ syntax is supported, however there are
 to be aware of. Most notably: the "lesser than" sign `<` needs to be HTML-escaped to `&lt;` (because
 it signifies the start of a custom component), and similarly "autolinks" (`<https://example.com>`
 instead of `[https://example.com](https://example.com)`) are not allowed.
+
+# Troubleshooting:
+
+## The dev cms does not work
+
+Indication: [http://localhost:3000/cms](http://localhost:3000/cms) still displays a GitHub login
+button instead of a simple button only labled `Login`.
+
+You will see this if you
+
+- are either not running `yarn cms:dev` as a background service or
+- especially on Windows some system service uses port 8081 (IP Helper Windows service).
+
+Solution: Change the cms port. In `package.json` look for the two mentions of port 8081 and change
+it to some unused port.
+[Here is a utility to list all ports in use at the moment on Windows.](https://www.nirsoft.net/utils/cports.html)
+
+## The service is not reachable at all
+
+Indication: You access [http://localhost:3000/](http://localhost:3000/) and nothing happens, the
+browser seems stuck or dispalys an error message.
+
+There is probably also a service running on port 3000 on your computer.
+
+Solution: look for `--port=3000` in `package.json` and change that to a different number e.g. 34567.
+After you stopped and restarted the dev server it will display the URL to use
+[http://localhost:34567/](http://localhost:34567/)
