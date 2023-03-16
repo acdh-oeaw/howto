@@ -7,14 +7,9 @@
 }
 
 :root {
+  height: 100%;
   -webkit-tap-highlight-color: transparent;
-
-  /** Probably only needed on mobile WebKit to prevent input zoom. */
   text-size-adjust: none;
-
-  /** Disable double-tap to zoom, so press events are not delayed. */
-
-  /* touch-action: manipulation; */
 }
 
 body {
@@ -24,6 +19,6 @@ body {
 /** Safari only. */
 @supports (-webkit-touch-callout: none) {
   body {
-    min-height: fill-available;
+    min-height: stretch;
   }
 }

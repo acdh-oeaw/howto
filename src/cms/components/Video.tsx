@@ -41,13 +41,13 @@ export function Video(props: VideoProps): JSX.Element {
           <Spinner className={isLoadingIframe ? undefined : 'hidden'} />
         </div>
         <iframe
+          className="absolute inset-0 h-full w-full object-cover"
           src={String(url)}
           title="Video player"
           allowFullScreen
           allow="autoplay; fullscreen; picture-in-picture"
           loading="lazy"
           onLoad={onLoadIframe}
-          className=""
         />
       </div>
       {props.caption !== undefined ? (
