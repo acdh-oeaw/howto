@@ -46,10 +46,10 @@ Sollten Sie an einem geförderten Projekt arbeiten, wird von der APA eine Nutzun
 Zu Übungszwecken finden Sie auf der amc-Website Zugang zu einer [Demo-Version](https://demo-amc.acdh.oeaw.ac.at/crystal/#open), für die Sie keine Registrierung benötigen.
 </SideNote>
 
-In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeiten vertraut und erlernen das Formulieren von Suchanfragen in der **Sketch Engine/NoSketch Engine**. Insbesondere wird Ihnen die in dieser Korpussuchmaschine verwendete Abfragessprache **Corpus Query Language (CQL)** nähergebracht.
+In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeiten vertraut und erlernen das Formulieren von Suchanfragen in der **Sketch Engine/NoSketch Engine**. Insbesondere wird Ihnen die in dieser Korpussuchmaschine verwendete Abfragessprache **Corpus Query Language (CQL)** näher gebracht.
 
 <SideNote type="info" title="Sketch Engine und NoSketch Engine?">
-Die Bereitstellung des amc erfolgt über die webbasierte Korpussuchmaschine **[NoSketch Engine (NoSkE)](https://nlp.fi.muni.cz/trac/noske)**. Dabei handelt es sich um eine _open source_ Version der **[Sketch Engine (SkE)](https://https://www.sketchengine.eu)**. Der **[Vergleich von Sketch Engine und NoSketch Engine](https://www.sketchengine.eu/nosketch-engine/)** zeigt, wie sich die NoSkE von der kommerziellen SkE durch den Wegfall einiger Funktionalitäten unterscheidet. Von den zahlreichen Dokumentatioen und Benutzungshilfen die online zur Sketch Engine auffindbar sind, sind daher nicht alle für die NoSketch Engine relevant. Für die in dieser Lernunterlage vorgestellten Kernfunktionalitäten bestehen allerding _keine_ Unterschiede zwischen den beiden Varianten. Die verlinkten Informationen und Anleitungen zur Sketch Engine sind daher gleichermaßen für die NoSketch Engine gültig, im Kontext dieses Manuals werden daher in der Folge die Bezeichnungen SkE und NoSkE synonym verwendet. 
+Die Bereitstellung des amc erfolgt über die webbasierte Korpussuchmaschine **[NoSketch Engine (NoSkE)](https://nlp.fi.muni.cz/trac/noske)**. Dabei handelt es sich um eine _open source_ Version der **[Sketch Engine (SkE)](https://https://www.sketchengine.eu)**. Der **[Vergleich von Sketch Engine und NoSketch Engine](https://www.sketchengine.eu/nosketch-engine/)** zeigt, wie sich die NoSkE von der kommerziellen SkE durch den Wegfall einiger Funktionalitäten unterscheidet. Von den zahlreichen Dokumentationen und Benutzungshilfen, die online zur Sketch Engine auffindbar sind, sind daher nicht alle für die NoSketch Engine relevant. Für die in dieser Lernunterlage vorgestellten Kernfunktionalitäten bestehen allerding _keine_ Unterschiede zwischen den beiden Varianten. Die verlinkten Informationen und Anleitungen zur Sketch Engine sind daher gleichermaßen für die NoSketch Engine gültig, im Kontext dieses Manuals werden daher in der Folge die Bezeichnungen SkE und NoSkE synonym verwendet. 
 </SideNote>
 
 ## Grundlagen: Token vs. Strukturen
@@ -60,14 +60,14 @@ Bei der Suche mithilfe von SkE/NoSkE gibt es einige Grundbegriffe, mit denen Sie
 
 Token sind das Ergebnis des sogenannten Tokenisierungsprozesses – d.h. der Zerlegung des Eingangstexts in linguistisch sinnvolle Einheiten. In der Regel entspricht ein Token einem orthographischen Wort. Die simpelste Tokenisierungsstrategie wäre: alles was zwischen zwei Leerzeichen steht, ist ein Token.
 
-<SideNote type="info" title="Vereinfacht gefasst: Token sind die einzelnen Wörter, Satzzeichen oder Zahlen im Text">
+<SideNote type="info" title="Vereinfacht gefasst: Token sind die einzelnen Wörter, Satzzeichen oder Zahlen im Text.">
 
 </SideNote>
 
 Diese vereinfachte Darstellung muss freilich um die Berücksichtigung von Satzzeichen ergänzt werden: Satzzeichen sollen vom vorangehenden Wort abgetrennt werden und bilden separate Token. Die Existenz von Abkürzungen  verkomplizieren die Tokenisierung: zum Beispiel sind die Punkte in _z.B._ natürlich keine Satzzeichen, dürfen daher nicht abgetrennt werden, denn _z.B._ sollte als ein einziges Token behandelt werden.
 
 <SideNote type="warning" title="Fehleranfälligkeit: Sonderzeichen in Token">
-Wie bei allen automatisierten Verarbeitungsschritten erfolgt die Tokenisierung bisweilen nicht fehlerfrei. So ist bei der Suche nach Token, die Satz- oder Sonderzeichen enthalten, zu berücksichtigen, dass evtl. die Tokenisierung diese Zeichen miss-interpretiert hat und daher das Wort fälschlicherweise in mehrere Token aufgeteilt wurde.
+Wie bei allen automatisierten Verarbeitungsschritten erfolgt die Tokenisierung bisweilen nicht fehlerfrei. So ist bei der Suche nach Token, die Satz- oder Sonderzeichen enthalten, zu berücksichtigen, dass evtl. die Tokenisierung diese Zeichen missinterpretiert hat und daher das Wort fälschlicherweise in mehrere Token aufgeteilt wurde.
 </SideNote>
 
 ### Token-Attribute
@@ -78,15 +78,15 @@ Einige der Token-Attribute im amc wären
 
 - `word` : Das einfachste Attribut beinhaltet die orthographische Form des Wortes.
 - `lemma` : hier steht die Grundform des Wortes (wie es von einem Lemmatisierungsprogramm ermitteln wurde).
-- `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist _case sensitiv_, `lc` kann verwendet werden, um case _insensitiv_ -- also unter Großkleinschreibung ignorierend -- zu suchen. D.h. eine Suche \[word="Ciao"] findet nur genau „Ciao“. Die Suche \[lc="ciao"] findet ciao, Ciao, CIAO, CiAo etc.     
+- `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist _case sensitive_, `lc` kann verwendet werden, um case _insensitive_ -- also unter Großkleinschreibung ignorierend -- zu suchen. D.h. eine Suche `[word="Ciao"]` findet nur genau „Ciao“. Die Suche `[lc="ciao"]` findet ciao, Ciao, CIAO, CiAo etc.     
 - `posTT` : part-of-Speech tags nach dem STTS-Tagset, wie sie vom PoS tagger TreeTagger vergeben wurden.
 - `pos` : part-of-Speech tags, wie sie vom PoS tagger RFTagger vergeben wurden: zusätzlich zur Wortart werden auch morphologische Informationen angegeben.
 
-  ![Einfache Suche im amc, Spalten mit Suche nach "ciao" als Lemma, Part of Speech type noun, im Bereich token](images/amc3.2_concordance_lemma_noun_token_ciao.png)
+  ![Einfache Suche im amc, Spalten mit Suche nach "ciao" als Lemma, Part of Speech type noun, im Bereich token](images/amc3.2_concordance_lemma_noun_token_ciao.png "Suche nach 'ciao' als Lemma")
 
   ![Zwei Spalten im View Options zur Auswahl von Token Attributen und Strukturen](images/amc3.2_concordance_lemma_noun_ciao_viewoptions.png "In den View Options kann man die Attribute, die den Token im Korpus zugeordnet sind, auswählen.")
 
-  ![](images/amc3.2_concordance_lemma_noun_ciao_random_result_postt-annotation.png "Suchergebnis für Token ciao. Es wurden die Attribute word, lemma, posTT, und pos ausgewählt. Die Information ist unter dem Token sichtbar.")
+  ![Beispiel-Suchergebnis für das Token 'ciao'. Es wurden die Attribute word, lemma, posTT, und pos ausgewählt. Die Information ist unter dem Token sichtbar](images/amc3.2_concordance_lemma_noun_ciao_random_result_postt-annotation.png "Beispiel-Suchergebnis für das Token 'ciao'. Es wurden die Attribute word, lemma, posTT, und pos ausgewählt. Die Information ist unter dem Token sichtbar.")
 
 <SideNote type="tip" title="Tipp: Attribute eines Korpus">
 Die Liste aller Attribute eines Korpus lässt sich immer einfach unter dem Info-Zeichen im Overflow-Menü oder — völlig äquivalent — in der _CORPUS INFO_ im Dashboard des jeweiligen Corpus anzeigen.
@@ -129,7 +129,7 @@ fliegen     VINF.Full.-             VVFIN  fliegen-v
 ```
 Dieses Datenformat nennt sich (in der SkE-Terminologie) „Vertikale“. 
 
-Wie Sie sehen können, ist der Text tokenisiert. Jedes Token steht in einer separaten Zeile und diese Zeilen enthalten, in Spalten organisiert, die Wortform (also formal gesprochen das Token-Attribute `word`) gefolgt von den anderen Token-Attributen - in diesem Fall `pos`, `posTT` und `lempos` (eine Kombination aus Lemma und PoS) 
+Wie Sie sehen können, ist der Text tokenisiert. Jedes Token steht in einer separaten Zeile und diese Zeilen enthalten, in Spalten organisiert, die Wortform (also formal gesprochen das Token-Attribute `word`) gefolgt von den anderen Token-Attributen - in diesem Fall `pos`, `posTT` und `lempos` (eine Kombination aus Lemma und PoS). 
 
 Und diese tokenisierten Texte können nun durch Struktur-Elemente, nun ja, strukturiert werden.  
 Im Beispiel ist zu erkennen, dass die Strukturen als XML-artige Spitzklammer-Annotationen die Token ergänzen.
