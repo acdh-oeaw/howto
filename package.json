@@ -1,8 +1,12 @@
 {
-  "name": "acdh-ch-howto",
-  "version": "0.1.0",
+  "name": "@acdh-oeaw/howto",
   "private": true,
   "license": "MIT",
+  "engines": {
+    "node": "18.x",
+    "yarn": "1.x"
+  },
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "analyze": "cross-env ANALYZE='true' yarn run build",
     "build": "next build",
@@ -34,10 +38,6 @@
     "test:watch": "yarn run test --watch",
     "typecheck": "tsc --noEmit",
     "validate": "yarn run format && yarn run lint && yarn run typecheck && yarn test"
-  },
-  "engines": {
-    "node": "14.x||16.x",
-    "yarn": "1.x"
   },
   "dependencies": {
     "@codemirror/basic-setup": "^0.20.0",
@@ -198,6 +198,6 @@
     "pre-push": "yarn run validate"
   },
   "volta": {
-    "node": "16.19.0"
+    "node": "18.15.0"
   }
 }

@@ -2,7 +2,7 @@
 
 # base
 # we don't use node:14-slim because we need `git` to get the last updated timestamps
-FROM node:14 AS base
+FROM node:18 AS base
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
