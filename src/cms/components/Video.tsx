@@ -26,12 +26,7 @@ export interface VideoProps {
  * Video video.
  */
 export function Video(props: VideoProps): JSX.Element {
-  const url = useVideo(
-    props.provider ?? 'youtube',
-    props.id,
-    props.autoPlay,
-    props.startTime,
-  )
+  const url = useVideo(props.provider ?? 'youtube', props.id, props.autoPlay, props.startTime)
 
   const [isLoadingIframe, setIsLoadingIframe] = useState(true)
 
@@ -40,8 +35,8 @@ export function Video(props: VideoProps): JSX.Element {
   }
 
   return (
-    <figure className="flex flex-col items-center justify-center">
-      <div className="w-full aspect-w-16 aspect-h-9">
+    <figure className="flex flex-col items-center justify-center relative">
+      <div className="w-full aspect-video">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-brand-blue">
           <Spinner className={isLoadingIframe ? undefined : 'hidden'} />
         </div>
@@ -62,12 +57,7 @@ export function Video(props: VideoProps): JSX.Element {
   )
 }
 
-function useVideo(
-  provider: VideoProvider,
-  id: string,
-  autoPlay = false,
-  startTime?: number,
-) {
+function useVideo(provider: VideoProvider, id: string, autoPlay = false, startTime?: number) {
   switch (provider) {
     case 'youtube':
       return getYouTubeUrl(id, autoPlay, startTime)

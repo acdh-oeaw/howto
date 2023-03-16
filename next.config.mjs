@@ -10,8 +10,7 @@ import withFrontmatter from 'remark-frontmatter'
 import withGfm from 'remark-gfm'
 import withMdxFrontmatter from 'remark-mdx-frontmatter'
 
-const isProductionDeploy =
-  process.env.NEXT_PUBLIC_BASE_URL === 'https://howto.acdh.oeaw.ac.at'
+const isProductionDeploy = process.env.NEXT_PUBLIC_BASE_URL === 'https://howto.acdh.oeaw.ac.at'
 
 /** @type {NextConfig} */
 const config = {
@@ -22,11 +21,6 @@ const config = {
   i18n: {
     locales: ['en', 'de'],
     defaultLocale: 'en',
-  },
-  pageExtensions: ['page.tsx', 'api.ts'],
-  poweredByHeader: false,
-  typescript: {
-    ignoreBuildErrors: true,
   },
   async headers() {
     const headers = [
@@ -56,6 +50,9 @@ const config = {
 
     return headers
   },
+  output: 'standalone',
+  pageExtensions: ['page.tsx', 'api.ts'],
+  poweredByHeader: false,
   async redirects() {
     try {
       const resourcesRedirects = JSON.parse(
@@ -99,6 +96,9 @@ const config = {
       { source: '/tag/:id', destination: '/tag/:id/page/1' },
     ]
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
 /** @type {Array<(config: NextConfig) => NextConfig>} */
@@ -106,11 +106,7 @@ const plugins = [
   createSvgPlugin(),
   createMdxPlugin({
     options: {
-      remarkPlugins: [
-        withFrontmatter,
-        [withMdxFrontmatter, { name: 'metadata' }],
-        withGfm,
-      ],
+      remarkPlugins: [withFrontmatter, [withMdxFrontmatter, { name: 'metadata' }], withGfm],
     },
   }),
 ]

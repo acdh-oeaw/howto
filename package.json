@@ -22,24 +22,26 @@
     "create:sitemap": "tsx ./scripts/createSitemap.ts",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
     "dev": "cross-env NEXT_PUBLIC_LOCAL_CMS_URL='http://localhost:8081/api/v1/' NEXT_PUBLIC_BASE_URL='http://localhost:3000' next dev --port=3000",
-    "format": "prettier . -l --ignore-path .gitignore",
+    "format": "prettier . --cache --check --ignore-path .gitignore",
     "format:fix": "yarn run format --write",
-    "lint": "next lint --cache --ignore-path .gitignore",
-    "lint:fix": "yarn run lint --fix",
-    "lint:md": "remark . --quiet --frail --ignore-path .gitignore",
-    "lint:md:fix": "yarn run lint:md --output",
-    "lint:mdx": "remark . --quiet --frail --use mdx --ignore-path .gitignore",
-    "lint:mdx:fix": "yarn run lint:mdx --output",
-    "postbuild": "yarn run create:feed && yarn run create:sitemap && yarn run create:redirects && yarn run create:search-index && yarn run create:metadata-dump",
-    "postinstall": "patch-package",
-    "prebuild": "yarn run create:favicons && yarn run cms:styles",
-    "prepare": "simple-git-hooks || true",
+    "lint:check": "run-p lint:*:check",
+    "lint:fix": "run-p lint:*:fix",
+    "lint:code:check": "eslint . --cache --ignore-path .gitignore",
+    "lint:code:fix": "yarn run lint:code:check --fix",
+    "lint:md:check": "remark . --quiet --frail --ignore-path .gitignore",
+    "lint:md:fix": "yarn run lint:md:check --output",
+    "lint:mdx:check": "remark . --quiet --frail --use mdx --ignore-path .gitignore",
+    "lint:mdx:fix": "yarn run lint:mdx:check --output",
+    "lint:styles:check": "stylelint \"./**/*.css\" --cache --ignore-path .gitignore",
+    "lint:styles:fix": "yarn run lint:styles:check --fix",
+    "postbuild": "run-s create:feed create:sitemap create:redirects create:search-index create:metadata-dump",
+    "prebuild": "run-s create:favicons cms:styles",
+    "prepare": "run-s setup",
+    "setup": "simple-git-hooks || exit 0",
     "start": "next start",
     "test": "exit 0",
-    "test:coverage": "yarn run test --coverage",
-    "test:watch": "yarn run test --watch",
-    "typecheck": "tsc --noEmit",
-    "validate": "yarn run format && yarn run lint && yarn run typecheck && yarn test"
+    "types:check": "tsc --noEmit",
+    "validate": "run-s format:check lint:check types:check test"
   },
   "dependencies": {
     "@codemirror/lang-xml": "^6.0.2",
@@ -109,6 +111,7 @@
     "@stefanprobst/next-sitemap": "^1.0.6",
     "@stefanprobst/prettier-config": "^2.0.3",
     "@stefanprobst/remark-preset": "^2.0.1",
+    "@stefanprobst/stylelint-config": "^3.0.1",
     "@stefanprobst/tsconfig": "^2.2.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/hast": "^2.3.4",
@@ -123,10 +126,11 @@
     "dotenv-cli": "^7.1.0",
     "eslint": "^8.36.0",
     "eslint-config-next": "^13.2.4",
+    "eslint-plugin-tailwindcss": "^3.10.1",
     "file-loader": "^6.2.0",
     "lint-staged": "^13.2.0",
     "netlify-cms-proxy-server": "^1.3.24",
-    "patch-package": "^6.5.1",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
     "postcss-import": "^15.1.0",
@@ -135,6 +139,7 @@
     "remark-cli": "^11.0.0",
     "remark-lint-no-dead-urls": "^1.1.0",
     "simple-git-hooks": "^2.8.1",
+    "stylelint": "^15.2.0",
     "tailwindcss": "^3.2.7",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
@@ -156,8 +161,14 @@
     "extends": [
       "@stefanprobst/eslint-config",
       "@stefanprobst/eslint-config-react",
-      "@stefanprobst/eslint-config-next"
-    ]
+      "@stefanprobst/eslint-config-next",
+      "plugin:eslint-plugin-tailwindcss/recommended"
+    ],
+    "settings": {
+      "tailwindcss": {
+        "config": "./tailwind.config.cjs"
+      }
+    }
   },
   "lint-staged": {
     "*.@(js|ts|tsx)": [
@@ -192,8 +203,7 @@
   },
   "simple-git-hooks": {
     "commit-msg": "yarn commitlint --edit",
-    "pre-commit": "yarn lint-staged",
-    "pre-push": "yarn run validate"
+    "pre-commit": "yarn lint-staged"
   },
   "volta": {
     "node": "18.15.0"
