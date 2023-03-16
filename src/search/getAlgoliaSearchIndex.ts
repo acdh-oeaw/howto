@@ -1,5 +1,5 @@
-import algoliasearch from 'algoliasearch/lite'
 import type { SearchIndex } from 'algoliasearch/lite'
+import algoliasearch from 'algoliasearch/lite'
 
 import { log } from '@/utils/log'
 
@@ -26,9 +26,7 @@ export function getAlgoliaSearchIndex(): SearchIndex | null {
     process.env.NEXT_PUBLIC_ALGOLIA_API_KEY,
   )
 
-  const searchIndex = searchClient.initIndex(
-    process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME,
-  )
+  const searchIndex = searchClient.initIndex(process.env.NEXT_PUBLIC_ALGOLIA_INDEX_NAME)
 
   return searchIndex
 }

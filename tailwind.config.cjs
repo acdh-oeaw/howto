@@ -2,7 +2,6 @@ const colors = require('tailwindcss/colors')
 
 const config = {
   content: ['./src/**/*.@(ts|tsx)'],
-  darkMode: false,
   theme: {
     extend: {
       colors: {

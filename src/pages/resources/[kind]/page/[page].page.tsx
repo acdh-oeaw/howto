@@ -1,15 +1,14 @@
-import type { ParsedUrlQuery } from 'querystring'
-
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next'
+import type { ParsedUrlQuery } from 'querystring'
 import { Fragment } from 'react'
 
 import type { PostPreview } from '@/cms/api/posts.api'
-import { getPostPreviews, getPostIds } from '@/cms/api/posts.api'
+import { getPostIds, getPostPreviews } from '@/cms/api/posts.api'
 import type { ResourceKind } from '@/cms/api/resources.api'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
@@ -117,8 +116,8 @@ export default function ResourcesPage(props: ResourcesPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="text-white bg-brand-black">
-        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+      <PageContent className="bg-brand-black text-white">
+        <div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
           <PageTitle>{t('common.posts')}</PageTitle>
           <ResourcesList posts={resources.items} />
           <Pagination

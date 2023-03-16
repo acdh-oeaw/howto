@@ -1,8 +1,7 @@
 /**
  * RegEx for email addresses.
  */
-export const isEmailLike =
-  '^[^\\.\\s@:](?:[^\\s@:]*[^\\s@:\\.])?@[^\\.\\s@]+(?:\\.[^\\.\\s@]+)*$'
+export const isEmailLike = '^[^\\.\\s@:](?:[^\\s@:]*[^\\s@:\\.])?@[^\\.\\s@]+(?:\\.[^\\.\\s@]+)*$'
 
 /**
  * RegEx for URLs.

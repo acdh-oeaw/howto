@@ -43,13 +43,9 @@ async function main() {
         }) ?? [],
     }
   })
-  fs.writeFileSync(
-    path.join(outputFolder, 'resources.json'),
-    JSON.stringify({ resources }),
-    {
-      encoding: 'utf-8',
-    },
-  )
+  fs.writeFileSync(path.join(outputFolder, 'resources.json'), JSON.stringify({ resources }), {
+    encoding: 'utf-8',
+  })
 
   const curriculaPreviews = await getCoursePreviews(locale)
   const curricula = curriculaPreviews.map((preview) => {
@@ -67,13 +63,9 @@ async function main() {
         }) ?? [],
     }
   })
-  fs.writeFileSync(
-    path.join(outputFolder, 'curricula.json'),
-    JSON.stringify({ curricula }),
-    {
-      encoding: 'utf-8',
-    },
-  )
+  fs.writeFileSync(path.join(outputFolder, 'curricula.json'), JSON.stringify({ curricula }), {
+    encoding: 'utf-8',
+  })
 }
 
 main()

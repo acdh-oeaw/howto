@@ -113,9 +113,7 @@ export async function getStaticProps(
 
   const courses = await getCoursePreviewsByResourceId(id, locale)
 
-  const lastUpdatedAt = await getLastUpdatedTimestamp(
-    getPostFilePath(id, locale),
-  )
+  const lastUpdatedAt = await getLastUpdatedTimestamp(getPostFilePath(id, locale))
 
   return {
     props: {
@@ -240,11 +238,11 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
         siteTitle={siteMetadata.title}
       />
       <PageContent>
-        <div className="grid text-white bg-gradient-to-r from-brand-blue to-brand-turquoise">
+        <div className="grid bg-gradient-to-r from-brand-blue to-brand-turquoise text-white">
           <ResourceHeader resource={resource} lastUpdatedAt={lastUpdatedAt} />
         </div>
-        <div className="grid w-full max-w-screen-lg px-10 pt-12 pb-16 mx-auto space-y-10 2xl:space-y-0 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:max-w-none">
-          <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col justify-self-end">
+        <div className="mx-auto grid w-full max-w-screen-lg space-y-10 px-10 pt-12 pb-16 2xl:max-w-none 2xl:grid-cols-content-columns 2xl:gap-x-10 2xl:space-y-0">
+          <aside className="sticky top-0 hidden max-h-screen w-full max-w-xs justify-self-end overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col">
             <CourseLinks courses={courses} />
           </aside>
           <div className="min-w-0">
@@ -253,14 +251,14 @@ export default function ResourcePage(props: ResourcePageProps): JSX.Element {
           </div>
           {metadata.toc === true && toc.length > 0 ? (
             <Fragment>
-              <aside className="sticky top-0 hidden w-full max-w-xs max-h-screen px-8 py-8 overflow-y-auto text-sm text-neutral-500 2xl:flex 2xl:flex-col">
+              <aside className="sticky top-0 hidden max-h-screen w-full max-w-xs overflow-y-auto p-8 text-sm text-neutral-500 2xl:flex 2xl:flex-col">
                 <TableOfContents
                   toc={toc}
                   aria-labelledby="table-of-contents"
                   title={
                     <h2
                       id="table-of-contents"
-                      className="text-xs font-bold tracking-wide uppercase text-neutral-600"
+                      className="text-xs font-bold uppercase tracking-wide text-neutral-600"
                     >
                       {t('common.tableOfContents')}
                     </h2>
@@ -295,7 +293,7 @@ function CourseLinks(props: CourseLinksProps) {
 
   return (
     <nav aria-label={t('common.containedIn')} className="w-full space-y-2">
-      <h2 className="text-xs font-bold tracking-wide uppercase text-neutral-600">
+      <h2 className="text-xs font-bold uppercase tracking-wide text-neutral-600">
         {t('common.containedIn')}
       </h2>
       <ul className="space-y-2">
@@ -303,13 +301,10 @@ function CourseLinks(props: CourseLinksProps) {
           return (
             <li key={course.id}>
               <Link
-                className="flex items-center text-sm space-x-1.5 transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue"
+                className="relative flex items-center space-x-1.5 rounded text-sm transition hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
                 href={routes.course({ id: course.id })}
               >
-                <Icon
-                  icon={AcademicCapIcon}
-                  className="flex-shrink-0 w-4 h-4"
-                />
+                <Icon icon={AcademicCapIcon} className="h-4 w-4 shrink-0" />
                 <span>{course.title}</span>
               </Link>
             </li>
@@ -337,7 +332,7 @@ function RelatedResources(props: RelatedResourcesProps) {
   return (
     <nav
       aria-label={t('common.relatedResources')}
-      className="w-full py-12 mx-auto my-12 space-y-3 border-t border-neutral-200 max-w-80ch"
+      className="mx-auto my-12 w-full max-w-80ch space-y-3 border-t border-neutral-200 py-12"
     >
       <h2 className="text-2xl font-bold">{t('common.relatedResources')}</h2>
       <ul className="flex flex-col space-y-4">
@@ -345,10 +340,10 @@ function RelatedResources(props: RelatedResourcesProps) {
           return (
             <li key={resource.id}>
               <Link
-                className="underline flex items-center space-x-1.5"
+                className="flex items-center space-x-1.5 underline"
                 href={routes.resource({ kind: resource.kind, id: resource.id })}
               >
-                <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
+                <Icon icon={DocumentIcon} className="h-6 w-6 shrink-0" />
                 <span>{resource.title}</span>
               </Link>
             </li>

@@ -11,10 +11,7 @@ export interface Page<T> {
 /**
  * Creates pages of items.
  */
-export function paginate<T>(
-  items: Array<T>,
-  pageSize = defaultPageSize,
-): Array<Page<T>> {
+export function paginate<T>(items: Array<T>, pageSize = defaultPageSize): Array<Page<T>> {
   const pages = getPageRange(items, pageSize)
 
   return pages.map((page) => {
@@ -29,10 +26,7 @@ export function paginate<T>(
 /**
  * Returns page range, starting at 1.
  */
-export function getPageRange(
-  items: Array<unknown>,
-  pageSize = defaultPageSize,
-): Array<number> {
+export function getPageRange(items: Array<unknown>, pageSize = defaultPageSize): Array<number> {
   const pages = Math.ceil(items.length / pageSize)
   return range(pages, 1)
 }

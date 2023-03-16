@@ -21,7 +21,7 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
   const { t } = useI18n()
 
   return (
-    <ul className="grid md:grid-cols-2 gap-16">
+    <ul className="grid gap-16 md:grid-cols-2">
       {posts.map((post) => {
         const href = routes.resource({ kind: 'posts', id: post.id })
         const authors = post.authors
@@ -29,19 +29,16 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
         return (
           <li key={post.id}>
             <article className="grid gap-6">
-              <div className="rounded bg-gradient-to-r from-brand-blue to-brand-turquoise h-36 relative">
-                {typeof post.featuredImage === 'string' &&
-                post.featuredImage.length > 0 ? (
+              <div className="relative h-36 rounded bg-gradient-to-r from-brand-blue to-brand-turquoise">
+                {typeof post.featuredImage === 'string' && post.featuredImage.length > 0 ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={post.featuredImage} alt="" />
                 ) : null}
               </div>
-              <h3 className="text-xl font-bold text-brand-light-blue hover:text-neutral-100 transition">
+              <h3 className="text-xl font-bold text-brand-light-blue transition hover:text-neutral-100">
                 <Link href={href}>{post.title}</Link>
               </h3>
-              <p className="text-neutral-300 text-base leading-relaxed">
-                {post.abstract}
-              </p>
+              <p className="text-base leading-relaxed text-neutral-300">{post.abstract}</p>
               <footer className="flex items-center justify-between">
                 <dl>
                   {Array.isArray(authors) && authors.length > 0 ? (
@@ -59,7 +56,7 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
                                   <Image
                                     src={author.avatar}
                                     alt=""
-                                    className="w-10 h-10 rounded-full object-cover"
+                                    className="h-10 w-10 rounded-full object-cover"
                                     width={40}
                                     height={40}
                                     title={name}
@@ -74,7 +71,7 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
                   ) : null}
                 </dl>
                 <Link
-                  className="font-medium text-base justify-self-end text-brand-light-blue hover:text-neutral-100 transition"
+                  className="justify-self-end text-base font-medium text-brand-light-blue transition hover:text-neutral-100"
                   href={href}
                 >
                   {t('common.readMore')} &rarr;

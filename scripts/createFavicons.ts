@@ -12,32 +12,29 @@ import { siteMetadata } from '~/config/siteMetadata.config'
  * Generates favicons and webmanifest for all locales.
  */
 Promise.all(
-  Object.entries(siteMetadata).map(
-    ([locale, { favicon, shortTitle, title, image }]) => {
-      const outputFolder =
-        locale === defaultLocale ? 'public' : ['public', locale].join('/')
+  Object.entries(siteMetadata).map(([locale, { favicon, shortTitle, title, image }]) => {
+    const outputFolder = locale === defaultLocale ? 'public' : ['public', locale].join('/')
 
-      return generate({
-        inputFilePath: favicon.src,
-        outputFolder,
-        name: title,
-        shortName: shortTitle,
-        maskable: favicon.maskable,
-        color: '#fff',
-        manifestFileName: webManifest,
-      }).then(() => {
-        return sharp(image.src)
-          .resize({
-            width: 1200,
-            height: 628,
-            fit: 'contain',
-            background: 'transparent',
-          })
-          .webp()
-          .toFile(path.join(outputFolder, 'open-graph.webp'))
-      })
-    },
-  ),
+    return generate({
+      inputFilePath: favicon.src,
+      outputFolder,
+      name: title,
+      shortName: shortTitle,
+      maskable: favicon.maskable,
+      color: '#fff',
+      manifestFileName: webManifest,
+    }).then(() => {
+      return sharp(image.src)
+        .resize({
+          width: 1200,
+          height: 628,
+          fit: 'contain',
+          background: 'transparent',
+        })
+        .webp()
+        .toFile(path.join(outputFolder, 'open-graph.webp'))
+    })
+  }),
 )
   .then(() => {
     log.success('Successfully generated favicons.')

@@ -19,8 +19,7 @@ export function useCurrentRoute(
   const router = useRouter()
 
   const currentUrl = createUrl({ pathname: router.asPath })
-  const linkUrl =
-    typeof href === 'string' ? createUrl({ pathname: href }) : href
+  const linkUrl = typeof href === 'string' ? createUrl({ pathname: href }) : href
 
   const isCurrent = isMatching(linkUrl, currentUrl, router.route)
 
@@ -31,13 +30,6 @@ export function useCurrentRoute(
  * Default matcher function.
  * Matches pathnames exactly, query params are ignored.
  */
-function isMatchingPathnameExactly(
-  href: UrlObject,
-  route: UrlObject,
-  _page: string,
-): boolean {
-  return (
-    removeTrailingSlash(route.pathname ?? '') ===
-    removeTrailingSlash(href.pathname ?? '')
-  )
+function isMatchingPathnameExactly(href: UrlObject, route: UrlObject, _page: string): boolean {
+  return removeTrailingSlash(route.pathname ?? '') === removeTrailingSlash(href.pathname ?? '')
 }

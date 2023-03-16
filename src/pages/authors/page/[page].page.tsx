@@ -88,10 +88,7 @@ export async function getStaticProps(
   const authorsWithPostCount = (
     await Promise.all(
       authors.items.map(async (author) => {
-        const postsWithAuthor = await getPostPreviewsByAuthorId(
-          author.id,
-          locale,
-        )
+        const postsWithAuthor = await getPostPreviewsByAuthorId(author.id, locale)
 
         return {
           ...author,
@@ -128,7 +125,7 @@ export default function AuthorsPage(props: AuthorsPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
+      <PageContent className="mx-auto flex w-full max-w-screen-xl flex-col space-y-10 px-10 py-16">
         <PageTitle>{t('common.authors')}</PageTitle>
         <AuthorsList authors={authors.items} />
       </PageContent>
@@ -155,11 +152,8 @@ function AuthorsList(props: AuthorsListProps): JSX.Element | null {
       {authors.map((author) => {
         return (
           <li key={author.id}>
-            <Link
-              className="flex items-center space-x-1.5"
-              href={routes.author({ id: author.id })}
-            >
-              <Icon icon={AvatarIcon} className="flex-shrink-0 w-6 h-6" />
+            <Link className="flex items-center space-x-1.5" href={routes.author({ id: author.id })}>
+              <Icon icon={AvatarIcon} className="h-6 w-6 shrink-0" />
               <span>
                 {getFullName(author)} ({author.posts})
               </span>

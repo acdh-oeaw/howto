@@ -23,37 +23,15 @@ export function Highwire(props: HighwireProps): JSX.Element {
 
   return (
     <Head>
-      <meta
-        key="citation_public_url"
-        name="citation_public_url"
-        content={url}
-      />
+      <meta key="citation_public_url" name="citation_public_url" content={url} />
       <meta key="citation_title" name="citation_title" content={title} />
-      <meta
-        key="citation_publication_date"
-        name="citation_publication_date"
-        content={date}
-      />
+      <meta key="citation_publication_date" name="citation_publication_date" content={date} />
       {authors.map((author, index) => {
-        return (
-          <meta
-            key={`citation_author-${index}`}
-            name="citation_author"
-            content={author}
-          />
-        )
+        return <meta key={`citation_author-${index}`} name="citation_author" content={author} />
       })}
       <meta key="citation_language" name="citation_language" content={lang} />
-      <meta
-        key="citation_abstract"
-        name="citation_abstract"
-        content={abstract}
-      />
-      <meta
-        key="citation_journal_title"
-        name="citation_journal_title"
-        content={siteTitle}
-      />
+      <meta key="citation_abstract" name="citation_abstract" content={abstract} />
+      <meta key="citation_journal_title" name="citation_journal_title" content={siteTitle} />
     </Head>
   )
 }

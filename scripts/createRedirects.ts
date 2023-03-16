@@ -7,10 +7,7 @@ import { getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostPreviews } from '@/cms/api/posts.api'
 import { log } from '@/utils/log'
 
-function createRedirects(
-  resources: Array<{ uuid: string; id: string }>,
-  fileName: string,
-) {
+function createRedirects(resources: Array<{ uuid: string; id: string }>, fileName: string) {
   const redirects: Record<string, string> = {}
 
   resources.forEach((resource) => {
@@ -19,7 +16,7 @@ function createRedirects(
 
   fs.writeFileSync(
     path.join(process.cwd(), fileName),
-    // eslint-disable-next-line import/no-named-as-default-member
+
     prettier.format(JSON.stringify(redirects), { parser: 'json' }),
     {
       encoding: 'utf-8',

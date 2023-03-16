@@ -15,12 +15,8 @@ const Cms = dynamic(
      */
     const { default: Cms } = await import('netlify-cms-app')
     const { config } = await import('@/cms/cms.config')
-    const { collection: posts } = await import(
-      '@/cms/collections/posts.collection'
-    )
-    const { collection: courses } = await import(
-      '@/cms/collections/courses.collection'
-    )
+    const { collection: posts } = await import('@/cms/collections/posts.collection')
+    const { collection: courses } = await import('@/cms/collections/courses.collection')
     const { ResourcePreview } = await import('@/cms/previews/ResourcePreview')
     const { CoursePreview } = await import('@/cms/previews/CoursePreview')
     const { downloadWidget } = await import('@/cms/widgets/Download')
@@ -29,9 +25,7 @@ const Cms = dynamic(
     const { videoEditorWidget } = await import('@/cms/widgets/Video')
     const { quizEditorWidget } = await import('@/cms/widgets/Quiz')
     const { tabsEditorWidget } = await import('@/cms/widgets/Tabs')
-    const { default: withResourceLinks } = await import(
-      '@stefanprobst/remark-resource-links'
-    )
+    const { default: withResourceLinks } = await import('@stefanprobst/remark-resource-links')
 
     Cms.init({ config })
 
@@ -111,16 +105,13 @@ const Cms = dynamic(
           </div>
         ) : timedOut === true ? (
           <div>
-            Taking a long time to load CMS&hellip;{' '}
-            <button onClick={retry}>Retry</button>
+            Taking a long time to load CMS&hellip; <button onClick={retry}>Retry</button>
           </div>
         ) : pastDelay === true ? (
           <div>Loading CMS&hellip;</div>
         ) : null
 
-      return (
-        <div className="grid min-h-screen place-items-center">{message}</div>
-      )
+      return <div className="grid min-h-screen place-items-center">{message}</div>
     },
   },
 )

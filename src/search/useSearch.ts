@@ -11,30 +11,24 @@ import {
   SNIPPET_WORDS,
 } from '~/config/search.config'
 
-const searchStatus = [
-  'idle',
-  'loading',
-  'success',
-  'error',
-  'disabled',
-] as const
+const searchStatus = ['idle', 'loading', 'success', 'error', 'disabled'] as const
 
-export type SearchStatus = typeof searchStatus[number]
+export type SearchStatus = (typeof searchStatus)[number]
 
 /**
  * Returns search results for search term.
  */
 export function useSearch(searchTerm: string): {
-  data: Array<Hit<IndexedResource | IndexedCourse>> | undefined
+  data: Array<Hit<IndexedCourse | IndexedResource>> | undefined
   status: SearchStatus
   error: Error | null
 } {
   const [searchIndex] = useState(() => {
     return getAlgoliaSearchIndex()
   })
-  const [searchResults, setSearchResults] = useState<
-    Array<Hit<IndexedResource | IndexedCourse>>
-  >([])
+  const [searchResults, setSearchResults] = useState<Array<Hit<IndexedCourse | IndexedResource>>>(
+    [],
+  )
   const [status, setStatus] = useState<SearchStatus>('idle')
   const [error, setError] = useState<Error | null>(null)
 
@@ -63,24 +57,18 @@ export function useSearch(searchTerm: string): {
       setStatus('loading')
 
       try {
-        const results = await searchIndex.search<
-          IndexedResource | IndexedCourse
-        >(debouncedSearchTerm, {
-          hitsPerPage: MAX_SEARCH_RESULTS,
-          attributesToRetrieve: [
-            'type',
-            'kind',
-            'id',
-            'title',
-            'tags',
-            'heading',
-          ],
-          attributesToHighlight: ['title', 'content'],
-          attributesToSnippet: [`content:${SNIPPET_WORDS}`],
-          highlightPreTag: '<mark>',
-          highlightPostTag: '</mark>',
-          snippetEllipsisText: '&hellip;',
-        })
+        const results = await searchIndex.search<IndexedCourse | IndexedResource>(
+          debouncedSearchTerm,
+          {
+            hitsPerPage: MAX_SEARCH_RESULTS,
+            attributesToRetrieve: ['type', 'kind', 'id', 'title', 'tags', 'heading'],
+            attributesToHighlight: ['title', 'content'],
+            attributesToSnippet: [`content:${SNIPPET_WORDS}`],
+            highlightPreTag: '<mark>',
+            highlightPostTag: '</mark>',
+            snippetEllipsisText: '&hellip;',
+          },
+        )
 
         if (!wasCanceled) {
           setSearchResults(results.hits)
@@ -88,11 +76,7 @@ export function useSearch(searchTerm: string): {
         }
       } catch (error) {
         if (!wasCanceled) {
-          setError(
-            error instanceof Error
-              ? error
-              : new Error('An unexpected error has occurred.'),
-          )
+          setError(error instanceof Error ? error : new Error('An unexpected error has occurred.'))
           setStatus('error')
         }
       }

@@ -37,9 +37,5 @@ export function I18nProvider(props: I18nProviderProps): JSX.Element {
     setService(createI18n(locale, dictionary))
   }, [locale, dictionary])
 
-  return (
-    <I18nContext.Provider value={service}>
-      {props.children}
-    </I18nContext.Provider>
-  )
+  return <I18nContext.Provider value={service}>{props.children}</I18nContext.Provider>
 }

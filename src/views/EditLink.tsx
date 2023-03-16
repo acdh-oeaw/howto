@@ -35,7 +35,7 @@ export function EditLink(props: EditLinkProps): JSX.Element {
       )}
       className={className}
     >
-      <Icon icon={PencilIcon} className="flex-shrink-0" />
+      <Icon icon={PencilIcon} className="shrink-0" />
       {children}
     </a>
   )

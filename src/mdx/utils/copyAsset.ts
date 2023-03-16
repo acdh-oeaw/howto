@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import { existsSync, readFileSync, mkdirSync, copyFileSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs'
 import * as path from 'node:path'
 
 import { isAbsoluteUrl } from '@stefanprobst/is-absolute-url'
@@ -11,7 +11,7 @@ export function copyAsset(
    * Next.js image optimizer only treats images in `_next/static/image` as static.
    * @see https://github.com/vercel/next.js/blob/222830ad479e70009286f101f25d8322b811b17f/packages/next/server/image-optimizer.ts#L116
    */
-  folderName: 'image' | 'asset' = 'image',
+  folderName: 'asset' | 'image' = 'image',
 ):
   | {
       srcFilePath: string
@@ -53,16 +53,9 @@ export function copyAsset(
     return newFileName
   }
 
-  const newPath = path.join(
-    'static',
-    folderName,
-    path.relative(process.cwd(), getNewFileName()),
-  )
+  const newPath = path.join('static', folderName, path.relative(process.cwd(), getNewFileName()))
 
-  const publicPath = path.posix.join(
-    '/_next',
-    newPath.split(path.sep).join(path.posix.sep),
-  )
+  const publicPath = path.posix.join('/_next', newPath.split(path.sep).join(path.posix.sep))
   const destinationFilePath = path.join(process.cwd(), '.next', newPath)
 
   // TODO: make async

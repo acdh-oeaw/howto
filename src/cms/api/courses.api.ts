@@ -54,10 +54,7 @@ export interface CourseFrontmatter {
 }
 
 export interface CourseMetadata
-  extends Omit<
-    CourseFrontmatter,
-    'editors' | 'featuredImage' | 'resources' | 'tags'
-  > {
+  extends Omit<CourseFrontmatter, 'editors' | 'featuredImage' | 'resources' | 'tags'> {
   editors?: Array<Person>
   tags: Array<Tag>
   resources: Array<PostPreview>
@@ -129,10 +126,7 @@ export async function getCourses(locale: Locale): Promise<Array<Course>> {
 /**
  * Returns metadata for course.
  */
-export async function getCoursePreviewById(
-  id: ID,
-  locale: Locale,
-): Promise<CoursePreview> {
+export async function getCoursePreviewById(id: ID, locale: Locale): Promise<CoursePreview> {
   const [, metadata] = await readFileAndGetCourseMetadata(id, locale)
 
   return { id, ...metadata }
@@ -141,9 +135,7 @@ export async function getCoursePreviewById(
 /**
  * Returns metadata for all courses, sorted by date.
  */
-export async function getCoursePreviews(
-  locale: Locale,
-): Promise<Array<CoursePreview>> {
+export async function getCoursePreviews(locale: Locale): Promise<Array<CoursePreview>> {
   const ids = await getCourseIds(locale)
 
   const metadata = await Promise.all(
@@ -181,10 +173,7 @@ export function getCourseFilePath(id: ID, _locale: Locale): FilePath {
 /**
  * Extracts course metadata and resolves foreign-key relations.
  */
-async function getCourseMetadata(
-  file: VFile,
-  locale: Locale,
-): Promise<CourseMetadata> {
+async function getCourseMetadata(file: VFile, locale: Locale): Promise<CourseMetadata> {
   const matter = await getCourseFrontmatter(file, locale)
 
   const metadata: CourseMetadata = {
@@ -232,10 +221,7 @@ async function getCourseMetadata(
 /**
  * Extracts course frontmatter.
  */
-async function getCourseFrontmatter(
-  file: VFile,
-  _locale: Locale,
-): Promise<CourseFrontmatter> {
+async function getCourseFrontmatter(file: VFile, _locale: Locale): Promise<CourseFrontmatter> {
   extractFrontmatter(file)
 
   const { matter } = file.data as { matter: CourseFrontmatter }
@@ -279,10 +265,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
 /**
  * Cache for course metadata.
  */
-const courseCache: Record<
-  Locale,
-  Map<string, Promise<[VFile, CourseMetadata]>>
-> = {
+const courseCache: Record<Locale, Map<string, Promise<[VFile, CourseMetadata]>>> = {
   de: new Map(),
   en: new Map(),
 }

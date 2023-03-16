@@ -29,7 +29,7 @@ export function SkipLink(): JSX.Element {
     <Link
       href={{ hash: mainContentId }}
       onClick={moveFocus}
-      className="absolute z-10 flex px-6 py-3 m-3 font-medium transform -translate-y-full bg-white rounded focus-visible:ring focus:outline-none focus-visible:ring-brand-blue focus:translate-y-0"
+      className="absolute z-10 m-3 flex -translate-y-full rounded bg-white px-6 py-3 font-medium focus:translate-y-0 focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
     >
       {t('common.skipToMainContent')}
     </Link>

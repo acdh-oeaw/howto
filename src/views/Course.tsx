@@ -25,13 +25,7 @@ export interface CourseProps {
 export function Course(props: CourseProps): JSX.Element {
   const { course, lastUpdatedAt, isPreview } = props
   const { metadata } = course.data
-  const {
-    title,
-    date: publishDate,
-    editors: authors = [],
-    tags,
-    resources,
-  } = metadata
+  const { title, date: publishDate, editors: authors = [], tags, resources } = metadata
 
   const { t, formatDate } = useI18n()
 
@@ -41,9 +35,9 @@ export function Course(props: CourseProps): JSX.Element {
         <dl>
           {tags.length > 0 ? (
             <div className="">
-              <dt className="inline sr-only">{t('common.tags')}:</dt>
+              <dt className="sr-only inline">{t('common.tags')}:</dt>
               <dd className="inline">
-                <ul className="inline text-xs font-bold tracking-wide uppercase text-brand-light-blue">
+                <ul className="inline text-xs font-bold uppercase tracking-wide text-brand-light-blue">
                   {tags.map((tag, index) => {
                     return (
                       <li key={tag.id} className="inline">
@@ -51,9 +45,7 @@ export function Course(props: CourseProps): JSX.Element {
                           className="transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-brand-light-blue"
                           href={routes.tag({ id: tag.id })}
                         >
-                          <span className={index !== 0 ? 'ml-1' : undefined}>
-                            {tag.name}
-                          </span>
+                          <span className={index !== 0 ? 'ml-1' : undefined}>{tag.name}</span>
                         </Link>
                         {index !== tags.length - 1 ? ', ' : null}
                       </li>
@@ -65,7 +57,7 @@ export function Course(props: CourseProps): JSX.Element {
           ) : null}
         </dl>
         <PageTitle>{title}</PageTitle>
-        <dl className="grid items-center grid-cols-2 py-4 text-sm border-t border-b text-neutral-100 border-neutral-200">
+        <dl className="grid grid-cols-2 items-center border-y border-neutral-200 py-4 text-sm text-neutral-100">
           <div className="space-y-1">
             {authors.length > 0 ? (
               <div>
@@ -80,20 +72,17 @@ export function Course(props: CourseProps): JSX.Element {
                               <Image
                                 src={author.avatar}
                                 alt=""
-                                className="w-8 h-8 rounded-full object-cover"
+                                className="h-8 w-8 rounded-full object-cover"
                                 width={32}
                                 height={32}
                               />
                             ) : (
                               <Icon
                                 icon={AvatarIcon}
-                                className="flex-shrink-0 object-cover w-8 h-8 rounded-full"
+                                className="h-8 w-8 shrink-0 rounded-full object-cover"
                               />
                             )}
-                            <Link
-                              className="underline"
-                              href={routes.author({ id: author.id })}
-                            >
+                            <Link className="underline" href={routes.author({ id: author.id })}>
                               {getFullName(author)}
                             </Link>
                           </div>
@@ -120,10 +109,7 @@ export function Course(props: CourseProps): JSX.Element {
         </dl>
       </header>
       <div className="prose-invert max-w-none">
-        <Mdx
-          code={course.code}
-          components={{ Figure, Image: ResponsiveImage, Tabs }}
-        />
+        <Mdx code={course.code} components={{ Figure, Image: ResponsiveImage, Tabs }} />
       </div>
       {resources.length > 0 ? (
         <div className="grid gap-4">
@@ -133,7 +119,7 @@ export function Course(props: CourseProps): JSX.Element {
       ) : null}
       <footer>
         {lastUpdatedAt != null ? (
-          <p className="text-sm text-right text-neutral-300">
+          <p className="text-right text-sm text-neutral-300">
             <span>{t('common.lastUpdated')}: </span>
             <time dateTime={lastUpdatedAt}>
               {formatDate(new Date(lastUpdatedAt), undefined, {
@@ -146,11 +132,9 @@ export function Course(props: CourseProps): JSX.Element {
           <EditLink
             collection="courses"
             id={course.id}
-            className="text-sm flex justify-end items-center space-x-1.5 text-neutral-300"
+            className="flex items-center justify-end space-x-1.5 text-sm text-neutral-300"
           >
-            <span className="text-right">
-              {t('common.suggestChangesToCourse')}
-            </span>
+            <span className="text-right">{t('common.suggestChangesToCourse')}</span>
           </EditLink>
         ) : null}
       </footer>

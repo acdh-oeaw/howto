@@ -31,10 +31,7 @@ export function useCodeMirror(
     if (editor === null) return ''
 
     const selection = editor.state
-      .sliceDoc(
-        editor.state.selection.main.from,
-        editor.state.selection.main.to,
-      )
+      .sliceDoc(editor.state.selection.main.from, editor.state.selection.main.to)
       .toString()
 
     return selection

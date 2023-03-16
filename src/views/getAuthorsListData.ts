@@ -1,6 +1,6 @@
 import type { Person } from '@/cms/api/people.api'
 
-export type AuthorsListItem = Pick<Person, 'id' | 'firstName' | 'lastName'>
+export type AuthorsListItem = Pick<Person, 'firstName' | 'id' | 'lastName'>
 
 export type AuthorsListData = Array<AuthorsListItem>
 

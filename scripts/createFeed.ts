@@ -6,7 +6,7 @@ import { defaultLocale, locales } from '@/i18n/i18n.config'
 import { routes } from '@/navigation/routes.config'
 import { createUrl } from '@/utils/createUrl'
 import { log } from '@/utils/log'
-import { url as siteUrl, feedFileName as fileName } from '~/config/site.config'
+import { feedFileName as fileName, url as siteUrl } from '~/config/site.config'
 import { siteMetadata } from '~/config/siteMetadata.config'
 
 const MAX_ENTRIES_PER_CHANNEL = 20

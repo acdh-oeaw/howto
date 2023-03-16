@@ -26,11 +26,7 @@ export function PreviewProvider(props: PreviewProviderProps): JSX.Element {
     return { document, isPreview: true }
   }, [document])
 
-  return (
-    <PreviewContext.Provider value={context}>
-      {children}
-    </PreviewContext.Provider>
-  )
+  return <PreviewContext.Provider value={context}>{children}</PreviewContext.Provider>
 }
 
 export function usePreview(): PreviewContextValues {

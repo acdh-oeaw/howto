@@ -35,8 +35,8 @@ export function Video(props: VideoProps): JSX.Element {
   }
 
   return (
-    <figure className="flex flex-col items-center justify-center relative">
-      <div className="w-full aspect-video">
+    <figure className="relative flex flex-col items-center justify-center">
+      <div className="aspect-video w-full">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-brand-blue">
           <Spinner className={isLoadingIframe ? undefined : 'hidden'} />
         </div>

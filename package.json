@@ -147,13 +147,21 @@
     "typescript": "^4.9.5",
     "url-loader": "^4.1.1",
     "xast-util-feed": "^1.2.2",
-    "xast-util-to-xml": "^3.0.2"
+    "xast-util-to-xml": "^3.0.2",
+    "yarn": "^1.22.19"
   },
-  "browserslist": [
-    "defaults",
-    "not ie 11",
-    "not op_mini all"
-  ],
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">=0.75%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
   "commitlint": {
     "extends": "@stefanprobst/commitlint-config"
   },
@@ -173,9 +181,13 @@
   "lint-staged": {
     "*.@(js|ts|tsx)": [
       "eslint --cache --fix",
-      "prettier --write"
+      "prettier --cache --write"
     ],
-    "*.@(css|json|yml)": "prettier --write"
+    "*.@(css)": [
+      "stylelint --cache --fix",
+      "prettier --cache --write"
+    ],
+    "*.@(json|yml)": "prettier --cache --ignore-unknown --write"
   },
   "postcss": {
     "plugins": {
@@ -204,6 +216,9 @@
   "simple-git-hooks": {
     "commit-msg": "yarn commitlint --edit",
     "pre-commit": "yarn lint-staged"
+  },
+  "stylelint": {
+    "extends": "@stefanprobst/stylelint-config"
   },
   "volta": {
     "node": "18.15.0"

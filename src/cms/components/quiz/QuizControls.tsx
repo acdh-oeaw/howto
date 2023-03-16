@@ -43,10 +43,7 @@ export function QuizControls(props: QuizControlsProps): JSX.Element {
         </ActionButton>
       ) : null}
       <div>
-        <ActionButton
-          onPress={props.onValidate}
-          variant={getButtonVariant(quiz.status)}
-        >
+        <ActionButton onPress={props.onValidate} variant={getButtonVariant(quiz.status)}>
           {quiz.labels.validate}
         </ActionButton>
       </div>

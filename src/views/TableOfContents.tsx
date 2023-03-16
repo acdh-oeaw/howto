@@ -34,10 +34,7 @@ export function TableOfContents(props: TableOfContentsProps): JSX.Element {
   return (
     <nav {...labelProps} className={props.className}>
       {title}
-      <TableOfContentsLevel
-        headings={props.toc}
-        highlightedHeadingId={highlightedHeadingId}
-      />
+      <TableOfContentsLevel headings={props.toc} highlightedHeadingId={highlightedHeadingId} />
     </nav>
   )
 }
@@ -57,9 +54,7 @@ export interface TableOfContentsLevelProps {
 /**
  * Table of contents level.
  */
-export function TableOfContentsLevel(
-  props: TableOfContentsLevelProps,
-): JSX.Element | null {
+export function TableOfContentsLevel(props: TableOfContentsLevelProps): JSX.Element | null {
   if (!Array.isArray(props.headings) || props.headings.length === 0) {
     return null
   }

@@ -20,11 +20,11 @@ export async function loadDictionary(
        *
        * @see https://webpack.js.org/api/module-methods/#dynamic-expressions-in-import
        */
-      const dictionary = await import(
-        `~/public/locales/${locale}/${namespace}.json`
-      ).then((module) => {
-        return module.default
-      })
+      const dictionary = await import(`~/public/locales/${locale}/${namespace}.json`).then(
+        (module) => {
+          return module.default
+        },
+      )
 
       return [namespace, dictionary]
     }),

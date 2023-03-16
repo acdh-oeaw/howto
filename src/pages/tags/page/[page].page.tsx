@@ -124,7 +124,7 @@ export default function TagsPage(props: TagsPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
+      <PageContent className="mx-auto flex w-full max-w-screen-xl flex-col space-y-10 px-10 py-16">
         <PageTitle>{t('common.tags')}</PageTitle>
         <TagsList tags={tags.items} />
       </PageContent>
@@ -151,11 +151,8 @@ function TagsList(props: TagsListProps): JSX.Element | null {
       {tags.map((tag) => {
         return (
           <li key={tag.id}>
-            <Link
-              className="flex items-center space-x-1.5"
-              href={routes.tag({ id: tag.id })}
-            >
-              <Icon icon={TagIcon} className="flex-shrink-0 w-6 h-6" />
+            <Link className="flex items-center space-x-1.5" href={routes.tag({ id: tag.id })}>
+              <Icon icon={TagIcon} className="h-6 w-6 shrink-0" />
               <span>
                 {tag.name} ({tag.posts})
               </span>
