@@ -1,16 +1,13 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import * as fs from 'node:fs'
+import * as path from 'node:path'
 
-import { format } from 'prettier'
+import prettier from 'prettier'
 
 import { getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostPreviews } from '@/cms/api/posts.api'
 import { log } from '@/utils/log'
 
-function createRedirects(
-  resources: Array<{ uuid: string; id: string }>,
-  fileName: string,
-) {
+function createRedirects(resources: Array<{ uuid: string; id: string }>, fileName: string) {
   const redirects: Record<string, string> = {}
 
   resources.forEach((resource) => {
@@ -19,7 +16,8 @@ function createRedirects(
 
   fs.writeFileSync(
     path.join(process.cwd(), fileName),
-    format(JSON.stringify(redirects), { parser: 'json' }),
+
+    prettier.format(JSON.stringify(redirects), { parser: 'json' }),
     {
       encoding: 'utf-8',
     },

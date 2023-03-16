@@ -1,6 +1,6 @@
 import type * as Hast from 'hast'
-import withHeadingLinks from 'rehype-autolink-headings'
 import type { Options } from 'rehype-autolink-headings'
+import withHeadingLinks from 'rehype-autolink-headings'
 import type { Pluggable } from 'unified'
 
 import { headingAnchorClassName } from '@/mdx/config'
@@ -23,8 +23,7 @@ const plugin: Pluggable<[Options]> = [
      */
     content(heading: Hast.Element): Array<Hast.Element> {
       heading.properties = heading.properties ?? {}
-      heading.properties.className = (heading.properties.className ??
-        []) as Array<string>
+      heading.properties.className = (heading.properties.className ?? []) as Array<string>
       heading.properties.className.push('relative')
       heading.properties.className.push('group')
       /** Allows identifying headings for table of contents highlighting. */

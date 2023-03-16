@@ -1,8 +1,4 @@
-import type {
-  GetServerSidePropsContext,
-  GetStaticPathsContext,
-  GetStaticPropsContext,
-} from 'next'
+import type { GetServerSidePropsContext, GetStaticPathsContext, GetStaticPropsContext } from 'next'
 import type { NextRouter } from 'next/router'
 
 import type { Locale } from '@/i18n/i18n.config'
@@ -20,15 +16,11 @@ export interface LocaleConfig extends LocaleBaseConfig {
  * Returns current i18n config.
  */
 export function getLocale(
-  context: GetStaticPropsContext | GetServerSidePropsContext | NextRouter,
+  context: GetServerSidePropsContext | GetStaticPropsContext | NextRouter,
 ): LocaleConfig
 export function getLocale(context: GetStaticPathsContext): LocaleBaseConfig
 export function getLocale(
-  context:
-    | GetStaticPathsContext
-    | GetStaticPropsContext
-    | GetServerSidePropsContext
-    | NextRouter,
+  context: GetServerSidePropsContext | GetStaticPathsContext | GetStaticPropsContext | NextRouter,
 ): LocaleBaseConfig | LocaleConfig {
   if (!('locale' in context)) {
     return {

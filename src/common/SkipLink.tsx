@@ -26,14 +26,12 @@ export function SkipLink(): JSX.Element {
   }
 
   return (
-    <Link href={{ hash: mainContentId }}>
-      {/* eslint-disable jsx-a11y/anchor-is-valid, jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-      <a
-        onClick={moveFocus}
-        className="absolute z-10 flex px-6 py-3 m-3 font-medium transform -translate-y-full bg-white rounded focus-visible:ring focus:outline-none focus-visible:ring-brand-blue focus:translate-y-0"
-      >
-        {t('common.skipToMainContent')}
-      </a>
+    <Link
+      href={{ hash: mainContentId }}
+      onClick={moveFocus}
+      className="absolute z-10 m-3 flex -translate-y-full rounded bg-white px-6 py-3 font-medium focus:translate-y-0 focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
+    >
+      {t('common.skipToMainContent')}
     </Link>
   )
 }

@@ -1,4 +1,4 @@
-@import '@/styles/fonts.css';
-@import '@/styles/globals.css';
-@import '@/styles/search.css';
-@import '@/styles/nprogress.css';
+@import url('@/styles/fonts.css');
+@import url('@/styles/globals.css');
+@import url('@/styles/search.css');
+@import url('@/styles/nprogress.css');

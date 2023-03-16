@@ -1,12 +1,8 @@
 import type { CoursePreview } from '@/cms/api/courses.api'
 
-export interface CoursesListItem
-  extends Pick<CoursePreview, 'id' | 'title' | 'abstract'> {
+export interface CoursesListItem extends Pick<CoursePreview, 'abstract' | 'id' | 'title'> {
   editors?: Array<
-    Pick<
-      Exclude<CoursePreview['editors'], undefined>[number],
-      'id' | 'firstName' | 'lastName'
-    >
+    Pick<Exclude<CoursePreview['editors'], undefined>[number], 'firstName' | 'id' | 'lastName'>
   >
 }
 
@@ -15,9 +11,7 @@ export type CoursesListData = Array<CoursesListItem>
 /**
  * Returns minimal data necessary for courses list view.
  */
-export function getCoursesListData(
-  courses: Array<CoursePreview>,
-): CoursesListData {
+export function getCoursesListData(courses: Array<CoursePreview>): CoursesListData {
   return courses.map((course) => {
     const courseData = {
       id: course.id,

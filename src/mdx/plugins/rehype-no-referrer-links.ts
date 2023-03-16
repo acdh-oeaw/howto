@@ -16,10 +16,7 @@ export default function attacher(): Transformer {
 
       node.properties = node.properties ?? {}
 
-      if (
-        typeof node.properties.href === 'string' &&
-        node.properties.href.startsWith('#')
-      ) {
+      if (typeof node.properties.href === 'string' && node.properties.href.startsWith('#')) {
         return
       }
 

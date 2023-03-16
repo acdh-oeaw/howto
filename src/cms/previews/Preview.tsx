@@ -1,7 +1,7 @@
-import ErrorBoundary, { useError } from '@stefanprobst/next-error-boundary'
+import { ErrorBoundary, useError } from '@stefanprobst/next-error-boundary'
 import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
 import type { ReactNode } from 'react'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { PreviewProvider } from '@/cms/previews/Preview.context'
 import { I18nProvider } from '@/i18n/I18n.context'
@@ -17,9 +17,9 @@ export interface PreviewProps extends PreviewTemplateComponentProps {
  */
 export function Preview(props: PreviewProps): JSX.Element {
   const locale = props.entry.getIn(['data', 'lang'], 'en')
-  const [dictionary, setDictionary] = useState<
-    { [namespace: string]: Dictionary } | undefined
-  >(undefined)
+  const [dictionary, setDictionary] = useState<{ [namespace: string]: Dictionary } | undefined>(
+    undefined,
+  )
 
   useEffect(() => {
     loadDictionary(locale, ['common']).then((dictionary) => {
@@ -45,12 +45,12 @@ function ErrorFallback() {
   const { error, onReset } = useError()
 
   return (
-    <div className="grid place-items-center h-96">
+    <div className="grid h-96 place-items-center">
       <div className="space-y-2 text-center">
         <p>An unexpected error has occurred: {error.message}.</p>
         <button
           onClick={onReset}
-          className="px-6 py-2 text-sm font-medium text-white transition rounded bg-brand-blue hover:bg-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
+          className="rounded bg-brand-blue px-6 py-2 text-sm font-medium text-white transition hover:bg-brand-light-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
         >
           Clear errors.
         </button>

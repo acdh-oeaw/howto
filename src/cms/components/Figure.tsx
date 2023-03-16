@@ -13,22 +13,14 @@ export interface FigureProps {
 }
 
 export function Figure(props: FigureProps): JSX.Element {
-  const {
-    src,
-    alt = '',
-    children: caption,
-    width,
-    height,
-    blurDataURL,
-    placeholder,
-  } = props
+  const { src, alt = '', children: caption, width, height, blurDataURL, placeholder } = props
 
   return (
     <figure>
       {width == null || height == null ? (
         /** CMS preview cannot provide width/height for images which have not been saved yet. */
         // eslint-disable-next-line @next/next/no-img-element
-        <img src={src} alt={alt} className="w-full block" />
+        <img src={src} alt={alt} className="block w-full" />
       ) : (
         <ResponsiveImage
           src={{ src, width, height, blurDataURL }}

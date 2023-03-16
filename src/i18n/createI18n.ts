@@ -1,41 +1,25 @@
-import rosetta from 'rosetta'
 import type { Rosetta } from 'rosetta'
+import rosetta from 'rosetta'
 
 import type { Locale } from '@/i18n/i18n.config'
 
 export interface I18n<T> extends Rosetta<T> {
-  formatDate(
-    date: Date | number,
-    lang?: Locale,
-    options?: Intl.DateTimeFormatOptions,
-  ): string
+  formatDate(date: Date | number, lang?: Locale, options?: Intl.DateTimeFormatOptions): string
   formatRelativeTime(
     time: number,
     unit: Intl.RelativeTimeFormatUnit,
     lang?: Locale,
     options?: Intl.RelativeTimeFormatOptions,
   ): string
-  formatNumber(
-    number: number,
-    lang?: Locale,
-    options?: Intl.NumberFormatOptions,
-  ): string
-  pluralize(
-    key: string,
-    count: number,
-    lang?: Locale,
-    options?: Intl.PluralRulesOptions,
-  ): string
+  formatNumber(number: number, lang?: Locale, options?: Intl.NumberFormatOptions): string
+  pluralize(key: string, count: number, lang?: Locale, options?: Intl.PluralRulesOptions): string
   sort(lang?: Locale, options?: Intl.CollatorOptions): Intl.Collator['compare']
 }
 
 /**
  * Creates rosetta instance.
  */
-export function createI18n<T>(
-  defaultLang?: Locale,
-  defaultDictionary?: T,
-): I18n<T> {
+export function createI18n<T>(defaultLang?: Locale, defaultDictionary?: T): I18n<T> {
   const i18n = rosetta<T>()
 
   if (defaultLang !== undefined) {
@@ -80,11 +64,7 @@ export function createI18n<T>(
   /**
    * Formats numbers and currencies according to locale-aware rules.
    */
-  function formatNumber(
-    number: number,
-    lang?: Locale,
-    options?: Intl.NumberFormatOptions,
-  ): string {
+  function formatNumber(number: number, lang?: Locale, options?: Intl.NumberFormatOptions): string {
     const language = lang ?? i18n.locale()
     /* @ts-expect-error "Index signature is missing" error for Intl interface. */
     const numberFormat = intl.getNumberFormatter(language, options)
@@ -113,10 +93,7 @@ export function createI18n<T>(
   /**
    * Compares strings accordings to locale-aware rules.
    */
-  function sort(
-    lang?: Locale,
-    options?: Intl.CollatorOptions,
-  ): Intl.Collator['compare'] {
+  function sort(lang?: Locale, options?: Intl.CollatorOptions): Intl.Collator['compare'] {
     const language = lang ?? i18n.locale()
     /* @ts-expect-error "Index signature is missing" error for Intl interface. */
     const collator = intl.getCollator(language, options)

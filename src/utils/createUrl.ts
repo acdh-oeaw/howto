@@ -17,9 +17,7 @@ export function createUrl({
   hash?: string
 }): URL {
   const pathname =
-    locale !== undefined
-      ? [locale, path].join(path.startsWith('/') ? '' : '/')
-      : path
+    locale !== undefined ? [locale, path].join(path.startsWith('/') ? '' : '/') : path
 
   const url = new URL(pathname, baseUrl)
 

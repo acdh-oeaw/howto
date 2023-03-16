@@ -1,6 +1,5 @@
 import type { PageMetadataProps } from '@stefanprobst/next-page-metadata'
-/* eslint-disable-next-line import/no-named-as-default */
-import PageMetadata from '@stefanprobst/next-page-metadata'
+import { PageMetadata } from '@stefanprobst/next-page-metadata'
 
 import { useLocale } from '@/i18n/useLocale'
 import { useSiteMetadata } from '@/metadata/useSiteMetadata'
@@ -10,17 +9,9 @@ export type MetadataProps = PageMetadataProps
 /**
  * Page metadata for SEO.
  */
-export function Metadata({
-  openGraph,
-  twitter,
-  ...props
-}: MetadataProps): JSX.Element {
+export function Metadata({ openGraph, twitter, ...props }: MetadataProps): JSX.Element {
   const { locale } = useLocale()
-  const {
-    title: siteTitle,
-    image: siteImage,
-    description: siteDescription,
-  } = useSiteMetadata()
+  const { title: siteTitle, image: siteImage, description: siteDescription } = useSiteMetadata()
 
   function defaultTitleTemplate(title?: string) {
     return [title, siteTitle].filter(Boolean).join(' | ')

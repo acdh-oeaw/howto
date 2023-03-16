@@ -1,5 +1,5 @@
-import { spawnSync } from 'child_process'
-import { relative } from 'path'
+import { spawnSync } from 'node:child_process'
+import { relative } from 'node:path'
 
 import { log } from '@/utils/log'
 import type { FilePath, IsoDateString } from '@/utils/ts/aliases'
@@ -21,10 +21,7 @@ export async function getLastUpdatedTimestamp(
     return String(new Date(Number(timestamp) * 1000))
   } catch {
     log.warn(
-      `Failed to fetch last updated timestamp for ${relative(
-        process.cwd(),
-        absoluteFilePath,
-      )}.`,
+      `Failed to fetch last updated timestamp for ${relative(process.cwd(), absoluteFilePath)}.`,
     )
 
     return null

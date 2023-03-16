@@ -1,20 +1,21 @@
-import { join } from 'path'
+import { join } from 'node:path'
 
-import withExtractedTableOfContents from '@stefanprobst/rehype-extract-toc'
+import { compile } from '@mdx-js/mdx'
 import type { Toc } from '@stefanprobst/rehype-extract-toc'
+import withExtractedTableOfContents from '@stefanprobst/rehype-extract-toc'
 import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
 import sizeOf from 'image-size'
+import type { StaticImageData } from 'next/image'
 import withHeadingIds from 'rehype-slug'
-import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import { VFile } from 'vfile'
 
 import type { Licence, LicenceId } from '@/cms/api/licences.api'
 import { getLicenceById } from '@/cms/api/licences.api'
-import { getPersonById } from '@/cms/api/people.api'
 import type { Person, PersonId } from '@/cms/api/people.api'
-import { getTagById } from '@/cms/api/tags.api'
+import { getPersonById } from '@/cms/api/people.api'
 import type { Tag, TagId } from '@/cms/api/tags.api'
+import { getTagById } from '@/cms/api/tags.api'
 import { getSyntaxHighlighter } from '@/cms/utils/getSyntaxHighlighter'
 import type { Locale } from '@/i18n/i18n.config'
 import { extractFrontmatter } from '@/mdx/extractFrontmatter'
@@ -50,7 +51,7 @@ export interface PostFrontmatter {
   uuid: string
   title: string
   shortTitle?: string
-  lang: 'en' | 'de'
+  lang: 'de' | 'en'
   date: IsoDateString
   version: string
   authors: Array<PersonId['id']>
@@ -66,12 +67,7 @@ export interface PostFrontmatter {
 export interface PostMetadata
   extends Omit<
     PostFrontmatter,
-    | 'authors'
-    | 'editors'
-    | 'contributors'
-    | 'tags'
-    | 'licence'
-    | 'featuredImage'
+    'authors' | 'contributors' | 'editors' | 'featuredImage' | 'licence' | 'tags'
   > {
   authors: Array<Person>
   contributors?: Array<Person>
@@ -156,10 +152,7 @@ export async function getPosts(locale: Locale): Promise<Array<Post>> {
 /**
  * Returns metadata for post.
  */
-export async function getPostPreviewById(
-  id: ID,
-  locale: Locale,
-): Promise<PostPreview> {
+export async function getPostPreviewById(id: ID, locale: Locale): Promise<PostPreview> {
   const [, metadata] = await readFileAndGetPostMetadata(id, locale)
 
   return { id, kind, ...metadata }
@@ -168,9 +161,7 @@ export async function getPostPreviewById(
 /**
  * Returns metadata for all posts, sorted by date.
  */
-export async function getPostPreviews(
-  locale: Locale,
-): Promise<Array<PostPreview>> {
+export async function getPostPreviews(locale: Locale): Promise<Array<PostPreview>> {
   const ids = await getPostIds(locale)
 
   const metadata = await Promise.all(
@@ -208,10 +199,7 @@ export function getPostFilePath(id: ID, _locale: Locale): FilePath {
 /**
  * Extracts post metadata and resolves foreign-key relations.
  */
-async function getPostMetadata(
-  file: VFile,
-  locale: Locale,
-): Promise<PostMetadata> {
+async function getPostMetadata(file: VFile, locale: Locale): Promise<PostMetadata> {
   const matter = await getPostFrontmatter(file, locale)
 
   const metadata: PostMetadata = {
@@ -267,10 +255,7 @@ async function getPostMetadata(
 /**
  * Extracts post frontmatter.
  */
-async function getPostFrontmatter(
-  file: VFile,
-  _locale: Locale,
-): Promise<PostFrontmatter> {
+async function getPostFrontmatter(file: VFile, _locale: Locale): Promise<PostFrontmatter> {
   extractFrontmatter(file)
 
   const { matter } = file.data as { matter: PostFrontmatter }
@@ -287,12 +272,6 @@ async function getPostFrontmatter(
  * Supports CommonMark, GitHub Markdown, and Pandoc Footnotes.
  */
 async function compileMdx(file: VFile): Promise<VFile> {
-  /**
-   * Using a dynamic import for `xdm`, which is an ESM-only package,
-   * so `getPostPreviews` can be called in scripts with `ts-node`.
-   */
-  const { compile } = await import('xdm')
-
   const highlighter = await getSyntaxHighlighter()
 
   /**
@@ -303,12 +282,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
   return compile(new VFile({ ...file }), {
     outputFormat: 'function-body',
     useDynamicImport: false,
-    remarkPlugins: [
-      withGitHubMarkdown,
-      withFootnotes,
-      withTypographicQuotesAndDashes,
-      withReadingTime,
-    ],
+    remarkPlugins: [withGitHubMarkdown, withTypographicQuotesAndDashes, withReadingTime],
     rehypePlugins: [
       [withSyntaxHighlighting, { highlighter }],
       withHeadingIds,

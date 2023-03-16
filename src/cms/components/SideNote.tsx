@@ -1,17 +1,17 @@
 import cx from 'clsx'
 import type { FC, ReactNode, SVGProps } from 'react'
 
-import { Svg as AlertIcon } from '@/assets/icons/exclamation.svg'
-import { Svg as InfoIcon } from '@/assets/icons/info.svg'
-import { Svg as LightBulbIcon } from '@/assets/icons/light-bulb.svg'
-import { Svg as LightningBoltIcon } from '@/assets/icons/lightning-bolt.svg'
-import { Svg as PencilIcon } from '@/assets/icons/pencil.svg'
+import AlertIcon from '@/assets/icons/exclamation.svg?symbol'
+import InfoIcon from '@/assets/icons/info.svg?symbol'
+import LightBulbIcon from '@/assets/icons/light-bulb.svg?symbol'
+import LightningBoltIcon from '@/assets/icons/lightning-bolt.svg?symbol'
+import PencilIcon from '@/assets/icons/pencil.svg?symbol'
 import { Icon } from '@/common/Icon'
 import { capitalize } from '@/utils/capitalize'
 
 export const types = ['danger', 'info', 'note', 'tip', 'warning'] as const
 
-export type SideNoteType = typeof types[number]
+export type SideNoteType = (typeof types)[number]
 
 export interface SideNoteProps {
   /**
@@ -48,19 +48,13 @@ const icons: Record<SideNoteType, FC<SVGProps<SVGSVGElement>>> = {
  */
 export function SideNote(props: SideNoteProps): JSX.Element {
   /** In the CMS preview, props can be anything, so be extra careful. */
-  const type =
-    props.type !== undefined && types.includes(props.type) ? props.type : 'note'
+  const type = props.type !== undefined && types.includes(props.type) ? props.type : 'note'
   const title = props.title ?? capitalize(type)
 
   return (
-    <aside
-      className={cx(
-        'border-l-4 px-6 py-6 my-6 space-y-3 rounded',
-        styles[type],
-      )}
-    >
+    <aside className={cx('border-l-4 px-6 py-6 my-6 space-y-3 rounded', styles[type])}>
       <strong className="flex items-center space-x-2 font-bold">
-        <Icon icon={icons[type]} className="flex-shrink-0" />
+        <Icon icon={icons[type]} className="shrink-0" />
         <span>{title}</span>
       </strong>
       <div>{props.children}</div>

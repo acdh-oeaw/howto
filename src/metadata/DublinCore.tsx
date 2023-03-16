@@ -20,17 +20,7 @@ export interface DublinCoreProps {
  * @see https://www.dublincore.org/specifications/dublin-core/dc-html/
  */
 export function DublinCore(props: DublinCoreProps): JSX.Element {
-  const {
-    title,
-    date,
-    authors,
-    contributors,
-    lang,
-    abstract,
-    licence,
-    tags,
-    siteTitle,
-  } = props
+  const { title, date, authors, contributors, lang, abstract, licence, tags, siteTitle } = props
 
   return (
     <Head>
@@ -39,29 +29,17 @@ export function DublinCore(props: DublinCoreProps): JSX.Element {
 
       <meta key="DC.title" name="DC.title" content={title} />
       {authors.map((author, index) => {
-        return (
-          <meta
-            key={`DC.creator-${index}`}
-            name="DC.creator"
-            content={author}
-          />
-        )
+        return <meta key={`DC.creator-${index}`} name="DC.creator" content={author} />
       })}
       {contributors != null
         ? contributors.map((contributor, index) => {
             return (
-              <meta
-                key={`DC.contributor-${index}`}
-                name="DC.contributor"
-                content={contributor}
-              />
+              <meta key={`DC.contributor-${index}`} name="DC.contributor" content={contributor} />
             )
           })
         : null}
       {tags.map((tag, index) => {
-        return (
-          <meta key={`DC.subject-${index}`} name="DC.subject" content={tag} />
-        )
+        return <meta key={`DC.subject-${index}`} name="DC.subject" content={tag} />
       })}
       {/* DC.rights */}
       <meta key="DCTERMS.license" name="DCTERMS.license" content={licence} />

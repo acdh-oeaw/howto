@@ -1,30 +1,24 @@
 :focus:not(:focus-visible) {
   outline: none;
 }
+
 :focus:not(:focus-visible):-moz-focusring {
   outline: none;
 }
 
 :root {
+  height: 100%;
   -webkit-tap-highlight-color: transparent;
-
-  /** Probably only needed on mobile WebKit to prevent input zoom. */
   text-size-adjust: none;
-
-  /** Disable double-tap to zoom, so press events are not delayed. */
-  /* touch-action: manipulation; */
 }
 
 body {
-  @apply min-h-screen;
+  @apply min-h-screen antialiased font-sans text-neutral-900 bg-neutral-50;
 }
+
 /** Safari only. */
 @supports (-webkit-touch-callout: none) {
   body {
-    min-height: -webkit-fill-available;
+    min-height: stretch;
   }
-}
-
-body {
-  @apply antialiased font-sans text-neutral-900 bg-neutral-50;
 }

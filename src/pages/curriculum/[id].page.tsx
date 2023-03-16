@@ -1,5 +1,3 @@
-import type { ParsedUrlQuery } from 'querystring'
-
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -7,15 +5,12 @@ import type {
   GetStaticPropsResult,
 } from 'next'
 import Link from 'next/link'
+import type { ParsedUrlQuery } from 'querystring'
 import { Fragment } from 'react'
 
-import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
-import {
-  getCourseById,
-  getCourseFilePath,
-  getCourseIds,
-} from '@/cms/api/courses.api'
+import DocumentIcon from '@/assets/icons/document-text.svg?symbol'
 import type { Course as CourseData, CoursePreview } from '@/cms/api/courses.api'
+import { getCourseById, getCourseFilePath, getCourseIds } from '@/cms/api/courses.api'
 import { getCoursePreviewsByTagId } from '@/cms/queries/courses.queries'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
 import { pickRandom } from '@/cms/utils/pickRandom'
@@ -102,9 +97,7 @@ export async function getStaticProps(
     })
   const related = pickRandom(coursesWithSharedTags, RELATED_COURSES_COUNT)
 
-  const lastUpdatedAt = await getLastUpdatedTimestamp(
-    getCourseFilePath(id, locale),
-  )
+  const lastUpdatedAt = await getLastUpdatedTimestamp(getCourseFilePath(id, locale))
 
   return {
     props: {
@@ -137,8 +130,8 @@ export default function CoursePage(props: CoursePageProps): JSX.Element {
           type: 'article',
         }}
       />
-      <PageContent className="text-white bg-brand-black">
-        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+      <PageContent className="bg-brand-black text-white">
+        <div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
           <aside />
           <div className="min-w-0">
             <Course course={course} lastUpdatedAt={lastUpdatedAt} />
@@ -165,17 +158,18 @@ function RelatedCourses(props: RelatedCoursesProps) {
   if (courses.length === 0) return null
 
   return (
-    <nav className="w-full py-12 mx-auto my-12 space-y-3 border-t border-neutral-200 max-w-80ch">
+    <nav className="mx-auto my-12 w-full max-w-80ch space-y-3 border-t border-neutral-200 py-12">
       <h2 className="text-2xl font-bold">{t('common.relatedCourses')}</h2>
       <ul className="flex flex-col space-y-4">
         {props.courses.map((course) => {
           return (
             <li key={course.id}>
-              <Link href={routes.course({ id: course.id })}>
-                <a className="underline flex items-center space-x-1.5">
-                  <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
-                  <span>{course.title}</span>
-                </a>
+              <Link
+                className="flex items-center space-x-1.5 underline"
+                href={routes.course({ id: course.id })}
+              >
+                <Icon icon={DocumentIcon} className="h-6 w-6 shrink-0" />
+                <span>{course.title}</span>
               </Link>
             </li>
           )

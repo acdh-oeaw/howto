@@ -1,13 +1,12 @@
+import { remarkMarkAndUnravel as withUnraveledJsxChildren } from '@mdx-js/mdx/lib/plugin/remark-mark-and-unravel'
 import type { MDXJsxFlowElement } from 'hast-util-to-estree'
 import type { EditorComponentOptions } from 'netlify-cms-core'
 import { remark } from 'remark'
-import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
+import withMdx from 'remark-mdx'
 import type { Node } from 'unist'
 import { visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
-import { remarkMarkAndUnravel as withUnraveledJsxChildren } from 'xdm/lib/plugin/remark-mark-and-unravel.js'
-import { remarkMdx as withMdx } from 'xdm/lib/plugin/remark-mdx.js'
 
 import { QuizCardStatus } from '@/cms/components/quiz/Quiz'
 
@@ -30,10 +29,8 @@ function withQuizCards() {
           const validateButtonLabel = node.attributes.find((attribute: any) => {
             return attribute.name === 'validateButtonLabel'
           })?.value
-          /* @ts-expect-error Waiting for updated remark types. */
           if (validateButtonLabel != null && validateButtonLabel.length > 0) {
             card.controls = card.controls ?? {}
-            /* @ts-expect-error Waiting for updated remark types. */
             card.controls.validate = validateButtonLabel
           }
           cards.push(card)
@@ -54,9 +51,7 @@ function withQuizCards() {
           const type = node.attributes.find((attribute: any) => {
             return attribute.name === 'type'
           })?.value
-          /* @ts-expect-error Waiting for updated remark types. */
           if (type != null && allowedQuizMessageTypes.includes(type)) {
-            /* @ts-expect-error Waiting for updated remark types. */
             last.messages[type] = processor.stringify({
               type: 'root',
               /* @ts-expect-error Waiting for updated remark types. */
@@ -100,17 +95,12 @@ function withQuizCards() {
           const codeAttribute = node.attributes.find((attribute: any) => {
             return attribute.name === 'code'
           })
-          const code =
-            codeAttribute != null
-              ? getStringLiteralAttribute(codeAttribute.value)
-              : ''
+          const code = codeAttribute != null ? getStringLiteralAttribute(codeAttribute.value) : ''
           const solutionAttribute = node.attributes.find((attribute: any) => {
             return attribute.name === 'solution'
           })
           const solution =
-            solutionAttribute != null
-              ? getStringLiteralAttribute(solutionAttribute.value)
-              : ''
+            solutionAttribute != null ? getStringLiteralAttribute(solutionAttribute.value) : ''
 
           last.code = code
           last.solution = solution
@@ -185,7 +175,6 @@ const processor = remark()
   .use(withMdx)
   .use(withUnraveledJsxChildren)
   .use(withGitHubMarkdown)
-  .use(withFootnotes)
   .use(withQuizCards)
 
 const quizQuestion = {
@@ -356,10 +345,7 @@ export const quizEditorWidget: EditorComponentOptions = {
             const children: Array<any> = []
             const attributes: Array<any> = []
 
-            if (
-              card.controls?.validate != null &&
-              card.controls.validate.length > 0
-            ) {
+            if (card.controls?.validate != null && card.controls.validate.length > 0) {
               attributes.push({
                 type: 'mdxJsxAttribute',
                 name: 'validateButtonLabel',
@@ -374,24 +360,22 @@ export const quizEditorWidget: EditorComponentOptions = {
             }
 
             const messages: {
-              [type in typeof allowedQuizMessageTypes[number]]?: string
+              [type in (typeof allowedQuizMessageTypes)[number]]?: string
             } = card.messages ?? {}
-            const quizMessages = Object.entries(messages).map(
-              ([type, content]) => {
-                return {
-                  type: 'mdxJsxFlowElement',
-                  name: `Quiz.Message`,
-                  children: [processor.parse(content)],
-                  attributes: [
-                    {
-                      type: 'mdxJsxAttribute',
-                      name: 'type',
-                      value: type,
-                    },
-                  ],
-                }
-              },
-            )
+            const quizMessages = Object.entries(messages).map(([type, content]) => {
+              return {
+                type: 'mdxJsxFlowElement',
+                name: `Quiz.Message`,
+                children: [processor.parse(content)],
+                attributes: [
+                  {
+                    type: 'mdxJsxAttribute',
+                    name: 'type',
+                    value: type,
+                  },
+                ],
+              }
+            })
 
             switch (card.type) {
               case 'MultipleChoice': {

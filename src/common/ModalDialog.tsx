@@ -1,12 +1,7 @@
 import { useDialog } from '@react-aria/dialog'
 import { FocusScope } from '@react-aria/focus'
 import type { OverlayProps as AriaOverlayProps } from '@react-aria/overlays'
-import {
-  useModal,
-  useOverlay,
-  usePreventScroll,
-  OverlayContainer,
-} from '@react-aria/overlays'
+import { OverlayContainer, useModal, useOverlay, usePreventScroll } from '@react-aria/overlays'
 import type { ReactNode } from 'react'
 import { useRef } from 'react'
 
@@ -33,11 +28,11 @@ export function ModalDialog(props: ModalDialogProps): JSX.Element {
     <OverlayContainer>
       <div
         {...underlayProps}
-        className="fixed inset-0 z-10 flex flex-col items-center justify-start p-4 bg-black bg-opacity-50 md:p-10vmin"
+        className="fixed inset-0 z-10 flex flex-col items-center justify-start bg-black bg-opacity-50 p-4 md:p-10vmin"
       >
         <FocusScope contain restoreFocus autoFocus>
           <div
-            className="flex flex-col w-full max-w-screen-md p-8 overflow-hidden bg-white rounded shadow-md focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
+            className="flex w-full max-w-screen-md flex-col overflow-hidden rounded bg-white p-8 shadow-md focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
             {...overlayProps}
             {...dialogProps}
             {...modalProps}

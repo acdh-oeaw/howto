@@ -34,10 +34,7 @@ export function TableOfContents(props: TableOfContentsProps): JSX.Element {
   return (
     <nav {...labelProps} className={props.className}>
       {title}
-      <TableOfContentsLevel
-        headings={props.toc}
-        highlightedHeadingId={highlightedHeadingId}
-      />
+      <TableOfContentsLevel headings={props.toc} highlightedHeadingId={highlightedHeadingId} />
     </nav>
   )
 }
@@ -57,9 +54,7 @@ export interface TableOfContentsLevelProps {
 /**
  * Table of contents level.
  */
-export function TableOfContentsLevel(
-  props: TableOfContentsLevelProps,
-): JSX.Element | null {
+export function TableOfContentsLevel(props: TableOfContentsLevelProps): JSX.Element | null {
   if (!Array.isArray(props.headings) || props.headings.length === 0) {
     return null
   }
@@ -74,22 +69,21 @@ export function TableOfContentsLevel(
         return (
           <li key={index} className="space-y-1.5">
             {heading.id !== undefined ? (
-              <Link href={{ hash: heading.id }}>
-                <a
-                  className={cx(
-                    'flex transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue',
-                    isHighlighted ? 'font-bold pointer-events-none' : undefined,
-                  )}
-                >
-                  {isHighlighted
-                    ? // <Icon
-                      //   icon={ChevronIcon}
-                      //   className="flex-shrink-0 absolute w-3.5 transform -rotate-90 right-full h-full mr-1"
-                      // />
-                      null
-                    : null}
-                  {heading.value}
-                </a>
+              <Link
+                href={{ hash: heading.id }}
+                className={cx(
+                  'flex transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue',
+                  isHighlighted ? 'font-bold pointer-events-none' : undefined,
+                )}
+              >
+                {isHighlighted
+                  ? // <Icon
+                    //   icon={ChevronIcon}
+                    //   className="flex-shrink-0 absolute w-3.5 transform -rotate-90 right-full h-full mr-1"
+                    // />
+                    null
+                  : null}
+                {heading.value}
               </Link>
             ) : (
               <span>{heading.value}</span>

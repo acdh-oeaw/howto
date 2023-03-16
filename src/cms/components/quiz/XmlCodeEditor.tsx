@@ -1,5 +1,5 @@
-import { useMemo, useRef } from 'react'
 import type { ReactNode } from 'react'
+import { useMemo, useRef } from 'react'
 
 import { CodeMirror } from '@/cms/components/quiz/CodeMirror'
 import { QuizCardStatus, useQuiz } from '@/cms/components/quiz/Quiz'
@@ -27,8 +27,7 @@ export function XmlCodeEditor(props: XmlCodeEditorProps): JSX.Element {
   }, [props.solution])
 
   function onValidate() {
-    const input =
-      props.validate === 'selection' ? getSelection() : getDocument()
+    const input = props.validate === 'selection' ? getSelection() : getDocument()
 
     /**
      * Use a document fragment, because `DOMParser` requires full documents,
@@ -41,13 +40,9 @@ export function XmlCodeEditor(props: XmlCodeEditorProps): JSX.Element {
     try {
       const inputDoc = createDocumentFragment(normalizeWhitespace(input))
       const isCorrect =
-        solution === null || inputDoc === null
-          ? false
-          : inputDoc.isEqualNode(solution)
+        solution === null || inputDoc === null ? false : inputDoc.isEqualNode(solution)
 
-      quiz.setStatus(
-        isCorrect ? QuizCardStatus.CORRECT : QuizCardStatus.INCORRECT,
-      )
+      quiz.setStatus(isCorrect ? QuizCardStatus.CORRECT : QuizCardStatus.INCORRECT)
     } catch {
       quiz.setStatus(QuizCardStatus.INCORRECT)
     }
@@ -84,9 +79,7 @@ function createDocumentFragment(xml: string) {
     const doc = new DOMParser().parseFromString(xml, 'text/xml')
     /** `DOMParser` does not throw on errors, but puts a `parsererror` as root element. */
     if (doc.documentElement.tagName === 'parsererror') {
-      throw new Error(
-        doc.documentElement.textContent ?? 'Error parsing XML document.',
-      )
+      throw new Error(doc.documentElement.textContent ?? 'Error parsing XML document.')
     }
     return doc.documentElement
   }

@@ -1,12 +1,12 @@
+import { remarkMarkAndUnravel as withUnraveledJsxChildren } from '@mdx-js/mdx/lib/plugin/remark-mark-and-unravel'
 import type { MDXJsxFlowElement } from 'hast-util-to-estree'
 import type { EditorComponentOptions } from 'netlify-cms-core'
 import { remark } from 'remark'
 import withGitHubMarkdown from 'remark-gfm'
+import withMdx from 'remark-mdx'
 import type { Node } from 'unist'
 import { visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
-import { remarkMarkAndUnravel as withUnraveledJsxChildren } from 'xdm/lib/plugin/remark-mark-and-unravel.js'
-import { remarkMdx as withMdx } from 'xdm/lib/plugin/remark-mdx.js'
 
 function withTabs() {
   return function transformer(tree: Node, file: VFile) {

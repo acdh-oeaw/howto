@@ -18,8 +18,6 @@ export function QuizCard(props: QuizCardProps): JSX.Element {
 /**
  * Type guard for QuizCard component.
  */
-export function isQuizCard(
-  component: JSX.Element,
-): component is ReactElement<QuizCardProps> {
+export function isQuizCard(component: JSX.Element): component is ReactElement<QuizCardProps> {
   return component.type === QuizCard
 }

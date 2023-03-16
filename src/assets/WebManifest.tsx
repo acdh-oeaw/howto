@@ -14,11 +14,7 @@ export function WebManifest(): JSX.Element {
 
   return (
     <Head>
-      <link
-        rel="manifest"
-        href={`${prefix}/${webManifest}`}
-        key="webmanifest"
-      />
+      <link rel="manifest" href={`${prefix}/${webManifest}`} key="webmanifest" />
     </Head>
   )
 }

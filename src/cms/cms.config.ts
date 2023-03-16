@@ -1,4 +1,4 @@
-import type { CmsConfig, CmsCollection } from 'netlify-cms-core'
+import type { CmsCollection, CmsConfig } from 'netlify-cms-core'
 
 import { collection as courses } from '@/cms/collections/courses.collection'
 import { collection as licences } from '@/cms/collections/licences.collection'

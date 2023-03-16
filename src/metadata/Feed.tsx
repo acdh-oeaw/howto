@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import { createUrl } from '@/utils/createUrl'
-import { url as siteUrl, feedFileName } from '~/config/site.config'
+import { feedFileName, url as siteUrl } from '~/config/site.config'
 
 /**
  * Provides RSS feed.

@@ -6,20 +6,22 @@ import { url as siteUrl } from '~/config/site.config'
 /**
  * Generates `sitemap.xml` and `robots.txt`.
  */
-generate({
-  baseUrl: siteUrl,
-  shouldFormat: true,
-  robots: true,
-  filter(route) {
-    return (
-      route !== '/' &&
-      !route.endsWith('/404') &&
-      !route.endsWith('/500') &&
-      !route.endsWith('/cms') &&
-      !route.endsWith('/imprint')
-    )
-  },
-})
+generate
+  // @ts-expect-error Package misconfigured for ESM.
+  .default({
+    baseUrl: siteUrl,
+    shouldFormat: true,
+    robots: true,
+    filter(route: string) {
+      return (
+        route !== '/' &&
+        !route.endsWith('/404') &&
+        !route.endsWith('/500') &&
+        !route.endsWith('/cms') &&
+        !route.endsWith('/imprint')
+      )
+    },
+  })
   .then(() => {
     log.success('Successfully generated sitemap.')
   })

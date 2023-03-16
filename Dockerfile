@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 
-# base
-# we don't use node:14-slim because we need `git` to get the last updated timestamps
-FROM node:14 AS base
+# build
+# we don't use node:18-slim because we need `git` to get the last updated timestamps
+FROM node:18 AS build
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
@@ -10,24 +10,16 @@ WORKDIR /app
 USER node
 
 COPY --chown=node:node package.json yarn.lock ./
-
-RUN yarn install --frozen-lockfile --silent --production && yarn cache clean
-
-# build
-FROM base AS build
-
-RUN yarn install --frozen-lockfile --silent
-
-COPY --chown=node:node tsconfig.json app-env.d.ts next-env.d.ts next.config.js ./
+COPY --chown=node:node next.config.mjs tsconfig.json app-env.d.ts env.d.ts next-env.d.ts tailwind.config.cjs ./
 COPY --chown=node:node scripts ./scripts
 COPY --chown=node:node config ./config
-COPY --chown=node:node tailwind.config.js ./
-COPY --chown=node:node src ./src
 COPY --chown=node:node public ./public
+COPY --chown=node:node src ./src
 COPY --chown=node:node content ./content
-COPY --chown=node:node redirects.*.json ./
 # currently the .git folder is used to retrieve last-updated timestamps
 COPY --chown=node:node .git ./.git
+
+RUN yarn install --frozen-lockfile --silent --no-audit --no-fund
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -41,30 +33,35 @@ ARG NEXT_PUBLIC_ALGOLIA_APP_ID
 ARG NEXT_PUBLIC_ALGOLIA_API_KEY
 ARG NEXT_PUBLIC_ALGOLIA_INDEX_NAME
 
-RUN yarn build
+RUN yarn run build
 
 # docker buildkit currently cannot mount secrets directly to env vars
 # @see https://github.com/moby/buildkit/issues/2122
 USER root
 RUN --mount=type=secret,id=ALGOLIA_ADMIN_API_KEY \
   export ALGOLIA_ADMIN_API_KEY="$(cat /run/secrets/ALGOLIA_ADMIN_API_KEY)" && \
-  yarn create:search-index && \
+  yarn run create:search-index && \
   unset ALGOLIA_ADMIN_API_KEY
 USER node
 
 # serve
-FROM base AS serve
+FROM node:18-slim AS serve
 
-COPY --from=build --chown=node:node /app/next.config.js ./
+RUN mkdir /app && chown -R node:node /app
+WORKDIR /app
+
+USER node
+
+COPY --from=build --chown=node:node /app/next.config.mjs ./
 COPY --from=build --chown=node:node /app/public ./public
-COPY --from=build --chown=node:node /app/redirects.*.json ./
-COPY --from=build --chown=node:node /app/.next ./.next
+COPY --from=build --chown=node:node /app/.next/standalone ./
+COPY --from=build --chown=node:node /app/.next/static ./.next/static
 
-# Ensures folder is owned by node:node when mounted as volume.
+# Ensure folder is owned by node:node when mounted as volume.
 RUN mkdir -p /app/.next/cache/images
 
 ENV NODE_ENV=production
 
 EXPOSE 3000
 
-CMD ["node", "node_modules/.bin/next", "start"]
+CMD ["node", "server.js"]

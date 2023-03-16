@@ -4,7 +4,7 @@ import type { Toc } from '@stefanprobst/rehype-extract-toc'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 
-import { Svg as TocIcon } from '@/assets/icons/toc.svg'
+import TocIcon from '@/assets/icons/toc.svg?symbol'
 import { Icon } from '@/common/Icon'
 import { ModalDialog } from '@/common/ModalDialog'
 import { useI18n } from '@/i18n/useI18n'
@@ -17,9 +17,7 @@ export interface FloatingTableOfContentsProps {
 /**
  * Floating button which opens a table of contents dialog.
  */
-export function FloatingTableOfContents(
-  props: FloatingTableOfContentsProps,
-): JSX.Element {
+export function FloatingTableOfContents(props: FloatingTableOfContentsProps): JSX.Element {
   const { toc } = props
 
   const { t } = useI18n()
@@ -53,9 +51,9 @@ export function FloatingTableOfContents(
       <button
         {...openButtonProps}
         ref={openButtonRef}
-        className="fixed flex items-center justify-center w-12 h-12 text-white rounded-full bg-brand-blue right-6 bottom-16 hover:bg-brand-light-blue transition"
+        className="fixed right-6 bottom-16 flex h-12 w-12 items-center justify-center rounded-full bg-brand-blue text-white transition hover:bg-brand-light-blue"
       >
-        <Icon icon={TocIcon} className="flex-shrink-0 w-10 h-10 p-2" />
+        <Icon icon={TocIcon} className="h-10 w-10 shrink-0 p-2" />
       </button>
       {dialogState.isOpen ? (
         <ModalDialog

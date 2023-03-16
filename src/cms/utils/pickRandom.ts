@@ -1,10 +1,7 @@
 /**
  * Pick n random unique items from array.
  */
-export function pickRandom<T extends { id: string }>(
-  items: Array<T>,
-  n: number,
-): Array<T> {
+export function pickRandom<T extends { id: string }>(items: Array<T>, n: number): Array<T> {
   const itemsById = mapById(items)
 
   if (itemsById.size <= n) {
