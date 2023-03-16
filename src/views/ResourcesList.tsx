@@ -32,13 +32,12 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
               <div className="rounded bg-gradient-to-r from-brand-blue to-brand-turquoise h-36 relative">
                 {typeof post.featuredImage === 'string' &&
                 post.featuredImage.length > 0 ? (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={post.featuredImage} alt="" />
                 ) : null}
               </div>
               <h3 className="text-xl font-bold text-brand-light-blue hover:text-neutral-100 transition">
-                <Link href={href}>
-                  <a>{post.title}</a>
-                </Link>
+                <Link href={href}>{post.title}</Link>
               </h3>
               <p className="text-neutral-300 text-base leading-relaxed">
                 {post.abstract}
@@ -60,11 +59,9 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
                                   <Image
                                     src={author.avatar}
                                     alt=""
-                                    className="w-10 h-10 rounded-full"
-                                    layout="fixed"
+                                    className="w-10 h-10 rounded-full object-cover"
                                     width={40}
                                     height={40}
-                                    objectFit="cover"
                                     title={name}
                                   />
                                 ) : null}
@@ -76,10 +73,11 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
                     </div>
                   ) : null}
                 </dl>
-                <Link href={href}>
-                  <a className="font-medium text-base justify-self-end text-brand-light-blue hover:text-neutral-100 transition">
-                    {t('common.readMore')} &rarr;
-                  </a>
+                <Link
+                  className="font-medium text-base justify-self-end text-brand-light-blue hover:text-neutral-100 transition"
+                  href={href}
+                >
+                  {t('common.readMore')} &rarr;
                 </Link>
               </footer>
             </article>

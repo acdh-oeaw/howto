@@ -1,5 +1,3 @@
-import type { ParsedUrlQuery } from 'querystring'
-
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -7,15 +5,16 @@ import type {
   GetStaticPropsResult,
 } from 'next'
 import Link from 'next/link'
+import type { ParsedUrlQuery } from 'querystring'
 import { Fragment } from 'react'
 
-import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
+import DocumentIcon from '@/assets/icons/document-text.svg?symbol'
+import type { Course as CourseData, CoursePreview } from '@/cms/api/courses.api'
 import {
   getCourseById,
   getCourseFilePath,
   getCourseIds,
 } from '@/cms/api/courses.api'
-import type { Course as CourseData, CoursePreview } from '@/cms/api/courses.api'
 import { getCoursePreviewsByTagId } from '@/cms/queries/courses.queries'
 import { getLastUpdatedTimestamp } from '@/cms/utils/getLastUpdatedTimestamp'
 import { pickRandom } from '@/cms/utils/pickRandom'
@@ -171,11 +170,12 @@ function RelatedCourses(props: RelatedCoursesProps) {
         {props.courses.map((course) => {
           return (
             <li key={course.id}>
-              <Link href={routes.course({ id: course.id })}>
-                <a className="underline flex items-center space-x-1.5">
-                  <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
-                  <span>{course.title}</span>
-                </a>
+              <Link
+                className="underline flex items-center space-x-1.5"
+                href={routes.course({ id: course.id })}
+              >
+                <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
+                <span>{course.title}</span>
               </Link>
             </li>
           )

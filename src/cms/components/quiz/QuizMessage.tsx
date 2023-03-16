@@ -1,7 +1,7 @@
-import type { ReactElement, ReactNode, FC } from 'react'
+import type { FC, ReactElement, ReactNode } from 'react'
 
-import { Svg as LightBulbIcon } from '@/assets/icons/light-bulb.svg'
-import { Svg as LightningBoltIcon } from '@/assets/icons/lightning-bolt.svg'
+import LightBulbIcon from '@/assets/icons/light-bulb.svg?symbol'
+import LightningBoltIcon from '@/assets/icons/lightning-bolt.svg?symbol'
 import type { QuizCardStatus } from '@/cms/components/quiz/Quiz'
 import { Icon } from '@/common/Icon'
 

@@ -1,5 +1,3 @@
-import type { ParsedUrlQuery } from 'querystring'
-
 import { SchemaOrg as SchemaOrgMetadata } from '@stefanprobst/next-page-metadata'
 import type {
   GetStaticPathsContext,
@@ -8,13 +6,14 @@ import type {
   GetStaticPropsResult,
 } from 'next'
 import Link from 'next/link'
+import type { ParsedUrlQuery } from 'querystring'
 import { Fragment } from 'react'
 
-import { Svg as AcademicCapIcon } from '@/assets/icons/academic-cap.svg'
-import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
+import AcademicCapIcon from '@/assets/icons/academic-cap.svg?symbol'
+import DocumentIcon from '@/assets/icons/document-text.svg?symbol'
 import type { CoursePreview } from '@/cms/api/courses.api'
-import { getPostById, getPostFilePath, getPostIds } from '@/cms/api/posts.api'
 import type { Post as PostData, PostPreview } from '@/cms/api/posts.api'
+import { getPostById, getPostFilePath, getPostIds } from '@/cms/api/posts.api'
 import type { ResourceKind } from '@/cms/api/resources.api'
 import { getCoursePreviewsByResourceId } from '@/cms/queries/courses.queries'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
@@ -303,14 +302,15 @@ function CourseLinks(props: CourseLinksProps) {
         {courses.map((course) => {
           return (
             <li key={course.id}>
-              <Link href={routes.course({ id: course.id })}>
-                <a className="flex items-center text-sm space-x-1.5 transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue">
-                  <Icon
-                    icon={AcademicCapIcon}
-                    className="flex-shrink-0 w-4 h-4"
-                  />
-                  <span>{course.title}</span>
-                </a>
+              <Link
+                className="flex items-center text-sm space-x-1.5 transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue"
+                href={routes.course({ id: course.id })}
+              >
+                <Icon
+                  icon={AcademicCapIcon}
+                  className="flex-shrink-0 w-4 h-4"
+                />
+                <span>{course.title}</span>
               </Link>
             </li>
           )
@@ -345,12 +345,11 @@ function RelatedResources(props: RelatedResourcesProps) {
           return (
             <li key={resource.id}>
               <Link
+                className="underline flex items-center space-x-1.5"
                 href={routes.resource({ kind: resource.kind, id: resource.id })}
               >
-                <a className="underline flex items-center space-x-1.5">
-                  <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
-                  <span>{resource.title}</span>
-                </a>
+                <Icon icon={DocumentIcon} className="flex-shrink-0 w-6 h-6" />
+                <span>{resource.title}</span>
               </Link>
             </li>
           )

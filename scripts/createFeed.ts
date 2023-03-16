@@ -55,7 +55,8 @@ async function generate() {
     }
   })
 
-  return generateFeed({
+  // @ts-expect-error Package misconfigured for ESM.
+  return generateFeed.default({
     fileName,
     channel,
     entries,

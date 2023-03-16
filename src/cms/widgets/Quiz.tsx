@@ -1,13 +1,12 @@
 import type { MDXJsxFlowElement } from 'hast-util-to-estree'
 import type { EditorComponentOptions } from 'netlify-cms-core'
 import { remark } from 'remark'
-import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import type { Node } from 'unist'
 import { visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
-import { remarkMarkAndUnravel as withUnraveledJsxChildren } from 'xdm/lib/plugin/remark-mark-and-unravel.js'
-import { remarkMdx as withMdx } from 'xdm/lib/plugin/remark-mdx.js'
+import { remarkMarkAndUnravel as withUnraveledJsxChildren } from '@mdx-js/mdx/lib/plugin/remark-mark-and-unravel'
+import withMdx from 'remark-mdx'
 
 import { QuizCardStatus } from '@/cms/components/quiz/Quiz'
 
@@ -30,10 +29,8 @@ function withQuizCards() {
           const validateButtonLabel = node.attributes.find((attribute: any) => {
             return attribute.name === 'validateButtonLabel'
           })?.value
-          /* @ts-expect-error Waiting for updated remark types. */
           if (validateButtonLabel != null && validateButtonLabel.length > 0) {
             card.controls = card.controls ?? {}
-            /* @ts-expect-error Waiting for updated remark types. */
             card.controls.validate = validateButtonLabel
           }
           cards.push(card)
@@ -54,9 +51,7 @@ function withQuizCards() {
           const type = node.attributes.find((attribute: any) => {
             return attribute.name === 'type'
           })?.value
-          /* @ts-expect-error Waiting for updated remark types. */
           if (type != null && allowedQuizMessageTypes.includes(type)) {
-            /* @ts-expect-error Waiting for updated remark types. */
             last.messages[type] = processor.stringify({
               type: 'root',
               /* @ts-expect-error Waiting for updated remark types. */
@@ -185,7 +180,6 @@ const processor = remark()
   .use(withMdx)
   .use(withUnraveledJsxChildren)
   .use(withGitHubMarkdown)
-  .use(withFootnotes)
   .use(withQuizCards)
 
 const quizQuestion = {

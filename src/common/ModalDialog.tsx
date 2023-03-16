@@ -2,10 +2,10 @@ import { useDialog } from '@react-aria/dialog'
 import { FocusScope } from '@react-aria/focus'
 import type { OverlayProps as AriaOverlayProps } from '@react-aria/overlays'
 import {
+  OverlayContainer,
   useModal,
   useOverlay,
   usePreventScroll,
-  OverlayContainer,
 } from '@react-aria/overlays'
 import type { ReactNode } from 'react'
 import { useRef } from 'react'

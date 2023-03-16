@@ -1,20 +1,21 @@
-import { join } from 'path'
+import { join } from 'node:path'
 
-import withExtractedTableOfContents from '@stefanprobst/rehype-extract-toc'
+import { compile } from '@mdx-js/mdx'
 import type { Toc } from '@stefanprobst/rehype-extract-toc'
+import withExtractedTableOfContents from '@stefanprobst/rehype-extract-toc'
 import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
 import sizeOf from 'image-size'
+import type { StaticImageData } from 'next/image'
 import withHeadingIds from 'rehype-slug'
-import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import { VFile } from 'vfile'
 
 import type { Licence, LicenceId } from '@/cms/api/licences.api'
 import { getLicenceById } from '@/cms/api/licences.api'
-import { getPersonById } from '@/cms/api/people.api'
 import type { Person, PersonId } from '@/cms/api/people.api'
-import { getTagById } from '@/cms/api/tags.api'
+import { getPersonById } from '@/cms/api/people.api'
 import type { Tag, TagId } from '@/cms/api/tags.api'
+import { getTagById } from '@/cms/api/tags.api'
 import { getSyntaxHighlighter } from '@/cms/utils/getSyntaxHighlighter'
 import type { Locale } from '@/i18n/i18n.config'
 import { extractFrontmatter } from '@/mdx/extractFrontmatter'
@@ -50,7 +51,7 @@ export interface PostFrontmatter {
   uuid: string
   title: string
   shortTitle?: string
-  lang: 'en' | 'de'
+  lang: 'de' | 'en'
   date: IsoDateString
   version: string
   authors: Array<PersonId['id']>
@@ -67,11 +68,11 @@ export interface PostMetadata
   extends Omit<
     PostFrontmatter,
     | 'authors'
-    | 'editors'
     | 'contributors'
-    | 'tags'
-    | 'licence'
+    | 'editors'
     | 'featuredImage'
+    | 'licence'
+    | 'tags'
   > {
   authors: Array<Person>
   contributors?: Array<Person>
@@ -287,12 +288,6 @@ async function getPostFrontmatter(
  * Supports CommonMark, GitHub Markdown, and Pandoc Footnotes.
  */
 async function compileMdx(file: VFile): Promise<VFile> {
-  /**
-   * Using a dynamic import for `xdm`, which is an ESM-only package,
-   * so `getPostPreviews` can be called in scripts with `ts-node`.
-   */
-  const { compile } = await import('xdm')
-
   const highlighter = await getSyntaxHighlighter()
 
   /**
@@ -305,7 +300,6 @@ async function compileMdx(file: VFile): Promise<VFile> {
     useDynamicImport: false,
     remarkPlugins: [
       withGitHubMarkdown,
-      withFootnotes,
       withTypographicQuotesAndDashes,
       withReadingTime,
     ],

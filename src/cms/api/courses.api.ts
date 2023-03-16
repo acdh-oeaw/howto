@@ -1,18 +1,19 @@
-import { join } from 'path'
+import { join } from 'node:path'
 
+import { compile } from '@mdx-js/mdx'
 import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
 import sizeOf from 'image-size'
+import type { StaticImageData } from 'next/image'
 import withHeadingIds from 'rehype-slug'
-import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import { VFile } from 'vfile'
 
-import { getPersonById } from '@/cms/api/people.api'
 import type { Person, PersonId } from '@/cms/api/people.api'
+import { getPersonById } from '@/cms/api/people.api'
 import type { PostId, PostPreview } from '@/cms/api/posts.api'
 import { getPostPreviewById } from '@/cms/api/posts.api'
-import { getTagById } from '@/cms/api/tags.api'
 import type { Tag, TagId } from '@/cms/api/tags.api'
+import { getTagById } from '@/cms/api/tags.api'
 import { getSyntaxHighlighter } from '@/cms/utils/getSyntaxHighlighter'
 import type { Locale } from '@/i18n/i18n.config'
 import { extractFrontmatter } from '@/mdx/extractFrontmatter'
@@ -42,7 +43,7 @@ export interface CourseFrontmatter {
   uuid: string
   title: string
   shortTitle?: string
-  lang: 'en' | 'de'
+  lang: 'de' | 'en'
   date: IsoDateString
   version: string
   editors?: Array<PersonId['id']>
@@ -55,7 +56,7 @@ export interface CourseFrontmatter {
 export interface CourseMetadata
   extends Omit<
     CourseFrontmatter,
-    'editors' | 'tags' | 'resources' | 'featuredImage'
+    'editors' | 'featuredImage' | 'resources' | 'tags'
   > {
   editors?: Array<Person>
   tags: Array<Tag>
@@ -251,12 +252,6 @@ async function getCourseFrontmatter(
  * Supports CommonMark, GitHub Markdown, and Pandoc Footnotes.
  */
 async function compileMdx(file: VFile): Promise<VFile> {
-  /**
-   * Using a dynamic import for `xdm`, which is an ESM-only package,
-   * so `getCoursePreviews` can be called in scripts with `ts-node`.
-   */
-  const { compile } = await import('xdm')
-
   const highlighter = await getSyntaxHighlighter()
 
   /**
@@ -267,11 +262,7 @@ async function compileMdx(file: VFile): Promise<VFile> {
   return compile(new VFile({ ...file }), {
     outputFormat: 'function-body',
     useDynamicImport: false,
-    remarkPlugins: [
-      withGitHubMarkdown,
-      withFootnotes,
-      withTypographicQuotesAndDashes,
-    ],
+    remarkPlugins: [withGitHubMarkdown, withTypographicQuotesAndDashes],
     rehypePlugins: [
       [withSyntaxHighlighting, { highlighter }],
       withHeadingIds,

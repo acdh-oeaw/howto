@@ -1,6 +1,6 @@
-import { createHash } from 'crypto'
-import * as fs from 'fs'
-import * as path from 'path'
+import { createHash } from 'node:crypto'
+import { existsSync, readFileSync, mkdirSync, copyFileSync } from 'node:fs'
+import * as path from 'node:path'
 
 import { isAbsoluteUrl } from '@stefanprobst/is-absolute-url'
 
@@ -41,8 +41,8 @@ export function copyAsset(
       return srcFilePath
     }
 
-    const buffer = fs.readFileSync(srcFilePath, { encoding: 'binary' })
-    const hash = createHash('md4')
+    const buffer = readFileSync(srcFilePath, { encoding: 'binary' })
+    const hash = createHash('md5')
     hash.update(buffer)
 
     const newFileName = path.join(
@@ -53,15 +53,22 @@ export function copyAsset(
     return newFileName
   }
 
-  const newPath = path.join('static', folderName, path.relative(process.cwd(), getNewFileName()))
+  const newPath = path.join(
+    'static',
+    folderName,
+    path.relative(process.cwd(), getNewFileName()),
+  )
 
-  const publicPath = path.posix.join('/_next', newPath.split(path.sep).join(path.posix.sep))
+  const publicPath = path.posix.join(
+    '/_next',
+    newPath.split(path.sep).join(path.posix.sep),
+  )
   const destinationFilePath = path.join(process.cwd(), '.next', newPath)
 
   // TODO: make async
-  if (!fs.existsSync(destinationFilePath)) {
-    fs.mkdirSync(path.dirname(destinationFilePath), { recursive: true })
-    fs.copyFileSync(srcFilePath, destinationFilePath)
+  if (!existsSync(destinationFilePath)) {
+    mkdirSync(path.dirname(destinationFilePath), { recursive: true })
+    copyFileSync(srcFilePath, destinationFilePath)
   }
 
   return {

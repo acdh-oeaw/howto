@@ -1,4 +1,5 @@
 import sizeOf from 'image-size'
+import type { StaticImageData } from 'next/image'
 
 import { copyAsset } from '@/mdx/utils/copyAsset'
 import { generateBlurDataUrl } from '@/mdx/utils/generateBlurDataUrl'
@@ -10,7 +11,7 @@ import { generateBlurDataUrl } from '@/mdx/utils/generateBlurDataUrl'
 export async function createStaticImage(
   src: string,
   basePath: string,
-): Promise<string | StaticImageData> {
+): Promise<StaticImageData | string> {
   const paths = await copyAsset(src, basePath)
 
   if (paths != null) {

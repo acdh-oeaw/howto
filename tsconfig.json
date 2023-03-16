@@ -1,19 +1,13 @@
 {
   "extends": "@stefanprobst/tsconfig",
   "compilerOptions": {
-    "noPropertyAccessFromIndexSignature": false,
     "baseUrl": ".",
+    "exactOptionalPropertyTypes": false,
     "paths": {
       "@/*": ["src/*"],
       "~/*": ["*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "app-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.config.js"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.config.cjs", "**/*.config.mjs"],
   "exclude": ["node_modules"]
 }

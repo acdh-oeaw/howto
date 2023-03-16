@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import type { LinkProps } from 'next/link'
+import Link from 'next/link'
 
 import { useI18n } from '@/i18n/useI18n'
 
@@ -27,25 +27,23 @@ export function Pagination(props: PaginationProps): JSX.Element | null {
     <nav aria-label={label} className="flex items-center justify-between my-12">
       <div>
         {hasPrevPage ? (
-          <Link href={href(page - 1)}>
-            <a
-              className="p-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
-              rel="prev"
-            >
-              &larr; {t('common.previousPage')}
-            </a>
+          <Link
+            href={href(page - 1)}
+            className="p-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
+            rel="prev"
+          >
+            &larr; {t('common.previousPage')}
           </Link>
         ) : null}
       </div>
       <div>
         {hasNextPage ? (
-          <Link href={href(page + 1)}>
-            <a
-              className="p-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
-              rel="next"
-            >
-              {t('common.nextPage')} &rarr;
-            </a>
+          <Link
+            href={href(page + 1)}
+            className="p-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
+            rel="next"
+          >
+            {t('common.nextPage')} &rarr;
           </Link>
         ) : null}
       </div>

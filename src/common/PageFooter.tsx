@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Svg as RssIcon } from '@/assets/icons/rss.svg'
+import RssIcon from '@/assets/icons/rss.svg?symbol'
 import { Icon } from '@/common/Icon'
 import { useI18n } from '@/i18n/useI18n'
 import { useSiteMetadata } from '@/metadata/useSiteMetadata'
@@ -32,10 +32,11 @@ export function PageFooter(): JSX.Element {
           <span> {new Date().getFullYear()}</span>
         </small>
         <small>
-          <Link href={routes.imprint()}>
-            <a className="transition rounded focus:outline-none hover:text-brand-blue focus-visible:ring focus-visible:ring-brand-blue">
-              {t('common.page.imprint')}
-            </a>
+          <Link
+            className="transition rounded focus:outline-none hover:text-brand-blue focus-visible:ring focus-visible:ring-brand-blue"
+            href={routes.imprint()}
+          >
+            {t('common.page.imprint')}
           </Link>
         </small>
       </div>

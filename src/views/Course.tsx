@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
+import AvatarIcon from '@/assets/icons/user.svg?symbol'
 import type { Course as CourseData } from '@/cms/api/courses.api'
 import { Figure } from '@/cms/components/Figure'
 import { Tabs } from '@/cms/components/Tabs'
@@ -47,12 +47,13 @@ export function Course(props: CourseProps): JSX.Element {
                   {tags.map((tag, index) => {
                     return (
                       <li key={tag.id} className="inline">
-                        <Link href={routes.tag({ id: tag.id })}>
-                          <a className="transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-brand-light-blue">
-                            <span className={index !== 0 ? 'ml-1' : undefined}>
-                              {tag.name}
-                            </span>
-                          </a>
+                        <Link
+                          className="transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-brand-light-blue"
+                          href={routes.tag({ id: tag.id })}
+                        >
+                          <span className={index !== 0 ? 'ml-1' : undefined}>
+                            {tag.name}
+                          </span>
                         </Link>
                         {index !== tags.length - 1 ? ', ' : null}
                       </li>
@@ -79,11 +80,9 @@ export function Course(props: CourseProps): JSX.Element {
                               <Image
                                 src={author.avatar}
                                 alt=""
-                                className="w-8 h-8 rounded-full"
-                                layout="fixed"
+                                className="w-8 h-8 rounded-full object-cover"
                                 width={32}
                                 height={32}
-                                objectFit="cover"
                               />
                             ) : (
                               <Icon
@@ -91,8 +90,11 @@ export function Course(props: CourseProps): JSX.Element {
                                 className="flex-shrink-0 object-cover w-8 h-8 rounded-full"
                               />
                             )}
-                            <Link href={routes.author({ id: author.id })}>
-                              <a className="underline">{getFullName(author)}</a>
+                            <Link
+                              className="underline"
+                              href={routes.author({ id: author.id })}
+                            >
+                              {getFullName(author)}
                             </Link>
                           </div>
                         </li>

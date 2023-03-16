@@ -6,14 +6,14 @@ import type { SearchFieldProps as AriaSearchFieldProps } from '@react-types/sear
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-import { Svg as AcademicCapIcon } from '@/assets/icons/academic-cap.svg'
-import { Svg as DocumentIcon } from '@/assets/icons/document-text.svg'
-import { Svg as LightningBoltIcon } from '@/assets/icons/lightning-bolt.svg'
-import { Svg as MenuIcon } from '@/assets/icons/menu.svg'
-import { Svg as SearchIcon } from '@/assets/icons/search.svg'
-import { Svg as ClearIcon } from '@/assets/icons/x.svg'
+import AcademicCapIcon from '@/assets/icons/academic-cap.svg?symbol'
+import DocumentIcon from '@/assets/icons/document-text.svg?symbol'
+import LightningBoltIcon from '@/assets/icons/lightning-bolt.svg?symbol'
+import MenuIcon from '@/assets/icons/menu.svg?symbol'
+import SearchIcon from '@/assets/icons/search.svg?symbol'
+import ClearIcon from '@/assets/icons/x.svg?symbol'
 import { Icon } from '@/common/Icon'
 import { ModalDialog } from '@/common/ModalDialog'
 import { Spinner } from '@/common/Spinner'
@@ -34,20 +34,12 @@ export function PageHeader(): JSX.Element {
 
   return (
     <header className="flex items-center justify-between px-8 py-4">
-      <Link href={navigation.home.href}>
-        <a
-          aria-label={t('common.page.home')}
-          className="inline-flex transition rounded focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
-        >
-          <Image
-            src={Logo}
-            alt=""
-            height="40"
-            width="36"
-            layout="fixed"
-            priority
-          />
-        </a>
+      <Link
+        aria-label={t('common.page.home')}
+        className="inline-flex transition rounded focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
+        href={navigation.home.href}
+      >
+        <Image src={Logo} alt="" height="40" width="36" priority />
       </Link>
       <PageNavigation />
       <MobilePageNavigation />
@@ -67,10 +59,11 @@ function PageNavigation() {
         {Object.entries(navigation).map(([route, { href }]) => {
           return (
             <li key={route}>
-              <NavLink href={href}>
-                <a className="transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue">
-                  {t(`common.page.${route}`)}
-                </a>
+              <NavLink
+                className="transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
+                href={href}
+              >
+                {t(`common.page.${route}`)}
               </NavLink>
             </li>
           )
@@ -134,10 +127,11 @@ function MobilePageNavigation() {
               {Object.entries(navigation).map(([route, { href }]) => {
                 return (
                   <li key={route} className="flex px-2 py-2">
-                    <NavLink href={href}>
-                      <a className="flex items-center justify-center flex-1 py-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue">
-                        {t(`common.page.${route}`)}
-                      </a>
+                    <NavLink
+                      className="flex items-center justify-center flex-1 py-2 transition rounded hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
+                      href={href}
+                    >
+                      {t(`common.page.${route}`)}
                     </NavLink>
                   </li>
                 )
@@ -254,40 +248,41 @@ function Search() {
                   return (
                     <li key={result.id}>
                       <article>
-                        <Link href={{ ...href, hash: result.heading?.id }}>
-                          <a className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100">
-                            <h3 className="flex items-center space-x-2 font-medium">
-                              <Icon
-                                icon={icon}
-                                className="flex-shrink-0 w-5 h-5"
-                              />
-                              <span>{result.title}</span>
-                            </h3>
-                            {result._snippetResult?.content.value != null ? (
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html: result._snippetResult.content.value,
-                                }}
-                              />
-                            ) : null}
-                            <dl>
-                              <dt className="sr-only">{t('common.tags')}</dt>
-                              <dd className="my-px">
-                                <ul className="flex flex-wrap">
-                                  {result.tags.map((tag) => {
-                                    return (
-                                      <li
-                                        key={tag.id}
-                                        className="mb-1 mr-4 text-xs font-bold tracking-wide uppercase text-brand-blue"
-                                      >
-                                        {tag.name}
-                                      </li>
-                                    )
-                                  })}
-                                </ul>
-                              </dd>
-                            </dl>
-                          </a>
+                        <Link
+                          className="flex flex-col px-2 py-2 space-y-1 transition rounded hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100"
+                          href={{ ...href, hash: result.heading?.id }}
+                        >
+                          <h3 className="flex items-center space-x-2 font-medium">
+                            <Icon
+                              icon={icon}
+                              className="flex-shrink-0 w-5 h-5"
+                            />
+                            <span>{result.title}</span>
+                          </h3>
+                          {result._snippetResult?.content.value != null ? (
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: result._snippetResult.content.value,
+                              }}
+                            />
+                          ) : null}
+                          <dl>
+                            <dt className="sr-only">{t('common.tags')}</dt>
+                            <dd className="my-px">
+                              <ul className="flex flex-wrap">
+                                {result.tags.map((tag) => {
+                                  return (
+                                    <li
+                                      key={tag.id}
+                                      className="mb-1 mr-4 text-xs font-bold tracking-wide uppercase text-brand-blue"
+                                    >
+                                      {tag.name}
+                                    </li>
+                                  )
+                                })}
+                              </ul>
+                            </dd>
+                          </dl>
                         </Link>
                       </article>
                     </li>

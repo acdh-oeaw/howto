@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { Svg as PencilIcon } from '@/assets/icons/pencil.svg'
+import PencilIcon from '@/assets/icons/pencil.svg?symbol'
 import type { collections } from '@/cms/cms.config'
 import { Icon } from '@/common/Icon'
 import { routes } from '@/navigation/routes.config'

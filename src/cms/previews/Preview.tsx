@@ -1,7 +1,7 @@
-import ErrorBoundary, { useError } from '@stefanprobst/next-error-boundary'
+import { ErrorBoundary, useError } from '@stefanprobst/next-error-boundary'
 import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
 import type { ReactNode } from 'react'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { PreviewProvider } from '@/cms/previews/Preview.context'
 import { I18nProvider } from '@/i18n/I18n.context'

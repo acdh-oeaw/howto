@@ -1,11 +1,11 @@
 import cx from 'clsx'
 import type { FC, ReactNode, SVGProps } from 'react'
 
-import { Svg as AlertIcon } from '@/assets/icons/exclamation.svg'
-import { Svg as InfoIcon } from '@/assets/icons/info.svg'
-import { Svg as LightBulbIcon } from '@/assets/icons/light-bulb.svg'
-import { Svg as LightningBoltIcon } from '@/assets/icons/lightning-bolt.svg'
-import { Svg as PencilIcon } from '@/assets/icons/pencil.svg'
+import AlertIcon from '@/assets/icons/exclamation.svg?symbol'
+import InfoIcon from '@/assets/icons/info.svg?symbol'
+import LightBulbIcon from '@/assets/icons/light-bulb.svg?symbol'
+import LightningBoltIcon from '@/assets/icons/lightning-bolt.svg?symbol'
+import PencilIcon from '@/assets/icons/pencil.svg?symbol'
 import { Icon } from '@/common/Icon'
 import { capitalize } from '@/utils/capitalize'
 

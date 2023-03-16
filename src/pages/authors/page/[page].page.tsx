@@ -1,5 +1,3 @@
-import type { ParsedUrlQuery } from 'querystring'
-
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -7,9 +5,10 @@ import type {
   GetStaticPropsResult,
 } from 'next'
 import Link from 'next/link'
+import type { ParsedUrlQuery } from 'querystring'
 import { Fragment } from 'react'
 
-import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
+import AvatarIcon from '@/assets/icons/user.svg?symbol'
 import type { Person } from '@/cms/api/people.api'
 import { getPersonIds, getPersons } from '@/cms/api/people.api'
 import { getPostPreviewsByAuthorId } from '@/cms/queries/posts.queries'
@@ -156,13 +155,14 @@ function AuthorsList(props: AuthorsListProps): JSX.Element | null {
       {authors.map((author) => {
         return (
           <li key={author.id}>
-            <Link href={routes.author({ id: author.id })}>
-              <a className="flex items-center space-x-1.5">
-                <Icon icon={AvatarIcon} className="flex-shrink-0 w-6 h-6" />
-                <span>
-                  {getFullName(author)} ({author.posts})
-                </span>
-              </a>
+            <Link
+              className="flex items-center space-x-1.5"
+              href={routes.author({ id: author.id })}
+            >
+              <Icon icon={AvatarIcon} className="flex-shrink-0 w-6 h-6" />
+              <span>
+                {getFullName(author)} ({author.posts})
+              </span>
             </Link>
           </li>
         )

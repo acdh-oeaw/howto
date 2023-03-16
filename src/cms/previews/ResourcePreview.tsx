@@ -2,10 +2,9 @@ import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
 import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
 import { useState, useEffect, useMemo } from 'react'
 import withHeadingIds from 'rehype-slug'
-import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import type { Highlighter } from 'shiki'
-import { compile } from 'xdm'
+import { compile } from '@mdx-js/mdx'
 
 import type { PostFrontmatter, PostMetadata } from '@/cms/api/posts.api'
 import { getSyntaxHighlighter } from '@/cms/previews/getSyntaxHighlighter'
@@ -66,7 +65,6 @@ export function ResourcePreview(
           useDynamicImport: false,
           remarkPlugins: [
             withGitHubMarkdown,
-            withFootnotes,
             withTypographicQuotesAndDashes,
             [withCmsPreviewAssets, getAsset],
           ],

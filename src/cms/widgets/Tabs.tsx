@@ -5,8 +5,8 @@ import withGitHubMarkdown from 'remark-gfm'
 import type { Node } from 'unist'
 import { visit } from 'unist-util-visit'
 import type { VFile } from 'vfile'
-import { remarkMarkAndUnravel as withUnraveledJsxChildren } from 'xdm/lib/plugin/remark-mark-and-unravel.js'
-import { remarkMdx as withMdx } from 'xdm/lib/plugin/remark-mdx.js'
+import { remarkMarkAndUnravel as withUnraveledJsxChildren } from '@mdx-js/mdx/lib/plugin/remark-mark-and-unravel'
+import withMdx from 'remark-mdx'
 
 function withTabs() {
   return function transformer(tree: Node, file: VFile) {

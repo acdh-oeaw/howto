@@ -27,7 +27,7 @@ export interface HomePageMetadata extends Record<string, unknown> {
 
 export interface HomePageProps {
   dictionary: Dictionary
-  locale: 'en' | 'de'
+  locale: 'de' | 'en'
   posts: Array<PostPreview>
   text: string
 }
@@ -106,10 +106,11 @@ export default function HomePage(props: HomePageProps): JSX.Element {
               <h2 className="text-2xl font-bold text-neutral-100">
                 {t(['common', 'new-posts'])}
               </h2>
-              <Link href={routes.resources({ kind: 'posts' })}>
-                <a className="px-6 py-2 bg-brand-blue inline-flex items-center font-medium rounded text-brand-black hover:bg-brand-light-blue focus:bg-brand-light-blue transition">
-                  {t(['common', 'see-all-posts'])}
-                </a>
+              <Link
+                className="px-6 py-2 bg-brand-blue inline-flex items-center font-medium rounded text-brand-black hover:bg-brand-light-blue focus:bg-brand-light-blue transition"
+                href={routes.resources({ kind: 'posts' })}
+              >
+                {t(['common', 'see-all-posts'])}
               </Link>
             </div>
             <ResourcesList posts={posts} />

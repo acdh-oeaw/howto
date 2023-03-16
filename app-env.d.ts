@@ -1,4 +1,4 @@
-/// <reference types="@stefanprobst/next-svg" />
+/// <reference types="@stefanprobst/next-svg/types" />
 
 declare module '*.mdx' {
   import type { ComponentType } from 'react'
@@ -8,4 +8,12 @@ declare module '*.mdx' {
 
   export { metadata }
   export default Component
+}
+
+declare module '*.svg?symbol' {
+  import type { SVGProps, FC } from 'react'
+
+  const Image: FC<SVGProps<SVGSVGElement> & { title?: string }>
+
+  export default Image
 }

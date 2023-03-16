@@ -1,15 +1,13 @@
-/* @ts-expect-error Missing module declaration. */
 const colors = require('tailwindcss/colors')
 
 const config = {
-  mode: 'jit',
-  purge: ['src/**/*.@(ts|tsx)'],
+  content: ['./src/**/*.@(ts|tsx)'],
   darkMode: false,
   theme: {
     extend: {
       colors: {
         error: colors.red,
-        neutral: colors.coolGray,
+        neutral: colors.gray,
         primary: colors.blue,
         'acdh-ch-primary': '#88dbdf',
         'acdh-ch-primary-text': '#58bcc1',
@@ -135,19 +133,7 @@ const config = {
       '2xl': '1440px',
     },
   },
-  variants: {
-    extend: {
-      backgroundColor: ['focus-visible'],
-      ringColor: ['focus-visible'],
-      ringWidth: ['focus-visible'],
-    },
-  },
-  plugins: [
-    /* @ts-expect-error Missing module declaration. */
-    require('@tailwindcss/typography'),
-    /** @ts-expect-error Missing module declaration. */
-    require('@tailwindcss/aspect-ratio'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }
 
 /** @type {(num: number) => string} */

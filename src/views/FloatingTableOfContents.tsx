@@ -4,7 +4,7 @@ import type { Toc } from '@stefanprobst/rehype-extract-toc'
 import { useRouter } from 'next/router'
 import { useEffect, useRef } from 'react'
 
-import { Svg as TocIcon } from '@/assets/icons/toc.svg'
+import TocIcon from '@/assets/icons/toc.svg?symbol'
 import { Icon } from '@/common/Icon'
 import { ModalDialog } from '@/common/ModalDialog'
 import { useI18n } from '@/i18n/useI18n'
