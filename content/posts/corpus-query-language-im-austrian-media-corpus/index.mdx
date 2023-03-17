@@ -511,7 +511,7 @@ Es stehen die logischen Operatoren **& (logisches UND)** und **\| (logisches ODE
 
 ### Gruppierung mit ( )
 
-In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdrücken zusammengefasst werden, die dann wiederum mit den schon bekannten Operatoren `* ? + | &` und `{min,max}` kombiniert werden können.
+In regulären Ausdrücken können einzelne Komponenten mit `( )` zu Unterausdrücken zusammengefasst werden, die dann wiederum mit den schon bekannten Operatoren `* ? + | &` und `{min,max}` kombiniert werden können.
 
 - `[word="(Das|das)"]` finde alle _Das_ oder _das_ Token
 - `[word="(D|d)as"]` finde alle _Das_ oder _das_ Token
@@ -527,7 +527,7 @@ Gruppierungen können auch innerhalb anderer Gruppen platziert werden:
 
 ### Zeichenklassen mit `[ ]`
 
-Wir haben bisher den Platzhalter "." verwendet, der für jedes beliebige Zeichen steht. Mit dem Operator `[ ]` steht eine Möglichkeit bereit, eine _Auswahl_ an Zeichen, also eine Zeichenklasse zu definieren:
+Wir haben bisher den Platzhalter "`.`" verwendet, der für jedes beliebige Zeichen steht. Mit dem Operator `[ ]` steht eine Möglichkeit bereit, eine _Auswahl_ an Zeichen, also eine Zeichenklasse zu definieren:
 
 - `[abc]` steht für einen der Buchstaben `a` oder `b` oder `c` - ist also äquivalent zu `(a|b|c)`
 - `[word="H[oa]se"]` findet also Hose und Hase - ist also äquivalent zu `[word="H(o|a)se"]`
