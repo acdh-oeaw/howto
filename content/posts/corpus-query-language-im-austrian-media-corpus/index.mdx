@@ -481,7 +481,7 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
 
 Alternativ zu `*`, `+`, `?` kann man mit dem **ranges Operator** nicht nur festlegen, ob ein Ausdruck 0, 1 oder „öfter“ wiederholt werden soll, sondern es kann die _exakte_ Mindest- und Maximalzahl an Wiederholungen spezifiziert werden.
 
-Die abstracte Syntax für diesen Operator lautet:
+Die abstrakte Syntax für diesen Operator lautet:
 `{minimale Anzahl, maximale Anzahl}`
 
 Damit gilt: 
@@ -503,7 +503,7 @@ Es stehen die logischen Operatoren **& (logisches UND)** und **\| (logisches ODE
 **A | B logisches oder** : es muss zumindest _eine_ der beiden Bedingungen A oder B erfüllt sein.
 
 - `[word="Das|das"]` suche alle "Das" oder "das"
-- `[pos="ADJA|ADJD|ADV"]` suche alle Ajdektive oder Adverben
+- `[pos="ADJA|ADJD|ADV"]` suche alle Adjektive oder Adverben
 
 **A & B logisches und**: es muss sowohl Bedingung A als auch Bedingung B erfüllt sein.
 
@@ -516,14 +516,14 @@ In regulären Ausdrücken können einzelne Komponenten mit **( )** zu Unterausdr
 - `[word="(Das|das)"]` finde alle _Das_ oder _das_ Token
 - `[word="(D|d)as"]` finde alle _Das_ oder _das_ Token
 - `[lc="(ur|vor){2,}"]` findet alle Wortformen (unabhängig von der Groß-Kleinschreibung) die mit zumindest 2 "ur" oder "vor" beginnen, z.B. _vorvorgestern_ oder _Ururgroßvater_ (aber auch _Vorurteil_!)  
-- `[lc="(ha|he|hi|ho|hu){3,}"]` findet alle Wortformen (unabhängig von der Groß-Kleinschreibung) die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen - also _hahaha_ _hihihihihi_ etc. 
+- `[lc="(ha|he|hi|ho|hu){3,}"]` findet alle Wortformen (unabhängig von der Groß-Kleinschreibung) die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen - also _hahaha_, _hihihihihi_, etc. 
 
-Gruppierungen können auch innerhalb von anderen Gruppen platziert werden: 
+Gruppierungen können auch innerhalb anderer Gruppen platziert werden: 
 
 - `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleine Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
 - `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\"klimafreundlichesMobilitätskonzept\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \"klima\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\"klimafreundlichesMobilitätskonzept\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Zeichenklassen mit `[ ]`
 
