@@ -523,7 +523,7 @@ Gruppierungen können auch innerhalb anderer Gruppen platziert werden:
 - `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleine Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
 - `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \"klima\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\"klimafreundlichesMobilitätskonzept\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\"klima\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\\"klimafreundlichesMobilitätskonzept\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Zeichenklassen mit `[ ]`
 
@@ -535,7 +535,7 @@ Wir haben bisher den Platzhalter "`.`" verwendet, der für jedes beliebige Zeich
 - `[lc="(h[aeiou]){3,}"]` Eine weitere alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen 
 
 Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gruppierung `( )` zusammen mit `|` formulieren. 
-Die Zeichenklassendefinitionen bieten aber noch Möglichkeiten die darüber hinausgehen: 
+Die Zeichenklassendefinitionen bieten aber noch Möglichkeiten, die darüber hinausgehen: 
 _Bereiche_ mit "-" definieren:
 
 - `[a-z]` und `[0-9]` stehen für den _Buchstabenbereich von a bis z_ bzw. den _Zahlenbereich von 0 bis 9_
@@ -645,7 +645,7 @@ Bisher konnten wir nur entweder **im linken oder im rechten Kontext suchen**. Mi
 
 sucht nach \[TokenA] in deren linken _oder_ rechten Nachbarschaft ein \[TokenB] zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in **\-linker_context** und **rechter_context** bestimmt.
 
-z.B.: Suche nach dem Lemma „Hund“ in dessen linker oder rechter Umgebung im maximalen Abstand von 5 Token, die Lemmas „beißen“ oder „bissig“ stehen.
+z.B.: Suche nach dem Lemma „Hund“ in dessen linker oder rechter Umgebung im maximalen Abstand von 5 Token die Lemmas „beißen“ oder „bissig“ stehen.
 
 - `(meet [lemma="Hund"] [lemma="(beißen|bissig)"] -5 5)`
 
@@ -718,7 +718,7 @@ z.B.: Suche nach dem Lemma „Hund“ in dessen linker oder rechter Umgebung im 
 
 ## Suche auf Strukturebene in CQL
 
-Sowohl bei der **Simple query** als auch bei den bisherigen Beispielen der CQL blieben Informationen auf der Strukturebene (Dokumente, Absätze, Sätze) unberücksichtigt. Hier wird nun gezeigt, wie _auf_ und _mit_ **Strukturinformationen** gesucht werden kann.
+Sowohl bei der **Simple query** als auch bei den bisherigen Beispielen der **CQL** blieben Informationen auf der **Strukturebene** (Dokumente, Absätze, Sätze) unberücksichtigt. Hier wird nun gezeigt, wie _auf_ und _mit_ **Strukturinformationen** gesucht werden kann.
 Wie oben gezeigt, werden Struktur-Informationen in den Input-Daten für die SkE mithilfe von XML-Elementen kodiert.
 In HTML und XML gelten die folgenden Notationskonventionen:
 
@@ -750,7 +750,7 @@ Für die Spezifikation der Werte der Strukturattribute können reguläre Ausdrü
 
 Mit **containing** und **within** können Bedingungen auf Strukturen und auf Token miteinander kombiniert werden:
 
-**containing**: wird verwendet um Einschränkungen auf _Strukturen_ auszudrücken: es wird nach Strukturen gesucht, die bestimmte „Dinge“ enthalten. z.B. alle Sätze die das Wort „Haus“ beinhalten:
+**containing**: wird verwendet um Einschränkungen auf _Strukturen_ auszudrücken: es wird nach Strukturen gesucht, die bestimmte „Dinge“ enthalten. z.B. alle Sätze, die das Wort „Haus“ beinhalten:
 
 - `<s/> containing [word="Haus"]`
 
@@ -764,7 +764,7 @@ z.B. alle Fundstellen für „Haus“, aber nur, wenn sie in einem Artikel des �
 
 <Video provider="youtube" id="watch?v=g7IwzWNzhAI&list=PLPVgp0Xm6hWBLZzD7haCVbhC9pSfWZk1S&index=3" />
 
-Merken Sie sich am Besten einfach, dass **containing** und **within** sich exakt so verhalten, wie Sie es von ihrer Wortbedeutung in Englischen erwarten würden! 
+Merken Sie sich am besten einfach, dass **containing** und **within** sich exakt so verhalten, wie Sie es von ihrer Wortbedeutung in Englischen erwarten würden! 
 
 - `<s/> containing [word="Haus"]`: _search for any **structure**_ `<s>` _which is_ `containing` _a token_ `[word="Haus"]`
 - `[word="Haus"] within <doc docsrc="STANDARD"/>` _search for any **token**_ `[word="Haus"]` _which is located_ `within` a structure `<doc docsrc="STANDARD"/>`
@@ -775,7 +775,7 @@ Beispielsweise könnte man auf der Suche nach Nennungen des Wortes Ball in der B
 
 - `[lemma="Ball"] within ( <doc ressort2 != "sport"/> containing [lemma="(Walzer|Polonaise|Champagner|Mitternachtseinlage)"] )`
 
-Also: suche nach "Ball" innerhalb von Artikeln die nicht aus dem Sportressort stammen, und in denen auch Walzer, Polonaise, Champagner oder Mitternachtseinlage vorkommen. 
+Also: suche nach "Ball" innerhalb von Artikeln, die nicht aus dem Sportressort stammen, und in denen auch Walzer, Polonaise, Champagner oder Mitternachtseinlage vorkommen. 
 Damit schränkt sich die Trefferanzahl für "Ball" im amc von ca. 800.000 auf "nur noch" ca. 50.000 ein. (Aber freilich gibt es darunter immer noch Artikel über Fußball, die _nicht_ korrekt mit Sportressort markiert wurden und in denen Siege mit Champagner gefeiert werden, oder Spieler mit dem Eigennamen "Walzer" vorkommen) 
 
 <SideNote type="tip">
@@ -791,7 +791,7 @@ So könnte z.B. das Ergebnis der obigen Abfrage als "tanzball01"-Subkorpus gespe
 
 ### Vereinfachte Schreibweise
 
-In der ADVANCED Suchmaske befindet sich unter dem Feld CQL ein Auswahlfeld für ein **Default attribute**, das mit dem Wert _lemma_ vorausgefüllt ist. Bei Abfragen auf dieses Attribut kann D.h. **lemma** ist quasi der Default des Default. Es gilt also:
+In der ADVANCED Suchmaske befindet sich unter dem Feld CQL ein Auswahlfeld für ein **Default attribute**, das mit dem Wert _lemma_ vorausgefüllt ist. Bei Abfragen auf dieses Attribut ist **lemma** quasi der Default des Default. Es gilt also:
 
 - statt `[ lemma="Paradeiser" ]` kann (bei einem _default attribute_ "lemma") vereinfacht  `"Paradeiser"` geschrieben werden (die doppelten Anführungszeichen bleiben aber weiterhin verpflichtend!)
 
@@ -810,7 +810,7 @@ Dieses _Aufheben der Sonderbedeutung_ nennt man _escapen_ eines Zeichens, und pa
 
 Das heißt
 
-- `[word="etc."]` hier steht `.` für jedes beliebige Zeichen (Note: die Suche nach "etc." wird genauso noch die Abkürzung "etc." finden, denn _regular expression_-Punkt "matcht" auch mit dem dem "buchstäblichen" Punkt wie eben jedes andere beliebige Zeichen)  
+- `[word="etc."]` hier steht `.` für jedes beliebige Zeichen (Anmerkung: die Suche nach "etc." wird genauso noch die Abkürzung "etc." finden, denn _regular expression_-Punkt "matcht" auch mit dem dem "buchstäblichen" Punkt wie eben jedes andere beliebige Zeichen)  
 - `[word="etc\."]` hier steht `.` tatsächlich für einen Punkt `(.)`
 - `[word="..."]` findet daher _alle_ Token mit 3 Zeichen
 - `[word="\.\.\."]` findet genau _punktipunktipunkti_ (3 Punkte)
