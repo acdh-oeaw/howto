@@ -311,7 +311,7 @@ In der CQL können sogenannte **[reguläre Ausdrücke (regular expressions, Rege
 Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks sind:
 
 - „.“ : Ein Punkt steht für jedes beliebige Zeichen, z.B. `[word="Ha.s"]` findet „Haus“ „Hass“ „Hals“ …
-- \„_“\ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks. z.B. `[word="Hallo_"]` findet „Hall“ „Hallo“ „Halloo“ etc.
+- „`_`“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks. z.B. `[word="Hallo_"]` findet „Hall“ „Hallo“ „Halloo“ etc.
 - „+“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo+"]` findet „Hallo“ „Halloo“ etc. … aber _nicht_ „Hall“.
   D.h., das Zeichen vor ‚*‘ ist _optional_, das Zeichen vor ‚+‘ hingegen ist _obligat_!
 - „?“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo?"]` findet genau die beiden Formen „Hall“ und „Hallo“. D.h. das ‚?‘ steht für Optionalität, aber nicht für Wiederholbarkeit. 
@@ -489,7 +489,7 @@ Damit gilt:
 `x{1,}`  bedeutet minimal 1 und eine uneingeschränkte maximale Anzahl an Wiederholungen von `x` (und entspricht damit `x+`)\
 `x{0,}`  bedeutet minimal 0 und eine uneingeschränkte maximale Anzahl an Wiederholungen von `x` (und entspricht damit `x*`)  
 
-Beispile:
+Beispiele:
 
 - `[word=".{10}"]` genau 10 Wiederholungen von "." – also alle Wörter oder Zahlen mit einer Länge von 10 Zeichen
 - `[word=".{10,}"]` mindestens 10 Wiederholungen von "." , keine Angabe der Maximalzahl: also alle Wörter oder Zahlen mit einer _Mindestlänge_ von 10 Zeichen
