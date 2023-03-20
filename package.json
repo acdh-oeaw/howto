@@ -13,7 +13,7 @@
     "build": "next build",
     "cms:dev": "cross-env PORT=8081 netlify-cms-proxy-server",
     "cms:styles": "cross-env NODE_ENV='production' NODE_OPTIONS='-r tsconfig-paths/register' postcss --config src/cms/previews/postcss.config.cjs node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && prettier public/assets/css --write",
-    "cms:styles-win": "cross-env NODE_ENV='production' .\\node_modules\\.bin\\ts-node -r tsconfig-paths/register .\\node_modules\\postcss-cli\\bin\\postcss --config src/cms/previews/postcss.config.cjs node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && .\\node_modules\\.bin\\prettier public/assets/css --write",
+    "cms:styles-win": "cross-env NODE_ENV='production' node -r tsconfig-paths/register node_modules/postcss-cli/index.js --config src/cms/previews/postcss.config.cjs node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && .\\node_modules\\.bin\\prettier public/assets/css --write",
     "create:favicons": "tsx ./scripts/createFavicons.ts",
     "create:feed": "tsx ./scripts/createFeed.ts",
     "create:metadata-dump": "tsx ./scripts/dumpMetadata.ts",
