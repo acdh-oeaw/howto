@@ -102,7 +102,7 @@ export default function HomePage(props: HomePageProps): JSX.Element {
                 className="inline-flex items-center rounded bg-brand-blue px-6 py-2 font-medium text-brand-black transition hover:bg-brand-light-blue focus:bg-brand-light-blue"
                 href={routes.resources({ kind: 'posts' })}
               >
-                  {t(['common', 'see-all-posts'])}
+                {t(['common', 'see-all-posts'])}
               </Link>
             </div>
             <ResourcesList posts={posts} />

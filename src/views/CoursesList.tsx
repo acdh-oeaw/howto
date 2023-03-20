@@ -74,7 +74,7 @@ export function CoursesList(props: CoursesListProps): JSX.Element {
                   className="justify-self-end text-base font-medium text-brand-light-blue transition hover:text-neutral-100"
                   href={href}
                 >
-                    {t('common.readMore')} &rarr;
+                  {t('common.readMore')} &rarr;
                 </Link>
               </footer>
             </article>

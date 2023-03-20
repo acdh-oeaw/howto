@@ -35,10 +35,10 @@ export function PageHeader(): JSX.Element {
   return (
     <header className="flex items-center justify-between px-8 py-4">
       <Link
-          aria-label={t('common.page.home')}
+        aria-label={t('common.page.home')}
         className="inline-flex rounded transition focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
         href={navigation.home.href}
-        >
+      >
         <Image src={Logo} alt="" height="40" width="36" priority />
       </Link>
       <PageNavigation />
@@ -63,7 +63,7 @@ function PageNavigation() {
                 className="rounded transition hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
                 href={href}
               >
-                  {t(`common.page.${route}`)}
+                {t(`common.page.${route}`)}
               </NavLink>
             </li>
           )
@@ -131,7 +131,7 @@ function MobilePageNavigation() {
                       className="flex flex-1 items-center justify-center rounded py-2 transition hover:text-brand-blue focus:outline-none focus-visible:ring focus-visible:ring-brand-blue"
                       href={href}
                     >
-                        {t(`common.page.${route}`)}
+                      {t(`common.page.${route}`)}
                     </NavLink>
                   </li>
                 )
@@ -251,34 +251,34 @@ function Search() {
                           className="flex flex-col space-y-1 rounded p-2 transition hover:bg-neutral-100 focus:outline-none focus-visible:bg-neutral-100"
                           href={{ ...href, hash: result.heading?.id }}
                         >
-                            <h3 className="flex items-center space-x-2 font-medium">
+                          <h3 className="flex items-center space-x-2 font-medium">
                             <Icon icon={icon} className="h-5 w-5 shrink-0" />
-                              <span>{result.title}</span>
-                            </h3>
-                            {result._snippetResult?.content.value != null ? (
-                              <p
-                                dangerouslySetInnerHTML={{
-                                  __html: result._snippetResult.content.value,
-                                }}
-                              />
-                            ) : null}
-                            <dl>
-                              <dt className="sr-only">{t('common.tags')}</dt>
-                              <dd className="my-px">
-                                <ul className="flex flex-wrap">
-                                  {result.tags.map((tag) => {
-                                    return (
-                                      <li
-                                        key={tag.id}
+                            <span>{result.title}</span>
+                          </h3>
+                          {result._snippetResult?.content.value != null ? (
+                            <p
+                              dangerouslySetInnerHTML={{
+                                __html: result._snippetResult.content.value,
+                              }}
+                            />
+                          ) : null}
+                          <dl>
+                            <dt className="sr-only">{t('common.tags')}</dt>
+                            <dd className="my-px">
+                              <ul className="flex flex-wrap">
+                                {result.tags.map((tag) => {
+                                  return (
+                                    <li
+                                      key={tag.id}
                                       className="mb-1 mr-4 text-xs font-bold uppercase tracking-wide text-brand-blue"
-                                      >
-                                        {tag.name}
-                                      </li>
-                                    )
-                                  })}
-                                </ul>
-                              </dd>
-                            </dl>
+                                    >
+                                      {tag.name}
+                                    </li>
+                                  )
+                                })}
+                              </ul>
+                            </dd>
+                          </dl>
                         </Link>
                       </article>
                     </li>

@@ -305,7 +305,7 @@ function CourseLinks(props: CourseLinksProps) {
                 href={routes.course({ id: course.id })}
               >
                 <Icon icon={AcademicCapIcon} className="h-4 w-4 shrink-0" />
-                  <span>{course.title}</span>
+                <span>{course.title}</span>
               </Link>
             </li>
           )
@@ -344,7 +344,7 @@ function RelatedResources(props: RelatedResourcesProps) {
                 href={routes.resource({ kind: resource.kind, id: resource.id })}
               >
                 <Icon icon={DocumentIcon} className="h-6 w-6 shrink-0" />
-                  <span>{resource.title}</span>
+                <span>{resource.title}</span>
               </Link>
             </li>
           )

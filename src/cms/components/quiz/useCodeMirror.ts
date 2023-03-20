@@ -56,8 +56,8 @@ export function useCodeMirror(
       })
 
       view = new EditorView({
-          extensions: [styles, basicSetup, xml()],
-          doc: initialValue,
+        extensions: [styles, basicSetup, xml()],
+        doc: initialValue,
         root: root ?? document,
         parent: ref.current ?? undefined,
       })

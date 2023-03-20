@@ -159,7 +159,7 @@
     "production": [
       ">=0.75%",
       "not dead",
-    "not op_mini all"
+      "not op_mini all"
     ]
   },
   "commitlint": {

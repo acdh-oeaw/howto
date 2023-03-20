@@ -169,7 +169,7 @@ function RelatedCourses(props: RelatedCoursesProps) {
                 href={routes.course({ id: course.id })}
               >
                 <Icon icon={DocumentIcon} className="h-6 w-6 shrink-0" />
-                  <span>{course.title}</span>
+                <span>{course.title}</span>
               </Link>
             </li>
           )
