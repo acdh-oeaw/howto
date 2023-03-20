@@ -1,7 +1,6 @@
-import type { UrlObject } from 'url'
-
 import type { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
+import type { UrlObject } from 'url'
 
 import { createUrl } from '@/utils/createUrl'
 import { removeTrailingSlash } from '@/utils/removeTrailingSlash'

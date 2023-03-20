@@ -69,22 +69,21 @@ export function TableOfContentsLevel(props: TableOfContentsLevelProps): JSX.Elem
         return (
           <li key={index} className="space-y-1.5">
             {heading.id !== undefined ? (
-              <Link href={{ hash: heading.id }}>
-                <a
-                  className={cx(
-                    'flex transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue',
-                    isHighlighted ? 'font-bold pointer-events-none' : undefined,
-                  )}
-                >
-                  {isHighlighted
-                    ? // <Icon
-                      //   icon={ChevronIcon}
-                      //   className="flex-shrink-0 absolute w-3.5 transform -rotate-90 right-full h-full mr-1"
-                      // />
-                      null
-                    : null}
-                  {heading.value}
-                </a>
+              <Link
+                href={{ hash: heading.id }}
+                className={cx(
+                  'flex transition hover:text-brand-blue relative focus:outline-none rounded focus-visible:ring focus-visible:ring-brand-blue',
+                  isHighlighted ? 'font-bold pointer-events-none' : undefined,
+                )}
+              >
+                {isHighlighted
+                  ? // <Icon
+                    //   icon={ChevronIcon}
+                    //   className="flex-shrink-0 absolute w-3.5 transform -rotate-90 right-full h-full mr-1"
+                    // />
+                    null
+                  : null}
+                {heading.value}
               </Link>
             ) : (
               <span>{heading.value}</span>

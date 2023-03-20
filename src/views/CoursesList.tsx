@@ -21,7 +21,7 @@ export function CoursesList(props: CoursesListProps): JSX.Element {
   const { t } = useI18n()
 
   return (
-    <ul className="grid md:grid-cols-2 gap-16">
+    <ul className="grid gap-16 md:grid-cols-2">
       {courses.map((course) => {
         const href = routes.course({ id: course.id })
         const authors = course.editors
@@ -29,17 +29,16 @@ export function CoursesList(props: CoursesListProps): JSX.Element {
         return (
           <li key={course.id}>
             <article className="grid gap-6">
-              <div className="rounded bg-gradient-to-r from-brand-blue to-brand-turquoise h-36 relative">
+              <div className="relative h-36 rounded bg-gradient-to-r from-brand-blue to-brand-turquoise">
                 {typeof course.featuredImage === 'string' && course.featuredImage.length > 0 ? (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={course.featuredImage} alt="" />
                 ) : null}
               </div>
-              <h3 className="text-xl font-bold text-brand-light-blue hover:text-neutral-100 transition">
-                <Link href={href}>
-                  <a>{course.title}</a>
-                </Link>
+              <h3 className="text-xl font-bold text-brand-light-blue transition hover:text-neutral-100">
+                <Link href={href}>{course.title}</Link>
               </h3>
-              <p className="text-neutral-300 text-base leading-relaxed">{course.abstract}</p>
+              <p className="text-base leading-relaxed text-neutral-300">{course.abstract}</p>
               <footer className="flex items-center justify-between">
                 <dl>
                   {Array.isArray(authors) && authors.length > 0 ? (
@@ -57,11 +56,9 @@ export function CoursesList(props: CoursesListProps): JSX.Element {
                                   <Image
                                     src={author.avatar}
                                     alt=""
-                                    className="w-10 h-10 rounded-full"
-                                    layout="fixed"
+                                    className="h-10 w-10 rounded-full object-cover"
                                     width={40}
                                     height={40}
-                                    objectFit="cover"
                                     title={name}
                                   />
                                 ) : null}
@@ -73,10 +70,11 @@ export function CoursesList(props: CoursesListProps): JSX.Element {
                     </div>
                   ) : null}
                 </dl>
-                <Link href={href}>
-                  <a className="font-medium text-base justify-self-end text-brand-light-blue hover:text-neutral-100 transition">
+                <Link
+                  className="justify-self-end text-base font-medium text-brand-light-blue transition hover:text-neutral-100"
+                  href={href}
+                >
                     {t('common.readMore')} &rarr;
-                  </a>
                 </Link>
               </footer>
             </article>

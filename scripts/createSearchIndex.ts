@@ -1,12 +1,12 @@
-import { promises as fs } from 'fs'
+import { promises as fs } from 'node:fs'
 
-import { loadEnvConfig } from '@next/env'
-import algoliasearch from 'algoliasearch'
+import env from '@next/env'
 import type { SearchIndex } from 'algoliasearch'
+import algoliasearch from 'algoliasearch'
 import { remark } from 'remark'
-import withFootnotes from 'remark-footnotes'
 import withFrontmatter from 'remark-frontmatter'
 import withGfm from 'remark-gfm'
+import withMdx from 'remark-mdx'
 import withHeadingIds from 'remark-slug'
 import toPlaintext from 'strip-markdown'
 import { VFile } from 'vfile'
@@ -14,13 +14,14 @@ import { VFile } from 'vfile'
 import { getCourseFilePath, getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostFilePath, getPostPreviews } from '@/cms/api/posts.api'
 import type { Locale } from '@/i18n/i18n.config'
-import withChunks from '@/mdx/plugins/remark-split-by-heading'
 import type { Chunk } from '@/mdx/plugins/remark-split-by-heading'
+import withChunks from '@/mdx/plugins/remark-split-by-heading'
 import type { IndexedCourse, IndexedResource } from '@/search/types'
 import { log } from '@/utils/log'
 import { noop } from '@/utils/noop'
 
-loadEnvConfig(process.cwd(), false, { info: noop, error: log.error })
+// eslint-disable-next-line import/no-named-as-default-member
+env.loadEnvConfig(process.cwd(), false, { info: noop, error: log.error })
 
 /**
  * Returns algolia search client configured with admin permissions.
@@ -50,13 +51,10 @@ function getAlgoliaSearchIndex(): SearchIndex | null {
  * Creates `unified` processor to split mdx into chunks by heading.
  */
 async function createProcessor() {
-  const { remarkMdx } = await import('xdm/lib/plugin/remark-mdx')
-
   const processor = remark()
     .use(withFrontmatter)
     .use(withGfm)
-    .use(withFootnotes)
-    .use(remarkMdx)
+    .use(withMdx)
     .use(withHeadingIds)
     .use(withChunks)
 
@@ -67,10 +65,8 @@ async function createProcessor() {
  * Creates `unified` processor to serialize mdx ast to plaintext. Keeps image alt text.
  */
 async function createPlaintextProcessor() {
-  const { remarkMdx } = await import('xdm/lib/plugin/remark-mdx')
-
   const processor = remark()
-    .use(remarkMdx)
+    .use(withMdx)
     .use(toPlaintext, {
       remove: [
         [
@@ -135,7 +131,7 @@ async function getResourceObjects(locale: Locale): Promise<Array<IndexedResource
       const file = new VFile({ value: fileContent, path: filePath })
       const ast = processor.parse(file)
       await processor.run(ast, file)
-      const chunks = file.data.chunks as Array<Chunk>
+      const chunks = file.data['chunks'] as Array<Chunk>
       await Promise.all(
         chunks.map(async (chunk, index) => {
           const plaintextAst = await plaintextProcessor.run(chunk.content)
@@ -192,7 +188,7 @@ async function getCourseObjects(locale: Locale): Promise<Array<IndexedCourse>> {
       const file = new VFile({ value: fileContent, path: filePath })
       const ast = processor.parse(file)
       await processor.run(ast, file)
-      const chunks = file.data.chunks as Array<Chunk>
+      const chunks = file.data['chunks'] as Array<Chunk>
       await Promise.all(
         chunks.map(async (chunk, index) => {
           const plaintextAst = await plaintextProcessor.run(chunk.content)

@@ -1,11 +1,10 @@
+import { compile } from '@mdx-js/mdx'
 import withSyntaxHighlighting from '@stefanprobst/rehype-shiki'
 import type { PreviewTemplateComponentProps } from 'netlify-cms-core'
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import withHeadingIds from 'rehype-slug'
-import withFootnotes from 'remark-footnotes'
 import withGitHubMarkdown from 'remark-gfm'
 import type { Highlighter } from 'shiki'
-import { compile } from 'xdm'
 
 import type { PostFrontmatter, PostMetadata } from '@/cms/api/posts.api'
 import { getSyntaxHighlighter } from '@/cms/previews/getSyntaxHighlighter'
@@ -42,7 +41,7 @@ export function ResourcePreview(props: PreviewTemplateComponentProps): JSX.Eleme
   const body = entry.getIn(['data', 'body'])
 
   const [metadata, setMetadata] = useState<PostMetadata>(initialMetadata)
-  const [mdxContent, setMdxContent] = useState<string | null | Error>(null)
+  const [mdxContent, setMdxContent] = useState<Error | string | null>(null)
   const [highlighter, setHighlighter] = useState<Highlighter | null>(null)
 
   useEffect(() => {
@@ -64,7 +63,6 @@ export function ResourcePreview(props: PreviewTemplateComponentProps): JSX.Eleme
           useDynamicImport: false,
           remarkPlugins: [
             withGitHubMarkdown,
-            withFootnotes,
             withTypographicQuotesAndDashes,
             [withCmsPreviewAssets, getAsset],
           ],
@@ -209,7 +207,7 @@ export function ResourcePreview(props: PreviewTemplateComponentProps): JSX.Eleme
         </div>
       ) : (
         <div className="flex items-center space-x-2">
-          <Spinner className="w-6 h-6 text-brand-blue" aria-label="Loading..." />
+          <Spinner className="h-6 w-6 text-brand-blue" aria-label="Loading..." />
           <p>Trying to render preview...</p>
         </div>
       )}

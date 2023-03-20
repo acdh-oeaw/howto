@@ -1,7 +1,7 @@
-@import 'nprogress/nprogress.css';
+@import url('nprogress/nprogress.css');
 
 #nprogress {
-  --color-nprogress: #88dbdf; /* acdh-ch-primary */
+  --color-nprogress: hsl(183deg 58% 70%); /* acdh-ch-primary */
 }
 
 #nprogress .bar {

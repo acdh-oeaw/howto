@@ -1,15 +1,14 @@
-import type { ParsedUrlQuery } from 'querystring'
-
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next'
+import type { ParsedUrlQuery } from 'querystring'
 import { Fragment } from 'react'
 
-import { getPersonById, getPersonIds } from '@/cms/api/people.api'
 import type { Person as PersonData } from '@/cms/api/people.api'
+import { getPersonById, getPersonIds } from '@/cms/api/people.api'
 import type { PostPreview } from '@/cms/api/posts.api'
 import { getPostPreviewsByAuthorId } from '@/cms/queries/posts.queries'
 import { getFullName } from '@/cms/utils/getFullName'
@@ -132,8 +131,8 @@ export default function AuthorPage(props: AuthorPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="text-white bg-brand-black">
-        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+      <PageContent className="bg-brand-black text-white">
+        <div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
           <PageTitle>{fullName}</PageTitle>
           <LeadIn>{author.description}</LeadIn>
           <section className="space-y-5">

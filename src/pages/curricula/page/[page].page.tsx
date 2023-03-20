@@ -1,15 +1,14 @@
-import type { ParsedUrlQuery } from 'querystring'
-
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
   GetStaticPropsContext,
   GetStaticPropsResult,
 } from 'next'
+import type { ParsedUrlQuery } from 'querystring'
 import { Fragment } from 'react'
 
 import type { CoursePreview } from '@/cms/api/courses.api'
-import { getCoursePreviews, getCourseIds } from '@/cms/api/courses.api'
+import { getCourseIds, getCoursePreviews } from '@/cms/api/courses.api'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
 import { PageContent } from '@/common/PageContent'
@@ -112,8 +111,8 @@ export default function CoursesPage(props: CoursesPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="text-white bg-brand-black">
-        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+      <PageContent className="bg-brand-black text-white">
+        <div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
           <PageTitle>{t('common.courses')}</PageTitle>
           <CoursesList courses={courses.items} />
           <Pagination

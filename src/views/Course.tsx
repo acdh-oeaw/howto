@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { Svg as AvatarIcon } from '@/assets/icons/user.svg'
+import AvatarIcon from '@/assets/icons/user.svg?symbol'
 import type { Course as CourseData } from '@/cms/api/courses.api'
 import { Figure } from '@/cms/components/Figure'
 import { Tabs } from '@/cms/components/Tabs'
@@ -35,16 +35,17 @@ export function Course(props: CourseProps): JSX.Element {
         <dl>
           {tags.length > 0 ? (
             <div className="">
-              <dt className="inline sr-only">{t('common.tags')}:</dt>
+              <dt className="sr-only inline">{t('common.tags')}:</dt>
               <dd className="inline">
-                <ul className="inline text-xs font-bold tracking-wide uppercase text-brand-light-blue">
+                <ul className="inline text-xs font-bold uppercase tracking-wide text-brand-light-blue">
                   {tags.map((tag, index) => {
                     return (
                       <li key={tag.id} className="inline">
-                        <Link href={routes.tag({ id: tag.id })}>
-                          <a className="transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-brand-light-blue">
-                            <span className={index !== 0 ? 'ml-1' : undefined}>{tag.name}</span>
-                          </a>
+                        <Link
+                          className="transition hover:text-white focus:outline-none focus-visible:ring focus-visible:ring-brand-light-blue"
+                          href={routes.tag({ id: tag.id })}
+                        >
+                          <span className={index !== 0 ? 'ml-1' : undefined}>{tag.name}</span>
                         </Link>
                         {index !== tags.length - 1 ? ', ' : null}
                       </li>
@@ -56,7 +57,7 @@ export function Course(props: CourseProps): JSX.Element {
           ) : null}
         </dl>
         <PageTitle>{title}</PageTitle>
-        <dl className="grid items-center grid-cols-2 py-4 text-sm border-t border-b text-neutral-100 border-neutral-200">
+        <dl className="grid grid-cols-2 items-center border-y border-neutral-200 py-4 text-sm text-neutral-100">
           <div className="space-y-1">
             {authors.length > 0 ? (
               <div>
@@ -71,20 +72,18 @@ export function Course(props: CourseProps): JSX.Element {
                               <Image
                                 src={author.avatar}
                                 alt=""
-                                className="w-8 h-8 rounded-full"
-                                layout="fixed"
+                                className="h-8 w-8 rounded-full object-cover"
                                 width={32}
                                 height={32}
-                                objectFit="cover"
                               />
                             ) : (
                               <Icon
                                 icon={AvatarIcon}
-                                className="flex-shrink-0 object-cover w-8 h-8 rounded-full"
+                                className="h-8 w-8 shrink-0 rounded-full object-cover"
                               />
                             )}
-                            <Link href={routes.author({ id: author.id })}>
-                              <a className="underline">{getFullName(author)}</a>
+                            <Link className="underline" href={routes.author({ id: author.id })}>
+                              {getFullName(author)}
                             </Link>
                           </div>
                         </li>
@@ -120,7 +119,7 @@ export function Course(props: CourseProps): JSX.Element {
       ) : null}
       <footer>
         {lastUpdatedAt != null ? (
-          <p className="text-sm text-right text-neutral-300">
+          <p className="text-right text-sm text-neutral-300">
             <span>{t('common.lastUpdated')}: </span>
             <time dateTime={lastUpdatedAt}>
               {formatDate(new Date(lastUpdatedAt), undefined, {
@@ -133,7 +132,7 @@ export function Course(props: CourseProps): JSX.Element {
           <EditLink
             collection="courses"
             id={course.id}
-            className="text-sm flex justify-end items-center space-x-1.5 text-neutral-300"
+            className="flex items-center justify-end space-x-1.5 text-sm text-neutral-300"
           >
             <span className="text-right">{t('common.suggestChangesToCourse')}</span>
           </EditLink>

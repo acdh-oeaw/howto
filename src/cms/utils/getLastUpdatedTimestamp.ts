@@ -1,5 +1,5 @@
-import { spawnSync } from 'child_process'
-import { relative } from 'path'
+import { spawnSync } from 'node:child_process'
+import { relative } from 'node:path'
 
 import { log } from '@/utils/log'
 import type { FilePath, IsoDateString } from '@/utils/ts/aliases'

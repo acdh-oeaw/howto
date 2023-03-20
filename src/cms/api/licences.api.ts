@@ -1,7 +1,7 @@
-import { join } from 'path'
+import { join } from 'node:path'
 
-import * as YAML from 'js-yaml'
 import type { VFile } from 'vfile'
+import * as YAML from 'yaml'
 
 import type { Locale } from '@/i18n/i18n.config'
 import { readFile } from '@/mdx/readFile'
@@ -84,9 +84,7 @@ export function getLicenceFilePath(id: ID, _locale: Locale): FilePath {
  * Returns licence data.
  */
 async function getLicenceData(file: VFile, _locale: Locale): Promise<LicenceData> {
-  const data = YAML.load(String(file), {
-    schema: YAML.CORE_SCHEMA,
-  }) as LicenceData
+  const data = YAML.parse(String(file)) as LicenceData
 
   return data
 }

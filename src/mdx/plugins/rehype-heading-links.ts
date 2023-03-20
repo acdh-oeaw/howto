@@ -1,6 +1,6 @@
 import type * as Hast from 'hast'
-import withHeadingLinks from 'rehype-autolink-headings'
 import type { Options } from 'rehype-autolink-headings'
+import withHeadingLinks from 'rehype-autolink-headings'
 import type { Pluggable } from 'unified'
 
 import { headingAnchorClassName } from '@/mdx/config'

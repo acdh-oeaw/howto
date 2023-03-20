@@ -57,7 +57,7 @@ export const siteMetadata: Record<Locale, SiteMetadata> = {
       publicPath: String(
         createUrl({
           pathname: '/open-graph.webp',
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+
           locale: 'en' === defaultLocale ? undefined : 'en',
           baseUrl: url,
         }),
@@ -85,7 +85,7 @@ export const siteMetadata: Record<Locale, SiteMetadata> = {
       publicPath: String(
         createUrl({
           pathname: '/open-graph.webp',
-          // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+
           locale: 'de' === defaultLocale ? undefined : 'de',
           baseUrl: url,
         }),

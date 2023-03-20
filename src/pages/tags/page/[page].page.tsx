@@ -1,5 +1,3 @@
-import type { ParsedUrlQuery } from 'querystring'
-
 import type {
   GetStaticPathsContext,
   GetStaticPathsResult,
@@ -7,11 +5,12 @@ import type {
   GetStaticPropsResult,
 } from 'next'
 import Link from 'next/link'
+import type { ParsedUrlQuery } from 'querystring'
 import { Fragment } from 'react'
 
-import { Svg as TagIcon } from '@/assets/icons/tag.svg'
-import { getTagIds, getTags } from '@/cms/api/tags.api'
+import TagIcon from '@/assets/icons/tag.svg?symbol'
 import type { Tag } from '@/cms/api/tags.api'
+import { getTagIds, getTags } from '@/cms/api/tags.api'
 import { getPostPreviewsByTagId } from '@/cms/queries/posts.queries'
 import type { Page } from '@/cms/utils/paginate'
 import { getPageRange, paginate } from '@/cms/utils/paginate'
@@ -125,7 +124,7 @@ export default function TagsPage(props: TagsPageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="flex flex-col w-full max-w-screen-xl px-10 py-16 mx-auto space-y-10">
+      <PageContent className="mx-auto flex w-full max-w-screen-xl flex-col space-y-10 px-10 py-16">
         <PageTitle>{t('common.tags')}</PageTitle>
         <TagsList tags={tags.items} />
       </PageContent>
@@ -152,13 +151,11 @@ function TagsList(props: TagsListProps): JSX.Element | null {
       {tags.map((tag) => {
         return (
           <li key={tag.id}>
-            <Link href={routes.tag({ id: tag.id })}>
-              <a className="flex items-center space-x-1.5">
-                <Icon icon={TagIcon} className="flex-shrink-0 w-6 h-6" />
-                <span>
-                  {tag.name} ({tag.posts})
-                </span>
-              </a>
+            <Link className="flex items-center space-x-1.5" href={routes.tag({ id: tag.id })}>
+              <Icon icon={TagIcon} className="h-6 w-6 shrink-0" />
+              <span>
+                {tag.name} ({tag.posts})
+              </span>
             </Link>
           </li>
         )

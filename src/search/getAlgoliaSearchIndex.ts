@@ -1,5 +1,5 @@
-import algoliasearch from 'algoliasearch/lite'
 import type { SearchIndex } from 'algoliasearch/lite'
+import algoliasearch from 'algoliasearch/lite'
 
 import { log } from '@/utils/log'
 

@@ -1,5 +1,4 @@
 import { randomBytes } from 'crypto'
-
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { url as baseUrl } from '~/config/site.config'

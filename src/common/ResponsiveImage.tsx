@@ -1,5 +1,5 @@
+import type { ImageProps, StaticImageData } from 'next/image'
 import Image from 'next/image'
-import type { ImageProps } from 'next/image'
 
 /**
  * Renders a responsive image in a content column.
@@ -12,13 +12,7 @@ export function ResponsiveImage(props: ImageProps): JSX.Element {
 
   return (
     <a href={href} target="_blank" rel="noreferrer">
-      <Image
-        layout="responsive"
-        sizes="800px"
-        {...props}
-        alt={props.alt}
-        unoptimized={isUnoptimized}
-      />
+      <Image sizes="800px" {...props} alt={props.alt} unoptimized={isUnoptimized} />
     </a>
   )
 }

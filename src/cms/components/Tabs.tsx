@@ -33,7 +33,7 @@ export function Tabs(props: TabsProps): JSX.Element {
 
   return (
     <Fragment>
-      <div className="mt-4 mb-6 not-prose">
+      <div className="not-prose mt-4 mb-6">
         <ul className="flex gap-12" role="tablist">
           {tabs.map((tab, index) => {
             const title = tab.props.title

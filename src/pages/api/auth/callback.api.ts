@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-// import dedent from 'strip-indent'
 
+// import dedent from 'strip-indent'
 import { url as baseUrl } from '~/config/site.config'
 
 /**
@@ -74,7 +74,7 @@ function renderErrorTemplate(response: NextApiResponse, message: string, statusC
  */
 function renderSuccessTemplate(response: NextApiResponse, data: { access_token: string }) {
   const provider = 'github'
-  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+
   const allowedOrigin = new URL(baseUrl).host
 
   response.setHeader('Content-Type', 'text/html; charset=UTF-8')

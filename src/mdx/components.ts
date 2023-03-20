@@ -8,6 +8,7 @@ import { Video } from '@/cms/components/Video'
 
 export type MdxComponentType =
   /** Layout wrapper. */
+  // eslint-disable-next-line @typescript-eslint/sort-type-union-intersection-members
   | 'wrapper'
   /** CommonMark. */
   | 'a'
@@ -39,7 +40,7 @@ export type MdxComponentType =
 
 export type MdxComponentMap = {
   /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  [name: string]: JSX.IntrinsicElements | ComponentType<any>
+  [name: string]: ComponentType<any> | JSX.IntrinsicElements
 }
 
 /**

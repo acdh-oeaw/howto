@@ -1,7 +1,7 @@
-import { join } from 'path'
+import { join } from 'node:path'
 
-import * as YAML from 'js-yaml'
 import type { VFile } from 'vfile'
+import * as YAML from 'yaml'
 
 import type { Locale } from '@/i18n/i18n.config'
 import { readFile } from '@/mdx/readFile'
@@ -88,7 +88,7 @@ export function getTagFilePath(id: ID, _locale: Locale): FilePath {
  * Returns tag data.
  */
 async function getTagData(file: VFile, _locale: Locale): Promise<TagData> {
-  const data = YAML.load(String(file), { schema: YAML.CORE_SCHEMA }) as TagData
+  const data = YAML.parse(String(file)) as TagData
 
   return data
 }

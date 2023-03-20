@@ -1,5 +1,5 @@
-import rosetta from 'rosetta'
 import type { Rosetta } from 'rosetta'
+import rosetta from 'rosetta'
 
 import type { Locale } from '@/i18n/i18n.config'
 

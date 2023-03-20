@@ -1,7 +1,7 @@
-import * as fs from 'fs'
-import * as path from 'path'
+import * as fs from 'node:fs'
+import * as path from 'node:path'
 
-import { format } from 'prettier'
+import prettier from 'prettier'
 
 import { getCoursePreviews } from '@/cms/api/courses.api'
 import { getPostPreviews } from '@/cms/api/posts.api'
@@ -16,7 +16,8 @@ function createRedirects(resources: Array<{ uuid: string; id: string }>, fileNam
 
   fs.writeFileSync(
     path.join(process.cwd(), fileName),
-    format(JSON.stringify(redirects), { parser: 'json' }),
+
+    prettier.format(JSON.stringify(redirects), { parser: 'json' }),
     {
       encoding: 'utf-8',
     },

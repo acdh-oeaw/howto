@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { Svg as PencilIcon } from '@/assets/icons/pencil.svg'
+import PencilIcon from '@/assets/icons/pencil.svg?symbol'
 import type { collections } from '@/cms/cms.config'
 import { Icon } from '@/common/Icon'
 import { routes } from '@/navigation/routes.config'
@@ -35,7 +35,7 @@ export function EditLink(props: EditLinkProps): JSX.Element {
       )}
       className={className}
     >
-      <Icon icon={PencilIcon} className="flex-shrink-0" />
+      <Icon icon={PencilIcon} className="shrink-0" />
       {children}
     </a>
   )

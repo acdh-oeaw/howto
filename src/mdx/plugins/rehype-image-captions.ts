@@ -2,7 +2,7 @@ import type * as Hast from 'hast'
 import { h } from 'hastscript'
 import type { Transformer } from 'unified'
 import type * as Unist from 'unist'
-import { visit, SKIP } from 'unist-util-visit'
+import { SKIP, visit } from 'unist-util-visit'
 
 /**
  * Rehype plugin which wraps images in `<figure>` and adds `<figcaption>` when a `title` attribute is provided.

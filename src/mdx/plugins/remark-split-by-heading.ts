@@ -1,7 +1,7 @@
 import type { Root } from 'mdast'
 import { toString } from 'mdast-util-to-string'
 import type { Transformer } from 'unified'
-import { visit, SKIP } from 'unist-util-visit'
+import { SKIP, visit } from 'unist-util-visit'
 
 export interface Chunk {
   title: string | null

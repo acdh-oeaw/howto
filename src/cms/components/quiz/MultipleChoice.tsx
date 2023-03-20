@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import type { ReactElement, ReactNode } from 'react'
+import { useState } from 'react'
 
 import { getChildElements } from '@/cms/components/quiz/getChildElements'
 import { QuizCardStatus, useQuiz } from '@/cms/components/quiz/Quiz'
@@ -63,7 +63,7 @@ export function MultipleChoice(props: MultipleChoiceProps): JSX.Element {
   const type = isSingleChoice ? 'radio' : 'checkbox'
 
   const component = (
-    <ul className="flex flex-col space-y-4 quiz-multiple-choice">
+    <ul className="quiz-multiple-choice flex flex-col space-y-4">
       {options.map((option, index) => {
         return (
           <li key={index}>

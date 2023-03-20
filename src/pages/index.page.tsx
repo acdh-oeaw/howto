@@ -27,7 +27,7 @@ export interface HomePageMetadata extends Record<string, unknown> {
 
 export interface HomePageProps {
   dictionary: Dictionary
-  locale: 'en' | 'de'
+  locale: 'de' | 'en'
   posts: Array<PostPreview>
   text: string
 }
@@ -71,8 +71,8 @@ export default function HomePage(props: HomePageProps): JSX.Element {
         canonicalUrl={canonicalUrl}
         languageAlternates={languageAlternates}
       />
-      <PageContent className="text-white bg-brand-black">
-        <div className="flex flex-col max-w-6xl gap-12 p-8 py-24 mx-auto xs:py-48">
+      <PageContent className="bg-brand-black text-white">
+        <div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
           <div className="flex flex-col-reverse">
             <h1 className="text-5xl font-black tracking-tighter 2xs:text-6xl xs:text-7xl">
               {locale === 'de' ? (
@@ -91,17 +91,18 @@ export default function HomePage(props: HomePageProps): JSX.Element {
             </h1>
           </div>
 
-          <div className="grid flex-1 gap-4 text-xl font-medium text-neutral-300 leading-relaxed">
+          <div className="grid flex-1 gap-4 text-xl font-medium leading-relaxed text-neutral-300">
             {text}
           </div>
 
           <section className="my-12 grid gap-12">
-            <div className="flex border-b items-center py-3 justify-between">
+            <div className="flex items-center justify-between border-b py-3">
               <h2 className="text-2xl font-bold text-neutral-100">{t(['common', 'new-posts'])}</h2>
-              <Link href={routes.resources({ kind: 'posts' })}>
-                <a className="px-6 py-2 bg-brand-blue inline-flex items-center font-medium rounded text-brand-black hover:bg-brand-light-blue focus:bg-brand-light-blue transition">
+              <Link
+                className="inline-flex items-center rounded bg-brand-blue px-6 py-2 font-medium text-brand-black transition hover:bg-brand-light-blue focus:bg-brand-light-blue"
+                href={routes.resources({ kind: 'posts' })}
+              >
                   {t(['common', 'see-all-posts'])}
-                </a>
               </Link>
             </div>
             <ResourcesList posts={posts} />

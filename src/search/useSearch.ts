@@ -13,20 +13,20 @@ import {
 
 const searchStatus = ['idle', 'loading', 'success', 'error', 'disabled'] as const
 
-export type SearchStatus = typeof searchStatus[number]
+export type SearchStatus = (typeof searchStatus)[number]
 
 /**
  * Returns search results for search term.
  */
 export function useSearch(searchTerm: string): {
-  data: Array<Hit<IndexedResource | IndexedCourse>> | undefined
+  data: Array<Hit<IndexedCourse | IndexedResource>> | undefined
   status: SearchStatus
   error: Error | null
 } {
   const [searchIndex] = useState(() => {
     return getAlgoliaSearchIndex()
   })
-  const [searchResults, setSearchResults] = useState<Array<Hit<IndexedResource | IndexedCourse>>>(
+  const [searchResults, setSearchResults] = useState<Array<Hit<IndexedCourse | IndexedResource>>>(
     [],
   )
   const [status, setStatus] = useState<SearchStatus>('idle')
@@ -57,7 +57,7 @@ export function useSearch(searchTerm: string): {
       setStatus('loading')
 
       try {
-        const results = await searchIndex.search<IndexedResource | IndexedCourse>(
+        const results = await searchIndex.search<IndexedCourse | IndexedResource>(
           debouncedSearchTerm,
           {
             hitsPerPage: MAX_SEARCH_RESULTS,

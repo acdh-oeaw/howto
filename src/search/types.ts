@@ -10,11 +10,11 @@ export type IndexedType = IndexedObject['type']
  * Resource fields indexed with Algolia.
  */
 export interface IndexedResource
-  extends Pick<PostPreview, 'id' | 'uuid' | 'title' | 'date' | 'lang'> {
+  extends Pick<PostPreview, 'date' | 'id' | 'lang' | 'title' | 'uuid'> {
   type: 'resources'
   kind: ResourceKind
   objectID: string
-  authors: Array<Pick<PostPreview['authors'][number], 'id' | 'firstName' | 'lastName'>>
+  authors: Array<Pick<PostPreview['authors'][number], 'firstName' | 'id' | 'lastName'>>
   tags: Array<Pick<PostPreview['tags'][number], 'id' | 'name'>>
   /** Either the `abstract`, or a chunk of the `body`. */
   content: string
@@ -26,7 +26,7 @@ export interface IndexedResource
  * Course fields indexed with Algolia.
  */
 export interface IndexedCourse
-  extends Pick<CoursePreview, 'id' | 'uuid' | 'title' | 'date' | 'lang'> {
+  extends Pick<CoursePreview, 'date' | 'id' | 'lang' | 'title' | 'uuid'> {
   type: 'courses'
   objectID: string
   tags: Array<Pick<CoursePreview['tags'][number], 'id' | 'name'>>

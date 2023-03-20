@@ -1,8 +1,8 @@
 import type { ResourcePreview } from '@/cms/api/resources.api'
 
 export interface ResourcesListItem
-  extends Pick<ResourcePreview, 'id' | 'kind' | 'title' | 'abstract'> {
-  authors: Array<Pick<ResourcePreview['authors'][number], 'id' | 'firstName' | 'lastName'>>
+  extends Pick<ResourcePreview, 'abstract' | 'id' | 'kind' | 'title'> {
+  authors: Array<Pick<ResourcePreview['authors'][number], 'firstName' | 'id' | 'lastName'>>
 }
 
 export type ResourcesListData = Array<ResourcesListItem>

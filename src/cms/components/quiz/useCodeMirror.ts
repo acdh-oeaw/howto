@@ -1,4 +1,4 @@
-import type { EditorView } from '@codemirror/basic-setup'
+import type { EditorView } from '@codemirror/view'
 import type { RefObject } from 'react'
 import { useEffect, useState } from 'react'
 
@@ -41,7 +41,8 @@ export function useCodeMirror(
     let view: EditorView | null = null
 
     async function setup() {
-      const { basicSetup, EditorState, EditorView } = await import('@codemirror/basic-setup')
+      const { basicSetup } = await import('codemirror')
+      const { EditorView } = await import('@codemirror/view')
       const { xml } = await import('@codemirror/lang-xml')
 
       const styles = EditorView.theme({
@@ -55,10 +56,8 @@ export function useCodeMirror(
       })
 
       view = new EditorView({
-        state: EditorState.create({
           extensions: [styles, basicSetup, xml()],
           doc: initialValue,
-        }),
         root: root ?? document,
         parent: ref.current ?? undefined,
       })

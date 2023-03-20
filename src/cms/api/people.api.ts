@@ -1,7 +1,8 @@
-import { join } from 'path'
+import { join } from 'node:path'
 
-import * as YAML from 'js-yaml'
+import type { StaticImageData } from 'next/image'
 import type { VFile } from 'vfile'
+import * as YAML from 'yaml'
 
 import { createStaticImage } from '@/cms/utils/createStaticImage'
 import type { Locale } from '@/i18n/i18n.config'
@@ -102,9 +103,7 @@ export function getPersonFilePath(id: ID, _locale: Locale): FilePath {
  * Returns person data.
  */
 async function getPersonData(file: VFile, _locale: Locale): Promise<PersonData> {
-  const data = YAML.load(String(file), {
-    schema: YAML.CORE_SCHEMA,
-  }) as PersonData
+  const data = YAML.parse(String(file)) as PersonData
 
   return data
 }
