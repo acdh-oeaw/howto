@@ -25,7 +25,7 @@ import { useAlternateUrls } from '@/metadata/useAlternateUrls'
 import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
 import { routes } from '@/navigation/routes.config'
 import type { IsoDateString } from '@/utils/ts/aliases'
-import { Course } from '@/views/Course'
+import { Course, CourseHeader } from '@/views/Course'
 
 const RELATED_COURSES_COUNT = 4
 
@@ -131,11 +131,14 @@ export default function CoursePage(props: CoursePageProps): JSX.Element {
         }}
       />
       <PageContent className="bg-brand-black text-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
           <aside />
           <div className="min-w-0">
-            <Course course={course} lastUpdatedAt={lastUpdatedAt} />
-            <RelatedCourses courses={related} />
+            <article className="grid space-y-12">
+              <CourseHeader course={course} lastUpdatedAt={lastUpdatedAt} />
+              <Course course={course} lastUpdatedAt={lastUpdatedAt} />
+              <RelatedCourses courses={related} />
+            </article>
           </div>
         </div>
       </PageContent>

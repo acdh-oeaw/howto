@@ -4,9 +4,7 @@ import Link from 'next/link'
 import ClockIcon from '@/assets/icons/clock.svg?symbol'
 import AvatarIcon from '@/assets/icons/user.svg?symbol'
 import type { Post as PostData } from '@/cms/api/posts.api'
-import { Figure } from '@/cms/components/Figure'
 import { Quiz } from '@/cms/components/quiz/Quiz'
-import { Tabs } from '@/cms/components/Tabs'
 import { getFullName } from '@/cms/utils/getFullName'
 import { Icon } from '@/common/Icon'
 import { ImageLink } from '@/common/ImageLink'
@@ -38,11 +36,9 @@ export function Resource(props: ResourceProps): JSX.Element {
         <Mdx
           code={resource.code}
           components={{
-            Figure,
             img: ImageLink,
             Image: ResponsiveImage,
             Quiz,
-            Tabs,
           }}
         />
       </div>
