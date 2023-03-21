@@ -523,7 +523,7 @@ Gruppierungen können auch innerhalb anderer Gruppen platziert werden:
 - `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleine Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
 - `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\"klima\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\\"klimafreundlichesMobilitätskonzept\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\\"klima\\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\\\"klimafreundlichesMobilitätskonzept\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Zeichenklassen mit `[ ]`
 
@@ -624,6 +624,14 @@ _Negation_ mit `[^ ...]` definieren:
       <Quiz.Message type="incorrect">
         Überlegen Sie nochmal!
       </Quiz.Message>
+    </Quiz.MultipleChoice>
+  </Quiz.Card>
+
+  <Quiz.Card>
+    <Quiz.MultipleChoice variant="multiple">
+      <Quiz.Question>
+        Mit \[] wird eine Auswahl an Zeichen definiert, sodass ein Suchergebnis oft der Verwendung von | gleich ist (zB \[word="h(o|a)se"] und \[word="h\[oa]se"] liefern dasselbe Ergebnis). Unten finden Sie ein Beispiel, bei dem dies nicht der Fall ist. Wählen Sie das Beispiel und die korrekte Begründung aus.
+      </Quiz.Question>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
