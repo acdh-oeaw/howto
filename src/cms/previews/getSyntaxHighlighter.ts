@@ -8,8 +8,8 @@ export async function getSyntaxHighlighter(): Promise<Highlighter> {
     /* @ts-expect-error Missing module declaration. */
     'shiki/dist/index.browser.mjs'
   )
-  setOnigasmWASM('https://unpkg.com/shiki@0.9.6/dist/onigasm.wasm')
-  setCDN('https://unpkg.com/shiki@0.9.6/')
+  setOnigasmWASM('https://unpkg.com/shiki@0.14.1/dist/onig.wasm')
+  setCDN('https://unpkg.com/shiki@0.14.1/')
   const highlighter = await getHighlighter({
     theme: 'poimandres',
     langs: supportedLanguages,
