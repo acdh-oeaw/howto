@@ -10,10 +10,23 @@ export interface FigureProps {
   height?: number
   blurDataURL?: string
   placeholder?: 'blur'
+  sizes?: string
+  /** @default 'link' */
+  variant?: 'image' | 'link'
 }
 
 export function Figure(props: FigureProps): JSX.Element {
-  const { src, alt = '', children: caption, width, height, blurDataURL, placeholder } = props
+  const {
+    src,
+    alt = '',
+    children: caption,
+    width,
+    height,
+    blurDataURL,
+    placeholder,
+    sizes,
+    variant,
+  } = props
 
   return (
     <figure>
@@ -27,6 +40,8 @@ export function Figure(props: FigureProps): JSX.Element {
           alt={alt}
           blurDataURL={blurDataURL}
           placeholder={placeholder}
+          sizes={sizes}
+          variant={variant}
         />
       )}
       {caption != null ? <figcaption>{caption}</figcaption> : null}

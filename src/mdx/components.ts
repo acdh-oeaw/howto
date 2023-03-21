@@ -1,7 +1,10 @@
 import type { ComponentType } from 'react'
 
+import { Carousel } from '@/cms/components/Carousel'
 import { Download } from '@/cms/components/Download'
+import { Figure } from '@/cms/components/Figure'
 import { SideNote } from '@/cms/components/SideNote'
+import { Tab, Tabs } from '@/cms/components/Tabs'
 import { Video } from '@/cms/components/Video'
 
 export type MdxComponentType =
@@ -45,7 +48,11 @@ export type MdxComponentMap = {
  * Custom components allowed in mdx content.
  */
 export const components: MdxComponentMap = {
+  Carousel,
   Download,
+  Figure,
   SideNote,
+  Tab,
+  Tabs,
   Video,
 }
