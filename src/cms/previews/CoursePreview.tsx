@@ -169,17 +169,19 @@ export function CoursePreview(props: PreviewTemplateComponentProps): JSX.Element
   return (
     <Preview {...props}>
       {typeof mdxContent === 'string' ? (
-        <Course
-          course={{
-            id: entry.get('slug'),
-            code: mdxContent,
-            data: {
-              metadata,
-            },
-          }}
-          lastUpdatedAt={null}
-          isPreview
-        />
+        <div className="mx-auto w-full max-w-6xl rounded bg-brand-black p-8 text-white">
+          <Course
+            course={{
+              id: entry.get('slug'),
+              code: mdxContent,
+              data: {
+                metadata,
+              },
+            }}
+            lastUpdatedAt={null}
+            isPreview
+          />
+        </div>
       ) : mdxContent instanceof Error ? (
         <div>
           <p>Failed to render preview.</p>
