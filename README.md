@@ -31,14 +31,16 @@ the bottom of each post.
    require authentication.
 6. To apply the correct styles to the CMS preview, you will have to run `yarn cms:styles` once. On
    Windows please run `yarn cms:styles-win`.
-7. Start the local cms with `yarn cms:dev`.
+7. Now you can run a development build with
+   `yarn dev`.
 8. You may be prompted to allow firewall access for node.exe on Windows. Please allow that on at
    least private networks.
-9. Open a second terminal/command prompt.
-10. Then run either a production build of the website (does not work on Windows yet) with
-    `NEXT_PUBLIC_LOCAL_CMS_URL='http://localhost:8081/api/v1' yarn build && yarn start` or a
-    development build with `yarn dev` and visit
-    [http://localhost:3000/cms](http://localhost:3000/cms).
+9. Visit [http://localhost:3000/cms](http://localhost:3000/cms)
+
+Alternatively you can
+* start the CMS in one console (start the local cms with `yarn cms:dev`) and
+* then run a production build of the website (does not work on Windows yet) with
+  `NEXT_PUBLIC_USE_LOCAL_CMS='true' yarn build && yarn start`.
 
 Please be patient starting the services will take a while.
 
