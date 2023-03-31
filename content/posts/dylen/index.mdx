@@ -27,7 +27,7 @@ After completing this resource, you will
 
 [DYLEN](https://dylen-tool.acdh.oeaw.ac.at/) is the acronym of the **Diachronic Dynamics of Lexical Networks.** It is an interactive visualization tool that the Diachronic Dynamics of Lexical Networks project team created to provide insights into the dynamic lexical changes of Austrian German during the last 20 years. It helps lexicographers and linguists to analyse the development of Austrian German lexemes over the course of time. It is an open source tool that can be used free of charge.
 
-[DYLEN](https://dylen-tool.acdh.oeaw.ac.at/) enables lexical network research on large-scale authentic language data that is taken from two Austrian Geman corpora, the [Austria Media Corpus (amc)](https://amc.acdh.oeaw.ac.at/) and [Corpus of Austrian Parliamentary Records (ParlAT)](https://www.oeaw.ac.at/acdh/tools/parlat). 
+[DYLEN](https://dylen-tool.acdh.oeaw.ac.at/) enables lexical network research on large-scale authentic language data that are taken from two Austrian Geman corpora, the [Austria Media Corpus (amc)](https://amc.acdh.oeaw.ac.at/) and [Corpus of Austrian Parliamentary Records (ParlAT)](https://www.oeaw.ac.at/acdh/tools/parlat). 
 
 Dylen provides three options:
 
@@ -40,7 +40,7 @@ and 2 additional components:
 - Node Metrics Comparison,
 - Time Series Analysis.   
 
-![](images/picture1.png "This is the DYLEN user interface.")
+![](images/picture1.png "Screenshot of the DYLEN user interface.")
 
 <SideNote type="info" title="amc and ParlAT">
 Both corpora provide large-scale language data on Austrian German from the last 20 years.
@@ -50,15 +50,17 @@ The amc is one of the largest German language corpora and reflects the Austrian 
 The [ParlAT corpus](https://www.oeaw.ac.at/acdh/tools/parlat) comprises the Austrian parliamentary records and contains around 75 million tokens. This corpus is expanded over time, too. It is also part of the CLARIN [ParlaMINT project](https://www.clarin.eu/parlamint).
 </SideNote>
 
-I will now guide you through on how to use the tool.
+
 
 ## Networks
 
-Diachronic networks derive from the texts in amc and ParlAT with the help of word embeddings. In NLP, word embeddings are representations of words.
+Diachronic networks derive from the texts in amc and ParlAT with the help of word embeddings. In NLP, word embeddings are representations of words. 
 
 ### Ego Network
 
-The Ego Network visualizes the **50** most closely related **semantic neighbours** of a **target word**.
+Connected words are **semantic neighbours** that share some aspects of the **target word**. Some can even substitute the target word in a particular context. The Ego Network visualizes the **50** most closely related semantic neighbours of a target word. Note that it does not show the target word itself. The semantic neighbours are classified as parts of speech (POS), e.g. noun, proper nouns and verbs. 
+
+![A graph, two line graphs to show the semantic neighbours, node metrics and time series analysis for the word "Geld" in the AMC texts in 1996.](images/egonetwork-interface.png "Egonetwork of the word \"Geld\" (money), taken from the AMC  texts in 1996.")
 
 #### Instructions:
 
