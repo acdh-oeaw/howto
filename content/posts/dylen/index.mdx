@@ -54,7 +54,7 @@ The [ParlAT corpus](https://www.oeaw.ac.at/acdh/tools/parlat) comprises the Aust
 
 Diachronic networks derive from the texts in amc and ParlAT with the help of word embeddings. In NLP, word embeddings are representations of words. 
 
-The user interface is very intuitive but every search starts with deciding on either an **ego network** or a **general network** (**party** or **speaker**). The first step on your diachronic network journey is to select the network that you would like to generate.
+The user interface is very intuitive but every search starts with deciding on either an **ego network** or a **general network** (**party** or **speaker**). In each network type, you can analyse various parameters of a single entity or compare two entities. The first step on your diachronic network journey is to select the network that you would like to generate.
 
 ### Ego Network
 
@@ -81,7 +81,11 @@ Once you clicked on visualize, Dylen will generate your network. Let's stick wit
 
 Above, you see the semantic neighbours represented by nodes that can be dragged further apart to get a better overview. Their size indicates their frequency. The bigger the node, the more commonly it is used in the corpus. You can click on each node to highlight the connections. The colours represent different parts of speech and you can change them to your preference.
 
-#### Metrics
+### Time Series Analysis
+
+The Time Series Analysis allows to compare two words over time; the comparison can be relative to first year, last year or previous year.
+
+#### Metrics and Node metric comparison
 
 ![a bar with five sliders](images/parallelcoordinatesoptions.png "Parallel coordinates options: normalised frequency, degree centrality, betweenness centrality, pagerank, clustering coefficient")
 
@@ -130,13 +134,17 @@ On the input field on the left side bar, you can
    - adjust the percentage of nodes to be displayed,
 4. and finally click _Visualize_. 
 
-![Four visualisations for General Network (party)](images/generalnetwork_party_comparison_spö-övp2000.png "General Network (party) comparison for SPÖ and ÖVP in 2000.")
-
-## Other components
+![Four visualisations for General Network (party)](images/generalnetwork_party_comparison_spö-övp2000.png "General Network (party) comparison for SPÖ and ÖVP in 2000. The word \"brauchen\" (need) and its connections are highlighted in the first network visualisation")
 
 ### Node Metrics Comparison
 
+The General Network analysis allows for node metric comparison too. You can choose between the same metrics as in the ego network. When you compare two parties or speakers, each component gets a different colour. Also, you can ask Dylen to return a table for the node metrics with indicating colours (see below). 
+
+![Table with metric columns showing words in alphabetical order and the metric values](images/generalnetwork_party_nodemetrics_spö_övp_2000.png "In the table, one can see a table of nodes and the values for the respective metrics.")
+
 ### Time Series Analysis
+
+In the General Network analysis, the development of speakers or parties can be traced, like the ego network traces individual words. You can visualise your results as a graph on a timeline, or as a table with selected metrics and values.
 
 ## Links
 
