@@ -50,8 +50,6 @@ The amc is one of the largest German language corpora and reflects the Austrian 
 The [ParlAT corpus](https://www.oeaw.ac.at/acdh/tools/parlat) comprises the Austrian parliamentary records and contains around 75 million tokens. This corpus is expanded over time, too. It is also part of the CLARIN [ParlaMINT project](https://www.clarin.eu/parlamint).
 </SideNote>
 
-
-
 ## Networks
 
 Diachronic networks derive from the texts in amc and ParlAT with the help of word embeddings. In NLP, word embeddings are representations of words. 
@@ -62,18 +60,18 @@ The user interface is very intuitive but every search starts with deciding on ei
 
 Connected words are **semantic neighbours** that share some aspects of the **target word**. Some can even substitute the target word in a particular context. The Ego Network visualizes the **50** most closely related semantic neighbours of a target word. Note that it does not show the target word itself because it would render the visualisation impossible to read. The semantic neighbours are classified as parts of speech (POS), e.g. noun, proper nouns and verbs. 
 
-![A graph, two line graphs to show the semantic neighbours, node metrics and time series analysis for the word "Geld" in the AMC texts in 1996.](images/egonetwork-interface.png "Egonetwork of the word \"Geld\" (money), taken from the AMC  texts in 1996.")
+![A graph, two line graphs to show the semantic neighbours, node metrics and time series analysis for the word "Geld" in the AMC texts in 1996.](images/egonetwork-interface.png "Egonetwork of the word \\"Geld\\" (money), taken from the AMC  texts in 1996.")
 
 #### Instructions:
 
-On the input field on the left side bar
+![](images/picture2.png "Input field for Ego Network")
+
+On the input field on the left side bar, you can
 
 1. select a corpus (i.e., AMC or PARLAT), 
 2. select a subcorpus (e.g., a specific newspaper),
 3. type a target word (e.g., 'Geld'),
 4. and finally click _Visualize_.
-
-![](images/picture2.png "Input field of Ego Network")
 
 <SideNote type="info" title="Additional information">
 
