@@ -89,6 +89,30 @@ In addition, you can select the metrics for the parallel coordinates with the sl
 
 ![four lines cut by five axes for the words verurteilen, Strafe, Haft and Gefängnis](images/node-metric-comparison_geldstrafe.png "Lines and fives axes for the words verurteilen, Strafe, Haft, Gefängnis when analysing an ego network for \\\"Geldstrafe\\\" in 1996.")
 
+
+<SideNote type="info" title="What do the metrics mean?">
+#### Frequency
+
+...represents how often a word occurs.
+
+#### Degree centrality
+
+...represents how connected a word is. It shows the total number of edges linked to a node. In the example, "Haft" has a higher degree centrality than Strafe, meaning that it is more strongly connected.
+
+#### Betweenness centrality
+
+...represents the number of shortest paths that pass through that node. It shows how frequently nodes tand between each other. Again, "Haft" shows more betweenness centrality than "Strafe", meeaning than more shorter paths pass through "Haft".
+
+#### Pagerank
+
+...represents the notion that a nodes is as important as the combined importance of its linked nodes.
+
+#### Clustering coefficient
+...measures the degree to which nodes in a graph tend to clulster together.
+
+_The above explanations are taken from the Dylen tool website and can be access and read in more detail via the information button in the node metric analysis visualisation._
+</SideNote>
+
 ### General Networks
 
 General networks reflect the speeches of a particular politician or a political party. Those networks are larger than ego networks and require more filters that make the visualisation more legible. Under General Networks you can explore **frequent lexemes** used by particular political parties **(General Network Party)** or individual politicians **(General Network Speaker)** in the Austrian Parliament. 
