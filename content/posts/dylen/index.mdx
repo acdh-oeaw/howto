@@ -54,7 +54,7 @@ The [ParlAT corpus](https://www.oeaw.ac.at/acdh/tools/parlat) comprises the Aust
 
 Diachronic networks derive from the texts in amc and ParlAT with the help of word embeddings. In NLP, word embeddings are representations of words. 
 
-The user interface is very intuitive but every search starts with deciding on either an **ego network** or a **general network** (**party** or **speaker**).
+The user interface is very intuitive but every search starts with deciding on either an **ego network** or a **general network** (**party** or **speaker**). The first step on your diachronic network journey is to select the network that you would like to generate.
 
 ### Ego Network
 
@@ -73,27 +73,31 @@ On the input field on the left side bar, you can
 3. type a target word (e.g., 'Geld'),
 4. and finally click _Visualize_.
 
-<SideNote type="info" title="Additional information">
+#### Understanding the visualisation
 
-</SideNote>
+Once you clicked on visualize, Dylen will generate your network. Let's stick with our "Geld" (money) example.
+
+![The egonetwork for "Geld": differently sized nodes connected by lines, a timeline on the top and parts of speech in different colours](images/egonetwork_geld_nodedetail.png "The ego network for \"Geld\" (money)")
+
+
 
 ### General Networks
 
-Under General Networks you can explore **frequent lexemes** used by particular political parties **(General Network Party)** or individual politicians **(General Network Speaker)** in the Austrian Parliament. 
+General networks reflect the speeches of a particular politician or a political party. Those networks are larger than ego networks and require more filters that make the visualisation more legible. Under General Networks you can explore **frequent lexemes** used by particular political parties **(General Network Party)** or individual politicians **(General Network Speaker)** in the Austrian Parliament. 
 
 #### I﻿nstructions:
 
-On the input field on the left side bar
+![The selection tab for general networks. The result will display 20% of the word with lowest degree centrality for Werner Amon from the ÖVP](images/picture3.png "Input field of General Network (Speaker) for Werner Amon from the ÖVP")
+
+On the input field on the left side bar, you can
 
 1. select a party, 
 2. select a speaker (only for General Network Speaker),
 3. (optional, but recommended) use the _Node filter_ to 
 
-   - select a metric, 
+   - select a metric (e.g. Degree Centrality) 
    - adjust the percentage of nodes to be displayed,
 4. and finally click _Visualize_. 
-
-![](images/picture3.png "Input field of General Network (Speaker)")
 
 ## Other components
 
