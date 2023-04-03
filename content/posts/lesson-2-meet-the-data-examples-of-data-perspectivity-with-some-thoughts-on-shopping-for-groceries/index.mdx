@@ -20,18 +20,18 @@ _– Two days in –_
 
 I'm having a debrief with Peter to come back to an issue briefly discussed in our first meeting: the source data. At first glance, it might look somewhat homogeneous – it’s all text indices and indices of persons –, but this impression fades as soon as one takes a closer look. Here’s a short list:
 
-##### Data source 1: “Die Fackel online”.
+##### Data source 1: [“Die Fackel online”](fackel.oeaw.ac.at/).
 
 - A relational database with names and basic biographical data of about 16,900 persons, as well as links to 129,000 mentions of said persons in “Die Fackel”.
 - An XML file containing a text index of the approx. 14,000 texts published in “Die Fackel”, modeled in a custom standard.
 - A transcription of “Die Fackel” consisting of more than 22,000 pages as XML files also modeled in a custom standard, containing the 129,000 mentions of persons.
 
-##### Data source 2: “Dritte Walpurgisnacht”.
+##### Data source 2: [“Dritte Walpurgisnacht”](https://kraus1933.ace.oeaw.ac.at).
 
 - A TEI-XML file containing an index of both persons and texts, literary and journalistic, mentioned / quoted in “Dritte Walpurgisnacht” (1933, published posthumous), with basic biographical resp. standard bibliographical data.
 - Approx. 3,000 mentions of / quotes from said persons and texts annotated in a TEI-XML containing the full text of “Dritte Walpurgisnacht”.
 
-##### Data source 3: “Karl Kraus Rechtsakten”.
+##### Data source 3: [“Karl Kraus Rechtsakten”](kraus.wienbibliothek.at/).
 
 - Two TEI-XML files containing bibliographical data of the texts mentioned or quoted in Kraus’ legal files.
 - A TEI-XML file containing an index of persons mentioned in Kraus’ legal papers.
@@ -41,7 +41,7 @@ Now, where some might see a nightmare of endless integration problems, others se
 
 #### Data perspectivity
 
-But before we can seriously start to model it, we first need to understand it – since the scope and function of any given data model is not self-evident, and even less so the meaning of any given data field in its respective data set. Every data set is the result of a modeling process, which, as, e.g., Elena Pierazzo has pointed out, implies
+But before we can seriously start to model it, we first need to understand it – since the scope and function of any given data model is not self-evident, and even less so the meaning of any given data field in its respective data set. Every data set is the result of a modeling process, which, as Elena Pierazzo has pointed out, implies
 
 - it is the result of a selection process
 - that simplifies its object domain to some degree
@@ -53,6 +53,7 @@ These traits are inherent to every data set. If you’ve never come across this 
   In this regard, the SemanticKraus project admittedly is in a highly privileged position: All of our three source projects are at close vicinity, their coordinators and maintainers are just next door, in part literally. Also, one of them is me. If we don’t understand the data and we don’t find an explanation in a documentation somewhere (or no documentation at all), we can still ask or go through our own notes.
 
 #### Perspectivity in bio- and bibliographical data
+
   To give an example of our data’s perspectivity: A simple issue that might come up would be that in the Dritte Walpurgisnacht project, all biographical data is selected with a clear focus on the year 1933 (see here for our editorial note on the matter). After all, Dritte Walpurgisnacht is, among other things, an account of what’s happened on a day-to-day basis in 1933, informed by uncounted newspaper articles quoted and woven into the text, and in this particular year, people’s biographies – to put it in very general terms – took abrupt turns. This focus makes sense from a reader’s (and thus from the editor’s) point of view, but is not self-evident from the data as represented in the XML file. 
 
   Another – perhaps even more particular – matter is related to the bibliographical entries: See for example these three entries, which seemingly denote the same kind of concept – texts:
@@ -94,6 +95,7 @@ Some differentiations did not matter in this respect: For example, for the purpo
 These subtle differences come into play when we need to ask the question: What would this data look like when seen through the lens of our new data model? Which bibl-entry actually represents which kind of bibliographical entity (a monograph, an article, a text passage in an article)? How would we differentiate between them? And which entities would need to be modeled in each of the three cases? The newspaper article, e.g., is a text within a larger publication (the issue) within another larger publication (the newspaper as a whole), so there’s (at least) three entities to take into account. There's also the question of how those entities that are to some degree implicit (there's no element explicitly representing the issue, for example) are to be extracted from the data. Also, the seemingly small distinction between a text with and without a specified edition will have a major role to play as we go forward creating a data model. All that’s implicit in our data will need to be considered, and also some of what’s not in our data at all.
 
 #### Table of contents vs. Text index
+
 Anyway, back to my meeting with Peter. While we briefly mention the other data, our main focus is on articles.xml, an XML file at the heart of our project, containing the complete table of contents of Die Fackel: a periodical that ran for 37 years, in 415 issues (922 numbers), on over 22,000 pages. It’s a large file, to say the least, and it presents another kind of problem with regard to data perspectivity.
 
 ```
@@ -110,10 +112,17 @@ Anyway, back to my meeting with Peter. While we briefly mention the other data, 
 
 The example shows the encoding of one entry, a text called _Sprachschule_ from the 1924 issue no. 668. The encoding is not TEI; instead, it is a custom standard that was in turn based on another custom standard that was developed in one of the predecessor institutions of the ACDH-CH respectively the ACE a long time ago. Reconstructing the intended meaning and function of these elements, attributes, and values is as much an archaeological endeavor as it is a logical one, but it is manageable.
 
-However, in one respect articles.xml is a quite different type of data source than your regular index, catalogue, or database – simply because it was never intended to store data. Its use is purely functional, it provides the basis of the digital table of contents of _Die Fackel online_ (where this enormous file is displayed in conveniently sized portions, as you can see when clicking on “contents”). What we want from it is a bibliography of texts published in this periodical. However, it was not designed to deliver this bibliography, but rather to guide a reader through the sometimes impenetrable textual thicket that is _Die Fackel_. The table of contents, in its essence, provides a reader with entry points into a set of texts – the bibliography we strive for gives the metadata for each text, including its position and scope. While we aim for some degree of completeness, with a certain disregard for any ‘reader experience’, the latter is the focus of a table of contents. The effect of this difference in intended use might not be visible at first glance, and might not amount to a large number of changes, but it still requires sorting through this list – mostly by hand.
+However, in one respect articles.xml is a quite different type of data source than your regular index, catalogue, or database – simply because it was never intended to store data; that's just a means to a very specific functional end: It provides the basis of the digital table of contents of _Die Fackel online_ (where this enormous file is displayed in conveniently sized portions, as you can see when clicking on “contents”). What we want from it is a bibliography of texts published in this periodical. However, it was not designed to deliver this bibliography, but rather to guide a reader through the sometimes impenetrable textual thicket that is _Die Fackel_.
 
-The obvious advantage of the file is – well, it’s there, and it to some 95 percent fulfills our requirements: It is digital, it contains titles, starting pages (even starting paragraphs in @parid), it contains nesting of texts within issues within years, but also of texts within texts (in @displayCat).
+#### "Model-of" and "Model-for"
 
-For now, Peter generates a CSV from articles.xml using Python. On the one hand, the script returns exactly the info from the source document that we need for further work – the info that will ultimately be modeled in RDF – and on the other hand it enriches the individual entries with important additional info (the "to" page numbers of the respective articles, web links to the edition, etc.). The resulting CSV, turned into a google sheet of considerable size – 35 columns, 15.000 lines – will then be awaiting its further, manual correction, a task taken on by our intrepid project team members Johanna Unterholzner and Astrid Hauer – whose work will be the subject of another blog entry.
+For  this distinction, the analytical terms "model-of" and "model-for" – coined by cultural anthropologist Clifford Geertz and introduced to digital humanities by Willard McCarty[^2] – come in handy: The former kind of model aims at staying true to its domain (whatever "truth" means in the specific context), the latter at serving a certain end outside the domain. All models are situated somewhere on a spectrum between these two poles. Our articles.xml has a relatively strong tendency towards to the "model-for"-pole: In its essence, it provides a reader with entry points into a set of texts. We're aiming at transferring it into a model that is closer to the "model-of"-pole: The bibliography we strive for gives the metadata for each text, including its position and scope, showing some degree of completeness, with a certain disregard for any ‘reader experience’.
 
-[^1]: Pierazzo, E. (2019), 'How subjective is your model?', in Jannidis, F., and Flanders, J., (eds), _The Shape of Data in Digital Humanities. Modeling Texts and Text-based Resources._ Abingdon, Oxfordshire, and New York: Routledge, pp. 117-132. 
+The effect of this difference might not amount to a large number of changes, but it still requires sorting through this very long list – mostly by hand. On the other hand, the obvious advantage of working with the file is – well, it’s there, and it to some 95 percent fulfills our requirements: It is digital, it contains titles, starting pages (even starting paragraphs in @parid), it contains nesting of texts within issues within years, but also of texts within texts (in @displayCat).
+
+For now, Peter generates a CSV from articles.xml using Python. On the one hand, the script returns exactly the info from the source document that we need for further work – the info that will ultimately be modeled in RDF – and on the other hand it enriches the individual entries with important additional info (the "to" page numbers of the respective articles, web links to the edition, etc.). The resulting CSV, turned into a google sheet of considerable size – 35 columns, 15.000 lines – will then be awaiting its further, manual correction, a task taken on by our most fearless project team members, Johanna Unterholzner and Astrid Hauer – whose work will be the subject of another blog entry.
+
+- - -
+
+[^1]: Pierazzo, E. (2019), 'How subjective is your model?', in Jannidis, F., and Flanders, J., (eds.), _The Shape of Data in Digital Humanities. Modeling Texts and Text-based Resources._ Abingdon, Oxfordshire, and New York: Routledge, pp. 117-132, s. pp. 121–125. 
+[^2]: McCarty, W. (2008), 'Knowing ... : Modeling in Literary Studies.', in Siemens, R., and Schreibman, S., (eds.), _A Companion to Digital Literary Studies._ Oxford: Blackwell. URL: https://companions.digitalhumanities.org/DLS; see also Pierazzo (2019), pp. 124.
