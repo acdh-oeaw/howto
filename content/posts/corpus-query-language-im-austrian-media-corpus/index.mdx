@@ -25,7 +25,7 @@ uuid: Yi-WVelcC_d0_xUF2aJfn
 
 ### Das Austrian Media Corpus (amc)
 
-Das Austrian Media Corpus (amc) ist eines der größten Textkorpora in deutscher Sprache. In ihm sind Text der österreichischen Printmedienlandschaft der letzten Jahrezehnte versammelt. Der Inhalt des amc kann mit dem Schlagwort „journalistische Prosa“ zusammengefasst werden: er umfasst Komplettausgaben von Zeitungen und Zeitschriften, Agenturmeldungen der Austria Presse Agentur (APA) sowie Transkripte von TV-Produktionen (vorwiegend von Nachrichtensendungen).
+Das Austrian Media Corpus (amc) ist eines der größten Textkorpora in deutscher Sprache. In ihm sind Texte der österreichischen Printmedienlandschaft der letzten Jahrezehnte versammelt. Der Inhalt des amc kann mit dem Schlagwort „journalistische Prosa“ zusammengefasst werden: er umfasst Komplettausgaben von Zeitungen und Zeitschriften, Agenturmeldungen der Austria Presse Agentur (APA) sowie Transkripte von TV-Produktionen (vorwiegend von Nachrichtensendungen).
 
 Das amc kann auf Anfrage genutzt werden, allerdings ausschließlich für Zwecke der wissenschaftlichen Forschung und Lehre und nur für die Untersuchung sprachwissenschaftlicher Fragestellungen. Ermöglicht wird das amc durch eine Kooperation zwischen der Austria Presse Agentur (APA) und der Österreichischen Akademie der Wissenschaften (ÖAW), konkret dem Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH).
 Die APA sammelt die Textproduktion der Printmedien und stellt diese dem ACDH-CH zur Verfügung.
@@ -48,7 +48,7 @@ Zu Übungszwecken finden Sie auf der amc-Website Zugang zu einer [Demo-Version](
 In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeiten vertraut und erlernen das Formulieren von Suchanfragen in der **Sketch Engine/NoSketch Engine**. Insbesondere wird Ihnen die in dieser Korpussuchmaschine verwendete Abfragessprache **Corpus Query Language (CQL)** näher gebracht.
 
 <SideNote type="info" title="Sketch Engine und NoSketch Engine?">
-Die Bereitstellung des amc erfolgt über die webbasierte Korpussuchmaschine **[NoSketch Engine (NoSkE)](https://nlp.fi.muni.cz/trac/noske)**. Dabei handelt es sich um eine _open source_ Version der **[Sketch Engine (SkE)](https://https://www.sketchengine.eu)**. Der **[Vergleich von Sketch Engine und NoSketch Engine](https://www.sketchengine.eu/nosketch-engine/)** zeigt, wie sich die NoSkE von der kommerziellen SkE durch den Wegfall einiger Funktionalitäten unterscheidet. Von den zahlreichen Dokumentationen und Benutzungshilfen, die online zur Sketch Engine auffindbar sind, sind daher nicht alle für die NoSketch Engine relevant. Für die in dieser Lernunterlage vorgestellten Kernfunktionalitäten bestehen allerding _keine_ Unterschiede zwischen den beiden Varianten. Die verlinkten Informationen und Anleitungen zur Sketch Engine sind daher gleichermaßen für die NoSketch Engine gültig, im Kontext dieses Manuals werden daher in der Folge die Bezeichnungen SkE und NoSkE synonym verwendet. 
+Die Bereitstellung des amc erfolgt über die webbasierte Korpussuchmaschine **[NoSketch Engine (NoSkE)](https://nlp.fi.muni.cz/trac/noske)**. Dabei handelt es sich um eine _open source_ Version der **[Sketch Engine (SkE)](https://https://www.sketchengine.eu)**. Der **[Vergleich von Sketch Engine und NoSketch Engine](https://www.sketchengine.eu/nosketch-engine/)** zeigt, wie sich die NoSkE von der kommerziellen SkE durch den Wegfall einiger Funktionalitäten unterscheidet. Von den zahlreichen Dokumentationen und Benutzungshilfen, die online zur Sketch Engine auffindbar sind, sind daher nicht alle für die NoSketch Engine relevant. Für die in dieser Lernunterlage vorgestellten Kernfunktionalitäten bestehen allerdings _keine_ Unterschiede zwischen den beiden Varianten. Die verlinkten Informationen und Anleitungen zur Sketch Engine sind daher gleichermaßen für die NoSketch Engine gültig, im Kontext dieses Manuals werden daher in der Folge die Bezeichnungen SkE und NoSkE synonym verwendet.
 </SideNote>
 
 ## Grundlagen: Token vs. Strukturen
@@ -77,17 +77,17 @@ Einige der Token-Attribute im amc wären
 
 - `word` : Das einfachste Attribut beinhaltet die orthographische Form des Wortes.
 - `lemma` : hier steht die Grundform des Wortes (wie es von einem Lemmatisierungsprogramm ermitteln wurde).
-- `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist _case sensitive_, `lc` kann verwendet werden, um case _insensitive_ -- also unter Großkleinschreibung ignorierend -- zu suchen. D.h. eine Suche `[word="Ciao"]` findet nur genau „Ciao“. Die Suche `[lc="ciao"]` findet ciao, Ciao, CIAO, CiAo etc.     
+- `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist _case sensitive_, `lc` kann verwendet werden, um case _insensitive_ -- also unter Großkleinschreibung ignorierend -- zu suchen. D.h. eine Suche `[word="Ciao"]` findet nur genau „Ciao“. Die Suche `[lc="ciao"]` findet ciao, Ciao, CIAO, CiAo, etc.     
 - `posTT` : part-of-Speech tags nach dem STTS-Tagset, wie sie vom PoS tagger TreeTagger vergeben wurden.
 - `pos` : part-of-Speech tags, wie sie vom PoS tagger RFTagger vergeben wurden: zusätzlich zur Wortart werden auch morphologische Informationen angegeben.
 
-  ![Einfache Suche im amc, Spalten mit Suche nach "ciao" als Lemma, Part of Speech type noun, im Bereich token](images/amc3.2_concordance_lemma_noun_token_ciao.png "Suche nach 'ciao' als Lemma")
+![Einfache Suche im amc, Spalten mit Suche nach "ciao" als Lemma, Part of Speech type noun, im Bereich token](images/amc3.2_concordance_lemma_noun_token_ciao.png "Einfache Token-Suche nach 'ciao' als Lemma. ")
 
-  ![Zwei Spalten im View Options zur Auswahl von Token Attributen und Strukturen](images/amc3.2_concordance_lemma_noun_ciao_viewoptions.png "In den View Options kann man die Attribute, die den Token im Korpus zugeordnet sind, auswählen.")
+![Zwei Spalten im View Options zur Auswahl von Token Attributen und Strukturen](images/amc3.2_concordance_lemma_noun_ciao_viewoptions.png "In den View Options kann man die Attribute, die den Token im Korpus zugeordnet sind, auswählen.")
 
-  ![Beispiel-Suchergebnis für das Token 'ciao'. Es wurden die Attribute word, lemma, posTT, und pos ausgewählt. Die Information ist unter dem Token sichtbar](images/amc3.2_concordance_lemma_noun_ciao_random_result_postt-annotation.png "Beispiel-Suchergebnis für das Token 'ciao'. Es wurden die Attribute word, lemma, posTT, und pos ausgewählt. Die Information ist unter dem Token sichtbar.")
+![Beispiel-Suchergebnis für das Token 'ciao'. Es wurden die Attribute word, lemma, posTT, und pos ausgewählt. Die Information ist unter dem Token sichtbar](images/amc3.2_concordance_lemma_noun_ciao_random_result_postt-annotation.png "Beispiel-Suchergebnis für das Token 'ciao'. Es wurden die Attribute word, lemma, posTT, und pos ausgewählt. Die Information ist unter dem Token sichtbar.")
 
-<SideNote type="tip" title="Tipp: Attribute eines Korpus">
+<SideNote type="tip" title="Attribute eines Korpus">
 Die Liste aller Attribute eines Korpus lässt sich immer einfach unter dem Info-Zeichen im Overflow-Menü oder — völlig äquivalent — in der _CORPUS INFO_ im Dashboard des jeweiligen Corpus anzeigen.
 </SideNote>
 
@@ -141,7 +141,7 @@ Typischerweise finden sich in den Attributen des `<doc>`-Elements die Metadaten 
 Im amc entspricht der Inhalt eines `<doc>`-Elements einem Zeitungsartikel.
 An Metadaten sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _docsrc_, _ressort2_, etc.
 
-<SideNote type="info" title="Info: Dokumentation ALLER Attribute im amc">
+<SideNote type="info" title="Dokumentation ALLER Attribute im amc">
 Die oben angeführte Vertikale sowie die Beispiele in diesem Tutorial verwenden der Einfachheit halber nur einen Auszug der tatsächlich im amc verfügbaren Informationen. Auf der amc-site findet sich die _vollständige_ **[Beschreibung aller im amc verwendeten Annotationen](https://amc.acdh.oeaw.ac.at/dokumentation/korpusinhalt-attribute/)**.  
 </SideNote>
 
@@ -523,7 +523,7 @@ Gruppierungen können auch innerhalb anderer Gruppen platziert werden:
 - `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleine Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
 - `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\\"klima\\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\\\"klimafreundlichesMobilitätskonzept\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\\\\"klima\\\\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
 
 ### Zeichenklassen mit `[ ]`
 
