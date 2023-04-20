@@ -483,7 +483,7 @@ Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage i
 
 ### Wiederholungen
 
-Alternativ zu `*`, `+`, `?` kann man mit dem **ranges Operator** nicht nur festlegen, ob ein Ausdruck 0, 1 oder „öfter“ wiederholt werden soll, sondern es kann die _exakte_ Mindest- und Maximalzahl an Wiederholungen spezifiziert werden.
+Alternativ zu `*`, `+`, `?` kann man mit dem **ranges Operator** nicht nur festlegen, ob ein Ausdruck 0, 1, oder „öfter“ wiederholt werden soll, sondern es kann die _exakte_ Mindest- und Maximalzahl an Wiederholungen spezifiziert werden.
 
 Die abstrakte Syntax für diesen Operator lautet:
 `{minimale Anzahl, maximale Anzahl}`
@@ -524,10 +524,10 @@ In regulären Ausdrücken können einzelne Komponenten mit `( )` zu Unterausdrü
 
 Gruppierungen können auch innerhalb anderer Gruppen platziert werden: 
 
-- `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleine Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
+- `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleinen Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
 - `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\\\\\\\"klima\\\\\\\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\\\\\\\\"klimafreundlichesMobilitätskonzept\\\\\\\\\\\" und zusammengesetzte Nomen mit Bindestrich oder auch der Name der Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \"klima\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \"klimafreundlichesMobilitätskonzept\", zusammengesetzte Nomen mit Bindestrich oder auch der Name einer Webseite mit Punkt werden gefunden.")
 
 ### Zeichenklassen mit `[ ]`
 
@@ -540,6 +540,8 @@ Wir haben bisher den Platzhalter "`.`" verwendet, der für jedes beliebige Zeich
 
 Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gruppierung `( )` zusammen mit `|` formulieren. 
 Die Zeichenklassendefinitionen bieten aber noch Möglichkeiten, die darüber hinausgehen: 
+
+
 _Bereiche_ mit "-" definieren:
 
 - `[a-z]` und `[0-9]` stehen für den _Buchstabenbereich von a bis z_ bzw. den _Zahlenbereich von 0 bis 9_
@@ -634,8 +636,16 @@ _Negation_ mit `[^ ...]` definieren:
   <Quiz.Card>
     <Quiz.MultipleChoice variant="multiple">
       <Quiz.Question>
-        Mit \[] wird eine Auswahl an Zeichen definiert, sodass ein Suchergebnis oft der Verwendung von | gleich ist (zB \[word="h(o|a)se"] und \[word="h\[oa]se"] liefern dasselbe Ergebnis). Unten finden Sie ein Beispiel, bei dem dies nicht der Fall ist. Wählen Sie das Beispiel und die korrekte Begründung aus.
+        Mit \[] wird eine Auswahl an Zeichen definiert, sodass ein Suchergebnis oft der Verwendung von | gleich ist (zB \[word="h(o|a)se"] und \[word="h\[oa]se"] liefern dasselbe Ergebnis). Warum muss eine gemeinsame Suche nach "Schlund" oder "Wund" dennoch \[word="(schl|w)und"] lauten?
       </Quiz.Question>
+
+      <Quiz.MultipleChoice.Option isCorrect>
+        Ohne das logische ODER würde nach der gesamten Zeichenfolge gesucht werden.
+      </Quiz.MultipleChoice.Option>
+
+      <Quiz.MultipleChoice.Option>
+        Im Anlaut eines Wortes muss immer mit logischem ODER gesucht werden.
+      </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
   </Quiz.Card>
 </Quiz>
