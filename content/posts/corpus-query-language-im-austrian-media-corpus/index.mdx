@@ -77,7 +77,7 @@ Die Informationen, die jedem Token zugeordnet werden, werden in der SkE (Token-)
 
 Einige der Token-Attribute im amc wären
 
-- `word` : Das einfachste Attribut beinhaltet die orthographische Form des Wortes.
+- `word` : das einfachste Attribut. Es beinhaltet, wie der Name andeutet, die orthographische Form des Wortes.
 - `lemma` : hier steht die Grundform des Wortes (wie es von einem Lemmatisierungsprogramm ermitteln wurde).
 - `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist _case sensitive_, `lc` kann verwendet werden, um case _insensitive_ zu suchen, also Unterschiede in der Großkleinschreibung zu ignorieren. D.h. eine Suche`[word="Ciao"]` findet nur genau „Ciao“. Die Suche `[lc="ciao"]` findet ciao, Ciao, CIAO, CiAo, etc.     
 - `posTT` : part-of-Speech tags nach dem STTS-Tagset, wie sie vom PoS tagger TreeTagger vergeben wurden.
@@ -95,8 +95,8 @@ Die Liste aller Attribute eines Korpus lässt sich immer einfach unter dem Info-
 
 ### Strukturen
 
-Die Token sind typischerweise in **hierarchische Strukturen** eingebettet.
-Zum besseren Verständnis dieses Konzepts hier ein Beispiel, das zeigt, wie Textdaten aussehen, die zum Export in die SkE vorbereitet wurden.  
+Die Token eines Textes sind typischerweise in **hierarchische Strukturen** eingebettet.
+Zum besseren Verständnis dieses Konzepts hier ein Beispiel dafür, wie für den Import in die SkE aufbereitete Textdaten konkret aussehen.
 
 ```
 <doc id="APA_20170101_APA0001" datum_full="2017-01-01T00:11:16Z" 
@@ -242,17 +242,17 @@ Die oben angeführte Vertikale sowie die Beispiele in diesem Tutorial verwenden 
 
 ## Schnelleinstieg: Suche mit „Simple query“
 
-Die einfachste Form der Suche im amc ist die **Simple query**.
+Die einfachste Form der Suche im amc ist die sogenannte **Simple query**.
 
 Diese kann in der SkE im Menüfeld "Concordance" aufgerufen werden:
 
-- entweder durch Auswahl im linken Menü, und dann unter dem Reiter "basic" in der SkE Maske
+- entweder durch Auswahl im linken Menü und dann unter dem Reiter "basic" in der SkE Maske
 - oder im Dashboard über den Auswahlpunkt "Concordance". Die **simple query** wird wieder unter dem Reiter "basic" angezeigt.
 
-Gibt man hier ein Wort ein, so sucht die SkE
+Gibt man hier eine Wortform ein, so sucht die SkE
 
-- dieses Wort (und zwar case-insensitiv, d.h. ohne Berücksichtigung von Groß- und Kleinschreibung. Die Eingabe _SMS_ findet daher z.B. _SMS_, _sms_, _Sms_, etc.)
-- entspricht die Sucheingabe auch einem Lemma, dann auch alle Flexionsformen dieses Lemmas. (D.h. eine Suche nach _Haus_ findet daher _Haus_, _Hauses_, _Hause_, _Häuser_, _Häusern_.)
+- dieses Wort (und zwar case-insensitiv, d.h. ohne Berücksichtigung von Groß- und Kleinschreibung. Die Eingabe von _SMS_ findet daher z.B. _SMS_, _sms_, _Sms_, etc.)
+- entspricht die Sucheingabe auch einem Lemma, dann auch alle Flexionsformen dieses Lemmas. (D.h. eine Suche nach _Haus_ findet daher _auch_ alle Flexionsformen des _lemmas Haus_: das sind _Haus, Hauses_, _Hause_, _Häuser_, _Häusern_.)
 
 ### Mehrwort-Suche
 
@@ -266,13 +266,13 @@ Das Lemma für **definite Artikel** ist übrigens _die_, für **indefinite** ist
 
 ### Wildcards
 
-In der Simple query ist die Verwendung des Wildcards (Jokerzeichen, Asterisk) `*` möglich: es steht für beliebig viele (oder auch null) beliebige Zeichen.
+In der Simple query ist die Verwendung des Wildcards  `*`  (Jokerzeichen, Asterisk) möglich: es steht für beliebig viele (auch null!) beliebige Zeichen.
 
 #### Beispiele:
 
 - Haus`*`: alle Wörter, die mit der Buchstabenfolge _Haus_ beginnen: _Haus_, _Hauses_, _Hausmaus_, _Haussa_, _Hausbesorgerin_ … aber auch alle Wortformen von Lemmata, die mit _Haus_ beginnen. Es wird also z.B. auch _Häusern_ gefunden.
 - `*`aus : alle Wörter, die mit der Buchstabenfolge _aus_ enden: aus, Maus, Haus, Schildlaus, …
-- Ha`*`s: alle Wörter, die mit Ha beginnen, und mit _s_ enden: _Has_, _Haus_, _Hass_, _Handelsabschluss_, _Hafenmeistergattinnenpendlerbus_, etc. Wegen der beiden speziellen Eigenschaften case-insensitiv und Lemma-Suche wird aber auch z.B. _haltlos_ (case-insensitive) und _haltlose_ gefunden (Ergebnis einer Lemma-Suche, obwohl die Wortform gar nicht auf _s_ endet!)
+- Ha`*`s: alle Wörter, die mit Ha beginnen, und mit _s_ enden: _Has_, _Haus_, _Hass_, _Handelsabschluss_, _Hafenmeistergattinnenpendlerbus_, etc. Wegen der beiden speziellen Eigenschaften case-insensitiv und Lemma-Suche wird aber auch z.B. _haltlos_ (case-insensitive) und _haltlose_ gefunden (Ergebnis der impliziten Lemma-Suche, obwohl die gefundene Wortform dann gar nicht auf _s_ endet!)
 
 Ein weiteres Beispiel für den case-insensitiven Charakter der Simple query: _deutsch*_ findet: _deutsch_, _deutsche_, _deutsches_ … aber auch: _Deutschlands_, _Deutschmatura_,...
 
@@ -287,16 +287,16 @@ Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: Die Suche in be
 
 ### Suche auf der TOKENEBENE in CQL
 
-Suchanfragen mit der CQL werden im Bereich **Advanced** unter Auswahl des **Query type** **CQL** eingegeben. 
+Suchanfragen mit der CQL werden wieder unter **Concordance**, diesmal im Bereich **Advanced** unter Auswahl des **Query type** **CQL** eingegeben. 
 In der Suche mit CQL wird jedes Token durch eckige Klammern bezeichnet.
 Innerhalb dieser Klammern können die Bedingungen angegeben werden, welche die Attribute dieses Token erfüllen müssen:
 
-- `[ word="Haus" ]` Alle Einträge mit der Buchstabenfolge „Haus“
+- `[ word="Haus" ]` Alle Einträge mit der genau der Buchstabenfolge „Haus“
 - `[ lemma="Haus" ]` Alle Einträge mit dem Lemma „Haus“ – also „Haus“ „Hauses“ … „Häusern“
-- `[ posTT="NN" ]` Alle Nomen
-- `[]` (KEINE Bedingungen) : diese Suche findet ALLE Token
+- `[ posTT="NN" ]` Alle Einträge mit dem PoS-tag "NN"   – also alle Nomen
+- `[]` (KEINE Bedingungen)  Da hier für das Token keine weiteren Einschränkungen angegeben  wurden  findet diese Suche ausnahmlos ALLE Token
 
-Diese Bedingungen können auf mehrere Wörter ausgedehnt werden:
+Für die Suche nach Mehrwortausdrücken können die Bedingungen für die Einzelworte einfach aneinandergereiht werden:
 
 - `[ posTT="ADJA" ]` `[ lemma="Haus" ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern, …
@@ -304,7 +304,7 @@ Diese Bedingungen können auf mehrere Wörter ausgedehnt werden:
 ![Beispielhaftes Abfrageergebnis zur CQL-Abfrage Adjektiv + Haus. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse. Sie sehen in rot die gefundenen Formen im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis zur CQL-Abfrage attributives Adjektiv + Haus. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse. Sie sehen in rot die gefundenen Formen im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
-Außerhalb von Anführungszeichen werden Leerzeichen in CQL-Abfragen völlig ignoriert. Es macht also nur einen Unterschied in der _Lesbarkeit_ und nicht im Suchergebnis ob man `[ posTT = "ADJA" ] [ lemma = "Haus" ]` oder `[posTT="ADJA"][lemma="Haus"]` schreibt.
+Außerhalb von Anführungszeichen werden Leerzeichen in CQL-Abfragen völlig ignoriert. Es macht also nur einen Unterschied in der _Lesbarkeit_ und nicht im Suchergebnis ob man `[  posTT = "ADJA"  ]  [  lemma = "Haus"  ]` oder `[posTT="ADJA"][lemma="Haus"]` schreibt.
 </SideNote>
 
 ## Reguläre Ausdrücke
@@ -312,20 +312,20 @@ Außerhalb von Anführungszeichen werden Leerzeichen in CQL-Abfragen völlig ign
 In der CQL können sogenannte **[reguläre Ausdrücke (regular expressions, Regex)](https://www.sketchengine.eu/guide/regular-expressions/)** verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche stark erhöht wird.
 Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks sind:
 
-- „`.`“ : Ein Punkt steht für jedes beliebige Zeichen, z.B. `[word="Ha.s"]` findet „Haus“ „Hass“ „Hals“ …
-- „`*`“ : steht für 0, 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks. z.B. `[word="Hallo*"]` findet „Hall“ „Hallo“ „Halloo“ etc.
+- „`.`“ : Ein Punkt steht als Platzhalter für jedes beliebige Zeichen, z.B. `[word="Ha.s"]` findet „Haus“ „Hass“ „Hals“ …
+- „`*`“ : steht für 0, 1 oder beliebig viele Wiederholungen des _vorhergehenden_ Zeichens oder Ausdrucks. z.B. `[word="Hallo*"]` findet „Hall“ „Hallo“ „Halloo“ etc.
 - „`+`“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo+"]` findet „Hallo“ „Halloo“ etc. … aber _nicht_ „Hall“.
   D.h., das Zeichen vor ‚*‘ ist _optional_, das Zeichen vor ‚+‘ hingegen ist _obligat_!
-- „`?`“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo?"]` findet genau die beiden Formen „Hall“ und „Hallo“. D.h. das ‚`?`‘ steht für Optionalität, aber nicht für Wiederholbarkeit. 
+- „`?`“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo?"]` findet genau die beiden Formen „Hall“ und „Hallo“. D.h. das ‚`?`‘ steht für Optionalität aber nicht für die Wiederholbarkeit des linken Nachbarn von ‚`?`‘ . 
 
 **Kombination mit `.`: Üblich ist es, `*`, `+`, `?` mit `.` (dem Platzhalter für jedes beliebige Zeichen) zu kombinieren.**
 
 - \[word=".?und"] findet und, Mund, Hund, wund, rund, …
-- \[word="Hunde.+"] findet Hundehütte, Hundekuchen, Hundefriseur, aber natürlich auch Hunderttausend …
+- \[word="Hunde.+"] findet Hundehütte, Hundekuchen, Hundefriseur, aber natürlich auch Hunderttausend … (aber nicht Hunde!) 
 - [pos="N.Reg.`*`Pl.`*`"] findet alle Nomen im Plural
 
 <SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in Simple Query und CQL">
-Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht alleine `*` schon für 0, 1, oder beliebig viele beliebige Zeichen.
+Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht ein `*` allein schon als Platzhalter für 0, 1, oder beliebig viele beliebige Zeichen.
 In einem regulären Ausdruck bezieht sich hingegen ein `*` immer auf den _linken Nachbarn_: die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen „s“, da sich der `*` in der CQL immer auf das vorhergehende Element – hier eben das „s“ – bezieht.
 Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL also wie folgt lauten: `[word="Haus.*"]`
 </SideNote>
@@ -501,6 +501,7 @@ Beispiele:
 - `[word=".{10,}"]` mindestens 10 Wiederholungen von "." , keine Angabe der Maximalzahl: also alle Wörter oder Zahlen mit einer _Mindestlänge_ von 10 Zeichen
 - `[word=".{10,15}"]` Wörter mit mindestens 10 und maximal 15 Zeichen
 - `[posTT="ADJ."]{2,}` Abfolge von mindestens 2 Adjektiven (ADJ. findet sowohl ADJA als auch ADJD, d.h. attributive und prädikative/adverbiale Adjektive)
+- `[posTT="ADJ."] []{0,2} [lemma="Haus"]` Abfolge von einem ADJ  und dem Lemma "Haus", wobei zwischen Adjektiv und dem Nomen Haus bis zu 2 beliebige zusätzliche Token stehen können. 
 
 ### Logische Verknüpfungen
 
@@ -527,17 +528,17 @@ In regulären Ausdrücken können einzelne Komponenten mit `( )` zu Unterausdrü
 Gruppierungen können auch innerhalb anderer Gruppen platziert werden: 
 
 - `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleinen Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
-- `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
+- `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierung um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\\"klima\\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\"klimafreundlichesMobilitätskonzept\\\", zusammengesetzte Nomen mit Bindestrich oder auch der Name einer Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\\\\"klima\\\\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\\\"klimafreundlichesMobilitätskonzept\\\\\", zusammengesetzte Nomen mit Bindestrich oder auch der Name einer Webseite mit Punkt werden gefunden.")
 
 ### Zeichenklassen mit `[ ]`
 
 Wir haben bisher den Platzhalter "`.`" verwendet, der für jedes beliebige Zeichen steht. Mit dem Operator `[ ]` steht eine Möglichkeit bereit, eine _Auswahl_ an Zeichen, also eine Zeichenklasse zu definieren:
 
 - `[abc]` steht für einen der Buchstaben `a` oder `b` oder `c` - ist also äquivalent zu `(a|b|c)`
-- `[word="H[oa]se"]` findet also Hose und Hase - ist also äquivalent zu `[word="H(o|a)se"]`
-- `[lc="[ptkbdg].+"] findet alle Wortformen, die mit einem Plosiv beginnen  - ist also äquivalent zu`\[lc="(p|t|k|b|d|g).+"]`
+- `[word="H[oa]se"]` findet daher Hose und Hase - und ist also äquivalent zu `[word="H(o|a)se"]` 
+- `[lc="[ptkbdg].+"] findet alle Wortformen, die mit einem Plosiv beginnen - und ist also äquivalent zu `[lc="(p|t|k|b|d|g).+"]`
 - `[lc="(h[aeiou]){3,}"]` Eine weitere alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen 
 
 Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gruppierung `( )` zusammen mit `|` formulieren. 
@@ -553,7 +554,7 @@ _Bereiche_ mit "-" definieren:
 _Negation_ mit `[^ ...]` definieren:
 
 - `[^abc]` ein "^" unmittelbar am Anfang der Zeichenklassendefinition bedeutet, dass die Zeichenklasse aus allen Zeichen _außer_ den angeführten besteht!
-- `\[lc="[^ptkbdg].+"] findet alle Wortformen, die _nicht_ mit einem Plosiv beginnen. 
+- [lc="[^ptkbdg].+"] findet alle Wortformen, die _nicht_ mit einem Plosiv beginnen. 
 
 ### Quiz
 
@@ -801,7 +802,7 @@ Beispielsweise könnte man auf der Suche nach Nennungen des Wortes Ball in der B
 Also: suche nach "Ball" innerhalb von Artikeln, die nicht aus dem Sportressort stammen, und in denen auch Walzer, Polonaise, Champagner oder Mitternachtseinlage vorkommen. 
 Damit schränkt sich die Trefferanzahl für "Ball" im amc von ca. 800.000 auf "nur noch" ca. 50.000 ein. (Aber freilich gibt es darunter immer noch Artikel über Fußball, die _nicht_ korrekt mit Sportressort markiert wurden und in denen Siege mit Champagner gefeiert werden, oder Spieler mit dem Eigennamen "Walzer" vorkommen) 
 
-![Tabelle mit dem Suchergebnis im AMC 4.2., Ball in der Mitte hervorgehoben](images/amc_4.2._lemmaballnotinsports.png "Die oben genannte Suche liefert im AMC 4.2. Ergebnisse, die sich auf verschiedenste Tanzveranstaltungen, die hier \\\"Bälle\\\" genannt werden, beziehen. Die mit containing gesuchten Lemma müssen nicht in direkter Nachbarschaft des Suchbegriffs \\\"Ball\\\" vorkommen, sehr wohl aber in den Artikeln, aus denen die Suchergebnisse stammen.")
+![Tabelle mit dem Suchergebnis im AMC 4.2., Ball in der Mitte hervorgehoben](images/amc_4.2._lemmaballnotinsports.png "Die oben genannte Suche liefert im AMC 4.2. Ergebnisse, die sich auf verschiedenste Tanzveranstaltungen, die hier \\\\\"Bälle\\\\\" genannt werden, beziehen. Die mit containing gesuchten Lemma müssen nicht in direkter Nachbarschaft des Suchbegriffs \\\\\"Ball\\\\\" vorkommen, sehr wohl aber in den Artikeln, aus denen die Suchergebnisse stammen.")
 
 <SideNote type="tip">
   Für solche kombinierten Filterungen sind in der NoSkE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann auf das eben erstelle Subkorpus angewandt und damit stufenweise verfeinert werden. 
