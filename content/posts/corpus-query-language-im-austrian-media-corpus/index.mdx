@@ -27,7 +27,7 @@ uuid: Yi-WVelcC_d0_xUF2aJfn
 
 Das Austrian Media Corpus (amc) ist eines der größten Textkorpora in deutscher Sprache. In ihm sind Texte der österreichischen Printmedienlandschaft der letzten Jahrezehnte versammelt. Der Inhalt des amc kann mit dem Schlagwort „journalistische Prosa“ zusammengefasst werden: er umfasst Komplettausgaben von Zeitungen und Zeitschriften, Agenturmeldungen der Austria Presse Agentur (APA) sowie Transkripte von TV-Produktionen (vorwiegend von Nachrichtensendungen).
 
-Das amc kann auf Anfrage genutzt werden, allerdings ausschließlich für Zwecke der wissenschaftlichen Forschung und Lehre und nur für die Untersuchung sprachwissenschaftlicher Fragestellungen. Ermöglicht wird das amc durch eine Kooperation zwischen der Austria Presse Agentur (APA) und der Österreichischen Akademie der Wissenschaften (ÖAW), konkret dem Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH).
+Das amc kann auf Anfrage genutzt werden, allerdings ausschließlich für Zwecke der wissenschaftlichen Forschung und Lehre und nur für die Untersuchung _sprachwissenschaftlicher_ Fragestellungen. Ermöglicht wird das amc durch eine Kooperation zwischen der Austria Presse Agentur (APA) und der Österreichischen Akademie der Wissenschaften (ÖAW), konkret dem Austrian Centre for Digital Humanities and Cultural Heritage (ACDH-CH).
 Die APA sammelt die Textproduktion der Printmedien und stellt diese dem ACDH-CH zur Verfügung.
 
 Das amc wird jährlich am Jahresanfang um die Publikationen des soeben abgelaufenen Jahres aktualisiert, d.h. der aktuelle Datenbestand des amc reicht jeweils bis zum Ende des Vorjahrs.
@@ -35,20 +35,22 @@ Das amc wird jährlich am Jahresanfang um die Publikationen des soeben abgelaufe
 ### Mit dem amc arbeiten
 
 Das ACDH-CH ergänzt die Texte, die von der APA zur Verfügung gestellt wurden, mithilfe linguistischer Annotationsverfahren wie Lemmatisierung, Wortartenzuordnung (Part-of-Speech tagging) oder Named Entitiy Recognition.
-Anschließend werden die Ergebnisse vom ACDH-CH als amc in der Korpussuchmaschine NoSketch Engine online verfügbar gemacht. Dieses Werkzeug erlaubt die Suche und Auswertung der signifikanten Textmengen im amc und macht das Korpus in Kombination mit den verfügbaren Annotationen erst für die effiziente Bearbeitung quantitativer und qualitativer Forschungsfragen tauglich.
+Anschließend werden die Ergebnisse vom ACDH-CH in der Korpussuchmaschine NoSketch Engine online verfügbar gemacht. Dieses Werkzeug erlaubt die Suche und Auswertung der signifikanten Textmengen im amc und macht das Korpus in Kombination mit den verfügbaren Annotationen erst für die effiziente Bearbeitung quantitativer und qualitativer Forschungsfragen tauglich.
 
 <SideNote type="info" title="Zugang zum amc">
 Um das [amc nutzen](https://amc.acdh.oeaw.ac.at/access-conditions/) zu können, ist eine [Registrierung](https://amc.acdh.oeaw.ac.at/registrierung/) auf der Website notwendig. Sie erhalten wenig später Ihre Zugangsdaten und können auf die [Vollversion](https://noske-amc.acdh.oeaw.ac.at/crystal/) zugreifen.
 
 Sollten Sie an einem geförderten Projekt arbeiten, wird von der APA eine Nutzungsgebühr erhoben. In diesem Fall nehmen Sie bitte mit dem amc Kontakt auf. Ansonsten ist der Zugang nach [Registrierung](https://amc.acdh.oeaw.ac.at/registrierung/) und Akzeptieren der [Nutzungsbedingungen](https://amc.acdh.oeaw.ac.at/nutzungsbedingungen/) kostenfrei. 
 
-Zu Übungszwecken finden Sie auf der amc-Website Zugang zu einer [Demo-Version](https://demo-amc.acdh.oeaw.ac.at/crystal/#open), für die Sie keine Registrierung benötigen.
+Zu Übungszwecken finden Sie auf der amc-Website Zugang zu einer minimalistischen [Demo-Version](https://demo-amc.acdh.oeaw.ac.at/crystal/#open), für die Sie keinerlei Registrierung benötigen.
 </SideNote>
 
 In der folgenden Lernressource machen Sie sich mit grundlegenden Begrifflichkeiten vertraut und erlernen das Formulieren von Suchanfragen in der **Sketch Engine/NoSketch Engine**. Insbesondere wird Ihnen die in dieser Korpussuchmaschine verwendete Abfragessprache **Corpus Query Language (CQL)** näher gebracht.
 
 <SideNote type="info" title="Sketch Engine und NoSketch Engine?">
-Die Bereitstellung des amc erfolgt über die webbasierte Korpussuchmaschine **[NoSketch Engine (NoSkE)](https://nlp.fi.muni.cz/trac/noske)**. Dabei handelt es sich um eine _open source_ Version der **[Sketch Engine (SkE)](https://https://www.sketchengine.eu)**. Der **[Vergleich von Sketch Engine und NoSketch Engine](https://www.sketchengine.eu/nosketch-engine/)** zeigt, wie sich die NoSkE von der kommerziellen SkE durch den Wegfall einiger Funktionalitäten unterscheidet. Von den zahlreichen Dokumentationen und Benutzungshilfen, die online zur Sketch Engine auffindbar sind, sind daher nicht alle für die NoSketch Engine relevant. Für die in dieser Lernunterlage vorgestellten Kernfunktionalitäten bestehen allerdings _keine_ Unterschiede zwischen den beiden Varianten. Die verlinkten Informationen und Anleitungen zur Sketch Engine sind daher gleichermaßen für die NoSketch Engine gültig, im Kontext dieses Manuals werden daher in der Folge die Bezeichnungen SkE und NoSkE synonym verwendet.
+Die Bereitstellung des amc erfolgt über die webbasierte Korpussuchmaschine **[NoSketch Engine (NoSkE)](https://nlp.fi.muni.cz/trac/noske)**. Dabei handelt es sich um eine _open source_ Version der **[Sketch Engine (SkE)](https://https://www.sketchengine.eu)**. Der **[Vergleich von Sketch Engine und NoSketch Engine](https://www.sketchengine.eu/nosketch-engine/)** zeigt, wie sich die NoSkE von der kommerziellen SkE durch den Wegfall einiger Funktionalitäten unterscheidet. Von den zahlreichen Dokumentationen und Benutzungshilfen, die online zur Sketch Engine auffindbar sind, sind daher nicht alle für die NoSketch Engine relevant. Für die in dieser Lernunterlage vorgestellten Kernfunktionalitäten bestehen allerdings _keine_ Unterschiede zwischen den beiden Varianten. Die verlinkten Informationen und Anleitungen zur Sketch Engine sind daher gleichermaßen für die NoSketch Engine gültig. 
+
+Im Kontext dieses Manuals werden daher in der Folge die Bezeichnungen SkE und NoSkE synonym verwendet.
 </SideNote>
 
 ## Grundlagen: Token vs. Strukturen
@@ -63,21 +65,21 @@ Token sind das Ergebnis des sogenannten Tokenisierungsprozesses – d.h. der Zer
 
 </SideNote>
 
-Diese vereinfachte Darstellung muss freilich um die Berücksichtigung von Satzzeichen ergänzt werden: Satzzeichen sollen vom vorangehenden Wort abgetrennt werden und bilden separate Token. Die Existenz von Abkürzungen verkompliziert die Tokenisierung: zum Beispiel sind die Punkte in _z.B._ natürlich keine Satzzeichen, dürfen daher nicht abgetrennt werden, denn _z.B._ sollte als ein einziges Token behandelt werden.
+Diese vereinfachte Darstellung muss freilich um die Berücksichtigung von Satzzeichen ergänzt werden: Satzzeichen sollen vom vorangehenden Wort abgetrennt werden und bilden separate Token. Die Existenz von Abkürzungen verkompliziert die Tokenisierung etwas: zum Beispiel sind die Punkte in _z.B._ natürlich keine Satzzeichen, dürfen daher nicht abgetrennt werden, denn _z.B._ sollte als ein einziges Token behandelt werden.
 
 <SideNote type="warning" title="Fehleranfälligkeit: Sonderzeichen in Token">
-Wie bei allen automatisierten Verarbeitungsschritten erfolgt die Tokenisierung bisweilen nicht fehlerfrei. So ist bei der Suche nach Token, die Satz- oder Sonderzeichen enthalten, zu berücksichtigen, dass evtl. die Tokenisierung diese Zeichen missinterpretiert hat und daher das Wort fälschlicherweise in mehrere Token aufgeteilt wurde.
+Wie bei allen automatisierten Verarbeitungsschritten erfolgt die Tokenisierung bisweilen nicht fehlerfrei. So ist bei der Suche nach Token, die Satz- oder Sonderzeichen enthalten, zu berücksichtigen, dass evtl. die Tokenisierung diese Zeichen missinterpretiert hat und daher der gesuchte Term fälschlicherweise in mehrere Token aufgeteilt wurde.
 </SideNote>
 
 ### Token-Attribute
 
-Die Informationen, die jedem Token zugeordnet werden, werden in der SkE **Attribute** genannt.
+Die Informationen, die jedem Token zugeordnet werden, werden in der SkE (Token-)**Attribute** genannt.
 
 Einige der Token-Attribute im amc wären
 
 - `word` : Das einfachste Attribut beinhaltet die orthographische Form des Wortes.
 - `lemma` : hier steht die Grundform des Wortes (wie es von einem Lemmatisierungsprogramm ermitteln wurde).
-- `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist _case sensitive_, `lc` kann verwendet werden, um case _insensitive_ -- also unter Großkleinschreibung ignorierend -- zu suchen. D.h. eine Suche `[word="Ciao"]` findet nur genau „Ciao“. Die Suche `[lc="ciao"]` findet ciao, Ciao, CIAO, CiAo, etc.     
+- `lc` : eine lower cased Version des Wortes. Die Suche in CQL ist _case sensitive_, `lc` kann verwendet werden, um case _insensitive_ zu suchen, also Unterschiede in der Großkleinschreibung zu ignorieren. D.h. eine Suche`[word="Ciao"]` findet nur genau „Ciao“. Die Suche `[lc="ciao"]` findet ciao, Ciao, CIAO, CiAo, etc.     
 - `posTT` : part-of-Speech tags nach dem STTS-Tagset, wie sie vom PoS tagger TreeTagger vergeben wurden.
 - `pos` : part-of-Speech tags, wie sie vom PoS tagger RFTagger vergeben wurden: zusätzlich zur Wortart werden auch morphologische Informationen angegeben.
 
@@ -527,7 +529,7 @@ Gruppierungen können auch innerhalb anderer Gruppen platziert werden:
 - `([lemma="groß.*"] ([lemma="Haus"]|[lemma="Gebäude"])) | ([lemma="klein.*"] [lemma="(Hütte|Kate|Behausung)"])` sucht nach großen Häusern und Gebäuden oder kleinen Hütten und Behausungen (aber findet auch "großindustrielle Häuser" und die "Kleinarler Hütte")
 - `[lc="(h(a|e|i|o|u)){3,}"]` Eine alternative Formulierungsmöglichkeit um alle Wortformen zu finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
-![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \"klima\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \"klimafreundlichesMobilitätskonzept\", zusammengesetzte Nomen mit Bindestrich oder auch der Name einer Webseite mit Punkt werden gefunden.")
+![Screenshot der Suche im AMC_4.1 des Ausdrucks "klima" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden.](images/amc_4.1_concordance_cql-word-klima.undposttnn.png "Screenshot der Suche im AMC_4.1 des Ausdrucks \\\"klima\\\" mit mindestens zwei Wiederholungen, die als Nomen im Treetagger getaggt wurden. Oben links sehen Sie den Suchausdruck, in der Mitte das Ergebnis. Alle gefundenen Begriffe sind als Nomen getaggt. Auch der Tippfehler  \\\"klimafreundlichesMobilitätskonzept\\\", zusammengesetzte Nomen mit Bindestrich oder auch der Name einer Webseite mit Punkt werden gefunden.")
 
 ### Zeichenklassen mit `[ ]`
 
@@ -540,7 +542,6 @@ Wir haben bisher den Platzhalter "`.`" verwendet, der für jedes beliebige Zeich
 
 Die bisherigen Beispiele lassen sich wie gezeigt auch mit der Verwendung von Gruppierung `( )` zusammen mit `|` formulieren. 
 Die Zeichenklassendefinitionen bieten aber noch Möglichkeiten, die darüber hinausgehen: 
-
 
 _Bereiche_ mit "-" definieren:
 
@@ -800,7 +801,7 @@ Beispielsweise könnte man auf der Suche nach Nennungen des Wortes Ball in der B
 Also: suche nach "Ball" innerhalb von Artikeln, die nicht aus dem Sportressort stammen, und in denen auch Walzer, Polonaise, Champagner oder Mitternachtseinlage vorkommen. 
 Damit schränkt sich die Trefferanzahl für "Ball" im amc von ca. 800.000 auf "nur noch" ca. 50.000 ein. (Aber freilich gibt es darunter immer noch Artikel über Fußball, die _nicht_ korrekt mit Sportressort markiert wurden und in denen Siege mit Champagner gefeiert werden, oder Spieler mit dem Eigennamen "Walzer" vorkommen) 
 
-![Tabelle mit dem Suchergebnis im AMC 4.2., Ball in der Mitte hervorgehoben](images/amc_4.2._lemmaballnotinsports.png "Die oben genannte Suche liefert im AMC 4.2. Ergebnisse, die sich auf verschiedenste Tanzveranstaltungen, die hier \"Bälle\" genannt werden, beziehen. Die mit containing gesuchten Lemma müssen nicht in direkter Nachbarschaft des Suchbegriffs \"Ball\" vorkommen, sehr wohl aber in den Artikeln, aus denen die Suchergebnisse stammen.")
+![Tabelle mit dem Suchergebnis im AMC 4.2., Ball in der Mitte hervorgehoben](images/amc_4.2._lemmaballnotinsports.png "Die oben genannte Suche liefert im AMC 4.2. Ergebnisse, die sich auf verschiedenste Tanzveranstaltungen, die hier \\\"Bälle\\\" genannt werden, beziehen. Die mit containing gesuchten Lemma müssen nicht in direkter Nachbarschaft des Suchbegriffs \\\"Ball\\\" vorkommen, sehr wohl aber in den Artikeln, aus denen die Suchergebnisse stammen.")
 
 <SideNote type="tip">
   Für solche kombinierten Filterungen sind in der NoSkE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann auf das eben erstelle Subkorpus angewandt und damit stufenweise verfeinert werden. 
