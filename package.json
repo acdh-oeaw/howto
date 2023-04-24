@@ -11,7 +11,7 @@
   "scripts": {
     "analyze": "cross-env ANALYZE='true' yarn run build",
     "build": "next build",
-    "cms:dev": "cross-env PORT=8081 netlify-cms-proxy-server",
+    "cms:dev": "cross-env PORT=38081 netlify-cms-proxy-server",
     "cms:styles": "cross-env NODE_ENV='production' NODE_OPTIONS='-r tsconfig-paths/register' postcss --config src/cms/previews/postcss.config.cjs node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && prettier public/assets/css --write",
     "cms:styles-win": "cross-env NODE_ENV='production' node -r tsconfig-paths/register node_modules/postcss-cli/index.js --config src/cms/previews/postcss.config.cjs node_modules/tailwindcss/tailwind.css src/styles/index.css -d public/assets/css && .\\node_modules\\.bin\\prettier public/assets/css --write",
     "create:favicons": "tsx ./scripts/createFavicons.ts",
@@ -21,7 +21,7 @@
     "create:search-index": "dotenv -- tsx ./scripts/createSearchIndex.ts",
     "create:sitemap": "tsx ./scripts/createSitemap.ts",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "dev": "cross-env NEXT_PUBLIC_LOCAL_CMS_URL='http://localhost:8081/api/v1/' NEXT_PUBLIC_BASE_URL='http://localhost:3000' concurrently --kill-others -s first \"yarn run cms:dev\" \"next dev --port=3000\"",
+    "dev": "cross-env NEXT_PUBLIC_LOCAL_CMS_URL='http://localhost:38081/api/v1/' NEXT_PUBLIC_BASE_URL='http://localhost:33000' concurrently --kill-others -s first \"yarn run cms:dev\" \"next dev --port=33000\"",
     "format": "prettier . --cache --check --ignore-path .gitignore",
     "format:fix": "yarn run format --write",
     "lint:check": "run-p lint:*:check",

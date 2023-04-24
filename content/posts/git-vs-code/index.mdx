@@ -58,28 +58,27 @@ VSCodium.
 
 ### Working with git in the editor
 
-#### Access token
+#### Authenticate
 
-Follow the steps that are explained in getting an access token, so that you can link your editor to
-your Git account.
+When you push your first commit, github will ask you to authenticate.
+![](images/credentials_dialog_windows.png "Github authentication") We recommend to
+`Sign in with your browser`. A browser window will open for you to log in to github. Once you're
+successfully authenticated, you can close the browser window.
+![](images/authentication_successful_browser_github.png "Authentication successful")
 
 #### Cloning a repository and getting data
 
-For example we want to clone `wboe-artikel` from https://gitlab.oeaw.ac.at/acdh-ch/wboe. The data at
-this location, in this repository, is marked as private. So you need to log into gitlab.oeaw.ac.at
-with the account you set up to see the contents.
+For example we want to clone `teapot` from https://github.com/acdh-oeaw/howto_trainingmaterials. The
+data at this location, in this repository, is marked as public. So you do not need to log into the
+Oeaw Github, but you need to be logged into your Github account that you set up to see the contents.
 
-On the top right there is a `Clone` button which, when clicked, gives you two options
-`Clone with SSH` and `Clone with HTTPS`. We need the HTTPS option. On the right there is a copy to
-clipboard button we can use.
+On the top right there is a `Clone` button which, when clicked, gives you two options `HTTPS` and
+`GitHub CLI`. We need the HTTPS option. On the right there is a copy to clipboard button we can use.
 
-If you installed Visual Studio Code there is a special kind of link that will open Visual Studio
-Code if you allow it and start the cloning process with the right settings.
-
-![](images/clonebutton_in_gitlab.png)
+![](images/github_clone_repo.png)
 
 <SideNote type="note">
-  Getting access to the data on gitlab.oeaw.ac.at is different on all three OS
+  Getting access to the data on https://github.com/acdh-oeaw is different on all three OS
 </SideNote>
 
 <SideNote type="info">
@@ -88,15 +87,15 @@ Code if you allow it and start the cloning process with the right settings.
 
 You can paste the \`https://...\` of any git repository from a server in the text field that appears
 when we click \`Clone Git repository...\` on the start screen of VSCodium or Visual Studio Code.
-![](images/clone_workshop.png)
+![](images/githubrepo_clone_from_url.png)
 
 After you hit enter a dialog appears asking you where to store the contents of the repository
 locally:
 
-![](images/select_repository_location_windows.png "select repository location Windows")
+![](images/clone_select_folder_windows.png "select repository location Windows")
 
-The very first time for each web site like gitlab.oeaw.ac.at in Windows a dialog will open that asks
-us for user name and password.
+The very first time for each web site like Gitlab and Github in Windows, a dialog will open that
+asks us for user name and password.
 
 ![](images/credentials_dialog_windows.png "credentials dialogue Windows")
 
@@ -138,7 +137,7 @@ Because Visual Studio Code is a development environment where developers can exe
 downloaded from somewhere on the internet, Visual Studio Code asks if we trust the current
 repository. Therefore, choose to "trust" the repository that you downloaded from a team you know.
 
-![](images/you_trust_the_people_you_collaborate_with.png "trust your team")
+![](images/trust_authors_windows.png "Trust your team")
 
 command_line#cloning-a-remote-repository
 
@@ -155,16 +154,17 @@ Version control allows to save versions of content, restore previous versions, a
 versions. This is especially beneficial when working with multiple documents, and when working in
 teams of more than one (potentially working on the same document).
 
-Before uploading any changes, you want to track them locally. After cloning the wboe-repo, let's
-open the `README.md` in Visual Studio Code. This is done while the uppermost mode on the left is
-selected (the two sheets, files)
+Before uploading any changes, you want to track them locally. After cloning the
+howto_trainingmaterials, let's open the `teapot.mdx` in Visual Studio Code. This is done while the
+uppermost icon on the left is selected (the two sheets, files)
 
-We want to change something so we replace the text about adding a good description with `Done.`
+We want to change something so we replace every `I` with `you`in the lyrics and add the line
+`You drink tea every day` at the end.
 
 Now we can select the third mode from the top (three connected circles, the graph changes and
-branches make up in version control)
+branches make up in version control).
 
-This only lists those files that we change since we last made our changes permanent, committed (to)
+This only lists those files that we changed since we last made our changes permanent, committed (to)
 them. The README.md is listed. If we double click it we get the following view:
 
 ![review changes](images/review_changes.png "review changes")
@@ -185,7 +185,7 @@ We put changes in the **staging area**, before we commit.
 
 <SideNote type="info" title="Adding multiple files">
 
-We can add multiple files by selecting the names as usual using shift or ctrl or command and than
+We can add multiple files by selecting the names as usual using shift or ctrl or command and then
 hit the `+`.
 
 </SideNote>
@@ -201,8 +201,9 @@ on the command line.
 ### Bundle changes into meaningful chunks and commit to them
 
 Including content changes in Git's version history involves a two-step process. First, related
-changes are added to create semantically meaningful units of changes. But the changing a staged
-document will **not** propagate these changes in the next step. Keep that in mind.
+changes are added to create semantically meaningful units of changes. These changes wait in the
+staging area but it needs an extra step to propagate these changes and feed them into the documents.
+Keep that in mind.
 
 When all related changes have been added to the "staging area", we can save them together as a
 version history snapshot, a **commit**, with a **commit message** that briefly describes _why_
@@ -261,10 +262,12 @@ fatal: no email was given and auto-detection is disabled
 </SideNote>
 
 There is no graphical interface for this most often one time configuration. You need to copy the two
-suggested commands and execute them in a terminal. Visual Studio Code provides one. So click on
-"Terminal" at the bottom right.
+suggested `git config` commands with your own details and execute them in a terminal. Visual Studio
+Code provides one. So click on "Terminal" at the bottom right.
 
 <SideNote type="info" title="Unfortunately this differs again between the three OSes">
+<Tabs>
+<Tab title="Windows">
 ### Windows
 
 Unfortunately when you click on "Terminal" now you get a terminal that does not know `git` (yet). If
@@ -273,6 +276,9 @@ you want to set your e-mail and name you need to click on the `V` next to the `+
 
 ![](images/windows_open_git_bash.png)
 
+</Tab>
+<Tab title="MacOS">
+
 ### MacOS
 
 Only on MacOS as a first time user you are asked to configure your shell a little. You can either
@@ -280,10 +286,14 @@ skip that or maybe look at the defaults and use them. The keys you need to type 
 
 ![](images/first_time_terminal_macos.png "first time terminal MacOS")
 
+</Tab>
+<Tab title="Linux">
 ### Linux
 
 This is the only OS where you can just type the two commands.
 
+</Tab>
+</Tabs>
 </SideNote>
 
 Now replace `you@example.com` and `Your Name` with your name and execute two commands to configure
@@ -295,8 +305,8 @@ command_line#bundle-changes-into-meaningful-chunks-and-commit-to-them
 
 ### Keeping repositories in sync: fetch, pull, push
 
-To get our changes to the server so other people in our team can fetch them to review them for
-example we now `push` what we `committed` on our machine to the server.
+To get our changes to the server, so other people in our team can fetch them to review or amend
+them, we now `push` what we `committed` on our machine to the server.
 
 ![push](images/push.png "push")
 
@@ -310,9 +320,9 @@ server.
 
 What happens if two people edit the same file? Well it depends:
 
-1. If the two edit different lines in the file then the changes can be `merged` automatically That
-   is a good solution in the majority of cases and it saves a lot of time.
-2. I two people edit the same line then there is a `conflict` that needs to be `resolved`
+1. If the two edit different lines in the file, then the changes can be `merged` automatically. That
+   is a good solution in most cases and it saves a lot of time.
+2. If two people edit the same line, then there is a `conflict` that needs to be `resolved`
 
 Conflicts are marked with these distinct lines
 
@@ -336,9 +346,10 @@ And after resolving **all** the conflicts we do a `merge commit` (the text is th
 
 ![commit merge to resolve](images/commit_merge_to_resolve.png "commit merge to resolve")
 
-_Note_: **Never** commit before resolving all conflicts, removing all conflict markers. You will
-make the maker lines permanent and They are made like this to break any programming language and
-XML.
+<SideNote type="danger" title="Resolve all conflicts">
+  **Never** commit before resolving all conflicts, removing all conflict markers. You will make the
+  maker lines permanent. They are made like this to break any programming language and XML.
+</SideNote>
 
 ### Training task
 
@@ -349,7 +360,7 @@ Inspect the repository by checking its status, and fetch all changes that have b
 meantime.
 
 Navigate to the test-file.mdx and open it. In it, you will find several sentences talking about
-\*\*beagle\*\* dogs. Replace the word "beagle" or "beagles" with "Basset hound" and move all those
+**beagle** dogs. Replace the word "beagle" or "beagles" with "Basset hound" and move all those
 sentences to the very end of the document. Save your actions and commit them with a meaningful
 message.
 
