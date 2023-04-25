@@ -657,7 +657,7 @@ _Negation_ mit `[^ ...]` definieren:
 
 ## Regex auch auf Token-Ebene
 
-Die Operatoren für reguläre Ausdrücke können nicht nur auf den Inhalt von Token-Attributen angewendet werden, sondern auch auf ganze Token oder Abfolgen von Token:
+Die Operatoren für reguläre Ausdrücke können nicht nur auf den Inhalt von Token-Attributen -- also auf der Buchstabenebene -- angewendet werden, sondern auch auf ganze Token oder Abfolgen von Token:
 
 - `[word="ein"] [pos="ADJ.*"]* [word="Haus"]` findet „ein“ und „Haus“ mit _beliebig vielen optionalen_ Adjektiven dazwischen: _ein Haus_, _ein schönes Haus_, _ein schönes großes Haus_, …
 - `[lemma="schön"] []{0,4} [word="Haus"]` findet „schön“ gefolgt von Haus – in einem Abstand von maximal 4 Token. (Zur Erinnerung: ein `[]` passt auf _jedes beliebige_ Token.)
