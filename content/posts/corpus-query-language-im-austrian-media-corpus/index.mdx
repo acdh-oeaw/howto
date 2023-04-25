@@ -660,16 +660,16 @@ _Negation_ mit `[^ ...]` definieren:
 Die Operatoren für reguläre Ausdrücke können nicht nur auf den Inhalt von Token-Attributen -- also auf der Buchstabenebene -- angewendet werden, sondern auch auf ganze Token oder Abfolgen von Token:
 
 - `[word="ein"] [pos="ADJ.*"]* [word="Haus"]` findet „ein“ und „Haus“ mit _beliebig vielen optionalen_ Adjektiven dazwischen: _ein Haus_, _ein schönes Haus_, _ein schönes großes Haus_, …
-- `[lemma="schön"] []{0,4} [word="Haus"]` findet „schön“ gefolgt von Haus – in einem Abstand von maximal 4 Token. (Zur Erinnerung: ein `[]` passt auf _jedes beliebige_ Token.)
+- `[lemma="schön"] []{0,4} [word="Haus"]` findet „schön“ gefolgt von Haus – in einem Abstand von maximal 4 Token. (Zur Erinnerung: das leere `[]` passt auf _jedes beliebige_ Token.)
 - `([lemma="schön"]|[lemma="groß"]) [lemma="Haus"]` findet „schön“ _oder_ „groß“ + „Haus“. (und ist äquivalent zur Anfrage `[lemma="schön|groß"] [lemma="Haus"]`)
 
 ### Gleichzeitiges Suchen im linken und rechten Kontext: meet und union
 
-Bisher konnten wir nur entweder **im linken oder im rechten Kontext suchen**. Mit `meet` kann in beiden Kontexten gesucht werden:
+Bisher konnten wir nur entweder im linken **_oder_** im rechten Kontext suchen. Mit `meet` kann in beiden Kontexten gleichzeitig gesucht werden:
 
 - `(meet [TokenA] [TokenB] -linker_context rechter_context)` 
 
-sucht nach \[TokenA] in deren linken _oder_ rechten Nachbarschaft ein \[TokenB] zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in **\-linker_context** und **rechter_context** bestimmt.
+sucht nach \[TokenA] in deren linken _oder_ rechter Nachbarschaft ein \[TokenB] zu finden ist. Was als „Nachbarschaft“ gilt, wird dabei über die Zahlen in **\-linker_context** und **rechter_context** bestimmt.
 
 z.B.: Suche nach dem Lemma „Hund“ in dessen linker oder rechter Umgebung im maximalen Abstand von 5 Token die Lemmas „beißen“ oder „bissig“ stehen.
 
@@ -744,22 +744,22 @@ z.B.: Suche nach dem Lemma „Hund“ in dessen linker oder rechter Umgebung im 
 
 ## Suche auf Strukturebene in CQL
 
-Sowohl bei der **Simple query** als auch bei den bisherigen Beispielen der **CQL** blieben Informationen auf der **Strukturebene** (Dokumente, Absätze, Sätze) unberücksichtigt. Hier wird nun gezeigt, wie _auf_ und _mit_ **Strukturinformationen** gesucht werden kann.
+Sowohl bei der **Simple search** als auch bei den bisherigen Beispielen zur **CQL** blieben Informationen auf der **Strukturebene** (Dokumente, Absätze, Sätze) unberücksichtigt. Hier wird nun gezeigt, wie _auf_ und _mit_ **Strukturinformationen** gesucht werden kann.
 Wie oben gezeigt, werden Struktur-Informationen in den Input-Daten für die SkE mithilfe von XML-Elementen kodiert.
 In HTML und XML gelten die folgenden Notationskonventionen:
 
-- `<S> Beginn-tag einer Struktur namens „S“`
-- `</S> End-tag einer Struktur namens „S“`
-- `<S/> Die gesamte Stuktur von Beginn bis Ende.`
+- `<S>` Beginn-tag einer Struktur namens „S“
+- `</S>` End-tag einer Struktur namens „S“ 
+- `<S/>` Die gesamte Stuktur von Beginn bis Ende. 
 
 Mit dieser Kodierung arbeiten wir auch in der Suchabfragesprache CQL. 
 
 In amc steht die Struktur „doc“ (Dokument) für einen Zeitungsartikel, d.h.  
 
-- `<doc /> Findet alle (Zeitungs)Artikel`
-- `<doc> Findet alle Artikelanfänge`
-- `<doc> [] Findet das _erste_ Token jedes Artikels`
-- `[] </doc> Findet das _letzte_ Token jedes Artikels`
+- `<doc />` Findet alle (Zeitungs)Artikel
+- `<doc>` Findet alle Artikelanfänge
+- `<doc> []` Findet das _erste_ Token jedes Artikels
+- `[] </doc>` Findet das _letzte_ Token jedes Artikels
 
 Strukturen können bekanntlich ihre eigenen Attribute aufweisen, und nach diesen kann wie folgt gesucht werden:
 
