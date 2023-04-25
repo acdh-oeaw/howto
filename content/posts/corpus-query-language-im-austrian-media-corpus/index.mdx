@@ -240,33 +240,33 @@ Die oben angeführte Vertikale sowie die Beispiele in diesem Tutorial verwenden 
 </Quiz>
 
 
-## Schnelleinstieg: Suche mit „Simple query“
+## Schnelleinstieg: Suche mit „Simple search“
 
-Die einfachste Form der Suche im amc ist die sogenannte **Simple query**.
+Die einfachste Form der Suche im amc ist die sogenannte **Simple search**.
 
-Diese kann in der SkE im Menüfeld "Concordance" aufgerufen werden:
+Diese kann in der SkE innerhalb der "Concordance"-Funktion aufgerufen werden:
 
-- entweder durch Auswahl im linken Menü und dann unter dem Reiter "basic" in der SkE Maske
-- oder im Dashboard über den Auswahlpunkt "Concordance". Die **simple query** wird wieder unter dem Reiter "basic" angezeigt.
+- entweder durch Auswahl des Concordanece-Symbols im linken Menü und dann weiter unter dem Reiter "basic"
+- oder im Dashboard über den Auswahlpunkt "Concordance". Die Funktionalität der  **simple search** wird dann auch hier wieder unter dem Reiter "basic" angezeigt.
 
 Gibt man hier eine Wortform ein, so sucht die SkE
 
-- dieses Wort (und zwar case-insensitiv, d.h. ohne Berücksichtigung von Groß- und Kleinschreibung. Die Eingabe von _SMS_ findet daher z.B. _SMS_, _sms_, _Sms_, etc.)
-- entspricht die Sucheingabe auch einem Lemma, dann auch alle Flexionsformen dieses Lemmas. (D.h. eine Suche nach _Haus_ findet daher _auch_ alle Flexionsformen des _lemmas Haus_: das sind _Haus, Hauses_, _Hause_, _Häuser_, _Häusern_.)
+- dieses Wort -- und zwar case-insensitiv, d.h. ohne Berücksichtigung von Groß- und Kleinschreibung. Die Eingabe von _SMS_ findet daher z.B. _SMS_, _sms_, _Sms_, etc.
+- entspricht die Sucheingabe auch einem Lemma, dann auch alle Flexionsformen dieses Lemmas. (D.h. eine Suche nach _Haus_ findet daher auch alle Flexionsformen des _lemmas Haus_: das wären _Haus, Hauses_, _Hause_, _Häuser_, _Häusern_.)
 
 ### Mehrwort-Suche
 
 Es kann auch eine Abfolge mehrerer Wörter angegeben werden, die SkE sucht dann nach genau dieser Abfolge, z.B. _ein schönes Haus_.
 
-Da bei der **Simple query** wie erwähnt auch nach den **Wortformen eines Lemmas** gesucht wird, findet eine Suchanfrage _schön Haus_ auch alle Paarungen der Wortformen des Lemmas _schön_ und der Wortformen des Lemmas _Haus_ und das unabhängig von Groß- oder Kleinschreibung. Somit erscheinen im Ergebnis z.B. _schönes Haus_, _schönsten Hauses_, _Schöneren Häusern_ etc.
+Da bei der **Simple search** wie erwähnt auch nach den **Wortformen eines Lemmas** gesucht wird, findet eine Suchanfrage _schön Haus_ auch alle Paarungen der Wortformen des Lemmas _schön_ und der Wortformen des Lemmas _Haus_ und das unabhängig von Groß- oder Kleinschreibung. Somit erscheinen im Ergebnis z.B. _schönes Haus_, _schönsten Hauses_, _Schöneren Häusern_ etc.
 
-<SideNote type="info" title="Definite und indefinite Artikel in der Simple query">
+<SideNote type="info" title="Definite und indefinite Artikel in der Simple search">
 Das Lemma für **definite Artikel** ist übrigens _die_, für **indefinite** ist es _eine_. Das heißt, die Abfrage _die schön Haus_ oder _eine schön Haus_ liefert die entsprechenden Kombinationen in allen Kasus und Numeri.
 </SideNote>
 
 ### Wildcards
 
-In der Simple query ist die Verwendung des Wildcards  `*`  (Jokerzeichen, Asterisk) möglich: es steht für beliebig viele (auch null!) beliebige Zeichen.
+In der Simple search ist die Verwendung des Wildcards  `*`  (Jokerzeichen, Asterisk) möglich: es steht für beliebig viele (auch null!) beliebige Zeichen.
 
 #### Beispiele:
 
@@ -274,29 +274,31 @@ In der Simple query ist die Verwendung des Wildcards  `*`  (Jokerzeichen, Asteri
 - `*`aus : alle Wörter, die mit der Buchstabenfolge _aus_ enden: aus, Maus, Haus, Schildlaus, …
 - Ha`*`s: alle Wörter, die mit Ha beginnen, und mit _s_ enden: _Has_, _Haus_, _Hass_, _Handelsabschluss_, _Hafenmeistergattinnenpendlerbus_, etc. Wegen der beiden speziellen Eigenschaften case-insensitiv und Lemma-Suche wird aber auch z.B. _haltlos_ (case-insensitive) und _haltlose_ gefunden (Ergebnis der impliziten Lemma-Suche, obwohl die gefundene Wortform dann gar nicht auf _s_ endet!)
 
-Ein weiteres Beispiel für den case-insensitiven Charakter der Simple query: _deutsch*_ findet: _deutsch_, _deutsche_, _deutsches_ … aber auch: _Deutschlands_, _Deutschmatura_,...
+Ein weiteres Beispiel für den case-insensitiven Charakter der Simple search: _deutsch*_ findet: _deutsch_, _deutsche_, _deutsches_ … aber auch: _Deutschlands_, _Deutschmatura_,...
 
 ## „Vollsuche“ mit der Corpus Query Language (CQL)
 
-Wie wir gesehen haben, kann in der Simple query nur nach Token und dabei auch nur nach Wortformen gesucht werden, oder exakter ausgedrückt: es kann nach Werten im Attribut _word_ gesucht werden (wobei implizit intern zusätzlich die Attribute _lc_ und _lemma_ zur Suche herangezogen werden).
+Wie wir gesehen haben, kann in der Simple search nur nach Token und dabei auch nur nach Wortformen und (implizit) Lemmata gesucht werden, oder exakter ausgedrückt: es kann nach Werten im Attribut _word_ gesucht werden (wobei implizit intern zusätzlich auch noch die Attribute _lc_ und _lemma_ zur Suche mitherangezogen werden).
 
-Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: Die Suche in beliebigen (Token-)Attributen, die Suche unter Berücksichtigung von Strukturen und deren Attributen, die Suche mit regulären Ausdrücken,
- etc.
-
+Im Gegensatz hierzu bietet die **CQL** weit mehr Möglichkeiten: 
+- Suche in beliebigen (Token-)Attributen
+- Suche unter Berücksichtigung von Strukturen und deren Attributen
+- Suche mit regulären Ausdrücken 
+- uvm.
 <Video provider="youtube" id="nOMr_D6ISRM" startTime="1" />
 
 ### Suche auf der TOKENEBENE in CQL
 
-Suchanfragen mit der CQL werden wieder unter **Concordance**, diesmal im Bereich **Advanced** unter Auswahl des **Query type** **CQL** eingegeben. 
+Suchanfragen mit der CQL werden wieder unter **Concordance**, diesmal im Reiter  **Advanced** unter Auswahl des **Query type** **CQL** eingegeben. 
 In der Suche mit CQL wird jedes Token durch eckige Klammern bezeichnet.
-Innerhalb dieser Klammern können die Bedingungen angegeben werden, welche die Attribute dieses Token erfüllen müssen:
+Innerhalb dieser Klammern werden dann die Bedingungen angegeben, welche die Attribute dieses Token erfüllen müssen:
 
-- `[ word="Haus" ]` Alle Einträge mit der genau der Buchstabenfolge „Haus“
-- `[ lemma="Haus" ]` Alle Einträge mit dem Lemma „Haus“ – also „Haus“ „Hauses“ … „Häusern“
-- `[ posTT="NN" ]` Alle Einträge mit dem PoS-tag "NN"   – also alle Nomen
-- `[]` (KEINE Bedingungen)  Da hier für das Token keine weiteren Einschränkungen angegeben  wurden  findet diese Suche ausnahmlos ALLE Token
+- `[ word="Haus" ]` Alle Einträge, bei denen das Attribut "word" den Wert "Haus" aufweist -- also alle Token mit exakt der Buchstabenfolge „Haus“
+- `[ lemma="Haus" ]` Alle Einträge, bei denen das Attribut "lemma" den Wert "Haus" aufweist --  also „Haus“ „Hauses“ … „Häusern“
+- `[ posTT="NN" ]`  Alle Einträge, bei denen das Attribut "posTT" (dieses bezeichnet die PoS-Annotationen durch den TreeTagge) den Wert "NN" aufweist --  also alle Nomen
+- `[]` (leere Klammern, also KEINE Bedingungen).  Da hier für das Token keine weiteren Einschränkungen angegeben  wurden  findet diese Suche ausnahmlos ALLE Token!
 
-Für die Suche nach Mehrwortausdrücken können die Bedingungen für die Einzelworte einfach aneinandergereiht werden:
+Für die Suche nach Mehrwortausdrücken können die gewünschten Bedingungen für die Einzelworte einfach aneinandergereiht werden:
 
 - `[ posTT="ADJA" ]` `[ lemma="Haus" ]`: alle Token mit der Wortart (attributives) Adjektiv, gefolgt von einem Eintrag mit dem Lemma „Haus“
   also z.B. schönes Haus, hohe Häuser, niedrigen Häusern, …
@@ -316,7 +318,7 @@ Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdru
 - „`*`“ : steht für 0, 1 oder beliebig viele Wiederholungen des _vorhergehenden_ Zeichens oder Ausdrucks. z.B. `[word="Hallo*"]` findet „Hall“ „Hallo“ „Halloo“ etc.
 - „`+`“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo+"]` findet „Hallo“ „Halloo“ etc. … aber _nicht_ „Hall“.
   D.h., das Zeichen vor ‚*‘ ist _optional_, das Zeichen vor ‚+‘ hingegen ist _obligat_!
-- „`?`“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo?"]` findet genau die beiden Formen „Hall“ und „Hallo“. D.h. das ‚`?`‘ steht für Optionalität aber nicht für die Wiederholbarkeit des linken Nachbarn von ‚`?`‘ . 
+- „`?`“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B. `[word="Hallo?"]` findet genau die beiden Formen „Hall“ und „Hallo“. D.h. das ‚`?`‘ steht für die Optionalität aber nicht für die Wiederholbarkeit des linken Nachbarn von ‚`?`‘ . 
 
 **Kombination mit `.`: Üblich ist es, `*`, `+`, `?` mit `.` (dem Platzhalter für jedes beliebige Zeichen) zu kombinieren.**
 
@@ -324,8 +326,8 @@ Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdru
 - \[word="Hunde.+"] findet Hundehütte, Hundekuchen, Hundefriseur, aber natürlich auch Hunderttausend … (aber nicht Hunde!) 
 - [pos="N.Reg.`*`Pl.`*`"] findet alle Nomen im Plural
 
-<SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in Simple Query und CQL">
-Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple query: dort steht ein `*` allein schon als Platzhalter für 0, 1, oder beliebig viele beliebige Zeichen.
+<SideNote type="note" title="Unterschiedliche Bedeutung des Asterisk in Simple search und CQL">
+Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple search: dort steht ein `*` allein schon als Platzhalter für 0, 1, oder beliebig viele beliebige Zeichen.
 In einem regulären Ausdruck bezieht sich hingegen ein `*` immer auf den _linken Nachbarn_: die Suchanfrage `Haus*` liefert in der Simple query bekanntlich alle Wörter, die mit „Haus“ beginnen, in der CQL jedoch „Hau“, „Haus“, „Hauss“, „Haussss“ etc., also „Hau“ gefolgt von 0, 1, oder beliebig vielen „s“, da sich der `*` in der CQL immer auf das vorhergehende Element – hier eben das „s“ – bezieht.
 Will man ein Suchverhalten wie in der Simple query erreichen, muss die Abfrage in der CQL also wie folgt lauten: `[word="Haus.*"]`
 </SideNote>
