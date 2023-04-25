@@ -870,8 +870,8 @@ Um beim Beispiel zu bleiben: ein `<doc mutation="Wien,Abend,Morgen" .../>` würd
 - `mutation=".+Abend.+"`
 
 <SideNote type="note">
-  Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu verzerrenden Mehrfachzuordnungen kommt.
-  Eine Frequenzanalyse der Anzahl der `<doc>` pro mutation lieferte in unserem Beispiel, für ein _einziges_ `<doc mutation="Wien,Abend,Morgen" .../>` folgende 4(!) Ergebnisse. 
+  Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu ergebnisverzerrenden Mehrfachzuordnungen kommt.
+  Eine Frequenzanalyse der Anzahl der `<doc>` pro mutation würde in unserem Beispiel, für ein _einziges_ `<doc mutation="Wien,Abend,Morgen" .../>` folgende 4(!) Ergebnisse liefern und als Treffersumme dieser Abfrage würde ebenfalls 4 ausgegeben. 
 
 - Wien : 1
 - Abend : 1
@@ -890,19 +890,19 @@ Informationen zu den Strukuren finden sich dabei unter dem Titel **TEXT TYPES**.
 
 ### Anzeige anpassen
 
-Nach einer erfolgten Suche kann über Auswahl der **View options** (dem Auge-Symbol in der Werkzeugleiste) die Anzeige angepasst werden. Hilfreich ist, dass hier die Anzeige einzelner Attribute oder Strukturen ein- oder ausgeblendet werden kann. So kann man z.B., um sich wieder einmal zu erinnern, wie die Werte des pos-Attributs bei Nomen aufgebaut sind, nach einem Nomen suchen, und dann in den View Options das Attribut pos auf _sichtbar_ schalten. So kann man sich ein Attribut anhand exemplarischer Beispiele erschließen.
+Nach einer erfolgten Suche kann über Auswahl der **View options** (dem Auge-Symbol in der Werkzeugleiste) die Anzeige angepasst werden. Hilfreich ist, dass hier die Anzeige einzelner Attribute oder Strukturen ein- oder ausgeblendet werden kann. 
 In **View Options** kann auch angegeben werden, ob die ausgewählten Attribute nur für den eigentlichen _Treffer_ (meist die beste Wahl) oder für _alle_ Wörter der KWIC-Liste angezeigt werden sollen.
 Weiters besteht die Option, die ausgewählten Attribute as _tooltips_, d.h. nur bei _mouse over_ anzuzeigen.
 
-![View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png "Für View Options muss das Auge-Symbol ausgewählt werden. Die Funktionsmaske _View options_ zeigt die Auswahl lemma und posTI. Darunter sieht man die entsprechende Anzeige bei KWIC im Suchergebnis.")
+![View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png "Für View Options muss das Auge-Symbol ausgewählt werden. Die Funktionsmaske \"View options\" zeigt hier die Auswahl "lemma" und "posTI". Darunter sieht man die entsprechende KWIC-Ansicht eines Suchergebnisses.")
 
 ### Frequency
 
-Suchergebnisse können mit der Option  _Frequency_ aus der Werkzeugleiste übersichtlich(er) zusammengefasst werden. Das ist oft auch hilfreich, um die Korrektheit einer Suchanfrage zu überprüfen.
-Bei der Analyse größerer Treffermengen kann es auch hilfreich sein, eine Frequenzliste des _linken_ oder _rechten_ _Nachbarn_ des Suchworts erstellen zu lassen (Auswahl von _1L_ bzw. _1R_). So lassen sich sehr oft „auffällige“ Muster gut isolieren. Zum Beispiel liefert eine Suchanfrage nach der informellen Grußform „baba“ (`[lc="baba"]`) ca. 10.000 Treffer. Erstellt man eine Frequenzliste der linken Nachbarn von „baba“, so sticht an erster Stelle das Wort „Ali“ mit ca. 1.800 Ergebnissen hervor, weil eben „Ali Baba“ eine hochfrequente Wortfolge ist, die so einfach aus dem Gesamtzählergebnis exkludiert werden, oder bei der Verfeinerung der Suchanfrage berücksichtigt werden kann.
+Suchergebnisse können mit der Option  _Frequency_ aus der Werkzeugleiste übersichtlicher zusammengefasst werden. Das ist oft hilfreich, um die Korrektheit einer Suchanfrage zu überprüfen.
+Bei der Analyse größerer Treffermengen kann es auch hilfreich sein, Frequenzlisten  des _linken_ oder _rechten_ _Nachbarn_ des Suchworts erstellen zu lassen (Auswahl von _1L_ bzw. _1R_). So lassen sich sehr oft „auffällige“ Muster gut isolieren. Zum Beispiel liefert eine Suchanfrage nach der informellen Grußform „baba“ (`[lc="baba"]`) ca. 10.000 Treffer. Erstellt man eine Frequenzliste der linken Nachbarn von „baba“, so sticht an erster Stelle das Wort „Ali“ mit ca. 1.800 Ergebnissen hervor, weil eben „Ali Baba“ eine hochfrequente Wortfolge ist, die so einfach aus dem Gesamtzählergebnis exkludiert werden, oder bei der Verfeinerung der Suchanfrage berücksichtigt werden kann.
 
 <SideNote type="note">
-Die _Frequency_ Auswertung ist natürlich auch _das_ essentielle Werkzeug für alle quantitativen Untersuchungen. Typischerweise werden damit die Ergebnisse einer CQL-Abfrage nach Metadaten-Faktoren wie `doc.region` (Region) oder `doc.year` (Erscheinungsjahr) ausgezählt. Die Ergebnisse können dann in unterschiedlichen Formaten (`txt xls xml csv`)  heruntergeladen und für die   Weiterverarbeitung am lokalen Rechner gespeichert werden.
+Die _Frequency_ Auswertung ist natürlich auch _das_ essentielle Werkzeug für alle quantitativen Untersuchungen. Typischerweise werden damit die Ergebnisse einer CQL-Abfrage nach Metadaten-Faktoren wie `doc.region` (Region) oder `doc.year` (Erscheinungsjahr) ausgezählt. Die Ergebnisse können dann in unterschiedlichen Dateiformaten (`txt xls xml csv`)  heruntergeladen und für die   Weiterverarbeitung am lokalen Rechner gespeichert werden.
 </SideNote>
 
 ### Einschränkungen der Metadaten _ohne_ CQL Struktursuche
