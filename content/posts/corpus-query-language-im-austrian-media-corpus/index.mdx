@@ -750,27 +750,27 @@ In HTML und XML gelten die folgenden Notationskonventionen:
 
 - `<S>` Beginn-tag einer Struktur namens „S“
 - `</S>` End-tag einer Struktur namens „S“ 
-- `<S/>` Die gesamte Stuktur von Beginn bis Ende. 
+- `<S/>` Die gesamte Stuktur „S“ von Beginn bis Ende. 
 
-Mit dieser Kodierung arbeiten wir auch in der Suchabfragesprache CQL. 
+Mit dieser Kodierungskonvention arbeiten wir auch in der Suchabfragesprache CQL. 
 
 In amc steht die Struktur „doc“ (Dokument) für einen Zeitungsartikel, d.h.  
 
 - `<doc />` Findet alle (Zeitungs)Artikel
-- `<doc>` Findet alle Artikelanfänge
+- `<doc>` Findet alle Artikelanfangsmarker
 - `<doc> []` Findet das _erste_ Token jedes Artikels
 - `[] </doc>` Findet das _letzte_ Token jedes Artikels
 
 Strukturen können bekanntlich ihre eigenen Attribute aufweisen, und nach diesen kann wie folgt gesucht werden:
 
-- `<doc id="xyz"/> Artikel mit der id „xyz“`
-- `<doc docsrc="STANDARD" & year="2017"/> Artikel aus der Zeitung „Der Standard“ aus dem Jahr 2017`
-  (beachten Sie, dass ein **logisches &** verwendet werden muss: Sie suchen nach Artikeln, die aus dem "STANDARD" stammen UND die im Jahr 2017 veröffentlicht wurden)
+- `<doc id="xyz"/>` Artikel mit der id „xyz“
+- `<doc docsrc="STANDARD" & year="2017"/>` Artikel aus der Zeitung „Der Standard“ aus dem Jahr 2017
+  (beachten Sie, dass ein **logisches &** verwendet werden muss: Sie suchen nach Artikeln die zwei Bedingungen erfüllen müssen: die müssen aus dem "STANDARD" stammen UND das Veröffentlichungsjahr 2017 haben)
 
 Für die Spezifikation der Werte der Strukturattribute können reguläre Ausdrücke genauso verwendet werden, wie es oben bereits für den Inhalt von Token-Attributen demonstriert wurde:
 
-- `<doc year="199."/> alle Artikel aus den 1990ern`
-- `<doc year="199(8|9)"/> alle Artikel aus 1998 oder 1999`
+- `<doc year="199."/>` alle Artikel aus den 1990ern 
+- `<doc year="1998|1989)"/>` oder `<doc year="199(8|9)"/>`  oder `<doc year="199[89]"/>`alle Artikel aus 1998 oder 1999
 
 ### within/ containing
 
