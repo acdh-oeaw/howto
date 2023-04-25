@@ -806,10 +806,10 @@ Beispielsweise könnte man auf der Suche nach Nennungen des Wortes Ball in der B
 Also: suche nach "Ball" innerhalb von Artikeln, die nicht aus dem Sportressort stammen, und in denen auch Walzer, Polonaise, Champagner oder Mitternachtseinlage vorkommen. 
 Damit schränkt sich die Trefferanzahl für "Ball" im amc von ca. 800.000 auf "nur noch" ca. 50.000 ein. (Aber freilich gibt es darunter immer noch Artikel über Fußball, die _nicht_ korrekt mit Sportressort markiert wurden und in denen Siege mit Champagner gefeiert werden, oder Spieler mit dem Eigennamen "Walzer" vorkommen) 
 
-![Tabelle mit dem Suchergebnis im AMC 4.2., Ball in der Mitte hervorgehoben](images/amc_4.2._lemmaballnotinsports.png "Die oben genannte Suche liefert im AMC 4.2. Ergebnisse, die sich auf verschiedenste Tanzveranstaltungen, die hier \"Bälle\" genannt werden, beziehen. Die mit containing gesuchten Lemma müssen nicht in direkter Nachbarschaft des Suchbegriffs \"Ball\" vorkommen, sehr wohl aber in den Artikeln, aus denen die Suchergebnisse stammen.")
+![Tabelle mit dem Suchergebnis im AMC 4.2., Ball in der Mitte hervorgehoben](images/amc_4.2._lemmaballnotinsports.png "Die oben genannte Suche liefert im AMC 4.2. Ergebnisse, die sich auf \"Bälle\" im Sinne von \"Tanzveranstaltungen\" beziehen. Die mit containing gesuchten Lemma müssen nicht in direkter Nachbarschaft des Suchbegriffs \"Ball\" vorkommen, sehr wohl aber in den Artikeln, aus denen die Suchergebnisse stammen.")
 
 <SideNote type="tip">
-  Für solche kombinierten Filterungen sind in der NoSkE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann auf das eben erstelle Subkorpus angewandt und damit stufenweise verfeinert werden. 
+  Für solche kombinierten Filterungen sind in der NoSkE sogenannte Subkorpora oft hilfreich: Suchergebnisse lassen sich so einfach abspeichern, und nachfolgende Suchanfragen können dann in der Folge nur noch auf das eben erstelle Subkorpus angewandt und damit stufenweise verfeinert werden. 
 So könnte z.B. das Ergebnis der obigen Abfrage als "tanzball01"-Subkorpus gespeichert werden. In weiteren Abfragen könnte man z.B. jene Artikel aus diesem Subkorpus ausschließen, in denen  sportspezifische Wörter wie "Tor", "Elfmeter", "Torhüter", "Stürmer" etc. vorkommen und das Ergebnis in einem neuen, verfeinertes Subkorpus "tanzball02" speichern.  
 </SideNote>
 
@@ -829,7 +829,7 @@ In der ADVANCED Suchmaske befindet sich unter dem Feld CQL ein Auswahlfeld für 
 
 ### CQL Builder
 
-Direkt unter dem Eingabefeld für CQL findet sich auch ein Schaltknopf namens **CQL BUILDER** – ein Tool, das bei der Formulierung von CQL-Anfragen helfen kann. Es kann durchaus sinnvoll sein, mit diesem Tool mit dem bisher erworbenen Wissen zu experimentieren, auch um weitere Funktionen zu entdecken. Genauere Erläuterungen finden sich in der [Beschreibung des CQL Builders bei Sketch Engine](https://www.sketchengine.eu/news/cql-builder/).
+Direkt unter dem Eingabefeld für CQL findet sich auch ein Schaltknopf namens **CQL BUILDER** – ein Tool, das bei der Formulierung von CQL-Anfragen helfen kann. Es kann durchaus sinnvoll sein, mit diesem Tool mit dem bisher erworbenen Wissen zu experimentieren, auch um weitere Funktionen zu entdecken. Genauere Erläuterungen finden sich in der [Beschreibung des CQL Builders auf dem Sketch Engine Portal](https://www.sketchengine.eu/news/cql-builder/).
 
 ### _Escaping_ von Sonderzeichen
 
@@ -850,11 +850,11 @@ Standardmäßig werden Strukturgrenzen in der Suchanfrage _vollständig_ ignorie
 Das heißt
 
 - `[] []` findet _alle_ benachbarten Token, selbst wenn dazwischen eine Strukturgrenze liegt. 
-- `[posTT="ADJ.*"] [posTT="NN]` findet also alle Adjekiv-Nomen-Kombinationen finden, auch über Satz-, Absatz- und sogar über Artikelgrenzen hinweg!
+- `[posTT="ADJ.*"] [posTT="NN]` wird also alle Adjekiv-Nomen-Kombinationen finden, auch über Satz-, Absatz- und sogar über Artikelgrenzen hinweg!
 
 Abhilfe schafft hier nur die Verwendung von `within`:
 
-- `[posTT="ADJ.*"] [posTT="NN] within <s/>` beschränkt die Suche auf Fundstellen, die sich innerhalb ein- und desselben `<s/>`, also innerhalb eines Satzes, befinden, was in den meisten Fällen wohl das erwünschte und sinnvolle Suchverhalten sein sollte.
+- `[posTT="ADJ.*"] [posTT="NN] within <s/>` beschränkt die Suche auf Fundstellen, die sich innerhalb ein- und desselben `<s/>`, also innerhalb eines Satzes, befinden, was in den meisten Fällen wohl das erwünschte und sinnvolle Suchverhalten sein wird.
 
 ### Attribute mit MULTIVALUE
 
