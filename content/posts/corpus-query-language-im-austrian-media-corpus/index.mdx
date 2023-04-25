@@ -306,12 +306,12 @@ Für die Suche nach Mehrwortausdrücken können die gewünschten Bedingungen fü
 ![Beispielhaftes Abfrageergebnis zur CQL-Abfrage Adjektiv + Haus. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse. Sie sehen in rot die gefundenen Formen im Text, in grau darunter das jeweilige Lemma.](images/amc_3.1_concord_cql_postt_adja_lemma_haus_research_result_dec22_boxes.png "Beispielhaftes Abfrageergebnis zur CQL-Abfrage attributives Adjektiv + Haus. Links oben sehen Sie die Suchabfrage und die Anzahl der gefundenen Ergebnisse. Mittig finden Sie die ersten Suchergebnisse. Sie sehen in rot die gefundenen Formen im Text, in grau darunter das jeweilige Lemma.")
 
 <SideNote type="note" title="Leerzeichen in CQL-Abfragen">
-Außerhalb von Anführungszeichen werden Leerzeichen in CQL-Abfragen völlig ignoriert. Es macht also nur einen Unterschied in der _Lesbarkeit_ und nicht im Suchergebnis ob man `[  posTT = "ADJA"  ]  [  lemma = "Haus"  ]` oder `[posTT="ADJA"][lemma="Haus"]` schreibt.
+Leerzeichen außerhalb von Anführungszeichen werden in CQL-Abfragen völlig ignoriert. Es macht also nur einen Unterschied in der _Lesbarkeit_ und nicht im Suchergebnis ob man `[  posTT = "ADJA"  ]  [  lemma = "Haus"  ]` oder `[posTT="ADJA"][lemma="Haus"]` schreibt.
 </SideNote>
 
 ## Reguläre Ausdrücke
 
-In der CQL können sogenannte **[reguläre Ausdrücke (regular expressions, Regex)](https://www.sketchengine.eu/guide/regular-expressions/)** verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche stark erhöht wird.
+In der CQL können sogenannte **[reguläre Ausdrücke (regular expressions, Regex)](https://www.sketchengine.eu/guide/regular-expressions/)** verwendet werden, womit die Ausdrucksmächtigkeit und Flexibilität der Suche ernorm erhöht wird.
 Die wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks sind:
 
 - „`.`“ : Ein Punkt steht als Platzhalter für jedes beliebige Zeichen, z.B. `[word="Ha.s"]` findet „Haus“ „Hass“ „Hals“ …
