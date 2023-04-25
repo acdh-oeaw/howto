@@ -769,8 +769,10 @@ Strukturen können bekanntlich ihre eigenen Attribute aufweisen, und nach diesen
 
 Für die Spezifikation der Werte der Strukturattribute können reguläre Ausdrücke genauso verwendet werden, wie es oben bereits für den Inhalt von Token-Attributen demonstriert wurde:
 
-- `<doc year="199."/>` alle Artikel aus den 1990ern 
-- `<doc year="1998|1989)"/>` oder `<doc year="199(8|9)"/>`  oder `<doc year="199[89]"/>`alle Artikel aus 1998 oder 1999
+- `<doc year="199."/>` : alle Artikel aus den 1990ern 
+- `<doc year="1998|1989)"/>` oder 
+- `<doc year="199(8|9)"/>`  oder 
+- `<doc year="199[89]"/>` : alle Artikel aus 1998 oder 1999
 
 ### within/ containing
 
@@ -785,7 +787,7 @@ z.B. alle Fundstellen für „Haus“, aber nur, wenn sie in einem Artikel des �
 
 - `[word="Haus"] within <doc docsrc="STANDARD" & year>="2010"/>`
 - Auch die Verwendung von Negation (`not`) ist im Zusammenhang von `within` und `containing` möglich:
-  z.B. suche nach ‚Ball‘ -- aber _nicht_ im Sportressort (ein Versuch, Beispiele mit der Bedeutung Tanz-Ball zu finden)  
+  z.B. suche nach ‚Ball‘ -- aber _nicht_ im Sportressort (das wäre ein Versuch, eher Beispiele mit der Bedeutung Tanzball zu finden)  
 - `[word="Ball"] not within <doc ressort2="sport"/>`
 
 <Video provider="youtube" id="watch?v=g7IwzWNzhAI&list=PLPVgp0Xm6hWBLZzD7haCVbhC9pSfWZk1S&index=3" />
