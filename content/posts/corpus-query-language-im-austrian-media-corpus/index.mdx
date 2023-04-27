@@ -925,7 +925,6 @@ werden, wie es oben bereits für den Inhalt von Token-Attributen demonstriert wu
 - `<doc year="1998|1989)"/>` oder
 - `<doc year="199(8|9)"/>` oder
 - `<doc year="199[89]"/>` : alle Artikel aus 1998 oder 1999
-
 ### within/ containing
 
 Mit **containing** und **within** können Bedingungen auf Strukturen und auf Token miteinander
@@ -1067,15 +1066,15 @@ werden:
 - `mutation="Wien,Abend,Morgen"`
 - `mutation=".+Abend.+"`
 
+
 <SideNote type="note">
   Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu ergebnisverzerrenden Mehrfachzuordnungen kommt.
   Eine Frequenzanalyse der Anzahl der `<doc>` pro mutation würde in unserem Beispiel, für ein _einziges_ `<doc mutation="Wien,Abend,Morgen" .../>` folgende 4(!) Ergebnisse liefern. Als Treffersumme dieser Abfrage würde ebenfalls 4 ausgegeben.
-
-- Wien : 1
-- Abend : 1
+- Wien: 1
+- Abend: 1
 - Morgen : 1
-- Wien,Abend,Morgen : 1
-  </SideNote>
+- Wien,Abend,Morgen : 1 
+</SideNote>
 
 ### Übersicht über die vorhandenen Attribute
 
@@ -1187,3 +1186,4 @@ Insbesondere relevant für das amc sind:
 „TIGER Morphologie-Annotationsschema“ : Beschreibung der kombinierten PoS plus Morphoplogie-tags in
 `pos`:
 http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation/tiger_scheme-morph.pdf
+
