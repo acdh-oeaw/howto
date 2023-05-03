@@ -16,7 +16,6 @@ licence: ccby-4.0
 toc: true
 uuid: Yi-WVelcC_d0_xUF2aJfn
 ---
-
 ## Lernziele
 
 - das Austrian Media Corpus (amc) kennenlernen
@@ -239,7 +238,6 @@ sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _docsrc_, _ressort2_
         Richtig! Meistens sind orthographische Worte auch Token, aber auch Satzzeichen und Abkürzungen werden zu Token.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -272,7 +270,6 @@ sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _docsrc_, _ressort2_
         Richtig!
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -297,9 +294,9 @@ sehen wir im Beispiel Attribute wie _id_, _datum_, _autor_, _docsrc_, _ressort2_
         Alle genannten Antworten sind richtig.
       </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 </Quiz>
+
 
 ## Schnelleinstieg: Suche mit „Simple search“
 
@@ -353,7 +350,7 @@ für beliebig viele (auch null!) beliebige Zeichen.
   _haltlose_ gefunden (Ergebnis der impliziten Lemma-Suche, obwohl die gefundene Wortform dann gar
   nicht auf _s_ endet!)
 
-Ein weiteres Beispiel für den case-insensitiven Charakter der Simple search: _deutsch\*_ findet:
+Ein weiteres Beispiel für den case-insensitiven Charakter der Simple search: _deutsch*_ findet:
 _deutsch_, _deutsche_, _deutsches_ … aber auch: _Deutschlands_, _Deutschmatura_,...
 
 ## „Vollsuche“ mit der Corpus Query Language (CQL)
@@ -414,7 +411,7 @@ wichtigsten „Bausteine“ bei der Zusammenstellung eines regulären Ausdrucks 
   Ausdrucks. z.B. `[word="Hallo*"]` findet „Hall“ „Hallo“ „Halloo“ etc.
 - „`+`“ : steht für 1 oder beliebig viele Wiederholungen des vorhergehenden Zeichens oder Ausdrucks,
   z.B. `[word="Hallo+"]` findet „Hallo“ „Halloo“ etc. … aber _nicht_ „Hall“. D.h., das Zeichen vor
-  ‚\*‘ ist _optional_, das Zeichen vor ‚+‘ hingegen ist _obligat_!
+  ‚*‘ ist _optional_, das Zeichen vor ‚+‘ hingegen ist _obligat_!
 - „`?`“ : steht für 0 oder genau 1 Wiederholung des vorhergehenden Zeichens oder Ausdrucks, z.B.
   `[word="Hallo?"]` findet genau die beiden Formen „Hall“ und „Hallo“. D.h. das ‚`?`‘ steht für die
   Optionalität aber nicht für die Wiederholbarkeit des linken Nachbarn von ‚`?`‘ .
@@ -483,7 +480,6 @@ Zeichen) zu kombinieren.**
         Achtung! Es sollen auch flektierte Formen gefunden werden. Nur das erste Zeichen des Ausdrucks ändert sich.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -512,7 +508,6 @@ Zeichen) zu kombinieren.**
         Wenn Sie z.B. die Begriffe "Schanze" und "Pflanze" suchen, müssen Sie den Ausdruck "." für jedes zu findende Zeichen eingeben.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -537,7 +532,6 @@ Zeichen) zu kombinieren.**
         Achtung, Sie möchten wissen, in welchen Ausdrücken das Token "Katze", "Katz" oder sogar "Katzee" vorkommt, aber nicht "Katzel", "Katzen", o.ä.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -570,7 +564,6 @@ Zeichen) zu kombinieren.**
         Stellen Sie sicher,dass sie alle richtigen Antworten ausgewählt haben.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -591,9 +584,9 @@ Zeichen) zu kombinieren.**
         \[word=".\*anze"]
       </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 </Quiz>
+
 
 ### Wiederholungen
 
@@ -668,7 +661,7 @@ definieren:
 
 - `[abc]` steht für einen der Buchstaben `a` oder `b` oder `c` - ist also äquivalent zu `(a|b|c)`
 - `[word="H[oa]se"]` findet daher Hose und Hase - und ist also äquivalent zu `[word="H(o|a)se"]`
-- `[lc="[ptkbdg].+"] findet alle Wortformen, die mit einem Plosiv beginnen - und ist also äquivalent zu `[lc="(p|t|k|b|d|g).+"]`
+- `[lc="[ptkbdg].+"] findet alle Wortformen, die mit einem Plosiv beginnen - und ist also äquivalent zu`\[lc="(p|t|k|b|d|g).+"]`
 - `[lc="(h[aeiou]){3,}"]` Eine weitere alternative Formulierungsmöglichkeit um alle Wortformen zu
   finden, die aus mindestens 3 Wiederholungen von ha, he, hi ... bestehen
 
@@ -689,7 +682,7 @@ _Negation_ mit `[^ ...]` definieren:
 
 - `[^abc]` ein "^" unmittelbar am Anfang der Zeichenklassendefinition bedeutet, dass die
   Zeichenklasse aus allen Zeichen _außer_ den danach angeführten besteht!
-- [lc = `"[^ptkbdg].+" `] verwendet z.B. eine Zeichenklasse "_nicht_ p,t,k,b,d,g" ,und findet daher
+- [lc = `"[^ptkbdg].+"`] verwendet z.B. eine Zeichenklasse "_nicht_ p,t,k,b,d,g" ,und findet daher
   alle Wortformen, die _nicht_ mit einem Plosiv beginnen.
 
 ### Quiz
@@ -725,7 +718,6 @@ _Negation_ mit `[^ ...]` definieren:
         Überlegen Sie noch einmal!
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -742,7 +734,6 @@ _Negation_ mit `[^ ...]` definieren:
         Überlegen Sie noch einmal. Welche Zeichen benutzt der Operator? Wie viele beliebige Zeichen müssen zumindest auf "klima" folgen?
       </Quiz.Message>
     </Quiz.XmlCodeEditor>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -771,7 +762,6 @@ _Negation_ mit `[^ ...]` definieren:
         Überlegen Sie nochmal!
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -788,9 +778,9 @@ _Negation_ mit `[^ ...]` definieren:
         Im Anlaut eines Wortes muss immer mit logischem ODER gesucht werden.
       </Quiz.MultipleChoice.Option>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 </Quiz>
+
 
 ## Regex auch auf Token-Ebene
 
@@ -855,7 +845,6 @@ Token die Lemmas „beißen“ oder „bissig“ stehen.
         Überprüfen Sie , ob der Suchausdruck vollständig ist!
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -884,9 +873,9 @@ Token die Lemmas „beißen“ oder „bissig“ stehen.
         Doch, das ist korrekt.
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 </Quiz>
+
 
 ## Suche auf Strukturebene in CQL
 
@@ -925,6 +914,7 @@ werden, wie es oben bereits für den Inhalt von Token-Attributen demonstriert wu
 - `<doc year="1998|1989)"/>` oder
 - `<doc year="199(8|9)"/>` oder
 - `<doc year="199[89]"/>` : alle Artikel aus 1998 oder 1999
+
 ### within/ containing
 
 Mit **containing** und **within** können Bedingungen auf Strukturen und auf Token miteinander
@@ -946,10 +936,7 @@ einem Artikel des „STANDARD“ stehen, der 2010 oder später erschienen ist.
   Beispiele mit der Bedeutung Tanzball zu finden)
 - `[word="Ball"] not within <doc ressort2="sport"/>`
 
-<Video
-  provider="youtube"
-  id="watch?v=g7IwzWNzhAI&list=PLPVgp0Xm6hWBLZzD7haCVbhC9pSfWZk1S&index=3"
-/>
+<Video provider="youtube" id="watch?v=g7IwzWNzhAI&list=PLPVgp0Xm6hWBLZzD7haCVbhC9pSfWZk1S&index=3" />
 
 Merken Sie sich am besten einfach, dass **containing** und **within** sich exakt so verhalten, wie
 Sie es von ihrer Wortbedeutung in Englischen erwarten würden!
@@ -1066,7 +1053,6 @@ werden:
 - `mutation="Wien,Abend,Morgen"`
 - `mutation=".+Abend.+"`
 
-
 <SideNote type="note">
   Ein Nebeneffekt dieser automatischen Aufteilung von `MULTIVALUE`-Attributen in ihre Einzelwerte ist allerdings, dass es bei Frequenzauswertungen zu ergebnisverzerrenden Mehrfachzuordnungen kommt.
   Eine Frequenzanalyse der Anzahl der `<doc>` pro mutation würde in unserem Beispiel, für ein _einziges_ `<doc mutation="Wien,Abend,Morgen" .../>` folgende 4(!) Ergebnisse liefern. Als Treffersumme dieser Abfrage würde ebenfalls 4 ausgegeben.
@@ -1100,8 +1086,8 @@ angegeben werden, ob die ausgewählten Attribute nur für den eigentlichen _Tref
 Wahl) oder für _alle_ Wörter der KWIC-Liste angezeigt werden sollen. Weiters besteht die Option, die
 ausgewählten Attribute as _tooltips_, d.h. nur bei _mouse over_ anzuzeigen.
 
-![View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png
-"Für View Options muss das Auge-Symbol ausgewählt werden. Die Funktionsmaske \"View options\" zeigt
+!\[View Options Maske mit Auswahl Lemma und posTI](images/amc4.1_concordance_viewoptions_schützen_klima_kwic.png
+"Für View Options muss das Auge-Symbol ausgewählt werden. Die Funktionsmaske "View options" zeigt
 hier die Auswahl "lemma" und "posTI". Darunter sieht man die entsprechende KWIC-Ansicht eines
 Suchergebnisses.")
 
@@ -1186,4 +1172,3 @@ Insbesondere relevant für das amc sind:
 „TIGER Morphologie-Annotationsschema“ : Beschreibung der kombinierten PoS plus Morphoplogie-tags in
 `pos`:
 http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation/tiger_scheme-morph.pdf
-
