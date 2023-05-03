@@ -23,35 +23,35 @@ I'm having a debrief with Peter to come back to an issue briefly discussed in ou
 
 ##### Data source 1: [“Die Fackel online”](fackel.oeaw.ac.at/).
 
-- A relational database with names and basic biographical data of about 16,900 persons, as well as links to 129,000 mentions of said persons in “Die Fackel”.
+- A relational database with names and basic biographical data of about 16,900 persons, as well as links to 129,000 mentions of said persons in _Die Fackel_.
 - An XML file containing a text index of the approx. 14,000 texts published in “Die Fackel”, modeled in a custom standard.
-- A transcription of “Die Fackel” consisting of more than 22,000 pages as XML files also modeled in a custom standard, containing the 129,000 mentions of persons.
+- A transcription of _Die Fackel_ consisting of more than 22,000 pages as XML files also modeled in a custom standard, containing the 129,000 mentions of persons.
 
 ##### Data source 2: [“Dritte Walpurgisnacht”](https://kraus1933.ace.oeaw.ac.at).
 
-- A TEI-XML file containing an index of both persons and texts, literary and journalistic, mentioned / quoted in “Dritte Walpurgisnacht” (1933, published posthumously), with basic biographical, respectively standard bibliographical data.
+- A TEI-XML file containing an index of both persons and texts, literary and journalistic, mentioned / quoted in _Dritte Walpurgisnacht_ (1933, published posthumously), with basic biographical, respectively standard bibliographical data.
 - Approx. 3,000 mentions of / quotes from said persons and texts annotated in a TEI-XML containing the full text of “Dritte Walpurgisnacht”.
 
 ##### Data source 3: [“Karl Kraus Rechtsakten”](kraus.wienbibliothek.at/).
 
-- Two TEI-XML files containing bibliographical data of the texts mentioned or quoted in Kraus’ legal files.
-- A TEI-XML file containing an index of persons mentioned in Kraus’ legal papers.
+- Two TEI-XML files containing bibliographical data of the texts mentioned or quoted in _Kraus’ legal papers_.
+- A TEI-XML file containing an index of persons mentioned in _Kraus’ legal papers_.
 - More than 4,000 TEI-XML files containing transcriptions of Kraus’ files from over 200 legal cases with bibliographical metadata in their TEI headers, as well as mentions of persons and mentions of resp. quotes in the body of the files.
 
 Now, where some might see a nightmare of endless integration problems, others see a task cut out perfectly for a modeling based on an ontology with a scope as wide as CIDOC CRM (which will serve as the main vocabulary for our data model).
 
 #### Data perspectivity
 
-But before we can seriously start to model our data, we first need to understand it – since the scope and function of any given data model is not self-evident, and even less so the meaning of any given data field in its respective data set. Every data set is the result of a modeling process, which, as Elena Pierazzo has pointed out, implies
+But before we can seriously start to model our data, we first need to understand it because the scope and function of any given data model is not self-evident. Even less so is the meaning of any given data field in its respective data set. Every data set is the result of a modeling process, which, as Elena Pierazzo has pointed out, implies
 
 - it is the result of a selection process
 - that simplifies its object domain to some degree
 - and that is very much guided by a specific interest 
 - and a certain perspective necessarily lacking self-evidence. [^1]
 
-These traits are inherent to every data set. If you’ve never come across this issue the problems it entails may not be immediately tangible. It helps to think of grocery lists. Not the ones you write for yourself, but those written by someone else, and you’re the one supposed to pick up the items. These lists do not convey objective or complete information. So much detail is left out, so many terms are abbreviated, possibly encrypted. There might be relations between items you don't grasp. That list that looks so innocent by itself – the moment you have to act on it, the moment you have to put your understanding of the data to the test, it turns into an abyss of ambiguity. Think of the chill running down your spine when you're standing in the dairy aisle, the elevated pulse. That’s what working with someone else’s data can be like.
+These traits are inherent to every data set. If you've never come across this issue, the problems it entails may not be immediately tangible. It helps to think of grocery lists. Not the ones you write for yourself, but those written by someone else, and you’re the one supposed to pick up the items. These lists do not convey objective or complete information. So much detail is left out, so many terms are abbreviated, possibly encrypted. There might be relations between items you don't grasp. That list that looks so innocent by itself – the moment you have to act on it, the moment you have to put your understanding of the data to the test, it turns into an abyss of ambiguity. Think of the chill running down your spine when you're standing in the dairy aisle, the elevated pulse when choosing cow's milk, almond milk, or oat milk. That's what working with someone else's data can be like.
 
-  In this regard, the SemanticKraus project admittedly is in a highly privileged position: All of our three source projects are at close vicinity, their coordinators and maintainers are just next door, in part literally. Also, one of them is me. If we don’t understand the data and we don’t find an explanation in a documentation somewhere (or no documentation at all), we can still ask or go through our own notes.
+In this regard, the _SemanticKraus_ project admittedly is in a highly privileged position: All of our three source projects are at close vicinity, their coordinators and maintainers are just next door, some of them literally. Also, one of them is me. If we don't understand the data and we don't find an explanation somewhere in the documentation (or no documentation at all), we can still ask or go through our own notes.
 
 #### Perspectivity in bio- and bibliographical data
 
