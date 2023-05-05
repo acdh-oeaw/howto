@@ -1,7 +1,6 @@
 ---
 title: "Lesson 2: Meet the data. Examples of data perspectivity, with some
   thoughts on shopping for groceries."
-shortTitle: "Lesson 2: Meet the data"
 lang: en
 date: 2022-11-15T00:00:00.000Z
 version: 1.0.0
@@ -14,33 +13,34 @@ abstract: " "
 licence: ccby-4.0
 toc: false
 uuid: NMAwVSgOmXKRyGQd1HfTg
+shortTitle: "Lesson 2: Meet the data"
 ---
 _– Two days in –_
 
-#### Data sources
+### Data sources
 
-I'm having a debrief with Peter to come back to an issue briefly discussed in our first meeting: the source data. At first glance, it might look somewhat homogeneous – it’s all text indexes and indexes of persons –, but this impression fades as soon as one takes a closer look. Here’s a short list:
+I'm having a debrief with Peter to come back to an issue briefly discussed in our first meeting: the source data. At first glance, it might look somewhat homogeneous – it's all text indexes and indexes of persons –, but this impression fades as soon as one takes a closer look. Here’s a short list:
 
-##### Data source 1: _[Die Fackel online](fackel.oeaw.ac.at/)_.
+#### Data source 1: _[Die Fackel online](fackel.oeaw.ac.at/)_.
 
 - A relational database with names and basic biographical data of about 16,900 persons, as well as links to 129,000 mentions of said persons in _Die Fackel_.
 - An XML file containing a text index of the approx. 14,000 texts published in “Die Fackel”, modeled in a custom standard.
 - A transcription of _Die Fackel_ consisting of more than 22,000 pages as XML files also modeled in a custom standard, containing the 129,000 mentions of persons.
 
-##### Data source 2: _[Dritte Walpurgisnacht](https://kraus1933.ace.oeaw.ac.at)_.
+#### Data source 2: _[Dritte Walpurgisnacht](https://kraus1933.ace.oeaw.ac.at)_.
 
 - A TEI-XML file containing an index of both persons and texts, literary and journalistic, mentioned / quoted in _Dritte Walpurgisnacht_ (1933, published posthumously), with basic biographical, respectively standard bibliographical data.
 - Approx. 3,000 mentions of / quotes from said persons and texts annotated in a TEI-XML containing the full text of _Dritte Walpurgisnacht_.
 
-##### Data source 3: _[Karl Kraus Rechtsakten](kraus.wienbibliothek.at/)_.
+#### Data source 3: _[Karl Kraus Rechtsakten](kraus.wienbibliothek.at/)_.
 
 - Two TEI-XML files containing bibliographical data of the texts mentioned or quoted in _Kraus’ legal papers_.
-- A TEI-XML file containing an index of persons mentioned in _Kraus’ legal papers_.
-- More than 4,000 TEI-XML files containing transcriptions of Kraus’ files from over 200 legal cases with bibliographical metadata in their TEI headers, as well as mentions of persons and mentions of resp. quotes in the body of the files.
+- A TEI-XML file containing an index of persons mentioned in _Kraus' legal papers_.
+- More than 4,000 TEI-XML files containing transcriptions of Kraus' files from over 200 legal cases with bibliographical metadata in their TEI headers, as well as mentions of persons and mentions of resp. quotes in the body of the files.
 
 Now, where some might see a nightmare of endless integration problems, others see a task cut out perfectly for a modeling based on an ontology with a scope as wide as CIDOC CRM (which will serve as the main vocabulary for our data model).
 
-#### Data perspectivity
+### Data perspectivity
 
 But before we can seriously start to model our data, we first need to understand it because the scope and function of any given data model is not self-evident. Even less so is the meaning of any given data field in its respective data set. Every data set is the result of a modeling process, which, as Elena Pierazzo has pointed out, implies
 
@@ -51,13 +51,13 @@ But before we can seriously start to model our data, we first need to understand
 
 These traits are inherent to every data set. If you've never come across this issue, the problems it entails may not be immediately tangible. It helps to think of grocery lists. Not the ones you write for yourself, but those written by someone else, and you’re the one supposed to pick up the items. These lists do not convey objective or complete information. So much detail is left out, so many terms are abbreviated, possibly encrypted. There might be relations between items you don't grasp. That list that looks so innocent by itself – the moment you have to act on it, the moment you have to put your understanding of the data to the test, it turns into an abyss of ambiguity. Think of the chill running down your spine when you're standing in the dairy aisle: the elevated pulse when choosing Greek, low fast or just plain yogurt, and hoping you chose the right one. That's what working with someone else's data can be like.
 
-In this regard, the _SemanticKraus_ project is in a highly privileged position, admittedly: All of our three source projects are at close vicinity, their coordinators and maintainers are just next door, some of them literally. Also, one of them is me. If we don't understand the data and we don't find an explanation somewhere in the documentation (or no documentation at all), we can still ask or go through our own notes.
+The _SemanticKraus project_ is in a highly privileged position, admittedly: All of our three source projects are at close vicinity, their coordinators and maintainers are just next door, some of them literally. Also, one of them is me. If we don't understand the data and we don't find an explanation somewhere in the documentation (or no documentation at all), we can still ask or go through our own notes.
 
-#### Perspectivity in bio- and bibliographical data
+### Perspectivity in bio- and bibliographical data
 
-Let's take an example of our data's perspectivity: A simple issue that might come up would be that in the _Dritte Walpurgisnacht project_, all biographical data is selected with a clear focus on the year 1933 (see here for our editorial note on the matter). After all, _Dritte Walpurgisnacht_ is, among other things, an account of what's happened on a day-to-day basis in 1933, informed by uncounted newspaper articles quoted and woven into the text, and in this particular year, people's biographies – to put it in very general terms – took abrupt turns. This focus makes sense from a reader's (and thus from the editor's) point of view, but is not self-evident from the data as represented in the XML file. 
+Let's take an example of our data's perspectivity: A simple issue that might come up would be that in the _Dritte Walpurgisnacht project_, all biographical data is selected with a clear focus on the year 1933 (see here for our editorial note on the matter). After all, _Dritte Walpurgisnacht_ is, among other things, an account of what's happened on a day-to-day basis in 1933, informed by countless newspaper articles quoted and woven into the text, and in this particular year, people's biographies – to put it in very general terms – took abrupt turns. This focus makes sense from a reader's (and thus from the editor's) point of view, but is not self-evident from the data as represented in the XML file. 
 
-  Another perhaps even more particular matter is related to the bibliographical entries: See for example these three entries, which seemingly denote the same kind of concept – texts:
+Another perhaps even more particular matter is related to the bibliographical entries: See for example these three entries, which seemingly denote the same kind of concept – texts:
 
 ```
 <bibl xml:id="DWbibl01944" sortKey="Ludwig_Emil">
@@ -89,7 +89,9 @@ Let's take an example of our data's perspectivity: A simple issue that might com
 </bibl>
 ```
 
-These are two literary texts and one newspaper article, in a pretty ordinary modelling. Still, a lot can be said about why this modelling was implemented. Certain academic routines and standards played a role, technical and methodological aspects were taken into account as well, and, last but not least: some aspects of the data were neglected. For each item, the technical level needed to shape the data for different ways of data display which on the level of academic standards adhered to different citation styles: For example, the newspaper article's bibliographical data needed to be displayed in a short form ("AZ, 20. 5. 1933") as well as a complete form that would pop up only after clicking on the short form ("N. N.: Fahnenverbot – noch strengere Polizeistrafen. Maßnahmen gegen die Arbeiterkonsumvereine – Beschlüsse des Ministerrates. In: _Arbeiter-Zeitung_ (Wien) vom 20. 5. 1933, S. 1.").
+These are two literary texts and one newspaper article, in a pretty ordinary modeling. Still, a lot can be said about why this modelling was implemented: Certain academic routines and standards played a role, technical and methodological aspects were taken into account as well, and, last but not least: some aspects of the data were neglected. For each item, the technical implementations had to be able to shape the data for different ways of data display. From an academic standards perspective, they comply with different citation styles: For example, the newspaper article's bibliographical data needed to be displayed in a short form ("AZ vom 20. 5. 1933") as well as a complete form that would pop up only after clicking on the short form ("N. N.: Fahnenverbot – noch strengere Polizeistrafen. Maßnahmen gegen die Arbeiterkonsumvereine – Beschlüsse des Ministerrates. In: _Arbeiter-Zeitung_ (Wien) vom 20. 5. 1933, S. 1.").
+
+
 
 Some distinctions did not matter in this respect: For example, for the purposes of the project it was not a problem that a citedRange-element, while usually giving a page number of a referred to passage, could mean different things when used as an empty tag: It could mean that the ‘cited range’ actually covered the whole referred to text, which in traditional citation styles is usually indicated by not referring to any of the text’s subdivisions (e.g., pages). At the same time, the empty tag can indicate that it referred to a part of the text but, for some reason, no subdivision of the referred to text was available – the most trivial reason being that the text itself does not exceed one page (again, see the third example).
 
