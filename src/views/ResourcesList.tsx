@@ -29,10 +29,20 @@ export function ResourcesList(props: ResourcesListProps): JSX.Element {
         return (
           <li key={post.id}>
             <article className="grid gap-6">
-              <div className="relative h-36 rounded bg-gradient-to-r from-brand-blue to-brand-turquoise">
+              <div className="relative h-36 overflow-hidden rounded bg-gradient-to-r from-brand-blue to-brand-turquoise">
                 {typeof post.featuredImage === 'string' && post.featuredImage.length > 0 ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={post.featuredImage} alt="" />
+                  <img
+                    src={post.featuredImage}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : typeof post.featuredImage === 'object' ? (
+                  <Image
+                    src={post.featuredImage}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
                 ) : null}
               </div>
               <h3 className="text-xl font-bold text-brand-light-blue transition hover:text-neutral-100">
