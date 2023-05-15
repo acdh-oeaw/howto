@@ -10,9 +10,9 @@ export const navigation = {
   posts: {
     href: routes.resources({ kind: 'posts' }),
   },
-  // courses: {
-  //   href: routes.courses(),
-  // },
+  courses: {
+    href: routes.courses(),
+  },
   // tags: {
   //   href: routes.tags(),
   // },
