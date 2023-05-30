@@ -2,11 +2,11 @@
  * Returns full name for person.
  */
 export function getFullName({
-  firstName,
-  lastName,
+	firstName,
+	lastName,
 }: {
-  firstName: string | undefined
-  lastName: string
+	firstName: string | undefined;
+	lastName: string;
 }): string {
-  return [firstName, lastName].filter(Boolean).join(' ')
+	return [firstName, lastName].filter(Boolean).join(" ");
 }

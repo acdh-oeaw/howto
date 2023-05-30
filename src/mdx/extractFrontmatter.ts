@@ -1,5 +1,5 @@
-import type { VFile } from 'vfile'
-import { matter } from 'vfile-matter'
+import { type VFile } from "vfile";
+import { matter } from "vfile-matter";
 
 /**
  * Extracts YAML frontmatter from `VFile`.
@@ -7,5 +7,5 @@ import { matter } from 'vfile-matter'
  * This mutates the input file: parsed frontmatter will be available on `file.data.matter`.
  */
 export function extractFrontmatter(file: VFile): VFile {
-  return matter(file, { strip: true })
+	return matter(file, { strip: true });
 }

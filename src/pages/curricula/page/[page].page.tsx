@@ -1,129 +1,129 @@
-import type {
-  GetStaticPathsContext,
-  GetStaticPathsResult,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from 'next'
-import type { ParsedUrlQuery } from 'querystring'
-import { Fragment } from 'react'
+import {
+	type GetStaticPathsContext,
+	type GetStaticPathsResult,
+	type GetStaticPropsContext,
+	type GetStaticPropsResult,
+} from "next";
+import { type ParsedUrlQuery } from "querystring";
+import { Fragment } from "react";
 
-import type { CoursePreview } from '@/cms/api/courses.api'
-import { getCourseIds, getCoursePreviews } from '@/cms/api/courses.api'
-import type { Page } from '@/cms/utils/paginate'
-import { getPageRange, paginate } from '@/cms/utils/paginate'
-import { PageContent } from '@/common/PageContent'
-import { PageTitle } from '@/common/PageTitle'
-import { getLocale } from '@/i18n/getLocale'
-import type { Dictionary } from '@/i18n/loadDictionary'
-import { loadDictionary } from '@/i18n/loadDictionary'
-import { useI18n } from '@/i18n/useI18n'
-import { Metadata } from '@/metadata/Metadata'
-import { useAlternateUrls } from '@/metadata/useAlternateUrls'
-import { useCanonicalUrl } from '@/metadata/useCanonicalUrl'
-import { routes } from '@/navigation/routes.config'
-import { CoursesList } from '@/views/CoursesList'
-import { Pagination } from '@/views/Pagination'
+import { type CoursePreview } from "@/cms/api/courses.api";
+import { getCourseIds, getCoursePreviews } from "@/cms/api/courses.api";
+import { type Page } from "@/cms/utils/paginate";
+import { getPageRange, paginate } from "@/cms/utils/paginate";
+import { PageContent } from "@/common/PageContent";
+import { PageTitle } from "@/common/PageTitle";
+import { getLocale } from "@/i18n/getLocale";
+import { type Dictionary } from "@/i18n/loadDictionary";
+import { loadDictionary } from "@/i18n/loadDictionary";
+import { useI18n } from "@/i18n/useI18n";
+import { Metadata } from "@/metadata/Metadata";
+import { useAlternateUrls } from "@/metadata/useAlternateUrls";
+import { useCanonicalUrl } from "@/metadata/useCanonicalUrl";
+import { routes } from "@/navigation/routes.config";
+import { CoursesList } from "@/views/CoursesList";
+import { Pagination } from "@/views/Pagination";
 
-const pageSize = 12
+const pageSize = 12;
 
 export interface CoursesPageParams extends ParsedUrlQuery {
-  page: string
+	page: string;
 }
 
 export interface CoursesPageProps {
-  dictionary: Dictionary
-  courses: Page<CoursePreview>
+	dictionary: Dictionary;
+	courses: Page<CoursePreview>;
 }
 
 /**
  * Creates courses pages.
  */
 export async function getStaticPaths(
-  context: GetStaticPathsContext,
+	context: GetStaticPathsContext,
 ): Promise<GetStaticPathsResult<CoursesPageParams>> {
-  const { locales } = getLocale(context)
+	const { locales } = getLocale(context);
 
-  const paths = (
-    await Promise.all(
-      locales.map(async (locale) => {
-        const ids = await getCourseIds(locale)
-        const pages = getPageRange(ids, pageSize)
+	const paths = (
+		await Promise.all(
+			locales.map(async (locale) => {
+				const ids = await getCourseIds(locale);
+				const pages = getPageRange(ids, pageSize);
 
-        return pages.map((page) => {
-          return {
-            params: { page: String(page) },
-            locale,
-          }
-        })
-      }),
-    )
-  ).flat()
+				return pages.map((page) => {
+					return {
+						params: { page: String(page) },
+						locale,
+					};
+				});
+			}),
+		)
+	).flat();
 
-  return {
-    paths,
-    fallback: false,
-  }
+	return {
+		paths,
+		fallback: false,
+	};
 }
 
 /**
  * Provides translations and metadata for courses page.
  */
 export async function getStaticProps(
-  context: GetStaticPropsContext<CoursesPageParams>,
+	context: GetStaticPropsContext<CoursesPageParams>,
 ): Promise<GetStaticPropsResult<CoursesPageProps>> {
-  const { locale } = getLocale(context)
+	const { locale } = getLocale(context);
 
-  const dictionary = await loadDictionary(locale, ['common'])
+	const dictionary = await loadDictionary(locale, ["common"]);
 
-  const params = context.params as CoursesPageParams
-  const page = Number(params.page)
+	const params = context.params as CoursesPageParams;
+	const page = Number(params.page);
 
-  const coursePreviews = await getCoursePreviews(locale)
-  const sortedCourses: Array<CoursePreview> = coursePreviews.sort((a, b) => {
-    return a.date > b.date ? -1 : 1
-  })
+	const coursePreviews = await getCoursePreviews(locale);
+	const sortedCourses: Array<CoursePreview> = coursePreviews.sort((a, b) => {
+		return a.date > b.date ? -1 : 1;
+	});
 
-  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-  const courses = paginate(sortedCourses, pageSize)[page - 1]!
+	/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+	const courses = paginate(sortedCourses, pageSize)[page - 1]!;
 
-  return {
-    props: {
-      dictionary,
-      courses,
-    },
-  }
+	return {
+		props: {
+			dictionary,
+			courses,
+		},
+	};
 }
 
 /**
  * Courses page.
  */
 export default function CoursesPage(props: CoursesPageProps): JSX.Element {
-  const { courses } = props
+	const { courses } = props;
 
-  const { t } = useI18n()
-  const canonicalUrl = useCanonicalUrl()
-  const languageAlternates = useAlternateUrls()
+	const { t } = useI18n();
+	const canonicalUrl = useCanonicalUrl();
+	const languageAlternates = useAlternateUrls();
 
-  return (
-    <Fragment>
-      <Metadata
-        title={t('common.page.courses')}
-        canonicalUrl={canonicalUrl}
-        languageAlternates={languageAlternates}
-      />
-      <PageContent className="bg-brand-black text-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
-          <PageTitle>{t('common.courses')}</PageTitle>
-          <CoursesList courses={courses.items} />
-          <Pagination
-            page={courses.page}
-            pages={courses.pages}
-            href={(page) => {
-              return routes.courses({ page })
-            }}
-          />
-        </div>
-      </PageContent>
-    </Fragment>
-  )
+	return (
+		<Fragment>
+			<Metadata
+				title={t("common.page.courses")}
+				canonicalUrl={canonicalUrl}
+				languageAlternates={languageAlternates}
+			/>
+			<PageContent className="bg-brand-black text-white">
+				<div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
+					<PageTitle>{t("common.courses")}</PageTitle>
+					<CoursesList courses={courses.items} />
+					<Pagination
+						page={courses.page}
+						pages={courses.pages}
+						href={(page) => {
+							return routes.courses({ page });
+						}}
+					/>
+				</div>
+			</PageContent>
+		</Fragment>
+	);
 }

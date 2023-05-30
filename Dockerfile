@@ -10,7 +10,7 @@ WORKDIR /app
 USER node
 
 COPY --chown=node:node package.json yarn.lock ./
-COPY --chown=node:node next.config.mjs tsconfig.json app-env.d.ts env.d.ts next-env.d.ts tailwind.config.cjs ./
+COPY --chown=node:node next.config.js tsconfig.json app-env.d.ts env.d.ts next-env.d.ts tailwind.config.ts ./
 COPY --chown=node:node scripts ./scripts
 COPY --chown=node:node config ./config
 COPY --chown=node:node public ./public
@@ -52,7 +52,7 @@ WORKDIR /app
 
 USER node
 
-COPY --from=build --chown=node:node /app/next.config.mjs ./
+COPY --from=build --chown=node:node /app/next.config.js ./
 COPY --from=build --chown=node:node /app/public ./public
 COPY --from=build --chown=node:node /app/.next/standalone ./
 COPY --from=build --chown=node:node /app/.next/static ./.next/static

@@ -1,61 +1,61 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { type NextApiRequest, type NextApiResponse } from "next";
 
 // import dedent from 'strip-indent'
-import { url as baseUrl } from '~/config/site.config'
+import { url as baseUrl } from "~/config/site.config";
 
 /**
  * OAuth2 callback for GitHub auth code flow.
  */
 export default async function handler(
-  request: NextApiRequest,
-  response: NextApiResponse,
+	request: NextApiRequest,
+	response: NextApiResponse,
 ): Promise<void> {
-  const { code, state } = request.query
+	const { code, state } = request.query;
 
-  if (
-    code === undefined ||
-    Array.isArray(code) ||
-    state === undefined ||
-    Array.isArray(state) ||
-    process.env.GITHUB_ID === undefined ||
-    process.env.GITHUB_SECRET === undefined
-  ) {
-    return renderErrorTemplate(response, 'Bad request.', 400)
-  }
+	if (
+		code === undefined ||
+		Array.isArray(code) ||
+		state === undefined ||
+		Array.isArray(state) ||
+		process.env.GITHUB_ID === undefined ||
+		process.env.GITHUB_SECRET === undefined
+	) {
+		return renderErrorTemplate(response, "Bad request.", 400);
+	}
 
-  const url = new URL('https://github.com/login/oauth/access_token')
-  url.searchParams.set('client_id', process.env.GITHUB_ID)
-  url.searchParams.set('client_secret', process.env.GITHUB_SECRET)
-  url.searchParams.set('code', code)
-  url.searchParams.set('state', state)
+	const url = new URL("https://github.com/login/oauth/access_token");
+	url.searchParams.set("client_id", process.env.GITHUB_ID);
+	url.searchParams.set("client_secret", process.env.GITHUB_SECRET);
+	url.searchParams.set("code", code);
+	url.searchParams.set("state", state);
 
-  const tokenResponse = await fetch(String(url), {
-    method: 'POST',
-    headers: { accept: 'application/json' },
-  })
+	const tokenResponse = await fetch(String(url), {
+		method: "POST",
+		headers: { accept: "application/json" },
+	});
 
-  const data = await tokenResponse.json()
+	const data = await tokenResponse.json();
 
-  if (data.error !== undefined) {
-    return renderErrorTemplate(
-      response,
-      `<a href="${data.error_uri}" rel="noopener noreferrer" target="_blank">
+	if (data.error !== undefined) {
+		return renderErrorTemplate(
+			response,
+			`<a href="${data.error_uri}" rel="noopener noreferrer" target="_blank">
          ${data.error_description}
        </a>`,
-    )
-  }
+		);
+	}
 
-  return renderSuccessTemplate(response, data)
+	return renderSuccessTemplate(response, data);
 }
 
 /**
  * Renders error template.
  */
 function renderErrorTemplate(response: NextApiResponse, message: string, statusCode = 200) {
-  response.status(statusCode)
-  response.setHeader('Content-Type', 'text/html; charset=UTF-8')
+	response.status(statusCode);
+	response.setHeader("Content-Type", "text/html; charset=UTF-8");
 
-  return response.send(`
+	return response.send(`
     <!doctype html>
     <html>
     <body>
@@ -66,23 +66,23 @@ function renderErrorTemplate(response: NextApiResponse, message: string, statusC
       </main>
     </body>
     </html>
-  `)
+  `);
 }
 
 /**
  * Renders success template.
  */
 function renderSuccessTemplate(response: NextApiResponse, data: { access_token: string }) {
-  const provider = 'github'
+	const provider = "github";
 
-  const allowedOrigin = new URL(baseUrl).host
+	const allowedOrigin = new URL(baseUrl).host;
 
-  response.setHeader('Content-Type', 'text/html; charset=UTF-8')
+	response.setHeader("Content-Type", "text/html; charset=UTF-8");
 
-  /**
-   * @see https://api.netlify.com/auth/done
-   */
-  return response.send(`
+	/**
+	 * @see https://api.netlify.com/auth/done
+	 */
+	return response.send(`
     <!doctype html>
     <html>
     <head>
@@ -137,5 +137,5 @@ function renderSuccessTemplate(response: NextApiResponse, data: { access_token: 
       </script>
     </body>
     </html>
-  `)
+  `);
 }

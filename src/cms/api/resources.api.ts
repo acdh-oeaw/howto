@@ -1,7 +1,7 @@
-import type { Post, PostPreview } from '@/cms/api/posts.api'
+import { type Post, type PostPreview } from "@/cms/api/posts.api";
 
-export type Resource = Post
+export type Resource = Post;
 
-export type ResourcePreview = PostPreview
+export type ResourcePreview = PostPreview;
 
-export type ResourceKind = Resource['kind']
+export type ResourceKind = Resource["kind"];

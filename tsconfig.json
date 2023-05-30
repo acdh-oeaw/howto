@@ -1,13 +1,31 @@
 {
-  "extends": "@stefanprobst/tsconfig",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "exactOptionalPropertyTypes": false,
-    "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["*"]
-    }
-  },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.config.cjs", "**/*.config.mjs"],
-  "exclude": ["node_modules"]
+	"extends": "@acdh-oeaw/tsconfig",
+	"compilerOptions": {
+		"baseUrl": ".",
+		/**
+		 * No longer necessary in typescript v5.
+		 *
+		 * @see https://github.com/vercel/next.js/issues/45617
+		 */
+		"forceConsistentCasingInFileNames": true,
+		/**
+		 * Next.js does not yet understand `verbatimModuleSyntax`.
+		 *
+		 * @see https://github.com/vercel/next.js/issues/46509
+		 */
+		"isolatedModules": true,
+		/**
+		 * Next.js does not yet understand `bundler`.
+		 * @see https://github.com/vercel/next.js/issues/47858
+		 *
+		 */
+		"moduleResolution": "node",
+		"paths": {
+			"@/*": ["src/*"],
+			"~/*": ["*"]
+		},
+		"plugins": [{ "name": "next" }]
+	},
+	"include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.config.cjs", "**/*.config.js"],
+	"exclude": ["node_modules"]
 }

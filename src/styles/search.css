@@ -1,11 +1,11 @@
 /** Highlight tags in Algolia search results. */
 mark {
-  box-decoration-break: clone;
+	@apply italic bg-transparent;
 
-  @apply italic bg-transparent;
+	box-decoration-break: clone;
 }
 
-input[type='search']::-webkit-search-cancel-button,
-input[type='search']::-webkit-search-decoration {
-  appearance: none;
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	appearance: none;
 }
