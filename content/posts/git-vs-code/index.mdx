@@ -19,6 +19,12 @@ uuid: F_2JAdc0Na6JA5dxAM6Rg
 - track changes in VS Code
 - clone and push a remote repository from the code editor
 
+<SideNote type="note">
+  Before you can start using a code editor to work with Git repositories, please make sure that you
+  install the following prerequisites: 1. Git ([Git for Windows](https://gitforwindows.org), for
+  other OS see the respective documentation) 2. Visual Studio Code
+</SideNote>
+
 ## Starting our editor with add-ons: Visual Studio Code
 
 VS Code and VSCodium are examples for code editors. Using the commnand line or terminal instead has
@@ -58,14 +64,6 @@ VSCodium.
 
 ### Working with git in the editor
 
-#### Authenticate
-
-When you push your first commit, github will ask you to authenticate.
-![](images/credentials_dialog_windows.png "Github authentication") We recommend to
-`Sign in with your browser`. A browser window will open for you to log in to github. Once you're
-successfully authenticated, you can close the browser window.
-![](images/authentication_successful_browser_github.png "Authentication successful")
-
 #### Cloning a repository and getting data
 
 For example we want to clone `teapot` from https://github.com/acdh-oeaw/howto_trainingmaterials. The
@@ -93,11 +91,6 @@ After you hit enter a dialog appears asking you where to store the contents of t
 locally:
 
 ![](images/clone_select_folder_windows.png "select repository location Windows")
-
-The very first time for each web site like Gitlab and Github in Windows, a dialog will open that
-asks us for user name and password.
-
-![](images/credentials_dialog_windows.png "credentials dialogue Windows")
 
 </Tab>
 <Tab title="MacOS">
@@ -129,6 +122,28 @@ time we interact with the repository on the gilab server.
 </Tabs>
 </SideNote>
 
+<SideNote type="tip">
+<Tabs>
+<Tab title="Public repository">
+For our public training materials repository like any other public repository this is all you need to
+do.
+</Tab>
+<Tab title="Private repository">
+If you happen to work with a private GitHub repository you will need to authenticate.
+
+The very first time for each web site like Gitlab and Github in Windows, a dialog will open that
+asks us for user name and password.
+
+![](images/credentials_dialog_windows.png "credentials dialogue Windows")
+
+We recommend to `Sign in with your browser`. A browser window will open for you to log in to github.
+Once you're successfully authenticated, you can close the browser window.
+![](images/authentication_successful_browser_github.png "Authentication successful")
+
+</Tab>
+</Tabs>
+</SideNote>
+
 At the end there is a little dialog in the bottom right corner, click open there:
 
 ![](images/open_cloned_project.png "open cloned project")
@@ -143,8 +158,7 @@ command_line#cloning-a-remote-repository
 
 ### Tracking changes
 
-As you have already learnt in previous resources, git is very helpful in tracking changes in a
-project.
+Git is very helpful in tracking changes in a project.
 
 Git can record which changes, to which documents, have been made when, and by whom. It allows to
 keep a detailed revision history of a project, because it can **save snapshots** - the **commits** -
@@ -155,27 +169,27 @@ versions. This is especially beneficial when working with multiple documents, an
 teams of more than one (potentially working on the same document).
 
 Before uploading any changes, you want to track them locally. After cloning the
-howto_trainingmaterials, let's open the `teapot.mdx` in Visual Studio Code. This is done while the
+howto_trainingmaterials, let's open the `teapot.txt` in Visual Studio Code. This is done while the
 uppermost icon on the left is selected (the two sheets, files)
 
-We want to change something so we replace every `I` with `you`in the lyrics and add the line
-`You drink tea every day` at the end.
+We want to change something so we replace every `I` with `you` in the lyrics and add the line
+`You drink tea every day` at the end. Save this file version.
 
 Now we can select the third mode from the top (three connected circles, the graph changes and
 branches make up in version control).
 
 This only lists those files that we changed since we last made our changes permanent, committed (to)
-them. The README.md is listed. If we double click it we get the following view:
+them. The `teapot.txt` is listed. If we click on it we get the following view:
 
 ![review changes](images/review_changes.png "review changes")
 
 If we are not 100% sure about the changes we will now **stage**, that is prepare to be **commited**,
 we can open each file and see the differences per line. This might also give us a hint what we did
-if the last commit was a while back and we don't remember exactly what happened.
+if the last **commit** was a while back and we don't remember exactly why we changed the files.
 
 ### Mark content changes to be included in the version history
 
-Let's tell Git to keep an eye on changes to the newly created document `README.md`:
+Let's tell Git that we are committed to our changes in the document `teapot.txt`:
 
 ![stage change](images/stage_change.png "stage change")
 
@@ -190,13 +204,7 @@ hit the `+`.
 
 </SideNote>
 
-The above action is the same as
-
-```bash
-git add -A
-```
-
-on the command line.
+comand-line/#add-files
 
 ### Bundle changes into meaningful chunks and commit to them
 
@@ -206,10 +214,10 @@ staging area but it needs an extra step to propagate these changes and feed them
 Keep that in mind.
 
 When all related changes have been added to the "staging area", we can save them together as a
-version history snapshot, a **commit**, with a **commit message** that briefly describes _why_
+current snapshot of our data, a **commit**, with a **commit message** that briefly describes _why_
 changes were made. This makes it easier to understand them later when viewing the version history.
 **Committing** means permanently recording a snapshot of contents at a specific point in time. In VS
-Code, you do not need to type the command but use the commit button.
+Code, you use the `commit` button.
 
 ![](images/commit_message_and_commit_button.png "commit mesasge and commit button")
 
@@ -221,31 +229,25 @@ Code, you do not need to type the command but use the commit button.
 #### The very first commit error
 
 If you are on a new machine and/or just installed Git you will get an error. Here is how it looks in
-MacOS:
 
-![](images/very_first_git_use_error_macos.png "very first git use error in MacOS")
-
-or Windows:
-
-![](images/missing_name_error.png "very first gut use error")
+<Tabs>
+  <Tab title="Windows">![](images/missing_name_error.png "very first gut use error")</Tab>
+  <Tab title="MacOS">
+    ![](images/very_first_git_use_error_macos.png "very first git use error in MacOS")
+  </Tab>
+</Tabs>
 
 Whether you use `Learn More` or `Open Git log`, you will eventually see that Git just wants to know
 who commits here. We suggest to use `Open Git log` which shows a new set of controls at the bottom
-right. Alternatively you can select "Terminal" and "New Terminal" from the menu bar
-
-![](images/menu_bar_terminal.png "terminal menu")
+right.
 
 <SideNote type="info" title="The tell me who you are - message">
   ![](images/scroll_up_to_see_tip.png "Screenshot of \"Please tell me who you are\", \"scroll up to
   see tip\"")
-</SideNote>
 
-<SideNote type="info" title="Text for copying">
+Text for copying:
 
 ```
-> git -c user.useConfigOnly=true commit --quiet --allow-empty-message --file -
-Author identity unknown
-
 *** Please tell me who you are.
 
 Run
@@ -254,16 +256,18 @@ Run
   git config --global user.name "Your Name"
 
 to set your account's default identity.
-Omit --global to set the identity only in this repository.
 
-fatal: no email was given and auto-detection is disabled
 ```
 
 </SideNote>
 
-There is no graphical interface for this most often one time configuration. You need to copy the two
-suggested `git config` commands with your own details and execute them in a terminal. Visual Studio
-Code provides one. So click on "Terminal" at the bottom right.
+There is no graphical interface for this one time configuration. You need to copy the two suggested
+`git config` commands and fill in your own details and execute them in a terminal. Create a new text
+file with `File`->`New text file`, copy the above lines starting with `git config` and fill in your
+information. Use the Visual Studio Code tab `Terminal` at the bottom. Alternatively you can select
+"Terminal" and "New Terminal" from the menu bar.
+
+![](images/menu_bar_terminal.png "terminal menu")
 
 <SideNote type="info" title="Unfortunately this differs again between the three OSes">
 <Tabs>
@@ -296,11 +300,6 @@ This is the only OS where you can just type the two commands.
 </Tabs>
 </SideNote>
 
-Now replace `you@example.com` and `Your Name` with your name and execute two commands to configure
-Git. You can copy the commands from above.
-
-![](images/execute_suggested_in_terminal_macos.png "execute suggested in MacOS terminal")
-
 command_line#bundle-changes-into-meaningful-chunks-and-commit-to-them
 
 ### Keeping repositories in sync: fetch, pull, push
@@ -309,6 +308,14 @@ To get our changes to the server, so other people in our team can fetch them to 
 them, we now `push` what we `committed` on our machine to the server.
 
 ![push](images/push.png "push")
+
+<SideNote type="info">
+  When you push your first commit, github will ask you to authenticate.
+  ![](images/credentials_dialog_windows.png "Github authentication") We recommend to `Sign in with
+  your browser`. A browser window will open for you to log in to github. Once you're successfully
+  authenticated, you can close the browser window.
+  ![](images/authentication_successful_browser_github.png "Authentication successful")
+</SideNote>
 
 The opposite action is to `pull` from the server. This means getting all the changes accumulated
 there and integrating them (merging them with our local changes if any) in the files we see locally.
@@ -338,9 +345,11 @@ Note that Visual Studio Code provides us with a few controls we can click to res
 
 ![conflicting edits](images/conflicting_edits.png "conflicting edits")
 
-We now can decide which is the better change (or use both if applicable):
+We now can decide which is the better change (or use both if applicable). Visual Studio Code shows
+you different options in a three-way-editor:
 
 ![accept current change](images/accept_current_change.png "accept current change")
+![accept current change](images/incorporate_incoming_change.png "Click on the change you want to incorporate in your file")
 
 And after resolving **all** the conflicts we do a `merge commit` (the text is there automatically)
 
