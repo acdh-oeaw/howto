@@ -15,6 +15,8 @@ licence: ccby-4.0
 toc: false
 uuid: xAzMHckQErieq5eH2Nqx_
 ---
+[Previous Post: Lesson 2: Meet the data. Examples of data perspectivity, with some thoughts on shopping for groceries.](https://howto.acdh.oeaw.ac.at/resource/posts/lesson-2-meet-the-data)
+
 _– One week in –_
 
 One of the core instruments of SemanticKraus is going to be a data model that covers all the biographical and bibliographical data contained in our source projects, as well as some other areas. SemanticKraus has a huge amount of data not only on texts and persons at its disposal, but also of mentions of persons in texts, of mentions of texts in texts, of persons and texts being linked to legal cases, etc. Accordingly, the main areas of the data model include:
@@ -58,7 +60,7 @@ This first criterion might still be the most important one, when considering int
 
 Instead of limiting re-use to the level of vocabularies, SemanticKraus exercises re-use also on the level of modeling practices, meaning: Re-using not only vocabularies, but also how they are applied in other, similar contexts. INTAVIA is a good candidate for possible re-use of modeling practices, so we’re looking into how SemanticKraus can benefit from it, especially with regard to biographical data. 
 
-For this area, INTAVIA utilizes a mix of CIDOC crm and BIO-CRM. The former is an ontology originally created for the field of cultural heritage to be used by different institutions – museums, archives – to model their object’s metadata. Since it is event based – events being the link between objects, persons, places, etc. – it also provides all the most basic classes one needs to model biographical data, including birth and death. The latter one, BIO-CRM, is utilized in INTAVIA particularly for its notion of ‘roles’ people play in different contexts. For example: The person born in a birth event can be linked to this event simply via cidoc:P98_brought_into_life, but also by defining the role this person played in the event as the role of the person being born, via bioc:had_participant_in_role. The role then is an instantiation of the part the person played in the event, which then can be linked to the person itself through another property, bioc:inheres_in.
+For this area, INTAVIA utilizes a mix of CIDOC crm and BIO-CRM. The former is an ontology originally created for the field of cultural heritage to be used by different institutions – museums, archives – to model their object’s metadata. Since it is event based – events being the link between objects, persons, places, etc. – it also provides all the most basic classes one needs to model biographical data, including birth and death. The latter one, BIO-CRM, is utilized in INTAVIA particularly for its notion of ‘roles’ people play in different contexts. For example: The person born in a birth event can be linked to this event simply via CIDOC's crm:P98_brought_into_life, but also by defining the role this person played in the event as the role of the person being born, via bioc:had_participant_in_role. The role then is an instantiation of the part the person played in the event, which then can be linked to the person itself through another property, bioc:inheres_in.
 
 \[Footnote: Some may find it amusing that in this example, CIDOC crm – which as an event-based model always sticks yet another event between two seemingly directly connected entities – actually offers the less verbose solution.]
 
@@ -88,7 +90,21 @@ When the question of which ontologies and classes to re-use is settled, it is ti
 
 ###### Prefixes:
 
+crm: http://www.cidoc-crm.org/cidoc-crm/
+
+ frbr: https://cidoc-crm.org/frbroo/sites/default/files/FRBR2.4-draft.rdfs# 
+
+prov: http://www.w3.org/ns/prov# 
+
 ###### Relevant links:
+
+\[﻿CIDOC CRM: Versions of the CIDOC-CRM](https://cidoc-crm.org/versions-of-the-cidoc-crm)
+
+\[﻿FRBRoo: Versions](https://cidoc-crm.org/frbroo/fm_releases)
+
+\[﻿INTRO: Github Repository](https://github.com/BOberreither/INTRO)
+
+
 
 ###### F﻿ootnotes:
 
@@ -97,8 +113,6 @@ When the question of which ontologies and classes to re-use is settled, it is ti
 ###### Data Model Visualization:
 
 ![The SemanticKraus Data Model in a slightly commented visualization.](images/datamodel_sk_dh2023_commented-2.svg)
-
-
 
 - - -
 
