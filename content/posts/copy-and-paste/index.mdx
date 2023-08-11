@@ -1,5 +1,5 @@
 ---
-title: "Ontology Re-Use or: The Virtues of Copy And Paste"
+title: "Lesson 3: Ontology Re-Use or: The Virtues of Copy And Paste"
 shortTitle: Copy And Paste
 lang: en
 date: 2023-03-01T00:00:00.000Z
@@ -37,7 +37,7 @@ For SemanticKraus, all of these aspects factor in the decision not to design an 
 
 ### Short Parenthesis: Why a Project Ontology at all?
 
-In case anyone is asking themselves: Why create a project ontology at all? It’s a valid question, since re-use is the issue here and relying on pre-existing terms is the ideal to strive for. After all, if all classes entities have been assigned to and all properties linking these entities have their definitions elsewhere – in their original document – classes which have resolving URIs and linked to one another with properties to which this applies as well – what’s wrong with an RDF data set by itself, without an accompanying ontology, especially one that in essence would only combine pre-existing terms?
+In case anyone is asking themselves: Why create a project ontology at all? It’s a valid question, since re-use is the issue here and relying solely on pre-existing terms is the ideal to strive for. After all, if all classes entities have been assigned to and all properties linking these entities have their definitions elsewhere – in their original document – classes which have resolving URIs and linked to one another with properties to which this applies as well – what’s wrong with an RDF data set by itself, without an accompanying ontology, especially one that in essence would only combine pre-existing terms?
 
 Well, there are a couple of good reasons: To maintain consistency throughout the course of the project, it is always a good idea to be able to refer to one document containing all the terms used. It is also much more practical than having to look up URIs and definitions in several different places. Also, as soon as you add an ontology to your data, class and property definitions are handily available to the user as well. Finally, yet importantly, as soon as the ontology is part of the data, inferences can be drawn from it, explicating all the implicit knowledge that comes with the ontology. Even on a basic level, with an ontology that has a pretty light T-Box, there are still class hierarchies as well as domain and range of properties, which amounts to something. To enable this, our project ontology includes not only those terms that we use directly, but also all the terms higher up in the hierarchy, until the various branches of the class hierarchy finally merge into one.
 
@@ -84,7 +84,7 @@ When the question of which ontologies and classes to re-use is settled, it is ti
    (For example: Changing the values in rdf:about to resolving URIs seems a small intervention, less so adding an owl:inverseOf to properties where their inversion is only implied.)
 3. Since the rdf:about usually points to the original source of the property or class, the following might be a redundance, but still it could make sense to add a rdfs:isDefinedBy element to every definition, pointing at its respective source – possibly, but not necessarily the serialization. It could also be any other kind of representation, maybe even the pdf file containing the definitions.\
    (In the case of CIDOC crm, it was regularly pointed out that only the pdf contains the official model.)
-4. In order to take the imported classes’ and properties’ hierarchical relations to each other into account – which is information an reasoner can make good use of –, one could also include all the parent classes and properties up to a point where these branches merge.
+4. In order to take the imported classes’ and properties’ hierarchical relations to each other into account – which is information any reasoner can make good use of –, one could also include all the parent classes and properties up to a point where these branches merge.
 
 - - -
 
