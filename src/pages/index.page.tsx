@@ -2,6 +2,7 @@ import { type GetStaticPropsContext, type GetStaticPropsResult } from "next";
 import Link from "next/link";
 import { Fragment } from "react";
 
+import { getPageById } from "@/cms/api/pages.api";
 import { type PostPreview } from "@/cms/api/posts.api";
 import { getPostPreviews } from "@/cms/api/posts.api";
 import { PageContent } from "@/common/PageContent";
@@ -9,27 +10,20 @@ import { getLocale } from "@/i18n/getLocale";
 import { type Dictionary } from "@/i18n/loadDictionary";
 import { loadDictionary } from "@/i18n/loadDictionary";
 import { useI18n } from "@/i18n/useI18n";
+import { useMdx } from "@/mdx/useMdx";
 import { Metadata } from "@/metadata/Metadata";
 import { useAlternateUrls } from "@/metadata/useAlternateUrls";
 import { useCanonicalUrl } from "@/metadata/useCanonicalUrl";
 import { routes } from "@/navigation/routes.config";
 import { ResourcesList } from "@/views/ResourcesList";
 
-const texts = {
-	en: "Welcome to ACDH-CH Learning Resources. This website gathers interactive learning material, practical HowTo articles and best practices on a wide range of Digital Humanities topics, methododologies and infrastructures. These resources can be used for self-guided learning as well as for teaching in higher education. It is part of our mission to actively transfer knowledge from ongoing research into the wider Digital Humanities Community as well as to educate a new generation of humanities researchers with digital methods.",
-	de: "Willkommen bei den ACDH-CH Lernressourcen. Hier finden Sie interaktives Lernmaterial, praktische HowTo-Artikel und Best Practices Beispiele zu einem breiten Spektrum von Themen, Methoden und Infrastrukturen aus den Digital Humanities. Diese Ressourcen können sowohl für das selbstgesteuerte Lernen als auch für die Lehre im Hochschulbereich genutzt werden. Es ist Teil unserer Mission, Wissen aus der laufenden Forschung aktiv in die breitere Digital Humanities Community zu transferieren und damit eine neue Generation von Geisteswissenschaftlern in der Nutzung von digitalen Methoden auszubilden.",
-};
-
-export interface HomePageMetadata extends Record<string, unknown> {
-	title: string;
-	subtitle: string;
-}
+export interface HomePageMetadata extends Record<string, unknown> {}
 
 export interface HomePageProps {
 	dictionary: Dictionary;
 	locale: "de" | "en";
 	posts: Array<PostPreview>;
-	text: string;
+	code: string;
 }
 
 /**
@@ -42,14 +36,15 @@ export async function getStaticProps(
 
 	const dictionary = await loadDictionary(locale, ["common"]);
 	const posts = (await getPostPreviews(locale)).slice(0, 4);
-	const text = texts[locale];
+
+	const code = await getPageById("home", locale);
 
 	return {
 		props: {
 			dictionary,
 			locale,
 			posts,
-			text,
+			code,
 		},
 	};
 }
@@ -58,11 +53,13 @@ export async function getStaticProps(
  * Home page.
  */
 export default function HomePage(props: HomePageProps): JSX.Element {
-	const { locale, posts, text } = props;
+	const { posts, code } = props;
 
 	const { t } = useI18n();
 	const canonicalUrl = useCanonicalUrl();
 	const languageAlternates = useAlternateUrls();
+	const { MdxContent, metadata } = useMdx(code);
+	const title = String(metadata?.title ?? "");
 
 	return (
 		<Fragment>
@@ -75,24 +72,29 @@ export default function HomePage(props: HomePageProps): JSX.Element {
 				<div className="mx-auto flex max-w-6xl flex-col gap-12 p-8 py-24 xs:py-48">
 					<div className="flex flex-col-reverse">
 						<h1 className="text-5xl font-black tracking-tighter 2xs:text-6xl xs:text-7xl">
-							{locale === "de" ? (
-								<Fragment>
-									<span className="text-brand-light-blue">Teilen</span> und{" "}
-									<span className="text-brand-light-blue">erweitern</span> Sie Ihr Wissen im Bereich{" "}
-									<span className="text-brand-turquoise">Digital Humanities</span>
-								</Fragment>
-							) : (
-								<Fragment>
-									<span className="text-brand-light-blue">Share</span> and{" "}
-									<span className="text-brand-light-blue">expand</span> your knowledge in{" "}
-									<span className="text-brand-turquoise">Digital Humanities</span>
-								</Fragment>
-							)}
+							{title.split(" ").map((segment, index) => {
+								const className =
+									index === 0
+										? "text-brand-light-blue"
+										: index === 2
+										? "text-brand-light-blue"
+										: index === segment.length - 2
+										? "text-brand-turquoise"
+										: index === segment.length - 1
+										? "text-brand-turquoise"
+										: undefined;
+
+								return (
+									<span key={index} className={className}>
+										{segment}{" "}
+									</span>
+								);
+							})}
 						</h1>
 					</div>
 
-					<div className="grid flex-1 gap-4 text-xl font-medium leading-relaxed text-neutral-300">
-						{text}
+					<div className="grid flex-1 gap-4 text-xl font-medium leading-relaxed text-neutral-300 [&_a]:underline [&_a]:decoration-dotted">
+						<MdxContent />
 					</div>
 
 					<section className="my-12 grid gap-12">
