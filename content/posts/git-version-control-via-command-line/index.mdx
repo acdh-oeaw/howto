@@ -25,11 +25,7 @@ uuid: ImehIb4D8ejT5wq_J8MSF
 
 ## Version control and tracking changes
 
-**Git**'s main purpose is to track changes in files and folders of a project, either for yourself or
-when working collaboratively in a team. It works best when used with **plaintext file formats** such
-as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store
-_images_, _audio files_, or `.doc` and `.pdf` documents, it is not able to help you with changes in
-documents in so-called binary formats.
+**Git**'s main purpose is to track changes in files and folders of a project, either for yourself or when working collaboratively in a team. It works best when used with **plaintext file formats** such as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store _images_, _audio files_, or `.doc` and `.pdf` documents, it is not able to help you with changes in documents in so-called binary formats.
 
 **Git**
 
@@ -38,52 +34,29 @@ documents in so-called binary formats.
 - it helps integrate changes by multiple collaborators and also solves situations where two people
   edit the same part of a document
 
-Git can record which changes, to which documents, have been made when, and by whom. It allows to
-keep a detailed revision history of a project, because it can save snapshots of a project at
-specific points in time, allowing to review them any time in the future.
+Git can record which changes, to which documents, have been made when, and by whom. It allows to keep a detailed revision history of a project, because it can save snapshots of a project at specific points in time, allowing to review them any time in the future.
 
-Version control allows to save different versions of content, restores previous versions, and compares different
-versions. This is especially beneficial when working with multiple documents, and when working in
-teams (potentially working on the same document).
+Version control allows to save different versions of content, restores previous versions, and compares different versions. This is especially beneficial when working with multiple documents, and when working in teams (potentially working on the same document).
 
 ![Branches in git](images/branches.png "Git's version control works with branches.")
 
-Git allows to create separate branches for changes to any document. For example, in the image above,
-the document is represented by the **main branch**. When a change should be created, a copy, the
-branch "feature A" is **pulled** from the main branch. Once the change is made, the feature branch
-is ready to transfer back into the main branch. Similarly, we can **fetch** a branch "feature B" and
-create another change. When changes have been **committed**, it can be **pushed** back into the main
-branch, too. Git version control features allow to trace those changes and consider them before they
-are **merged** into the main branch.
+Git allows to create separate branches for changes to any document. For example, in the image above, the document is represented by the **main branch**. When a change should be created, a copy, the branch "feature A" is **pulled** from the main branch. Once the change is made, the feature branch is ready to transfer back into the main branch. Similarly, we can **fetch** a branch "feature B" and create another change. When changes have been **committed**, it can be **pushed** back into the main branch, too. Git version control features allow to trace those changes and consider them before they are **merged** into the main branch.
 
-The paragraph above features **terminology** (in bold) that will become essential commands that
-enable us to work with Git.
+The paragraph above features **terminology** (in bold) that will become essential commands that enable us to work with Git.
 
 ### Official terminology: Working Area, Staging Area, Repository
 
-This diagram is a great summary of how content moves in Git, between the “working area”, which is
-simply the files and folders in a project as they exist on your computer, the “staging area”, which
-we can call a “holding zone”, and the “repository”, which are the permanently recorded commit
-snapshots.
+This diagram is a great summary of how content moves in Git, between the “working area”, which is simply the files and folders in a project as they exist on your computer, the “staging area”, which we can call a “holding zone”, and the “repository”, which are the permanently recorded commit snapshots.
 
 ![A figure showing the different areas of the git workflow, working area, staging area, repository](images/stefan_git_terminology.png "Git workflow by Stefan Probst")
 
-- **Working area:** This is where you manipulate your files. For example, you can make changes to the
-  text in an MDX document. The working area usually resides on your local machine.
-- **Staging area:** This "holding zone" allows to **stage** changes in your documents, and
-  **commit** those changes once you are comfortable, and **push** these changes to your repository.
-- **Repository:** A repository is a central location where the data, files and documents are stored
-  and managed. You can be the sole user of a repository or you can be a collaborator in a team.
+- **Working area:** This is where you manipulate your files. For example, you can make changes to the text in an MDX document. The working area usually resides on your local machine.
+- **Staging area:** This "holding zone" allows to **stage** changes in your documents, and **commit** those changes once you are comfortable, and **push** these changes to your repository.
+- **Repository:** A repository is a central location where the data, files and documents are stored and managed. You can be the sole user of a repository or you can be a collaborator in a team.
 
-Let's look at how change tracking with Git works in practice, in a local project on your computer
-(no network connection required). We'll walk through how to work with Git in the terminal, because
-that is where Git was originally meant to be used, and because it helps to understand what is
-actually going on. This involves learning a handful of Git commands, and while that might seem
-intimidating at first, you'll see that it becomes second-nature with a bit of practice very quickly.
+Let's look at how change tracking with Git works in practice, in a local project on your computer (no network connection required). We'll walk through how to work with Git in the terminal, because that is where Git was originally meant to be used, and because it helps to understand what is actually going on. This involves learning a handful of Git commands, and while that might seem intimidating at first, you'll see that it becomes second-nature with a bit of practice very quickly.
 
-However, if you prefer to work with Git via a **graphical user interface (GUI)**, take a look at the
-bonus section at the end of this introduction, which lists some popular editor or operating system
-integrations.
+However, if you prefer to work with Git via a **graphical user interface (GUI)**, take a look at the bonus section at the end of this introduction, which lists some popular editor or operating system integrations.
 
 <SideNote type="note">
 
@@ -97,10 +70,7 @@ Working in the terminal helps to understand what is going on behind the scenes.
 <SideNote type="tip" title="Don't be afraid of the command line interface (CLI)">
 Many users, particularly Windows users, depend on using Graphical User Interfaces (GUI) in their daily lives and work schedules. GUIs have tabs, menus and windows that you can click on. GUIs are perceived as more user-friendly because they graphically represent the actions you take when you interact with the machine in front of you.
 
-The command line interface (CLI) relies on text input. The user needs to know syntax and commands to
-use it. So instead of clicking on symbols, you type what you would like your machine to do. To open
-the command line, search for _terminal_ or _command prompt_. When you open your CLI, it will look
-something like this:
+The command line interface (CLI) relies on text input. The user needs to know syntax and commands to use it. So instead of clicking on symbols, you type what you would like your machine to do. To open the command line, search for _terminal_ or _command prompt_. When you open your CLI, it will look something like this:
 
 ```bash
 C:\Users\user_name>path_to_your_directory
@@ -108,9 +78,7 @@ C:\Users\user_name>path_to_your_directory
 
 When using a Mac, you will see the **$** character instead of **\>**.
 
-Here's an example for a basic command to use in your CLI: to navigate to a directory, type **cd**
-and the directory name. Now you can navigate down the directory hierarchy. To go back up, type **cd
-..**
+Here's an example for a basic command to use in your CLI: to navigate to a directory, type **cd** and the directory name. Now you can navigate down the directory hierarchy. To go back up, type **cd..**
 
 ```bash
 C:\Users\user_name>cd path_to_your_directory
@@ -126,12 +94,9 @@ There are multiple tutorials available that help you to familiarise yourself wit
 <SideNote type="info" title="Git for Windows, Mac, Linux">
 ## Windows
 
-If you haven't yet installed Git on your Windows computer, follow the instructions on
-https://git-scm.com/downloads, or https://gitforwindows.org/.
+If you haven't yet installed Git on your Windows computer, follow the instructions on https://git-scm.com/downloads, or https://gitforwindows.org/.
 
-You should also provide some initial configuration. The setup program runs as administrator as well
-as normal user. In general hit next and don't change anything as most options are only relevant for
-advanced usage.
+You should also provide some initial configuration. The setup program runs as administrator as well as normal user. In general hit next and don't change anything as most options are only relevant for advanced usage.
 
 [One exception might be the editor](https://git-intro-wboe.acdh-dev.oeaw.ac.at/simple_windows_editors). But if you follow this howto, its use is not essential.
 
@@ -143,13 +108,11 @@ See here why you might want to use VSCodium instead.
 
 We would suggest you to let the setup program add an icon on your desktop. You can of course just search the start menu for VS(Codium) or (Visual Studio)Code.
 
-Note that other specialized editors also support managing git repositories themselves. One notable
-example would be OxygenXML.
+Note that other specialized editors also support managing git repositories themselves. One notable example would be OxygenXML.
 
 ## Mac
 
-There are several ways to install git on MacOS. Depending on your needs and your familiarity with
-the command line we suggest one of the following two ways:
+There are several ways to install git on MacOS. Depending on your needs and your familiarity with the command line we suggest one of the following two ways:
 
 ### 1. Using the Git bundled with XCode Command Line Tools
 
@@ -158,9 +121,7 @@ Apple ships an older version of git with some add on tools for their MacOS. To g
 - open a "terminal" (type "terminal" in Spotlight search, start the respective app)
 - type `git` and press enter and try to run git
 
-Doing this will tell MacOS to get a view more programs from the internet. The bundle is called
-"Xcode Command Line Tools". So if this already happened for some reason you are ready. If not,
-you have to go through a few dialogs and after about 10 minutes everything is installed.
+Doing this will tell MacOS to get a view more programs from the internet. The bundle is called "Xcode Command Line Tools". So if this already happened for some reason you are ready. If not, you have to go through a few dialogs and after about 10 minutes everything is installed.
 
 ### 2. Using an installation package
 
@@ -211,11 +172,9 @@ example would be OxygenXML.
 
 ### Getting Git
 
-If you haven't yet installed Git on your computer, follow the instructions on
-[https://git-scm.com/ Download for Linux and Unix](https://git-scm.com/download/linux).
+If you haven't yet installed Git on your computer, follow the instructions on [https://git-scm.com/ Download for Linux and Unix](https://git-scm.com/download/linux).
 
-Git is part of every Linux Distribution nowadays and you install it using the usual package
-management tools (like `apt`, `dnf`, `pacman`, `yum`, `zypper` etc.).
+Git is part of every Linux Distribution nowadays and you install it using the usual package management tools (like `apt`, `dnf`, `pacman`, `yum`, `zypper` etc.).
 
 ### Editors with git-support
 
@@ -240,26 +199,17 @@ sudo git config --system credential.helper /usr/share/doc/git/contrib/credential
 
 ## Initialize a Git project in your terminal
 
-First, we need to tell Git that it should start to manage a project directory and keep an eye on
-changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on
-**Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data
-you want to version (usually done by typing `cd {folder-name}`, e.g. _cd Documents_), and afterwards
-type:
+First, we need to tell Git that it should start to manage a project directory and keep an eye on changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on **Mac** or **Linux** use the terminal of your choice. Navigate to the folder which contains the data you want to version (usually done by typing `cd {folder-name}`, e.g. _cd Documents_), and afterwards type:
 
 ```bash
 git init
 ```
 
-This will initially set up Git's internal bookkeeping metadata, which is stored in a hidden .git
-folder. Git will respond with:
+This will initially set up Git's internal bookkeeping metadata, which is stored in a hidden .git folder. Git will respond with:
 
 ![Initialize an empty Git repository on your local machine.](images/git_initialise_empty_gitrepo.png "Initialize an empty Git repository on your local machine.")
 
-Let's also create some new content. In a real research project this would mean editing or adding an
-XML/TEI document or similar. To demonstrate the mechanics we'll keep it basic here and use the
-terminal to create a simple text file. When you want to create a text file via the command line: The
-text in "", following _echo_, is the content of the text file which you specify with "filename.txt",
-txt being a text file extension
+Let's also create some new content. In a real research project this would mean editing or adding an XML/TEI document or similar. To demonstrate the mechanics we'll keep it basic here and use the terminal to create a simple text file. When you want to create a text file via the command line: The text in "", following _echo_, is the content of the text file which you specify with "filename.txt", txt being a text file extension.
 
 ```bash
 echo "This is my text document." > my-document.txt
@@ -273,19 +223,13 @@ We can always check what Git knows about the state of our project with:
 git status
 ```
 
-Note that Git informs us that changes have been made to a file called `my-document.txt`, but that
-file is currently "untracked", which means it is not currently managed by Git's versioning. Git also
-tells us that, in order to tell it to keep track of changes to that file, we should "use `git add` to
-track". Generally, if you find yourself in situations where you're unsure how to proceed,
-`git status` will most of the time show helpful hints. It's probably the Git command you'll be using
-most often.
+Note that Git informs us that changes have been made to a file called `my-document.txt`, but that file is currently "untracked", which means it is not currently managed by Git's versioning. Git also tells us that, in order to tell it to keep track of changes to that file, we should "use `git add` to track". Generally, if you find yourself in situations where you're unsure how to proceed, `git status` will most of the time show helpful hints. It's probably the Git command you'll be using most often.
 
 ![A picture of a code block. In the image you can see that a text file was created and that the status was checked. There are no commits yet, but some changes are already staged, others yet untracked.](images/add_file_status.png "In the image you can see that a text file was created and that the status was checked. There are no commits yet, but some changes are already staged, others yet untracked.")
 
 ## Mark content changes to be included in the version history
 
-Let's follow the advice and use `git add` to tell Git to keep an eye on changes to the newly created
-document `my-document.txt`:
+Let's follow the advice and use `git add` to tell Git to keep an eye on changes to the newly created document `my-document.txt`:
 
 ```bash
 git add my-document.txt
@@ -307,31 +251,21 @@ git add -A
 
 </SideNote>
 
-Note that `git add` does not automatically **commit** the changes, but places them in the **staging
-area**.
+Note that `git add` does not automatically **commit** the changes, but places them in the **staging area**.
 
 ### Bundle changes into meaningful chunks
 
-Including content changes in Git's version history involves a two-step process. First, we put
-changes in the “holding zone” or **“staging area”**. We can continue adding related changes to other
-documents, or additional newly created documents. This allows **creating semantically meaningful
-units of changes**.
+Including content changes in Git's version history involves a two-step process. First, we put changes in the “holding zone” or **“staging area”**. We can continue adding related changes to other documents, or additional newly created documents. This allows **creating semantically meaningful units of changes**.
 
-When all related changes have been added to the “holding area”, we can save them together as a
-version history snapshot, with a message that briefly describes the changes so it is easy to find
-them later when viewing the version history.
+When all related changes have been added to the “holding area”, we can save them together as a version history snapshot, with a message that briefly describes the changes so it is easy to find them later when viewing the version history.
 
-These units are called **“commits”**, and **“committing”** means permanently recording a snapshot of
-contents at a specific point in time, with a message describing the change:
+These units are called **“commits”**, and **“committing”** means permanently recording a snapshot of contents at a specific point in time, with a message describing the change:
 
 ```bash
 git commit -m "Add test document"
 ```
 
-Every project snapshot we commit to history should include a semantically meaningful set of changes,
-and this may involve edits to different documents. `git add` allows to granularly choose which
-changes to which files should be part of the next snapshot, while `git commit` will label that set
-of changes, and actually save a new snapshot.
+Every project snapshot we commit to history should include a semantically meaningful set of changes, and this may involve edits to different documents. `git add` allows to granularly choose which changes to which files should be part of the next snapshot, while `git commit` will label that set of changes, and actually save a new snapshot.
 
 <SideNote type="info" title="Commit messages">
 
@@ -346,27 +280,21 @@ come up with something that describes the change, you'll thank yourself later!
 
 ### View history of changes
 
-Getting into the habit of assigning descriptive commit messages is especially helpful when viewing
-the history of changes. Git will print a changelog with:
+Getting into the habit of assigning descriptive commit messages is especially helpful when viewing the history of changes. Git will print a changelog with:
 
 ```bash
 git log --oneline
 ```
 
-Note that we have one entry in our version history, and that Git has assigned the commit message we
-have provided, as well as an **internal identifier** to that entry. That identifier consists of 40
-alphanumeric characters, but usually the first few characters are enough to uniquely address a
-commit in a project.
+Note that we have one entry in our version history, and that Git has assigned the commit message we have provided, as well as an **internal identifier** to that entry. That identifier consists of 40 alphanumeric characters, but usually the first few characters are enough to uniquely address a commit in a project.
 
-Below, you see a sample information message that your terminal returns. It includes the identifier,
-shows where the changes happened and the commit message:
+Below, you see a sample information message that your terminal returns. It includes the identifier, shows where the changes happened and the commit message:
 
 ```bash
 7f733ac (HEAD -> main) Add test document
 ```
 
-If you type `git log` instead, more detailed information will be displayed, including the individual
-add that are bundled in your commit (if you have any) and the longer internal identifier.
+If you type `git log` instead, more detailed information will be displayed, including the individual add that are bundled in your commit (if you have any) and the longer internal identifier.
 
 ### View individual snapshot
 
@@ -376,18 +304,11 @@ Git will display the exact changes which were made in a commit snapshot with:
 git show 7f733ac
 ```
 
-That last bit is the unique identifier which is assigned to every commit in Git's version history.
-We've seen above how we can figure out these ids from inspecting the changelog displayed with
-`git log`. Note that when you have followed the steps in this introduction on your own computer, the
-unique identifier you see will be different from the one above. This is because identifiers are
-calculated from filename and content, author, commit message, and commit date.
+That last bit is the unique identifier which is assigned to every commit in Git's version history. We've seen above how we can figure out these ids from inspecting the changelog displayed with `git log`. Note that when you have followed the steps in this introduction on your own computer, the unique identifier you see will be different from the one above. This is because identifiers are calculated from filename and content, author, commit message, and commit date.
 
 ### Compare two snapshots
 
-It is also possible to show changes between two specific commit snapshots. Let's first add another
-change, so there are actually two separate entries in our commit history (again, how creating and
-editing a document on the terminal works is unimportant here, but the two-step process of creating a
-snapshot with `git add` and `git commit` should already be familiar):
+It is also possible to show changes between two specific commit snapshots. Let's first add another change, so there are actually two separate entries in our commit history (again, how creating and editing a document on the terminal works is unimportant here, but the two-step process of creating a snapshot with `git add` and `git commit` should already be familiar):
 
 ```bash
 echo "This is another document." > another-document.txt # creates a new document
@@ -396,8 +317,7 @@ git add -A
 git commit -m "Add new document and change initial document"
 ```
 
-To list the difference between two commit snapshots, we'll first find out their respective unique
-identifiers, and then tell Git to compare those:
+To list the difference between two commit snapshots, we'll first find out their respective unique identifiers, and then tell Git to compare those:
 
 ```bash
 git log --oneline
@@ -420,13 +340,11 @@ git diff --staged
 
 </SideNote>
 
-The format in which the changes are displayed can be a bit hard to read in the terminal, especially
-for larger changesets, so it's best to view them in a real text editor.
+The format in which the changes are displayed can be a bit hard to read in the terminal, especially for larger changesets, so it's best to view them in a real text editor.
 
 ### Time travel
 
-Alternatively, Git allows to "time travel" to a specific point in a project's history. You can
-inspect how each document looked like at that point in time, without losing any subsequent changes:
+Alternatively, Git allows to "time travel" to a specific point in a project's history. You can inspect how each document looked like at that point in time, without losing any subsequent changes:
 
 ```bash
 git checkout 7f733ac
@@ -438,15 +356,11 @@ Once you're done looking around, don't forget to return to the present! The easi
 git checkout main
 ```
 
-The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the
-default _branch_ of the timeline, because there can be multiple parallel timelines 🤯. Branches were
-mentioned in the beginning and we'll have a look at these branches in the second post, **\[Link]**).
+The `main` identifier is just a shortcut way to refer to the default timeline (it's actually the default _branch_ of the timeline, because there can be multiple parallel timelines 🤯. Branches were mentioned in the beginning and we'll have a look at these branches in the second post, **\[Link]**).
 
 ### Undo changes
 
-Finally, Git also allows to undo changes. Even though Git forces us to be very intentional about
-which changes end up in the changelog (we needed to go through the two-step `git add` and
-`git commit` process after all), sometimes you'll still want to discard some of them.
+Finally, Git also allows to undo changes. Even though Git forces us to be very intentional about which changes end up in the changelog (we needed to go through the two-step `git add` and `git commit` process after all), sometimes you'll still want to discard some of them.
 
 There are three possible ways to do this.
 
@@ -454,28 +368,21 @@ There are three possible ways to do this.
 git revert ab9b27f
 ```
 
-Reverting a commit will keep that snapshot in the version history, and create a _new_ snapshot with
-the changes removed. This is useful when you want to keep a record of the initial changes, and the
-fact that they have been reverted.
+Reverting a commit will keep that snapshot in the version history, and create a _new_ snapshot with the changes removed. This is useful when you want to keep a record of the initial changes, and the fact that they have been reverted.
 
 ```bash
 git reset 7f733ac
 ```
 
-Resetting history allows to "rewind the clock" to a specific point im time (addressed via unique
-identifier), without losing the changes that have been made to documents in subsequent changes. It's
-mostly useful as a way to "rewrite" history.
+Resetting history allows to "rewind the clock" to a specific point im time (addressed via unique identifier), without losing the changes that have been made to documents in subsequent changes. It's mostly useful as a way to "rewrite" history.
 
 ```bash
 git reset --hard 7f733ac
 ```
 
-The most brute-force way to undo changes is with a "hard reset". Be aware that this will not only
-"rewind the clock" to a specific commit, but nuke any changes that have been made in the project
-since that point in time. Those changes will be lost.
+The most brute-force way to undo changes is with a "hard reset". Be aware that this will not only "rewind the clock" to a specific commit, but nuke any changes that have been made in the project since that point in time. Those changes will be lost.
 
-Lastly, if you only want to quickly change the _message_ of the last commit, for example because you
-made a typo, you can:
+Lastly, if you only want to quickly change the _message_ of the last commit, for example because you made a typo, you can:
 
 ```bash
 git commit --amend
@@ -563,15 +470,13 @@ Save the document and check its status.
 
 Add the `teapot.txt` document.
 
-Create a second document called `teapot2.txt` with this text (you could also create the document
-outside the command line):
+Create a second document called `teapot2.txt` with this text (you could also create the document outside the command line):
 
 ```
 - When I get all steamed up Hear me shout 'Tip me over and pour me out!'.
 ```
 
-(note that you use single quotation marks because the double ones are already used in the command to
-create the document, if you do it from the command line.)
+(Note that you use single quotation marks because the double ones are already used in the command to create the document, if you do it from the command line.)
 
 Add the `teapot.txt` document.
 
