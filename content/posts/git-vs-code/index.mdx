@@ -28,7 +28,6 @@ VS Code and VSCodium are examples for code editors. Using the command line or te
 
 <Tabs />
 
-
 ### Working with git in the editor
 
 #### Cloning a repository and getting data
@@ -163,9 +162,7 @@ This only lists those files that we changed since we last made our changes perma
 
 ![review changes](images/review_changes.png "review changes")
 
-If we are not 100% sure about the changes we will now **stage**, that is prepare to be **commited**,
-we can open each file and see the differences per line. This might also give us a hint what we did
-if the last **commit** was a while back and we don't remember exactly why we changed the files.
+If we are not 100% sure about the changes we will now **stage**, that is prepare to be **commited**, we can open each file and see the differences per line. This might also give us a hint what we did if the last **commit** was a while back and we don't remember exactly why we changed the files.
 
 ### Mark content changes to be included in the version history
 
@@ -188,16 +185,10 @@ comand-line/#add-files
 
 ### Bundle changes into meaningful chunks and commit to them
 
-Including content changes in Git's version history involves a two-step process. First, related
-changes are added to create semantically meaningful units of changes. These changes wait in the
-staging area but it needs an extra step to propagate these changes and feed them into the documents.
+Including content changes in Git's version history involves a two-step process. First, related changes are added to create semantically meaningful units of changes. These changes wait in the staging area but it needs an extra step to propagate these changes and feed them into the documents.
 Keep that in mind.
 
-When all related changes have been added to the "staging area", we can save them together as a
-current snapshot of our data, a **commit**, with a **commit message** that briefly describes _why_
-changes were made. This makes it easier to understand them later when viewing the version history.
-**Committing** means permanently recording a snapshot of contents at a specific point in time. In VS
-Code, you use the `commit` button.
+When all related changes have been added to the "staging area", we can save them together as a current snapshot of our data, a **commit**, with a **commit message** that briefly describes _why_ changes were made. This makes it easier to understand them later when viewing the version history. **Committing** means permanently recording a snapshot of contents at a specific point in time. In VS Code, you use the `commit` button.
 
 ![](images/commit_message_and_commit_button.png "commit mesasge and commit button")
 
@@ -212,10 +203,7 @@ If you are on a new machine and/or just installed Git you will get an error. Her
 
 <Tabs />
 
-
-Whether you use `Learn More` or `Open Git log`, you will eventually see that Git just wants to know
-who commits here. We suggest to use `Open Git log` which shows a new set of controls at the bottom
-right.
+Whether you use `Learn More` or `Open Git log`, you will eventually see that Git just wants to know who commits here. We suggest to use `Open Git log` which shows a new set of controls at the bottom right.
 
 <SideNote type="info" title="The tell me who you are - message">
 
@@ -237,11 +225,7 @@ to set your account's default identity.
 
 </SideNote>
 
-There is no graphical interface for this one time configuration. You need to copy the two suggested
-`git config` commands and fill in your own details and execute them in a terminal. Create a new text
-file with `File`->`New text file`, copy the above lines starting with `git config` and fill in your
-information. Use the Visual Studio Code tab `Terminal` at the bottom. Alternatively you can select
-"Terminal" and "New Terminal" from the menu bar.
+There is no graphical interface for this one time configuration. You need to copy the two suggested `git config` commands and fill in your own details and execute them in a terminal. Create a new text file with `File`->`New text file`, copy the above lines starting with `git config` and fill in your information. Use the Visual Studio Code tab `Terminal` at the bottom. Alternatively you can select "Terminal" and "New Terminal" from the menu bar.
 
 ![](images/menu_bar_terminal.png "terminal menu")
 
@@ -280,8 +264,7 @@ command_line#bundle-changes-into-meaningful-chunks-and-commit-to-them
 
 ### Keeping repositories in sync: fetch, pull, push
 
-To get our changes to the server, so other people in our team can fetch them to review or amend
-them, we now `push` what we `committed` on our machine to the server.
+To get our changes to the server, so other people in our team can fetch them to review or amend them, we now `push` what we `committed` on our machine to the server.
 
 ![push](images/push.png "push")
 
@@ -320,11 +303,9 @@ them, we now `push` what we `committed` on our machine to the server.
   </Tabs>
 </SideNote>
 
-The opposite action is to `pull` from the server. This means getting all the changes accumulated
-there and integrating them (merging them with our local changes if any) in the files we see locally.
+The opposite action is to `pull` from the server. This means getting all the changes accumulated there and integrating them (merging them with our local changes if any) in the files we see locally.
 
-If we just want to download all change not integrating them at the same time we `fetch` from the
-server.
+If we just want to download all change not integrating them at the same time we `fetch` from the server.
 
 ### Merging and conflict resolution
 
@@ -348,8 +329,7 @@ Note that Visual Studio Code provides us with a few controls we can click to res
 
 ![conflicting edits](images/conflicting_edits.png "conflicting edits")
 
-We now can decide which is the better change (or use both if applicable). Visual Studio Code shows
-you different options in a three-way-editor:
+We now can decide which is the better change (or use both if applicable). Visual Studio Code shows you different options in a three-way-editor:
 
 ![accept current change](images/accept_current_change.png "accept current change")
 
@@ -357,7 +337,7 @@ And for example, accept the incoming change.
 
 ![accept current change](images/incorporate_incoming_change.png "Click on the change you want to incorporate in your file")
 
-And after resolving **all** the conflicts we do a `merge commit` (the text is there automatically)
+And after resolving **all** the conflicts we do a `merge commit` (the text is there automatically).
 
 ![commit merge to resolve](images/commit_merge_to_resolve.png "commit merge to resolve")
 
@@ -368,16 +348,10 @@ And after resolving **all** the conflicts we do a `merge commit` (the text is th
 
 ### Training task
 
-Open your code editor. Clone the repository "https://github.com/acdh-oeaw/howto_trainingmaterials"
-to your local work station. We used it in the **Git collaboration** - resource too.
+Open your code editor. Clone the repository "https://github.com/acdh-oeaw/howto_trainingmaterials" to your local work station. We used it in the **Git collaboration** - resource too.
 
-Inspect the repository by checking its status, and **pull** all changes that have been created in
-the meantime. If you do this exercise on your own, there might be no changes - still, it's best
-practice to pull regularly.
+Inspect the repository by checking its status, and **pull** all changes that have been created in the meantime. If you do this exercise on your own, there might be no changes - still, it's best practice to pull regularly.
 
-Navigate to the test-file.mdx and open it. In it, you will find several sentences talking about **a
-particular breed** of dogs. Replace the current breed with another of your choosing and move all
-those new sentences to the very end of the document. Save your actions and commit them with a
-meaningful message.
+Navigate to the test-file.mdx and open it. In it, you will find several sentences talking about **a particular breed** of dogs. Replace the current breed with another of your choosing and move all those new sentences to the very end of the document. Save your actions and commit them with a meaningful message.
 
 Perform `git push`.
