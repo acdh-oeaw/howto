@@ -99,7 +99,7 @@ Many users, particularly Windows users, depend on using Graphical User Interface
 
 The command line interface (CLI) relies on text input. The user needs to know syntax and commands to
 use it. So instead of clicking on symbols, you type what you would like your machine to do. To open
-the command line, search for _terminal_ or _command promt_. When you open your CLI, it will look
+the command line, search for _terminal_ or _command prompt_. When you open your CLI, it will look
 something like this:
 
 ```bash
@@ -120,7 +120,7 @@ C:\Users\user_name\path_to_your directory> cd ..
 C:\Users\user_name>
 ```
 
-There are multifple tutorials available that help you to familiarise yourself with the command line.
+There are multiple tutorials available that help you to familiarise yourself with the command line.
 </SideNote>
 
 <SideNote type="info" title="Git for Windows, Mac, Linux">
@@ -154,14 +154,13 @@ the command line we suggest one of the following two ways:
 
 ### 1. Using the Git bundled with XCode Command Line Tools
 
-Apple ships an older version of git with some add on tools for their MacOS. To get this git you only
-have to
+Apple ships an older version of git with some add on tools for their MacOS. To get this git version you only have to
 
-- Open a "terminal" (type "terminal" in Spotlight search, start the respective app)
-- type `git` and press enter. So try run git.
+- open a "terminal" (type "terminal" in Spotlight search, start the respective app)
+- type `git` and press enter and try to run git.
 
 Doing this will tell MacOS to get a view more programs from the internet. The bundle is called
-"Xcode Command Line Tools". So if this already happened for some other reason you are ready. If not
+"Xcode Command Line Tools". So if this already happened for some reason you are ready. If not,
 you have to go through a few dialogs and after about 10 minutes everything is installed.
 
 ### 2. Using an installation package
@@ -180,39 +179,31 @@ If these three downsides do not matter to your workflow, here is a step by step 
 2. Open the downloaded _.dmg file and run the file with the ending_ .pkg.
    ![](images/macos_installerpackage.jpg)
 3. MacOS is likely to give you a warning, because it does not initially trust sourceforge.com as a
-   source, as it is not a "verfied developer". ![](images/macos-warning.png) If this happens, please
-   press ok and go to your "System Settings" - Security - General.
-   ![](images/macos-securitysettings.jpg) There you will see at the bottom of the window a button
-   that should prompt "open anyways" to be able to open and run the *.pkg. Also prompt "open" at
-   the following warning and the installer-package will start.
+   source, as it is not a "verified developer". ![](images/macos-warning.png) If this happens, please press ok and go to your "System Settings" - Security - General.
+   ![](images/macos-securitysettings.jpg)There you will see at the bottom of the window a button that should prompt "open anyways" to be able to open and run the *.pkg. Also prompt "open" at the following warning and the installer-package will start.
 4. Please follow the instructions in the standard installation dialogue to install Git.
 
 ![](images/macos_installationdialogue.png)
 
 ### 3. Using Homebrew
 
-If you are not afraid of the command line, you can use the package manager "Homebrew" to install the
-latest version of Git.
+If you are not afraid of the command line, you can use the package manager "Homebrew" to install the latest version of Git.
 
 #### Installing Homebrew
 
 If you do not have Homebrew installed yet, please paste the following line into your MacOS Terminal:
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)".`
 
-By pressing enter and starting the script the installation procedure will run in the terminal. At
-each step the installer will pause and let you confirm, before it continues.
+By pressing enter and starting the script the installation procedure will run in the terminal. At each step the installer will pause and let you confirm, before it continues.
 
 #### Installing git using Homebrew
 
-After having installed Homebrew following the instructions above or if you already have Homebrew
-installed, please paste the following into your MacOS terminal: `$ brew install git`. This prompt
-will run the git-installation.
+After having installed Homebrew, please paste the following into your MacOS terminal: `$ brew install git`. This prompt will run the git-installation.
 
 ### Editors with git-support
 
-To have an editor that supports us when working with git version control we suggest you use
-[Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and
-install it.
+To have an editor that supports us when working with git version control, we suggest you to use
+[Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and install it.
 
 Note that other specialized editors also support managing git repositories themselves. One notable
 example would be OxygenXML.
@@ -224,14 +215,13 @@ example would be OxygenXML.
 If you haven't yet installed Git on your computer, follow the instructions on
 [https://git-scm.com/ Download for Linux and Unix](https://git-scm.com/download/linux).
 
-git is part of every Linux Distribution nowadays and you install it using the usual package
-management tools (like `apt`, `dnf`, `pacman`, `yum`, `zypper` etc.)
+Git is part of every Linux Distribution nowadays and you install it using the usual package
+management tools (like `apt`, `dnf`, `pacman`, `yum`, `zypper` etc.).
 
 ### Editors with git-support
 
-To have an editor that supports us when working with git version control we suggest you use
-[Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and
-install it.
+To have an editor that supports us when working with git version control we suggest you to use
+[Visual Studio Code](https://code.visualstudio.com/). Just download the suggested stable build and install it.
 
 Note that other specialized editors also support managing git repositories themselves. One notable
 example would be OxygenXML.
@@ -239,7 +229,7 @@ example would be OxygenXML.
 ## Save your username and password, so type it only once
 
 You also should make sure the `git-credential-libsecret` package is installed. This package exists
-on fedora based distributions. On Ubuntu and debian you need to execute these commands in a terminal
+on fedora based distributions. On Ubuntu and debian you need to execute these commands in a terminal:
 
 ```
 sudo apt-get install build-essential libsecret-1-0 libsecret-1-dev
@@ -249,7 +239,7 @@ sudo git config --system credential.helper /usr/share/doc/git/contrib/credential
 ```
 </SideNote>
 
-## Initialise a Git project in your terminal
+## Initialize a Git project in your terminal
 
 First, we need to tell Git that it should start to manage a project directory and keep an eye on
 changes to documents there. On a **Windows** PC, run the program **git shell** **(Git Bash)**, on
@@ -264,7 +254,7 @@ git init
 This will initially set up Git's internal bookkeeping metadata, which is stored in a hidden .git
 folder. Git will respond with:
 
-![initialise an empty Git repository on your local machine](images/git_initialise_empty_gitrepo.png "initialise an empty Git repository on your local machine")
+![initialize an empty Git repository on your local machine](images/git_initialise_empty_gitrepo.png "initialize an empty Git repository on your local machine")
 
 Let's also create some new content. In a real research project this would mean editing or adding an
 XML/TEI document or similar. To demonstrate the mechanics we'll keep it basic here and use the
