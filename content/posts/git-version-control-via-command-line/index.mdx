@@ -28,21 +28,21 @@ uuid: ImehIb4D8ejT5wq_J8MSF
 **Git**'s main purpose is to track changes in files and folders of a project, either for yourself or
 when working collaboratively in a team. It works best when used with **plaintext file formats** such
 as **source code, XML/TEI documents** or **Markdown content**. While Git will happily store
-_images_, _audio files_, or `.doc` and `.pdf` documents, it is not able to help you withe changes in
-documents in so-called binary formats .
+_images_, _audio files_, or `.doc` and `.pdf` documents, it is not able to help you with changes in
+documents in so-called binary formats.
 
 **Git**
 
 - solves the problem of keeping versions of text documents in sync among sometimes thousands of
-  collaborators working on a software product.
-- It helps integrate changes by multiple collaborators and also solve situations where two people
-  edit the same part of a document.
+  collaborators working on a software product
+- it helps integrate changes by multiple collaborators and also solves situations where two people
+  edit the same part of a document
 
 Git can record which changes, to which documents, have been made when, and by whom. It allows to
 keep a detailed revision history of a project, because it can save snapshots of a project at
 specific points in time, allowing to review them any time in the future.
 
-Version control allows to save versions of content, restore previous versions, and compare different
+Version control allows to save different versions of content, restores previous versions, and compares different
 versions. This is especially beneficial when working with multiple documents, and when working in
 teams (potentially working on the same document).
 
@@ -53,7 +53,7 @@ the document is represented by the **main branch**. When a change should be crea
 branch "feature A" is **pulled** from the main branch. Once the change is made, the feature branch
 is ready to transfer back into the main branch. Similarly, we can **fetch** a branch "feature B" and
 create another change. When changes have been **committed**, it can be **pushed** back into the main
-branch, too. Git version control features allow to trace those changes, consider them before they
+branch, too. Git version control features allow to trace those changes and consider them before they
 are **merged** into the main branch.
 
 The paragraph above features **terminology** (in bold) that will become essential commands that
@@ -66,9 +66,9 @@ simply the files and folders in a project as they exist on your computer, the �
 we can call a “holding zone”, and the “repository”, which are the permanently recorded commit
 snapshots.
 
-![A figure showing the different areas of the git workflow, working area, stating area, repository](images/stefan_git_terminology.png "Git workflow by Stefan Probst")
+![A figure showing the different areas of the git workflow, working area, staging area, repository](images/stefan_git_terminology.png "Git workflow by Stefan Probst")
 
-- **Working area:** This is where you manipulate your files. For example, you can make change to the
+- **Working area:** This is where you manipulate your files. For example, you can make changes to the
   text in an MDX document. The working area usually resides on your local machine.
 - **Staging area:** This "holding zone" allows to **stage** changes in your documents, and
   **commit** those changes once you are comfortable, and **push** these changes to your repository.
@@ -95,7 +95,6 @@ Working in the terminal helps to understand what is going on behind the scenes.
 ## Installing git
 
 <SideNote type="tip" title="Don't be afraid of the command line interface (CLI)">
-
 Many users, particularly Windows users, depend on using Graphical User Interfaces (GUI) in their daily lives and work schedules. GUIs have tabs, menus and windows that you can click on. GUIs are perceived as more user-friendly because they graphically represent the actions you take when you interact with the machine in front of you.
 
 The command line interface (CLI) relies on text input. The user needs to know syntax and commands to
@@ -107,7 +106,7 @@ something like this:
 C:\Users\user_name>path_to_your_directory
 ```
 
-When using a Mac, you will see the **$** character instead of **>**.
+When using a Mac, you will see the **$** character instead of **\>**.
 
 Here's an example for a basic command to use in your CLI: to navigate to a directory, type **cd**
 and the directory name. Now you can navigate down the directory hierarchy. To go back up, type **cd
@@ -121,8 +120,7 @@ C:\Users\user_name\path_to_your directory> cd ..
 C:\Users\user_name>
 ```
 
-There are multifple tutorials available that help you to familiarise with the command line.
-
+There are multifple tutorials available that help you to familiarise yourself with the command line.
 </SideNote>
 
 <SideNote type="info" title="Git for Windows, Mac, Linux">
@@ -140,16 +138,13 @@ But if you follow this howto, its use is not essential.
 
 ### Editors with git-support
 
-To have an editor that supports us when working with git version control we suggest you use
-[Visual Studio Code.](https://code.visualstudio.com/) Just download the suggested stable build and
-install it.
+In order to have an editor that supports us while working with git version control, we would suggest you to use [Visual Studio Code.](https://code.visualstudio.com/) Just download the suggested stable build and install it.
 
 See here why you might want to use VSCodium instead.
 
-We suggest you let the setup program add an icon on your desktop. You can of course just search the
-start menu for VS(Codium) or (Visual Studio)Code.
+We would suggest you to let the setup program add an icon on your desktop. You can of course just search the start menu for VS(Codium) or (Visual Studio)Code.
 
-Note that other specialized editors also support managing git repositories themselves. One notable
+Note that other specialised editors also support managing git repositories themselves. One notable
 example would be OxygenXML.
 
 ## Mac
@@ -182,13 +177,13 @@ If these three downsides do not matter to your workflow, here is a step by step 
 
 1. Download the installer package at
    [https://sourceforge.net/projects/git-osx-installer/](https://sourceforge.net/projects/git-osx-installer/).
-2. Open the downloaded _.dmg file and run the file with the ending _.pkg.
+2. Open the downloaded _.dmg file and run the file with the ending_ .pkg.
    ![](images/macos_installerpackage.jpg)
 3. MacOS is likely to give you a warning, because it does not initially trust sourceforge.com as a
    source, as it is not a "verfied developer". ![](images/macos-warning.png) If this happens, please
    press ok and go to your "System Settings" - Security - General.
    ![](images/macos-securitysettings.jpg) There you will see at the bottom of the window a button
-   that should prompt "open anyways" to be able to open and run the \*.pkg. Also prompt "open" at
+   that should prompt "open anyways" to be able to open and run the *.pkg. Also prompt "open" at
    the following warning and the installer-package will start.
 4. Please follow the instructions in the standard installation dialogue to install Git.
 
@@ -252,7 +247,6 @@ cd /usr/share/doc/git/contrib/credential/libsecret
 sudo make
 sudo git config --system credential.helper /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 ```
-
 </SideNote>
 
 ## Initialise a Git project in your terminal
@@ -527,7 +521,6 @@ git commit --amend
         Try again. Officially, the "waiting area" is called "staging area".
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 
   <Quiz.Card>
@@ -556,9 +549,9 @@ git commit --amend
         Try again
       </Quiz.Message>
     </Quiz.MultipleChoice>
-
   </Quiz.Card>
 </Quiz>
+
 
 ## Training task
 
