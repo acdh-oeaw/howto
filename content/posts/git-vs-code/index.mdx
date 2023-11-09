@@ -168,17 +168,14 @@ If we are not 100% sure about the changes we will now **stage**, that is prepare
 
 Let's tell Git that we are committed to our changes in the document `teapot.txt`:
 
-![stage change](images/stage_change.png "stage change")
+![Stage change](images/stage_change.png "Stage change")
 
 We put changes in the **staging area**, before we commit.
 
-![staged change](images/staged_change.png "staged change")
+![Staged change](images/staged_change.png "Staged change")
 
 <SideNote type="info" title="Adding multiple files">
-
-We can add multiple files by selecting the names as usual using shift or ctrl or command and then
-hit the `+`.
-
+We can add multiple files by selecting the names as usual using shift or ctrl or command and then hit the `+`.
 </SideNote>
 
 comand-line/#add-files
@@ -188,18 +185,17 @@ comand-line/#add-files
 Including content changes in Git's version history involves a two-step process. First, related changes are added to create semantically meaningful units of changes. These changes wait in the staging area but it needs an extra step to propagate these changes and feed them into the documents.
 Keep that in mind.
 
-When all related changes have been added to the "staging area", we can save them together as a current snapshot of our data, a **commit**, with a **commit message** that briefly describes _why_ changes were made. This makes it easier to understand them later when viewing the version history. **Committing** means permanently recording a snapshot of contents at a specific point in time. In VS Code, you use the `commit` button.
+When all related changes have been added to the "staging area", we can save them together as a current snapshot of our data, a **commit**, with a **commit message** that briefly describes _why_ changes were made. This makes it easier to understand them later when viewing the version history. **Committing** means permanently recording a snapshot of contents at a specific point in time. In VS Code you use the `commit` button.
 
-![](images/commit_message_and_commit_button.png "commit mesasge and commit button")
+![](images/commit_message_and_commit_button.png "Commit message and commit button")
 
 <SideNote type="info" title="Commit messages">
-Whether on the command line or in an editor, choose to write meaningful commit messages. This help
-your work process when revisiting your changes.
+Whether on the command line or in an editor, choose to write meaningful commit messages. This helps your work process when revisiting your changes.
 </SideNote>
 
 #### The very first commit error
 
-If you are on a new machine and/or just installed Git you will get an error. Here is how it looks in
+If you are on a new machine and/or just installed Git you will get an error. Here is how it looks:
 
 <Tabs />
 
@@ -227,7 +223,7 @@ to set your account's default identity.
 
 There is no graphical interface for this one time configuration. You need to copy the two suggested `git config` commands and fill in your own details and execute them in a terminal. Create a new text file with `File`->`New text file`, copy the above lines starting with `git config` and fill in your information. Use the Visual Studio Code tab `Terminal` at the bottom. Alternatively you can select "Terminal" and "New Terminal" from the menu bar.
 
-![](images/menu_bar_terminal.png "terminal menu")
+![](images/menu_bar_terminal.png "Terminal menu")
 
 <SideNote type="info" title="Unfortunately this differs again between the three OSes">
 <Tabs>
@@ -266,7 +262,7 @@ command_line#bundle-changes-into-meaningful-chunks-and-commit-to-them
 
 To get our changes to the server, so other people in our team can fetch them to review or amend them, we now `push` what we `committed` on our machine to the server.
 
-![push](images/push.png "push")
+![Push](images/push.png "Push")
 
 <SideNote type="info">
   <Tabs>
@@ -314,11 +310,10 @@ If we just want to download all change not integrating them at the same time we 
 
 What happens if two people edit the same file? Well it depends:
 
-1. If the two edit different lines in the file, then the changes can be `merged` automatically. That
-   is a good solution in most cases and it saves a lot of time.
-2. If two people edit the same line, then there is a `conflict` that needs to be `resolved`
+1. If two people edit different lines in the file, then the changes can be `merged` automatically. That is a good solution in most cases and it saves a lot of time.
+2. If two people edit the same line, then there is a `conflict` that needs to be `resolved.`
 
-Conflicts are marked with these distinct lines
+Conflicts are marked with these distinct lines:
 
 ```bash
 <<<<<<<< ...
@@ -330,23 +325,22 @@ The other change
 
 Note that Visual Studio Code provides us with a few controls we can click to resolve the conflict.
 
-![conflicting edits](images/conflicting_edits.png "conflicting edits")
+![Conflicting edits](images/conflicting_edits.png "Conflicting edits")
 
 We now can decide which is the better change (or use both if applicable). Visual Studio Code shows you different options in a three-way-editor:
 
-![accept current change](images/accept_current_change.png "accept current change")
+![Accept current change](images/accept_current_change.png "Accept current change")
 
 And for example, accept the incoming change.
 
-![accept current change](images/incorporate_incoming_change.png "Click on the change you want to incorporate in your file")
+![Accept current change](images/incorporate_incoming_change.png "Click on the change you want to incorporate in your file.")
 
 And after resolving **all** the conflicts we do a `merge commit` (the text is there automatically).
 
-![commit merge to resolve](images/commit_merge_to_resolve.png "commit merge to resolve")
+![Commit merge to resolve](images/commit_merge_to_resolve.png "Commit merge to resolve")
 
 <SideNote type="danger" title="Resolve all conflicts">
-  **Never** commit before resolving all conflicts, removing all conflict markers. You will make the
-  maker lines permanent. They are made like this to break any programming language and XML.
+**Never** commit before resolving all conflicts, removing all conflict markers. You will make the maker lines permanent. They are made like this to break any programming language and XML.
 </SideNote>
 
 ### Training task
