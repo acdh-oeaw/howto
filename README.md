@@ -21,7 +21,7 @@ the bottom of each post.
 1. Clone this repository. See above (green Code button).
    `git clone https://github.com/acdh-oeaw/howto`
 2. You of course need a nodejs setup. See nodejs.org about your options. Currently we use nodejs
-   16.x
+   18.x
 3. This project uses yarn. Yarn is part of any current nodejs distribution but has to be enabled
    with `corepack enable`
 4. Install dependencies: `yarn install`.
