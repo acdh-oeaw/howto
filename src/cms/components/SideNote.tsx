@@ -29,10 +29,12 @@ export interface SideNoteProps {
 
 const styles: Record<SideNoteType, string> = {
 	note: "bg-neutral-50 border-neutral-600 text-neutral-800",
-	info: "bg-blue-50 border-blue-600 text-blue-800",
-	tip: "bg-green-50 border-green-600 text-green-800",
-	warning: "bg-yellow-50 border-yellow-500 text-yellow-800",
-	danger: "bg-red-50 border-red-600 text-red-800",
+	info: "bg-blue-50 border-blue-600 text-blue-800 prose-headings:text-blue-800 prose-code:text-blue-800 marker:text-blue-800",
+	tip: "bg-green-50 border-green-600 text-green-800 prose-headings:text-green-800 prose-code:text-green-800 marker:text-green-800",
+	warning:
+		"bg-yellow-50 border-yellow-500 text-yellow-800 prose-headings:text-yellow-800 prose-code:text-yellow-800 marker:text-yellow-800",
+	danger:
+		"bg-red-50 border-red-600 text-red-800 prose-headings:text-red-800 prose-code:text-red-800 marker:text-red-800",
 };
 
 const icons: Record<SideNoteType, FC<SVGProps<SVGSVGElement>>> = {
