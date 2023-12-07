@@ -36,7 +36,7 @@ Most importantly however, everything we have learned in the first part is still 
 
 ## Remote repositories
 
-Remote repositories are versions of your project that are hosted "elsewhere", usually somewhere on the internet. There can be multiple such remote versions. Remote repositories are the principle mechanism that allows to synchronise changes between collaborators in a team. While it would be in principle possible to set up the local repository of a colleague as a remote repository and synchronize directly between individual colleagues, this would become complicated very quickly with teams of more than two members. Therefore almost invariably a dedicated Git hosting provider like GitHub or GitLab is used to store a primary copy of our project, with which all team members can synchronize their local project copies.
+Remote repositories are versions of your project that are hosted "elsewhere", usually somewhere on the internet. There can be multiple such remote versions. Remote repositories are the principle mechanism that allow to synchronize changes between collaborators in a team. While it would be in principle possible to set up the local repository of a colleague as a remote repository and synchronize directly between individual colleagues, this would become complicated very quickly with teams of more than two members. Therefore almost invariably a dedicated Git hosting provider like GitHub or GitLab is used to store a primary copy of our project, with which all team members can synchronize their local project copies.
 
 In the following, we will learn a few new git commands needed to work with remote repositories.
 
@@ -71,7 +71,7 @@ By convention, the remote repository which holds the primary copy of a project i
 
 ### Cloning a remote repository
 
-In a collaborative setup, there is a good chance that a remote repository has already been set up and we just need to "connect" to it, that is, create a local copy, or **clone** a remote repository, which will take care of initialising the project locally, connecting it with the remote, and synchronising the local project with the current state of the remote.
+In a collaborative setup, there is a good chance that a remote repository has already been set up and we just need to "connect" to it, that is, create a local copy, or **clone** a remote repository, which will take care of initializing the project locally, connecting it with the remote, and synchronizing the local project with the current state of the remote.
 
 To **clone** a local repository from a remote repository, we just need to specify its URL and create a local copy on our machine in a directory of our choosing, using the command `git clone <url>`.
 
@@ -114,7 +114,7 @@ git push
 `git push` is the opposite action of `git fetch` and `git pull`. You _push back_ your local branch or repository into the remote repository. If you have already an upstream remote for your local branch, `git push` can push to that branch as a default. In case you don't want to use the default branch, you can specify the branch every time you push: `git push <remote> <branch-name>`.
 
 <SideNote type="tip" title="Good practice when collaborating">
-When you collaborate with others, it is considered good practice to `git pull` before you `git push` to the remote. This way, you can resolve conflicts locally and avoid conflicts in the remote. These so-called _merge conflicts_ are sometimes difficult to entangle, so take your time when pushing your work. Code editors clearly visualise conflicts and help you with a clean work flow.
+When you collaborate with others, it is considered good practice to `git pull` before you `git push` to the remote. This way, you can resolve conflicts locally and avoid conflicts in the remote. These so-called _merge conflicts_ are sometimes difficult to entangle, so take your time when pushing your work. Code editors clearly visualize conflicts and help you with a clean work flow.
 </SideNote>
 
 ## Working collaboratively in code editors
@@ -201,7 +201,7 @@ Similar to GitLab, an access token can be created in GitHub too:
   <Quiz.Card>
     <Quiz.MultipleChoice variant="multiple">
       <Quiz.Question>
-        What is the difference between `git fetch`and `git pull`?
+        What is the difference between `git fetch` and `git pull`?
       </Quiz.Question>
 
       <Quiz.MultipleChoice.Option>
