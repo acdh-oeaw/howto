@@ -43,7 +43,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Commit message
-        uses: acdh-oeaw/commitlint-action@3f59d1cfc7d3b50963ee651237cc5fc9830f17a0
+        uses: acdh-oeaw/commitlint-action@e3a4b804d62aaabf0ef133bd08e9409da38ed08b
 
       - name: Format
         run: pnpm run format:check
