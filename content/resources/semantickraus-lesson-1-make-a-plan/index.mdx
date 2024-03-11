@@ -1,0 +1,73 @@
+---
+authors:
+  - oberreither-bernhard
+editors:
+  - koenigshofer-elisabeth
+featuredImage: /assets/content/resources/semantickraus-lesson-1-make-a-plan/featuredImage.png
+license: cc-by-4-0
+locale: en
+publicationDate: 2023-03-14
+summary: >-
+  Fine-tuning a workflow and a question millions of years old.
+
+  This is part of a blog post series documenting the SemanticKraus research project at the ACDH-CH.
+tags:
+  - semantic-web
+  - project-management
+title: "Lesson 1: Make a plan, then don't stick to it"
+toc: false
+version: 1.0.0
+---
+[Previous: Introduction to the project](/curricula/semantickraus-a-blogpost-series)
+
+_– About 5 days before the start of the project –_
+
+#### Talking workflow
+
+The situation is as follows: The research proposal was accepted a couple of months ago. I had talked to a number of smart people about what I had planned, I gained Matej Ďurčo's support for the preparation of the proposal, and then another number of smart people had read the proposal and decided to grant us the funds, and then there we sat, right before the start of the project.
+
+“We” means Matej and Daniel Schopper, who together oversee everything going on in the technical department here at the [ACDH-CH](https://www.oeaw.ac.at/acdh/acdh-ch-home), Matthias Schlögl, first address for prosopography and Linked Data, Peter Andofer, who among other things makes digital editions and gets clean data out of everything using Python and probably wizardry, and Martin Anton Müller, editor of e. g. [Arthur Schnitzler's correspondence](https://schnitzler-briefe.acdh.oeaw.ac.at/pages/index.html) and benevolent ruler (who would very much oppose this title) of the [PMB – “Personen der Moderne Basis”](https://pmb.acdh.oeaw.ac.at/), a huge data base for places, persons, institutions, etc., with a focus on the Vienna fin de siecle.
+
+We're here to talk about our **workflow**. In principle, it consists of three simple steps:
+
+- Data enrichment and cleaning – using, e. g., tools like Open Refine.
+- Data transformation – using mostly Python and XSLT.
+- Data ingest and app programming, using ResearchSpace to build a user interface.
+
+Now, of course this list is simplified to the point that it must be a hilarious read for anybody who has ever dealt with such a project: First, each of these three steps summarizes a myriad of different work steps – and indeed, the heterogeneity of our source material deserves mention. Second, nothing ever works perfectly the first time – and indeed, we have planned for a couple of iterations and feedback loops, which are omitted here. Third, some details of a workflow are always expected to take shape and change with the project start approaching, and some adjustments and re-evaluations are expected every step of the way.
+
+#### A question of replicability
+
+And that's what's happening now: Peter and Martin bring up an idea that could potentially mitigate to some degree the issue of data integration: Let's take pretty much all the data, they say, and ingest it into the PMB data base. There we can process it and enrich it by adding identifiers and possibly relations; the PMB id would serve us to match identical entities, identifiers from other external data bases would be added automatically, and we could write a module to export PMB data directly in RDF. Also, this would interlink SemanticKraus data with a number of other projects in the field ...
+
+Although I am familiar with the PMB, using it as a workbench is new to me. So that's something we're certainly going to look into; maybe this could smoothen our very diverse workflows and add efficiency.
+
+Depending on how much this impacts (or even absorbs?) our workflow, one issue might come up, though: One of the outputs of our project was to be a _HowTo_ on the whole process – the first installment of which you're reading right now –, so everybody could recreate our workflows, adopt our data model, and ideally add or interlink their own data to _SemanticKraus_. It remains to be seen how that would work when we rely on a quite sophisticated tool located here at the ACDH-CH, accessible to members of the ACDH-CH. People couldn't just drop in to insert and enrich their own data in the PMB – or could they?
+
+<Callout kind="note">
+_Upon asking, it turns out people could: Martin says that he would welcome researchers beyond the ACDH-CH approaching him on a matter like this. Also, PMB – the underlying system APIS as well as its contents – is open source, so anyone can use its API or set it up themselves, provided they have the technical skills._
+</Callout>
+
+Anyway, somehow we will have to ensure that our workflow is replicable.
+
+#### Data retrieval: Pre-fabricated v. custom solutions
+
+Some twenty-four hours later, Matthias enters my office to recap yesterday's meeting, and before he even touches the surface of the chair I offer him, he asks: So you're using ResearchSpace?
+
+We then enter (and in many respects re-enter) the discussion about prefabricated tools, a discussion that is probably as old as the first hand axe: using an existing tool or building a custom one? In our case: While ResearchSpace (RS) is a low-threshold tool to build UIs directly on top of a triple store, a UI could also be created as a third layer, with an API in between handling the queries. This way, data retrieval and interface would be separated (as opposed to combined into the same HTML like in RS).
+
+There are a number of factors to take into account, including: How fast do you need to set up the whole thing? How much programing expertise do you have? How much do your specific needs deviate from what RS has to offer out of the box? Taken together, these questions (at least the first and third of which played a big role in writing the proposal) illustrate a very common problem with relying on pre-fabricated standards or tools: Up to a point of customization, the pre-fabricated option sure will deliver faster results than a tool built from scratch. From this tipping point on, customization of the pre-fabricated option might turn out to be more costly. And once you've determined exactly where that tipping point is and where your project is in relation to it, there are still other factors to take into account: What about sustainability? And last but – especially in the field of Linked Data – not least: What about the intrinsic value of using standards and pre-existing open-source code?
+
+Anyway, without knowing all the details, Matthias says he wouldn't commit to one course of action or another yet – very reasonably (and despite me trying to extract the one striking argument from him to decide the question once and for all). The next step in this matter will be building a detailed mock-up and getting our programmers' feedback on it.
+
+<Callout kind="tip" title="Some links to the tools and services mentioned in the blog post:">
+[PMB - Personen der Moderne Basis](https://pmb.acdh.oeaw.ac.at)
+
+[APIS - Austrian Prosopographical Information System](https://www.oeaw.ac.at/acdh/tools/apis-app)
+
+[RS - ResearchSpace](https://researchspace.org)
+</Callout>
+
+[Next Post: Lesson 2 - Meet the data](/resources/semantickraus-lesson-2-meet-the-data)
+
+(The project is funded by CLARIAH-AT with the support of BMBWF.)

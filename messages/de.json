@@ -1,0 +1,122 @@
+{
+	"AppFooter": {
+		"links": {
+			"imprint": "Impressum"
+		},
+		"navigation-secondary": "Sekundär"
+	},
+	"AppHeader": {
+		"links": {
+			"curricula": "Curricula",
+			"home": "Startseite",
+			"resources": "Ressourcen"
+		},
+		"navigation-primary": "Primär"
+	},
+	"ColorSchemeSwitcher": {
+		"change-color-scheme": "Farbschema ändern",
+		"color-schemes": {
+			"dark": "Dunkel",
+			"light": "Hell",
+			"system": "System"
+		}
+	},
+	"CurriculaPage": {
+		"meta": {
+			"title": "Curricula"
+		},
+		"title": "Curricula"
+	},
+	"CurriculaSection": {
+		"locale": "Sprache",
+		"locales": {
+			"all": "Alle"
+		},
+		"search": "Suchen",
+		"search-results-found": "{count, plural, =0 {Keine Ergebnisse} =1 {Ein Ergebnis} other {# Ergebnisse}} gefunden.",
+		"search-term": "Suchbegriff",
+		"tags": "Tags"
+	},
+	"CurriculumCard": {
+		"edited-by": "Zusammengestellt von",
+		"published-on": "Veröffentlicht am",
+		"read-more": "Weiterlesen",
+		"tagged-with": "Getagged mit"
+	},
+	"CurriculumContent": {
+		"edited-by": "Zusammengestellt von",
+		"published-on": "Veröffentlicht am",
+		"tagged-with": "Getagged mit"
+	},
+	"Error": {
+		"something-went-wrong": "Etwas ist schief gelaufen!",
+		"try-again": "Erneut versuchen"
+	},
+	"ImprintPage": {
+		"meta": {
+			"title": "Impressum"
+		},
+		"title": "Impressum"
+	},
+	"IndexPage": {
+		"lead-in": "Willkommen bei den ACDH-CH Lernressourcen. Hier finden Sie interaktives Lernmaterial, praktische HowTo-Artikel und Best Practices Beispiele zu einem breiten Spektrum von Themen, Methoden und Infrastrukturen aus den Digital Humanities.",
+		"title": "Teilen und erweitern Sie Ihr Wissen im Bereich Digital Humanities"
+	},
+	"Loading": {
+		"loading": "Laden"
+	},
+	"LocaleLayout": {
+		"meta": {
+			"description": "Digital Humanities Lernmaterialien",
+			"title": "ACDH-CH Howto",
+			"twitter": {
+				"creator": "@acdh_oeaw",
+				"site": "@acdh_oeaw"
+			}
+		},
+		"skip-to-main-content": "Zum Hauptinhalt springen"
+	},
+	"LocaleSwitcher": {
+		"current-locale": "Aktuelle Sprache: {locale}",
+		"switch-locale": "Sprache wechseln",
+		"switch-locale-to": "Zu {locale} wechseln"
+	},
+	"Manifest": {
+		"description": "Digital Humanities Lernmaterialien",
+		"name": "ACDH-CH Howto",
+		"short-name": "ACDH-CH Howto"
+	},
+	"NotFoundPage": {
+		"meta": {
+			"title": "Seite nicht gefunden"
+		},
+		"title": "Seite nicht gefunden"
+	},
+	"ResourceCard": {
+		"published-on": "Veröffentlicht am",
+		"read-more": "Weiterlesen",
+		"tagged-with": "Getagged mit",
+		"written-by": "Geschrieben von"
+	},
+	"ResourceContent": {
+		"published-on": "Veröffentlicht am",
+		"tagged-with": "Getagged mit",
+		"written-by": "Geschrieben von"
+	},
+	"ResourcesPage": {
+		"meta": {
+			"title": "Ressourcen"
+		},
+		"title": "Ressourcen"
+	},
+	"ResourcesSection": {
+		"locale": "Sprache",
+		"locales": {
+			"all": "Alle"
+		},
+		"search": "Suchen",
+		"search-results-found": "{count, plural, =0 {Keine Ergebnisse} =1 {Ein Ergebnis} other {# Ergebnisse}} gefunden.",
+		"search-term": "Suchbegriff",
+		"tags": "Tags"
+	}
+}

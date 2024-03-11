@@ -1,19 +1,12 @@
-/**
- * Number of words in content snippet.
- */
-export const SNIPPET_WORDS = 20;
+import type { CollectionCreateSchema } from "typesense/lib/Typesense/Collections";
 
-/**
- * Max number of search results.
- */
-export const MAX_SEARCH_RESULTS = 10;
-
-/**
- * Dispatch search requests when search term has at least n characters.
- */
-export const MIN_SEARCH_TERM_LENGTH = 3;
-
-/**
- * Debounce search-on-type by n milliseconds.
- */
-export const DEBOUNCE_MS = 150;
+export const schema: CollectionCreateSchema = {
+	name: "howto",
+	fields: [
+		{ name: "title", type: "string" },
+		{ name: "authors", type: "string[]", facet: true },
+		{ name: "tags", type: "string[]", facet: true },
+		{ name: "publication_year", type: "int32", facet: true },
+	],
+	default_sorting_field: "publication_year",
+};

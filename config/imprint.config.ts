@@ -1,13 +1,12 @@
-import { type Locale } from "@/i18n/i18n.config";
-import { createUrl } from "@/utils/createUrl";
+import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
 
-/**
- * Creates URL to fetch imprint from ACDH imprint service.
- */
+import { env } from "@/config/env.config";
+import type { Locale } from "@/config/i18n.config";
+
 export function createImprintUrl(locale: Locale): URL {
 	return createUrl({
 		baseUrl: "https://imprint.acdh.oeaw.ac.at",
-		pathname: "/19273",
-		query: { locale },
+		pathname: `/${env.NEXT_PUBLIC_REDMINE_ID}`,
+		searchParams: createUrlSearchParams({ locale }),
 	});
 }

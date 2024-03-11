@@ -1,84 +1,67 @@
-# git
-# .git # currently needed for last updated timestamps - should get them via github api so .git folder can be ignored
-.gitignore
-
-# github
-.github
-CODEOWNERS
-
-# vscode settings
-.vscode
+## .gitignore ##
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+node_modules/
+.pnpm-store/
 
-# testing
-/coverage
+# logs
+*.log
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
+# non-public environment variables
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# vercel
-.vercel
+.env.*.local
 
 # caches
 .eslintcache
 .stylelintcache
-.tsbuildinfo
+*.tsbuildinfo
 
-# storybook
-/storybook-static
+# vercel
+.vercel
 
-# auto-generated favicons
-public/android-chrome-192x192.png
-public/android-chrome-512x512.png
-public/apple-touch-icon.png
-public/favicon-16x16.png
-public/favicon-32x32.png
-public/favicon.ico
-public/site.webmanifest
-public/open-graph.webp
-public/de/android-chrome-192x192.png
-public/de/android-chrome-512x512.png
-public/de/apple-touch-icon.png
-public/de/favicon-16x16.png
-public/de/favicon-32x32.png
-public/de/favicon.ico
-public/de/site.webmanifest
-public/de/open-graph.webp
+# misc
+.DS_Store
+.idea/
 
-# auto-generated artefacts
-public/feed.xml
-public/robots.txt
-public/sitemap.xml
+# next.js
+.next/
+next-env.d.ts
+out/
 
-# auto-generated css for cms preview
-public/assets/css/index.css
-public/assets/css/tailwind.css
+# test
+/coverage/
 
-# auto-generated redirects
-redirects.*.json
+# playwright
+/blob-report/
+/playwright/.cache/
+/playwright-report/
+/test-results/
 
-# auto-generated metadata dump
-public/metadata/*.json
+# generated metadata
+/public/metadata/
+
+
+## .dockerignore ##
+
+# git
+.git/
+.gitattributes
+.gitignore
+
+# github
+.github/
+
+# vscode settings
+.vscode/
+
+# environment variables
+.env
+.env.*
+
+# tests
+playwright.config.ts
+/e2e/
+/test/
+
+# misc
+.editorconfig

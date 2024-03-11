@@ -1,31 +1,16 @@
 {
+	"$schema": "https://json.schemastore.org/tsconfig",
 	"extends": "@acdh-oeaw/tsconfig",
 	"compilerOptions": {
 		"baseUrl": ".",
-		/**
-		 * No longer necessary in typescript v5.
-		 *
-		 * @see https://github.com/vercel/next.js/issues/45617
-		 */
-		"forceConsistentCasingInFileNames": true,
-		/**
-		 * Next.js does not yet understand `verbatimModuleSyntax`.
-		 *
-		 * @see https://github.com/vercel/next.js/issues/46509
-		 */
-		"isolatedModules": true,
-		/**
-		 * Next.js does not yet understand `bundler`.
-		 * @see https://github.com/vercel/next.js/issues/47858
-		 *
-		 */
-		"moduleResolution": "node",
 		"paths": {
-			"@/*": ["src/*"],
-			"~/*": ["*"]
+			"@/*": ["./*"]
 		},
 		"plugins": [{ "name": "next" }]
 	},
-	"include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "**/*.config.cjs", "**/*.config.js"],
-	"exclude": ["node_modules"]
+	"include": ["./**/*.ts", "./**/*.tsx", ".next/types/**/*.ts", "./**/*.js"],
+	"exclude": ["node_modules", "out"],
+	"mdx": {
+		"plugins": ["remark-frontmatter", "remark-mdx-frontmatter", "remark-gfm"]
+	}
 }
