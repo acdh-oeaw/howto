@@ -29,7 +29,11 @@ export function Tabs(props: TabsProps): ReactNode {
 					const id = String(index);
 
 					return (
-						<AriaTab key={id} className="cursor-default border-b-2 border-transparent transition hover:text-neutral-950 selected:border-current selected:font-medium dark:hover:text-neutral-0 " id={id}>
+						<AriaTab
+							key={id}
+							className="cursor-default border-b-2 border-transparent transition hover:text-neutral-950 selected:border-current selected:font-medium dark:hover:text-neutral-0 "
+							id={id}
+						>
 							{title}
 						</AriaTab>
 					);

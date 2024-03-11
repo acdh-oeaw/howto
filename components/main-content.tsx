@@ -14,7 +14,10 @@ export function MainContent(props: MainContentProps): ReactNode {
 
 	return (
 		<main
-			className={cn("max-w-screen-md bg-neutral-0 outline-0 dark:bg-neutral-900 border-x", className)}
+			className={cn(
+				"max-w-screen-md border-x bg-neutral-0 outline-0 dark:bg-neutral-900",
+				className,
+			)}
 			id={id}
 			tabIndex={-1}
 		>

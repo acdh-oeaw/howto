@@ -12,8 +12,7 @@ interface GetDublinCoreMetadataParams {
 }
 
 export function getDublinCoreMetadata(params: GetDublinCoreMetadataParams) {
-	const { authors, license, locale, publicationDate, siteTitle, summary, tags, title } =
-		params;
+	const { authors, license, locale, publicationDate, siteTitle, summary, tags, title } = params;
 
 	const metadata: Metadata = {
 		other: {

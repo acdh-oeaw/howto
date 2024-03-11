@@ -9,7 +9,7 @@ interface GetHighwireMetadataParams {
 	title: string;
 }
 
-export function getHighwireMetadata(params: GetHighwireMetadataParams ) {
+export function getHighwireMetadata(params: GetHighwireMetadataParams) {
 	const { authors, locale, publicationDate, siteTitle, summary, title } = params;
 
 	const metadata: Metadata = {
@@ -20,8 +20,8 @@ export function getHighwireMetadata(params: GetHighwireMetadataParams ) {
 			citation_language: locale,
 			citation_publication_date: publicationDate,
 			citation_title: title,
-		}
-	}
+		},
+	};
 
-	return metadata
+	return metadata;
 }
