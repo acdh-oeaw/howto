@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 
 interface DownloadProps{
+	children: ReactNode
 	href: string
-	title: string
 }
 
 export function Download(props: DownloadProps): ReactNode {
-	const { href, title} = props
+	const { children, href} = props
 
-	return <a download={true} href={href}>{title}</a>
+	return <a download={true} href={href}>{children}</a>
 }

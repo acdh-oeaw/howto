@@ -1,6 +1,6 @@
 import { pick } from "@acdh-oeaw/lib";
 import { collection, config, fields } from "@keystatic/core";
-import { block, inline, repeating, wrapper } from "@keystatic/core/content-components";
+import { block, mark, repeating, wrapper } from "@keystatic/core/content-components";
 import {
 	CaptionsIcon,
 	DownloadIcon,
@@ -30,6 +30,7 @@ function createComponents(
 		| "Disclosure"
 		| "Download"
 		| "Figure"
+		| "Footnote"
 		| "Quiz"
 		| "QuizMultipleChoice"
 		| "QuizSingleChoice"
@@ -81,15 +82,11 @@ function createComponents(
 				}),
 			},
 		}),
-		Download: inline({
+		Download: mark({
 			label: "Download",
-			description: "A download link.",
 			icon: <DownloadIcon />,
+			className: "underline decoration-dotted",
 			schema: {
-				title: fields.text({
-					label: "Title",
-					validation: { isRequired: true },
-				}),
 				href: fields.file({
 					label: "File",
 					...createAssetPaths(assetPath),
@@ -113,10 +110,10 @@ function createComponents(
 				}),
 			},
 		}),
-		Footnote: inline({
+		Footnote: mark({
 			label: "Footnote",
-			description: "An inline footnote.",
 			icon: <SuperscriptIcon />,
+			className: "underline decoration-dotted align-super text-sm",
 			schema: {},
 		}),
 		Quiz: repeating({
