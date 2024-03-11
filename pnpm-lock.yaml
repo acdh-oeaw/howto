@@ -4,9 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@commitlint/config-conventional': ^18.6.3
-
 dependencies:
   '@acdh-oeaw/lib':
     specifier: ^0.1.7
