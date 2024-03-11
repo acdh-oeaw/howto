@@ -43,7 +43,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Commit message
-        uses: acdh-oeaw/commitlint-action@v1
+        uses: acdh-oeaw/commitlint-action@3f59d1cfc7d3b50963ee651237cc5fc9830f17a0
 
       - name: Format
         run: pnpm run format:check
@@ -93,7 +93,7 @@ jobs:
       - name: Run e2e tests
         run: pnpm run test:e2e
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
