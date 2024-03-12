@@ -20,6 +20,7 @@ import { Logo } from "@/components/logo";
 import { createAssetPaths, createPreviewUrl } from "@/config/content.config";
 import { env } from "@/config/env.config";
 import { defaultLocale, locales } from "@/config/i18n.config";
+import { variants } from "@/lib/styles";
 
 const localeLabel = new Intl.DisplayNames("en", { type: "language" });
 
@@ -32,8 +33,9 @@ function createComponents(
 		| "Figure"
 		| "Footnote"
 		| "Quiz"
-		| "QuizMultipleChoice"
-		| "QuizSingleChoice"
+		| "QuizChoice"
+		| "QuizChoiceAnswer"
+		| "QuizChoiceQuestion"
 		| "Tab"
 		| "Tabs"
 		| "Video"
@@ -120,43 +122,26 @@ function createComponents(
 			label: "Quiz",
 			description: "An interactive quiz.",
 			icon: <MessageCircleQuestionIcon />,
-			children: ["QuizMultipleChoice", "QuizSingleChoice"],
+			children: ["QuizChoice"],
 			validation: { children: { min: 1 } },
 			schema: {},
 		}),
-		QuizMultipleChoice: block({
-			label: "Multiple choice quiz",
-			description: "A multiple choice quiz.",
+		QuizChoice: repeating({
+			label: "Choice quiz",
+			description: "A single or multiple choice quiz.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
+			children: ["QuizChoiceQuestion", "QuizChoiceAnswer"],
+			validation: { children: { min: 1 } },
 			schema: {
-				question: fields.text({
-					label: "Question",
-					validation: { isRequired: true },
+				variant: fields.select({
+					label: "Variant",
+					options: [
+						{ label: "Single choice", value: "single" },
+						{ label: "Multiple choice", value: "multiple" },
+					],
+					defaultValue: "multiple",
 				}),
-				answers: fields.array(
-					fields.object({
-						answer: fields.text({
-							label: "Answer",
-							validation: { isRequired: true },
-						}),
-						kind: fields.select({
-							label: "Kind",
-							options: [
-								{ label: "Correct", value: "correct" },
-								{ label: "Incorrect", value: "incorrect" },
-							],
-							defaultValue: "incorrect",
-						}),
-					}),
-					{
-						itemLabel(props) {
-							return props.fields.answer.value;
-						},
-						label: "Answers",
-						validation: { length: { min: 1 } },
-					},
-				),
 				messages: fields.object(
 					{
 						correct: fields.text({
@@ -181,62 +166,43 @@ function createComponents(
 				}),
 			},
 		}),
-		QuizSingleChoice: block({
-			label: "Single choice quiz",
-			description: "A single choice quiz.",
+		QuizChoiceAnswer: wrapper({
+			label: "Answer",
+			description: "An answer in a single/multiple choice quiz.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
 			schema: {
-				question: fields.text({
-					label: "Question",
-					validation: { isRequired: true },
-				}),
-				answers: fields.array(
-					fields.object({
-						answer: fields.text({
-							label: "Answer",
-							validation: { isRequired: true },
-						}),
-						kind: fields.select({
-							label: "Kind",
-							options: [
-								{ label: "Correct", value: "correct" },
-								{ label: "Incorrect", value: "incorrect" },
-							],
-							defaultValue: "incorrect",
-						}),
-					}),
-					{
-						itemLabel(props) {
-							return props.fields.answer.value;
-						},
-						label: "Answers",
-						validation: { length: { min: 1 } },
-					},
-				),
-				messages: fields.object(
-					{
-						correct: fields.text({
-							label: "Correct",
-							description: "A message for correct answers.",
-							validation: { isRequired: true },
-						}),
-						incorrect: fields.text({
-							label: "Incorrect",
-							description: "A message for incorrect answers.",
-							validation: { isRequired: true },
-						}),
-					},
-					{
-						label: "Messages",
-					},
-				),
-				buttonLabel: fields.text({
-					label: "Button label",
-					description: "Custom label for 'Check answer' button.",
-					// validation: { isRequired: fields },
+				kind: fields.select({
+					label: "Kind",
+					options: [
+						{ label: "Correct", value: "correct" },
+						{ label: "Incorrect", value: "incorrect" },
+					],
+					defaultValue: "incorrect",
 				}),
 			},
+			ContentView(props) {
+				const styles = variants({
+					base: "rounded-md px-2 py-1",
+					variants: {
+						kind: {
+							correct: "bg-positive-100",
+							incorrect: "bg-negative-100",
+						},
+					},
+				});
+
+				return (
+					<div className={styles({ kind: props.value.kind })}>{props.children}</div>
+				);
+			},
+		}),
+		QuizChoiceQuestion: wrapper({
+			label: "Question",
+			description: "A question in a single/multiple choice quiz.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
 		}),
 		Tab: wrapper({
 			label: "Tab",
