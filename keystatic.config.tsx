@@ -1,6 +1,6 @@
 import { pick } from "@acdh-oeaw/lib";
 import { collection, config, fields } from "@keystatic/core";
-import { block, mark, repeating, wrapper } from "@keystatic/core/content-components";
+import { mark, repeating, wrapper } from "@keystatic/core/content-components";
 import {
 	CaptionsIcon,
 	DownloadIcon,
@@ -223,7 +223,7 @@ function createComponents(
 			children: ["Tab"],
 			schema: {},
 		}),
-		Video: block({
+		Video: wrapper({
 			label: "Video",
 			description: "A YouTube video.",
 			icon: <VideoIcon />,
@@ -240,11 +240,6 @@ function createComponents(
 				}),
 				startTime: fields.number({
 					label: "Start time",
-					// validation: { isRequired: false },
-				}),
-				// TODO: convert to children prop
-				caption: fields.text({
-					label: "Caption",
 					// validation: { isRequired: false },
 				}),
 			},
