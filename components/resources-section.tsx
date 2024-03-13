@@ -92,6 +92,7 @@ export async function ResourcesSection(props: ResourcesSectionProps): Promise<Re
 
 			{count > 0 ? (
 				<div className="grid gap-y-12">
+					<h2 className="sr-only">{t("search-results")}</h2>
 					<ResourcesList resources={resources} />
 					<div className="justify-self-center text-sm">{t("search-results-found", { count })}</div>
 				</div>

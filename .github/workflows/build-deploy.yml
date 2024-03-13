@@ -32,10 +32,10 @@ jobs:
           echo "ENVIRONMENT=$ENVIRONMENT" >> $GITHUB_OUTPUT
           echo "APP_NAME_SUFFIX=$APP_NAME_SUFFIX" >> $GITHUB_OUTPUT
     outputs:
-      environment: ${{ steps.environment.outputs.ENVIRONMENT }}
+      environment: "${{ steps.environment.outputs.ENVIRONMENT }}"
       app_name: "howto${{ steps.environment.outputs.APP_NAME_SUFFIX }}"
       registry: "ghcr.io"
-      image: ${{ github.repository }}
+      image: "${{ github.repository }}"
 
   vars:
     name: Generate public url
@@ -47,7 +47,7 @@ jobs:
       - name: Generate public URL
         id: public_url
         run: |
-          if [[ -z "${{ vars.PUBLIC_URL }}" ]]; then
+          if [ -z "${{ vars.PUBLIC_URL }}" ]; then
             PUBLIC_URL="https://${{ needs.env.outputs.app_name }}.${{ vars.KUBE_INGRESS_BASE_DOMAIN }}"
           else
             PUBLIC_URL="${{ vars.PUBLIC_URL }}"
@@ -55,7 +55,7 @@ jobs:
 
           echo "PUBLIC_URL=$PUBLIC_URL" >> $GITHUB_OUTPUT
     outputs:
-      public_url: ${{ steps.public_url.outputs.PUBLIC_URL }}
+      public_url: "${{ steps.public_url.outputs.PUBLIC_URL }}"
 
   build:
     name: Build and push docker image
@@ -122,10 +122,10 @@ jobs:
     uses: acdh-oeaw/gl-autodevops-minimal-port/.github/workflows/deploy-cluster-2.yml@main
     secrets: inherit
     with:
-      environment: ${{ needs.env.outputs.environment }}
+      environment: "${{ needs.env.outputs.environment }}"
       DOCKER_TAG: "${{ needs.env.outputs.registry }}/${{ needs.env.outputs.image }}"
-      APP_NAME: ${{ needs.env.outputs.app_name }}
+      APP_NAME: "${{ needs.env.outputs.app_name }}"
       APP_ROOT: "/"
-      SERVICE_ID: ${{ vars.SERVICE_ID }}
-      PUBLIC_URL: ${{ needs.vars.outputs.public_url }}
+      SERVICE_ID: "${{ vars.SERVICE_ID }}"
+      PUBLIC_URL: "${{ needs.vars.outputs.public_url }}"
       default_port: "3000"

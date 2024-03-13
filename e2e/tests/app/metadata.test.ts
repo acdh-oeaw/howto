@@ -111,8 +111,9 @@ test.describe("should add json+ld metadata", () => {
 	test("with en locale", async ({ page }) => {
 		await page.goto("/en");
 
-		const metadata = page.locator('script[type="application/ld+json"]');
-		await expect(metadata).toHaveText(
+		const metadata = await page.locator('script[type="application/ld+json"]').textContent();
+		// eslint-disable-next-line playwright/prefer-web-first-assertions
+		expect(metadata).toBe(
 			JSON.stringify({
 				"@context": "https://schema.org",
 				"@type": "WebSite",
@@ -125,8 +126,9 @@ test.describe("should add json+ld metadata", () => {
 	test("with de locale", async ({ page }) => {
 		await page.goto("/de");
 
-		const metadata = page.locator('script[type="application/ld+json"]');
-		await expect(metadata).toHaveText(
+		const metadata = await page.locator('script[type="application/ld+json"]').textContent();
+		// eslint-disable-next-line playwright/prefer-web-first-assertions
+		expect(metadata).toBe(
 			JSON.stringify({
 				"@context": "https://schema.org",
 				"@type": "WebSite",

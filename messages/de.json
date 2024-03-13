@@ -33,6 +33,7 @@
 			"all": "Alle"
 		},
 		"search": "Suchen",
+		"search-results": "Suchergebnisse",
 		"search-results-found": "{count, plural, =0 {Keine Ergebnisse} =1 {Ein Ergebnis} other {# Ergebnisse}} gefunden.",
 		"search-term": "Suchbegriff",
 		"tags": "Tags"
@@ -115,6 +116,7 @@
 			"all": "Alle"
 		},
 		"search": "Suchen",
+		"search-results": "Suchergebnisse",
 		"search-results-found": "{count, plural, =0 {Keine Ergebnisse} =1 {Ein Ergebnis} other {# Ergebnisse}} gefunden.",
 		"search-term": "Suchbegriff",
 		"tags": "Tags"

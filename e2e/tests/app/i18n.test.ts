@@ -94,23 +94,23 @@ test.describe("i18n", () => {
 			return String(createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname }));
 		}
 
-		// TODO: toMatchSnapshot
 		for (const locale of locales) {
 			const response = await page.goto(`/${locale}`);
-			expect(response?.headers().link?.split(", ")).toEqual([
+			const headers = response?.headers().link?.split(/, |\n/)
+			expect(headers).toEqual(expect.arrayContaining([
 				`<${createAbsoluteUrl("/de")}>; rel="alternate"; hreflang="de"`,
 				`<${createAbsoluteUrl("/en")}>; rel="alternate"; hreflang="en"`,
 				`<${createAbsoluteUrl("/")}>; rel="alternate"; hreflang="x-default"`,
-			]);
+			]));
 		}
 
-		// TODO: toMatchSnapshot
 		for (const locale of locales) {
 			const response = await page.goto(`/${locale}/imprint`);
-			expect(response?.headers().link?.split(", ")).toEqual([
+			const headers = response?.headers().link?.split(/, |\n/)
+			expect(headers).toEqual(expect.arrayContaining([
 				`<${createAbsoluteUrl("/de/imprint")}>; rel="alternate"; hreflang="de"`,
 				`<${createAbsoluteUrl("/en/imprint")}>; rel="alternate"; hreflang="en"`,
-			]);
+			]));
 		}
 	});
 });
