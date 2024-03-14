@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 interface QuizErrorMessageProps {
-	children: ReactNode
+	children: ReactNode;
 }
 
 export function QuizErrorMessage(props: QuizErrorMessageProps): ReactNode {

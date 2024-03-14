@@ -1,7 +1,7 @@
 "use client";
 
 import { assert } from "@acdh-oeaw/lib";
-import { createContext, type ReactNode,useContext, useState } from "react";
+import { createContext, type ReactNode, useContext, useState } from "react";
 
 import { getChildrenElements } from "@/lib/get-children-elements";
 

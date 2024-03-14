@@ -1,3 +1,4 @@
+import { groupByToMap } from "@acdh-oeaw/lib";
 import type { ReactNode } from "react";
 
 import { QuizControls } from "@/components/content/quiz-controls";
@@ -5,10 +6,9 @@ import { QuizErrorMessage } from "@/components/content/quiz-error-message";
 import type { QuizForm } from "@/components/content/quiz-form";
 import { QuizSuccessMessage } from "@/components/content/quiz-success-message";
 import { getChildrenElements } from "@/lib/get-children-elements";
-import { groupByToMap } from "@acdh-oeaw/lib";
 
 interface QuizChoiceProps extends QuizForm {
-	variant: "single" | "multiple";
+	variant: "multiple" | "single";
 }
 
 export function QuizChoice(props: QuizChoiceProps): ReactNode {
@@ -16,7 +16,9 @@ export function QuizChoice(props: QuizChoiceProps): ReactNode {
 
 	const type = variant === "multiple" ? "checkbox" : "radio";
 
-	const map = groupByToMap(getChildrenElements(children), (child) => child.type);
+	const map = groupByToMap(getChildrenElements(children), (child) => {
+		return child.type;
+	});
 	const questions = map.get(QuizChoiceQuestion);
 	const answers = map.get(QuizChoiceAnswer);
 	const successMessages = map.get(QuizSuccessMessage);
@@ -26,7 +28,7 @@ export function QuizChoice(props: QuizChoiceProps): ReactNode {
 		<section>
 			<header>{questions}</header>
 
-			<ul className="pl-0 list-none" role="list">
+			<ul className="list-none pl-0" role="list">
 				{answers?.map((answer, index) => {
 					return (
 						<li key={index}>
@@ -41,8 +43,8 @@ export function QuizChoice(props: QuizChoiceProps): ReactNode {
 
 			<QuizControls
 				buttonLabel={buttonLabel}
-				successMessages={successMessages}
 				errorMessages={errorMessages}
+				successMessages={successMessages}
 			/>
 		</section>
 	);

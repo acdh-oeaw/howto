@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
 export interface QuizForm {
-	buttonLabel?: ReactNode
+	buttonLabel?: ReactNode;
 	children: ReactNode;
 }

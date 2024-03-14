@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 interface QuizSuccessMessageProps {
-	children: ReactNode
+	children: ReactNode;
 }
 
 export function QuizSuccessMessage(props: QuizSuccessMessageProps): ReactNode {

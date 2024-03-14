@@ -13,11 +13,7 @@ import { Image } from "@/components/content/image";
 import { Quiz } from "@/components/content/quiz";
 import { QuizErrorMessage } from "@/components/content/quiz-error-message";
 import { QuizSuccessMessage } from "@/components/content/quiz-success-message";
-import {
-	QuizChoice,
-	QuizChoiceAnswer,
-	QuizChoiceQuestion,
-} from "@/components/content/quiz-choice";
+import { QuizChoice, QuizChoiceAnswer, QuizChoiceQuestion } from "@/components/content/quiz-choice";
 import { Tab, Tabs } from "@/components/content/tabs";
 import { Video } from "@/components/content/video";
 import { Link } from "@/components/link";
