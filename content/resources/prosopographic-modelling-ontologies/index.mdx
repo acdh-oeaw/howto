@@ -1,0 +1,340 @@
+---
+authors:
+  - ebel-carla
+editors:
+  - koenigshofer-elisabeth
+  - wiencek-florian
+license: cc-by-4-0
+locale: en
+publicationDate: 2021-06-09
+summary: This resource expands on the concept of ontologies in the Semantic Web as a "formal, explicit specification of a shared conceptualization" (Studer et al, 1998). You can explore examples of ontologies by engaging with exercises which illustrate how classes and properties represent these concepts in the NAMPI and VieCPro projects, illustrating how ontologies are used in prosopographic data modelling.
+tags:
+  - prosopographic-data
+  - semantic-web
+title: Prosopographic Modelling - Ontologies
+toc: true
+version: 1.0.0
+---
+## Prosopographic Modelling - Ontologies
+
+In philosophy, ontology studies the concepts and the basic structures of being and existing.
+
+Ontologies in computer science are similar to philosophical ontology in their approach, but the activity of ontology development is more pragmatic and purpose-oriented. It involves the concrete development of conceptual systems using rules of logic to translate concepts of how we understand the world into a form that can be shared. Ontologies can be expressed in a form that can be processed by computers. They should be understood and shared by as many people as possible.
+
+There are many ways to express a particular domain of knowledge as an ontology, as we will see in the following examples of two prosopographic ontologies. There is no perfect universal ontology. However, a goal might be to **bring knowledge into a form as generally valid as possible and not to lose sight of the objective of the task**, which the ontology should fulfill. Since knowledge is subject to constant change, ontologies are not independent of the moment of their creation.
+
+The development of ontologies is a challenging task that requires a deep understanding of the knowledge domain being addressed and a high degree of abstraction.
+
+### Main concepts
+
+In the context of Digital Humanities (DH), an Ontology is mostly defined as **_"a formal, explicit specification of a shared conceptualization."_** (Studer et al, 1998). An ontology is an explicit model of concepts, which are defined with clear semantics. In DH they help to bring together data from different sources in a useful way by applying these shared conceptualizations. It is important that users understand the underlying assumptions about the chosen domain. A domain is the specific field that an ontology covers. In our examples of application, this is prosopographic data that is limited by the available historical data. _"As defined above, an ontology is a formalized specification of a conceptualization. Such a specification can be expressed in many ways. It is commonly done in the form of a **set of classes and properties representing the concepts and their relationships**. The concepts are usually organized in hierarchies."_ (Eide, Ore 2018)
+
+![](/assets/content/resources/prosopographic-modelling-ontologies/classmodel_highres.png)
+
+#### Class Hierarchy
+
+Classes are usually organized hierarchically. At the top of the hierarchy is the most general class. The further down a class is in the hierarchy, the more specialized the definition. The relationship between a super- and a subclass is called an "is a" relationship. In Western science, e.g. in biological classification and the organisation of libraries, the hierarchical organisation of knowledge has a long tradition. The property **rdfs:subClassOf** is used to state that all the instances of one class (= subclass) are instances of another (= superclass).
+
+![](/assets/content/resources/prosopographic-modelling-ontologies/classhierarchy_highres.png)
+
+**Example:**
+
+```turtle
+artworkclass rdfs:subClassOf objectclass .
+```
+
+#### Class (Concept) vs. Instance (Individual)
+
+When we define an ontology as _"a formal, explicit specification of a shared conceptualization."_ (Studer et al, 1998), the most common way to express such a specification are classes (also known as concepts) and properties. In this case, classes are concepts and properties are relations between concepts.
+
+The **objects from the world that we want to represent** (= the domain) in an ontology are called instances or individuals. Instances are subsumed under classes. The concept that we have of the instance, has to be consistent with the definition of its class. The affiliation of an instance to a class is expressed with an rdf:type.
+
+When an RDF resource is described with an **rdf:type** property, the value of that property is considered to be a resource that represents a class, and the subject of that property is considered to be an instance of that category or class.
+
+![](/assets/content/resources/prosopographic-modelling-ontologies/classinstance_highres.png)
+
+**Example:**
+
+```text
+Fact: https://viecpro.acdh.oeaw.ac.at/entity/100847/ is the VieCPro URI for a person called "Wolf Franz Radolt".
+
+Expressed in RDF: https://viecpro.acdh.oeaw.ac.at/entity/100847/ rdf:type http://www.cidoc-crm.org/cidoc-crm/E21_Person.
+```
+
+We have stated that "Wolf Franz Radolt" is an instance of the CIDOC CRM class E21_Person.
+
+#### RDF vs. RDFS vs. OWL
+
+[RDF](https://www.w3.org/TR/rdf-primer/) was introduced in 1999 and is a W3C standard, it is one of the basic elements of the Semantic Web. RDF consists of a defined syntax and a minimal vocabulary.
+
+RDF gives us the opportunity to express information in the form of triples (subject, predicate, and object). Subject and object are mostly in the form of unique IRIs (Internationalized Resource Identifiers), which make the objects we want to provide information about identifiable on the web. Objects can also be literals, data values that have no existence of their own. (Jannidis 2017)
+
+[RDFS](https://www.w3.org/TR/rdf-schema/) is an extension to RDF and offers a generic vocabulary to express basic relations and classes (e.g. rdfs:label to provide a human-readable name for an element of a triple or rdfs:subClassOf to express class hierarchy).
+
+[OWL](https://www.w3.org/TR/owl2-primer/) (Web Ontology Language) is an other extension of RDF. It was introduced in 2004. OWL can be used to express data models and ontologies as a set of triples. It also serves to bring description logic to an ontology which is expressed in RDF.
+
+RDF, RDFS and OWL are built on top of one another and therefore use the same syntax and formal conventions. This is useful because the formal ontology or model and the instances of the given dataset can be stored together in the same triple store and they can be queried using the same tools.
+
+#### OWL
+
+OWL enables to bring description logic (DL) to RDF. This makes it possible to draw implicit knowledge through logical reasoning ([inference](https://en.wikipedia.org/wiki/Inference)) and find inconsistencies in the modelling. "Advanced triple-stores with so-called DL reasoners enable logical queries on RDF triples with an OWL metadata model." (Ore, Eire p.185) In prosopography we can express with OWL e.g. that a person can't be dead and alive at the same time.
+
+```turtle
+ex:livingPerson rdfs:subClassOf ex:Person .
+
+ex:deadPerson rdfs:subClassOf ex:Person .
+
+ex:livingPerson owl:disjointWith ex:deadPerson .
+```
+
+(["Each owl:disjointWith statement asserts that the class extensions of the two class descriptions involved have no individuals in common."](https://www.w3.org/TR/owl-ref/#disjointWith-def))
+
+There are three different versions of OWL with different levels of expressiveness:
+
+- [OWL Lite](https://www.w3.org/TR/2004/REC-owl-features-20040210/#s3) is useful for expressing classification hierarchies and simple constraints. It is not widely used.
+- [OWL DL](http://www.w3.org/TR/2004/REC-owl-features-20040210/#s2.1) (extension of OWL Lite) OWL DL owes its name to its correspondence with description logic. OWL DL offers maximum expressiveness, computational completeness, decidability and the possibility of practical reasoning algorithms.
+- [OWL Full](http://www.w3.org/TR/2004/REC-owl-features-20040210/#s2.1) (extension of OWL DL) OWL Full is compatible with RDFS and widely used. Reasoning software is not able to perform complete reasoning for OWL Full because it is not completely decidable.
+
+_OWL2_ provides sublanguages for OWL Lite, OWL DL and OWL Full to offer easier ways to use OWL for specific tasks.
+
+**Example:**
+
+We want to express that the classes Physical Thing from Europeana Data Model and E18 Physical Thing from CIDOC CRM ontology are expressions of the same concept. We can define that in OWL:
+
+```turtle
+prefix owl: <http://www.w3.org/2002/07/owl#>
+
+http://www.europeana.eu/schemas/edm/PhysicalThing owl:equivalentClass http://www.cidoc-crm.org/cidoc-crm/E18_Physical_Thing .
+```
+
+Equivalence between classes (on the ontological level) should not be confused with the concept of identity, as applied to instances of a given class. To express that one **entity** is represented by different IRIs (e.g. Maria Theresia of Austria in Wikidata and Gemeinsame Normdatei (GND)), we use the OWL sameAs property:
+
+```turtle
+prefix owl: <http://www.w3.org/2002/07/owl#>
+
+https://www.wikidata.org/wiki/Q131706 owl:sameAs http://d-nb.info/gnd/118577867 .
+```
+
+Therefore, we have stated the identity of the two **instances** of Maria Theresia of Austria. Both datasets reference the same historical Person.
+
+### Recommended reading
+
+- [Tim Berners-Lee, James Hendler and Ora Lassila, The Semantic Web, Scientific American, May 2001, p. 29-37](https://www-sop.inria.fr/acacia/cours/essi2006/Scientific%20American_%20Feature%20Article_%20The%20Semantic%20Web_%20May%202001.pdf) _just 5 pages and freely available_
+- [Holger Sistig, semantisches web // semantic web // web 3.0. Informationen zur Zukunft des Internets, website based on diploma thesis of Holger Sistig](https://semantisches-web.net/) (2008). _freely available_
+- Øyvind Eide and Christian-Emil Smith Ore, Ontologies and data modeling, in: The Shape of Data in the Digital Humanities. Modeling Texts and Text-based Resources, J. Flanders and F. Janidis (Ed.), London 2018, pp.179-196. _not freely available_
+- Fotis Jannidis, Grundlagen der Datenmodellierung, in: H. Kohle and M. Rehbein (Ed.): Digital Humanities. Eine Einführung. Stuttgart: Metzler 2017, 99-108. _not freely available_
+- Rudi Studer et al. Knowledge engineering: Principles and methods, in: Data & Knowledge Engineering 25(1–2), 1998, pp. 161–198.
+
+Video resources
+
+- [Tara Raafat: RDF and OWL : the powerful duo](https://youtu.be/zteyEk9LADs) (uploaded: 18.12.2017).
+- [Harald Sack: Online Lecture. Knowledge Engineerung with Semantic Web Technologies](https://youtu.be/eJ9H1SakPoA) (uploaded 2019), especially: _3.1 Ontology in Philosophy and Computer Science_ and _4.2 Web Ontology Language OWL_ .
+- [RDF-Primer](https://www.w3.org/TR/rdf-primer/)
+- [RDFS Documentation](https://www.w3.org/TR/rdf-schema/)
+- [OWL-Primer](https://www.w3.org/TR/owl2-primer/)
+
+### Exercise 1: Explore the ontologies via OWL files and their visualizations
+
+Download the ontologies of _NAMPI_ (Monastic Life) and _VieCPro_.
+
+- <Download href="/assets/content/resources/prosopographic-modelling-ontologies/nampi.owl">OWL file for NAMPI (Monastic Life)</Download>
+- <Download href="/assets/content/resources/prosopographic-modelling-ontologies/viecpro.owl">OWL file for VieCPro</Download>
+
+Check out the visualizations of the owl files in the WebVOWL application:
+
+- https://vowl.acdh.oeaw.ac.at/#iri=https://raw.githubusercontent.com/nam-pi/monastic-life-owl/master/monastic-life.owl
+
+Compare the person classes, their properties and connected classes in the visualizations of the _NAMPI_ and the _VieCPro_ ontologies and try to find the paragraph in the downloaded OWL-files, where the person classes are defined.
+
+**Solution:**
+
+NAMPI:
+
+```xml
+<owl:Class rdf:about="https://purl.org/nampi/owl/core#person">
+	<rdfs:subClassOf rdf:resource="https://purl.org/nampi/owl/core#agent" />
+	<rdfs:label xml:lang="en">Person</rdfs:label>
+</owl:Class>
+```
+
+VieCPro:
+
+```text
+  ?Personinstance rdf:type http://www.cidoc-crm.org/cidoc-crm/E21_Person
+```
+
+Take some notes on your observations and questions for discussion.
+
+### Exercise 2: Explore the ontologies via SPARQL
+
+**Task 1**
+
+a) What classes are defined?
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?class
+FROM <https://nampi.org/entities>
+WHERE {
+  ?item rdf:type ?class.
+}
+```
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (COUNT (DISTINCT ?class) as ?NumberOfClasses)
+FROM <https://nampi.org/entities>
+WHERE {
+  ?item rdf:type ?class.
+}
+```
+
+b) What properties are defined?
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT ?properties FROM <https://nampi.org/entities> WHERE {
+  ?item ?properties ?class.
+}
+```
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (COUNT (DISTINCT ?properties) As ?NumberOfProperties) FROM <https://nampi.org/entities> WHERE {
+  ?item ?properties ?class.
+}
+```
+
+c) Are there Class-hierarchies defined?
+
+How can we look for Class-Hierarchies in the ontologies? How are hierarchies defined in OWL?
+
+**Solution 1:**
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT (?item AS ?subclass) (?class as ?superclass)FROM <file://core.owl-09-06-2021-01-12-04> WHERE {
+  ?item rdfs:subClassOf ?class.
+}
+```
+
+By using a SELECT query, we get a tabular response. We formatted the query to show pairs of subclasses and their respective superclasses.
+
+**Solution 2:**
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://www.researchspace.org/resource/>
+CONSTRUCT {?item rdfs:subClassOf ?class}
+FROM <file://core.owl-09-06-2021-01-12-04>
+WHERE {
+  ?item rdfs:subClassOf ?class.
+}
+```
+
+A CONSTRUCT query on the other hand results in a graph as a response. The response shows a set of triples, but is otherwise identical in content with the results of the query above.
+
+Of course, we can do the same for VieCPro.
+
+VieCPro:
+
+**Solution 1:**
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT DISTINCT (?item AS ?subclass) (?class as ?superclass)FROM <file://viecpro.owl-10-06-2021-01-01-15> WHERE {
+  ?item rdfs:subClassOf ?class.
+}
+```
+
+**Solution 2:**
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX : <http://www.researchspace.org/resource/>
+CONSTRUCT {?item rdfs:subClassOf ?class}
+FROM <file://viecpro.owl-10-06-2021-01-01-15>
+WHERE {
+  ?item rdfs:subClassOf ?class.
+}
+```
+
+**Task 2:** Define two classes as equivalent.
+
+How can we define in OWL, that the CIDOC CRM E_21 Person class and the NAMPI Person class are referencing the same concepts? What do we state by defining these classes as equivalent?
+
+**Solution:**
+
+```text
+https://purl.org/nampi/owl/core#person owl:equivalentClass http://www.cidoc-crm.org/cidoc-crm/E21_Person.
+```
+
+By defining the equivalence of these two classes, we state that all members of one class are also members of the other class (and vice-versa). This could also be defined by declaring each class as a subclass of the other.
+
+```turtle
+A rdfs:subClassOf B .
+B rdfs:subClassOf A .
+```
+
+If A is a subclass of B we state that all members of A are also members of B, but that not all members of B are also members of A. By declaring the subclass relation in both directions, we state that all members of B are also members of A and hence, that the classes are equivalent.
+
+This is expressed more straightforward by using the owl:equivalentClass property.
+
+Recap question for discussion: What is the difference between owl:equivalentClass and owl:sameAs ?
+
+**Task 3:** Formulate a SPARQL-query to get all persons from both datasets at once.
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX nampi: <https://purl.org/nampi/owl/core#>
+
+SELECT ?item
+
+FROM <https://viecpro.acdh-dev.oeaw.ac.at/entities#>
+FROM <https://nampi.org/entities>
+WHERE
+{
+{
+  ?item rdf:type crm:E21_Person.
+}
+UNION
+{
+  ?item rdf:type nampi:person.
+}
+}
+```
+
+The UNION keyword merges the results of both graph patterns. Note that we use the identical variable `?item` in both patterns.
+
+Again, we can count the total number of persons:
+
+```sparql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX crm: <http://www.cidoc-crm.org/cidoc-crm/>
+PREFIX nampi: <https://purl.org/nampi/owl/core#>
+
+SELECT (COUNT (?item) AS ?NumberOfPersons)
+FROM <https://viecpro.acdh-dev.oeaw.ac.at/entities#>
+FROM <https://nampi.org/entities>
+WHERE
+{
+{
+  ?item rdf:type crm:E21_Person.
+}
+UNION
+{
+  ?item rdf:type nampi:person.
+}
+}
+```
+
+**Final Discussion**

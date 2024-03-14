@@ -1,0 +1,147 @@
+---
+authors:
+  - oberreither-bernhard
+editors:
+  - koenigshofer-elisabeth
+featuredImage: /assets/content/resources/semantickraus-lesson-2-meet-the-data/featuredImage.png
+license: cc-by-4-0
+locale: en
+publicationDate: 2022-11-15
+summary: This is part of a blog post series documenting the SemanticKraus research project at the ACDH-CH.
+tags:
+  - semantic-web
+  - data-modelling
+title: "Lesson 2: Meet the data. Examples of data perspectivity, with some thoughts on shopping for groceries."
+toc: false
+version: 1.0.0
+---
+[Previous Post: Lesson 1: Make a plan, then don't stick to it](/resources/semantickraus-lesson-1-make-a-plan)
+
+_– Two days in –_
+
+### Data sources
+
+I'm having a debrief with Peter to come back to an issue briefly discussed in our first meeting: the source data. At first glance, it might look somewhat homogeneous – it's all text indexes and indexes of persons –, but this impression fades as soon as one takes a closer look. Here's a short list:
+
+#### Data source 1: _[Die Fackel online](https://fackel.oeaw.ac.at)_.
+
+- A relational database with names and basic biographical data of about 16,900 persons, as well as links to 129,000 mentions of said persons in _Die Fackel_.
+- An XML file containing a text index of the approx. 14,000 texts published in _Die Fackel_, modelled in a custom standard.
+- A transcription of _Die Fackel_ consisting of more than 22,000 pages as XML files also modelled in a custom standard, containing the 129,000 mentions of persons.
+
+#### Data source 2: _[Dritte Walpurgisnacht](https://kraus1933.ace.oeaw.ac.at)_.
+
+- A TEI-XML file containing an index of both persons and texts, literary and journalistic, mentioned / quoted in _Dritte Walpurgisnacht_ (1933, published posthumously), with basic biographical, respectively standard bibliographical data.
+- Approx. 3,000 mentions of / quotes from said persons and texts annotated in a TEI-XML containing the full text of _Dritte Walpurgisnacht_.
+
+#### Data source 3: _[Karl Kraus Rechtsakten](https://kraus.wienbibliothek.at)_.
+
+- Two TEI-XML files containing bibliographical data of the texts mentioned or quoted in Kraus' _legal papers_.
+- A TEI-XML file containing an index of persons mentioned in _Kraus' legal papers_.
+- More than 4,000 TEI-XML files containing transcriptions of Kraus' files from over 200 legal cases with bibliographical metadata in their TEI headers, as well as mentions of persons and mentions of respective quotes from texts in the body of the files.
+
+Now, where some might see a nightmare of endless integration problems, others see a task cut out perfectly for a modelling based on an ontology with a scope as wide as CIDOC CRM (which will serve as the main vocabulary for our data model).
+
+### Data perspectivity
+
+But before we can seriously start to model our data, we first need to understand it – since scope
+and function of any given data model are not self-evident. Even less so is the meaning of any given
+data field in its respective data set. Every data set is the result of a modeling process, which, as
+Elena Pierazzo has pointed out, implies
+
+- it is the result of a selection process
+- that simplifies its object domain to some degree
+- and that is very much guided by a specific interest
+- and a certain perspective necessarily lacking self-evidence.<Footnote>Pierazzo, E. (2019), 'How subjective is your model?', in Jannidis, F., and Flanders, J., (eds.), _The Shape of Data in Digital Humanities. Modeling Texts and Text-based Resources._ Abingdon, Oxfordshire, and New York: Routledge, pp. 117-132, s. pp. 121–125.</Footnote>
+
+These traits are inherent to every data set. If you've never come across this issue, the problems it entails may not be immediately tangible. It helps to think of grocery lists. Not the ones you write for yourself, but those written by someone else, and you're the one supposed to pick up the items.
+These lists do not convey objective or complete information. So much detail is left out, so many terms are abbreviated, possibly encrypted. There might be relations between items you don't grasp.
+That list that looks so innocent by itself – the moment you have to act on it, the moment you have to put your understanding of the data to the test, it turns into an abyss of ambiguity. Think of the chill running down your spine when you're standing in the dairy aisle, think of the elevated pulse. That's what working with someone else's data can be like.
+
+In this regard, the _SemanticKraus project_ admittedly is in a highly privileged position: All of our three source projects are at close vicinity, their coordinators and maintainers are just next door, some of them literally. Also, one of them is me. If we don't understand the data and we don't find an explanation somewhere in the documentation (or no documentation at all), we can still just ask or go through our own notes.
+
+### Perspectivity in bio- and bibliographical data
+
+Let's take an example of our data's perspectivity: A simple issue that might come up would be that in the _Dritte Walpurgisnacht project_, all biographical data is selected with a clear focus on the year 1933 (see [here](https://kraus1933.ace.oeaw.ac.at/annotierte_lesefassung.html) for our editorial note on the matter). After all, _Dritte Walpurgisnacht_ is, among other things, an account of what's happened on a day-to-day basis in 1933, informed by countless newspaper articles quoted and woven into the text; and in this particular year, people's biographies – to put it in very general terms – took abrupt turns. This focus on the year 1933 makes sense from a reader's (and thus
+from the editor's) point of view, but is not self-evident from the data as represented in the XML file.
+
+Another perhaps even more particular matter is related to the bibliographical entries: See for example these three entries, which seemingly denote the same kind of concept – texts:
+
+```xml
+<bibl xml:id="DWbibl01944" sortKey="Ludwig_Emil">
+  <author>Emil Ludwig</author>
+  <title level="m">Geschenke des Lebens</title>
+  <title level="m" type="subtitle">Ein Rückblick</title>
+  <pubPlace>Berlin</pubPlace>
+  <date>1931</date>
+  <citedRange xml:id="DWbibl01945">S. 291–292</citedRange>
+</bibl>
+
+<bibl xml:id="DWbibl00505" sortKey="Schiller_Friedrich_von">
+  <author>Friedrich von Schiller</author>
+  <title level="m">Das Lied von der Glocke</title>
+  <date>1799</date>
+  <citedRange xml:id="DWbibl01705">Vers 379–382</citedRange>
+</bibl>
+
+<bibl xml:id="DWbibl03941" sortKey="N._N.">
+  <title level="a">Fahnenverbot – noch strengere Polizeistrafen</title>
+  <title level="a" type="subtitle">Maßnahmen gegen die
+    Arbeiterkonsumvereine – Beschlüsse des Ministerrates</title>
+  <title level="j">Arbeiter-Zeitung</title>
+  <title level="j" type="short">AZ</title>
+  <pubPlace>Wien</pubPlace>
+  <date>20. 5. 1933</date>
+  <biblScope>S. 1</biblScope>
+  <citedRange xml:id="DWbibl03940"/>
+</bibl>
+```
+
+These are two literary texts and one newspaper article, in a pretty ordinary modeling. Still, a lot can be said about why this modelling was implemented: Certain academic routines and standards played a role, technical and methodological aspects were taken into account as well, and, last but not least: some aspects of the data were neglected. For each item, the technical implementations had to be able to shape the data for different ways of data display. From an academic standards perspective, they comply with different citation styles: For example, the newspaper article's bibliographical data needed to be displayed in a short form ("AZ vom 20. 5. 1933") as well as a complete form that would pop up only after clicking on the short form ("N. N.: Fahnenverbot – noch
+strengere Polizeistrafen. Maßnahmen gegen die Arbeiterkonsumvereine – Beschlüsse des Ministerrates. In: _Arbeiter-Zeitung_ (Wien) vom 20. 5. 1933, S. 1.").
+
+<Figure src="/assets/content/resources/semantickraus-lesson-2-meet-the-data/walpurgisnacht_az_19332005_fahnenverbot_complete.png">
+Screenshot showing the above example "AZ vom 20.5.1933" in the online edition, with long and short citation displayed on the right.
+</Figure>
+
+Some distinctions did not matter in this respect: For example, for the purposes of the project it was not a problem that a `citedRange`-element, while usually giving a page number of a referred to passage, could mean different things when used as an empty tag: It could mean that the 'cited range' actually covered the whole referred to text, which in traditional citation styles is usually indicated by not referring to any of the text's subdivisions (e.g., pages). At the same time, the empty tag can indicate that it referred to a part of the text but, for some reason, no subdivision of the referred to text was available – the most trivial reason being that the text itself does not exceed one page (again, see the third example).
+
+These subtle differences come into play when we ask the question: What would this data look like when seen through the lens of our new data model? What kind of bibliographical entity (a monograph, an article, a text passage in an article) does a `bibl`-entry actually represent? How would we differentiate between them? And which entities would need to be modelled in each of the three cases?
+The newspaper article, e.g., is a text within a larger publication (the issue) within another larger publication (the newspaper as a whole), so there are (at least) three entities to take into account.
+
+There's also the question of how those entities that are to some degree implicit (there's no element explicitly representing the issue, for example) are to be extracted from the data. Also, the seemingly small distinction between a text with and without a specified edition will have a major role to play as we go forward in creating a data model. All that's implicit in our data will need to be considered, and also some of what's not in our data at all.
+
+### Table of contents vs. Text index
+
+Anyway, back to my meeting with Peter. While we briefly mention the other data, our main focus is on _articles.xml_, an XML file at the heart of our project, containing the complete table of contents of _Die Fackel_: a periodical that ran for 37 years, in 415 issues (922 numbers), on over 22,000 pages. It's a large file, to say the least, and it presents another kind of problem with regard to data perspectivity.
+
+```xml
+<entry displayCat="sub" nm="" parid="pr135615" fn="FK-26-668_n0096.xml"
+  type="title" pageCnt="0">
+  <author></author>
+  <title fn="FK-26-668_n0096.xml" titleSource="title" displayCat="sub"
+    divParID="pr135615">Sprachschule</title>
+  <page>96</page>
+  <publDate publDay_n="" publMonth_n="12" publYear_n="1924" publDay_a=""
+    publMonth_a="12" publYear_a="1924">DEZEMBER 1924</publDate>
+</entry>
+```
+
+The example shows the encoding of one entry, a text called _Sprachschule_ from the 1924 issue no. 668. The encoding is not TEI; instead, it is a custom standard that was in turn based on another custom standard. It had been developed in one of the predecessor institutions of the ACDH-CH, respectively the ACE a long time ago. Reconstructing the intended meaning and function of these elements, attributes, and values is as much an archaeological endeavor as it is a logical one, but it is manageable.
+
+However, in one respect _articles.xml_ is a quite different type of data source than your regular index, catalogue, or database – simply because it was never intended to store data; that's just a means to a very specific functional end: It provides the basis of the digital table of contents of _[ Die Fackel online](https://fackel.oeaw.ac.at)_ (where this enormous file is displayed in conveniently sized portions, as you can see when clicking on “contents”). What we want from it is a bibliography of texts published in this periodical. However, it was not designed to deliver this bibliography, but rather to guide a reader through the sometimes impenetrable textual thicket that is _Die Fackel_.
+
+### "Model-of" and "Model-for"
+
+For this distinction, the analytical terms **"model-of"** and **"model-for"** – coined by cultural anthropologist Clifford Geertz and introduced to digital humanities by Willard McCarty<Footnote>McCarty, W. (2008), 'Knowing ... : Modeling in Literary Studies.', in Siemens, R., and Schreibman, S., (eds.), _A Companion to Digital Literary Studies._ Oxford: Blackwell. URL: https://companions.digitalhumanities.org/DLS; see also Pierazzo (2019), pp. 124.</Footnote> – come in handy: The former kind of model aims at staying true to its domain (whatever "truth" means in the specific context), the latter at serving a certain end outside the domain. All models are situated somewhere on a spectrum between these two poles. Our _articles.xml_ has a relatively strong tendency towards the "model-for"-pole: In its essence, it provides a reader with entry points into a set of texts. We're aiming at transferring it into a model that is closer to the "model-of"-pole: The bibliography we strive for gives the metadata for each text, including its position and scope, showing some degree of completeness, with a certain disregard for the reader experience.
+
+The effect of this difference might not amount to a large number of changes, but it still requires sorting through this very long list – mostly by hand. However, there is an obvious advantage to working with the file: It's already there, and it fulfills our requirements to some 95 percent – it is digital, it contains titles, starting pages (even starting paragraphs in `@parid`), it contains nesting of texts within issues within years, but also of texts within texts (in `@displayCat`).
+
+For now, Peter generates a CSV from _articles.xml_ using Python. On the one hand, the script returns exactly the information from the source document that we need for further work – the info that will ultimately be modelled in RDF. On the other hand, it enriches the individual entries with important additional info (the "to" page numbers of the respective articles, web links to the edition, etc.).
+For reasons of convenience, the resulting CSV is then turned into a google sheet of considerable size – 35 columns, 15.000 lines. Now it awaits its further, manual correction, a task taken on by our most fearless project team members, Johanna Unterholzner and Astrid Hauer – whose work will be the subject of another blog entry.
+
+- - -
+
+[Next Post: Lesson 3 - Ontology Re-Use or: The Virtues of Copy And Paste](/resources/semantickraus-lesson-3-copy-and-paste)
+
+(The project is funded by CLARIAH-AT with the support of BMBWF.)

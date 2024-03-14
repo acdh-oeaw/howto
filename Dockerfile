@@ -1,51 +1,50 @@
 # syntax=docker/dockerfile:1
 
+# using alpine base image to avoid `sharp` memory leaks.
+# @see https://sharp.pixelplumbing.com/install#linux-memory-allocator
+
 # build
-# we don't use node:18-slim because we need `git` to get the last updated timestamps
-FROM node:18 AS build
+FROM node:20-alpine AS build
+
+RUN corepack enable
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
 
 USER node
 
-COPY --chown=node:node package.json yarn.lock ./
-COPY --chown=node:node next.config.js tsconfig.json app-env.d.ts env.d.ts next-env.d.ts tailwind.config.ts ./
-COPY --chown=node:node scripts ./scripts
-COPY --chown=node:node config ./config
-COPY --chown=node:node public ./public
-COPY --chown=node:node src ./src
-COPY --chown=node:node content ./content
-# currently the .git folder is used to retrieve last-updated timestamps
-COPY --chown=node:node .git ./.git
+COPY --chown=node:node .npmrc package.json pnpm-lock.yaml ./
+RUN sed -i "s/use-node-version/# use-node-version/" .npmrc
 
-RUN yarn install --frozen-lockfile --silent --no-audit --no-fund
+RUN pnpm fetch
 
+COPY --chown=node:node ./ ./
+RUN sed -i "s/use-node-version/# use-node-version/" .npmrc
+
+ARG NEXT_PUBLIC_APP_BASE_URL
+ARG NEXT_PUBLIC_BOTS
+ARG NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG
+ARG NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_NAME
+ARG NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER
+ARG NEXT_PUBLIC_KEYSTATIC_MODE
+ARG NEXT_PUBLIC_MATOMO_BASE_URL
+ARG NEXT_PUBLIC_MATOMO_ID
+ARG NEXT_PUBLIC_REDMINE_ID
+ARG NEXT_PUBLIC_TYPESENSE_API_KEY
+ARG NEXT_PUBLIC_TYPESENSE_HOST
+ARG NEXT_PUBLIC_TYPESENSE_PORT
+ARG NEXT_PUBLIC_TYPESENSE_PROTOCOL
+
+RUN pnpm install --frozen-lockfile --offline
+
+ENV BUILD_MODE=standalone
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-ARG NEXT_PUBLIC_BASE_URL
-ARG NEXT_PUBLIC_GIT_REPO
-ARG NEXT_PUBLIC_GIT_BRANCH
-ARG NEXT_PUBLIC_MATOMO_BASE_URL
-ARG NEXT_PUBLIC_MATOMO_ID
-ARG NEXT_PUBLIC_ALGOLIA_APP_ID
-ARG NEXT_PUBLIC_ALGOLIA_API_KEY
-ARG NEXT_PUBLIC_ALGOLIA_INDEX_NAME
-
-RUN yarn run build
-
-# docker buildkit currently cannot mount secrets directly to env vars
-# @see https://github.com/moby/buildkit/issues/2122
-USER root
-RUN --mount=type=secret,id=ALGOLIA_ADMIN_API_KEY \
-  export ALGOLIA_ADMIN_API_KEY="$(cat /run/secrets/ALGOLIA_ADMIN_API_KEY)" && \
-  yarn run create:search-index && \
-  unset ALGOLIA_ADMIN_API_KEY
-USER node
+RUN pnpm run build
 
 # serve
-FROM node:18-slim AS serve
+FROM node:20-alpine AS serve
 
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
