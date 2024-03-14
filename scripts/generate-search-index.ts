@@ -1,7 +1,8 @@
-import { log } from "@acdh-oeaw/lib";
+import { assert, log } from "@acdh-oeaw/lib";
 import { createReader } from "@keystatic/core/reader";
 import { Errors } from "typesense";
 
+import { env } from "@/config/env.config";
 import type { Locale } from "@/config/i18n.config";
 import { schema } from "@/config/search.config";
 import config from "@/keystatic.config";
@@ -17,7 +18,8 @@ interface HowtDocument {
 	publication_year: number;
 }
 
-const client = createSearchClient();
+assert(env.TYPESENSE_ADMIN_API_KEY, "Missing typesense admin key.");
+const client = createSearchClient(env.TYPESENSE_ADMIN_API_KEY);
 
 async function generate() {
 	const isCollectionExisting = await client.collections(schema.name).exists();

@@ -2,7 +2,7 @@ import { Client } from "typesense";
 
 import { env } from "@/config/env.config";
 
-export function createSearchClient() {
+export function createSearchClient(apiKey = env.NEXT_PUBLIC_TYPESENSE_API_KEY) {
 	const client = new Client({
 		nodes: [
 			{
@@ -11,7 +11,7 @@ export function createSearchClient() {
 				protocol: env.NEXT_PUBLIC_TYPESENSE_PROTOCOL,
 			},
 		],
-		apiKey: env.TYPESENSE_ADMIN_API_KEY,
+		apiKey,
 	});
 
 	return client;
