@@ -13,7 +13,7 @@ export const env = createEnv({
 		KEYSTATIC_GITHUB_CLIENT_ID: z.string().min(1).optional(),
 		KEYSTATIC_GITHUB_CLIENT_SECRET: z.string().min(1).optional(),
 		KEYSTATIC_SECRET: z.string().min(1).optional(),
-		TYPESENSE_ADMIN_API_KEY: z.string().min(1),
+		TYPESENSE_ADMIN_API_KEY: z.string().min(1).optional(),
 	},
 	client: {
 		NEXT_PUBLIC_APP_BASE_URL: z.string().url(),
