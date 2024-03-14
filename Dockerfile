@@ -41,7 +41,13 @@ ENV BUILD_MODE=standalone
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN pnpm run build
+RUN --mount=type=secret,id=KEYSTATIC_GITHUB_CLIENT_ID,uid=1000 \
+		--mount=type=secret,id=KEYSTATIC_GITHUB_CLIENT_SECRET,uid=1000 \
+		--mount=type=secret,id=KEYSTATIC_SECRET,uid=1000 \
+			KEYSTATIC_GITHUB_CLIENT_ID=$(cat /run/secrets/KEYSTATIC_GITHUB_CLIENT_ID) \
+			KEYSTATIC_GITHUB_CLIENT_SECRET=$(cat /run/secrets/KEYSTATIC_GITHUB_CLIENT_SECRET) \
+			KEYSTATIC_SECRET=$(cat /run/secrets/KEYSTATIC_SECRET) \
+		pnpm run build
 
 # serve
 FROM node:20-alpine AS serve
