@@ -30,7 +30,8 @@ export function QuizChoice(props: QuizChoiceProps): ReactNode {
 		"use server";
 
 		const data = getFormData(formData) as { checks: Array<"correct" | "incorrect"> } & (
-			{ variant: "multiple"; checked: Array<string> } | { variant: "single"; checked: string }
+			| { variant: "multiple"; checked: Array<string> }
+			| { variant: "single"; checked: string }
 		);
 
 		const checks = data.checks;
