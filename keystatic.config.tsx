@@ -1,5 +1,5 @@
 import { pick } from "@acdh-oeaw/lib";
-import { collection, config, fields } from "@keystatic/core";
+import { collection, config, fields, NotEditable } from "@keystatic/core";
 import { mark, repeating, wrapper } from "@keystatic/core/content-components";
 import {
 	CaptionsIcon,
@@ -20,7 +20,6 @@ import { Logo } from "@/components/logo";
 import { createAssetPaths, createPreviewUrl } from "@/config/content.config";
 import { env } from "@/config/env.config";
 import { defaultLocale, locales } from "@/config/i18n.config";
-import { variants } from "@/lib/styles";
 
 const localeLabel = new Intl.DisplayNames("en", { type: "language" });
 
@@ -67,7 +66,7 @@ function createComponents(
 			ContentView(props) {
 				const { children, value } = props;
 				return (
-					<Callout kind={value.kind} title={value.title}>
+					<Callout kind={value.kind} title={<NotEditable>{value.title}</NotEditable>}>
 						{children}
 					</Callout>
 				);
@@ -131,7 +130,12 @@ function createComponents(
 			description: "A single or multiple choice quiz.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
-			children: ["QuizChoiceQuestion", "QuizChoiceAnswer"],
+			children: [
+				"QuizChoiceQuestion",
+				"QuizChoiceAnswer",
+				"QuizSuccessMessage",
+				"QuizErrorMessage",
+			],
 			validation: { children: { min: 1 } },
 			schema: {
 				variant: fields.select({
@@ -142,23 +146,6 @@ function createComponents(
 					],
 					defaultValue: "multiple",
 				}),
-				messages: fields.object(
-					{
-						correct: fields.text({
-							label: "Correct",
-							description: "A message for correct answers.",
-							validation: { isRequired: true },
-						}),
-						incorrect: fields.text({
-							label: "Incorrect",
-							description: "A message for incorrect answers.",
-							validation: { isRequired: true },
-						}),
-					},
-					{
-						label: "Messages",
-					},
-				),
 				buttonLabel: fields.text({
 					label: "Button label",
 					description: "Custom label for 'Check answer' button.",
@@ -182,24 +169,33 @@ function createComponents(
 				}),
 			},
 			ContentView(props) {
-				const styles = variants({
-					base: "rounded-md px-2 py-1",
-					variants: {
-						kind: {
-							correct: "bg-positive-100",
-							incorrect: "bg-negative-100",
-						},
-					},
-				});
-
 				return (
-					<div className={styles({ kind: props.value.kind })}>{props.children}</div>
+					<div>
+						<NotEditable>
+							{props.value.kind === "correct" ? "Correct" : "Incorrect"} answer:
+						</NotEditable>
+						{props.children}
+					</div>
 				);
 			},
 		}),
 		QuizChoiceQuestion: wrapper({
 			label: "Question",
 			description: "A question in a single/multiple choice quiz.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+		}),
+		QuizErrorMessage: wrapper({
+			label: "Quiz error message",
+			description: "Help text for incorrect answers.",
+			icon: <MessageCircleQuestionIcon />,
+			forSpecificLocations: true,
+			schema: {},
+		}),
+		QuizSuccessMessage: wrapper({
+			label: "Quiz success message",
+			description: "Help text for correct answers.",
 			icon: <MessageCircleQuestionIcon />,
 			forSpecificLocations: true,
 			schema: {},

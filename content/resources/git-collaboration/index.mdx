@@ -173,9 +173,57 @@ Similar to GitLab, an access token can be created in GitHub too:
 ### Quiz
 
 <Quiz>
-  <QuizMultipleChoice question="What are GitHub, GitLab and Bitbucket?" answers={[{"answer":"Version control systems","kind":"incorrect"},{"answer":"Hosting providers","kind":"correct"},{"answer":"Code editors","kind":"incorrect"}]} messages={{"correct":"Correct!","incorrect":"Try again"}} />
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			What are GitHub, GitLab and Bitbucket?
+		</QuizChoiceQuestion>
 
-  <QuizMultipleChoice question="What is the difference between `git fetch` and `git pull`?" answers={[{"answer":"They are the same.","kind":"incorrect"},{"answer":"`git fetch` allows to integrate all the changes that have been made to the remote repository into your local repo at the same time.","kind":"incorrect"},{"answer":"`git pull` allows to integrate all the changes that have been made to the remote repository into your local repo at the same time.","kind":"correct"}]} messages={{"correct":"Correct!","incorrect":"Try again"}} />
+		<QuizChoiceAnswer kind="incorrect">
+			Version control systems
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			hosting providers
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			code editors
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Correct!
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Try again
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			What is the difference between `git fetch` and `git pull`?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			They are the same.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`Git fetch` allows to integrate all the changes that have been made to the remote repository into your local repo at the same time.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			`Git pull` allows to integrate all the changes that have been made to the remote repository into your local repo at the same time.
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Correct!
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Try again
+		</QuizErrorMessage>
+	</QuizChoice>
 </Quiz>
 
 ### Training task

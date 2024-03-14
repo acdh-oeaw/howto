@@ -27,7 +27,7 @@ type CalloutStyles = VariantProps<typeof calloutStyles>;
 interface CalloutProps extends CalloutStyles {
 	children: ReactNode;
 	className?: string;
-	title?: string;
+	title?: ReactNode;
 }
 
 export function Callout(props: CalloutProps): ReactNode {

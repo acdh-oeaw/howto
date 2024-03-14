@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, Source_Sans_3 } from "next/font/google";
 
 export const body = Inter({
 	axes: ["slnt"],
@@ -7,8 +7,7 @@ export const body = Inter({
 	variable: "--font-body",
 });
 
-export const heading = Inter({
-	axes: ["slnt"],
+export const heading = Source_Sans_3({
 	display: "swap",
 	subsets: ["latin", "latin-ext"],
 	variable: "--font-heading",

@@ -150,11 +150,87 @@ Die oben angeführte Vertikale sowie die Beispiele in diesem Tutorial verwenden 
 ### Quiz
 
 <Quiz>
-  <QuizMultipleChoice question="Welche der Aussagen treffen auf den Begriff &#x22;Token'&#x22;zu?" answers={[{"answer":"Einem Token können zusätzliche Informationen in Form von Attributen zugeordnet werden.","kind":"correct"},{"answer":"Ein Token ist eine linguistisch sinnvolle Einheit.","kind":"correct"},{"answer":"Abkürzungen enthalten als Token auch Satzzeichen und dürfen nicht von diesen getrennt werden.","kind":"correct"},{"answer":"Satzzeichen bilden eigene Token.","kind":"correct"},{"answer":"Ein Token ist ein orthographisches Wort.","kind":"incorrect"}]} messages={{"correct":"Richtig! Meistens sind orthographische Worte auch Token, aber auch Satzzeichen und Abkürzungen werden zu Token.","incorrect":"Falsch!"}} />
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Welche der Aussagen treffen auf den Begriff "Token" zu?
+		</QuizChoiceQuestion>
 
-  <QuizMultipleChoice question="Welche Informationen können aus Token-Attributen nicht erlesen werden?" answers={[{"answer":"Angaben zum Autor/zur Autorin des Textes","kind":"correct"},{"answer":"Angaben zur Morphologie eines Tokens","kind":"incorrect"},{"answer":"Angaben zu synonymer Verwendung des Tokens","kind":"correct"},{"answer":"Angaben zum Lemma des Tokens","kind":"incorrect"}]} messages={{"correct":"Richtig!","incorrect":"Token-Attribute beschreiben einzelne Token näher, nicht den gesamten Text, in dem die Token vorkommen."}} />
+		<QuizChoiceAnswer kind="correct">
+			Einem Token können zusätzliche Informationen in Form von Attributen zugeordnet werden.
+		</QuizChoiceAnswer>
 
-  <QuizMultipleChoice question="Wählen Sie bitte die richtige Antwort aus." answers={[{"answer":"Das amc beinhaltet Zeitungsartikel aus österreichischen Printmedien.","kind":"incorrect"},{"answer":"Das amc ist eine Kooperation des ACDH-CH und der APA, die Texte für sprachwissenschaftliche Fragestellungen zur Verfügung stellt.","kind":"incorrect"},{"answer":"Das amc ist ein Textcorpus, das aufgrund der linguistischen Annotation mithilfe der NoSketch-Engine und der Corpus Query Language durchsucht werden kann.","kind":"incorrect"},{"answer":"Alle genannten Antworten sind richtig.","kind":"correct"}]} messages={{"correct":"Richtig!","incorrect":"Falsch!"}} />
+		<QuizChoiceAnswer kind="correct">
+			Ein Token ist eine linguistisch sinnvolle Einheit.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Abkürzungen enthalten als Token auch Satzzeichen und dürfen nicht von diesen getrennt werden.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Satzzeichen bilden eigene Token.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Ein Token ist ein orthographisches Wort.
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Richtig! Meistens sind orthographische Worte auch Token, aber auch Satzzeichen und Abkürzungen werden zu Token.
+		</QuizSuccessMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Welche Informationen können aus Token-Attributen nicht erlesen werden?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="correct">
+			Angaben zum Autor/ zur Autorin des Textes
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Angaben zur Morphologie eines Tokens
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Angaben zu synonymer Verwendung des Tokens
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Angaben zum Lemma des Tokens
+		</QuizChoiceAnswer>
+
+		<QuizErrorMessage>
+			Token-Attribute beschreiben einzelne Token näher, nicht den gesamten Text, in dem die Token vorkommen.
+		</QuizErrorMessage>
+
+		<QuizSuccessMessage>
+			Richtig!
+		</QuizSuccessMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Wählen Sie bitte die richtige Antwort aus.
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Das amc beinhaltet Zeitungsartikel aus österreichischen Printmedien.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Das amc ist eine Kooperation des ACDH-CH und der APA, die Texte für sprachwissenschaftliche Fragestellungen zur Verfügung stellt.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Das amc ist ein Textcorpus, das aufgrund der linguistischen Annotation mithilfe der NoSketch-Engine und der Corpus Query Language durchsucht werden kann.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Alle genannten Antworten sind richtig.
+		</QuizChoiceAnswer>
+	</QuizChoice>
 </Quiz>
 
 ## Schnelleinstieg: Suche mit "Simple search"
@@ -251,11 +327,143 @@ Beachten Sie den Unterschied zur Wirkungsweise des `*` in der Simple search: dor
 ### Quiz
 
 <Quiz>
-  <QuizMultipleChoice question="Welche der Aussagen treffen auf den Begriff &#x22;Token'&#x22;zu?" answers={[{"answer":"Einem Token können zusätzliche Informationen in Form von Attributen zugeordnet werden.","kind":"correct"},{"answer":"Ein Token ist eine linguistisch sinnvolle Einheit.","kind":"correct"},{"answer":"Abkürzungen enthalten als Token auch Satzzeichen und dürfen nicht von diesen getrennt werden.","kind":"correct"},{"answer":"Satzzeichen bilden eigene Token.","kind":"correct"},{"answer":"Ein Token ist ein orthographisches Wort.","kind":"incorrect"}]} messages={{"correct":"Richtig! Meistens sind orthographische Worte auch Token, aber auch Satzzeichen und Abkürzungen werden zu Token.","incorrect":"Falsch!"}} />
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Mit welcher CQL-Abfrage könnten Sie im amc die Token "Wanze", "ganze", "Lanze", "tanze" finden?
+		</QuizChoiceQuestion>
 
-  <QuizMultipleChoice question="Welche Informationen können aus Token-Attributen nicht erlesen werden?" answers={[{"answer":"Angaben zum Autor/ zur Autorin des Textes","kind":"correct"},{"answer":"Angaben zur Morphologie eines Tokens","kind":"incorrect"},{"answer":"Angaben zu synonymer Verwendung des Tokens","kind":"correct"},{"answer":"Angaben zum Lemma des Tokens","kind":"incorrect"}]} messages={{"correct":"Richtig!","incorrect":"Token-Attribute beschreiben einzelne Token näher, nicht den gesamten Text, in dem die Token vorkommen."}} />
+		<QuizChoiceAnswer kind="incorrect">
+			`[lemma="*anze"]`
+		</QuizChoiceAnswer>
 
-  <QuizMultipleChoice question="Wählen Sie bitte die richtige Antwort aus." answers={[{"answer":"Das amc beinhaltet Zeitungsartikel aus österreichischen Printmedien.","kind":"incorrect"},{"answer":"Das amc ist eine Kooperation des ACDH-CH und der APA, die Texte für sprachwissenschaftliche Fragestellungen zur Verfügung stellt.","kind":"incorrect"},{"answer":"Das amc ist ein Textcorpus, das aufgrund der linguistischen Annotation mithilfe der NoSketch-Engine und der Corpus Query Language durchsucht werden kann.","kind":"incorrect"},{"answer":"Alle genannten Antworten sind richtig.","kind":"correct"}]} messages={{"correct":"Richtig!","incorrect":"Falsch!"}} />
+		<QuizChoiceAnswer kind="correct">
+			`[word=".anze"]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`[word="*anze."]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			`[word=".?anze"]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`[lemma=".*anze"]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`[lemma=".anze"]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`[word="*anze"]`
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Sehr gut!
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Achtung! Es sollen auch flektierte Formen gefunden werden. Nur das erste Zeichen des Ausdrucks ändert sich.
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Warum können mit der Suche `[word=".anze"]`die Begriffe "Schanze", "Romanze" oder "Pflanze" nicht gefunden werden?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="correct">
+			"." ersetzt nur 1 Zeichen.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`[word=".anze"]` sucht nur nach flektierten Verben
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Mit `[word=".anze"]` können nur klein geschriebene Worte in den Texten gefunden werden.
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Richtig!
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Wenn Sie z.B. die Begriffe "Schanze" und "Pflanze" suchen, müssen Sie den Ausdruck "." für jedes zu findende Zeichen eingeben.
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Wie kann die CQL-Abfrage nach einem Token aussehen, um Ausdrücke wie "sie sind wie Katz und Maus", "die Katze ist aus dem Sack", oder auch Texte zu "eine Katze wartet im Tierheim", oder auch zum "Nobelpreisträger Bernhard Katz" zu finden?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="correct">
+			`[lemma="Katze*"]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`[word="Katze."]`
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Richtig!
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Achtung, Sie möchten wissen, in welchen Ausdrücken das Token "Katze", "Katz" oder sogar "Katzee" vorkommt, aber nicht "Katzel", "Katzen", o.ä.
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Warum ist es möglich mit `[word="Hunde.+"]` die Ausdrücke "Hundertschaft" und "Hundezwinger" zu finden?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="correct">
+			"+" findet immer das vorangehende Zeichen, zumindest einmal.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			".+" findet alle Ausdrücke, in denen sich ein beliebiges Zeichen beliebig oft, aber mindestens einmal wiederholt.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			"+" findet Wiederholungen, die zumindest so lang sind wie der vorangehene Ausdruck.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			"." findet ein beliebiges Zeichen
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Richtig!
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Stellen Sie sicher,dass sie alle richtigen Antworten ausgewählt haben.
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Wie kann die CQL-Abfrage lauten, um "Pflanze", "Sprungschanze", "Wanze", "ganze", "Romanze" und "Landpomeranze" zu finden?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="correct">
+			`[word=".+anze"]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`[word=".?anze"]`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			`[word=".*anze"]`
+		</QuizChoiceAnswer>
+	</QuizChoice>
 </Quiz>
 
 ### Wiederholungen
@@ -332,13 +540,89 @@ _Negation_ mit `[^ ...]` definieren:
 ### Quiz
 
 <Quiz>
-  <QuizSingleChoice question="Wie nennt man den Operator, mit dem eine Minimal und/ oder Maximalanzahl an Wiederholungen eines Ausdrucks festgelegt werden kann? Welche Zeichen werden genutzt?" answers={[{"answer":"strange Operator, { }","kind":"incorrect"},{"answer":"length Operator, [ ]","kind":"incorrect"},{"answer":"ranges Operator, { }","kind":"correct"},{"answer":"distance Operator, [ ]","kind":"incorrect"}]} messages={{"correct":"Genau, der ranges Operator ist gesucht. In den Klammern stehen die Minimal-, und Maximalwerte.","incorrect":"Überlegen Sie noch einmal!"}} />
+	<QuizChoice variant="single">
+		<QuizChoiceQuestion>
+			Wie nennt man den Operator, mit dem eine Minimal und/ oder Maximalanzahl an Wiederholungen eines Ausdrucks festgelegt werden kann? Welche Zeichen werden genutzt?
+		</QuizChoiceQuestion>
 
-	<QuizMultipleChoice question="Veränderung Sie die Suchanfrage unten so, dass die Begriffe wie &#x22;klimaneutral&#x22;, &#x22;klimatisiert&#x22;, &#x22;klimageschichtlich&#x22; und &#x22;klimaschonend&#x22; gefunden werden können, die Begriffe &#x22;klimatisch&#x22; und &#x22;Klima&#x22; aber nicht gefunden werden." answers={[{"answer":"TODO: XMLEDITOR `<Quiz.XmlCodeEditor code={\"[word=\\\"klima\\\"]\"} solution={\"[word=\\\"klima.{7,}\\\"]\"} validate=\"input\">`","kind":"incorrect"}]} messages={{"correct":"Genau! Ein Minimalwert von {7} muss gegeben sein, ein Maximalwert ist nicht notwendig.","incorrect":"Überlegen Sie noch einmal. Welche Zeichen benutzt der Operator? Wie viele beliebige Zeichen müssen zumindest auf \"klima\" folgen?"}} />
+		<QuizChoiceChoiceAnswer kind="incorrect">
+			strange Operator, `{ }`
+		</QuizChoiceChoiceAnswer>
 
-  <QuizSingleChoice question="Die folgende Suche `[word=&#x22;klima.{2,}&#x22; & posTT!=&#x22;NN&#x22;]` liefert als Ergebnisse &#x22;klimatechnische&#x22;, &#x22;klimatisierte&#x22;, &#x22;klimabegünstigt&#x22;, &#x22;klimabedingt&#x22;, und &#x22;klimatisch&#x22;. &#x22;Klimaschutz&#x22;, &#x22;Klimagerät&#x22;, &#x22;Klimawandelleugner&#x22; werden aber nicht gefunden. Warum?" answers={[{"answer":"Die Worte \"Klimaschutz\", \"Klimagerät\", \"Klimawandelleugner\" überschreiten die Maximalanzahl an Wiederholungen nach dem Ausdruck \"klima.\"","kind":"incorrect"},{"answer":"Aufgrund des logischen UND müssen zwei Kriterien erfüllt sein:  der Ausdruck \"klima.\" muss vorkommen, UND es darf durch TreeTagger nicht als Nomen markiert worden sein.","kind":"correct"},{"answer":"Aufgrund des logischen ODER können nur Treffer gefunden werden, die entweder das Wort \"klima\" beinhalten ODER aber Nomen sind. Bei zwei ausschließenden Kriterien wird immer nur das erste Kriterium unbedingt erfüllt.","kind":"incorrect"}]} messages={{"correct":"Ganz genau! Beide Kriterien müssen vom Suchergebnis erfüllt werden.","incorrect":"Überlegen Sie nochmal!"}} />
+		<QuizChoiceChoiceAnswer kind="incorrect">
+			length Operator, `[ ]`
+		</QuizChoiceChoiceAnswer>
 
-  <QuizMultipleChoice question="Mit [] wird eine Auswahl an Zeichen definiert, sodass ein Suchergebnis oft der Verwendung von | gleich ist (zB `[word=&#x22;h(o|a)se&#x22;]` und `[word=&#x22;h[oa]se&#x22;]` liefern dasselbe Ergebnis). Warum muss eine gemeinsame Suche nach &#x22;Schlund&#x22; oder &#x22;Wund&#x22; dennoch `[word=&#x22;(schl|w)und&#x22;]` lauten?" answers={[{"answer":"Ohne das logische ODER würde nach der gesamten Zeichenfolge gesucht werden.","kind":"correct"},{"answer":"Im Anlaut eines Wortes muss immer mit logischem ODER gesucht werden.","kind":"incorrect"}]} messages={{"correct":"Richtig!","incorrect":"Falsch!"}} />
+		<QuizChoiceChoiceAnswer kind="correct">
+			ranges Operator, `{ }`
+		</QuizChoiceChoiceAnswer>
+
+		<QuizChoiceChoiceAnswer kind="incorrect">
+			distance Operator, `[ ]`
+		</QuizChoiceChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Genau, der ranges Operator ist gesucht. In den Klammern stehen die Minimal-, und Maximalwerte.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Überlegen Sie noch einmal!
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	{/* <QuizXmlCodeEditor code={"[word=\"klima\"]"} solution={"[word=\"klima.{7,}\"]"} validate="input">
+		<QuizXmlCodeEditorQuestion>
+			Veränderung Sie die Suchanfrage unten so, dass die Begriffe wie "klimaneutral", "klimatisiert", "klimageschichtlich" und "klimaschonend" gefunden werden können, die Begriffe "klimatisch" und "Klima" aber nicht gefunden werden.
+		</QuizXmlCodeEditorQuestion>
+
+		<QuizSuccessMessage>
+			Genau! Ein Minimalwert von {7} muss gegeben sein, ein Maximalwert ist nicht notwendig.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Überlegen Sie noch einmal. Welche Zeichen benutzt der Operator? Wie viele beliebige Zeichen müssen zumindest auf "klima" folgen?
+		</QuizErrorMessage>
+	</QuizXmlCodeEditor> */}
+
+	<QuizChoice variant="single">
+		<QuizChoiceQuestion>
+			Die folgende Suche `[word="klima.{2,}" & posTT!="NN"]` liefert als Ergebnisse "klimatechnische", "klimatisierte", "klimabegünstigt", "klimabedingt", und "klimatisch". "Klimaschutz", "Klimagerät", "Klimawandelleugner" werden aber nicht gefunden. Warum?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceChoiceAnswer kind="incorrect">
+			Die Worte "Klimaschutz", "Klimagerät", "Klimawandelleugner" überschreiten die Maximalanzahl an Wiederholungen nach dem Ausdruck "klima."
+		</QuizChoiceChoiceAnswer>
+
+		<QuizChoiceChoiceAnswer kind="correct">
+			Aufgrund des logischen UND müssen zwei Kriterien erfüllt sein:  der Ausdruck "klima." muss vorkommen, UND es darf durch TreeTagger nicht als Nomen markiert worden sein.
+		</QuizChoiceChoiceAnswer>
+
+		<QuizChoiceChoiceAnswer kind="incorrect">
+			Aufgrund des logischen ODER können nur Treffer gefunden werden, die entweder das Wort "klima" beinhalten ODER aber Nomen sind. Bei zwei ausschließenden Kriterien wird immer nur das erste Kriterium unbedingt erfüllt.
+		</QuizChoiceChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Ganz genau! Beide Kriterien müssen vom Suchergebnis erfüllt werden.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Überlegen Sie nochmal!
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Mit `[]` wird eine Auswahl an Zeichen definiert, sodass ein Suchergebnis oft der Verwendung von | gleich ist (zB `[word="h(o|a)se"]` und `[word="h[oa]se"]` liefern dasselbe Ergebnis). Warum muss eine gemeinsame Suche nach "Schlund" oder "Wund" dennoch `[word="(schl|w)und"]` lauten?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceChoiceAnswer kind="correct">
+			Ohne das logische ODER würde nach der gesamten Zeichenfolge gesucht werden.
+		</QuizChoiceChoiceAnswer>
+
+		<QuizChoiceChoiceAnswer kind="incorrect">
+			Im Anlaut eines Wortes muss immer mit logischem ODER gesucht werden.
+		</QuizChoiceChoiceAnswer>
+	</QuizChoice>
 </Quiz>
 
 ## Regex auch auf Token-Ebene
@@ -368,9 +652,61 @@ AMC 4.1. Suche in der Konkordanz, schützen und Klima im Kontext. In grün und g
 </Figure>
 
 <Quiz>
-  <QuizMultipleChoice question="Sehen Sie sich das Sucheregbnis im Bild oben an. Wie könnte die Suchanfrage gelautet haben?" answers={[{"answer":"(meet [lemma=\"schützen\"] [lemma=\"Klima|Kanzler\"] -2 2)","kind":"incorrect"},{"answer":"(meet [lemma=\"schützen\"] [lemma=\"Klima\"] -5 5)","kind":"correct"},{"answer":"(meet [lemma=\"schützen\"] [lemma=\"Klima\"])","kind":"incorrect"},{"answer":"([lemma=\"schützen\"] [lemma=\"Klima|Kanzler\"] -2 2)","kind":"incorrect"}]} messages={{"correct":"Richtig!","incorrect":"Überprüfen Sie, ob der Suchausdruck vollständig ist!"}} />
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Sehen Sie sich das Sucheregbnis im Bild oben an. Wie könnte die Suchanfrage gelautet haben?
+		</QuizChoiceQuestion>
 
-  <QuizMultipleChoice question="Welche der Aussagen ist falsch?" answers={[{"answer":"Mit meet kann im linken und rechten Kontext eines Ausdrucks gesucht werden.","kind":"incorrect"},{"answer":"Die Nachbarschaft, in der gesucht wird, kann für den linken und rechten Kontext separat festgelegt werden.","kind":"incorrect"},{"answer":"Durch das Nutzen von RegEx können auch Suchen auf der Bedeutungsebene im AMC durchgeführt werden.","kind":"correct"}]} messages={{"correct":"Richtig, bei RegEx sind keine semantischen Tags hinterlegt.","incorrect":"Doch, das ist korrekt."}} />
+		<QuizChoiceAnswer>
+			`(meet [lemma="schützen"] [lemma="Klima|Kanzler"] -2 2)`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer isCorrect>
+			`(meet [lemma="schützen"] [lemma="Klima"] -5 5)`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer>
+			`(meet [lemma="schützen"] [lemma="Klima"])`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer>
+			`([lemma="schützen"] [lemma="Klima|Kanzler"] -2 2)`
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Sehr gut!
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Überprüfen Sie , ob der Suchausdruck vollständig ist!
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			Welche der Aussagen ist falsch?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer>
+			Mit meet kann im linken und rechten Kontext eines Ausdrucks gesucht werden.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer>
+			Die Nachbarschaft, in der gesucht wird, kann für den linken und rechten Kontext separat festgelegt werden.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer isCorrect>
+			Durch das Nutzen von RegEx können auch Suchen auf der Bedeutungsebene im AMC durchgeführt werden.
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Richtig, bei RegEx sind keine semantischen Tags hinterlegt.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Doch, das ist korrekt.
+		</QuizErrorMessage>
+	</QuizChoice>
 </Quiz>
 
 ## Suche auf Strukturebene in CQL
@@ -582,4 +918,4 @@ Insbesondere relevant für das amc sind: ["A Brief Introduction to the TIGER Tre
 Die minimalen Adaptionen des STTS Tagsets finden sich im Appendix Appendix A2 A.2 Deviation from STTS in the TIGER Treebank
 </Callout>
 
-"TIGER Morphologie-Annotationsschema" : Beschreibung der kombinierten PoS plus Morphoplogie-tags in `pos`: http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation/tiger_scheme-morph.pdf
+"TIGER Morphologie-Annotationsschema": Beschreibung der kombinierten PoS plus Morphoplogie-tags in `pos`: http://www.ims.uni-stuttgart.de/forschung/ressourcen/korpora/TIGERCorpus/annotation/tiger_scheme-morph.pdf

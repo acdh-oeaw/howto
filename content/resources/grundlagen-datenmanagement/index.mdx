@@ -47,11 +47,103 @@ Je nach Forschungsgebiet wird in den Geisteswissenschaften nicht nur mit bestehe
 Denken Sie an Ihre eigene Forschungsdisziplin und/oder Ihr Forschungsprojekt. Welche Antworten treffen auf Sie zu? Die Fragen dienen lediglich der Orientierung und es kann auch mehr als eine Antwort zutreffend sein.
 
 <Quiz>
-  <QuizMultipleChoice question="Mit welchen Arten von Daten arbeiten Sie?" answers={[{"answer":"Texte (analog, digital)","kind":"correct"},{"answer":"Audiomaterial und/oder Videoaufzeichnungen","kind":"correct"},{"answer":"Bilder und/oder Objekte","kind":"correct"},{"answer":"Interviews","kind":"correct"},{"answer":"Tabellen","kind":"correct"},{"answer":"Geoinformationsdaten","kind":"correct"},{"answer":"3D-Daten","kind":"correct"},{"answer":"Simulationen","kind":"correct"},{"answer":"Datenbanken","kind":"correct"}]} messages={{"correct":"Auch wenn Sie nur eine oder zwei Arten von Forschungsdaten angekreuzt haben, wird ein stringentes Datenmanagement hilfreich für Ihre Forschungsarbeit und deren weitere (öffentliche) Nutzung sein. Wenn Sie mit vielen unterschiedlichen Datentypen arbeiten, sollten Sie sich unbedingt einen durchdachten Plan für ein Datenmanagement zurechtlegen.","incorrect":"Auch wenn Sie nur eine oder zwei Arten von Forschungsdaten angekreuzt haben, wird ein stringentes Datenmanagement hilfreich für Ihre Forschungsarbeit und deren weitere (öffentliche) Nutzung sein. Wenn Sie mit vielen unterschiedlichen Datentypen arbeiten, sollten Sie sich unbedingt einen durchdachten Plan für ein Datenmanagement zurechtlegen."}} />
+	<QuizChoice buttonLabel="Absenden" variant="multiple">
+		<QuizChoiceQuestion>
+			Mit welchen Arten von Daten arbeiten Sie?
+		</QuizChoiceQuestion>
 
-  <QuizMultipleChoice question="Arbeiten Sie alleine oder in einem (größeren) Forschungsteam?" answers={[{"answer":"Ich arbeite alleine.","kind":"correct"},{"answer":"Ich arbeite in einem Forschungsteam an meiner Arbeitsstelle.","kind":"correct"},{"answer":"Ich arbeite mit externen Projektmitarbeitern und Projektmitarbeiterinnen von anderen Institutionen.","kind":"correct"}]} messages={{"correct":"Aktives Datenmanagement ist besonders bei Forschungsprojekten und in der Teamarbeit sehr wichtig. Aber auch wenn Sie alleine arbeiten, vereinfacht ein gutes Datenmanagement die Arbeit.","incorrect":"Aktives Datenmanagement ist besonders bei Forschungsprojekten und in der Teamarbeit sehr wichtig. Aber auch wenn Sie alleine arbeiten, vereinfacht ein gutes Datenmanagement die Arbeit."}} />
+		<QuizChoiceAnswer kind="correct">
+			Texte (analog, digital)
+		</QuizChoiceAnswer>
 
-  <QuizSingleChoice question="Haben Sie sich schon Gedanken über einen Datenmanagementplan für Ihre Forschungsarbeit/Forschungsprojekt gemacht?" answers={[{"answer":"Ja","kind":"correct"},{"answer":"Nein","kind":"incorrect"}]} messages={{"correct":"Sehr gut! Wir hoffen, dass wir Ihnen trotzdem noch ein paar hilfreiche Informationen und Tipps geben können, um den Prozess zu verbessern.","incorrect":"Kein Problem! Sie werden hier einige einfache Grundlagen lernen, um Ihr Datenmanagement effizient zu gestalten."}} />
+		<QuizChoiceAnswer kind="correct">
+			Audiomaterial und/oder Videoaufzeichnungen
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Bilder und/oder Objekte
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Interviews
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Tabellen
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Geoinformationsdaten
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			3D-Daten
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Simulationen
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Datenbanken
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Auch wenn Sie nur eine oder zwei Arten von Forschungsdaten angekreuzt haben, wird ein stringentes Datenmanagement hilfreich für Ihre Forschungsarbeit und deren weitere (öffentliche) Nutzung sein. Wenn Sie mit vielen unterschiedlichen Datentypen arbeiten, sollten Sie sich unbedingt einen durchdachten Plan für ein Datenmanagement zurechtlegen.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Auch wenn Sie nur eine oder zwei Arten von Forschungsdaten angekreuzt haben, wird ein stringentes Datenmanagement hilfreich für Ihre Forschungsarbeit und deren weitere (öffentliche) Nutzung sein. Wenn Sie mit vielen unterschiedlichen Datentypen arbeiten, sollten Sie sich unbedingt einen durchdachten Plan für ein Datenmanagement zurechtlegen.
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice buttonLabel="Absenden" variant="multiple">
+		<QuizChoiceQuestion>
+			Arbeiten Sie alleine oder in einem (größeren) Forschungsteam?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="correct">
+			Ich arbeite alleine.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Ich arbeite in einem Forschungsteam an meiner Arbeitsstelle.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Ich arbeite mit externen Projektmitarbeitern und Projektmitarbeiterinnen von anderen Institutionen.
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Aktives Datenmanagement ist besonders bei Forschungsprojekten und in der Teamarbeit sehr wichtig. Aber auch wenn Sie alleine arbeiten, vereinfacht ein gutes Datenmanagement die Arbeit.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Aktives Datenmanagement ist besonders bei Forschungsprojekten und in der Teamarbeit sehr wichtig. Aber auch wenn Sie alleine arbeiten, vereinfacht ein gutes Datenmanagement die Arbeit.
+		</QuizErrorMessage>
+	</QuizChoice>
+
+	<QuizChoice buttonLabel="Absenden" variant="single">
+		<QuizChoiceQuestion>
+			Haben Sie sich schon Gedanken über einen Datenmanagementplan für Ihre Forschungsarbeit/Forschungsprojekt gemacht?
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="correct">
+			Ja
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Nein
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Sehr gut! Wir hoffen, dass wir Ihnen trotzdem noch ein paar hilfreiche Informationen und Tipps geben können, um den Prozess zu verbessern.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Kein Problem! Sie werden hier einige einfache Grundlagen lernen, um Ihr Datenmanagement effizient zu gestalten.
+		</QuizErrorMessage>
+	</QuizChoice>
 </Quiz>
 
 ## B. Datenlebenszyklus & Datenmanagement
@@ -167,9 +259,66 @@ Das (Speicher-)Datum wird zwar auch von Rechnern in den Details einer Datei ange
 **Quiz: Jetzt sind Sie an der Reihe!**
 
 <Quiz>
-  <QuizSingleChoice question="Welche der folgenden Benennungen entspricht am besten den oben beschriebenen Regeln für eine sehr gute Dateibenennung? Wählen Sie eine Antwort aus!" answers={[{"answer":"`01-11-2021_TG-Datenmanagement_FinaleVersion_02.pdf`","kind":"incorrect"},{"answer":"`2011-11-01_EinfuehrungDatenmanagement.pdf`","kind":"correct"},{"answer":"`ToolGallery: Einführung in das Datenmanagement-03_2011.11.01.pdf`","kind":"incorrect"},{"answer":"`Einführung-Datenmanagement_2021-11-01-Version3.pdf`","kind":"incorrect"}]} messages={{"correct":"Richtig! Hier wurde zuerst das Datum im ISO-Format angegeben, ein Unterstrich für die Trennung von Datum und Zahlen genutzt und das Sonderzeichen \"ü\" durch \"ue\" ersetzt.","incorrect":"Leider falsch. Sehen Sie sich unsere Tipps und die Dateibenennungen nochmal genau an."}} />
+	<QuizChoice variant="single">
+		<QuizChoiceQuestion>
+			Welche der folgenden Benennungen entspricht am besten den oben beschriebenen Regeln für eine sehr gute Dateibenennung? Wählen Sie eine Antwort aus!
+		</QuizChoiceQuestion>
 
-  <QuizSingleChoice question="Schauen wir uns die Dateibenennungen nochmal an - welche dieser Dateibenennungen sollte man am ehesten ändern? Wählen Sie ein Beispiel aus." answers={[{"answer":"`01-11-2021_TG-Datenmanagement_FinaleVersion_02.pdf`","kind":"incorrect"},{"answer":"`Tool Gallery: Einführung in das Datenmanagement-03_2011.11.01.pdf`","kind":"correct"},{"answer":"`2011-11-01_EinfuehrungDatenmanagement.pdf`","kind":"incorrect"},{"answer":"`Einführung-Datenmanagement_2021-11-01-Version3.pdf`","kind":"incorrect"}]} messages={{"correct":" Richtig, hier wurden ein Doppelpunkt, das Sonderzeichen ü, Leerzeichen und Punkte im Dateinamen verwendet. Außerdem stellt man das Datum eher an den Beginn als das Ende der Benennung, und die Zahl 03 sollte noch mit einem kleinem \"v\" versehen werden, wenn es auf eine Versionsnummer hinweist.","incorrect":"Falsch. Die dritte Antwort stellt die beste Dateibenennung dar. Die erste und letzte Antwortoption sind auch nicht optimal und Verbesserungen sind notwendig. So stellt man zum Beispiel Datumsangaben eher an den Beginn als an das Ende einer Benennung und Sonderzeichen sowie Punkte im Dateinamen sollten vermieden werden. Schauen Sie sich die oben beschriebenen Regeln noch einmal genau an."}} />
+		<QuizChoiceAnswer kind="incorrect">
+			`01-11-2021_TG-Datenmanagement_FinaleVersion_02.pdf`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			`2011-11-01_EinfuehrungDatenmanagement.pdf`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`ToolGallery: Einführung in das Datenmanagement-03_2011.11.01.pdf`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`Einführung-Datenmanagement_2021-11-01-Version3.pdf`
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Richtig! Hier wurde zuerst das Datum im ISO-Format angegeben, ein Unterstrich für die Trennung von Datum und Zahlen genutzt und das Sonderzeichen "ü" durch "ue" ersetzt.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Leider falsch. Sehen Sie sich unsere Tipps und die Dateibenennungen nochmal genau an.
+		</QuizErrorMessage>
+	</QuizChoice>
+
+
+	<QuizChoice variant="single">
+		<QuizChoiceQuestion>
+			Schauen wir uns die Dateibenennungen nochmal an - welche dieser Dateibenennungen sollte man am ehesten ändern? Wählen Sie ein Beispiel aus.
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`01-11-2021_TG-Datenmanagement_FinaleVersion_02.pdf`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			`Tool Gallery: Einführung in das Datenmanagement-03_2011.11.01.pdf`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`2011-11-01_EinfuehrungDatenmanagement.pdf`
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			`Einführung-Datenmanagement_2021-11-01-Version3.pdf`
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Richtig, hier wurden ein Doppelpunkt, das Sonderzeichen ü, Leerzeichen und Punkte im Dateinamen verwendet. Außerdem stellt man das Datum eher an den Beginn als das Ende der Benennung, und die Zahl 03 sollte noch mit einem kleinem "v" versehen werden, wenn es auf eine Versionsnummer hinweist.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Falsch. Die dritte Antwort stellt die beste Dateibenennung dar. Die erste und letzte Antwortoption sind auch nicht optimal und Verbesserungen sind notwendig. So stellt man zum Beispiel Datumsangaben eher an den Beginn als an das Ende einer Benennung und Sonderzeichen sowie Punkte im Dateinamen sollten vermieden werden. Schauen Sie sich die oben beschriebenen Regeln noch einmal genau an.
+		</QuizErrorMessage>
+	</QuizChoice>
 </Quiz>
 
 #### Strukturierung und Aufbau von Ordnern
@@ -238,7 +387,35 @@ Auf der Seite [semverdoc](https://semverdoc.org/) _(Semantic Versioning for Docu
 **Quiz:**
 
 <Quiz>
-  <QuizMultipleChoice question="In einem Ordner sehen Sie zwei Dateien. Die erste hat den Namen `Datenmanagement_v01-03-02`, die zweite `Datenmanagement_v02-01-02`. Was sagen Ihnen die angegebenen Zahlen mit dem vorangestellten 'v' über die beiden Dateien, ohne dass Sie diese öffnen? (Mehrfachantwort)" answers={[{"answer":"Bei der Datei mit den Zahlen v01-03-02 wurden nur wenige Informationen geändert und Tippfehler korrigiert.","kind":"correct"},{"answer":"Die erste Datei wurde am 1. März 2002, die zweite Datei am 2. Jänner 2002 erstellt.","kind":"incorrect"},{"answer":"Die Datei mit den Zahlen v02-01-02 ist eine Nachfolgeversion der anderen Datei und unterscheidet sich in größeren Teilen von ihr.","kind":"correct"},{"answer":"Bei der Datei mit den Zahlen v02-01-02 wurde noch keine Rechtschreibüberprüfung vorgenommen.","kind":"incorrect"}]} messages={{"correct":"Richtig! Die Benennung v01-03-02 deutet daraufhin, dass noch keine signifikanten Veränderungen vorgenommen wurden; während die Datei v02-01-02 sich von der ersten Datei durch eine größere Änderung unterscheidet.","incorrect":"Falsch! Bei den Benennungen mit 'v' handelt es sich nicht um Datumsangaben - die Zahlen wären auch nicht eindeutig und daher sollte für ein Datum auch das ISO-Format gewählt werden. Da beide Dateien als letzte Ziffern 02 haben, wurde bei beiden schon Tippfehler ausgebessert oder kleiner Fehlerkorrekturen vorgenommen."}} />
+	<QuizChoice variant="multiple">
+		<QuizChoiceQuestion>
+			In einem Ordner sehen Sie zwei Dateien. Die erste hat den Namen `Datenmanagement_v01-03-02`, die zweite `Datenmanagement_v02-01-02`. Was sagen Ihnen die angegebenen Zahlen mit dem vorangestellten 'v' über die beiden Dateien, ohne dass Sie diese öffnen? (Mehrfachantwort)
+		</QuizChoiceQuestion>
+
+		<QuizChoiceAnswer kind="correct">
+			Bei der Datei mit den Zahlen v01-03-02 wurden nur wenige Informationen geändert und Tippfehler korrigiert.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Die erste Datei wurde am 1. März 2002, die zweite Datei am 2. Jänner 2002 erstellt.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="correct">
+			Die Datei mit den Zahlen v02-01-02 ist eine Nachfolgeversion der anderen Datei und unterscheidet sich in größeren Teilen von ihr.
+		</QuizChoiceAnswer>
+
+		<QuizChoiceAnswer kind="incorrect">
+			Bei der Datei mit den Zahlen v02-01-02 wurde noch keine Rechtschreibüberprüfung vorgenommen.
+		</QuizChoiceAnswer>
+
+		<QuizSuccessMessage>
+			Richtig! Die Benennung v01-03-02 deutet daraufhin, dass noch keine signifikanten Veränderungen vorgenommen wurden; während die Datei v02-01-02 sich von der ersten Datei durch eine größere Änderung unterscheidet.
+		</QuizSuccessMessage>
+
+		<QuizErrorMessage>
+			Falsch! Bei den Benennungen mit 'v' handelt es sich nicht um Datumsangaben - die Zahlen wären auch nicht eindeutig und daher sollte für ein Datum auch das ISO-Format gewählt werden. Da beide Dateien als letzte Ziffern 02 haben, wurde bei beiden schon Tippfehler ausgebessert oder kleiner Fehlerkorrekturen vorgenommen.
+		</QuizErrorMessage>
+	</QuizChoice>
 </Quiz>
 
 **Weiterführende Literatur und Links:**

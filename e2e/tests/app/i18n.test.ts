@@ -96,21 +96,25 @@ test.describe("i18n", () => {
 
 		for (const locale of locales) {
 			const response = await page.goto(`/${locale}`);
-			const headers = response?.headers().link?.split(/, |\n/)
-			expect(headers).toEqual(expect.arrayContaining([
-				`<${createAbsoluteUrl("/de")}>; rel="alternate"; hreflang="de"`,
-				`<${createAbsoluteUrl("/en")}>; rel="alternate"; hreflang="en"`,
-				`<${createAbsoluteUrl("/")}>; rel="alternate"; hreflang="x-default"`,
-			]));
+			const headers = response?.headers().link?.split(/, |\n/);
+			expect(headers).toEqual(
+				expect.arrayContaining([
+					`<${createAbsoluteUrl("/de")}>; rel="alternate"; hreflang="de"`,
+					`<${createAbsoluteUrl("/en")}>; rel="alternate"; hreflang="en"`,
+					`<${createAbsoluteUrl("/")}>; rel="alternate"; hreflang="x-default"`,
+				]),
+			);
 		}
 
 		for (const locale of locales) {
 			const response = await page.goto(`/${locale}/imprint`);
-			const headers = response?.headers().link?.split(/, |\n/)
-			expect(headers).toEqual(expect.arrayContaining([
-				`<${createAbsoluteUrl("/de/imprint")}>; rel="alternate"; hreflang="de"`,
-				`<${createAbsoluteUrl("/en/imprint")}>; rel="alternate"; hreflang="en"`,
-			]));
+			const headers = response?.headers().link?.split(/, |\n/);
+			expect(headers).toEqual(
+				expect.arrayContaining([
+					`<${createAbsoluteUrl("/de/imprint")}>; rel="alternate"; hreflang="de"`,
+					`<${createAbsoluteUrl("/en/imprint")}>; rel="alternate"; hreflang="en"`,
+				]),
+			);
 		}
 	});
 });

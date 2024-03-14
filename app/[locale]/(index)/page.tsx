@@ -60,7 +60,7 @@ export default function IndexPage(props: IndexPageProps): ReactNode {
 	return (
 		<MainContent className="container grid grid-rows-[auto_1fr] py-4 xs:py-8">
 			<section className="grid w-full items-start justify-items-center gap-y-4 py-8 text-center md:py-12">
-				<h1 className="text-balance text-3xl font-bold leading-tight tracking-tighter text-neutral-950 md:text-5xl dark:text-neutral-0">
+				<h1 className="text-balance font-heading text-3xl font-bold leading-tight tracking-tighter text-neutral-950 md:text-5xl dark:text-neutral-0">
 					{t("title")}
 				</h1>
 				<div className="text-pretty text-md leading-normal text-neutral-600 xs:text-lg xs:leading-snug dark:text-neutral-400">
