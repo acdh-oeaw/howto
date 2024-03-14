@@ -1,7 +1,8 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useQuizContext } from "./quiz";
+
+import { useQuizContext } from "@/components/content/quiz";
 
 interface QuizControlsProps {
 	buttonLabel?: ReactNode;
