@@ -1,52 +1,84 @@
-import { groupByToMap } from "@acdh-oeaw/lib";
+import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
-import { QuizControls } from "@/components/content/quiz-controls";
-import { QuizErrorMessage } from "@/components/content/quiz-error-message";
-import type { QuizForm } from "@/components/content/quiz-form";
-import { QuizSuccessMessage } from "@/components/content/quiz-success-message";
-import { getChildrenElements } from "@/lib/get-children-elements";
+import { QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
+import { QuizForm, type QuizFormState } from "@/components/content/quiz-form";
+import { useQuizChildren } from "@/components/content/use-quiz-children";
+import { getFormData } from "@/lib/get-form-data";
 
-interface QuizChoiceProps extends QuizForm {
+interface QuizChoiceProps {
+	buttonLabel?: string;
+	children: ReactNode;
 	variant: "multiple" | "single";
 }
 
 export function QuizChoice(props: QuizChoiceProps): ReactNode {
 	const { buttonLabel, children, variant } = props;
 
+	const t = useTranslations("content.QuizControls");
+
+	const get = useQuizChildren(children);
+	const questions = get(QuizChoiceQuestion);
+	const answers = get(QuizChoiceAnswer);
+	const successMessages = get(QuizSuccessMessage);
+	const errorMessages = get(QuizErrorMessage);
+
 	const type = variant === "multiple" ? "checkbox" : "radio";
 
-	const map = groupByToMap(getChildrenElements(children), (child) => {
-		return child.type;
-	});
-	const questions = map.get(QuizChoiceQuestion);
-	const answers = map.get(QuizChoiceAnswer);
-	const successMessages = map.get(QuizSuccessMessage);
-	const errorMessages = map.get(QuizErrorMessage);
+	// eslint-disable-next-line @typescript-eslint/require-await
+	async function validate(state: QuizFormState | undefined, formData: FormData) {
+		"use server";
+
+		const data = getFormData(formData) as { checks: Array<"correct" | "incorrect"> } & (
+			| { variant: "single"; checked: string }
+			| { variant: "multiple"; checked: string[] }
+		);
+
+		const checks = data.checks;
+		const checked = new Set(data.variant === "single" ? [data.checked] : data.checked);
+
+		if (
+			checks.every((check, index) => {
+				if (check === "correct") return checked.has(String(index));
+				return !checked.has(String(index));
+			})
+		) {
+			return { status: "correct" as const };
+		}
+
+		return { status: "incorrect" as const };
+	}
 
 	return (
-		<section>
+		<QuizForm
+			errorMessages={errorMessages}
+			nextButtonLabel={t("next-question")}
+			previousButtonLabel={t("previous-question")}
+			successMessages={successMessages}
+			validate={validate}
+			validateButtonLabel={buttonLabel ?? t("validate")}
+		>
 			<header>{questions}</header>
 
+			<input type="hidden" name="variant" value={variant} />
 			<ul className="list-none pl-0" role="list">
-				{answers?.map((answer, index) => {
+				{answers.map((answer, index) => {
 					return (
 						<li key={index}>
 							<label className="grid grid-cols-[auto_1fr] items-center gap-x-2">
-								<input name={`answer.${index}`} type={type} />
+								<input name={`checks.${index}`} type="hidden" value={answer.props.kind} />
+								<input
+									name={variant === "single" ? "checked" : `checked.${index}`}
+									type={type}
+									value={index}
+								/>
 								<span>{answer}</span>
 							</label>
 						</li>
 					);
 				})}
 			</ul>
-
-			<QuizControls
-				buttonLabel={buttonLabel}
-				errorMessages={errorMessages}
-				successMessages={successMessages}
-			/>
-		</section>
+		</QuizForm>
 	);
 }
 
@@ -57,7 +89,7 @@ interface QuizChoiceQuestionProps {
 export function QuizChoiceQuestion(props: QuizChoiceQuestionProps): ReactNode {
 	const { children } = props;
 
-	return <div>{children}</div>;
+	return children;
 }
 
 interface QuizChoiceAnswerProps {
@@ -68,5 +100,5 @@ interface QuizChoiceAnswerProps {
 export function QuizChoiceAnswer(props: QuizChoiceAnswerProps): ReactNode {
 	const { children } = props;
 
-	return <div>{children}</div>;
+	return children;
 }

@@ -10,9 +10,7 @@ import {
 	FootnotesSection,
 } from "@/components/content/footnote";
 import { Image } from "@/components/content/image";
-import { Quiz } from "@/components/content/quiz";
-import { QuizErrorMessage } from "@/components/content/quiz-error-message";
-import { QuizSuccessMessage } from "@/components/content/quiz-success-message";
+import { Quiz, QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
 import { QuizChoice, QuizChoiceAnswer, QuizChoiceQuestion } from "@/components/content/quiz-choice";
 import { Tab, Tabs } from "@/components/content/tabs";
 import { Video } from "@/components/content/video";

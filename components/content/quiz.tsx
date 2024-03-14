@@ -17,11 +17,6 @@ export function Quiz(props: QuizProps): ReactNode {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const value: Omit<QuizContextValue, "isCurrent"> = {
-		labels: {
-			next: "Next",
-			previous: "Previous",
-			validate: "Check answer",
-		},
 		navigation: {
 			hasNext: currentIndex < quizzes.length - 1,
 			hasPrevious: currentIndex > 0,
@@ -55,11 +50,6 @@ export function Quiz(props: QuizProps): ReactNode {
 
 interface QuizContextValue {
 	isCurrent: boolean;
-	labels: {
-		next: string;
-		previous: string;
-		validate: string;
-	};
 	navigation: {
 		hasNext: boolean;
 		hasPrevious: boolean;
@@ -74,4 +64,24 @@ export function useQuizContext(): QuizContextValue {
 	const value = useContext(QuizContext);
 	assert(value != null);
 	return value;
+}
+
+interface QuizSuccessMessageProps {
+	children: ReactNode;
+}
+
+export function QuizSuccessMessage(props: QuizSuccessMessageProps): ReactNode {
+	const { children } = props;
+
+	return children;
+}
+
+interface QuizErrorMessageProps {
+	children: ReactNode;
+}
+
+export function QuizErrorMessage(props: QuizErrorMessageProps): ReactNode {
+	const { children } = props;
+
+	return children;
 }
