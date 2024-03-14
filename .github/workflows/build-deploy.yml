@@ -100,9 +100,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            "KEYSTATIC_GITHUB_CLIENT_ID=${{ secrets.K8S_SECRET_KEYSTATIC_GITHUB_CLIENT_ID }}""
-            "KEYSTATIC_GITHUB_CLIENT_SECRET=${{ secrets.K8S_SECRET_KEYSTATIC_GITHUB_CLIENT_SECRET }}""
-            "KEYSTATIC_SECRET=${{ secrets.K8S_SECRET_KEYSTATIC_SECRET }}""
+            "KEYSTATIC_GITHUB_CLIENT_ID=${{ secrets.K8S_SECRET_KEYSTATIC_GITHUB_CLIENT_ID }}"
+            "KEYSTATIC_GITHUB_CLIENT_SECRET=${{ secrets.K8S_SECRET_KEYSTATIC_GITHUB_CLIENT_SECRET }}"
+            "KEYSTATIC_SECRET=${{ secrets.K8S_SECRET_KEYSTATIC_SECRET }}"
             "NEXT_PUBLIC_APP_BASE_URL=${{ needs.vars.outputs.public_url }}"
             "NEXT_PUBLIC_BOTS=${{ vars.NEXT_PUBLIC_BOTS }}"
             "NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG=${{ vars.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG }}"
