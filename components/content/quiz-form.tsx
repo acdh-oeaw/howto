@@ -50,11 +50,11 @@ export function QuizForm(props: QuizFormProps): ReactNode {
 							<span>{previousButtonLabel}</span>
 						</Button>
 
-						<Button variant="plain" type="submit">
+						<Button type="submit" variant="plain">
 							<span>{validateButtonLabel}</span>
 						</Button>
 
-						<Button variant="plain" isDisabled={!navigation.hasNext} onPress={navigation.next}>
+						<Button isDisabled={!navigation.hasNext} onPress={navigation.next} variant="plain">
 							<span>{nextButtonLabel}</span>
 							<ChevronRightIcon aria-hidden={true} className="size-4 shrink-0" />
 						</Button>
@@ -72,11 +72,11 @@ export function QuizForm(props: QuizFormProps): ReactNode {
 					>
 						{formState?.status === "correct" ? (
 							<div className="flex items-center gap-x-2">
-								<CheckIcon aria-hidden={true} className="shrink-0 size-4" /> {successMessages}
+								<CheckIcon aria-hidden={true} className="size-4 shrink-0" /> {successMessages}
 							</div>
 						) : formState?.status === "incorrect" ? (
 							<div className="flex items-center gap-x-2">
-								<AlertCircleIcon aria-hidden={true} className="shrink-0 size-4" />
+								<AlertCircleIcon aria-hidden={true} className="size-4 shrink-0" />
 								{errorMessages}
 							</div>
 						) : null}
