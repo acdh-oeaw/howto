@@ -3,7 +3,6 @@ import { join } from "node:path";
 
 import sizeOf from "image-size";
 import NextImage from "next/image";
-import type { ReactNode } from "react";
 
 interface ImageProps {
 	alt?: string;
@@ -12,8 +11,7 @@ interface ImageProps {
 	width?: number;
 }
 
-// @ts-expect-error Upstream type issue.
-export async function Image(props: ImageProps): Promise<ReactNode> {
+export async function Image(props: ImageProps) {
 	const { alt = "", src } = props;
 
 	if (src.startsWith("data:") || src.startsWith("http:")) {

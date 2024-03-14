@@ -1,6 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { MainContent } from "@/components/main-content";
 import { PageTitle } from "@/components/ui/page-title";
@@ -25,8 +24,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-// @ts-expect-error Upstream type issue.
-export default async function NotFoundPage(): Promise<ReactNode> {
+export default async function NotFoundPage() {
 	const t = await getTranslations({ locale: defaultLocale, namespace: "NotFoundPage" });
 
 	return (

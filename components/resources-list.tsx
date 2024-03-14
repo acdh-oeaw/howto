@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 import { ResourceCard } from "@/components/resource-card";
 import type { Resource, WithId } from "@/lib/content/types";
 
@@ -7,7 +5,7 @@ interface ResourcesListProps {
 	resources: Array<WithId<Resource>>;
 }
 
-export function ResourcesList(props: ResourcesListProps): ReactNode {
+export function ResourcesList(props: ResourcesListProps) {
 	const { resources } = props;
 
 	return (

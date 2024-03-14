@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 import { CurriculumCard } from "@/components/curriculum-card";
 import type { Curriculum, WithId } from "@/lib/content/types";
 
@@ -7,7 +5,7 @@ interface CurriculaListProps {
 	curricula: Array<WithId<Curriculum>>;
 }
 
-export function CurriculaList(props: CurriculaListProps): ReactNode {
+export function CurriculaList(props: CurriculaListProps) {
 	const { curricula } = props;
 
 	return (

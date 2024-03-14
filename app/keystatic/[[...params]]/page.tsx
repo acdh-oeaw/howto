@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
-export default function Page(): ReactNode {
+export default function Page() {
 	return null;
 }

@@ -5,7 +5,7 @@ interface DisclosureProps {
 	title: string;
 }
 
-export function Disclosure(props: DisclosureProps): ReactNode {
+export function Disclosure(props: DisclosureProps) {
 	const { children, title, ...rest } = props;
 
 	return (

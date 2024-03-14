@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { type ReactNode, useEffect } from "react";
+import { useEffect } from "react";
 
 import { MainContent } from "@/components/main-content";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ interface InternalErrorProps {
 
 /** `React.lazy` requires default export. */
 // eslint-disable-next-line import/no-default-export
-export default function InternalError(props: InternalErrorProps): ReactNode {
+export default function InternalError(props: InternalErrorProps) {
 	const { error, reset } = props;
 
 	const t = useTranslations("Error");

@@ -1,7 +1,7 @@
 "use client";
 
 import { createUrlSearchParams } from "@acdh-oeaw/lib";
-import { type ReactNode, useOptimistic, useState } from "react";
+import { useOptimistic, useState } from "react";
 import { ListBox, ListBoxItem, type Selection } from "react-aria-components";
 import { useFormState } from "react-dom";
 import { z } from "zod";
@@ -34,7 +34,7 @@ interface CurriculaFilterFormProps {
 	tagsLabel: string;
 }
 
-export function CurriculaFilterForm(props: CurriculaFilterFormProps): ReactNode {
+export function CurriculaFilterForm(props: CurriculaFilterFormProps) {
 	const { filters, localeItems, localeLabel, searchTermLabel, submitLabel, tags, tagsLabel } =
 		props;
 

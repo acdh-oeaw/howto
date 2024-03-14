@@ -5,7 +5,7 @@ interface DownloadProps {
 	href: string;
 }
 
-export function Download(props: DownloadProps): ReactNode {
+export function Download(props: DownloadProps) {
 	const { children, href } = props;
 
 	return (

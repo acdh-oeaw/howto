@@ -6,7 +6,7 @@ export interface TouchTargetProps {
 	children: ReactNode;
 }
 
-export function TouchTarget(props: TouchTargetProps): ReactNode {
+export function TouchTarget(props: TouchTargetProps) {
 	const { children } = props;
 
 	return (

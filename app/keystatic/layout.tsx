@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import { LocalizedStringProvider as Translations } from "react-aria-components/i18n";
 
 import KeystaticApp from "@/app/keystatic/keystatic";
@@ -10,7 +9,7 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout(): ReactNode {
+export default function RootLayout() {
 	const locale = "en";
 
 	return (

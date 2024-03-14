@@ -12,7 +12,7 @@ interface QuizChoiceProps {
 	variant: "multiple" | "single";
 }
 
-export function QuizChoice(props: QuizChoiceProps): ReactNode {
+export function QuizChoice(props: QuizChoiceProps) {
 	const { buttonLabel, children, variant } = props;
 
 	const t = useTranslations("content.QuizControls");
@@ -86,7 +86,7 @@ interface QuizChoiceQuestionProps {
 	children: ReactNode;
 }
 
-export function QuizChoiceQuestion(props: QuizChoiceQuestionProps): ReactNode {
+export function QuizChoiceQuestion(props: QuizChoiceQuestionProps) {
 	const { children } = props;
 
 	return children;
@@ -97,7 +97,7 @@ interface QuizChoiceAnswerProps {
 	kind: "correct" | "incorrect";
 }
 
-export function QuizChoiceAnswer(props: QuizChoiceAnswerProps): ReactNode {
+export function QuizChoiceAnswer(props: QuizChoiceAnswerProps) {
 	const { children } = props;
 
 	return children;

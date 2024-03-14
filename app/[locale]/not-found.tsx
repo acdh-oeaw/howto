@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { MainContent } from "@/components/main-content";
 import { PageTitle } from "@/components/ui/page-title";
@@ -32,7 +31,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function NotFoundPage(_props: NotFoundPageProps): ReactNode {
+export default function NotFoundPage(_props: NotFoundPageProps) {
 	const t = useTranslations("NotFoundPage");
 
 	return (

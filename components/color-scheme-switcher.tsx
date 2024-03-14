@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import { type ReactNode, useMemo } from "react";
+import { useMemo } from "react";
 
 import type { ColorScheme } from "@/lib/color-scheme-script";
 
@@ -11,13 +11,12 @@ const ColorSchemeSelect = dynamic(
 		});
 	},
 	{
-		// @ts-expect-error `ReactNode` is a valid return type.
 		loading: ColorSchemeSelectLoadingIndicator,
 		ssr: false,
 	},
 );
 
-export function ColorSchemeSwitcher(): ReactNode {
+export function ColorSchemeSwitcher() {
 	const t = useTranslations("ColorSchemeSwitcher");
 
 	const items = useMemo(() => {
@@ -31,6 +30,6 @@ export function ColorSchemeSwitcher(): ReactNode {
 	return <ColorSchemeSelect items={items} label={t("change-color-scheme")} />;
 }
 
-function ColorSchemeSelectLoadingIndicator(): ReactNode {
+function ColorSchemeSelectLoadingIndicator() {
 	return <div className="size-9" />;
 }

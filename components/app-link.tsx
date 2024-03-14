@@ -1,14 +1,12 @@
 "use client";
 
-import type { ReactNode } from "react";
-
 import { Link, type LinkProps } from "@/components/link";
 import { TouchTarget } from "@/components/ui/touch-target";
 import { cn } from "@/lib/styles";
 
 interface AppLinkProps extends LinkProps {}
 
-export function AppLink(props: AppLinkProps): ReactNode {
+export function AppLink(props: AppLinkProps) {
 	const { children, className, ...rest } = props;
 
 	return (

@@ -1,6 +1,5 @@
 import { assert } from "@acdh-oeaw/lib";
 import { getFormatter, getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { AppLink } from "@/components/app-link";
 import { Link } from "@/components/link";
@@ -13,8 +12,7 @@ interface CurriculumCardProps {
 	curriculum: WithId<Curriculum>;
 }
 
-// @ts-expect-error Upstream type issue.
-export async function CurriculumCard(props: CurriculumCardProps): Promise<ReactNode> {
+export async function CurriculumCard(props: CurriculumCardProps) {
 	const { curriculum } = props;
 
 	const t = await getTranslations("CurriculumCard");

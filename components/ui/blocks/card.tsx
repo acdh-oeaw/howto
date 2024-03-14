@@ -17,7 +17,7 @@ interface CardProps {
 	title: ReactNode;
 }
 
-export function Card(props: CardProps): ReactNode {
+export function Card(props: CardProps) {
 	const { children, description, footer, headingLevel, image, title, ...rest } = props;
 
 	return (

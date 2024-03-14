@@ -14,7 +14,7 @@ interface TabsProps {
 	children: ReactNode;
 }
 
-export function Tabs(props: TabsProps): ReactNode {
+export function Tabs(props: TabsProps) {
 	const { children } = props;
 
 	/** Note that we actually get back children wrapped with `React.lazy`. */
@@ -60,6 +60,6 @@ interface TabProps {
 	title: string;
 }
 
-export function Tab(_props: TabProps): ReactNode {
+export function Tab(_props: TabProps) {
 	return null;
 }

@@ -1,9 +1,8 @@
 import { cookies, draftMode } from "next/headers";
-import type { ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 
-export function DraftModeToggle(): ReactNode {
+export function DraftModeToggle() {
 	const { isEnabled } = draftMode();
 
 	if (!isEnabled) return null;

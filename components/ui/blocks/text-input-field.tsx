@@ -1,5 +1,3 @@
-import type { ReactNode } from "react";
-
 import type { FieldProps } from "@/components/ui/blocks/field";
 import { FieldDescription } from "@/components/ui/field-description";
 import { FieldError } from "@/components/ui/field-error";
@@ -11,7 +9,7 @@ interface TextInputFieldProps extends Omit<TextFieldProps, "children">, FieldPro
 	placeholder?: string;
 }
 
-export function TextInputField(props: TextInputFieldProps): ReactNode {
+export function TextInputField(props: TextInputFieldProps) {
 	const { description, errorMessage, label, placeholder, ...rest } = props;
 
 	return (

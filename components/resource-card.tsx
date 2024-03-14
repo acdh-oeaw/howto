@@ -1,6 +1,5 @@
 import { assert } from "@acdh-oeaw/lib";
 import { getFormatter, getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { AppLink } from "@/components/app-link";
 import { Link } from "@/components/link";
@@ -13,8 +12,7 @@ interface ResourceCardProps {
 	resource: WithId<Resource>;
 }
 
-// @ts-expect-error Upstream type issue.
-export async function ResourceCard(props: ResourceCardProps): Promise<ReactNode> {
+export async function ResourceCard(props: ResourceCardProps) {
 	const { resource } = props;
 
 	const t = await getTranslations("ResourceCard");

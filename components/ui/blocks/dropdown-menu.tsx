@@ -14,7 +14,7 @@ interface DropdownMenuProps<T extends object> extends MenuProps<T> {
 	placement?: MenuPopoverProps["placement"];
 }
 
-export function DropdownMenu<T extends object>(props: DropdownMenuProps<T>): ReactNode {
+export function DropdownMenu<T extends object>(props: DropdownMenuProps<T>) {
 	const { children, placement, ...rest } = props;
 
 	return (

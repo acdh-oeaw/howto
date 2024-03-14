@@ -1,7 +1,7 @@
 "use client";
 
 import { MoonIcon, SunIcon } from "lucide-react";
-import type { Key, ReactNode } from "react";
+import type { Key } from "react";
 
 import { IconButton } from "@/components/ui/icon-button";
 import {
@@ -19,7 +19,7 @@ interface ColorSchemeSelectProps {
 	label: string;
 }
 
-export function ColorSchemeSelect(props: ColorSchemeSelectProps): ReactNode {
+export function ColorSchemeSelect(props: ColorSchemeSelectProps) {
 	const { items, label } = props;
 
 	const { colorSchemeState, setColorScheme } = useColorScheme();

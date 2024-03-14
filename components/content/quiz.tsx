@@ -9,7 +9,7 @@ interface QuizProps {
 	children: ReactNode;
 }
 
-export function Quiz(props: QuizProps): ReactNode {
+export function Quiz(props: QuizProps) {
 	const { children } = props;
 
 	const quizzes = getChildrenElements(children);
@@ -70,7 +70,7 @@ interface QuizSuccessMessageProps {
 	children: ReactNode;
 }
 
-export function QuizSuccessMessage(props: QuizSuccessMessageProps): ReactNode {
+export function QuizSuccessMessage(props: QuizSuccessMessageProps) {
 	const { children } = props;
 
 	return children;
@@ -80,7 +80,7 @@ interface QuizErrorMessageProps {
 	children: ReactNode;
 }
 
-export function QuizErrorMessage(props: QuizErrorMessageProps): ReactNode {
+export function QuizErrorMessage(props: QuizErrorMessageProps) {
 	const { children } = props;
 
 	return children;

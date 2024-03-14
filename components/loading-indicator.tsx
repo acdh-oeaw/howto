@@ -1,7 +1,7 @@
 import { useLabels } from "@react-aria/utils";
 import type { AriaLabelingProps, DOMProps } from "@react-types/shared";
 import { Loader2Icon } from "lucide-react";
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/styles";
 
@@ -10,7 +10,7 @@ interface LoadingIndicatorProps
 		DOMProps,
 		Pick<ComponentPropsWithoutRef<"svg">, "aria-hidden" | "className"> {}
 
-export function LoadingIndicator(props: LoadingIndicatorProps): ReactNode {
+export function LoadingIndicator(props: LoadingIndicatorProps) {
 	const { "aria-hidden": ariaHidden, className, ...rest } = props;
 
 	const labelingProps = useLabels(rest);

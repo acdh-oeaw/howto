@@ -21,7 +21,7 @@ export interface QuizFormProps {
 	validateButtonLabel: string;
 }
 
-export function QuizForm(props: QuizFormProps): ReactNode {
+export function QuizForm(props: QuizFormProps) {
 	const {
 		children,
 		errorMessages,

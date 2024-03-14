@@ -1,7 +1,6 @@
 import { compareDesc } from "date-fns";
 import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { ResourcesFilterForm } from "@/components/resources-filter-form";
 import { ResourcesList } from "@/components/resources-list";
@@ -18,8 +17,7 @@ interface ResourcesSectionProps {
 	};
 }
 
-// @ts-expect-error Upstream type issue.
-export async function ResourcesSection(props: ResourcesSectionProps): Promise<ReactNode> {
+export async function ResourcesSection(props: ResourcesSectionProps) {
 	const { filters } = props;
 
 	const locale = useLocale();

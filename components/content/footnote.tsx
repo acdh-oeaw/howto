@@ -5,7 +5,7 @@ interface FootnotesSectionProps {
 	children: ReactNode;
 }
 
-export function FootnotesSection(props: FootnotesSectionProps): ReactNode {
+export function FootnotesSection(props: FootnotesSectionProps) {
 	const { children } = props;
 
 	const footnotes = Children.toArray(children);
@@ -26,7 +26,7 @@ interface FootnoteReferenceProps {
 	count: number;
 }
 
-export function FootnoteReference(props: FootnoteReferenceProps): ReactNode {
+export function FootnoteReference(props: FootnoteReferenceProps) {
 	const { count } = props;
 
 	return (
@@ -41,7 +41,7 @@ interface FootnoteContentProps {
 	count: number;
 }
 
-export function FootnoteContent(props: FootnoteContentProps): ReactNode {
+export function FootnoteContent(props: FootnoteContentProps) {
 	const { children, count } = props;
 
 	return (

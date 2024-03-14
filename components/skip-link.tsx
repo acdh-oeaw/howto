@@ -11,7 +11,7 @@ interface SkipLinkProps {
 	targetId: string;
 }
 
-export function SkipLink(props: SkipLinkProps): ReactNode {
+export function SkipLink(props: SkipLinkProps) {
 	const { children, id, targetId } = props;
 
 	/**

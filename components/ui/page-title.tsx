@@ -4,7 +4,7 @@ interface PageTitleProps {
 	children: ReactNode;
 }
 
-export function PageTitle(props: PageTitleProps): ReactNode {
+export function PageTitle(props: PageTitleProps) {
 	const { children } = props;
 
 	return (

@@ -4,7 +4,7 @@ interface AppLayoutProps {
 	children: ReactNode;
 }
 
-export function AppLayout(props: AppLayoutProps): ReactNode {
+export function AppLayout(props: AppLayoutProps) {
 	const { children } = props;
 
 	return <div className="relative isolate grid h-full grid-rows-[auto_1fr_auto]">{children}</div>;

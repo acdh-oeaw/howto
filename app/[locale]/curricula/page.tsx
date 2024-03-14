@@ -2,7 +2,6 @@ import { createUrlSearchParams } from "@acdh-oeaw/lib";
 import type { Metadata, ResolvingMetadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { CurriculaSection } from "@/components/curricula-section";
 import { MainContent } from "@/components/main-content";
@@ -33,7 +32,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function CurriculaPage(props: CurriculaPageProps): ReactNode {
+export default function CurriculaPage(props: CurriculaPageProps) {
 	const { params, searchParams } = props;
 
 	const { locale } = params;

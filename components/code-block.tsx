@@ -1,6 +1,5 @@
 import "server-only";
 
-import type { ReactNode } from "react";
 import { codeToHtml } from "shiki";
 
 import { config as syntaxHighlighterConfig } from "@/config/syntax-highlighter.config.js";
@@ -10,8 +9,7 @@ interface CodeBlockProps {
 	language: string;
 }
 
-// @ts-expect-error Upstream type issue.
-export async function CodeBlock(props: CodeBlockProps): Promise<ReactNode> {
+export async function CodeBlock(props: CodeBlockProps) {
 	const { code, language } = props;
 
 	const html = await codeToHtml(code, {

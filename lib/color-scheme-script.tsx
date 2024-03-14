@@ -1,9 +1,7 @@
-import type { ReactNode } from "react";
-
 const dataAttribute = "uiColorScheme";
 const storageKey = "ui-color-scheme";
 
-export function ColorSchemeScript(): ReactNode {
+export function ColorSchemeScript() {
 	return (
 		<script
 			dangerouslySetInnerHTML={{

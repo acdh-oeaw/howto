@@ -1,7 +1,6 @@
 import { compareDesc } from "date-fns";
 import { useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { CurriculaFilterForm } from "@/components/curricula-filter-form";
 import { CurriculaList } from "@/components/curricula-list";
@@ -18,8 +17,7 @@ interface CurriculaSectionProps {
 	};
 }
 
-// @ts-expect-error Upstream type issue.
-export async function CurriculaSection(props: CurriculaSectionProps): Promise<ReactNode> {
+export async function CurriculaSection(props: CurriculaSectionProps) {
 	const { filters } = props;
 
 	const locale = useLocale();

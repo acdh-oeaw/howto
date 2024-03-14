@@ -1,7 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { DraftModeToggle } from "@/components/draft-mode-toggle";
 import { MainContent } from "@/components/main-content";
@@ -48,7 +47,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function DocumentationPage(props: DocumentationPageProps): ReactNode {
+export default function DocumentationPage(props: DocumentationPageProps) {
 	const { params } = props;
 
 	const { id, locale } = params;
@@ -68,8 +67,7 @@ interface DocumentationPageContentProps {
 	locale: Locale;
 }
 
-// @ts-expect-error Upstream type issue.
-async function DocumentationPageContent(props: DocumentationPageContentProps): Promise<ReactNode> {
+async function DocumentationPageContent(props: DocumentationPageContentProps) {
 	const { id } = props;
 
 	const document = await reader().collections.documentation.read(id);

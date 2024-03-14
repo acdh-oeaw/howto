@@ -20,7 +20,7 @@ interface SelectFieldProps<T extends object> extends Omit<SelectProps<T>, "child
 	placement?: SelectPopoverProps["placement"];
 }
 
-export function SelectField<T extends object>(props: SelectFieldProps<T>): ReactNode {
+export function SelectField<T extends object>(props: SelectFieldProps<T>) {
 	const { children, description, errorMessage, label, placement, ...rest } = props;
 
 	return (

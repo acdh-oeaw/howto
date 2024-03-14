@@ -6,7 +6,6 @@ import {
 	getTranslations,
 	unstable_setRequestLocale as setRequestLocale,
 } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { DraftModeToggle } from "@/components/draft-mode-toggle";
 import { MainContent } from "@/components/main-content";
@@ -82,7 +81,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function ResourcePage(props: ResourcePageProps): ReactNode {
+export default function ResourcePage(props: ResourcePageProps) {
 	const { params } = props;
 
 	const { id, locale } = params;
@@ -101,8 +100,7 @@ interface ResourceContentProps {
 	id: string;
 }
 
-// @ts-expect-error Upstream type issue.
-async function ResourceContent(props: ResourceContentProps): Promise<ReactNode> {
+async function ResourceContent(props: ResourceContentProps) {
 	const { id } = props;
 
 	const t = await getTranslations("ResourceContent");

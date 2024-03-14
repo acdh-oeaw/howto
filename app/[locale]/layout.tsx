@@ -70,7 +70,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function LocaleLayout(props: LocaleLayoutProps): ReactNode {
+export default function LocaleLayout(props: LocaleLayoutProps) {
 	const { children, params } = props;
 
 	const { locale } = params;

@@ -6,7 +6,6 @@ import {
 	getTranslations,
 	unstable_setRequestLocale as setRequestLocale,
 } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { DraftModeToggle } from "@/components/draft-mode-toggle";
 import { MainContent } from "@/components/main-content";
@@ -83,7 +82,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function CurriculumPage(props: CurriculumPageProps): ReactNode {
+export default function CurriculumPage(props: CurriculumPageProps) {
 	const { params } = props;
 
 	const { id, locale } = params;
@@ -102,8 +101,7 @@ interface CurriculumContentProps {
 	id: string;
 }
 
-// @ts-expect-error Upstream type issue.
-async function CurriculumContent(props: CurriculumContentProps): Promise<ReactNode> {
+async function CurriculumContent(props: CurriculumContentProps) {
 	const { id } = props;
 
 	const t = await getTranslations("CurriculumContent");

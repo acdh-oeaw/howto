@@ -30,7 +30,7 @@ interface CalloutProps extends CalloutStyles {
 	title?: ReactNode;
 }
 
-export function Callout(props: CalloutProps): ReactNode {
+export function Callout(props: CalloutProps) {
 	const { children, className, kind, title, ...rest } = props;
 
 	return (

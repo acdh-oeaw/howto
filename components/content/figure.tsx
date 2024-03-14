@@ -6,7 +6,7 @@ interface FigureProps {
 	src: string;
 }
 
-export function Figure(props: FigureProps): ReactNode {
+export function Figure(props: FigureProps) {
 	const { alt = "", children, src } = props;
 
 	return (

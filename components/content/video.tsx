@@ -1,5 +1,4 @@
 import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
-import type { ReactNode } from "react";
 
 interface VideoProps {
 	caption?: string;
@@ -8,7 +7,7 @@ interface VideoProps {
 	startTime?: number;
 }
 
-export function Video(props: VideoProps): ReactNode {
+export function Video(props: VideoProps) {
 	const { caption, id, startTime } = props;
 
 	const url = String(

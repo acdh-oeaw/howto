@@ -1,10 +1,8 @@
-import type { ReactNode } from "react";
-
 interface LogoProps {
 	className?: string;
 }
 
-export function Logo(props: LogoProps): ReactNode {
+export function Logo(props: LogoProps) {
 	const { className } = props;
 
 	return (

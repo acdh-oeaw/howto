@@ -1,12 +1,11 @@
 import { useTranslations } from "next-intl";
-import type { ReactNode } from "react";
 
 import { AppLink } from "@/components/app-link";
 import { AppNavLink } from "@/components/app-nav-link";
 import type { LinkProps } from "@/components/link";
 import { createHref } from "@/lib/create-href";
 
-export function AppFooter(): ReactNode {
+export function AppFooter() {
 	const t = useTranslations("AppFooter");
 
 	const links = {

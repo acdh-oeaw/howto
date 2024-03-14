@@ -2,7 +2,6 @@ import { createUrlSearchParams } from "@acdh-oeaw/lib";
 import type { Metadata, ResolvingMetadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { MainContent } from "@/components/main-content";
 import { ResourcesSection } from "@/components/resources-section";
@@ -33,7 +32,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function ResourcesPage(props: ResourcesPageProps): ReactNode {
+export default function ResourcesPage(props: ResourcesPageProps) {
 	const { params, searchParams } = props;
 
 	const { locale } = params;

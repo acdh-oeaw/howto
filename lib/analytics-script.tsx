@@ -5,7 +5,7 @@ import type { NextWebVitalsMetric } from "next/app";
 import { useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useReportWebVitals } from "next/web-vitals";
-import { Fragment, type ReactNode, Suspense, useEffect } from "react";
+import { Fragment, Suspense, useEffect } from "react";
 
 import { env } from "@/config/env.config";
 import type { Locale } from "@/config/i18n.config";
@@ -22,7 +22,7 @@ interface AnalyticsProps {
 	id: number | undefined;
 }
 
-export function AnalyticsScript(props: AnalyticsProps): ReactNode {
+export function AnalyticsScript(props: AnalyticsProps) {
 	const { baseUrl, id } = props;
 
 	if (baseUrl == null || id == null) return null;
@@ -57,7 +57,7 @@ function createAnalyticsScript(baseUrl: string, id: number): void {
 	s?.parentNode?.insertBefore(g, s);
 }
 
-function PageViewTracker(): ReactNode {
+function PageViewTracker() {
 	const locale = useLocale();
 	const pathname = usePathname();
 	const searchParams = useSearchParams();

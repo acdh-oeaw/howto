@@ -3,7 +3,6 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
-import type { ReactNode } from "react";
 
 import { MainContent } from "@/components/main-content";
 import { PageTitle } from "@/components/ui/page-title";
@@ -32,7 +31,7 @@ export async function generateMetadata(
 	return metadata;
 }
 
-export default function ImprintPage(props: ImprintPageProps): ReactNode {
+export default function ImprintPage(props: ImprintPageProps) {
 	const { params } = props;
 
 	const { locale } = params;
@@ -52,8 +51,7 @@ interface ImprintPageContentProps {
 	title: string;
 }
 
-// @ts-expect-error Upstream type issue.
-async function ImprintPageContent(props: ImprintPageContentProps): Promise<ReactNode> {
+async function ImprintPageContent(props: ImprintPageContentProps) {
 	const { locale, title } = props;
 
 	const html = await getImprintHtml(locale);

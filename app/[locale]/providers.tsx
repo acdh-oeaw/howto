@@ -13,7 +13,7 @@ interface ProvidersProps {
 	messages: Partial<IntlMessages>;
 }
 
-export function Providers(props: ProvidersProps): ReactNode {
+export function Providers(props: ProvidersProps) {
 	const { children, locale, messages } = props;
 
 	const router = useRouter();

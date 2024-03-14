@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
 
 /**
  * Only a root `not-found.tsx` automatically handles unmatched URLs.
@@ -7,6 +6,6 @@ import type { ReactNode } from "react";
  *
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/not-found
  */
-export default function NotFoundPage(): ReactNode {
+export default function NotFoundPage() {
 	notFound();
 }

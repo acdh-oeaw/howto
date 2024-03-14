@@ -13,7 +13,7 @@ interface LocaleSwitcherLinkProps {
 	locale: Locale;
 }
 
-export function LocaleSwitcherLink(props: LocaleSwitcherLinkProps): ReactNode {
+export function LocaleSwitcherLink(props: LocaleSwitcherLinkProps) {
 	const { children, locale } = props;
 
 	const pathname = usePathname();
@@ -30,7 +30,7 @@ export function LocaleSwitcherLink(props: LocaleSwitcherLinkProps): ReactNode {
 	);
 }
 
-export function LocaleSwitcherLinkFallback(props: LocaleSwitcherLinkProps): ReactNode {
+export function LocaleSwitcherLinkFallback(props: LocaleSwitcherLinkProps) {
 	const { children, locale } = props;
 
 	const pathname = usePathname();

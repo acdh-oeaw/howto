@@ -9,7 +9,7 @@ interface MainContentProps {
 	className?: string;
 }
 
-export function MainContent(props: MainContentProps): ReactNode {
+export function MainContent(props: MainContentProps) {
 	const { children, className } = props;
 
 	return (
