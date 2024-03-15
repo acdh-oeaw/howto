@@ -59,6 +59,10 @@ const config = {
 						/** Don't add backticks around inline `code`. */
 						"code::before": null,
 						"code::after": null,
+
+						strong: {
+							color: "inherit",
+						},
 					},
 				},
 			},
