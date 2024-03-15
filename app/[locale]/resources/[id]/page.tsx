@@ -88,7 +88,7 @@ export default function ResourcePage(props: ResourcePageProps) {
 	setRequestLocale(locale);
 
 	return (
-		<MainContent className="container py-4 xs:py-8">
+		<MainContent className="container grid content-start gap-y-8 py-4 xs:py-8">
 			<DraftModeToggle />
 
 			<ResourceContent id={id} />

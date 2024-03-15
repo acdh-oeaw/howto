@@ -6,6 +6,7 @@ import {
 	getTranslations,
 	unstable_setRequestLocale as setRequestLocale,
 } from "next-intl/server";
+import { Fragment } from "react";
 
 import { DraftModeToggle } from "@/components/draft-mode-toggle";
 import { MainContent } from "@/components/main-content";
@@ -89,7 +90,7 @@ export default function CurriculumPage(props: CurriculumPageProps) {
 	setRequestLocale(locale);
 
 	return (
-		<MainContent className="container py-4 xs:py-8">
+		<MainContent className="container grid content-start gap-y-8 py-4 xs:py-8">
 			<DraftModeToggle />
 
 			<CurriculumContent id={id} />
@@ -130,46 +131,48 @@ async function CurriculumContent(props: CurriculumContentProps) {
 	);
 
 	return (
-		<div className="prose prose-sm w-full">
-			<PageTitle>{curriculum.title}</PageTitle>
+		<Fragment>
+			<div className="prose prose-sm w-full">
+				<PageTitle>{curriculum.title}</PageTitle>
 
-			<div className="border-b">
-				<dl className="grid leading-normal">
-					{editors.length > 0 ? (
+				<div className="border-b">
+					<dl className="grid leading-normal">
+						{editors.length > 0 ? (
+							<div className="inline">
+								<dt className="inline">{t("edited-by")} </dt>
+								<dd className="inline pl-1">
+									{list(
+										editors.filter(isNonNullable).map((editor) => {
+											return [editor.firstName, editor.lastName].join(" ");
+										}),
+									)}
+								</dd>
+							</div>
+						) : null}
 						<div className="inline">
-							<dt className="inline">{t("edited-by")} </dt>
+							<dt className="inline">{t("published-on")} </dt>
+							<dd className="inline pl-1">
+								{dateTime(new Date(curriculum.publicationDate), { dateStyle: "long" })}
+							</dd>
+						</div>
+						<div className="inline">
+							<dt className="inline">{t("tagged-with")} </dt>
 							<dd className="inline pl-1">
 								{list(
-									editors.filter(isNonNullable).map((editor) => {
-										return [editor.firstName, editor.lastName].join(" ");
+									tags.map((tag) => {
+										assert(tag, "Missing tag.");
+										return tag.name;
 									}),
 								)}
 							</dd>
 						</div>
-					) : null}
-					<div className="inline">
-						<dt className="inline">{t("published-on")} </dt>
-						<dd className="inline pl-1">
-							{dateTime(new Date(curriculum.publicationDate), { dateStyle: "long" })}
-						</dd>
-					</div>
-					<div className="inline">
-						<dt className="inline">{t("tagged-with")} </dt>
-						<dd className="inline pl-1">
-							{list(
-								tags.map((tag) => {
-									assert(tag, "Missing tag.");
-									return tag.name;
-								}),
-							)}
-						</dd>
-					</div>
-				</dl>
+					</dl>
+				</div>
+
+				<Content />
 			</div>
 
-			<Content />
-
 			<ResourcesList resources={resources} />
-		</div>
+		</Fragment>
 	);
 }
