@@ -58,7 +58,7 @@ export default function IndexPage(props: IndexPageProps) {
 
 	return (
 		<MainContent className="container grid grid-rows-[auto_1fr] py-4 xs:py-8">
-			<section className="grid w-full items-start justify-items-center gap-y-4 py-8 text-center md:py-12">
+			<section className="grid w-full items-start justify-items-center gap-y-4 py-4 text-center xs:py-8 md:py-12">
 				<h1 className="text-balance font-heading text-3xl font-bold leading-[1.125] tracking-tighter text-neutral-950 xs:text-4xl md:text-5xl dark:text-neutral-0">
 					{t("title")}
 				</h1>

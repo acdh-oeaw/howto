@@ -13,7 +13,7 @@ export function AppLink(props: AppLinkProps) {
 		<Link
 			{...rest}
 			className={cn(
-				"inline-flex items-center gap-x-2 rounded-md px-3 py-1.5 text-neutral-700 transition current:font-medium current:text-neutral-950 hover:text-neutral-950 focus-visible:text-neutral-950 dark:text-neutral-300 dark:current:text-neutral-0 dark:hover:text-neutral-0 dark:focus-visible:text-neutral-0",
+				"relative inline-flex items-center gap-x-2 rounded-md px-3 py-1.5 text-neutral-700 transition current:font-medium current:text-neutral-950 hover:text-neutral-950 focus-visible:text-neutral-950 dark:text-neutral-300 dark:current:text-neutral-0 dark:hover:text-neutral-0 dark:focus-visible:text-neutral-0",
 				className,
 			)}
 		>
