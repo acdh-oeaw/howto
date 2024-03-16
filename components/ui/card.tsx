@@ -13,7 +13,7 @@ import { type VariantProps, variants } from "@/lib/styles";
 
 export const cardStyles = variants({
 	base: [
-		"relative grid min-w-80 max-w-screen-md content-start gap-y-6 overflow-auto",
+		"relative grid min-w-[min(100%,var(--space-80))] max-w-screen-md content-start gap-y-6 overflow-auto",
 		"rounded-md p-6",
 		"bg-neutral-0 dark:bg-neutral-800/50",
 		"border border-neutral-950/10 dark:border-neutral-0/5",
