@@ -297,7 +297,7 @@ export default config({
 						validation: { isRequired: true },
 					},
 				}),
-				shortTitle: fields.text({
+				summaryTitle: fields.text({
 					label: "Short title",
 					// validation: { isRequired: false },
 				}),
@@ -400,7 +400,7 @@ export default config({
 						validation: { isRequired: true },
 					},
 				}),
-				shortTitle: fields.text({
+				summaryTitle: fields.text({
 					label: "Short title",
 					// validation: { isRequired: false },
 				}),
