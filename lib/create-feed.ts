@@ -1,32 +1,32 @@
 import { assert, createUrl, groupByToMap, keyByToMap } from "@acdh-oeaw/lib";
 import { getFormatter } from "next-intl/server";
-import { renderToStaticMarkup } from "react-dom/server";
+// import { renderToStaticMarkup } from "react-dom/server";
 import { type Entry, rss } from "xast-util-feed";
 import { toXml } from "xast-util-to-xml";
 
 import { env } from "@/config/env.config";
-import { locales } from "@/config/i18n.config";
-import { getResourceContent } from "@/lib/content/mdx";
+import type { Locale } from "@/config/i18n.config";
+// import { getResourceContent } from "@/lib/content/mdx";
 import { reader } from "@/lib/content/reader";
 
 const baseUrl = env.NEXT_PUBLIC_APP_BASE_URL;
 
-const resources = await reader().collections.resources.all();
-const resourcesByLocale = groupByToMap(resources, (resource) => {
-	return resource.entry.locale;
-});
+export async function createFeed(locale: Locale) {
+	const allResources = await reader().collections.resources.all();
+	const resourcesByLocale = groupByToMap(allResources, (resource) => {
+		return resource.entry.locale;
+	});
 
-const people = await reader().collections.people.all();
-const peopleById = keyByToMap(people, (person) => {
-	return person.slug;
-});
+	const allPeople = await reader().collections.people.all();
+	const peopleById = keyByToMap(allPeople, (person) => {
+		return person.slug;
+	});
 
-const tags = await reader().collections.tags.all();
-const tagsById = keyByToMap(tags, (tag) => {
-	return tag.slug;
-});
+	const allTags = await reader().collections.tags.all();
+	const tagsById = keyByToMap(allTags, (tag) => {
+		return tag.slug;
+	});
 
-for (const locale of locales) {
 	const { list } = await getFormatter({ locale });
 
 	const channel = {
@@ -42,8 +42,8 @@ for (const locale of locales) {
 	const data: Array<Entry> = [];
 
 	for (const resource of resources) {
-		const { Content } = await getResourceContent(resource.slug);
-		const html = renderToStaticMarkup(Content({}));
+		// const { Content } = await getResourceContent(resource.slug);
+		// const html = renderToStaticMarkup(Content({}));
 
 		data.push({
 			title: resource.entry.title,
@@ -66,4 +66,6 @@ for (const locale of locales) {
 	}
 
 	const feed = toXml(rss(channel, data));
+
+	return feed;
 }
