@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { LocalizedStringProvider as Translations } from "react-aria-components/i18n";
 
 import KeystaticApp from "@/app/keystatic/keystatic";
@@ -14,11 +15,11 @@ export default function RootLayout() {
 
 	return (
 		<html lang={locale}>
-			<head>
-				<Translations locale={locale} />
-			</head>
 			<body>
-				<KeystaticApp />
+				<Translations locale={locale} />
+				<Suspense>
+					<KeystaticApp />
+				</Suspense>
 			</body>
 		</html>
 	);
