@@ -14,8 +14,10 @@ export default function RootLayout() {
 
 	return (
 		<html lang={locale}>
-			<body>
+			<head>
 				<Translations locale={locale} />
+			</head>
+			<body>
 				<KeystaticApp />
 			</body>
 		</html>
