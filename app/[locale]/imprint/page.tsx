@@ -57,7 +57,7 @@ async function ImprintPageContent(props: ImprintPageContentProps) {
 	const html = await getImprintHtml(locale);
 
 	return (
-		<div className="prose prose-sm w-full">
+		<div className="prose prose-sm w-full min-w-0">
 			<PageTitle>{title}</PageTitle>
 
 			<div dangerouslySetInnerHTML={{ __html: html }} />

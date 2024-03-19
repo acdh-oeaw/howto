@@ -76,7 +76,7 @@ async function DocumentationPageContent(props: DocumentationPageContentProps) {
 	const { Content } = await getDocumentationContent(id);
 
 	return (
-		<div className="prose prose-sm w-full">
+		<div className="prose prose-sm w-full min-w-0">
 			<PageTitle>{document.title}</PageTitle>
 
 			<Content />

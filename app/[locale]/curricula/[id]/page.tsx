@@ -132,7 +132,7 @@ async function CurriculumContent(props: CurriculumContentProps) {
 
 	return (
 		<Fragment>
-			<div className="prose prose-sm w-full">
+			<div className="prose prose-sm w-full min-w-0">
 				<PageTitle>{curriculum.title}</PageTitle>
 
 				<div className="border-b">
