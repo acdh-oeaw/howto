@@ -121,7 +121,7 @@ async function ResourceContent(props: ResourceContentProps) {
 	);
 
 	return (
-		<div className="prose prose-sm w-full">
+		<div className="prose prose-sm w-full min-w-0">
 			<PageTitle>{resource.title}</PageTitle>
 
 			<div className="border-b">
