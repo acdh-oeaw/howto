@@ -18,7 +18,7 @@ function rewriteUrl(request: Request) {
 
 		url.hostname = forwardedHost;
 		url.protocol = forwardedProto;
-		url.port = "443";
+		url.port = "";
 
 		return new Request(url, request);
 	}
