@@ -95,6 +95,12 @@ dependencies:
   unist-util-visit:
     specifier: ^5.0.0
     version: 5.0.0
+  xast-util-feed:
+    specifier: ^2.0.0
+    version: 2.0.0
+  xast-util-to-xml:
+    specifier: ^4.0.0
+    version: 4.0.0
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -3378,6 +3384,12 @@ packages:
   /@types/unist@3.0.2:
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
 
+  /@types/xast@2.0.4:
+    resolution: {integrity: sha512-6Q6HWhHXR5EEKcxgF5YBW5XPAAtCi/GgyCWHx6wR7dZTXF5rv2B2fm0hgpSscJqaVDVm6n1DAVbsM8RSM5PlMw==}
+    dependencies:
+      '@types/unist': 3.0.2
+    dev: false
+
   /@typescript-eslint/eslint-plugin@7.2.0(@typescript-eslint/parser@7.2.0)(eslint@8.57.0)(typescript@5.4.2):
     resolution: {integrity: sha512-mdekAHOqS9UjlmyF/LSs6AIEvfceV749GFxoBAjwAv0nkevfKHWQFDMcBZWUiIC5ft6ePWivXoS36aKQ0Cy3sw==}
     engines: {node: ^16.0.0 || >=18.0.0}
@@ -3982,6 +3994,25 @@ packages:
   /balanced-match@2.0.0:
     resolution: {integrity: sha512-1ugUSr8BHXRnK23KfuYS+gVMC3LB8QGH9W1iGtDPsNWoQbgtXSExkBu2aDR4epiGWZOjZsj6lDl/N/AqqTC3UA==}
     dev: true
+
+  /bcp-47-match@2.0.3:
+    resolution: {integrity: sha512-JtTezzbAibu8G0R9op9zb3vcWZd9JF6M0xOYGPn0fNCd7wOpRB1mU2mH9T8gaBGbAAyIIVgB2G7xG0GP98zMAQ==}
+    dev: false
+
+  /bcp-47-normalize@2.3.0:
+    resolution: {integrity: sha512-8I/wfzqQvttUFz7HVJgIZ7+dj3vUaIyIxYXaTRP1YWoSDfzt6TUmxaKZeuXR62qBmYr+nvuWINFRl6pZ5DlN4Q==}
+    dependencies:
+      bcp-47: 2.1.0
+      bcp-47-match: 2.0.3
+    dev: false
+
+  /bcp-47@2.1.0:
+    resolution: {integrity: sha512-9IIS3UPrvIa1Ej+lVDdDwO7zLehjqsaByECw0bu2RRGP73jALm6FYbzI5gWbgHLvNdkvfXB5YrSbocZdOS0c0w==}
+    dependencies:
+      is-alphabetical: 2.0.1
+      is-alphanumerical: 2.0.1
+      is-decimal: 2.0.1
+    dev: false
 
   /binary-extensions@2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
@@ -9072,6 +9103,12 @@ packages:
       trough: 2.2.0
       vfile: 6.0.1
 
+  /unist-builder@4.0.0:
+    resolution: {integrity: sha512-wmRFnH+BLpZnTKpc5L7O67Kac89s9HMrtELpnNaE6TAobq5DTZZs5YaTQfAZBA9bFPECx2uVAPO31c+GVug8mg==}
+    dependencies:
+      '@types/unist': 3.0.2
+    dev: false
+
   /unist-util-is@5.2.1:
     resolution: {integrity: sha512-u9njyyfEh43npf1M+yGKDGVPbY/JWEemg5nH05ncKPfi+kBbKBJoTdsogMu33uhytuLlv9y0O7GH7fEdwLdLQw==}
     dependencies:
@@ -9451,6 +9488,29 @@ packages:
       utf-8-validate:
         optional: true
     dev: true
+
+  /xast-util-feed@2.0.0:
+    resolution: {integrity: sha512-KqogdKHOH8yqIQxAjqTWijpHo0MDmYEIvdi48RW/xeZYs2+zsK3rMpH4NcriPNEugyKUrQr2EHRy5j3L5tGejA==}
+    dependencies:
+      '@types/xast': 2.0.4
+      bcp-47-normalize: 2.3.0
+      unist-builder: 4.0.0
+      xastscript: 4.0.0
+    dev: false
+
+  /xast-util-to-xml@4.0.0:
+    resolution: {integrity: sha512-r1euIWS5yZJUNpfN+ReE4m7Vld2iytaOPJtuXVuRQacRZwqRN1MAb+dv0aGLrdXOZrpGLyvUFf1Upyrb3R5qBg==}
+    dependencies:
+      '@types/xast': 2.0.4
+      ccount: 2.0.1
+      stringify-entities: 4.0.3
+    dev: false
+
+  /xastscript@4.0.0:
+    resolution: {integrity: sha512-r7a0kObEyivkML0dLrp/nOH5l51y9v5DL1MT/Xc6qUgGGNP1mZZUmT6NXtWAmx2FLfjonop++PtpVMwp1Hw/Gw==}
+    dependencies:
+      '@types/xast': 2.0.4
+    dev: false
 
   /xmlbuilder@15.1.1:
     resolution: {integrity: sha512-yMqGBqtXyeN1e3TGYvgNgDVZ3j84W4cwkOXQswghol6APgZWaff9lnbvN7MHYJOiXsvGPXtjTYJEiC9J2wv9Eg==}

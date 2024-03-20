@@ -1,3 +1,4 @@
+import { MenuIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { AppNavLink } from "@/components/app-nav-link";
@@ -5,6 +6,7 @@ import { ColorSchemeSwitcher } from "@/components/color-scheme-switcher";
 import type { LinkProps } from "@/components/link";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { Logo } from "@/components/logo";
+import { IconButton } from "@/components/ui/icon-button";
 import { createHref } from "@/lib/create-href";
 
 export function AppHeader() {
@@ -18,8 +20,8 @@ export function AppHeader() {
 
 	return (
 		<header className="border-b">
-			<div className="container flex max-w-screen-md items-center justify-between gap-x-4 border-x bg-neutral-0 py-6 dark:bg-neutral-900">
-				<nav aria-label={t("navigation-primary")}>
+			<div className="container flex max-w-screen-md items-center justify-between gap-x-4 border-x bg-neutral-0 py-3 xs:py-6 dark:bg-neutral-900">
+				<nav aria-label={t("navigation-primary")} className="hidden xs:block">
 					<ul className="-ml-3 flex items-center gap-x-2 text-sm font-medium" role="list">
 						{Object.entries(links).map(([id, link]) => {
 							if (id === "home") {
@@ -42,9 +44,14 @@ export function AppHeader() {
 					</ul>
 				</nav>
 
-				<div className="-mr-1 flex items-center gap-x-2">
+				<div className="-mr-1 ml-auto flex items-center gap-x-2">
 					<ColorSchemeSwitcher />
 					<LocaleSwitcher />
+					<nav aria-label={t("navigation-primary")} className="block xs:hidden">
+						<IconButton variant="plain">
+							<MenuIcon className="size-5 shrink-0" />
+						</IconButton>
+					</nav>
 				</div>
 			</div>
 		</header>
