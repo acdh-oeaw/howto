@@ -34,7 +34,7 @@ export async function Image(props: ImageProps) {
 				height: dimensions.height,
 				/** Next.js will add long-time caching headers for static image imports. */
 				// TODO: use build id instead of timestamp for cache busting.
-				src: src + `?timestamp=${Date.now()}`,
+				src: src + `?timestamp=${String(Date.now())}`,
 				width: dimensions.width,
 			}}
 		/>

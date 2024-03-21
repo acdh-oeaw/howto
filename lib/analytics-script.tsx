@@ -31,7 +31,7 @@ export function AnalyticsScript(props: AnalyticsProps) {
 		<Fragment>
 			<Script
 				dangerouslySetInnerHTML={{
-					__html: `(${String(createAnalyticsScript)})("${baseUrl.endsWith("/") ? baseUrl : baseUrl + "/"}", "${id}");`,
+					__html: `(${String(createAnalyticsScript)})("${baseUrl.endsWith("/") ? baseUrl : baseUrl + "/"}", "${String(id)}");`,
 				}}
 				id="analytics-script"
 			/>

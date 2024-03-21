@@ -59,9 +59,9 @@ export function FootnoteContent(props: FootnoteContentProps) {
 }
 
 function createFootnoteReferenceId(count: number) {
-	return `fn-ref-${count}`;
+	return `fn-ref-${String(count)}`;
 }
 
 function createFootnoteContentId(count: number) {
-	return `fn-${count}`;
+	return `fn-${String(count)}`;
 }

@@ -66,9 +66,9 @@ export function QuizChoice(props: QuizChoiceProps) {
 					return (
 						<li key={index}>
 							<label className="grid grid-cols-[auto_1fr] items-center gap-x-2">
-								<input name={`checks.${index}`} type="hidden" value={answer.props.kind} />
+								<input name={`checks.${String(index)}`} type="hidden" value={answer.props.kind} />
 								<input
-									name={variant === "single" ? "checked" : `checked.${index}`}
+									name={variant === "single" ? "checked" : `checked.${String(index)}`}
 									type={type}
 									value={index}
 								/>

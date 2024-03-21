@@ -111,7 +111,7 @@ generate()
 	.then(() => {
 		log.success("Successfully generated metadata dump.");
 	})
-	.catch((error) => {
+	.catch((error: unknown) => {
 		log.error("Failed to generate metadata dump.", String(error));
 		process.exitCode = 1;
 	});
