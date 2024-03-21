@@ -1,5 +1,6 @@
 import "server-only";
 
+import { assert } from "@acdh-oeaw/lib";
 import { createReader } from "@keystatic/core/reader";
 import { createGitHubReader } from "@keystatic/core/reader/github";
 import { cookies, draftMode } from "next/headers";
@@ -11,6 +12,12 @@ import config from "@/keystatic.config";
 export const reader = cache(() => {
 	if (isDraftModeEnabled()) {
 		const branch = cookies().get("ks-branch")?.value;
+
+		assert(
+			env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER != null &&
+				env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_NAME != null,
+			"Missing github repository config.",
+		);
 
 		if (branch) {
 			return createGitHubReader(config, {

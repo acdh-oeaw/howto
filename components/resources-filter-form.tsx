@@ -120,7 +120,7 @@ export function ResourcesFilterForm(props: ResourcesFilterFormProps) {
 				})}
 			</ListBox>
 			{Array.from(selectedTags).map((tag, index) => {
-				return <input key={tag} name={`tag.${index}`} type="hidden" value={tag} />;
+				return <input key={tag} name={`tag.${String(index)}`} type="hidden" value={tag} />;
 			})}
 		</Form>
 	);

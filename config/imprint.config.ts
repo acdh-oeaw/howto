@@ -6,7 +6,7 @@ import type { Locale } from "@/config/i18n.config";
 export function createImprintUrl(locale: Locale): URL {
 	return createUrl({
 		baseUrl: "https://imprint.acdh.oeaw.ac.at",
-		pathname: `/${env.NEXT_PUBLIC_REDMINE_ID}`,
+		pathname: `/${String(env.NEXT_PUBLIC_REDMINE_ID)}`,
 		searchParams: createUrlSearchParams({ locale }),
 	});
 }

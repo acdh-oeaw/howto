@@ -66,7 +66,7 @@ generate()
 	.then(() => {
 		log.success("Successfully updated search index.");
 	})
-	.catch((error) => {
+	.catch((error: unknown) => {
 		log.error("Failed to update search index.", String(error));
 		if (error instanceof Errors.ImportError) {
 			log.log(error.importResults);
