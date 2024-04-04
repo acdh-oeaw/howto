@@ -21,16 +21,38 @@ const config = {
 	},
 	output: env.BUILD_MODE,
 	pageExtensions: ["ts", "tsx", "md", "mdx"],
-	rewrites() {
-		/** @type {Awaited<ReturnType<NonNullable<NextConfig["rewrites"]>>>} */
-		const rewrites = [
+	redirects() {
+		/** Resolve legacy urls from previous version. */
+		/** @type {Awaited<ReturnType<NonNullable<NextConfig["redirects"]>>>} */
+		const redirects = [
 			{
-				source: "/admin",
-				destination: "/keystatic",
+				source: "/resource/posts/:path*",
+				destination: "/resources/:path*",
+				permanent: true,
+			},
+			{
+				source: "/curriculum/:path*",
+				destination: "/curricula/:path*",
+				permanent: true,
+			},
+			{
+				source: "/resource/posts/lesson-1-make-a-plan",
+				destination: "/resources/semantickraus-lesson-1-make-a-plan",
+				permanent: true,
+			},
+			{
+				source: "/resource/posts/lesson-2-meet-the-data",
+				destination: "/resources/semantickraus-lesson-2-meet-the-data",
+				permanent: true,
+			},
+			{
+				source: "/resource/posts/lesson-3-copy-and-paste",
+				destination: "/resources/semantickraus-lesson-3-copy-and-paste",
+				permanent: true,
 			},
 		];
 
-		return Promise.resolve(rewrites);
+		return Promise.resolve(redirects);
 	},
 	typescript: {
 		ignoreBuildErrors: true,
