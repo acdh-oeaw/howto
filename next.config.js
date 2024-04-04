@@ -26,29 +26,39 @@ const config = {
 		/** @type {Awaited<ReturnType<NonNullable<NextConfig["redirects"]>>>} */
 		const redirects = [
 			{
-				source: "/resource/posts/:path*",
-				destination: "/resources/:path*",
-				permanent: true,
-			},
-			{
-				source: "/curriculum/:path*",
-				destination: "/curricula/:path*",
-				permanent: true,
-			},
-			{
-				source: "/resource/posts/lesson-1-make-a-plan",
+				source: "/:locale(de|en)?/resource/posts/lesson-1-make-a-plan",
 				destination: "/resources/semantickraus-lesson-1-make-a-plan",
 				permanent: true,
 			},
 			{
-				source: "/resource/posts/lesson-2-meet-the-data",
+				source: "/:locale(de|en)?/resource/posts/lesson-2-meet-the-data",
 				destination: "/resources/semantickraus-lesson-2-meet-the-data",
 				permanent: true,
 			},
 			{
-				source: "/resource/posts/lesson-3-copy-and-paste",
+				source: "/:locale(de|en)?/resource/posts/lesson-3-copy-and-paste",
 				destination: "/resources/semantickraus-lesson-3-copy-and-paste",
 				permanent: true,
+			},
+			{
+				source: "/:locale(de|en)?/resource/posts/:path*",
+				destination: "/resources/:path*",
+				permanent: true,
+			},
+			{
+				source: "/:locale(de|en)?/curriculum/:path*",
+				destination: "/curricula/:path*",
+				permanent: true,
+			},
+			{
+				source: "/:locale(de|en)?/resources/page/:path*",
+				destination: "/resources",
+				permanent: false,
+			},
+			{
+				source: "/:locale(de|en)?/curricula/page/:path*",
+				destination: "/curricula",
+				permanent: false,
 			},
 		];
 
