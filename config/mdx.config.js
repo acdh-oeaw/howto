@@ -1,4 +1,5 @@
 import withSyntaxHighlighter from "@shikijs/rehype";
+import withHeadingIds from "rehype-slug";
 import withFrontmatter from "remark-frontmatter";
 import withGfm from "remark-gfm";
 import withMdxFrontmatter from "remark-mdx-frontmatter";
@@ -16,5 +17,5 @@ export const config = {
 		withMdxFootnotes,
 		withTypographicQuotes,
 	],
-	rehypePlugins: [[withSyntaxHighlighter, syntaxHighlighterConfig]],
+	rehypePlugins: [withHeadingIds, [withSyntaxHighlighter, syntaxHighlighterConfig]],
 };
