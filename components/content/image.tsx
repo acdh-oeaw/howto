@@ -6,6 +6,7 @@ import NextImage from "next/image";
 
 interface ImageProps {
 	alt?: string;
+	className?: string;
 	height?: number;
 	src: string;
 	width?: number;
@@ -32,8 +33,8 @@ export async function Image(props: ImageProps) {
 			alt={alt}
 			src={{
 				height: dimensions.height,
-				/** Next.js will add long-time caching headers for static image imports. */
 				// TODO: use build id instead of timestamp for cache busting.
+				/** Next.js will add long-time caching headers for static image imports. */
 				src: src + `?timestamp=${String(Date.now())}`,
 				width: dimensions.width,
 			}}
@@ -43,7 +44,8 @@ export async function Image(props: ImageProps) {
 
 async function getDimensions(src: string) {
 	try {
-		// const buffer = Buffer.from(await fetch(src).then(response => response.arrayBuffer())) // TODO: for external images via http
+		// TODO: fetch external images via http.
+		// const buffer = Buffer.from(await fetch(src).then(response => response.arrayBuffer()))
 		const buffer = await readFile(join(process.cwd(), "public", src));
 		const dimensions = sizeOf(buffer);
 		return dimensions;

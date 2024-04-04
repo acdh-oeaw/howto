@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import { Image } from "@/components/content/image";
+
 interface FigureProps {
 	alt?: string;
 	children: ReactNode;
@@ -11,8 +13,7 @@ export function Figure(props: FigureProps) {
 
 	return (
 		<figure>
-			{/* eslint-disable-next-line @next/next/no-img-element */}
-			<img alt={alt} className="overflow-hidden rounded-md" src={src} />
+			<Image alt={alt} className="overflow-hidden rounded-md" src={src} />
 			<figcaption>{children}</figcaption>
 		</figure>
 	);
