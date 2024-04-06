@@ -41,6 +41,7 @@
 	"CurriculumCard": {
 		"edited-by": "Zusammengestellt von",
 		"published-on": "Veröffentlicht am",
+		"read": "{title} lesen",
 		"read-more": "Weiterlesen",
 		"tagged-with": "Getagged mit"
 	},
@@ -95,6 +96,7 @@
 	},
 	"ResourceCard": {
 		"published-on": "Veröffentlicht am",
+		"read": "{title} lesen",
 		"read-more": "Weiterlesen",
 		"tagged-with": "Getagged mit",
 		"written-by": "Geschrieben von"

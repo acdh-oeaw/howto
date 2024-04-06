@@ -75,6 +75,7 @@ export async function CurriculumCard(props: CurriculumCardProps) {
 			</div>
 			<div className="justify-self-end">
 				<AppLink
+					aria-label={t("read", { title: curriculum.title })}
 					className="text-sm underline underline-offset-4 hover:no-underline focus-visible:no-underline"
 					href={href}
 				>
