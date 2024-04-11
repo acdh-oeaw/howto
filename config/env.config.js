@@ -3,6 +3,7 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
+	emptyStringAsUndefined: true,
 	shared: {
 		NODE_ENV: z.enum(["development", "production", "test"]).default("production"),
 	},
@@ -26,10 +27,10 @@ export const env = createEnv({
 		NEXT_PUBLIC_MATOMO_BASE_URL: z.string().url().optional(),
 		NEXT_PUBLIC_MATOMO_ID: z.coerce.number().int().positive().optional(),
 		NEXT_PUBLIC_REDMINE_ID: z.coerce.number().int().positive(),
-		NEXT_PUBLIC_TYPESENSE_API_KEY: z.string().min(1),
-		NEXT_PUBLIC_TYPESENSE_HOST: z.string().min(1),
-		NEXT_PUBLIC_TYPESENSE_PORT: z.coerce.number().int().positive(),
-		NEXT_PUBLIC_TYPESENSE_PROTOCOL: z.string().min(1),
+		NEXT_PUBLIC_TYPESENSE_API_KEY: z.string().min(1).optional(),
+		NEXT_PUBLIC_TYPESENSE_HOST: z.string().min(1).optional(),
+		NEXT_PUBLIC_TYPESENSE_PORT: z.coerce.number().int().positive().optional(),
+		NEXT_PUBLIC_TYPESENSE_PROTOCOL: z.string().min(1).optional(),
 	},
 	runtimeEnv: {
 		BUILD_MODE: process.env.BUILD_MODE,
