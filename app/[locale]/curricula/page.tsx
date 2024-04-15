@@ -2,6 +2,7 @@ import { createUrlSearchParams } from "@acdh-oeaw/lib";
 import type { Metadata, ResolvingMetadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
+import * as v from "valibot";
 
 import { CurriculaSection } from "@/components/curricula-section";
 import { MainContent } from "@/components/main-content";
@@ -44,7 +45,7 @@ export default function CurriculaPage(props: CurriculaPageProps) {
 
 	const searchParamsSchema = createResourceFiltersSearchParamsSchema(locale);
 
-	const filters = searchParamsSchema.parse({
+	const filters = v.parse(searchParamsSchema, {
 		limit: urlSearchParams.get("limit"),
 		locale: urlSearchParams.get("locale"),
 		page: urlSearchParams.get("page"),

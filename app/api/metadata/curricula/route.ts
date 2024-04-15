@@ -3,21 +3,21 @@ import { join } from "node:path";
 
 import { log } from "@acdh-oeaw/lib";
 import type { NextRequest } from "next/server";
-import { z } from "zod";
+import * as v from "valibot";
 
 import type { Resource } from "@/lib/content/types";
 
 const filePath = join(process.cwd(), "./public/metadata/curricula.json");
 
-const searchParamsSchema = z.object({
-	limit: z.coerce.number().int().positive().max(100).optional().default(10),
-	offset: z.coerce.number().int().nonnegative().optional().default(0),
+const searchParamsSchema = v.object({
+	limit: v.optional(v.coerce(v.number([v.integer(), v.minValue(1), v.maxValue(100)]), Number), 10),
+	offset: v.optional(v.coerce(v.number([v.integer(), v.minValue(0)]), Number), 0),
 });
 
 export async function GET(request: NextRequest) {
 	const { searchParams } = request.nextUrl;
 
-	const result = searchParamsSchema.safeParse({
+	const result = v.safeParse(searchParamsSchema, {
 		limit: searchParams.get("limit"),
 		offset: searchParams.get("offset"),
 	});
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
 		return Response.json({ message: "Bad request" }, { status: 400 });
 	}
 
-	const { offset, limit } = result.data;
+	const { offset, limit } = result.output;
 
 	try {
 		const curricula = await readCurricula();

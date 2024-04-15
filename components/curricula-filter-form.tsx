@@ -4,7 +4,7 @@ import { createUrlSearchParams } from "@acdh-oeaw/lib";
 import { useOptimistic, useState } from "react";
 import { ListBox, ListBoxItem, type Selection } from "react-aria-components";
 import { useFormState } from "react-dom";
-import { z } from "zod";
+import * as v from "valibot";
 
 import { SelectField, SelectItem } from "@/components/ui/blocks/select-field";
 import { TextInputField } from "@/components/ui/blocks/text-input-field";
@@ -16,13 +16,13 @@ import { getFormData } from "@/lib/get-form-data";
 import { useRouter } from "@/lib/navigation";
 import { cn } from "@/lib/styles";
 
-const formSchema = z.object({
-	locale: z.enum([...locales, "all"]).optional(),
-	q: z.string().optional(),
-	tag: z.array(z.string()).optional(),
+const formSchema = v.object({
+	locale: v.optional(v.picklist([...locales, "all"])),
+	q: v.optional(v.string()),
+	tag: v.optional(v.array(v.string())),
 });
 
-type FormSchema = z.infer<typeof formSchema>;
+type FormSchema = v.Output<typeof formSchema>;
 
 interface CurriculaFilterFormProps {
 	filters: FormSchema;
@@ -49,7 +49,7 @@ export function CurriculaFilterForm(props: CurriculaFilterFormProps) {
 
 	function action(prevState: undefined, formData: FormData) {
 		const input = getFormData(formData);
-		const filters = formSchema.parse(input);
+		const filters = v.parse(formSchema, input);
 
 		updateOptimisticFilters(filters);
 		router.push("?" + String(createUrlSearchParams(filters)));

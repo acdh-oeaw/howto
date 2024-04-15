@@ -2,6 +2,7 @@ import { createUrlSearchParams } from "@acdh-oeaw/lib";
 import type { Metadata, ResolvingMetadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
+import * as v from "valibot";
 
 import { MainContent } from "@/components/main-content";
 import { ResourcesSection } from "@/components/resources-section";
@@ -44,7 +45,7 @@ export default function ResourcesPage(props: ResourcesPageProps) {
 
 	const searchParamsSchema = createResourceFiltersSearchParamsSchema(locale);
 
-	const filters = searchParamsSchema.parse({
+	const filters = v.parse(searchParamsSchema, {
 		limit: urlSearchParams.get("limit"),
 		locale: urlSearchParams.get("locale"),
 		page: urlSearchParams.get("page"),
