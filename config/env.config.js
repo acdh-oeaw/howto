@@ -1,38 +1,50 @@
 import { log } from "@acdh-oeaw/lib";
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from "@acdh-oeaw/validate-env";
+import * as v from "valibot";
 
 export const env = createEnv({
-	emptyStringAsUndefined: true,
-	shared: {
-		NODE_ENV: z.enum(["development", "production", "test"]).default("production"),
+	prefix: "NEXT_PUBLIC_",
+	shared(input) {
+		const Schema = v.object({
+			NODE_ENV: v.optional(v.picklist(["development", "production", "test"]), "production"),
+		});
+		return v.parse(Schema, input);
 	},
-	server: {
-		BUILD_MODE: z.enum(["export", "standalone"]).optional(),
-		BUNDLE_ANALYZER: z.enum(["disabled", "enabled"]).optional(),
-		ENV_VALIDATION: z.enum(["disabled", "enabled"]).optional(),
-		KEYSTATIC_GITHUB_CLIENT_ID: z.string().min(1).optional(),
-		KEYSTATIC_GITHUB_CLIENT_SECRET: z.string().min(1).optional(),
-		KEYSTATIC_SECRET: z.string().min(1).optional(),
-		TYPESENSE_ADMIN_API_KEY: z.string().min(1).optional(),
+	server(input) {
+		const Schema = v.object({
+			BUILD_MODE: v.optional(v.picklist(["export", "standalone"])),
+			BUNDLE_ANALYZER: v.optional(v.picklist(["disabled", "enabled"])),
+			ENV_VALIDATION: v.optional(v.picklist(["disabled", "enabled"])),
+			KEYSTATIC_GITHUB_CLIENT_ID: v.optional(v.string([v.minLength(1)])),
+			KEYSTATIC_GITHUB_CLIENT_SECRET: v.optional(v.string([v.minLength(1)])),
+			KEYSTATIC_SECRET: v.optional(v.string([v.minLength(1)])),
+			TYPESENSE_ADMIN_API_KEY: v.optional(v.string([v.minLength(1)])),
+		});
+		return v.parse(Schema, input);
 	},
-	client: {
-		NEXT_PUBLIC_APP_BASE_URL: z.string().url(),
-		NEXT_PUBLIC_BOTS: z.enum(["disabled", "enabled"]).optional(),
-		NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: z.string().optional(),
-		NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: z.string().min(1).optional(),
-		NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_NAME: z.string().min(1).optional(),
-		NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER: z.string().min(1).optional(),
-		NEXT_PUBLIC_KEYSTATIC_MODE: z.enum(["github", "local"]).default("local"),
-		NEXT_PUBLIC_MATOMO_BASE_URL: z.string().url().optional(),
-		NEXT_PUBLIC_MATOMO_ID: z.coerce.number().int().positive().optional(),
-		NEXT_PUBLIC_REDMINE_ID: z.coerce.number().int().positive(),
-		NEXT_PUBLIC_TYPESENSE_API_KEY: z.string().min(1).optional(),
-		NEXT_PUBLIC_TYPESENSE_HOST: z.string().min(1).optional(),
-		NEXT_PUBLIC_TYPESENSE_PORT: z.coerce.number().int().positive().optional(),
-		NEXT_PUBLIC_TYPESENSE_PROTOCOL: z.string().min(1).optional(),
+	client(input) {
+		const Schema = v.object({
+			NEXT_PUBLIC_APP_BASE_URL: v.string([v.url()]),
+			NEXT_PUBLIC_BOTS: v.optional(v.picklist(["disabled", "enabled"])),
+			NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: v.optional(v.string()),
+			NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: v.optional(v.string([v.minLength(1)])),
+			NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_NAME: v.optional(v.string([v.minLength(1)])),
+			NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO_OWNER: v.optional(v.string([v.minLength(1)])),
+			NEXT_PUBLIC_KEYSTATIC_MODE: v.optional(v.picklist(["github", "local"]), "local"),
+			NEXT_PUBLIC_MATOMO_BASE_URL: v.optional(v.string([v.url()])),
+			NEXT_PUBLIC_MATOMO_ID: v.optional(v.coerce(v.number([v.integer(), v.minValue(1)]), Number)),
+			NEXT_PUBLIC_REDMINE_ID: v.coerce(v.number([v.integer(), v.minValue(1)]), Number),
+			NEXT_PUBLIC_TYPESENSE_API_KEY: v.optional(v.string([v.minLength(1)])),
+			NEXT_PUBLIC_TYPESENSE_HOST: v.optional(v.string([v.minLength(1)])),
+			NEXT_PUBLIC_TYPESENSE_PORT: v.optional(
+				v.coerce(v.number([v.integer(), v.minValue(1)]), Number),
+			),
+			NEXT_PUBLIC_TYPESENSE_PROTOCOL: v.optional(v.string([v.minLength(1)])),
+		});
+		return v.parse(Schema, input);
 	},
-	runtimeEnv: {
+
+	environment: {
 		BUILD_MODE: process.env.BUILD_MODE,
 		BUNDLE_ANALYZER: process.env.BUNDLE_ANALYZER,
 		ENV_VALIDATION: process.env.ENV_VALIDATION,
@@ -56,12 +68,19 @@ export const env = createEnv({
 		NEXT_PUBLIC_TYPESENSE_PROTOCOL: process.env.NEXT_PUBLIC_TYPESENSE_PROTOCOL,
 		TYPESENSE_ADMIN_API_KEY: process.env.TYPESENSE_ADMIN_API_KEY,
 	},
-	skipValidation: process.env.ENV_VALIDATION === "disabled",
-	onValidationError(validationError) {
-		const message = "Invalid environment variables";
-		log.error(`${message}:`, validationError.flatten().fieldErrors);
-		const error = new Error(message);
-		delete error.stack;
+	skip: process.env.ENV_VALIDATION === "disabled",
+	onError(error) {
+		if (error instanceof v.ValiError) {
+			const message = "Invalid environment variables";
+
+			log.error(`${message}:`, v.flatten(error).nested);
+
+			const validationError = new Error(message);
+			delete validationError.stack;
+
+			throw validationError;
+		}
+
 		throw error;
 	},
 });
