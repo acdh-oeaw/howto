@@ -88,6 +88,20 @@ export default function LocaleLayout(props: LocaleLayoutProps) {
 			 */
 			suppressHydrationWarning={true}
 		>
+			<head>
+				{locales.map((locale) => {
+					return (
+						<link
+							key={locale}
+							href={`/${locale}/rss.xml`}
+							rel="alternate"
+							title={`RSS Feed (${locale})`}
+							type="application/rss+xml"
+						/>
+					);
+				})}
+			</head>
+
 			<body>
 				{/* @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld */}
 				<script
