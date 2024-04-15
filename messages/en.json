@@ -1,6 +1,7 @@
 {
 	"AppFooter": {
 		"links": {
+			"feed": "RSS Feed",
 			"imprint": "Imprint"
 		},
 		"navigation-secondary": "Secondary"
@@ -61,7 +62,7 @@
 	},
 	"IndexPage": {
 		"lead-in": "Welcome to ACDH-CH Learning Resources. This website gathers interactive learning material, practical HowTo articles and best practices on a wide range of Digital Humanities topics, methododologies and infrastructures.",
-		"title": "Share and expand your knowledge in Digital Humanities "
+		"title": "Share and expand your knowledge in Digital Humanities"
 	},
 	"Loading": {
 		"loading": "Loading"

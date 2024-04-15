@@ -10,6 +10,7 @@ export function AppFooter() {
 
 	const links = {
 		imprint: { href: createHref({ pathname: "/imprint" }), label: t("links.imprint") },
+		feed: { href: createHref({ pathname: "/rss.xml" }), label: t("links.feed") },
 	} satisfies Record<string, { href: LinkProps["href"]; label: string }>;
 
 	return (

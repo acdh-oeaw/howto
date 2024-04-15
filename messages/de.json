@@ -1,6 +1,7 @@
 {
 	"AppFooter": {
 		"links": {
+			"feed": "RSS Feed",
 			"imprint": "Impressum"
 		},
 		"navigation-secondary": "Sekundär"
