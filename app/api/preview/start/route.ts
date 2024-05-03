@@ -1,7 +1,10 @@
 import { cookies, draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 
-export function GET(request: Request): Response {
+import { rewriteUrl } from "@/lib/rewrite-url";
+
+export function GET(_request: Request): Response {
+	const request = rewriteUrl(_request);
 	const url = new URL(request.url);
 	const params = url.searchParams;
 
@@ -18,5 +21,5 @@ export function GET(request: Request): Response {
 	toUrl.protocol = url.protocol;
 	toUrl.host = url.host;
 
-	redirect(toUrl.toString());
+	redirect(String(toUrl));
 }
