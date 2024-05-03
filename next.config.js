@@ -60,6 +60,11 @@ const config = {
 				destination: "/curricula",
 				permanent: false,
 			},
+			{
+				source: "/admin",
+				destination: "/keystatic",
+				permanent: false,
+			},
 		];
 
 		return Promise.resolve(redirects);
