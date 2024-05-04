@@ -35,6 +35,9 @@ ARG NEXT_PUBLIC_TYPESENSE_HOST
 ARG NEXT_PUBLIC_TYPESENSE_PORT
 ARG NEXT_PUBLIC_TYPESENSE_PROTOCOL
 
+# disable validation for runtime environment variables
+ENV ENV_VALIDATION=public
+
 RUN pnpm install --frozen-lockfile --offline
 
 ENV BUILD_MODE=standalone
