@@ -65,6 +65,13 @@ export async function generateMetadata(
 		verification: {
 			google: env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
 		},
+		alternates: {
+			types: {
+				"application/rss+xml": locales.map((locale) => {
+					return { title: `RSS Feed (${locale})`, url: `/${locale}/rss.xml` };
+				}),
+			},
+		},
 	};
 
 	return metadata;
@@ -88,20 +95,6 @@ export default function LocaleLayout(props: LocaleLayoutProps) {
 			 */
 			suppressHydrationWarning={true}
 		>
-			<head>
-				{locales.map((locale) => {
-					return (
-						<link
-							key={locale}
-							href={`/${locale}/rss.xml`}
-							rel="alternate"
-							title={`RSS Feed (${locale})`}
-							type="application/rss+xml"
-						/>
-					);
-				})}
-			</head>
-
 			<body>
 				{/* @see https://nextjs.org/docs/app/building-your-application/optimizing/metadata#json-ld */}
 				<script
