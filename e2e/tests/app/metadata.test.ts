@@ -159,3 +159,24 @@ test("should serve an open-graph image", async ({ page, request }) => {
 		expect(contentType).toBe("image/png");
 	}
 });
+
+test("should have links to rss feeds", async ({ page }) => {
+	await page.goto("/en");
+
+	const feeds = page.locator('link[rel="alternate"][type="application/rss+xml"]');
+	const hrefs = await feeds.evaluateAll((elements) => {
+		return elements.map((element) => {
+			return (element as HTMLLinkElement).href;
+		});
+	});
+
+	expect(hrefs).toEqual(
+		expect.arrayContaining(
+			locales.map((locale) => {
+				return String(
+					createUrl({ baseUrl: env.NEXT_PUBLIC_APP_BASE_URL, pathname: `/${locale}/rss.xml` }),
+				);
+			}),
+		),
+	);
+});
