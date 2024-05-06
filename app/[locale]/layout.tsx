@@ -43,6 +43,8 @@ export async function generateMetadata(
 	const { locale } = params;
 	const t = await getTranslations({ locale, namespace: "LocaleLayout" });
 
+	const rootMetadata = await _parent;
+
 	const metadata: Metadata = {
 		title: {
 			default: t("meta.title"),
@@ -66,6 +68,7 @@ export async function generateMetadata(
 			google: env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
 		},
 		alternates: {
+			canonical: rootMetadata.alternates?.canonical,
 			types: {
 				"application/rss+xml": locales.map((locale) => {
 					return { title: `RSS Feed (${locale})`, url: `/${locale}/rss.xml` };
