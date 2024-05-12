@@ -6,8 +6,8 @@ deployed at <https://howto.acdh.oeaw.ac.at>.
 
 prerequisites:
 
-- [Node.js v20](https://nodejs.org/en/download)
-- [pnpm](https://pnpm.io/installation)
+- [node.js v20](https://nodejs.org/en/download)
+- [pnpm v9](https://pnpm.io/installation)
 
 set required environment variables in `.env.local`:
 
