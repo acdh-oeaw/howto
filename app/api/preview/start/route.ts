@@ -5,6 +5,7 @@ import { rewriteUrl } from "@/lib/rewrite-url";
 
 export function GET(_request: Request): Response {
 	const request = rewriteUrl(_request);
+
 	const url = new URL(request.url);
 	const params = url.searchParams;
 

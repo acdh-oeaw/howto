@@ -1,6 +1,10 @@
 import { cookies, draftMode } from "next/headers";
 
-export function POST(request: Request): Response {
+import { rewriteUrl } from "@/lib/rewrite-url";
+
+export function POST(_request: Request): Response {
+	const request = rewriteUrl(_request);
+
 	if (request.headers.get("origin") !== new URL(request.url).origin) {
 		return new Response("Invalid origin", { status: 400 });
 	}
