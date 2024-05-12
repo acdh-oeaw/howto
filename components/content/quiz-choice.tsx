@@ -1,10 +1,10 @@
+import { getFormDataValues } from "@acdh-oeaw/lib";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { QuizErrorMessage, QuizSuccessMessage } from "@/components/content/quiz";
 import { QuizForm, type QuizFormState } from "@/components/content/quiz-form";
 import { useQuizChildren } from "@/components/content/use-quiz-children";
-import { getFormData } from "@/lib/get-form-data";
 
 interface QuizChoiceProps {
 	buttonLabel?: string;
@@ -29,7 +29,7 @@ export function QuizChoice(props: QuizChoiceProps) {
 	async function validate(state: QuizFormState | undefined, formData: FormData) {
 		"use server";
 
-		const data = getFormData(formData) as { checks: Array<"correct" | "incorrect"> } & (
+		const data = getFormDataValues(formData) as { checks: Array<"correct" | "incorrect"> } & (
 			| { variant: "multiple"; checked: Array<string> }
 			| { variant: "single"; checked: string }
 		);

@@ -1,6 +1,6 @@
 "use client";
 
-import { createUrlSearchParams } from "@acdh-oeaw/lib";
+import { createUrlSearchParams, getFormDataValues } from "@acdh-oeaw/lib";
 import { useOptimistic, useState } from "react";
 import { ListBox, ListBoxItem, type Selection } from "react-aria-components";
 import { useFormState } from "react-dom";
@@ -12,7 +12,6 @@ import { Form } from "@/components/ui/form";
 import { SubmitButton } from "@/components/ui/submit-button";
 import { locales } from "@/config/i18n.config";
 import type { Tag, WithId } from "@/lib/content/types";
-import { getFormData } from "@/lib/get-form-data";
 import { useRouter } from "@/lib/navigation";
 import { cn } from "@/lib/styles";
 
@@ -48,7 +47,7 @@ export function ResourcesFilterForm(props: ResourcesFilterFormProps) {
 	);
 
 	function action(prevState: undefined, formData: FormData) {
-		const input = getFormData(formData);
+		const input = getFormDataValues(formData);
 		const filters = v.parse(formSchema, input);
 
 		updateOptimisticFilters(filters);
