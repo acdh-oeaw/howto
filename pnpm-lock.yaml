@@ -222,6 +222,15 @@ importers:
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
+      remark-mdx:
+        specifier: ^3.0.1
+        version: 3.0.1
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      remark-stringify:
+        specifier: ^11.0.0
+        version: 11.0.0
       schema-dts:
         specifier: ^1.1.2
         version: 1.1.2(typescript@5.4.5)
@@ -237,12 +246,24 @@ importers:
       tailwindcss-react-aria-components:
         specifier: ^1.1.2
         version: 1.1.2(tailwindcss@3.4.3)
+      to-vfile:
+        specifier: ^8.0.0
+        version: 8.0.0
       tsx:
         specifier: ^4.10.1
         version: 4.10.1
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
+      unified:
+        specifier: ^11.0.4
+        version: 11.0.4
+      vfile:
+        specifier: ^6.0.1
+        version: 6.0.1
+      yaml:
+        specifier: ^2.4.5
+        version: 2.4.5
 
 packages:
 
@@ -4575,6 +4596,9 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
+  to-vfile@8.0.0:
+    resolution: {integrity: sha512-IcmH1xB5576MJc9qcfEC/m/nQCFt3fzMHz45sSlgJyTWjRbKW1HAkJpuf3DgE57YzIlZcwcBZA5ENQbBo4aLkg==}
+
   toml@3.0.0:
     resolution: {integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==}
 
@@ -4878,8 +4902,8 @@ packages:
     resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
     engines: {node: '>= 14'}
 
-  yaml@2.4.2:
-    resolution: {integrity: sha512-B3VqDZ+JAg1nZpaEmWtTXUlBneoGx6CPM9b0TENK6aoSu5t73dItudwdgmi6tHlIZZId4dZ9skcAQ2UbcyAeVA==}
+  yaml@2.4.5:
+    resolution: {integrity: sha512-aBx2bnqDzVOyNKfsysjA2ms5ZlnjSAW2eG3/L5G/CSujfjLJTJsEw1bGw8kCf04KodQWk1pxlGnZ56CRxiawmg==}
     engines: {node: '>= 14'}
     hasBin: true
 
@@ -9654,7 +9678,7 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.4.38):
     dependencies:
       lilconfig: 3.1.1
-      yaml: 2.4.2
+      yaml: 2.4.5
     optionalDependencies:
       postcss: 8.4.38
 
@@ -9991,7 +10015,7 @@ snapshots:
       estree-util-value-to-estree: 3.1.1
       toml: 3.0.0
       unified: 11.0.4
-      yaml: 2.4.2
+      yaml: 2.4.5
 
   remark-mdx@3.0.1:
     dependencies:
@@ -10603,6 +10627,10 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
+  to-vfile@8.0.0:
+    dependencies:
+      vfile: 6.0.1
+
   toml@3.0.0: {}
 
   totalist@3.0.1: {}
@@ -10984,7 +11012,7 @@ snapshots:
 
   yaml@2.3.4: {}
 
-  yaml@2.4.2: {}
+  yaml@2.4.5: {}
 
   yargs-parser@20.2.9: {}
 

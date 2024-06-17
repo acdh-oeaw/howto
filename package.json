@@ -15,6 +15,7 @@
 		"dev:search-index": "docker run -d -p 8108:8108 --name howto-typesense --rm -v howto-typesense-data:/data typesense/typesense:0.25.2 --api-key=howto --data-dir /data --enable-cors",
 		"format:check": "prettier . \"!./content/**\" --cache --check --ignore-path ./.gitignore",
 		"format:fix": "pnpm run format:check --write",
+		"generate:dariah-campus-export": "tsx --env-file ./.env.local ./scripts/generate-dariah-campus-export.ts",
 		"generate:metadata-dump": "tsx --env-file ./.env.local ./scripts/generate-metadata-dump.ts",
 		"generate:search-index": "tsx --env-file ./.env.local ./scripts/generate-search-index.ts",
 		"lint:check": "run-p --continue-on-error \"lint:*:check\"",
@@ -109,13 +110,20 @@
 		"npm-run-all2": "^6.1.2",
 		"postcss": "^8.4.38",
 		"prettier": "^3.2.5",
+		"remark-mdx": "^3.0.1",
+		"remark-parse": "^11.0.0",
+		"remark-stringify": "^11.0.0",
 		"schema-dts": "^1.1.2",
 		"simple-git-hooks": "^2.11.1",
 		"stylelint": "^16.5.0",
 		"tailwindcss": "^3.4.3",
 		"tailwindcss-react-aria-components": "^1.1.2",
+		"to-vfile": "^8.0.0",
 		"tsx": "^4.10.1",
-		"typescript": "^5.4.5"
+		"typescript": "^5.4.5",
+		"unified": "^11.0.4",
+		"vfile": "^6.0.1",
+		"yaml": "^2.4.5"
 	},
 	"pnpm": {
 		"overrides": {
