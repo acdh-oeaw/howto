@@ -3,6 +3,7 @@ import type { MDXComponents } from "mdx/types";
 import { Callout } from "@/components/content/callout";
 import { Disclosure } from "@/components/content/disclosure";
 import { Download } from "@/components/content/download";
+import { Embed } from "@/components/content/embed";
 import { Figure } from "@/components/content/figure";
 import {
 	FootnoteContent,
@@ -21,6 +22,7 @@ const shared = {
 	Callout,
 	Disclosure,
 	Download,
+	Embed,
 	Figure,
 	FootnoteContent,
 	FootnoteReference,

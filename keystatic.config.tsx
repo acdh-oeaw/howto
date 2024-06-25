@@ -29,6 +29,7 @@ function createComponents(
 		| "Callout"
 		| "Disclosure"
 		| "Download"
+		| "Embed"
 		| "Figure"
 		| "Footnote"
 		| "Quiz"
@@ -91,6 +92,18 @@ function createComponents(
 				href: fields.file({
 					label: "File",
 					...createAssetPaths(assetPath),
+					validation: { isRequired: true },
+				}),
+			},
+		}),
+		Embed: wrapper({
+			label: "Embed",
+			description: "Another website, embedded via iframe.",
+			icon: <VideoIcon />,
+			schema: {
+				url: fields.url({
+					label: "URL",
+					description: "The URL of the iframe.",
 					validation: { isRequired: true },
 				}),
 			},

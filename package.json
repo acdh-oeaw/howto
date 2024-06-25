@@ -7,7 +7,7 @@
 		"node": "20.x",
 		"pnpm": "9.x"
 	},
-	"packageManager": "pnpm@9.1.0",
+	"packageManager": "pnpm@9.4.0",
 	"scripts": {
 		"analyze": "BUNDLE_ANALYZER=\"enabled\" next build --no-lint",
 		"build": "next build",
@@ -26,7 +26,7 @@
 		"preinstall": "npx only-allow pnpm",
 		"prepare": "run-s setup",
 		"setup": "is-ci || simple-git-hooks",
-		"start": "node .next/standalone/server.js",
+		"start": "next start",
 		"test": "exit 0",
 		"test:e2e": "playwright test",
 		"test:e2e:codegen": "playwright codegen",

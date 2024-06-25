@@ -1,14 +1,15 @@
 import { createUrl, createUrlSearchParams } from "@acdh-oeaw/lib";
+import type { ReactNode } from "react";
 
 interface VideoProps {
-	caption?: string;
+	children?: ReactNode;
 	id: string;
 	provider: "youtube";
 	startTime?: number;
 }
 
 export function Video(props: VideoProps) {
-	const { caption, id, startTime } = props;
+	const { children, id, startTime } = props;
 
 	const url = String(
 		createUrl({
@@ -26,7 +27,7 @@ export function Video(props: VideoProps) {
 				src={url}
 				title="Video"
 			/>
-			<figcaption>{caption}</figcaption>
+			<figcaption>{children}</figcaption>
 		</figure>
 	);
 }

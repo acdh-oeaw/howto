@@ -8,14 +8,14 @@ export function createSearchClient(apiKey = env.NEXT_PUBLIC_TYPESENSE_API_KEY) {
 	const port = env.NEXT_PUBLIC_TYPESENSE_PORT;
 	const protocol = env.NEXT_PUBLIC_TYPESENSE_PROTOCOL;
 
-	assert(apiKey, "Invalid typesense config.");
-	assert(host, "Invalid typesense config.");
-	assert(port, "Invalid typesense config.");
-	assert(protocol, "Invalid typesense config.");
+	assert(apiKey, "Invalid search client configuration.");
+	assert(host, "Invalid search client configuration.");
+	assert(port, "Invalid search client configuration.");
+	assert(protocol, "Invalid search client configuration.");
 
 	const client = new Client({
-		nodes: [{ host, port, protocol }],
 		apiKey,
+		nodes: [{ host, port, protocol }],
 	});
 
 	return client;
