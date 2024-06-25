@@ -275,7 +275,7 @@ const processor = unified()
 				const input = JSON.parse(await readFile(inputFileName, { encoding: "utf-8" })) as Tag;
 				const outputFolder = join(outputBaseFolder, "tags");
 				await mkdir(outputFolder, { recursive: true });
-				const outputFileName = join(outputFolder, `${id}.yaml`);
+				const outputFileName = join(outputFolder, `${id}.yml`);
 				await writeFile(outputFileName, YAML.stringify(input));
 			}
 
@@ -284,7 +284,7 @@ const processor = unified()
 				const input = JSON.parse(await readFile(inputFileName, { encoding: "utf-8" })) as Person;
 				const outputFolder = join(outputBaseFolder, "people");
 				await mkdir(outputFolder, { recursive: true });
-				const outputFileName = join(outputFolder, `${id}.yaml`);
+				const outputFileName = join(outputFolder, `${id}.yml`);
 				const image = convertImagePath(input.image, outputFolder);
 				await writeFile(
 					outputFileName,
