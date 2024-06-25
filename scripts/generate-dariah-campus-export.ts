@@ -90,7 +90,7 @@ const processor = unified()
 					authors: metadata.authors,
 					editors: metadata.editors,
 					tags: metadata.tags,
-					categories: ["dariah"],
+					categories: ["acdh-ch"],
 					featuredImage,
 					abstract: metadata.summary,
 					domain: "Social Sciences and Humanities",
