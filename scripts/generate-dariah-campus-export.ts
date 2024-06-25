@@ -16,6 +16,14 @@ import * as YAML from "yaml";
 
 import type { Person, Resource, Tag } from "@/lib/content/types";
 
+const allowedResources = [
+	"corpus-query-language-im-austrian-media-corpus",
+	"datenmanagement-uebung",
+	"einfuehrung-metadaten",
+	"grundlagen-datenmanagement",
+	"langzeitarchivierung",
+];
+
 declare module "vfile" {
 	interface DataMap {
 		slug: string;
@@ -301,6 +309,8 @@ async function generate() {
 
 	for (const entry of entries) {
 		if (!entry.isDirectory()) continue;
+
+		if (!allowedResources.includes(entry.name)) continue;
 
 		const filePath = join(contentFolder, entry.name, "index.mdx");
 		const file = await read(filePath);
