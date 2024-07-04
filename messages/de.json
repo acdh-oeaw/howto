@@ -62,6 +62,7 @@
 		"title": "Impressum"
 	},
 	"IndexPage": {
+		"ditah": "Diese Plattform entsteht im Rahmen vom <ditah>DITAH</ditah> Projekt, welches vom <bmbwf>Österreichischen Bundesministerium für Bildung, Wissenschaft und Forschung</bmbwf> finanziert wird.",
 		"lead-in": "Willkommen bei den ACDH-CH Lernressourcen. Hier finden Sie interaktives Lernmaterial, praktische HowTo-Artikel und Best Practices Beispiele zu einem breiten Spektrum von Themen, Methoden und Infrastrukturen aus den Digital Humanities.",
 		"title": "Teilen und erweitern Sie Ihr Wissen im Bereich Digital Humanities"
 	},

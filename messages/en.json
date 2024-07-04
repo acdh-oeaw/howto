@@ -62,6 +62,7 @@
 		"title": "Imprint"
 	},
 	"IndexPage": {
+		"ditah": "The platform is being developed in the context of the <ditah>DITAH</ditah> project, funded by the <bmbwf>Austrian Federal Ministry of Education, Science and Research</bmbwf>.",
 		"lead-in": "Welcome to ACDH-CH Learning Resources. This website gathers interactive learning material, practical HowTo articles and best practices on a wide range of Digital Humanities topics, methododologies and infrastructures.",
 		"title": "Share and expand your knowledge in Digital Humanities"
 	},

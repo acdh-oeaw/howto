@@ -66,6 +66,16 @@ export default function IndexPage(props: IndexPageProps) {
 				<div className="text-pretty text-md leading-normal text-neutral-600 xs:text-lg xs:leading-snug dark:text-neutral-400">
 					{t("lead-in")}
 				</div>
+				<div className="text-pretty text-md leading-normal text-neutral-600 xs:text-lg xs:leading-snug dark:text-neutral-400 [&>a]:underline [&>a:hover]:no-underline [&>a]:decoration-dotted">
+					{t.rich("ditah", {
+						ditah(chunks) {
+							return <a href="https://www.ditah.at">{chunks}</a>;
+						},
+						bmbwf(chunks) {
+							return <a href="https://www.bmbwf.gv.at">{chunks}</a>;
+						},
+					})}
+				</div>
 			</section>
 
 			<ResourcesSection filters={filters} />
