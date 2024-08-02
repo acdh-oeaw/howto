@@ -29,7 +29,7 @@ jobs:
         with:
           filters: |
             src:
-              - '!content/**'
+              - '!(content|public)/**'
 
   validate:
     name: Validate
@@ -132,7 +132,8 @@ jobs:
 
   build-deploy:
     name: Build and deploy
-    if: ${{ always() && github.event_name == 'push' }}
+    # @see https://github.com/orgs/community/discussions/45058
+    if: ${{ github.event_name == 'push' && !failure() && !cancelled() }}
     needs: [validate]
     uses: ./.github/workflows/build-deploy.yml
     secrets: inherit

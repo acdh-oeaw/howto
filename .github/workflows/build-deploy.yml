@@ -64,6 +64,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    environment:
+      name: "${{ needs.env.outputs.environment }}"
 
     steps:
       - name: Checkout repository
